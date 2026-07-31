@@ -1,0 +1,174 @@
+{
+ "explicit": [
+  {
+   "eps": 0.3,
+   "mean": 0.910479127442706,
+   "mean_theorems": 0.9159101148491451,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 0.96,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 0.9400000000000001
+   }
+  },
+  {
+   "eps": 0.2,
+   "mean": 0.9346676296825295,
+   "mean_theorems": 0.9387792508339796,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.1,
+   "mean": 0.9478789196909692,
+   "mean_theorems": 0.9511255954798923,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.05,
+   "mean": 0.9526453288320459,
+   "mean_theorems": 0.9557492275687187,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.02,
+   "mean": 0.9553627215477504,
+   "mean_theorems": 0.9583005280844935,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.01,
+   "mean": 0.9561872037914693,
+   "mean_theorems": 0.9591134581533045,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  }
+ ],
+ "full": [
+  {
+   "eps": 0.3,
+   "mean": 0.9967279101473739,
+   "mean_theorems": 0.9982695077366225,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 0.9400000000000001
+   }
+  },
+  {
+   "eps": 0.2,
+   "mean": 0.9984843861585405,
+   "mean_theorems": 0.9992739761438754,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.1,
+   "mean": 0.9991665584626371,
+   "mean_theorems": 0.9994989557303529,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.05,
+   "mean": 0.999333214308901,
+   "mean_theorems": 0.9995419164502217,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.02,
+   "mean": 0.9994236836979808,
+   "mean_theorems": 0.9995568521732708,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  },
+  {
+   "eps": 0.01,
+   "mean": 0.9994504641952867,
+   "mean_theorems": 0.999561037458301,
+   "famous": {
+    "Nat.exists_infinite_primes": 1.0,
+    "irrational_sqrt_two": 1.0,
+    "fermatLastTheoremThree": 1.0,
+    "Real.tendsto_sum_pi_div_four": 1.0,
+    "ZMod.wilsons_lemma": 1.0,
+    "Matrix.aeval_self_charpoly": 1.0,
+    "Function.Embedding.schroeder_bernstein": 1.0
+   }
+  }
+ ]
+}

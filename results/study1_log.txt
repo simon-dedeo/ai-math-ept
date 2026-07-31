@@ -1,0 +1,80 @@
+[fail] ballot_problem_decl: None
+[fail] abel_ruffini_decl: None
+[ok] banach_fixed_point_decl: N=8777 E=119360 f2=1.0 alpha=1.746 Q=0.473
+[ok] basel_problem_decl: N=8779 E=115771 f2=1.0 alpha=1.883 Q=0.455
+[ok] bertrand_postulate_decl: N=9111 E=134562 f2=1.0 alpha=1.694 Q=0.429
+[ok] binomial_theorem_decl: N=2534 E=27416 f2=1.0 alpha=1.892 Q=0.419
+[ok] cantor_theorem_decl: N=2683 E=24997 f2=1.0 alpha=1.87 Q=0.494
+[fail] cauchy_schwarz_decl: None
+[ok] bezout_gcd_term: N=13155 E=25288 f2=1.0 alpha=2.809 Q=0.697
+[ok] cayley_hamilton_decl: N=6627 E=83621 f2=1.0 alpha=1.848 Q=0.487
+[fail] central_binomial_decl: None
+[fail] descartes_rule_decl: None
+[ok] binomial_theorem_term: N=15163 E=28883 f2=1.0 alpha=2.851 Q=0.714
+[ok] basel_problem_term: N=13519 E=25366 f2=0.981 alpha=2.135 Q=0.75
+[fail] erdos_szekeres_decl: None
+[ok] divergence_harmonic_decl: N=8644 E=117159 f2=1.0 alpha=1.715 Q=0.468
+[ok] euclid_infinite_primes_decl: N=2083 E=22825 f2=1.0 alpha=1.829 Q=0.41
+[ok] cantor_theorem_term: N=12775 E=24145 f2=1.0 alpha=2.45 Q=0.677
+[ok] extreme_value_decl: N=1659 E=13130 f2=1.0 alpha=1.676 Q=0.522
+[ok] bertrand_postulate_term: N=14322 E=26887 f2=0.9587 alpha=2.359 Q=0.732
+[ok] fermat_last_four_decl: N=5441 E=75878 f2=1.0 alpha=1.835 Q=0.414
+[ok] fermat_last_three_decl: N=8878 E=112795 f2=1.0 alpha=1.721 Q=0.395
+[ok] divergence_harmonic_term: N=16852 E=31422 f2=0.96 alpha=2.974 Q=0.717
+[ok] fermat_little_decl: N=5787 E=63681 f2=1.0 alpha=1.877 Q=0.479
+[ok] euclid_infinite_primes_term: N=15700 E=29980 f2=0.99 alpha=2.431 Q=0.679
+[fail] friendship_theorem_decl: None
+[ok] fermat_last_four_term: N=15181 E=28968 f2=0.9714 alpha=2.335 Q=0.748
+[ok] fta_complex_decl: N=8457 E=109374 f2=1.0 alpha=1.664 Q=0.465
+[ok] ftc_decl: N=8986 E=111403 f2=1.0 alpha=1.72 Q=0.459
+[ok] fermat_little_term: N=13180 E=24382 f2=0.98 alpha=2.957 Q=0.705
+[ok] fund_thm_arithmetic_decl: N=2376 E=25862 f2=1.0 alpha=1.855 Q=0.426
+[ok] extreme_value_term: N=15322 E=29365 f2=0.9333 alpha=2.139 Q=0.671
+[fail] hermite_e_transcendental_decl: None
+[fail] heron_decl: None
+[ok] intermediate_value_decl: N=2504 E=22440 f2=1.0 alpha=1.68 Q=0.509
+[ok] banach_fixed_point_term: N=27506 E=51990 f2=1.0 alpha=2.503 Q=0.705
+[fail] konigsberg_decl: None
+[ok] lagrange_subgroup_decl: N=4546 E=47006 f2=1.0 alpha=1.888 Q=0.488
+[ok] ftc_term: N=13313 E=24537 f2=1.0 alpha=2.425 Q=0.709
+[ok] law_of_cosines_decl: N=8515 E=122511 f2=1.0 alpha=1.765 Q=0.45
+[ok] lagrange_subgroup_term: N=17384 E=32955 f2=0.9733 alpha=2.008 Q=0.704
+[ok] cayley_hamilton_term: N=32812 E=63521 f2=1.0 alpha=1.973 Q=0.705
+[ok] law_of_cosines_term: N=16003 E=29517 f2=1.0 alpha=2.512 Q=0.723
+[fail] lindemann_weierstrass_decl: None
+[ok] leibniz_pi_decl: N=8607 E=117591 f2=1.0 alpha=1.705 Q=0.435
+[ok] liouville_decl: N=9541 E=132752 f2=1.0 alpha=1.705 Q=0.475
+[ok] intermediate_value_term: N=16825 E=32342 f2=0.9492 alpha=1.94 Q=0.671
+[ok] mean_value_decl: N=8766 E=122879 f2=1.0 alpha=1.716 Q=0.486
+[ok] fta_complex_term: N=27764 E=51915 f2=0.9867 alpha=2.456 Q=0.748
+[ok] fund_thm_arithmetic_term: N=21159 E=40597 f2=1.0 alpha=2.963 Q=0.675
+[ok] leibniz_pi_term: N=19182 E=35888 f2=1.0 alpha=2.477 Q=0.724
+[ok] mvt2_decl: N=8766 E=124560 f2=1.0 alpha=1.713 Q=0.48
+[fail] pi_irrational_decl: None
+[ok] mean_value_term: N=12314 E=22396 f2=1.0 alpha=2.463 Q=0.713
+[ok] pi_irrational2_decl: N=10344 E=142889 f2=1.0 alpha=1.701 Q=0.455
+[ok] mvt2_term: N=15133 E=28053 f2=1.0 alpha=2.466 Q=0.732
+[ok] ptolemy_decl: N=8306 E=115842 f2=1.0 alpha=1.706 Q=0.478
+[fail] ramsey_decl: None
+[ok] liouville_term: N=14196 E=26037 f2=1.0 alpha=2.433 Q=0.719
+[ok] reals_uncountable_decl: N=8472 E=104533 f2=1.0 alpha=1.732 Q=0.483
+[ok] schroeder_bernstein_decl: N=1207 E=8140 f2=1.0 alpha=1.867 Q=0.548
+[ok] quadratic_reciprocity_decl: N=9484 E=121402 f2=1.0 alpha=1.799 Q=0.421
+[ok] sqrt2_irrational_decl: N=7416 E=101832 f2=1.0 alpha=1.745 Q=0.49
+[ok] ptolemy_term: N=14208 E=26776 f2=1.0 alpha=2.482 Q=0.744
+[ok] stirling_decl: N=8707 E=120921 f2=1.0 alpha=1.701 Q=0.453
+[ok] pi_irrational2_term: N=24139 E=45594 f2=1.0 alpha=2.419 Q=0.744
+[ok] schroeder_bernstein_term: N=15991 E=30806 f2=1.0 alpha=2.087 Q=0.673
+[ok] stirling_term: N=12141 E=22249 f2=1.0 alpha=2.861 Q=0.733
+[ok] strong_law_large_numbers_decl: N=9100 E=115864 f2=1.0 alpha=1.676 Q=0.455
+[ok] sylow_theorem_decl: N=7989 E=100461 f2=1.0 alpha=1.88 Q=0.448
+[ok] wilsons_lemma_decl: N=4749 E=53517 f2=1.0 alpha=1.909 Q=0.474
+[ok] quadratic_reciprocity_term: N=20540 E=38825 f2=1.0 alpha=2.904 Q=0.718
+[ok] strong_law_large_numbers_term: N=12807 E=23842 f2=0.9968 alpha=1.939 Q=0.719
+[ok] sylow_theorem_term: N=13646 E=25594 f2=0.9492 alpha=1.982 Q=0.7
+[ok] sqrt2_irrational_term: N=23178 E=43474 f2=0.9873 alpha=2.477 Q=0.727
+[ok] wilsons_lemma_term: N=18414 E=34478 f2=0.9746 alpha=2.956 Q=0.715
+[ok] reals_uncountable_term: N=24612 E=46429 f2=0.95 alpha=2.948 Q=0.724
+[ok] fermat_last_three_term: N=36592 E=69657 f2=1.0 alpha=2.471 Q=0.733
+[ok] bezout_gcd_decl: N=744 E=5850 f2=1.0 alpha=1.84 Q=0.103
+wrote 66 rows to results/study1/results.csv

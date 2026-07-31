@@ -1,0 +1,48 @@
+name,nodes,alpha_pub,alpha_fit,diff
+Leibniz pi,13619,1.91,1.916,0.006
+Bertrand's Postulate,22434,2.09,2.093,0.003
+Schroeder-Bernstein,1331,2.21,2.223,0.013
+Cubic Solution,11271,1.88,1.894,0.014
+Cauchy-Schwarz,12647,2.13,2.127,-0.003
+Cayley-Hamilton,11407,2.09,2.091,0.001
+Ceva's Theorem,15279,2.11,2.106,-0.004
+Desargues' Theorem,18213,1.99,1.995,0.005
+Polyhedron Formula,23750,2.22,2.216,-0.004
+Euler FLiT,22444,2.24,2.243,0.003
+FT Algebra,20431,2.29,2.287,-0.003
+FT Calculus,16845,2.24,2.237,-0.003
+Godel Incompleteness,28984,1.98,1.985,0.005
+Int Value Theorem,14467,2.09,2.088,-0.002
+Subgroup Order,10583,2.23,2.231,0.001
+Mean Value Theorem,10168,2.2,2.199,-0.001
+Liouville's Theorem,11645,2.31,2.308,-0.002
+Ramsey's Theorem,7747,2.37,2.366,-0.004
+Rationals Denumerable,13108,2.22,2.221,0.001
+Quadratic Reciprocity,14397,2.07,2.071,0.001
+Powerset Theorem,282,2.41,,
+Sylow's Theorem,15942,2.16,2.157,-0.003
+Taylor's Theorem,17809,2.2,2.202,0.002
+Wilson's Theorem,16120,2.09,2.087,-0.003
+GCD Algorithm,10792,2.26,2.263,0.003
+Bezout's Theorem,14909,2.23,2.233,0.003
+Bertrand (ballot),24137,2.22,2.215,-0.005
+Binomial Theorem,16314,2.11,2.106,-0.004
+Birthday Paradox,11692,2.1,2.105,0.005
+Subsets of a Set,20205,2.13,2.127,-0.003
+Div 3 Rule,13037,2.22,2.216,-0.004
+FT Arithmetic,11362,2.13,2.126,-0.004
+Factor & Remainder,11815,2.16,2.157,-0.003
+Euclid's Elements,174597,2.14,2.138,-0.002
+Four Color Theorem,12407,1.97,1.972,0.002
+Geometric Series,16160,2.16,2.164,0.004
+Heron's Formula,17487,2.04,2.046,0.006
+Inclusion-Exclusion,12886,2.15,2.148,-0.002
+Pascal's Hexagon,150,2.32,,
+Isosceles Triangle,13055,2.11,2.115,0.005
+Cramer's Rule,10613,2.09,2.093,0.003
+Triangle Angles,739,2.38,2.83,0.45
+Pythagorean Triples,13254,2.19,2.19,0.0
+Pythagorean Theorem,18230,1.93,1.938,0.008
+Reals Uncountable,14574,2.31,2.311,0.001
+Prime Squares,250,2.25,,
+Triangle Inequality,13657,2.13,2.143,0.013

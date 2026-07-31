@@ -1,0 +1,53 @@
+name,group,nodes,alpha,alpha_err,f2,dL1
+Euclid's Elements,coq2022,174597,2.14,0.02,0.985,11
+Godel Incompleteness,coq2022,28984,1.98,0.04,,13
+Bertrand (ballot),coq2022,24137,2.22,0.03,0.998,13
+Polyhedron Formula,coq2022,23750,2.22,0.04,0.988,13
+Euler FLiT,coq2022,22444,2.24,0.05,0.998,11
+Bertrand's Postulate,coq2022,22434,2.09,0.04,,15
+FT Algebra,coq2022,20431,2.29,0.05,,14
+Subsets of a Set,coq2022,20205,2.13,0.05,,9
+Pythagorean Theorem,coq2022,18230,1.93,0.04,,19
+Desargues' Theorem,coq2022,18213,1.99,0.04,0.987,14
+Taylor's Theorem,coq2022,17809,2.20,0.05,,13
+Heron's Formula,coq2022,17487,2.04,0.04,,17
+FT Calculus,coq2022,16845,2.24,0.05,,13
+Binomial Theorem,coq2022,16314,2.11,0.05,0.998,16
+Geometric Series,coq2022,16160,2.16,0.05,,14
+Wilson's Theorem,coq2022,16120,2.09,0.05,,12
+Sylow's Theorem,coq2022,15942,2.16,0.05,,12
+Ceva's Theorem,coq2022,15279,2.11,0.05,0.99,17
+Bezout's Theorem,coq2022,14909,2.23,0.06,0.998,15
+Reals Uncountable,coq2022,14574,2.31,0.06,0.996,14
+Int Value Theorem,coq2022,14467,2.09,0.05,0.998,12
+Quadratic Reciprocity,coq2022,14397,2.07,0.06,0.998,13
+Triangle Inequality,coq2022,13657,2.13,0.06,0.998,15
+Leibniz pi,coq2022,13619,1.91,0.05,0.998,16
+Pythagorean Triples,coq2022,13254,2.19,0.06,,14
+Rationals Denumerable,coq2022,13108,2.22,0.06,0.998,13
+Isosceles Triangle,coq2022,13055,2.11,0.05,0.995,15
+Div 3 Rule,coq2022,13037,2.22,0.06,0.998,14
+Inclusion-Exclusion,coq2022,12886,2.15,0.06,,16
+Cauchy-Schwarz,coq2022,12647,2.13,0.05,,14
+Four Color Theorem,coq2022,12407,1.97,0.06,0.989,13
+Factor & Remainder,coq2022,11815,2.16,0.05,0.997,13
+Birthday Paradox,coq2022,11692,2.10,0.06,,14
+Liouville's Theorem,coq2022,11645,2.31,0.05,,13
+Cayley-Hamilton,coq2022,11407,2.09,0.05,,15
+FT Arithmetic,coq2022,11362,2.13,0.05,,12
+Cubic Solution,coq2022,11271,1.88,0.05,0.986,17
+GCD Algorithm,coq2022,10792,2.26,0.07,0.932,14
+Cramer's Rule,coq2022,10613,2.09,0.05,,15
+Subgroup Order,coq2022,10583,2.23,0.06,,14
+Mean Value Theorem,coq2022,10168,2.20,0.07,,13
+Ramsey's Theorem,coq2022,7747,2.37,0.09,0.997,13
+Schroeder-Bernstein,coq2022,1331,2.21,0.19,0.987,14
+Triangle Angles,coq2022,739,2.38,0.19,0.99,11
+Powerset Theorem,coq2022,282,2.41,0.32,0.992,10
+Prime Squares,coq2022,250,2.25,0.29,0.983,10
+Pascal's Hexagon,coq2022,150,2.32,0.34,0.992,9
+Euclid's Elements (Greek),human2022,475,1.97,0.07,,21
+Apollonius Conics,human2022,446,2.28,0.11,,12
+Herstein Topics,human2022,280,2.36,0.10,0.957,5
+Wiles FLT,human2022,142,3.39,0.72,,5
+Orlik & Strauch,human2022,61,2.14,0.16,0.951,6

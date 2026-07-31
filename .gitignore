@@ -1,0 +1,13 @@
+# large working data — lives on akdeniz, not in git
+networks/
+corpora/
+projects/
+census/
+mathlib4/
+venv/
+original_data/
+*.olean
+*.vo
+# source PDFs (copyright) stay out of the repo
+*.pdf
+!report/figures/*.pdf

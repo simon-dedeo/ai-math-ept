@@ -1,0 +1,244 @@
+/-
+ExtractNetwork.lean — build proof dependency networks from Lean proof terms,
+mirroring the CoqAST/ManipulateProofTrees pipeline of Viteri & DeDeo (2022).
+
+Two modes per target declaration:
+  * "term": subterm-DAG of the (elaborated) proof term, with structural
+    sharing (identical subterms unified), expanding referenced theorems/defs
+    level by level ("depth expansion"), truncated at the first expansion level
+    exceeding maxNodes (that level is included). Axioms, inductives,
+    constructors and recursors are NOT expanded (as in the paper).
+  * "decl": declaration-level dependency network — BFS over the constants
+    used in proof values, nodes = declarations, edges premise -> dependent,
+    truncated likewise.
+
+Input:  targets.txt in the CWD, tab-separated lines:
+          <declName>\t<outPath>\t<mode>\t<maxNodes>
+Output: one JSON file per target:
+          {"name":..., "mode":..., "levels":..., "nodes":N,
+           "labels":[...], "edges":[[premise,dependent],...],
+           "truncated":bool}
+Edges are premise -> dependent (a subterm/definition-body is a premise of the
+term containing it; a used constant is a premise of the using declaration).
+
+Run:  lake env lean ExtractNetwork.lean   (from a project with Mathlib)
+-/
+namespace EPTX
+open Lean
+
+abbrev NodeId := Nat
+
+structure BuildSt where
+  ids        : Std.HashMap Expr NodeId := {}
+  labels     : Array String := #[]
+  edges      : Array (NodeId × NodeId) := #[]
+  constNode  : Std.HashMap Name NodeId := {}
+  seenConsts : Std.HashMap Name Bool := {}   -- true = expanded
+  frontier   : Array Name := #[]
+  visits     : Nat := 0   -- tree size (walk calls incl. cache hits)
+
+abbrev BuildM := StateRefT BuildSt CoreM
+
+def canonical (e : Expr) : Expr :=
+  match e with
+  | .const n _ => .const n []      -- unify same constant across universe insts
+  | _ => e
+
+def labelOf (e : Expr) : String :=
+  match e with
+  | .const n _   => s!"C:{n}"
+  | .app _ _     => "App"
+  | .lam ..      => "Lam"
+  | .forallE ..  => "Pi"
+  | .letE ..     => "Let"
+  | .sort _      => "Sort"
+  | .lit _       => "Lit"
+  | .bvar i      => s!"bvar{i}"
+  | .fvar _      => "fvar"
+  | .mvar _      => "mvar"
+  | .mdata _ _   => "MData"
+  | .proj n i _  => s!"Proj:{n}.{i}"
+
+def childrenOf (e : Expr) : List Expr :=
+  match e with
+  | .app f a        => [f, a]
+  | .lam _ t b _    => [t, b]
+  | .forallE _ t b _ => [t, b]
+  | .letE _ t v b _ => [t, v, b]
+  | .mdata _ b      => [b]
+  | .proj _ _ b     => [b]
+  | _               => []
+
+partial def walk (e0 : Expr) : BuildM NodeId := do
+  let e := canonical e0
+  modify fun st => { st with visits := st.visits + 1 }
+  if let some id := (← get).ids[e]? then
+    return id
+  let id := (← get).labels.size
+  modify fun st => { st with
+    ids := st.ids.insert e id,
+    labels := st.labels.push (labelOf e) }
+  if let .const n _ := e then
+    modify fun st =>
+      if st.seenConsts.contains n then
+        { st with constNode := st.constNode.insert n id }
+      else
+        { st with
+          constNode := st.constNode.insert n id,
+          seenConsts := st.seenConsts.insert n false,
+          frontier := st.frontier.push n }
+  for c in childrenOf e do
+    let cid ← walk c
+    -- child subterm is a premise of the containing term
+    modify fun st => { st with edges := st.edges.push (cid, id) }
+  return id
+
+def expandable (ci : ConstantInfo) : Bool :=
+  match ci with
+  | .thmInfo _  => true
+  | .defnInfo _ => true
+  | _           => false
+
+/-- Term-level network with level-by-level constant expansion.
+    maxLevels = 0 means "term0": the proof term's own DAG, no expansion. -/
+def buildTermNet (root : Name) (maxNodes : Nat) (maxLevels : Nat := 1000000) :
+    CoreM (BuildSt × Nat × Bool) := do
+  let env ← getEnv
+  let some ci := env.find? root
+    | throwError "declaration {root} not found"
+  let rootVal := (ci.value?).getD ci.type
+  let go : BuildM (Nat × Bool) := do
+    let ridType ← walk ci.type
+    let rid ← walk rootVal
+    -- tie type and value under a virtual root: value and type premise the theorem
+    let thmId := (← get).labels.size
+    modify fun st => { st with
+      labels := st.labels.push s!"THM:{root}",
+      edges := (st.edges.push (rid, thmId)).push (ridType, thmId) }
+    let mut level := 0
+    let mut truncated := false
+    while (← get).labels.size ≤ maxNodes && level < maxLevels do
+      let fr := (← get).frontier
+      if fr.isEmpty then break
+      modify fun st => { st with frontier := #[] }
+      level := level + 1
+      for n in fr do
+        let already := ((← get).seenConsts[n]?).getD false
+        if !already then
+          modify fun st => { st with seenConsts := st.seenConsts.insert n true }
+          if let some ci := env.find? n then
+            if expandable ci then
+              if let some v := ci.value? then
+                let vid ← walk v
+                if let some cid := (← get).constNode[n]? then
+                  modify fun st => { st with edges := st.edges.push (vid, cid) }
+      pure ()
+    if !(← get).frontier.isEmpty then
+      truncated := true
+    return (level, truncated)
+  let ((level, truncated), st) ← go.run {}
+  return (st, level, truncated)
+
+/-- Declaration-level network: BFS over used constants. -/
+def buildDeclNet (root : Name) (maxNodes : Nat) :
+    CoreM (Array String × Array (Nat × Nat) × Nat × Bool) := do
+  let env ← getEnv
+  let mut ids : Std.HashMap Name Nat := {}
+  let mut labels : Array String := #[]
+  let mut edges : Array (Nat × Nat) := #[]
+  let mut frontier : Array Name := #[root]
+  ids := ids.insert root 0
+  labels := labels.push root.toString
+  let mut level := 0
+  let mut truncated := false
+  while labels.size ≤ maxNodes && !frontier.isEmpty do
+    level := level + 1
+    let mut next : Array Name := #[]
+    for n in frontier do
+      let some ci := env.find? n | continue
+      let used := match ci.value? with
+        | some v => v.getUsedConstants ++ ci.type.getUsedConstants
+        | none   => ci.type.getUsedConstants
+      for u in used do
+        let uid ← match ids[u]? with
+          | some i => pure i
+          | none => do
+              let i := labels.size
+              ids := ids.insert u i
+              labels := labels.push u.toString
+              next := next.push u
+              pure i
+        edges := edges.push (uid, (ids[n]?).getD 0)
+    frontier := next
+  if !frontier.isEmpty then truncated := true
+  return (labels, edges, level, truncated)
+
+def escapeJson (s : String) : String :=
+  s.foldl (fun acc c =>
+    acc ++ (if c == '"' then "\\\"" else if c == '\\' then "\\\\" else toString c)) ""
+
+def writeNet (path : System.FilePath) (name mode : String)
+    (labels : Array String) (edges : Array (Nat × Nat))
+    (levels : Nat) (truncated : Bool) (visits : Nat := 0) : IO Unit := do
+  let mut parts : Array String := #[]
+  for (a, b) in edges do
+    parts := parts.push s!"[{a},{b}]"
+  let labelStrs := labels.map (fun l => s!"\"{escapeJson l}\"")
+  let out := "{\"name\":\"" ++ name ++ "\",\"mode\":\"" ++ mode ++
+    "\",\"levels\":" ++ toString levels ++
+    ",\"truncated\":" ++ (if truncated then "true" else "false") ++
+    ",\"nodes\":" ++ toString labels.size ++
+    ",\"visits\":" ++ toString visits ++
+    ",\"labels\":[" ++ String.intercalate "," labelStrs.toList ++
+    "],\"edges\":[" ++ String.intercalate "," parts.toList ++ "]}"
+  IO.FS.writeFile path out
+
+
+/-- Run term0 + term + decl extraction for one declaration, writing
+    <outBase>_term0.json, _term.json, _decl.json. -/
+def extractFor (n : Name) (outBase : String)
+    (maxNodes : Nat := 12000) : CoreM Unit := do
+  try
+    let (st0, _, tr0) ← buildTermNet n 2000000 (maxLevels := 0)
+    writeNet (outBase ++ "_term0.json") n.toString "term0"
+      st0.labels st0.edges 0 tr0 st0.visits
+    IO.println s!"[ok] {n} term0: {st0.labels.size} nodes, {st0.edges.size} edges, {st0.visits} visits"
+    let (st, lv, tr) ← buildTermNet n maxNodes
+    writeNet (outBase ++ "_term.json") n.toString "term"
+      st.labels st.edges lv tr st.visits
+    IO.println s!"[ok] {n} term: {st.labels.size} nodes, {st.edges.size} edges, {lv} levels"
+    let (labels, edges, lvd, trd) ← buildDeclNet n maxNodes
+    writeNet (outBase ++ "_decl.json") n.toString "decl" labels edges lvd trd
+    IO.println s!"[ok] {n} decl: {labels.size} nodes, {edges.size} edges, {lvd} levels"
+  catch e =>
+    IO.println s!"[fail] {n}: {← e.toMessageData.toString}"
+
+def processTargets : CoreM Unit := do
+  let tf := (← IO.getEnv "TARGETS").getD "targets.txt"
+  let txt ← IO.FS.readFile tf
+  for line in txt.splitOn "\n" do
+    let line := line.trim
+    if line.isEmpty || line.startsWith "#" then continue
+    let fields := line.splitOn "\t"
+    if fields.length < 4 then continue
+    let name := fields[0]!.toName
+    let outPath := fields[1]!
+    let mode := fields[2]!
+    let maxNodes := (fields[3]!).toNat!
+    try
+      if mode == "all" then
+        extractFor name outPath maxNodes
+      else if mode == "term" then
+        let (st, levels, truncated) ← buildTermNet name maxNodes
+        writeNet outPath fields[0]! mode st.labels st.edges levels truncated
+        let suffix := if truncated then " (truncated)" else ""
+        IO.println s!"[ok] {name} term: {st.labels.size} nodes, {st.edges.size} edges, {levels} levels{suffix}"
+      else
+        let (labels, edges, levels, truncated) ← buildDeclNet name maxNodes
+        writeNet outPath fields[0]! mode labels edges levels truncated
+        let suffix := if truncated then " (truncated)" else ""
+        IO.println s!"[ok] {name} decl: {labels.size} nodes, {edges.size} edges, {levels} levels{suffix}"
+    catch e =>
+      IO.println s!"[fail] {name}: {← e.toMessageData.toString}"
+
+end EPTX
