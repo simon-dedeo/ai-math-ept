@@ -1,0 +1,62 @@
+{
+ "vocab_ratio": {
+  "n_problems": 7,
+  "n_models": 7,
+  "friedman_p": 0.01762995539253163,
+  "kendall_W": 0.3657289002557541,
+  "mean_ranks": {
+   "EVO-deepthought.com.au": 2.0,
+   "GPT-5.6": 4.285714285714286,
+   "GPT-5.5": 5.0,
+   "Claude-Opus-4.7-1M-context": 5.642857142857143,
+   "Aristotle (Harmonic)": 6.0,
+   "Humanifa + GPT 5.6 sol": 6.071428571428571,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 6.357142857142857
+  }
+ },
+ "n_lines": {
+  "n_problems": 7,
+  "n_models": 7,
+  "friedman_p": 4.3766013627040516e-05,
+  "kendall_W": 0.7084398976982095,
+  "mean_ranks": {
+   "Humanifa + GPT 5.6 sol": 1.4285714285714286,
+   "Aristotle (Harmonic)": 2.142857142857143,
+   "GPT-5.5": 4.928571428571429,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 5.0,
+   "Claude-Opus-4.7-1M-context": 5.357142857142857,
+   "GPT-5.6": 5.785714285714286,
+   "EVO-deepthought.com.au": 8.571428571428571
+  }
+ },
+ "n_have": {
+  "n_problems": 7,
+  "n_models": 7,
+  "friedman_p": 3.0197929852278565e-05,
+  "kendall_W": 0.7286081527726773,
+  "mean_ranks": {
+   "Humanifa + GPT 5.6 sol": 1.5714285714285714,
+   "Aristotle (Harmonic)": 2.642857142857143,
+   "GPT-5.5": 4.071428571428571,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 4.571428571428571,
+   "Claude-Opus-4.7-1M-context": 6.214285714285714,
+   "GPT-5.6": 6.285714285714286,
+   "EVO-deepthought.com.au": 8.5
+  }
+ },
+ "n_distinct_premises": {
+  "n_problems": 7,
+  "n_models": 7,
+  "friedman_p": 0.0004399933030042293,
+  "kendall_W": 0.5810510732790524,
+  "mean_ranks": {
+   "Humanifa + GPT 5.6 sol": 1.0714285714285714,
+   "GPT-5.6": 4.0,
+   "GPT-5.5": 4.214285714285714,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 5.785714285714286,
+   "Aristotle (Harmonic)": 5.785714285714286,
+   "Claude-Opus-4.7-1M-context": 6.642857142857143,
+   "EVO-deepthought.com.au": 6.928571428571429
+  }
+ }
+}

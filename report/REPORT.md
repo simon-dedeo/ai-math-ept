@@ -402,6 +402,51 @@ found one — `leanprover/lean-eval-submissions`, ~460 public proofs from 15+ 20
 research-level problems — and harvesting it is the natural next step, along with AxiomMath's
 agentic proofs of IMO 2026, Putnam 2025 and seven Erdős problems.
 
+## 5f. Study 11: The matched-theorem experiment — problem, not system, governs structure
+
+Every comparison above is observational: systems choose which problems to attack, so structure and
+difficulty are confounded. The Lean eval submission store breaks that confound. We harvested it —
+**7,636 proof files from 428 public submission records**, covering 148 research-level problems by
+37 self-reported systems, plus 168 reference statements — and restricted to problems solved by four
+or more distinct systems. (The store's other 560 records were submitted privately and are
+unrecoverable; the public subset is therefore a biased sample, and several "models" are
+human-in-the-loop or multi-model ensembles.)
+
+Within each problem we rank the systems on each structural metric, then ask whether those ranks are
+consistent across problems. On the largest complete block, 7 problems × 7 systems:
+
+| metric | Friedman p | Kendall W (rank concordance) |
+|---|---|---|
+| proof length (lines) | 4×10⁻⁵ | **0.71** |
+| `have` steps | 3×10⁻⁵ | **0.73** |
+| distinct premises | 4×10⁻⁴ | 0.58 |
+| vocabulary ratio | 0.018 | 0.37 |
+
+**System style is real and reproducible.** Hold the theorem fixed and the systems still order
+themselves the same way, strongly so for verbosity: Humanifa+GPT-5.6 and Aristotle write the
+shortest, least step-by-step proofs (mean ranks 1.4 and 2.1 of 8.6), EVO the longest and most
+`have`-laden (8.6, 8.5). Verbosity is the most stable trait a prover has.
+
+**But the theorem dominates.** Decomposing variance across 150 problem–system cells:
+**between-problem 89.8%, between-system 16.4%.** What a proof looks like is overwhelmingly a fact
+about the mathematics, not about who wrote it. This is the strongest evidence in the whole project
+against a naive "AI proofs are different" reading — at matched difficulty, most of the apparent
+difference dissolves.
+
+**And the vocabulary effect appears to be downstream of verbosity.** Across systems, the rank
+ordering on proof length predicts the rank ordering on vocabulary ratio with Spearman ρ = −0.71
+(p = 0.07, n = 7 systems), and length rank predicts `have`-count rank at ρ = 1.00. The mechanism
+this suggests — and it is consistent with the length-stratified population result of §5e, where
+the human/AI vocabulary gap was negligible for short proofs and large for long ones — is a single
+underlying trait: **some systems write long, step-by-step derivations, and vocabulary collapse
+follows from length rather than being an independent signature of machine authorship.**
+
+That reframes the project's central question. It is not "do machines write structurally different
+proofs?" — mostly they don't, once you control for the problem. It is: **what happens to a
+mathematical literature when its long proofs are written by agents whose verbosity is a stable
+trait and whose repetition scales with it?** Studies 3, 5b and 5d answer that: such proofs verify,
+but they do not accumulate.
+
 ## 6. Hypotheses: status after these studies
 
 | # | Hypothesis | Status |

@@ -7,3 +7,5 @@
 [7] Ceva: N=15279 alpha_out=2.14 alpha_in=2.58 alpha_rnd=2.79 dp_real=1.00 dp_rnd=1.00
 [8] Desargues: N=18213 alpha_out=2.33 alpha_in=2.65 alpha_rnd=2.63 dp_real=1.01 dp_rnd=1.05
 [9] Euler_Poincare_criterion: N=23750 alpha_out=2.20 alpha_in=2.41 alpha_rnd=2.78 dp_real=1.07 dp_rnd=1.00
+[10] Euler_exp_totient: N=22444 alpha_out=2.26 alpha_in=2.54 alpha_rnd=2.90 dp_real=1.10 dp_rnd=1.00
+[11] FTA: N=20431 alpha_out=2.25 alpha_in=2.38 alpha_rnd=2.81 dp_real=1.02 dp_rnd=1.00
