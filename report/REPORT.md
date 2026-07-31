@@ -33,13 +33,21 @@ We rebuilt that entire pipeline for the AI era and ran five studies:
 5. **Study 5 — All of Mathlib as one proof network** (633,364 declarations, 10.9M edges), in two
    layers: the explicit citations a human reads vs. the full kernel-elaborated dependency structure.
 
-**The through-line of the results: machine-verified mathematics replaces error-absorption with
-error-elimination.** Human mathematical practice built networks that could *absorb* error — redundant,
-modular, abductively cross-braced, capable of epistemic phase transitions. Machine-checked mathematics
-does not need that structure to be correct, and so — measurably — does not build it. What remains of
-human "understanding" then concentrates exactly where the papers on the correspondence problem
-predicted: in definitions, statements, and the tracking relation between formal object and
-mathematical intention.
+**The through-line: machine-generated mathematics is verifiable without being accumulable.** Human
+mathematical practice builds networks that *absorb* error — redundant, modular, heavy-tailed in
+reuse — and it is that structure, on the 2022 account, that produces both certainty and
+understanding. Machine-checked mathematics does not need it in order to be correct, and measurably
+invests less in it: AI-authored corpora draw on a narrower vocabulary within each proof and
+contribute far less reusable structure back to the library. The sharpest single demonstration is
+inside one project (§5d): the machine-generated files of the Equational Theories Project have 98.3%
+of declarations never cited and reach belief 0.54 under the 2022 model, while the human-written
+files of the *same* project sit at 45.6% and 0.99.
+
+Two claims we tested and had to give up are worth stating up front, because they sharpen the rest.
+Individual AI proof *terms* are not structurally degenerate — if anything they are more concentrated
+on library hubs than human ones (§2). And the Equational Theories skeleton is not epistemically
+fragile under the belief model, only under strict derivability semantics (§5a). The deficit is not
+in any single proof. It is in what a corpus leaves behind.
 
 ---
 
