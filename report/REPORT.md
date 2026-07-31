@@ -444,6 +444,30 @@ follows from length rather than being an independent signature of machine author
 So *between AI systems*, style is real but the problem dominates. Whether this also explains the
 human/AI difference is settled by the paired design in §5g — it does not.
 
+### 5f-bis. Independent replication at 40× the scale
+
+The HuggingFace census (55 datasets, 81,271 extracted proofs) supplies a second, much larger matched
+set: the same benchmark problem proved by many prover systems, restricted to verified samples
+(raw-generation datasets with no verification field excluded). This gives **55,512 measured proofs
+from 45 systems over 39,489 problems**, of which **1,823 problems were proved by ≥3 systems**
+(6,306 problem–system cells) — against the 150 cells of the lean-eval block.
+
+The verbosity result replicates almost exactly, and the variance split replicates qualitatively:
+
+| | lean-eval (150 cells) | HF census (6,306 cells) |
+|---|---|---|
+| Kendall W, proof length | 0.71 | **0.69** |
+| Kendall W, vocabulary ratio | 0.37 | **0.43** |
+| Kendall W, `have` steps | 0.73 | **0.07** (does not replicate) |
+| variance: between-problem | 89.8% | 53.7% |
+| variance: between-system | 16.4% | 25.7% |
+
+Two conclusions are now on firm footing. **Proof length is the most rank-stable trait a prover has**
+(W ≈ 0.7 in two independent corpora, different problem populations, different systems), and **the
+problem still explains more structural variance than the system does** — though the system's share
+is larger here (26%) than the small block suggested (16%). The `have`-step concordance does not
+replicate and should be treated as an artifact of the small lean-eval block.
+
 ## 5g. Study 12: Same statement, same length — the decisive paired test
 
 The NuminaMath proof-artifact corpus supplies what nothing else in this project does: for a single

@@ -11,3 +11,5 @@
 [11] FTA: N=20431 alpha_out=2.25 alpha_in=2.38 alpha_rnd=2.81 dp_real=1.02 dp_rnd=1.00
 [12] FTC1: N=16845 alpha_out=2.26 alpha_in=2.21 alpha_rnd=2.69 dp_real=1.07 dp_rnd=1.00
 [13] Goedel'sIncompleteness1st: N=28984 alpha_out=2.44 alpha_in=2.35 alpha_rnd=2.77 dp_real=1.00 dp_rnd=1.00
+[14] IVT_cor: N=14467 alpha_out=2.34 alpha_in=2.38 alpha_rnd=2.84 dp_real=1.00 dp_rnd=1.00
+[15] Lagrange: N=10583 alpha_out=2.20 alpha_in=2.47 alpha_rnd=2.82 dp_real=1.08 dp_rnd=1.00
