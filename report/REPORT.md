@@ -441,11 +441,49 @@ the human/AI vocabulary gap was negligible for short proofs and large for long o
 underlying trait: **some systems write long, step-by-step derivations, and vocabulary collapse
 follows from length rather than being an independent signature of machine authorship.**
 
-That reframes the project's central question. It is not "do machines write structurally different
-proofs?" — mostly they don't, once you control for the problem. It is: **what happens to a
-mathematical literature when its long proofs are written by agents whose verbosity is a stable
-trait and whose repetition scales with it?** Studies 3, 5b and 5d answer that: such proofs verify,
-but they do not accumulate.
+So *between AI systems*, style is real but the problem dominates. Whether this also explains the
+human/AI difference is settled by the paired design in §5g — it does not.
+
+## 5g. Study 12: Same statement, same length — the decisive paired test
+
+The NuminaMath proof-artifact corpus supplies what nothing else in this project does: for a single
+formal statement, **both a human formal proof and a prover formal proof, each independently
+validated**. Restricting to rows where both are present and both validate gives **2,583 matched
+pairs** — identical theorem, identical ambient library, only authorship differs.
+
+| metric | human | AI | Wilcoxon p | % of pairs where AI > human |
+|---|---|---|---|---|
+| proof length (lines) | 29 | 27 | **0.20 (n.s.)** | 48.1% |
+| tactic invocations | 14 | 11 | 10⁻¹⁶ | 39.1% |
+| **`have` steps** | 3 | **6** | 10⁻⁴⁷ | 51.1% |
+| **distinct premises cited** | 10 | **5** | **10⁻²⁴⁹** | **15.2%** |
+| vocabulary ratio | 1.00 | 0.75 | 10⁻¹⁵⁷ | 22.8% |
+
+**Proof length is indistinguishable** (p = 0.20) — and yet the AI proof cites **half as many distinct
+library results** (10 → 5) while introducing **twice as many inline `have` steps** (3 → 6). In only
+15% of pairs does the machine draw on more of the library than the human did.
+
+And the gap survives length stratification *within* the paired design, at every band:
+
+| human proof length | 1–5 | 6–10 | 11–20 | 21–40 | 40+ |
+|---|---|---|---|---|---|
+| n pairs | 305 | 266 | 414 | 670 | 928 |
+| p | 10⁻³⁹ | 10⁻²⁶ | 10⁻³⁹ | 10⁻⁴⁰ | 10⁻²¹ |
+
+**This corrects §5f.** In the lean-eval data, between-system differences in vocabulary looked
+downstream of verbosity. Here, with the theorem *and* the length held fixed, the premise deficit is
+undiminished. Verbosity mediates differences *between AI systems*; it does not explain the
+difference *between AI and human authorship*.
+
+The mechanism is now visible in a single sentence, and it is the accumulation deficit seen at the
+scale of one proof: **where a human reaches for an existing lemma, the machine builds the step
+inline.** Same theorem, same length, half the library touched, twice the scaffolding erected and
+discarded. Scale that across a corpus and you get exactly what Studies 3, 5b and 5d measure — proofs
+that verify but leave nothing reusable behind.
+
+*(Metric note: this variant of vocabulary ratio counts distinct premises over the whole submission
+against premise references in proof bodies, so it can exceed 1; only the paired contrast is
+interpreted, and both sides are measured identically.)*
 
 ## 6. Hypotheses: status after these studies
 
