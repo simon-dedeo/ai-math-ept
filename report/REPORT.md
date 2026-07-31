@@ -496,12 +496,14 @@ compress over time; and mathematicians' judgments of which results are "deep" sh
 formal depth faster in areas with strong automation (elementary number theory first — exactly where
 we already see the α ≈ 2.9 cluster).
 
-**N5. Repetition-without-reuse is the diagnostic signature of machine authorship.** Not
-duplication (AI duplicates *less* at block level than humans), but the conjunction: high in-line
-`have`-level repetition + low per-opportunity citation + narrow vocabulary. **Prediction:** this
-triple separates AI- from human-authored formalizations better than any single metric, and better
-than perplexity-style stylometry, because it is a property of the *economy* of proof search rather
-than of surface text. This is directly testable as a classifier on Mathlib PR history.
+**N5. Repetition-without-reuse — REVISED after the census (§5e).** The phenomenon is real and
+sharpest in long proofs (vocabulary ratio 0.287 AI vs 0.495 human for proofs over 80 lines), but it
+**fails as a corpus-level classifier** (14 vs 13 corpora, p = 0.51): between-corpus heterogeneity
+swamps the authorship signal. Revised claim: repetition-without-reuse is a property of how these
+systems handle *long* derivations — they repeat where a human would name a lemma — not a
+fingerprint that identifies machine authorship from a corpus in aggregate. The metric that does
+separate at every level is automation share (0.250 vs 0.113, p = 10⁻¹⁹⁴), which is a statement
+about tactic economy rather than about reuse.
 
 **N6. The library, not the proof, is now the unit of epistemic robustness.** Individual AI proofs
 may be structurally impoverished while the accumulated library remains an epistemic fortress
