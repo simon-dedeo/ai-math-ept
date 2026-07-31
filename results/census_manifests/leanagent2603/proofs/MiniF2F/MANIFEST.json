@@ -1,0 +1,1584 @@
+{
+  "dataset": "MiniF2F",
+  "source_note": "MiniF2F Test split, 244 Lean files.",
+  "source_total": 244,
+  "solved_count": 197,
+  "files": [
+    {
+      "path": "proofs/MiniF2F/minif2f_000_aime_1983_p1.lean",
+      "sha256": "87ee1079df24abeec6fc9cc6b9ba38e599c619205696cba88af76b397e4d6cfb",
+      "bytes": 2142,
+      "lines": 43,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_001_aime_1983_p2.lean",
+      "sha256": "98a1e460d451caba6d603f79ae58f427d2147a36c942b4f6416638b56bf4d6ee",
+      "bytes": 633,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_003_aime_1984_p1.lean",
+      "sha256": "f3a4d2f8bb1abad96aed77e2d8a780393483f403aea76e2cb80389660d7115b4",
+      "bytes": 1686,
+      "lines": 57,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_004_aime_1984_p7.lean",
+      "sha256": "b3ec050660190c0a787047ca3e3990e048198a7485ed3aa3687ffbcc63307178",
+      "bytes": 161761,
+      "lines": 6434,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_005_aime_1987_p5.lean",
+      "sha256": "105e41a427a1db9018a7696b464a6d8f646c00300ce7f58aaea4aa9680e3be08",
+      "bytes": 923,
+      "lines": 29,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_006_aime_1988_p8.lean",
+      "sha256": "26e93258844b70a47a40ca96fdf1bdb072e1ba2df3827ea4361282d81068e0af",
+      "bytes": 1030,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_007_aime_1989_p8.lean",
+      "sha256": "7b1702dba1be44270f1f88d6fb24fcbfd9c1c8e0b3fac088b149cecae1805ae1",
+      "bytes": 543,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_008_aime_1990_p15.lean",
+      "sha256": "d1d47875e5f17d89470277a0f85ed9b9208c0eeb2d11a0eafeab102d22eaa12e",
+      "bytes": 990,
+      "lines": 39,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_009_aime_1990_p4.lean",
+      "sha256": "bc65b9e251e424cb50b82ad18dd75f8d4ca90f98d04c3443962f0afb83afa58b",
+      "bytes": 1133,
+      "lines": 42,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_013_aime_1997_p9.lean",
+      "sha256": "bcd9abe064e9d31de4e7ecff3b43a2c4e8186ea38d7548038be7523998922c10",
+      "bytes": 3892,
+      "lines": 116,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_015_algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7.lean",
+      "sha256": "421d77a892033e2128677b0b72fdc6daf96677df55f77d28a0824c8e4a554dc8",
+      "bytes": 1279,
+      "lines": 51,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_016_algebra_9onxpypzleqsum2onxpy.lean",
+      "sha256": "af5a0af4096649cf057c9162df1b2e98580188d468c740214bfd93dfd0f9fa03",
+      "bytes": 541,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_018_algebra_absapbon1pabsapbleqsumabsaon1pabsa.lean",
+      "sha256": "5ca154055a65f92d6512ceda45b0448295e80cc49444ad1fa740c2559202fb62",
+      "bytes": 995,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_019_algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1.lean",
+      "sha256": "02125429ac20a6997a2d498122028d7e6f11666145e8b6bfb65648babec32ab7",
+      "bytes": 867,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_020_algebra_amgm_sum1toneqn_prod1tonleq1.lean",
+      "sha256": "d34d554f25986b245b93cbbc407d78742372ca3a41848cd6013bd237c7901b4e",
+      "bytes": 2518,
+      "lines": 55,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_021_algebra_amgm_sumasqdivbgeqsuma.lean",
+      "sha256": "7a9c9cf22618fcded21d854b00245235d4d573d4b178a68c575842c6f3f37e13",
+      "bytes": 1190,
+      "lines": 39,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_023_algebra_apbon2pownleqapownpbpowon2.lean",
+      "sha256": "744c46b1251be658877bdc18deca330fdf61276191b0b854a873d2b88303dac5",
+      "bytes": 897,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_024_algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3.lean",
+      "sha256": "7e23216999f89ca628fa5d9e6d7147b54a4f18a3f12c2de8d403d372f7764833",
+      "bytes": 1506,
+      "lines": 58,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_025_algebra_bleqa_apbon2msqrtableqambsqon8b.lean",
+      "sha256": "0b219551465345350a6aca8909540ca96e98e810cf944ec5a58a258a086ad7c9",
+      "bytes": 2166,
+      "lines": 52,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_028_algebra_others_exirrpowirrrat.lean",
+      "sha256": "9fa27e6691ffbf1662b976a0d37246952e337fed9b01a14722f92f7efcecd165",
+      "bytes": 838,
+      "lines": 29,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_029_algebra_sqineq_at2malt1.lean",
+      "sha256": "30ce6330e1f80608dd3c63241edbcdf839d6159e3958643ad692efdf822f424e",
+      "bytes": 189,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_030_algebra_sqineq_unitcircatbpabsamblt1.lean",
+      "sha256": "62f7d3e9261882b8da5d7dedb7baebc18e9344cabbf10e6b963e5ca2847636df",
+      "bytes": 824,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_031_algebra_sqineq_unitcircatbpamblt1.lean",
+      "sha256": "9341d892edbe17c3129295c287264cd040a7e02fa4c80e4e6adc7431e4abbca0",
+      "bytes": 273,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_032_algebra_sum1onsqrt2to1onsqrt10000lt198.lean",
+      "sha256": "3593132ff972b143a11f52fc37f52472f1d76ffa8d92a621ede6766d668ad7ed",
+      "bytes": 3704,
+      "lines": 82,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_033_amc12_2000_p1.lean",
+      "sha256": "17292af2a22c7b8f77d7f4376954d515054365ec852bdd332baef48662ff1509",
+      "bytes": 936,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_034_amc12_2000_p12.lean",
+      "sha256": "18eb3daf898d306f55f3909618ba9f3cab6b9260f3ef480d3de3b42d7c69139a",
+      "bytes": 368,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_035_amc12_2000_p20.lean",
+      "sha256": "9935fd69f495132682ad00aad2241074c5961600707049bd99ea5919b2520402",
+      "bytes": 1801,
+      "lines": 47,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_036_amc12_2000_p6.lean",
+      "sha256": "cf016fb2a922e4c0336b739d3c0301131deef745467dc13f874de398ebc022ff",
+      "bytes": 430,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_038_amc12_2001_p5.lean",
+      "sha256": "f0d9ba17439b4c422e650a199f248eb591ca31350b5043946c7b7f142be4e521",
+      "bytes": 255,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_040_amc12a_2002_p6.lean",
+      "sha256": "28815bb5bca158b3a0572b2fc241b23f5db4ce0b236639b2690ef701ddca2d13",
+      "bytes": 284,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_042_amc12a_2003_p5.lean",
+      "sha256": "461f2f5343ebd43b1ceb773db3450ab2e4b18557003e1c566a9b5661fdcb2573",
+      "bytes": 889,
+      "lines": 38,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_044_amc12a_2009_p6.lean",
+      "sha256": "e662fb73d09ff3d7f8f90b678272fd1ab4472134109fc5bf94af8f9e96e88171",
+      "bytes": 956,
+      "lines": 28,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_045_amc12a_2009_p7.lean",
+      "sha256": "c760cdc0e5e6238eb41c5807766109c8d98c1fadcae50da41a9af5ba847bfcfa",
+      "bytes": 1130,
+      "lines": 49,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_046_amc12a_2013_p4.lean",
+      "sha256": "825bc961da1c5b53cab94c9489d2fa89505e3d6795c081a81d7437f0eda6466d",
+      "bytes": 212,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_051_amc12a_2020_p4.lean",
+      "sha256": "4f4af328d635c302d09d5b244a44292309d272136c493b70912d00aa5fca7b4b",
+      "bytes": 502,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_052_amc12a_2020_p7.lean",
+      "sha256": "6e028a44c4dcc4f3c884fab2239fe47d41709b506cb622bd2157582fa6871ac9",
+      "bytes": 1178,
+      "lines": 47,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_056_amc12a_2021_p18.lean",
+      "sha256": "62a3bc81e2409a3cdfa0793c5d94be9d825432685d913f169cdb59a45b240472",
+      "bytes": 1162,
+      "lines": 39,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_060_amc12a_2021_p3.lean",
+      "sha256": "9774217000956598019b0ddbca25be3ab80a74e60efb0643c1e43275c4e1acdf",
+      "bytes": 598,
+      "lines": 28,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_061_amc12a_2021_p8.lean",
+      "sha256": "5912601cd188ae866524b58a3e704f0c20bd1deb6ac193ae94867a495d856ebc",
+      "bytes": 3879,
+      "lines": 100,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_062_amc12a_2021_p9.lean",
+      "sha256": "2d31e43441030c983a2b598d6e601a059759bfa8a34445ea7b28aa3dd80c730c",
+      "bytes": 226,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_063_amc12b_2002_p19.lean",
+      "sha256": "ab736edd94060cc706609c8ef467e6c5d96522c0fa2d6c2f0e8273c4522a81e3",
+      "bytes": 1118,
+      "lines": 37,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_064_amc12b_2002_p2.lean",
+      "sha256": "541f73c4f39e777f21b9868c85ad5c4964811c844f0457df13cbb1df64f93a59",
+      "bytes": 224,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_065_amc12b_2002_p4.lean",
+      "sha256": "c00e6350f305df936a45bcea348322062792525cc9e7ea4740ea0632b0cf55b1",
+      "bytes": 883,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_066_amc12b_2002_p7.lean",
+      "sha256": "90fb63fd0961e25165c5bd552a74fcc185909e58aa48f6df9db53eafc97798a0",
+      "bytes": 908,
+      "lines": 34,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_067_amc12b_2020_p13.lean",
+      "sha256": "ab587b41b542ae71a032020beecde898ba44557117df857cb8f2d44dab18cf2d",
+      "bytes": 1309,
+      "lines": 30,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_068_amc12b_2020_p2.lean",
+      "sha256": "37cbd923ba859c4a6067f1bdbe8f523976c669be583f5b998eb9c552f52d4a48",
+      "bytes": 257,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_070_amc12b_2020_p22.lean",
+      "sha256": "077d579ef384994adfe04bb232ebfa238479b1b3010f662278e1d9c892d48096",
+      "bytes": 716,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_071_amc12b_2020_p6.lean",
+      "sha256": "302f37203288cae5e47522a98ee47ff74881ebf606cb8f64239812041cfa12bc",
+      "bytes": 410,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_072_amc12b_2021_p1.lean",
+      "sha256": "73e4f776723b597fa65b9991b97bb30f34455dd425eb7d325fe5ebbe030e69f0",
+      "bytes": 843,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_075_amc12b_2021_p3.lean",
+      "sha256": "05a2f0826355ed7f7ebd89c10b1cce400d4368c7a6721cdc21abd98eda0edc34",
+      "bytes": 1167,
+      "lines": 42,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_076_amc12b_2021_p4.lean",
+      "sha256": "ae4f2d5a903c23980f8a5c2d7d2b64d16437138051633d4cf34d6b7704c3dea8",
+      "bytes": 537,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_077_amc12b_2021_p9.lean",
+      "sha256": "812df7fa865711ab2d4a9e4d64621d7843db68553c5139a89823742f22b7badf",
+      "bytes": 1260,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_078_imo_1959_p1.lean",
+      "sha256": "e06687558b9e690db8f0de50c10dd3ffe47de3f9031575402fe9b69157970afd",
+      "bytes": 851,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_079_imo_1960_p2.lean",
+      "sha256": "4e3d8d02a0c1bd1ad90d928a6e4684685bdd542005ef1e7bd18077b5ea0d9486",
+      "bytes": 1451,
+      "lines": 41,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_080_imo_1962_p2.lean",
+      "sha256": "f5f54621cbb63649554d300865b81650eb4e33699a6bbdb17a5c8a2e1a70cdb9",
+      "bytes": 1315,
+      "lines": 42,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_082_imo_1964_p2.lean",
+      "sha256": "89b435afe7dd8e4762ef3feb5bea431053b2f1f737b456127e1e747d9437509c",
+      "bytes": 723,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_088_imo_1981_p6.lean",
+      "sha256": "5671d77d12dc8fb47d7f88762b5d6a73e24dbcd6c2a9ba89dc720f53f7a61aa5",
+      "bytes": 2492,
+      "lines": 81,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_090_imo_1983_p6.lean",
+      "sha256": "9dc7b0244a85997f0688baf123d33661737537aaf44adc3de1ca71fdfa0a96ed",
+      "bytes": 1037,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_098_induction_11div10tonmn1ton.lean",
+      "sha256": "c56ebcfaff972f69c89df7a57d91208157144d75faa7fdf31c56ff8374955bd4",
+      "bytes": 625,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_099_induction_12dvd4expnp1p20.lean",
+      "sha256": "9e232b7a17b2b7c61a0b34657afecafedbf27fc9105868084c1a5ae62c9e1db1",
+      "bytes": 447,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_100_induction_1pxpownlt1pnx.lean",
+      "sha256": "a5c6837a28d6138ffd734c768a7f7a5dabed149338c655aa2025e680504d91a2",
+      "bytes": 395,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_101_induction_nfactltnexpnm1ngt3.lean",
+      "sha256": "23f38e74137d22268bf0355bdbd50cff0b294741fc7364a942eb3f64f7574ca2",
+      "bytes": 965,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_102_induction_pord1p1on2powklt5on2.lean",
+      "sha256": "22d42f75ea0927d0ddcb846a9dd50be3e88414ca7deb04ea1e6bdba47eef01b0",
+      "bytes": 1785,
+      "lines": 48,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_103_induction_pprime_pdvdapowpma.lean",
+      "sha256": "8a58ac486f8a334a48fa1ae4fa7c8bf8fcbd041837dfec8c89e907a9476cef7f",
+      "bytes": 503,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_104_induction_prod1p1onk3le3m1onn.lean",
+      "sha256": "ba51bd3b0c588955ea9d30b43eb21199e7826906dc446bda8f6115806dce8668",
+      "bytes": 1431,
+      "lines": 38,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_105_induction_sumkexp3eqsumksq.lean",
+      "sha256": "cc18170e23bc8e177e84611ba1d9c6b3bc630c393fd1557be2fb134b41bfc391",
+      "bytes": 1163,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_106_mathd_algebra_107.lean",
+      "sha256": "248eaa9bfafea9d25e61db0927d9f29a6f49e66d1bd1d5cdbe63fb383cf33d9d",
+      "bytes": 311,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_107_mathd_algebra_113.lean",
+      "sha256": "b1d9b1094863a439bfd8a06d74142a76810564bfcde82e66df401bc41a066a36",
+      "bytes": 219,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_108_mathd_algebra_114.lean",
+      "sha256": "61c304694d152afbca25f039542b8c27a46eff8304a93f5b8b917dd9a005c546",
+      "bytes": 278,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_109_mathd_algebra_125.lean",
+      "sha256": "aab0e9251c10cf5c8e553484bad14caf6d95eed45a6af26d7e9e21429070ecc0",
+      "bytes": 808,
+      "lines": 34,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_110_mathd_algebra_129.lean",
+      "sha256": "0f9a3fe774fd4ddeffdbdb4e5a30a6acb501f51b6f83d81a2525f2c69c4d1953",
+      "bytes": 426,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_111_mathd_algebra_137.lean",
+      "sha256": "8117369c5c173440b7aecfdd4e82f1d13d9cbce0270a126b287ec380076def8b",
+      "bytes": 523,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_112_mathd_algebra_139.lean",
+      "sha256": "709d6fe6fd44cec840c7de5e4c6f84e1675fc2f069620554522618e7b7d65c24",
+      "bytes": 318,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_113_mathd_algebra_141.lean",
+      "sha256": "2eb574e690fab266f4f2642537ae48a854a39b64ecbe648c5043566e08969bd7",
+      "bytes": 541,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_114_mathd_algebra_142.lean",
+      "sha256": "644309b45802b99ff3414437d59ef10cf3114618ae8f349f39683b448db648b2",
+      "bytes": 299,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_115_mathd_algebra_143.lean",
+      "sha256": "c049b2621ec67686293cce31df84265b276e85fcc0e7080b7c1394ea91bc6cf8",
+      "bytes": 303,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_116_mathd_algebra_148.lean",
+      "sha256": "5120df48a5644f2213248f674d53f4abac65c0a75a6be74b7394fd2ed513458f",
+      "bytes": 273,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_117_mathd_algebra_153.lean",
+      "sha256": "14d415ad26a08518b68060db336b1386ca0a93fe0c7ef8d6129a76a6cee4597f",
+      "bytes": 338,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_118_mathd_algebra_156.lean",
+      "sha256": "ae5e5ffaf8a02e48b49fd25fa38b065251a53a02fe553c858d0bcf06e0c27d27",
+      "bytes": 1950,
+      "lines": 78,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_119_mathd_algebra_158.lean",
+      "sha256": "2c58033d597e3267dcde690f15982c7ea71a5752550a750a5b09fbf8f4222551",
+      "bytes": 434,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_120_mathd_algebra_160.lean",
+      "sha256": "fae7b5fa91a5a156c4b41470ab5ba37851cc0450a6f92c759c30cbe56c0b203d",
+      "bytes": 342,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_121_mathd_algebra_17.lean",
+      "sha256": "b29d2a9c9444056473a6ec347f2adcdd9a9062c643344d26adbf8f441039eca2",
+      "bytes": 2436,
+      "lines": 86,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_122_mathd_algebra_170.lean",
+      "sha256": "703cfbc0b9664d0dffde8024bd2189218b4ef9166e74fd943e50315ef14949fb",
+      "bytes": 477,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_123_mathd_algebra_171.lean",
+      "sha256": "4c25b0674aa29ba3e2f83850a79b2280b04f24cd7af1925f44c7a56a6a54cdf0",
+      "bytes": 207,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_124_mathd_algebra_176.lean",
+      "sha256": "dda9eef525f336a09e649ffc9ef23ed1da7a51859d6671e01bd83ad2871ff80b",
+      "bytes": 174,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_125_mathd_algebra_184.lean",
+      "sha256": "904cfe2882605898fc19ed1c75927856334af0fcafa72afeb7402c6068d1d295",
+      "bytes": 1148,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_126_mathd_algebra_188.lean",
+      "sha256": "1a65995be64ebcb541c945cf869e5d3add0aa7ea0ae6b10d4675d726ad794423",
+      "bytes": 245,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_127_mathd_algebra_196.lean",
+      "sha256": "6ae7dbd92bc1c05dc0fca1a28c463fe7b5081f2c900ab64dfb47ef09b611c8e6",
+      "bytes": 1014,
+      "lines": 38,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_129_mathd_algebra_209.lean",
+      "sha256": "2725b4ce9c98b8c6b99034fed46722dee3cd76ccce64eef09e6a6cae1d3c15aa",
+      "bytes": 587,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_130_mathd_algebra_215.lean",
+      "sha256": "a981f846f1bc053e81adfeb1b69bc2a3ebc3e02835702142f1ea0522ec9d639b",
+      "bytes": 1040,
+      "lines": 43,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_131_mathd_algebra_24.lean",
+      "sha256": "eb52b18b8dfdecd1ce0dd54552f7992f4840c8a756e6aa4f227f73c4fa06ce22",
+      "bytes": 196,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_132_mathd_algebra_246.lean",
+      "sha256": "5d508f38bd36c742bfb43581e5b68543c4afa79202e10417ebaa4950fa67851e",
+      "bytes": 491,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_133_mathd_algebra_263.lean",
+      "sha256": "f4befeffd4ec5b7493756b41db1e06e94b7d9b7fb528ad45f377b6b484cb74a0",
+      "bytes": 332,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_134_mathd_algebra_270.lean",
+      "sha256": "3c0538556606ec474f11b1eee2baf2cf5279637a7c7f61c2064193874dffa360",
+      "bytes": 454,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_135_mathd_algebra_275.lean",
+      "sha256": "7d01a8e038958f17695b48c851d4e50f4340739236da4e7da520b7c1f2f5990d",
+      "bytes": 238,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_137_mathd_algebra_288.lean",
+      "sha256": "f247162056e77eb511ead41d83eeae54570e88c801ac2881cf46c0c7780b6386",
+      "bytes": 1266,
+      "lines": 46,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_138_mathd_algebra_289.lean",
+      "sha256": "0a04fb090f77e52bc4086db83fad2df3f9d76f11cd790007e4c0c6dd903c0e20",
+      "bytes": 486,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_139_mathd_algebra_293.lean",
+      "sha256": "7c415bd1e85d675d2d7ef6c18bb37ef27ee39d7ba5685a411ae2fa44d390a666",
+      "bytes": 1062,
+      "lines": 28,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_140_mathd_algebra_296.lean",
+      "sha256": "0cae68f9403115b16bddc5bf04983cc611fd6fd681c39c752c29e6a6c8ae591b",
+      "bytes": 202,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_141_mathd_algebra_302.lean",
+      "sha256": "c7d1d911d87e2baf5c0031c47a2796d4d118087926df5162f52a54289d77579e",
+      "bytes": 243,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_142_mathd_algebra_304.lean",
+      "sha256": "9483ef76551688da6d5cfc9580581935d5a1a3a33a13694a5376c134b0847c22",
+      "bytes": 144,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_143_mathd_algebra_313.lean",
+      "sha256": "e43fa8c9f66c6abe922cb717dea27454dcd4dc536bb1182c2667f306b87630ed",
+      "bytes": 942,
+      "lines": 28,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_144_mathd_algebra_314.lean",
+      "sha256": "5a3ecdac832fc7e3f60c502438ea1ea182d46ace3141dfa28c586d0e290db24b",
+      "bytes": 256,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_145_mathd_algebra_320.lean",
+      "sha256": "9c6299c29be6e7f5b3334fac497b0fc62318c00a447468957ba94ad047c938e1",
+      "bytes": 1563,
+      "lines": 43,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_146_mathd_algebra_329.lean",
+      "sha256": "322c4ef0e7239cea8d6cc8285c36b05be3af4797c0eeedff3b48eabdb3992bd9",
+      "bytes": 249,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_147_mathd_algebra_33.lean",
+      "sha256": "5510822d8b82365b04947039930a756a29d99a514cb2a73b3c5ed21d3cc1cc24",
+      "bytes": 697,
+      "lines": 28,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_148_mathd_algebra_332.lean",
+      "sha256": "f124ad9b382f58bb1e4dc515c810c203a3031b2fc1de7a0725a391f8f412612b",
+      "bytes": 1056,
+      "lines": 36,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_149_mathd_algebra_338.lean",
+      "sha256": "0ed0c4a3a0f0e5ca9f66d92126609c49523e0977dbc44127a9d9fcd173b94768",
+      "bytes": 748,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_150_mathd_algebra_342.lean",
+      "sha256": "a3a5c5727a855012d4022473e890125ff1cd1d0ad7c7cb3c4bd512774f6a0cb9",
+      "bytes": 398,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_151_mathd_algebra_346.lean",
+      "sha256": "a2f3078094ce4c629dae9c88c7c52ad26c6dcb899c73f00c59417babebc59ae7",
+      "bytes": 298,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_152_mathd_algebra_354.lean",
+      "sha256": "a53f2c404eec8c2cf2d761483d6c6979b24d0fba6079d08b7df4dcc2f28c86af",
+      "bytes": 229,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_153_mathd_algebra_359.lean",
+      "sha256": "bb27353581521ae95a5f9fc5217e8fe4363bc53bceeb682032b503cd50b5b95e",
+      "bytes": 339,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_154_mathd_algebra_362.lean",
+      "sha256": "2e7f65de54c40605393bc79270623b7e03f9815bfa3fff7f3ec19d4ccdf34798",
+      "bytes": 827,
+      "lines": 35,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_155_mathd_algebra_388.lean",
+      "sha256": "559a516ea8d8e5c32f606a59e5f84d959b6b56fccb165a17f95d1e8e51dfd052",
+      "bytes": 359,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_156_mathd_algebra_392.lean",
+      "sha256": "0110c360a238f66d8a6abfc23f0a7ce3db4f0579e72b23e964d5ccbed0e20cbb",
+      "bytes": 664,
+      "lines": 29,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_157_mathd_algebra_398.lean",
+      "sha256": "0874c1848e6d4f94ea078b5d255c6122cde755c7e8c5a81727af256f53ffbc20",
+      "bytes": 414,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_158_mathd_algebra_400.lean",
+      "sha256": "c408f7e30403d35980f4bbb0e90b5afaeec38f5097c0f9c24d7f8cc568761226",
+      "bytes": 237,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_159_mathd_algebra_412.lean",
+      "sha256": "52f4b782b377ac763c43a050bf79b5acb84b531ef060bec370489dac57c1ff7f",
+      "bytes": 210,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_160_mathd_algebra_419.lean",
+      "sha256": "f3821554ec9222d87ec19c5d5463b965dc8c87ae1bc84ebd9382769dac33dc10",
+      "bytes": 228,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_161_mathd_algebra_427.lean",
+      "sha256": "17a55e8221b1cd505cd81c86fb007ecd92925d7082674c45d6fcf67850101ff9",
+      "bytes": 298,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_162_mathd_algebra_432.lean",
+      "sha256": "0b67688167729e894d637fef4df6f8b0dc941387dc7d80db1beffda1c2757091",
+      "bytes": 177,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_163_mathd_algebra_44.lean",
+      "sha256": "45d3f8183bb414a79ecca319e65a22adf5e72dec0e122f06b43f125a4a78adf2",
+      "bytes": 307,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_164_mathd_algebra_440.lean",
+      "sha256": "e8f7bcc97454654eaa64068b19ed00e6cce791d10ede380623b447df990b3f34",
+      "bytes": 201,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_165_mathd_algebra_441.lean",
+      "sha256": "66fe4fc53ad5500c0cb1bba1e0acd24ac41e1442e45208676d32541516b3cfd8",
+      "bytes": 251,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_166_mathd_algebra_452.lean",
+      "sha256": "f7252e6c4f6856d8f5a1990e4ea4befe99fd154bba3e6130a51be01e63caad61",
+      "bytes": 1657,
+      "lines": 46,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_167_mathd_algebra_459.lean",
+      "sha256": "c84bab9d29d4288a54c5bc63b3a43109eedec3dbab606538a4e517601ff8095c",
+      "bytes": 465,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_168_mathd_algebra_478.lean",
+      "sha256": "738c6a58c4323332c371fe730fd271e71ca73ec7a527d0faa42442c87e97825b",
+      "bytes": 298,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_169_mathd_algebra_484.lean",
+      "sha256": "605006ede03c05b276e88e51eba2d0b67c15391deb9a34e15c1ff67278213ba4",
+      "bytes": 270,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_170_mathd_algebra_487.lean",
+      "sha256": "087ea829defb8accd0d20c13b100d95deffd0548d46e636d074841f73110d9b1",
+      "bytes": 1404,
+      "lines": 49,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_171_mathd_algebra_513.lean",
+      "sha256": "28ac263c49ad7b980972322dca5c6346d19d579bcb81f97c3f155413d2b33d84",
+      "bytes": 382,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_172_mathd_algebra_598.lean",
+      "sha256": "1b8f3eee4827c14ccf2e8e9572283999f16136d7cca2a2223945730376e46628",
+      "bytes": 3057,
+      "lines": 93,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_173_mathd_algebra_756.lean",
+      "sha256": "a58964ea5117424bf6567c7767181bdfcb49cb869ac9945250ba14ad06f9472a",
+      "bytes": 858,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_174_mathd_algebra_76.lean",
+      "sha256": "8729658823cf8b202231d802aed759fb7942a3e56292b6ccbcd48f2334c7262d",
+      "bytes": 304,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_175_mathd_algebra_80.lean",
+      "sha256": "40bcfcf86896509ecb73d73cfad13260d014e1830ec64d9235eacb65ddabaf8e",
+      "bytes": 374,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_176_mathd_numbertheory_100.lean",
+      "sha256": "32d067b27d3d28183c025c009faa9f8008219b053f21981879a0fbaf53ffbe39",
+      "bytes": 373,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_177_mathd_numbertheory_1124.lean",
+      "sha256": "867b6e187553ae9f46731f54d642694c4064328c79b323c44354783fa65017e6",
+      "bytes": 442,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_178_mathd_numbertheory_12.lean",
+      "sha256": "59206c38a346377c3524520667200d3f2e0361a758e9a1f2cd9a8c68432f578e",
+      "bytes": 797,
+      "lines": 29,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_179_mathd_numbertheory_127.lean",
+      "sha256": "0d4040a755ab51b05299ff5027b29b82467a8ac07ddabfecfa14c25c49be9f8e",
+      "bytes": 389,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_180_mathd_numbertheory_135.lean",
+      "sha256": "d45edd9a55688a728f6869ac9b2c8f4cae16ea3437912eb98830542bca9bb312",
+      "bytes": 550,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_181_mathd_numbertheory_150.lean",
+      "sha256": "ce631ba676c025a686d36d89a09a62df7312e7e9fb9c2cf388f56b14aa505be0",
+      "bytes": 287,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_182_mathd_numbertheory_175.lean",
+      "sha256": "efaf1b22f04f1d0cbdddcdfa135611bd63bc03ce638aa6300cd932b24e6bcb7a",
+      "bytes": 188,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_183_mathd_numbertheory_185.lean",
+      "sha256": "b69016ee19f0cdfae8101980e7669f34d26a7b2db83d122d7655fe8f369c86f2",
+      "bytes": 407,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_184_mathd_numbertheory_207.lean",
+      "sha256": "86781d3b208ff0c730d356eb37e8138fc68e4c7868f4dfffff6e2f824e8367c0",
+      "bytes": 163,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_185_mathd_numbertheory_212.lean",
+      "sha256": "35addd45b603f7db9e49a75520a33bfeb61ff5debb14c39dcbcf8fe9c047b07e",
+      "bytes": 582,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_186_mathd_numbertheory_222.lean",
+      "sha256": "74386113b473cae6ac394a8aac3d61aae7f695e7101f1e5aed0f6a0ffa8cdef2",
+      "bytes": 343,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_187_mathd_numbertheory_227.lean",
+      "sha256": "75b43cf72f116b50fd8a410fb45d646cf06e406755ab8ed56bac49df4694b6ec",
+      "bytes": 1143,
+      "lines": 36,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_188_mathd_numbertheory_229.lean",
+      "sha256": "5b0b61384c65d433efc902cc5b12137112d495563be274b10ec3647a48bb3483",
+      "bytes": 518,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_189_mathd_numbertheory_233.lean",
+      "sha256": "6d777cc0c8ae2694b6522729c6b2d6b486137538add1d998f4544911e424e422",
+      "bytes": 213,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_190_mathd_numbertheory_234.lean",
+      "sha256": "cf0b9ec4aeed0f4a9676724bf845f1141e3cd9e5e39473b058dbd33e0ab56dc0",
+      "bytes": 918,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_191_mathd_numbertheory_235.lean",
+      "sha256": "9158af24779ac7b4238d1bcd29b1ea641f5dc3ec8ce07eded1e8e9c0dea0d0d3",
+      "bytes": 166,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_192_mathd_numbertheory_237.lean",
+      "sha256": "acdfdb1f7a39af2231690b1ab34627b8ebf5b960c7a9e1390b9796148546fb4b",
+      "bytes": 210,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_193_mathd_numbertheory_239.lean",
+      "sha256": "b9f6dc8552fdc55f792191f1b964f7d9afea9832509ac9d9fa77e4619213583e",
+      "bytes": 202,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_194_mathd_numbertheory_247.lean",
+      "sha256": "517848c8ca0a3a0126b0755ca0e1b111df1453180c5af26a30d9ed3847947ca1",
+      "bytes": 682,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_195_mathd_numbertheory_254.lean",
+      "sha256": "bf139c62c020f17066363cd4550f24511bca45b37a46f0ec5aaf91c31c02891c",
+      "bytes": 163,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_196_mathd_numbertheory_277.lean",
+      "sha256": "886b629a51bcbb00f5a68c9a593dbfa26b9e3002ad2e1c3b5742c700fe1e5cb2",
+      "bytes": 1334,
+      "lines": 40,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_197_mathd_numbertheory_293.lean",
+      "sha256": "c71ec083e46bd4c88442cbadb3bafc7589e9c772e4a863c93665e3240a713896",
+      "bytes": 270,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_198_mathd_numbertheory_296.lean",
+      "sha256": "d6409baf65cb3ecf679bc9c16dd0f427b3ff1ddb95e3037c149aa521608b7b23",
+      "bytes": 797,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_199_mathd_numbertheory_299.lean",
+      "sha256": "942537651ca39920b6e8f48c08f1d468db9bde2bfb0e5057ff2c64ee714b9656",
+      "bytes": 176,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_200_mathd_numbertheory_3.lean",
+      "sha256": "58b9d88ddb8d42fefac7620f8868401bb0d409c3c4f3bc33984e34c40bb4b843",
+      "bytes": 185,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_201_mathd_numbertheory_314.lean",
+      "sha256": "1548f0c909822c442a9eafc7871acdacec5594c47bc3f0e9010c85fe16b6585e",
+      "bytes": 646,
+      "lines": 28,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_202_mathd_numbertheory_320.lean",
+      "sha256": "5d79121a86827d60c03b68803805337453f39691f274437c07e59eeeeee3b876",
+      "bytes": 632,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_203_mathd_numbertheory_321.lean",
+      "sha256": "3d2a76ee71b3367074e2fd4f2a40a85948aad2ad8937dbbb9e0578e17b67c7fc",
+      "bytes": 207,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_204_mathd_numbertheory_328.lean",
+      "sha256": "e07dd63493b0c9bbf425df5bdc06c9757d3d709301558e0e743e6feb4bc86da5",
+      "bytes": 505,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_205_mathd_numbertheory_34.lean",
+      "sha256": "d6404f28f20cd2c7a37779dda249474f09182c09e2652b30bf784c589c40ba66",
+      "bytes": 490,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_206_mathd_numbertheory_341.lean",
+      "sha256": "9eae9c0ffe3b1c9ca4ebf1580b499d24d42c33beea3d4f40a48e46a17128b9af",
+      "bytes": 451,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_207_mathd_numbertheory_342.lean",
+      "sha256": "2cd0eba91e1a753331fa1f206cd41602947f2084cb7906b5e992b16388148d67",
+      "bytes": 148,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_208_mathd_numbertheory_343.lean",
+      "sha256": "85453c702a87baac3cf635ecfdf39257ef4e860f007868fd4108e67507ed0bcd",
+      "bytes": 295,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_209_mathd_numbertheory_345.lean",
+      "sha256": "85f94d8914ad695fce6efeafda8714dd1ccf81a4c20f8328a14aa384d314ac03",
+      "bytes": 194,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_210_mathd_numbertheory_353.lean",
+      "sha256": "d92f2be8caf33ce003166458738ba9ce81dcee840862ac527f97d41c337a4ca7",
+      "bytes": 228,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_211_mathd_numbertheory_427.lean",
+      "sha256": "807505ac20d27a11d736cc47a314176071841caa2fa9cb31c9fb771616c815be",
+      "bytes": 343,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_212_mathd_numbertheory_430.lean",
+      "sha256": "7a9fc291e4e24b03a6c0ff1cf1fd2964472962217b3aaf06e76b23d7b040eb12",
+      "bytes": 656,
+      "lines": 29,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_213_mathd_numbertheory_435.lean",
+      "sha256": "4cdb4ccde302c10476710166380287393b2e73767ba417d54ec2a6b7796f4956",
+      "bytes": 882,
+      "lines": 38,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_214_mathd_numbertheory_447.lean",
+      "sha256": "f769837a1922d50a6f77a75c7e244368c3e6cd7c82473e3bece5b8987d16844d",
+      "bytes": 205,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_215_mathd_numbertheory_451.lean",
+      "sha256": "a645f8d0c66fdf0fb6a5c7fa26d05f7463014fe4ed12f3bae8234b90f69d2938",
+      "bytes": 1765,
+      "lines": 48,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_216_mathd_numbertheory_457.lean",
+      "sha256": "c039b47d21a4a2890aa98f297b67ec44a5f39efb44af01b1587211b8f2e93a4f",
+      "bytes": 442,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_217_mathd_numbertheory_483.lean",
+      "sha256": "06622bec0c463a13664d462a748d83aa3b11cabfc3cf11b0a2a4ef06d29082b0",
+      "bytes": 10121,
+      "lines": 405,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_218_mathd_numbertheory_495.lean",
+      "sha256": "99829bdf2f7f971cbf08c7e710c53351b7de07ecf49efc535813182bf0737982",
+      "bytes": 1275,
+      "lines": 38,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_219_mathd_numbertheory_5.lean",
+      "sha256": "e3534241550bd9b526b9dc4f8df5825b804e1c773eebd514925d6aef2160297d",
+      "bytes": 439,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_220_mathd_numbertheory_517.lean",
+      "sha256": "14c148826f965a1a093250528d5bf4e8a8de5f014cfdb8ff12eff3344510b9be",
+      "bytes": 163,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_221_mathd_numbertheory_521.lean",
+      "sha256": "1d583521a193b349b6507fd4034afe632d36a980fd54df5c52e77d944fa57a51",
+      "bytes": 492,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_222_mathd_numbertheory_541.lean",
+      "sha256": "efa47bf35d61a7c8222cb1bdf7655e7f3e91cd2e481350872bb41a319b69131e",
+      "bytes": 973,
+      "lines": 47,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_223_mathd_numbertheory_551.lean",
+      "sha256": "325e6fdd7e9055850d600bbfa0e6d0a92af29bf62c7fd9db1e43f11c8b7d8bc5",
+      "bytes": 150,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_225_mathd_numbertheory_559.lean",
+      "sha256": "1edad8532ccfb6c929fa650d074ec0f65ff07a2d5f62449adbfe9a094489db35",
+      "bytes": 809,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_226_mathd_numbertheory_582.lean",
+      "sha256": "299b29dcabf4e59bd4853d709295c61f86d6ca0fa56293da5aa06e6fea7f01aa",
+      "bytes": 574,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_228_mathd_numbertheory_66.lean",
+      "sha256": "a668cab72b1e21f563ec672199675b3a3ca84bbe1756d43ac3669d5586ab4d11",
+      "bytes": 149,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_229_mathd_numbertheory_711.lean",
+      "sha256": "b5f4a30e5b9aee4fb4371c0458b1f1aeab42a1339abaaac80c3e775d47ae0bbb",
+      "bytes": 1395,
+      "lines": 43,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_230_mathd_numbertheory_728.lean",
+      "sha256": "cc12b89037e64e8dc9fed460c10e637d4db7e4cccbac795cf485fea88c1e54ed",
+      "bytes": 229,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_232_mathd_numbertheory_765.lean",
+      "sha256": "9364566517757a152b90dca62227ada24280522f34452fbf876c768282ea762a",
+      "bytes": 552,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_233_mathd_numbertheory_769.lean",
+      "sha256": "dd0a525c30be599fd513e4ecfa92363daab469eea8c69369fc0dd462be71bac8",
+      "bytes": 278,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_234_mathd_numbertheory_85.lean",
+      "sha256": "2635b1370b9dffe4a5dd4015b5e6e0f6bb6d4553ac4a2c39856a4e36653c4383",
+      "bytes": 169,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_235_mathd_numbertheory_99.lean",
+      "sha256": "f1c97bb31fc63de9582c01909466ad5a0c8553dbc2bd2c30b69b8c0f6450006a",
+      "bytes": 250,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_236_numbertheory_2pownm1prime_nprime.lean",
+      "sha256": "5453524f4ce84406425740f84d53561dedd19bff435519ff46f8677056efe97e",
+      "bytes": 336,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_237_numbertheory_3pow2pownm1mod2pownp3eq2pownp2.lean",
+      "sha256": "98f966cc005cc854e7f41f600f478ed0b73be8d28cd4ce970c1c8e9450626918",
+      "bytes": 1516,
+      "lines": 51,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_238_numbertheory_4x3m7y3neq2003.lean",
+      "sha256": "1a9e563bba11b0d439e6b4a7520f61c06fe3bbcb9aa3b3e4fe3430c2f6786b97",
+      "bytes": 639,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_239_numbertheory_aoddbdiv4asqpbsqmod8eq1.lean",
+      "sha256": "6311574a561d0ecd923e7f5fb988ed1d56c03c2c6ce5badc46600dbbe6197c09",
+      "bytes": 945,
+      "lines": 38,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_242_numbertheory_notEquiv2i2jasqbsqdiv8.lean",
+      "sha256": "f7c32d0904e80a4ed35d4f60d7fdbdae62b42d27e36fe9a1c0a65fd8c57269ca",
+      "bytes": 361,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/MiniF2F/minif2f_243_numbertheory_x5neqy2p4.lean",
+      "sha256": "071bfce898327f092cafeb7291b32ac0ca18685650240d39c44838a0a362da38",
+      "bytes": 1389,
+      "lines": 41,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    }
+  ]
+}

@@ -1,0 +1,1975 @@
+{
+  "dataset": "FormalMATH-Lite",
+  "source_note": "FormalMATH-Lite reconstructed Lean statements: 425 original JSON items, 424 theorem files, 399 statement-only files build.",
+  "source_total": 424,
+  "solved_count": 222,
+  "files": [
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0000_algebra_569189.lean",
+      "sha256": "af701849f0182c0f46ed52c24063ba017c7cc83177cba8256363698272bf5f33",
+      "bytes": 1040,
+      "lines": 35,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0005_algebra_528788.lean",
+      "sha256": "2ee91c4f20fcfdcea5d00f289d2e4199309effc8794d0ac6e2ed9cb5db3b0288",
+      "bytes": 585,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0006_algebra_539184.lean",
+      "sha256": "d1ebc2fb65d2d3c30e33c03e925e816e5561a23625bcc1aedc2ee329330e6903",
+      "bytes": 206,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0012_algebra_68653.lean",
+      "sha256": "0c3cbdf91418963998ef55cb8908da61645e63116e660bd61dff63254cf27f3d",
+      "bytes": 1796,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0013_algebra_45698.lean",
+      "sha256": "5baaf9e5a7c06cd0f9b9a5a9aa72f14d4ceda6a17cbfb1817d67fae52a02aa0d",
+      "bytes": 2006,
+      "lines": 62,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0017_algebra_58937.lean",
+      "sha256": "a8b4cb4301f819cbf8af5075e8c93a8ed9de2c734966bd294f0ec33e985bad08",
+      "bytes": 278,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0020_omni_theorem_1693.lean",
+      "sha256": "625f6bd7e2b24a690c326ed86b665aff2824d8a0c58b436b3d4a23b760c197ab",
+      "bytes": 666,
+      "lines": 30,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0021_omni_theorem_1624.lean",
+      "sha256": "2bbe59fa558195948688679c03b8f13d35db83f860a3b9e9653bac23c1174314",
+      "bytes": 334,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0022_omni_theorem_1859.lean",
+      "sha256": "1a4fd5c2db8013cf92b19ddb5f1aa7fcde46d044fb2790abe0cc33ae4e2157b9",
+      "bytes": 280,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0024_omni_theorem_1599.lean",
+      "sha256": "c6b2ab45a43b5df5a476d75387c24d2b04d306593a4f64f813964f222b694cc7",
+      "bytes": 857,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0029_omni_theorem_1544.lean",
+      "sha256": "cbe3be7781ae8d891d4ebfedd7cc0b500b1d2f329e891343e53891b2b27c4085",
+      "bytes": 468,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0030_omni_theorem_1485.lean",
+      "sha256": "fb26f8a637b01fcea82965f773c48eaf398d291ca6e834e89f50f57b5acde0a5",
+      "bytes": 453,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0031_omni_theorem_1753.lean",
+      "sha256": "6a40f06898328559106e203919aa45343da31f80df99d2f3775191f67a730ed8",
+      "bytes": 508,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0033_omni_theorem_1386.lean",
+      "sha256": "97fad5d62fe9e56c6e88dc64e0a68eb7439b0e6cee7bf79f93d7acba5a06efe0",
+      "bytes": 195,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0035_omni_theorem_1345.lean",
+      "sha256": "8c3a2a4180dcfc755ed8c4d9d0dc59558fd1071f0daa193fca9825248591c63d",
+      "bytes": 432,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0037_omni_theorem_1367.lean",
+      "sha256": "6523a9d33aa7cc0ccb64f02e66f82bc065cc95e1375e3b65bba7ed67c38c5841",
+      "bytes": 554,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0041_omni_theorem_1218.lean",
+      "sha256": "c4046b9059970f56425dca42c1da38e3fe19af2f40c6add4620c357436a2dbe3",
+      "bytes": 173,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0044_u_math_919.lean",
+      "sha256": "79960116b14ba9995ccac6c4d392f7405fe22689b52178bf8abe18b8cf4eb616",
+      "bytes": 269,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0047_u_math_903.lean",
+      "sha256": "2dc9f7578c27f3a1ce6cc629dd66fd0cb2fcc631c2fa78e71022e15ccb66dc6d",
+      "bytes": 470,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0049_u_math_864.lean",
+      "sha256": "b03f5ffde41b25d96d66e8342060f427c66612d7f1a6f62032a134f733651f7f",
+      "bytes": 650,
+      "lines": 34,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0050_aime_all_1993_9.lean",
+      "sha256": "6383bf692130c9b1f051dc2d9157214c028f32183e07a26d7167fd114e8e4b04",
+      "bytes": 382,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0051_u_math_987.lean",
+      "sha256": "e9540532da150bcf8a5da5f568f07a849886ba7db5aadab578530141cdfb725d",
+      "bytes": 314,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0052_u_math_860.lean",
+      "sha256": "8a8ff876ec1ae6f7ae15a14bf5652aa062c4dbb87f370beba36aa0a2092f2cc9",
+      "bytes": 116,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0057_omni_theorem_4322.lean",
+      "sha256": "8afd4e556c6787d09c95db04316d9a060e4d08f931acce59d6ee42a2446d98fd",
+      "bytes": 965,
+      "lines": 34,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0059_u_math_732.lean",
+      "sha256": "4473956c31a26c4b159d37ce974ca6af8960c09a88461fdf82ac8564d357e9f3",
+      "bytes": 228,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "f"
+        },
+        {
+          "kind": "def",
+          "name": "g"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0061_omni_theorem_4008.lean",
+      "sha256": "48f2fd8a6a86dad9127bee6959be5eacbfc999f46c84072f7161e927721f0ccf",
+      "bytes": 790,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0062_u_math_1027.lean",
+      "sha256": "a4d02be757a3ea3331bfbd31a40021996700f1564766c00a40ce46b7e863736e",
+      "bytes": 516,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0066_u_math_693.lean",
+      "sha256": "2b8ecca28b202315ae9bafc8886fcb21e55ae9d2122b5dd0608a992511e2bf9a",
+      "bytes": 129,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0069_u_math_661.lean",
+      "sha256": "a364b4e2c5166e739319b8079c745ae15af56fb85bad217f1452065c0eec8207",
+      "bytes": 892,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0071_u_math_1015.lean",
+      "sha256": "c147c9efd710a57423e75511459f7c49204f61f84bfb70a83fe293187d56efb3",
+      "bytes": 218,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0072_omni_theorem_3961.lean",
+      "sha256": "abbe5fba3de4ca2e7674690e062ef8a2e11b6fe463c569bdd57282cd64b66965",
+      "bytes": 470,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0073_u_math_537.lean",
+      "sha256": "ad58b1282291b3c061b5e4239cfb1018ae0a11a3416681ffe4618d4f15a34069",
+      "bytes": 317,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0074_u_math_536.lean",
+      "sha256": "3561996ff82bb841c45750b92a2917ad6af0a551ed739aa318a1992149548340",
+      "bytes": 273,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0076_u_math_526.lean",
+      "sha256": "2db4f8daf90a3422d70300eab7d36e13863a19681f6d46f12176a8e5bdd40ee1",
+      "bytes": 926,
+      "lines": 41,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0077_u_math_523.lean",
+      "sha256": "b7372a630e125dbad39980d4ffd4e75a1632385756431d0e89c7a8126be1af48",
+      "bytes": 318,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0081_algebra_57029.lean",
+      "sha256": "04e234f9476d703b5c9a5cc5c685a3d7e79cfbb4ac8f55a1ceb86f7a5e8d0574",
+      "bytes": 462,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0082_algebra_52615.lean",
+      "sha256": "2d58092085c8dfa9b5a891a652040a205fd5cc3630165c2065c3de112e385a9e",
+      "bytes": 830,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0084_algebra_58705.lean",
+      "sha256": "b0d703bea5c1a3cc4677325ba3d5a53eb8695021c3e2cb6f920d7dace64f22e4",
+      "bytes": 567,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0086_algebra_476989.lean",
+      "sha256": "6aaa27f258da8abc9c498a1790391bea56e6a214400a7d0fc68f558886d51269",
+      "bytes": 1917,
+      "lines": 37,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0089_algebra_403235.lean",
+      "sha256": "4f5e183c110fec5445f47c496c794c94e511dadb72afc5e156574d26c13de9bd",
+      "bytes": 956,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0097_aime_all_2007_II_4.lean",
+      "sha256": "1875f7198e2e8df5f7fb57294a450125a19e6e265b93121eb09d6de66dd79e2a",
+      "bytes": 421,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0099_u_math_111.lean",
+      "sha256": "bed1db00c07e87c7c5f69c02bf36acb867d28aa8ef7f6bd506a7e408a9aecb92",
+      "bytes": 277,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0100_aime_all_2008_I_3.lean",
+      "sha256": "2aa6c16794724f7a0fd9aa3170c579bdda90074872b5b4876a46cdb516239319",
+      "bytes": 468,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0102_aime_all_2001_I_2.lean",
+      "sha256": "7aabb98e0021179410df5283af7880c72ef21cf885202337ab009946f4851abf",
+      "bytes": 481,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0105_omni_theorem_3073.lean",
+      "sha256": "94de2b69806dee68feddfbf65fc40169a67e890d01d13e3714807c325cf355c3",
+      "bytes": 80,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0106_omni_theorem_2927.lean",
+      "sha256": "6e70f18099a965d036c54e995cf55695d35245c3db3632c8717a47aa293f60c8",
+      "bytes": 99,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0107_omni_theorem_2917.lean",
+      "sha256": "20d00227ce542adcb9a56e4c9d16f1490abb97878c41092666ba90a6eef7045f",
+      "bytes": 127,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0108_omni_theorem_3072.lean",
+      "sha256": "c070bbaff53c0a2fa2ec37d7933a9b3bef7ee4d4a4bb5c820950dcc184122d09",
+      "bytes": 127,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0109_omni_theorem_2942.lean",
+      "sha256": "b80ca05ad187f4d2e5e983f0a8eb1cf831bd000c534e622d4833d49e99cee3f0",
+      "bytes": 145,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "Ewan_sequence"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0110_omni_theorem_2906.lean",
+      "sha256": "851b17cfd43bda7732390a777b873ca4bd80f2861c19dd8154011a6879cd30dc",
+      "bytes": 120,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0111_omni_theorem_2894.lean",
+      "sha256": "b4d3a6743a33942089762c362407d681cb94a229e07514b082c62ac20d665691",
+      "bytes": 161,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0112_omni_theorem_2954.lean",
+      "sha256": "39ae92a981ae40b075c0d5c6d8f56f52a2fce0621c58e22a564788350f7729d8",
+      "bytes": 734,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0113_omni_theorem_2847.lean",
+      "sha256": "91e93b8cadd363c2bf6ff6c34f797a02f94c6ea8f928e8ce7d1de02a51719cb8",
+      "bytes": 875,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0114_omni_theorem_2828.lean",
+      "sha256": "c9d9afd7405f95e8d1903f6e122e0a615969936acf812dfdb2139147ee649856",
+      "bytes": 181,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0115_omni_theorem_2849.lean",
+      "sha256": "48b5da9ec259eafc386c63017e33cbeabd574765fa8e675d76ad09b7ced96991",
+      "bytes": 143,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0116_omni_theorem_2816.lean",
+      "sha256": "d3cd7745269ff43c5498824656045a1219030d30d06929e6a3241493079c9245",
+      "bytes": 216,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0117_omni_theorem_3053.lean",
+      "sha256": "53b4be55e540ebf841fc934854413eff077eb058337c4a48a1802ff77abeb575",
+      "bytes": 263,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "nabla"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0118_omni_theorem_2815.lean",
+      "sha256": "468cd082329a68d2f9a847a71eb8fadc5f6db43e5f2fe1a9bd163bfc4a4d9c94",
+      "bytes": 465,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0120_omni_theorem_3054.lean",
+      "sha256": "6d8bf224809b0a66989fe9e29210fdd6b3d7b1fa75bff37eba753c11ff21c269",
+      "bytes": 588,
+      "lines": 30,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0121_omni_theorem_2799.lean",
+      "sha256": "f9b030e75ebfcd3573e63a94415b0cebd3ef7d90c11155b044125cd78f290e56",
+      "bytes": 117,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0122_omni_theorem_2869.lean",
+      "sha256": "7ce0623340842abd8bbd284293b4858d0929448a1cb626137975cd5834df4823",
+      "bytes": 157,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0123_omni_theorem_2797.lean",
+      "sha256": "21ec604c33a6df1bb5e758afc7b2e569c1da53d6919b20ca8fc75146988966f7",
+      "bytes": 226,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "reflect"
+        },
+        {
+          "kind": "def",
+          "name": "line"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0124_omni_theorem_2734.lean",
+      "sha256": "fc032588c9c2d67a57f7444000bdc9c00bb87a7240dc8aa9d5f369d74cd05e7c",
+      "bytes": 653,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0125_omni_theorem_2732.lean",
+      "sha256": "9d87c2b268693a8869af2466489b212fc11079ad553ad8b5342a774fef88403b",
+      "bytes": 318,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0126_omni_theorem_2750.lean",
+      "sha256": "a2436d683189c499511edd474aab178e8572b5ecab658316a5fde69ae61a69cd",
+      "bytes": 248,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0127_omni_theorem_2755.lean",
+      "sha256": "72aea882470d7d971a149844bb9f3099546c2073e654dea01f2d5b6c9bf9a2f4",
+      "bytes": 238,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0128_omni_theorem_2880.lean",
+      "sha256": "68c76b4a12e9d987b4903a826679bd8b1d70fe7e3c83906a6a224abeeee76ed9",
+      "bytes": 182,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0129_omni_theorem_2760.lean",
+      "sha256": "129d77090678f7590aa6a247d13fafc8ba92c32bab8d164fe860dd9ba54374f4",
+      "bytes": 144,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0130_omni_theorem_2879.lean",
+      "sha256": "5f39d2d69da3da557c81aa2ecf8f4b06b7995f3f385a50e27923d5867003eeea",
+      "bytes": 198,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0131_omni_theorem_2704.lean",
+      "sha256": "8acc59f14268b73889027ce403221e0ecb45670c602986b4f06050bb98fb86d0",
+      "bytes": 296,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0132_omni_theorem_2792.lean",
+      "sha256": "0a3b95c3b9a5e5648bf49480ab3100f3cebde3b68408056813f304fb718c6325",
+      "bytes": 82,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0133_omni_theorem_2669.lean",
+      "sha256": "46229055d33751a8d81760250eaf4477abfd9091729d746b2dea62f573460a82",
+      "bytes": 191,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0134_omni_theorem_2787.lean",
+      "sha256": "0f9795a65a5864c1231ff6bfd385af0068ed2a0dcf1a5fbe179c9527c8717d90",
+      "bytes": 248,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0135_omni_theorem_2696.lean",
+      "sha256": "b17f06dfd9c263fd349ace2ff6a3a4df8e640e90a6e4357537faaeb7e94a6bd5",
+      "bytes": 118,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0137_omni_theorem_2697.lean",
+      "sha256": "ec0288ec4812b1e78c7670fcfb724235f10f444aadcfc9370a411d0b4f416635",
+      "bytes": 236,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0138_omni_theorem_2782.lean",
+      "sha256": "7fb05eee029256d32406aca01bda9533cc8264305e621ee9b8addb8f7424cdb2",
+      "bytes": 220,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "a"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0139_omni_theorem_2700.lean",
+      "sha256": "a732130c2c0708614b0f316d35792506dd00e820bb1e02ec3e971f130ba2f495",
+      "bytes": 147,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0141_omni_theorem_2589.lean",
+      "sha256": "2ed781e73f241ef44ce7579b5c655fe604e4825ad77eddfc7269320c20a219f0",
+      "bytes": 352,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0142_omni_theorem_2702.lean",
+      "sha256": "2cf4da70514c77e2d3ddc657d560b52d2143d193aa2cfa3cbdc7e1fc46377131",
+      "bytes": 292,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "sol"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0144_omni_theorem_2538.lean",
+      "sha256": "a0eed3e7278b47e24047ff7540b30876d664c787e051de9a9c64599cbf1877b9",
+      "bytes": 489,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "sumOfDigits"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0145_omni_theorem_2874.lean",
+      "sha256": "c126a801c4c19a7b9578c1ad527d34a9ad36d8afe7d7dcdf338014c855bab92c",
+      "bytes": 100,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0150_algebra_432962.lean",
+      "sha256": "50f53a41615fe2cde229341242f298a7611dd15edc44d78ef3c291ad986a19f0",
+      "bytes": 1253,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0152_algebra_560019.lean",
+      "sha256": "6aac9f2fb5375197b5d4d85f3d5eabd4fff0ad8989eb5971ba0bc4aa29e58ee1",
+      "bytes": 317,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0156_algebra_42399.lean",
+      "sha256": "74a7fef3cc17ed2cb3b2cb4be1e3b8993b9e13dab2d3303b42411f1880922722",
+      "bytes": 740,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0160_omni_theorem_1102.lean",
+      "sha256": "1e549f3fc9fbafe2fae7fd739b0c66379a4a7d7711e01a881668c9520e877f93",
+      "bytes": 218,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0161_omni_theorem_1154.lean",
+      "sha256": "5cc4e81e6a1605cfbffb47138d5925c3be50462da5cbb69c66beb28eb15503d4",
+      "bytes": 982,
+      "lines": 24,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0162_omni_theorem_1003.lean",
+      "sha256": "ea539fe36761f6cec9ed9e42a67b53663d0576a7b34837859a3af88a4362949b",
+      "bytes": 1374,
+      "lines": 37,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0165_omni_theorem_920.lean",
+      "sha256": "27cb6005f20cfd1cb14d82bf13f01df5f556d1086f11f42d7303ed6bacd7398a",
+      "bytes": 215,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "omni"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0166_omni_theorem_1278.lean",
+      "sha256": "b68de51058db799d93e954adb5542d773f54e546e3f94ba1de6ab707dc1381b0",
+      "bytes": 667,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0168_omni_theorem_1039.lean",
+      "sha256": "d7e0cc4903dda002f38a8ecb50662f45a315516991b26a2535ab75cda3a4f158",
+      "bytes": 4218,
+      "lines": 111,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "b"
+        },
+        {
+          "kind": "lemma",
+          "name": "lagrange_sum_inv_mul_prod"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0169_omni_theorem_726.lean",
+      "sha256": "90e7856aaec683e5c10dfb34c975132898150127162f265d5e47cedefb36a126",
+      "bytes": 295,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0177_u_math_513.lean",
+      "sha256": "1c7d2985da056948a2dc41f3c04eda493d37d9f8e5fd74eb335b0e20376520df",
+      "bytes": 199,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0178_u_math_497.lean",
+      "sha256": "fa8910727b316ad50adf831111b5994101f96a71eb16dc517917a24c15de4daa",
+      "bytes": 537,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0181_omni_theorem_3821.lean",
+      "sha256": "018170bbec0751af4bac468e8fff28f54be7029e06037b0b37f30b4560acb645",
+      "bytes": 198,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0184_u_math_459.lean",
+      "sha256": "6ce52e263c54d1372677cfc25669b55d5d0d31414e2e234619ed5afadb09bda8",
+      "bytes": 191,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0185_u_math_758.lean",
+      "sha256": "0cccb27db7bfb95748237852ba6db55f7eb9bb1e5554a753b9e20be8599f059d",
+      "bytes": 221,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0190_u_math_344.lean",
+      "sha256": "9a63e4dae0c23be5bf16821f6cfdd0cc63cfc4a51c091cb92759e69fecae38ad",
+      "bytes": 121,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0192_u_math_335.lean",
+      "sha256": "92bb4b48a1eb27a8c826ddadf626a68a3e6617fd9314b885b5018f4dff52b1ff",
+      "bytes": 235,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0199_u_math_187.lean",
+      "sha256": "58b34ec575654fbf23d912868f4a4b256794129ae951acaa5084bc474b146a6d",
+      "bytes": 358,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0200_u_math_243.lean",
+      "sha256": "4af8e1aae9467fa4151640cac8c6f3c434aea9a2e4f879a77d447ac6308f6047",
+      "bytes": 1232,
+      "lines": 30,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0203_omni_theorem_3562.lean",
+      "sha256": "7259a5d5246bc8b19e5ce5cd52105fb972304faeb35df2a7e6d730e6094107af",
+      "bytes": 398,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0204_omni_theorem_3494.lean",
+      "sha256": "1d3ac33a01d7b3e9a3bd3f167925abc5352dcaf4d9069508f2e32c909152a823",
+      "bytes": 620,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0205_omni_theorem_3492.lean",
+      "sha256": "bd0cf18319261e39275d71874e141443699a1775b596e9f5c254a60a88f5fe85",
+      "bytes": 363,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0207_u_math_269.lean",
+      "sha256": "d2a5dd9bc134438663ff87375139e2dabbaa279b6057ecccfe9de7e73cc555a0",
+      "bytes": 562,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0208_omni_theorem_3469.lean",
+      "sha256": "31203ff73c48e5eee50aff6c2982982250d592a0af5ce9ff94242f7b6d8fdcf7",
+      "bytes": 588,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0210_theorem_proving_zh_blue_986.lean",
+      "sha256": "0a6843ff4f766d9fcfe506b922837d981d4f08cf9b27ec8f8d3c7ce345eb1837",
+      "bytes": 142,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0211_algebra_50892.lean",
+      "sha256": "3b00b0f9bfe57ff7d5eaecfee8660b9e48182811e5f19044aa9c823d40d34185",
+      "bytes": 159,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0213_algebra_413567.lean",
+      "sha256": "befad2d36b5712ed92604d5a6931b6cc4e7942433fca7bc86951bf0af496b7db",
+      "bytes": 818,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0217_theorem_proving_zh_blue_856.lean",
+      "sha256": "8ec23a1adbfed1932e777f69e5e59b4b739a2b07cd1067c1a2f4a284adf3413d",
+      "bytes": 848,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0218_algebra_539239.lean",
+      "sha256": "c9d00b94731884a024061bf4e4aa9acab7bec805fad512d5b1366c8e637b8a1e",
+      "bytes": 1081,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0223_omni_theorem_2688.lean",
+      "sha256": "22110be51d42f8b6c80cb1d2507fc9f2f6d1e2a44215a9b5018e99c10898c320",
+      "bytes": 391,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0225_omni_theorem_2844.lean",
+      "sha256": "dc5e8e8834fa96a6ce48d6abb43b95900451f896f658692ff83c88b1924024fe",
+      "bytes": 1768,
+      "lines": 84,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0226_omni_theorem_2378.lean",
+      "sha256": "b6e2f7e58a2726c89010b6627f96a751737062e4e178b3fc3c5c273792a3f20e",
+      "bytes": 738,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0227_omni_theorem_2682.lean",
+      "sha256": "169464bb1c8acdc206f4b0396dfcd257118017c70f86dfa4e6b3a74e87fda7bc",
+      "bytes": 377,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0228_omni_theorem_2374.lean",
+      "sha256": "be8270ada3e11808fad092bf9b18edf850d74609921fa5365ede701d9bf4711e",
+      "bytes": 495,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0230_omni_theorem_2243.lean",
+      "sha256": "be7edf0856cea3fc089b4ef5309967088dcc9d59e80f3fe5e579927ba8f53492",
+      "bytes": 1243,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0231_omni_theorem_2843.lean",
+      "sha256": "26d35ddddf426faf33ee9548ddb95d5f082790064d4181c445bfe069e82d40fe",
+      "bytes": 208,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "s"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0234_omni_theorem_2677.lean",
+      "sha256": "a52f32c8a4636dcfaa83e09f39db65f6f495fb25da1826cc05b53d24b3b73548",
+      "bytes": 185,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0236_omni_theorem_2485.lean",
+      "sha256": "7ddae5e3d14127cb301454df957f3b247a255a370d07be6cc5937a86e3778b67",
+      "bytes": 328,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0237_omni_theorem_2338.lean",
+      "sha256": "7651a9fd8f808028fa374cbd128916c27074934c04914094f19a53097297719e",
+      "bytes": 533,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0246_omni_theorem_1840.lean",
+      "sha256": "ee65efa4f1649fb03622bfe8752bb8b29a744f3c10ae2747503e1ef5fad26550",
+      "bytes": 106,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0248_omni_theorem_1887.lean",
+      "sha256": "a116b46eadcab6bcc7790eed4e9eead9ad2b42778a32c7b3af1b7fb87cc9cae8",
+      "bytes": 176,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0251_omni_theorem_2745.lean",
+      "sha256": "9bc2f149583b939b6567c2332ba5521b93043b529f96c9dda5cf18f2ff3747d8",
+      "bytes": 973,
+      "lines": 30,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "setOfInterests"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0254_omni_theorem_1789.lean",
+      "sha256": "d02e5810b1d1ce7883ea26e841c90d127a4f69f9919de615c76bf294c3135241",
+      "bytes": 130,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0256_omni_theorem_1953.lean",
+      "sha256": "bf689240031c9ea348b6a736ce8286f0c4f6205ba3550f7c161c039037772130",
+      "bytes": 405,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "isNasty"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0260_omni_theorem_1949.lean",
+      "sha256": "a18e0284bb30917ae30ec8120069e3a28aeaa26dfb049fff3bf4c892972f897a",
+      "bytes": 212,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "f"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0261_u_math_1060.lean",
+      "sha256": "cd64e2ac929b128ed8fb895523696dd65ceb762f981ecf81e8c1b55a93cbd8a4",
+      "bytes": 121,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0270_aime_all_1989_8.lean",
+      "sha256": "f2ba474c68702a22c87309bfb8c9c3ef91b372bddd6bc2d280a5d2b247eda70e",
+      "bytes": 453,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0271_aime_all_1989_1.lean",
+      "sha256": "431428c9fd2400220a5c3736203db5a281b4943951c010b4af329abbf73fba7f",
+      "bytes": 100,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0273_aime_all_1988_9.lean",
+      "sha256": "4d24895347b4c882484bea8c3a0767b11e4d8afc3987787afb2cdb5320ad7fa4",
+      "bytes": 548,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0276_algebra_53947.lean",
+      "sha256": "da01bae902b08a3991fdce88660bf6cdde012d54e9197b5a650edfbca84372a1",
+      "bytes": 185,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0277_algebra_569850.lean",
+      "sha256": "08fc73fc6847f27978fbe6116661c8b5f9f96df0c2000966fc623a87b93d4e71",
+      "bytes": 256,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0278_aime_all_1983_6.lean",
+      "sha256": "2eb3430543f24ac6f74839e1481aa76ae3d3d3aac87021f3e289b0256859d176",
+      "bytes": 117,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "a"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0279_aime_all_1983_2.lean",
+      "sha256": "af6a655ba8b260dd78c47107724741a82f99d392e915707d0cdd2dda8c88b51b",
+      "bytes": 836,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0280_aime_all_2007_I_3.lean",
+      "sha256": "08eae28db5f5fa50ad8ee591db266329298ccccb657936c5f3c028e123fa211b",
+      "bytes": 752,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0284_aime_all_2007_I_2.lean",
+      "sha256": "7ea12763b1bf67711701e351964bf8796c071d6e123248e8a0c75ed629576a2a",
+      "bytes": 844,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0285_aime_all_1987_14.lean",
+      "sha256": "8eee97c66676e76767a92c795a6a7279b99110ca03d5c8da2a92e0447671971b",
+      "bytes": 230,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0286_omni_theorem_4297.lean",
+      "sha256": "353075b64be784bdc86acc1e75bf8951889f873c1c9158f69a7c82b4f0e38e50",
+      "bytes": 279,
+      "lines": 12,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0288_algebra_528739.lean",
+      "sha256": "e038aa3cfb7fb69b890374b26f411d20e334b0afee57d2adf7a6b6357f62970b",
+      "bytes": 1268,
+      "lines": 27,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0293_omni_theorem_446.lean",
+      "sha256": "ebd7a2a98cf9e637edd596615c93ebecd309cc2274656ea8b98a8fcee095ca3e",
+      "bytes": 341,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0294_omni_theorem_534.lean",
+      "sha256": "6476f3c633b8df4984c88743f73ad3b15cf7c9424380a947b5c182b38e374c31",
+      "bytes": 192,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0296_omni_theorem_405.lean",
+      "sha256": "2baf4df36d8519e4072f0d22ab4677b9303d40dd312c6e156e9cc48b47a3c5d5",
+      "bytes": 250,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0297_omni_theorem_417.lean",
+      "sha256": "b3e5b0eaaede45ced66cc04e02870c66ce2f5130f7da2cfcf63de45d49aa135b",
+      "bytes": 242,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0298_omni_theorem_388.lean",
+      "sha256": "077f128648480a50a15fb25b0bb9f2a752aa1df5892ceea8bc6864b73f4d8b76",
+      "bytes": 424,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0300_omni_theorem_373.lean",
+      "sha256": "d76b50ba39509fa6799156724089d21d5695f71067800aeb6e84f4b7b6ac8e45",
+      "bytes": 268,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0303_u_math_45.lean",
+      "sha256": "def2d8e240b0743d40ac316ca591768a1cbf8d885215f9683d34e3d4595c3f66",
+      "bytes": 1091,
+      "lines": 42,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0305_u_math_33.lean",
+      "sha256": "24646dab1b445e4f24296c26d9bf70777b0a5f4487bd44dd9d83107706b1513a",
+      "bytes": 247,
+      "lines": 11,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0306_u_math_224.lean",
+      "sha256": "a5e60f1cf45d27b09bb7a8610185f3d2a32f09f2899dc1cb2afc5c3fe96e1312",
+      "bytes": 383,
+      "lines": 14,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0307_u_math_8.lean",
+      "sha256": "ef00a74e7cbd7eb9e7fc13dacdd3808d62989f98606a102bd1e684735da9c573",
+      "bytes": 131,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0308_u_math_612.lean",
+      "sha256": "1754ac14cdcb0bd7ea36ebf71cd983d1a934fd8be09d82ef71eba254bb86bdb1",
+      "bytes": 329,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0309_u_math_219.lean",
+      "sha256": "068ac86d9c60b63a6f6a13a617fff4eed8dcca18a69c5739021525d41022c380",
+      "bytes": 295,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0310_u_math_371.lean",
+      "sha256": "661c9868228fb612c5e995e415c03745bbdb1db7ff321e5d2d1195e86a96085e",
+      "bytes": 251,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "R"
+        },
+        {
+          "kind": "def",
+          "name": "P"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0314_u_math_103.lean",
+      "sha256": "1c0369f87b9052f62e0872b7060740a53275ca9f3af9464f7bafb1f07bce76f4",
+      "bytes": 2575,
+      "lines": 66,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0315_aime_all_2021_II_13.lean",
+      "sha256": "d675082309cbb8244f8463468f52902df5ffe0f95f78d4f746831aecc6c3b652",
+      "bytes": 560,
+      "lines": 23,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0318_u_math_96.lean",
+      "sha256": "2d31a1c6dff1d74cf2c1f5482e81a678341319ec4732958d5ed0fba8ba04c127",
+      "bytes": 121,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0319_aime_all_2022_I_2.lean",
+      "sha256": "9e3c349272b4ff59c5ca3782939ab24c73328676cb0afbbb71fbbc439e88a1b7",
+      "bytes": 946,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "is_nine_representable"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0321_aime_all_2015_II_3.lean",
+      "sha256": "c81a536510aca28a0f1ddf4bba44c8488b6e52e9dd647316da6a8c0d141e2353",
+      "bytes": 635,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "sumOfDigits"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0322_aime_all_2015_I_1.lean",
+      "sha256": "b78cbb08fde3ef38b3116c918ed101034d4e481161fa092c557ac44f524bcc4a",
+      "bytes": 510,
+      "lines": 19,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0323_aime_all_2018_I_11.lean",
+      "sha256": "c3b9d00b5bbe00abfa6d1b00f8941db48f7967941749f891eb003b4b2d229b6c",
+      "bytes": 338,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0326_omni_theorem_3495.lean",
+      "sha256": "14e319aed197df774248a03e5c4d0e34a40f1070eacbbbd62f5f73b0bd7deee2",
+      "bytes": 158,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0327_omni_theorem_3463.lean",
+      "sha256": "4b418b5e9d7808bfd29f7ba11c27de5fbc9532c217f9beb55de163594dcf67c0",
+      "bytes": 305,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0328_omni_theorem_3453.lean",
+      "sha256": "46a5a64457324b57fdea11faaeb7e8bc723535a28a45e4ca123e1e08cbb2e669",
+      "bytes": 228,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0329_omni_theorem_3499.lean",
+      "sha256": "8f5554aeacdec3720c43793e7ecb28197fce5a24c8aaec911eec115bbeb85085",
+      "bytes": 353,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0330_omni_theorem_3500.lean",
+      "sha256": "85ba96fe31afe0861af631630f18affc1b2935c9d7a2548c9174354b328aedc8",
+      "bytes": 383,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0331_omni_theorem_3441.lean",
+      "sha256": "f1ec02565f5a2313ebef8fdb25e1b1c33ca3ced8e0949e3fccf243dd53465d9f",
+      "bytes": 122,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0332_omni_theorem_3438.lean",
+      "sha256": "aa9306a07022401310a67ce90cf3f5aacd45f48a9128e89d9e19486062503be9",
+      "bytes": 115,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0333_omni_theorem_3381.lean",
+      "sha256": "06c2a1ae502c75644656f0e6c6853f6794997a74ae39e9f81af8cbaee7f4bd93",
+      "bytes": 153,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0334_omni_theorem_3332.lean",
+      "sha256": "3d59c717f3103dda96cc74fccbc9ed93d3346a830756ab6dc8e71658bb8a2bbe",
+      "bytes": 542,
+      "lines": 20,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0335_omni_theorem_3536.lean",
+      "sha256": "1447199610d55d44db32fc552d230dc8173774552c6032b29b25ed67c179a03d",
+      "bytes": 432,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "jurgen_leaving_time"
+        },
+        {
+          "kind": "def",
+          "name": "jurgen_walk_time"
+        },
+        {
+          "kind": "def",
+          "name": "jurgen_pack_time"
+        },
+        {
+          "kind": "def",
+          "name": "jurgen_arrive_time"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0336_omni_theorem_3391.lean",
+      "sha256": "bafae7169f6a04bc266ed32e31f577ef4b693d73e2cb50639563ad9a8d76976c",
+      "bytes": 92,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0338_omni_theorem_3392.lean",
+      "sha256": "eb9ee659fb6ea2773e9c3eac9c343cdfe03de4bc1854eaa6e87d3e5adaff5933",
+      "bytes": 126,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0339_omni_theorem_3396.lean",
+      "sha256": "649c37a8cdde3074c3bfb5d393224d4e3f2dfdf57f892a920f451570d73ce58c",
+      "bytes": 132,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0340_omni_theorem_3398.lean",
+      "sha256": "9fc10357bf8a0ed1d0a48ade629ed0d0edd9a846a6ff0223bbc7211746e9d24f",
+      "bytes": 104,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0341_omni_theorem_3247.lean",
+      "sha256": "31ce94f7ed3adadb042ee63acfe2586e577ffe4adfe4bc778980cb633349473c",
+      "bytes": 244,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0342_omni_theorem_3168.lean",
+      "sha256": "a8fe1fb38ad27b623098821797ef8664c1abfe4447cb96f0c15e04ec9441c56f",
+      "bytes": 587,
+      "lines": 25,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0343_omni_theorem_3157.lean",
+      "sha256": "45bec93b1c3dfa4b0c6911aa82ce97d77abd9255b89934c4a533f97a05df3161",
+      "bytes": 166,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0344_omni_theorem_3152.lean",
+      "sha256": "2c24c9c680f0a0d9fc355ba2402304186c252e1453f11e87e69feb4be5dae47f",
+      "bytes": 145,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0345_omni_theorem_3146.lean",
+      "sha256": "15440c8833051f8d435c3e44540e2cdf6a8b3c1e48cbab17d8b27af5df160c8b",
+      "bytes": 95,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0346_omni_theorem_3187.lean",
+      "sha256": "2894a02c5fc6b710511ecb6db33e7169582e0036722a4dbcfa5b8aeb059db2b5",
+      "bytes": 98,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0347_omni_theorem_3131.lean",
+      "sha256": "756d1afddf48834422e5e81a33a7cbc915410ad8659f790b956f37f8bdc2e022",
+      "bytes": 177,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0348_omni_theorem_3420.lean",
+      "sha256": "923ea3726d2f218af1b16938c58f49014abcf8cfcc692dc4eeede39e122bb107",
+      "bytes": 180,
+      "lines": 10,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "a"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0349_omni_theorem_3129.lean",
+      "sha256": "5b9c0125402087c5ad1d0699e825977153584ca81f62171205bddb57476cfe0d",
+      "bytes": 90,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0350_omni_theorem_3198.lean",
+      "sha256": "98f8e88868c87bce480660e7d4665b3c85a7d76bf503eddecd31d809d4439a4a",
+      "bytes": 118,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0351_omni_theorem_3620.lean",
+      "sha256": "3c9a6926f141258fbcc2b2326a47528cdaee138841882105685af835f2d6f752",
+      "bytes": 9775,
+      "lines": 277,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0352_omni_theorem_3413.lean",
+      "sha256": "48376903d94ee705029a6341a32840daa6062453d385f936eefe988c91c6c65b",
+      "bytes": 124,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0353_omni_theorem_3119.lean",
+      "sha256": "0eabe6799bfa0dcd9f434c7800b955a5fc3dc45e61ecbcd0eb69e57d2a01ee62",
+      "bytes": 109,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0354_omni_theorem_3201.lean",
+      "sha256": "7dbe2cec30488dccda6fa93a278abf2fbb9d8fd765ae1f7cbd7d7389336e390e",
+      "bytes": 224,
+      "lines": 7,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0355_omni_theorem_3118.lean",
+      "sha256": "a6be67e38c2aa262b880a05c06eb65f5f8ccf29aa738c7482a44b0c98fb246c2",
+      "bytes": 87,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0356_omni_theorem_3113.lean",
+      "sha256": "97ab3a0952d7f8da021dca8d35b310da01c86426bef9aa27e2e4f193d1f7d8f7",
+      "bytes": 144,
+      "lines": 5,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0357_omni_theorem_3411.lean",
+      "sha256": "68cfd7ba0ba007056a9c3195f124077637fe5f508ae20450581d3431dd52665b",
+      "bytes": 155,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0358_omni_theorem_3038.lean",
+      "sha256": "b4607f6ba6e32f32bb6534f2269dbbb492aa2b7e66acaaaa9981c7b199b617b9",
+      "bytes": 197,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0360_omni_theorem_3079.lean",
+      "sha256": "19ae41173b9af6a17958ccce52d314f72c3459588ed29eb3b007d3401edd9499",
+      "bytes": 151,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0361_omni_theorem_3025.lean",
+      "sha256": "a1a1498489617c57cf09de67ba8a7c8c89d55037ebae3619fc48ee592eb8cb91",
+      "bytes": 91,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0362_omni_theorem_3018.lean",
+      "sha256": "53678b664e9e7d43820cb6e26fe2a52e7e67ea0cb89b06ac5900112f79784993",
+      "bytes": 313,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "S"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0365_omni_theorem_3013.lean",
+      "sha256": "fa5817cbb015094a3af0d3802915cfef4e4f687ccefaf739175319835235672b",
+      "bytes": 252,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0366_omni_theorem_3409.lean",
+      "sha256": "8723aa5d57b10bfa51d1247f0d92e6d7e3c5df1318af002f68df3ad7ae0e3e25",
+      "bytes": 317,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0368_omni_theorem_2994.lean",
+      "sha256": "f06909412db6a21c9788e1f2f1e0d849c675249db6482bb7b8bc8b09a1cd70f2",
+      "bytes": 421,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0369_omni_theorem_2933.lean",
+      "sha256": "e08bafd9002bdc036bcc3bf2136ff8588386f97a488447148df9c81cf997c23b",
+      "bytes": 171,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0370_algebra_585850.lean",
+      "sha256": "a5929c33083eb50ee48b55dda351bd95824787ed8fd1fa098d43d62743d220e4",
+      "bytes": 624,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0374_algebra_564777.lean",
+      "sha256": "9bfe6e736bf2ad2fe991b390a0b53b842a4f6576d31ca159a10b37a97ecf11c2",
+      "bytes": 1172,
+      "lines": 33,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0375_algebra_56418.lean",
+      "sha256": "3e9892c50e479dfc65142986af9c97767335595a17165014de617441d7a61daa",
+      "bytes": 524,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0376_algebra_58649.lean",
+      "sha256": "fb445c9816d824c2c2443cb64db6900e65b2cb8bec512f406e423a8a2449774a",
+      "bytes": 192,
+      "lines": 9,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0377_algebra_453897.lean",
+      "sha256": "f23310f59d35468591008b68fee8a9109823eaef4e7217ff008a43893754e515",
+      "bytes": 941,
+      "lines": 22,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0382_quantitative_reasoning_zh_blue_42.lean",
+      "sha256": "ebb98704d3a3987e4fce1175cc122cac3fd4068b8c76fc537b9e2f834a68b1a0",
+      "bytes": 5377,
+      "lines": 152,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "qr42ToRep"
+        },
+        {
+          "kind": "def",
+          "name": "qr42FromRep"
+        },
+        {
+          "kind": "lemma",
+          "name": "ncard_nonempty_subsets_fin"
+        },
+        {
+          "kind": "lemma",
+          "name": "qr42_from_mem_valid"
+        },
+        {
+          "kind": "lemma",
+          "name": "qr42_to_nonempty"
+        },
+        {
+          "kind": "lemma",
+          "name": "qr42_to_from"
+        },
+        {
+          "kind": "lemma",
+          "name": "qr42_from_to"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0383_quantitative_reasoning_zh_blue_138.lean",
+      "sha256": "cc2599cb30e260a219589aaa7205c865798ea75a2369e6a46d5f5b01e00a2fb9",
+      "bytes": 115,
+      "lines": 6,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0385_quantitative_reasoning_zh_blue_176.lean",
+      "sha256": "814adfbffb7c001548d4c9ce9fbef8de2201484b0788f451bf97d4843f81604f",
+      "bytes": 436,
+      "lines": 18,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0386_quantitative_reasoning_zh_blue_362.lean",
+      "sha256": "54562bae43ac6bc5f4a0eb349a09b3a9daabd093b4b65141116860908e0d691a",
+      "bytes": 99,
+      "lines": 4,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0388_quantitative_reasoning_zh_blue_333.lean",
+      "sha256": "9dee0414d0e47c98d80f242468c09bc968fe8b0c502578c65a06ee3b98a146fc",
+      "bytes": 854,
+      "lines": 34,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0390_quantitative_reasoning_zh_blue_352.lean",
+      "sha256": "9ec6848eaae6c0648e1270407447c35757c764509ea9313da872ee1373ba7c6b",
+      "bytes": 1900,
+      "lines": 57,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "def",
+          "name": "X"
+        },
+        {
+          "kind": "def",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0393_quantitative_reasoning_zh_blue_561.lean",
+      "sha256": "ea77f5afae42a57c9c805946f8a00404bbe85f08104e0f045a053e40cae22cb1",
+      "bytes": 751,
+      "lines": 26,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0395_quantitative_reasoning_zh_blue_558.lean",
+      "sha256": "e4d759b3e7b51b830cb63f6509edb9a1b48c79599d753ba72ae878231a0d6e6e",
+      "bytes": 488,
+      "lines": 16,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0397_quantitative_reasoning_zh_blue_550.lean",
+      "sha256": "628500cb8fb4a6dd1cb97e9f6c47f4fbc5a91d1c8b90b6633c2c665059af3dd8",
+      "bytes": 379,
+      "lines": 15,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0400_quantitative_reasoning_zh_blue_599.lean",
+      "sha256": "0c7fc3b38e3ee6b00e230e8f3d2f5a32262b9400e2f8100df07cc7895ba7f7d7",
+      "bytes": 1874,
+      "lines": 42,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0401_quantitative_reasoning_zh_blue_544.lean",
+      "sha256": "d076839d003c330243be24fdfb1cf33e882de6c7d165b369d8a96b80b4038778",
+      "bytes": 242,
+      "lines": 8,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0403_quantitative_reasoning_zh_blue_614.lean",
+      "sha256": "5565de36974d6a0e65b9af6f38460277ec96e6dcceae1ff9c8bf73d7a0f1fbf1",
+      "bytes": 339,
+      "lines": 13,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0404_quantitative_reasoning_zh_blue_613.lean",
+      "sha256": "1006bf7c3167f0dc7fff4c7ece4d3918268eead7d4692dfa51e678a470812afd",
+      "bytes": 1060,
+      "lines": 31,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0405_quantitative_reasoning_zh_blue_501.lean",
+      "sha256": "a386c031aa4fc8024daf7725dfb968b626b12f749180b06267581cea61a7f22a",
+      "bytes": 727,
+      "lines": 21,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0406_quantitative_reasoning_zh_blue_560.lean",
+      "sha256": "c612a600a19634b2e7cba5b658cfbd92490b53dc1415b7f20f25ccfe8f59eaa3",
+      "bytes": 728,
+      "lines": 29,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0407_quantitative_reasoning_zh_blue_655.lean",
+      "sha256": "86af7a7932da4ec1b20866f0cb52fdaff6f747b2a5dc9699e93a751f05ff567c",
+      "bytes": 4024,
+      "lines": 113,
+      "theorem_count": 1,
+      "auxiliary_declarations": [
+        {
+          "kind": "lemma",
+          "name": "trig655_cos_diff"
+        },
+        {
+          "kind": "lemma",
+          "name": "trig655_const"
+        },
+        {
+          "kind": "lemma",
+          "name": "trig655_identity"
+        },
+        {
+          "kind": "lemma",
+          "name": "trig655_C_pos"
+        }
+      ]
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0421_quantitative_reasoning_zh_blue_880.lean",
+      "sha256": "6e3bf480a0baaa8d513142fb0bd2893f86030803533ae04baccb62a6d31fcac7",
+      "bytes": 1989,
+      "lines": 50,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0423_quantitative_reasoning_zh_blue_954.lean",
+      "sha256": "5eb2ca1bebb18aeddcd92079cc5812687cd118d30339c0a012933f8194293d53",
+      "bytes": 437,
+      "lines": 17,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    },
+    {
+      "path": "proofs/FormalMATH-Lite/formalmath_0424_quantitative_reasoning_zh_blue_960.lean",
+      "sha256": "13bea260c08fc5feb828b1fcb56147a26a03b0446f7e7bcb08392986a117b033",
+      "bytes": 1523,
+      "lines": 39,
+      "theorem_count": 1,
+      "auxiliary_declarations": []
+    }
+  ],
+  "original_total": 425,
+  "statement_buildable_total": 399,
+  "skipped": [
+    {
+      "index": 233,
+      "reason": "no theorem"
+    }
+  ]
+}

@@ -320,6 +320,38 @@ Two results, one confirming and one correcting:
   reuse deficit is real only on the size-normalized, per-opportunity measure. Both numbers belong in
   any honest account.
 
+## 5e. Study 10: A census of AI-generated proofs (in progress)
+
+To move from a handful of systems to a population, we built a two-tier census pipeline
+(`code/census.py`). **Tier 1** computes per-proof structural metrics and a corpus-level citation
+graph directly from source, with no compilation, so it scales to any repository; **Tier 2** is the
+expensive elaborated proof-term extraction reserved for corpora that build.
+
+The Tier-1 metric that matters most is **vocabulary ratio** — distinct library lemmas invoked in a
+proof divided by total premise references. A low value means the same few names recur again and
+again inside one proof: repetition without reuse, the signature Study 3 identified in Gauss.
+
+First results, on 16,353 proofs from four corpora, are unambiguous:
+
+| corpus | author | median lines | median `have`s | **vocab ratio** |
+|---|---|---|---|---|
+| compfiles | human | 10 | 1 | **0.750** |
+| Seed-Prover | AI | 7 | 0 | 0.600 |
+| Gauss strongPNT | AI | 10 | 1 | 0.534 |
+| Harmonic Aristotle | AI | 34.5 | 6 | 0.469 |
+
+Human 0.750 vs AI 0.600 pooled, Mann–Whitney p = 5×10⁻¹²⁰. Every AI corpus falls below the human
+control, on an independent measure, on corpora that were not used to formulate the hypothesis.
+This makes N5 (repetition-without-reuse as the diagnostic signature of machine authorship) the
+best-supported of the new hypotheses, and gives a metric cheap enough to run over the whole
+population of public AI proof corpora.
+
+Collection of that population — open-source prover output repositories, HuggingFace proof datasets,
+and a matched set of human-written controls across Lean, Coq and Isabelle — is under way. The
+scientific target is a question no one currently has data on: **does a prover's search architecture
+(whole-proof vs. stepwise vs. subgoal-decomposition vs. tree search) predict the structure of the
+proofs it produces?**
+
 ## 6. Hypotheses: status after these studies
 
 | # | Hypothesis | Status |
