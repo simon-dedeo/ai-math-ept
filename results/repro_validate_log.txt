@@ -4,3 +4,5 @@
 [4] Cardan_Tartaglia: N=11271 alpha_out=2.33 alpha_in=2.52 alpha_rnd=2.57 dp_real=1.03 dp_rnd=1.03
 [5] Cauchy_Schwarz_inequality: N=12647 alpha_out=2.25 alpha_in=2.97 alpha_rnd=2.71 dp_real=1.10 dp_rnd=1.00
 [6] Cayley_Hamilton: N=11407 alpha_out=2.06 alpha_in=2.34 alpha_rnd=2.73 dp_real=1.12 dp_rnd=1.06
+[7] Ceva: N=15279 alpha_out=2.14 alpha_in=2.58 alpha_rnd=2.79 dp_real=1.00 dp_rnd=1.00
+[8] Desargues: N=18213 alpha_out=2.33 alpha_in=2.65 alpha_rnd=2.63 dp_real=1.01 dp_rnd=1.05

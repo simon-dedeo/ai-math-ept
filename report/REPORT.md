@@ -189,22 +189,34 @@ The ETP decided all 22,028,942 implications among 4,694 magma laws, Lean-verifie
 6,305; Vampire-replayed 1,723; brute force 1,497; finite models 926; egg 832; …) vs. **289
 human-written entries (2.3%)** — and 1,698 counterexample magmas certify 13.6M non-implications.
 
-**4a. The derivation skeleton has no redundancy.** The 8,167,622 true implications rest on a
-skeleton of 10,657 direct proofs (766× amplification by transitivity). On that skeleton:
-- mean derivation chain: **14.2 steps** (max 30) — *longer* than most human proofs;
-- median number of edge-disjoint derivation paths per implied pair: **1** (mean 1.12; only 11% of
-  pairs have ≥ 2 independent routes; none of 400 sampled had ≥ 5);
-- percolation (fig. 1): if each certificate independently fails at rate ε, surviving derived
-  knowledge = 99.8% (ε=0.001), 95.7% (ε=0.01), 58% (ε=0.1). Classical proof networks hold
-  f₂ ≈ 0.99 at ε = 0.01 *by construction of their redundancy*; a redundancy-free corpus decays
-  Humean-style, and is rescued only because the kernel drives ε toward ~0.
+**4a. The derivation skeleton is minimal and single-threaded.** The 8,167,622 true implications rest
+on a skeleton of 10,657 direct proofs (766× amplification by transitivity). On that skeleton:
+- mean derivation chain: **14.2 steps** (max 30) — longer than most human proofs;
+- median number of edge-disjoint derivation paths per implied pair: **1** (mean 1.12);
+- percolation under derivability semantics (fig. 1): if each certificate independently fails at
+  rate ε, the fraction of derived implications still derivable is 99.8% (ε = 0.001), 95.7%
+  (ε = 0.01), 88.4% (ε = 0.03), 58% (ε = 0.1).
 
-**4b. The redundancy was available and was discarded.** The complete Vampire dump (an ATP attempt
-on every one of the 22M pairs) shows **8,173,585 of 8,173,585 true implications — every single
-one — is directly provable by a single ≤5-second ATP call** (99.9% in ≤ 0.13 s). Nature offered a
-complete graph of one-step certificates; the project kept 0.13% of it. Efficiency-optimal, storage-
-minimal, and epistemically single-threaded: the *shape* of recorded mathematics is now determined by
-storage economics and deduplication, not by the needs of a believing mind.
+**Two corrections we owe the reader here.** First, an earlier draft contrasted this with "the many
+independent paths of classical proof networks." That contrast does not survive measurement: running
+the same edge-disjoint path count on the 2022 paper's own Coq proof DAGs gives **1.00–1.12** — the
+same as the ETP, and the same as size-matched random DAGs. Path *disjointness* does not distinguish
+these objects, and we withdraw the claim that it does.
+
+Second, and more importantly, percolation-of-derivability and the 2022 belief model are different
+measures, and an earlier version of figure 3 plotted one against the other. Running the **belief
+model itself** on the ETP skeleton (fig. 3, corrected) gives mean belief 0.976 at ε = 0.01 — below
+individual theorem proofs (≈1.0) and Mathlib (0.9995), but not catastrophically, and *above*
+individual proofs once ε exceeds 0.1. Under the epistemic dynamics of the original paper, the ETP
+skeleton behaves like ordinary mathematics. It has mean degree 2.27 and a heavy out-degree tail
+(α ≈ 2.0) — the same signature the 2022 paper found in proofs.
+
+So the honest statement about the ETP is narrower than "machine mathematics is fragile," and more
+interesting: **its derivability is single-threaded by construction, while its belief-dynamics are
+ordinary.** The fragility is real but it is a property of how the knowledge is *stored* (a minimal
+spanning skeleton) rather than of what it *is*. The strongest evidence for structural impoverishment
+in machine-generated mathematics comes not from here but from §5d, where the machine-generated files
+of this very project reach belief 0.54 under the same model.
 
 Two further reversals of the classical picture:
 
