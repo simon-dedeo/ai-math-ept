@@ -11,3 +11,8 @@ original_data/
 # source PDFs (copyright) stay out of the repo
 *.pdf
 !report/figures/*.pdf
+__pycache__/
+*.pyc
+*.nbc
+*.nbi
+.DS_Store
