@@ -81,3 +81,63 @@ Full commit histories were fetched (`--filter=tree:0`) and grepped for
 **Cleanest sub-corpus by construction**: everything written before ~2023 — mathlib3 (frozen
 2023-10), unit-fractions (Lean 3), corn, coq-stdlib, GeoCoq, fourcolor, odd-order, math-comp,
 and AFP entries dated 2024 or earlier. These cannot contain LLM contamination.
+
+## 4. Matching to the AI corpora already collected
+
+The AI side (`~/ai_math_ept/corpora/`) contains two structurally different populations, and
+they need **different** human controls.
+
+### (a) AI *competition-proof* corpora
+DeepSeek-Prover-V2 miniF2F (438 files), Kimina miniF2F (198), Goedel Lean-workbook (29,750),
+NuminaMath-LEAN (31,634 proofs), AlphaProof IMO-2024 (6), Harmonic Aristotle IMO-2025 (7),
+Seed-Prover IMO/miniF2F/Putnam (~200). Shape: **one self-contained theorem per file,
+short-to-medium proof, no downstream dependents, statement fixed by a benchmark.**
+
+Best human controls, in order:
+1. **compfiles** (already on machine) — 333 human Lean 4 solutions to IMO/USAMO/Putnam/AMC
+   problems, many literally the same items as miniF2F. Same assistant, task and era.
+2. **mathlib4 `Archive/`** — `Imo/` (54 files, 8,631 lines) and `Wiedijk100Theorems/`
+   (14 files, 2,940 lines): human competition/named-theorem proofs at library standard.
+3. **coq-100-theorems** (10 files, 137 `Qed`) — same *theorem list* as Wiedijk100Theorems in a
+   different assistant: the natural assistant-effect control.
+4. **lean-matrix-cookbook** (19 files, 379 lemmas) — many short, independent identity proofs;
+   a good structural analogue of one-shot benchmark proofs when more N is needed.
+5. **math2001** (234 lemmas, elementary) — matches the *difficulty floor* of miniF2F
+   (AMC/AIME level), which compfiles and Archive/Imo do not cover.
+
+Size caveat: the human competition pool totals ~500-800 proofs against tens of thousands of AI
+ones. Comparisons must subsample the AI side or work per-proof rather than per-corpus.
+
+### (b) AI *project-formalization* corpora
+math-inc Sphere-Packing-Lean (Gauss, 830 files / 180k lines), math-inc strongpnt (8 files /
+28k lines), alphaproof-nexus (71 research-level proofs), Seed-Prover miniCTX-v2 (545
+repo-context proofs). Shape: **large multi-file developments with a dependency DAG,
+blueprint-driven, results reused downstream** — the same shape as the 2022 paper's networks.
+
+| AI corpus | closest human control | why |
+|---|---|---|
+| Sphere-Packing-Lean (Gauss; Fourier analysis, modular forms, 180k lines) | **carleson** (48.8k lines, 2,592 thms) + **sphere-eversion** (14.6k) + the human layer of Sphere-Packing-Lean already held | Same subject family (harmonic/Fourier analysis), same blueprint-driven multi-file style, same Lean 4 era. carleson is the single best match. |
+| strongpnt (Gauss; strong PNT, 28k lines) | **PrimeNumberTheoremAnd** (already held), then **unit-fractions** (12.4k lines, Lean 3) and **FLT-regular** | PNT& is literally the same theorem family; unit-fractions gives an analytic-NT human comparison at almost exactly strongpnt's size. |
+| Seed-Prover miniCTX-v2 (proofs into carleson / ConNF / FLT / HepLean) | **the same repos' human commits**: carleson, ConNF, FLT | Strongest possible design: identical ambient library and statement pool, only the author differs. Highest-value comparison in the census. |
+| alphaproof-nexus (Erdos problems, OEIS, Stacks; scattered research lemmas) | **mathlib4 Archive** + **LeanAPAP** + **ExponentialRamsey** | Research-level but self-contained human results in combinatorics and number theory. |
+| any combinatorics-flavoured AI output | **LeanAPAP** (7.2k lines, 666 thms), **ExponentialRamsey** (18.2k, 1,015), **fourcolor** (44.7k, 852 Qed) | Covers additive combinatorics, Ramsey theory and graph theory across two assistants. |
+
+### (c) Replicating the 2022 Coq-network paper
+**fourcolor** (Gonthier-Werner) and **odd-order** (Feit-Thompson) are the same lineage as that
+paper's four-colour and Sylow networks, and **math-comp** is their shared dependency base; the
+three together allow exact reproduction of the earlier network analysis before contrasting it
+with the Lean 4 AI corpora. **corn**, **GeoCoq**, **coq-stdlib** and **hydra-battles** extend the
+Coq control across constructive analysis, geometry, foundations and ordinal logic.
+
+### (d) Era and author-variation controls
+- **mathlib3** (1.12M lines, 98k lemmas, frozen 2023-10) — largest guaranteed pre-LLM Lean corpus.
+- **coq-stdlib** (history to 1999) and **corn** (from ~2003) — 20+ year human baselines.
+- **AFP** — 1,010 entries, 2004-2026, ~700 authors: the only corpus here supporting
+  author-level and year-level random effects at scale.
+
+### (e) Use with care
+- **PhysLean** — AI-assisted by policy (see section 3). Exclude, or restrict to pre-2026-06.
+- **SciLean** — 86k lines but only 2,092 theorems (~24 per 1k lines); largely tactic and
+  metaprogramming code, low proof density.
+- **mathematics_in_lean / theorem_proving_in_lean4 / math2001** — teaching-level; contain
+  exercise stubs with `sorry` that must be filtered out. Useful only as a difficulty-floor control.

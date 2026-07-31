@@ -1,0 +1,59 @@
+slug	authorship	system	organization	architecture	assistant	domain	era
+human-compfiles	human	human	community	human	lean4	competition	2024-2026
+mathematics_in_lean	human	human	Avigad	human	lean4	textbook	2023-2026
+math2001	human	human	Macbeth	human	lean4	textbook	2023-2026
+theorem_proving_in_lean4	human	human	community	human	lean4	textbook	2023-2026
+carleson	human	human	van Doorn et al	human	lean4	analysis	2024-2026
+ConNF	human	human	Wilshaw	human	lean4	set_theory	2022-2026
+FLT	human	human	Buzzard et al	human	lean4	number_theory	2024-2026
+FLT-regular	human	human	community	human	lean4	number_theory	2022-2026
+LeanAPAP	human	human	Bloom-Sisask-Mehta	human	lean4	combinatorics	2023-2026
+ExponentialRamsey	human	human	Mehta	human	lean4	combinatorics	2023-2025
+BonnAnalysis	human	human	Bonn	human	lean4	analysis	2024-2026
+sphere-eversion	human	human	Massot et al	human	lean4	topology	2022-2025
+lean-matrix-cookbook	human	human	community	human	lean4	linear_algebra	2022-2026
+unit-fractions	human	human	Bloom-Mehta	human	lean3	number_theory	2021-2023
+mathlib3	human	human	community	human	lean3	library	2017-2023
+pfr	human	human	Tao et al	human	lean4	combinatorics	2023-2024
+PrimeNumberTheoremAnd	human	human	Kontorovich-Tao	human	lean4	number_theory	2024-2026
+Sphere-Packing-Lean	human	human	Hariharan et al	human	lean4	analysis	2024-2026
+equational_theories	mixed	mixed	Tao et al	mixed	lean4	algebra	2024-2025
+PhysLean	mixed	mixed	community	ai_permitted	lean4	physics	2024-2026
+SciLean	human	human	Dupont	human	lean4	scientific_computing	2022-2026
+odd-order	human	human	Gonthier et al	human	coq	group_theory	2006-2013
+fourcolor	human	human	Gonthier	human	coq	graph_theory	2004-2008
+math-comp	human	human	MathComp	human	coq	library	2007-2026
+GeoCoq	human	human	Narboux et al	human	coq	geometry	2010-2026
+corn	human	human	Nijmegen	human	coq	analysis	2004-2026
+math-classes	human	human	community	human	coq	algebra	2010-2026
+hydra-battles	human	human	Casteran	human	coq	ordinals	2018-2026
+coq-stdlib	human	human	Rocq	human	coq	library	1999-2026
+coq-100-theorems	human	human	community	human	coq	classic	2005-2026
+afp	human	human	AFP	human	isabelle	library	2004-2026
+mathinc-sphere-packing	ai	Gauss	Math Inc	agentic	lean4	analysis	2026
+mathinc-strongpnt	ai	Gauss	Math Inc	agentic	lean4	number_theory	2025
+seed-prover	ai	Seed-Prover	ByteDance	whole_proof_agentic	lean4	competition	2025-2026
+harmonic-aristotle-imo2025	ai	Aristotle	Harmonic	tree_search_agentic	lean4	competition	2025
+alphaproof	ai	AlphaProof	DeepMind	tree_search_rl	lean4	competition	2024
+alphaproof-nexus	ai	AlphaProof	DeepMind	tree_search_rl	lean4	research	2025-2026
+deepseek-prover-v2	ai	DeepSeek-Prover-V2	DeepSeek	subgoal_decomposition	lean4	competition	2025
+deepseek-prover-v1-data	ai	DeepSeek-Prover-V1	DeepSeek	whole_proof	lean4	synthetic	2024
+kimina-prover	ai	Kimina-Prover	Numina-Moonshot	whole_proof	lean4	competition	2025
+kimina-numinamath-lean	ai	Kimina-Prover	Numina-Moonshot	whole_proof	lean4	synthetic	2025
+goedel-lean-workbook-proofs	ai	Goedel-Prover	Princeton	whole_proof	lean4	synthetic	2025
+goedel-v2-sft-proofs	ai	Goedel-Prover-V2	Princeton	whole_proof_selfcorrect	lean4	synthetic	2025
+stp-lean-0320	ai	STP	Dong-Ma	selfplay	lean4	synthetic	2025
+leanabell-sft	ai	Leanabell-Prover	community	whole_proof	lean4	synthetic	2025
+leanabell-v2-coldstart	ai	Leanabell-Prover-V2	community	whole_proof_selfcorrect	lean4	synthetic	2025
+lean-star-plus	ai	Lean-STaR	ScalableMath	stepwise_tactic	lean4	synthetic	2024
+dsp15rl-minif2f-rmaxts	ai	DeepSeek-Prover-V1.5	DeepSeek	tree_search	lean4	competition	2024
+dsp15rl-minif2f-sampling	ai	DeepSeek-Prover-V1.5	DeepSeek	whole_proof	lean4	competition	2024
+dsp15rl-proofnet-sampling	ai	DeepSeek-Prover-V1.5	DeepSeek	whole_proof	lean4	research	2024
+leanagent2603	ai	LeanAgent2603	third_party	agentic	lean4	competition	2026
+rrma-agent-traces	ai	RRMA	third_party	agentic	lean4	mixed	2026
+subgoalxl-isabelle-v4	ai	SubgoalXL	community	subgoal_decomposition	isabelle	competition	2024
+pythagoras-sft	ai	Pythagoras	community	whole_proof	lean4	synthetic	2025
+internlm-lean-workbook	human	mined	Shanghai AI Lab	human	lean4	synthetic	2024
+internlm-lean-github	human	mined	Shanghai AI Lab	human	lean4	library	2024
+axiom	ai	AxiomProver	Axiom Math	agentic_multiagent	lean4	research	2026
+lean_eval	ai	mixed	leanprover	mixed	lean4	research	2026

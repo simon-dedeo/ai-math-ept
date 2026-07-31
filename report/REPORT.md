@@ -340,43 +340,73 @@ Two results, one confirming and one correcting:
   reuse deficit is real only on the size-normalized, per-opportunity measure. Both numbers belong in
   any honest account.
 
-## 5e. Study 10: A census of AI-generated proofs (in progress)
+## 5e. Study 10: A census of 137,382 proofs
 
 To move from a handful of systems to a population, we built a two-tier census pipeline
 (`code/census.py`). **Tier 1** computes per-proof structural metrics and a corpus-level citation
 graph directly from source, with no compilation, so it scales to any repository; **Tier 2** is the
-expensive elaborated proof-term extraction reserved for corpora that build.
+expensive elaborated proof-term extraction, reserved for corpora that build.
 
-The Tier-1 metric that matters most is **vocabulary ratio** — distinct library lemmas invoked in a
-proof divided by total premise references. A low value means the same few names recur again and
-again inside one proof: repetition without reuse, the signature Study 3 identified in Gauss.
+The census now covers **49 corpora and 137,382 proofs**: AI output from AlphaProof, Aristotle,
+Seed-Prover, DeepSeek-Prover V1/V1.5/V2, Kimina, Goedel, Leanabell, STP, Lean-STaR, LeanAgent and
+Math Inc.'s Gauss, against 27 human corpora spanning Lean 4, Lean 3, Coq and Isabelle's AFP
+(8.6M lines, ~480k declarations). The human control was audited for contamination: `carleson`
+carries exactly one Aristotle-proved lemma, `PhysLean` explicitly welcomes AI PRs (excluded from
+strict comparisons), and Lean 3 `mathlib3` — frozen October 2023 — is a guaranteed pre-LLM baseline.
 
-First results, on 16,353 proofs from four corpora, are unambiguous:
+**The headline metric, and an important correction.** Vocabulary ratio (distinct library lemmas
+invoked per proof ÷ total premise references) measures repetition-without-reuse. On a four-corpus
+pilot it looked like a clean separator. **At population scale it is not.** Three levels of analysis
+give three different answers, and the differences between them are the finding:
 
-| corpus | author | median lines | median `have`s | **vocab ratio** |
-|---|---|---|---|---|
-| compfiles | human | 10 | 1 | **0.750** |
-| Seed-Prover | AI | 7 | 0 | 0.600 |
-| Gauss strongPNT | AI | 10 | 1 | 0.534 |
-| Harmonic Aristotle | AI | 34.5 | 6 | 0.469 |
+*Pooled over proofs* (n = 9,679 human, 25,007 AI, Lean 4 only): human 0.700 vs AI 0.611,
+p = 10⁻¹⁷⁴. But with tens of thousands of proofs drawn from a few dozen corpora, this is
+pseudo-replication; the p-value measures sample size, not evidence.
 
-Human 0.750 vs AI 0.600 pooled, Mann–Whitney p = 5×10⁻¹²⁰. Every AI corpus falls below the human
-control, on an independent measure, on corpora that were not used to formulate the hypothesis.
-This makes N5 (repetition-without-reuse as the diagnostic signature of machine authorship) the
-best-supported of the new hypotheses, and gives a metric cheap enough to run over the whole
-population of public AI proof corpora.
+*Controlling for proof length* — the gap survives in every length band, and it **widens sharply
+with length**:
 
-Collection of that population — open-source prover output repositories, HuggingFace proof datasets,
-and a matched set of human-written controls across Lean, Coq and Isabelle — is under way. The
-scientific target is a question no one currently has data on: **does a prover's search architecture
-(whole-proof vs. stepwise vs. subgoal-decomposition vs. tree search) predict the structure of the
-proofs it produces?**
+| proof length (lines) | 1–5 | 6–10 | 11–20 | 21–40 | 41–80 | 80+ |
+|---|---|---|---|---|---|---|
+| human | 0.800 | 0.750 | 0.667 | 0.611 | 0.562 | **0.495** |
+| AI | 0.667 | 0.667 | 0.643 | 0.593 | 0.409 | **0.287** |
+| p | 10⁻⁶⁰ | 10⁻⁵⁸ | 10⁻¹⁸ | 10⁻⁶ | 10⁻³⁹ | 10⁻⁴⁷ |
+
+Short proofs differ modestly; **long proofs differ enormously**. In proofs over 80 lines, AI
+vocabulary ratio collapses to 0.287 against the human 0.495 — the same premises recycled three or
+four times each. Repetition-without-reuse is real, and it is a *long-proof* phenomenon: precisely
+where a human would stop and name a lemma, these systems repeat themselves.
+
+*Treating each corpus as one observation* (the conservative unit, n = 14 human vs 13 AI corpora):
+medians 0.667 vs 0.583, **p = 0.51 — not significant**. Four AI corpora exceed the human median and
+four human corpora fall below the AI median. Corpus-level heterogeneity swamps the authorship
+signal.
+
+So **N5 must be weakened**: repetition-without-reuse is a robust property of AI *proofs* at matched
+length, especially long ones, but it is **not** a reliable corpus-level classifier of machine
+authorship. An earlier draft of this report claimed the latter on the strength of a four-corpus
+convenience sample; that claim is withdrawn. The one metric that separates cleanly at every level
+is **automation share** — AI proofs delegate to closer tactics at twice the human rate (0.250 vs
+0.113, p = 10⁻¹⁹⁴).
+
+**Does search architecture predict proof structure?** Suggestively, but not yet defensibly. Within
+a controlled 6–40-line band, whole-proof generators (Kimina, DeepSeek-V1.5 sampling, Leanabell) sit
+at vocabulary ratio 0.75, while long-horizon agentic and tree-search systems (Seed-Prover, Gauss,
+AlphaProof, Aristotle) sit at 0.52–0.62. But architecture is confounded with corpus identity and
+with problem difficulty — tree-search corpora alone span 0.38 to 0.77 — and the systems attacking
+harder problems are exactly the ones writing longer proofs. Observational corpora cannot separate
+these.
+
+The design that can is a **matched-problem** corpus: the same theorem proved by many systems. We
+found one — `leanprover/lean-eval-submissions`, ~460 public proofs from 15+ 2026 systems over 168
+research-level problems — and harvesting it is the natural next step, along with AxiomMath's
+agentic proofs of IMO 2026, Putnam 2025 and seven Erdős problems.
 
 ## 6. Hypotheses: status after these studies
 
 | # | Hypothesis | Status |
 |---|---|---|
-| H1 | AI proofs have thinner reuse tails / less reuse than human proofs of comparable content | **Supported on size-normalized measures** (Study 3: 3.4× lower per-opportunity citation); **not** on raw never-cited share (Study 8) — size normalization is essential |
+| H1 | AI proofs reuse less than human proofs of comparable content | **Split verdict.** At the elaborated proof-term level, false — AI tails are *heavier* (§2). At the source level, true at matched proof length and dramatic for long proofs (§5e). At corpus level, not significant (p = 0.51). |
 | H2 | AI completions have lower modularity | **Refuted for a like-for-like layer comparison** (Study 8: Q 0.514 Gauss vs 0.509 human, same project) — but confirmed in the extreme (ETP machine files Q = 0.145) |
 | H3 | Subgoal-decomposition provers (DeepSeek-V2, Seed) are structurally closer to humans than whole-proof provers | <!-- FILL from Study 2 --> |
 | H4 | AI proofs are longer with lower per-step information | **Supported** (2× proof length, 4× have-steps, 29% duplicated haves) |
