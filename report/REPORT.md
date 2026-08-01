@@ -126,6 +126,45 @@ Two further observations:
   for lemma reuse.
 
 
+### 1b. Is the heavy-tailed-reuse claim real? A validation against null models
+
+Fitting an α is not the same as establishing a model. We ran three checks on the paper's own 49
+networks.
+
+**Model comparison** (Clauset–Shalizi–Newman likelihood ratios on the out-degree):
+
+| power law vs | favoured | rejected | inconclusive |
+|---|---|---|---|
+| exponential | **47 / 47** | 0 | 0 |
+| stretched exponential | 33 | 0 | 14 |
+| lognormal | 4 | **11** | 32 |
+
+The distribution is decisively heavy-tailed — the power law beats an exponential in *every* network.
+But **"power law" specifically is not established against a lognormal**: in 11 of 47 networks the
+lognormal fits better and in 32 the comparison is inconclusive. This is the standard caveat for
+power-law claims and it applies to the 2022 α values as much as to ours. The defensible statement
+is "heavy-tailed reuse with tail index near 2," not "the out-degree is a power law."
+
+**Discrimination against a null.** Is α ≈ 2.2 a property of proofs or of the estimator? Fitting the
+same estimator to three degree sequences per network:
+
+| sequence | α |
+|---|---|
+| out-degree (claimed heavy-tailed) | **2.270 ± 0.136** |
+| in-degree (claimed Poisson) | 2.461 ± 0.195 |
+| size- and density-matched random DAG | 2.746 ± 0.131 |
+
+Real out-degree tails are significantly heavier than matched random DAGs, and heavier than the
+in-degree of the same networks. **The heavy tail is a fact about proofs, not an artifact of the
+fit** — the paper's tinkering-and-reuse claim survives its null model.
+
+**Independent paths**, the estimator-free quantity the EPT mechanism actually needs: real proof DAGs
+average 1.04 edge-disjoint paths between reachable pairs with 3.8% of pairs having ≥2, against 1.01
+and 1.3% for matched random DAGs (Wilcoxon p = 10⁻⁴). Real proofs carry significantly more path
+redundancy than chance — but the absolute level is low, and (per §5a) it does not separate classical
+proofs from the ETP skeleton. Our earlier claim that path disjointness "does not distinguish these
+objects" was too strong: it distinguishes real from random, just not human from machine.
+
 ## 2. Study 2: AI provers vs. humans on the same theorems
 
 **First result, and it reverses the naive prediction.** Fitting the out-degree tail of every
@@ -207,9 +246,10 @@ on a skeleton of 10,657 direct proofs (766× amplification by transitivity). On 
 
 **Two corrections we owe the reader here.** First, an earlier draft contrasted this with "the many
 independent paths of classical proof networks." That contrast does not survive measurement: running
-the same edge-disjoint path count on the 2022 paper's own Coq proof DAGs gives **1.00–1.12** — the
-same as the ETP, and the same as size-matched random DAGs. Path *disjointness* does not distinguish
-these objects, and we withdraw the claim that it does.
+the same edge-disjoint path count on the 2022 paper's own Coq proof DAGs gives **1.04 on average**
+— the same range as the ETP. (Real proofs do carry significantly more redundancy than random DAGs;
+see §1b. But that redundancy does not separate classical proofs from the ETP skeleton, and we
+withdraw the claim that it does.)
 
 Second, and more importantly, percolation-of-derivability and the 2022 belief model are different
 measures, and an earlier version of figure 3 plotted one against the other. Running the **belief
