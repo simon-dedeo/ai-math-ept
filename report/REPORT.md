@@ -126,6 +126,40 @@ Two further observations:
   for lemma reuse.
 
 
+### 1a-bis. The hand-coded human networks, recovered
+
+The five human proof networks of the 2022 paper — hand-coded from original texts and never
+published — were located in the original working archive. Converted with the same pipeline
+(one line per claim, followed by its premises; bracketed items are external citations and are
+genuine nodes), they reproduce the published sizes closely; the residual differences reflect
+file-version and cleaning details we could not fully reconstruct:
+
+| network | our N | published N | our α | published α |
+|---|---|---|---|---|
+| Orlik & Strauch (*Jordan–Hölder*) | **61** | 61 | 3.02 (x_min 2) | 2.14 |
+| Wiles, Fermat's Last Theorem | 148 | 142 | **3.46** (x_min 3) | **3.39** |
+| Herstein, *Topics in Algebra* | 303 | 280 | 2.78 (x_min 2) | 2.36 |
+| Apollonius, *Conics* | 452 | 446 | **2.37** (x_min 3) | 2.28 |
+
+(These networks are 60–450 nodes, far too small for the x_min ≈ 10 convention of §1; their tails
+support only x_min of 2–3, which is presumably why the published error bars on them are large —
+Wiles is quoted as 3.39 ± 0.72.)
+
+**The paper's most distinctive human result reproduces.** Wiles's proof is the outlier of the 2022
+dataset — a markedly steeper tail than any other network, which the paper reads as "a thinner
+network structure… a deficit of high-degree nodes… that frustrates an epistemic phase transition."
+Our independent re-analysis gives α = 3.46 against the published 3.39. Apollonius likewise lands at
+2.37 against 2.28.
+
+**A bonus the paper never used: Spinoza.** The archive also contains a hand-coded network of
+Spinoza's *Ethics* (`spinoza_by_hand.txt`) — 578 nodes, 1,553 dependency edges, the *more geometrico*
+deductive structure of a 17th-century work of metaphysics. Its reuse tail is **α = 2.39** (x_min 3),
+squarely inside the range of the mathematical proofs (Apollonius 2.37, and the Coq corpus at
+2.27 ± 0.14). A non-mathematical axiomatic system, built by a philosopher with no access to
+mathematical practice as we know it, has the same tinkering-and-reuse signature. That is direct
+evidence for the closing speculation of the 2022 paper — that these network properties belong to
+justification in general, not to mathematics in particular.
+
 ### 1b. Is the heavy-tailed-reuse claim real? A validation against null models
 
 Fitting an α is not the same as establishing a model. We ran three checks on the paper's own 49

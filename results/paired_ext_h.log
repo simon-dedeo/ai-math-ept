@@ -1,0 +1,159 @@
+500 jobs, 0 skipped
+[ok ] pair_01eb3f84
+[ok ] pair_00b23e63
+[FAIL] pair_01d89852  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_01d89852_x.lean:8:2: error: unsolved goals
+case h
+h1 : √2 ^ 3 = √2 * 2
+h2 : √2 ^ 4 = 4
+⊢ 10 + √2 * 8 - 20 - √2 * 8 + 16 = 6
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_01d89852_x.lean:278:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_18767 term0: 7116 nodes, 13602 edges, 13602 visits
+[ok] algebra_18767 term: 20609 nodes, 39396 edges, 1 levels
+[ok] algebra_18767 decl: 11177 nodes, 235967 edges, 29
+[FAIL] pair_00c3ecd5  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_00c3ecd5_x.lean:36:14: error(lean.unknownIdentifier): Unknown identifier `div_le_div`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_00c3ecd5_x.lean:259:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_21211 term0: 1956 nodes, 3586 edges, 3586 visits
+[ok] algebra_21211 term: 20744 nodes, 39404 edges, 2 levels
+[ok] algebra_21211 decl: 6903 nodes, 148862 edges, 23 levels
+
+[FAIL] pair_04759e39  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_04759e39_x.lean:33:10: error(lean.unknownIdentifier): Unknown constant `Real.sqrt_eq_iff_sq_eq`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_04759e39_x.lean:35:10: error(lean.unknownIdentifier): Unknown constant `Real.sqrt_eq_iff_sq_eq`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_04759e39_x.lean:258:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_310654 term0: 5564 nodes, 10670 edges, 10670 visi
+[ok ] pair_04aeef30
+[ok ] pair_050e20e0
+[ok ] pair_064daf4b
+[FAIL] pair_06fcc9a3  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_06fcc9a3_x.lean:16:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  deriv (?m.293 * ?m.294) ?m.289
+in the target expression
+  2 * deriv (fun x => f x * g x * h x) 0 = 2 * (deriv f 0 * g 0 * h 0 + f 0 * deriv g 0 * h 0 + f 0 * g 0 * deriv h 0)
+
+f g h : ℝ → ℝ
+df : Differentiable ℝ f
+dg : Differentiable ℝ g
+dh : Differentiable ℝ h
+hf : f 0 = 1
+hg : g 0 = 2
+hh : h 0 = 3
+hgh : deriv (fun x => g x * h x) 0 = 4
+hhf : deriv (fun x => h x * f x) 0 = 5
+hfg : deriv (fun x => f x * g x) 0 = 6
+⊢ 2 * deriv (fun x => f x * g x * h
+[ok ] pair_070c0d6f
+[FAIL] pair_09fe542e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_09fe542e_x.lean:54:18: error(lean.unknownIdentifier): Unknown constant `Int.add_one_le_ceil_iff`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_09fe542e_x.lean:66:17: error(lean.unknownIdentifier): Unknown constant `Int.add_one_le_ceil_iff`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_09fe542e_x.lean:295:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] calculus_13255 term0: 6558 nodes, 12460 edges, 12460 vi
+[ok ] pair_06e244fd
+[ok ] pair_0a7bd2c7
+[ok ] pair_0a47d39b
+[ok ] pair_0a891d0e
+[ok ] pair_0b123512
+[ok ] pair_0a983018
+[ok ] pair_0b319a0b
+[FAIL] pair_0b7ad5b2  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_0b7ad5b2_x.lean:35:4: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_0b7ad5b2_x.lean:62:4: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_0b7ad5b2_x.lean:297:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_16588 term0: 1356 nodes, 2328 edges, 2328 visits
+[ok] algebra_16588 term: 25305 nodes, 48285 edges, 2 levels
+[ok] algebra_16588 decl: 5
+[FAIL] pair_0e32bcce  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_0e32bcce_x.lean:12:93: error: unsolved goals
+x : ℝ
+hx : x ≥ 100
+⊢ (1 - 10 / 100) * x > (1 - 20 / 100) * x ∧ (1 - 10 / 100) * x > (1 - 18 / 100) * (x - 100)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_0e32bcce_x.lean:14:0: error: unexpected identifier; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_0e32bcce_x.lean:236:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_94594 term0: 235
+[ok ] pair_0bc9ff8b
+[ok ] pair_0c9ecd6b
+[ok ] pair_0f3deadd
+[ok ] pair_0f421760
+[ok ] pair_0f905113
+[FAIL] pair_11814e28  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_11814e28_x.lean:17:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  deriv (?m.122 + ?m.123) ?m.124
+in the target expression
+  deriv (fun x => a * cos x + sin x) x = -a * sin x + cos x
+
+f : ℝ → ℝ
+hf : ∀ (x : ℝ), f x = deriv f (π / 4) * cos x + sin x
+h1 : deriv f (π / 4) = deriv (fun x => deriv f (π / 4) * cos x + sin x) (π / 4)
+a x : ℝ
+⊢ deriv (fun x => a * cos x + sin x) x = -a * sin x + cos x
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_11814e28_x.lean:256:21: warning: `String.trim` has been deprecated: Use `Stri
+[ok ] pair_11362c17
+[ok ] pair_121126b4
+[ok ] pair_136afae1
+[ok ] pair_13d805d4
+[ok ] pair_13dbafa5
+[FAIL] pair_1411d12d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_1411d12d_x.lean:25:93: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1411d12d_x.lean:26:93: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1411d12d_x.lean:27:93: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1411d12d_x.lean:256:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_606079 term0: 13817 nodes, 27019 edge
+[ok ] pair_1435e660
+[FAIL] pair_149ec314  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_149ec314_x.lean:24:11: error: invalid 'calc' step, left-hand side is
+  x ^ 3 + x ^ 4 * a * 3 + x ^ 5 * 3 + x ^ 5 * a ^ 2 * 3 + x ^ 6 * a * 6 + x ^ 6 * a ^ 3 + x ^ 7 * 3 +
+        x ^ 7 * a ^ 2 * 3 +
+      x ^ 8 * a * 3 +
+    x ^ 9 : ℝ
+but is expected to be
+  1 + x * a * 3 + x ^ 2 * 3 + x ^ 2 * a ^ 2 * 3 + x ^ 3 * a * 6 + x ^ 3 * a ^ 3 + x ^ 4 * 3 + x ^ 4 * a ^ 2 * 3 +
+      x ^ 5 * a * 3 +
+    x ^ 6 : ℝ
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_149ec314_x.lean:296:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instea
+[ok ] pair_149fe16f
+[ok ] pair_149000e5
+[ok ] pair_152731e7
+[ok ] pair_1565703f
+[ok ] pair_171e8749
+[ok ] pair_17275427
+[ok ] pair_17a4d7d8
+[ok ] pair_17ae3e10
+[FAIL] pair_19d5b7ab  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_19d5b7ab_x.lean:29:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_19d5b7ab_x.lean:43:13: error: Application type mismatch: The argument
+  foo
+has type
+  x * (x * 5 + 2) / (x * 5 + 2) = (x * 5 + 2) * 6 / (x * 5 + 2)
+but is expected to have typ
+[ok ] pair_19517b6c
