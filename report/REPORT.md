@@ -542,6 +542,34 @@ problem still explains more structural variance than the system does** — thoug
 is larger here (26%) than the small block suggested (16%). The `have`-step concordance does not
 replicate and should be treated as an artifact of the small lean-eval block.
 
+### 5f-ter. The missing control: how much does one system vary from itself?
+
+Between-system differences are only interpretable against a noise floor — how much do two proofs of
+the *same* theorem by the *same* system differ? The InternLM Lean-Workbook corpus answers this
+directly: it ships a *list* of alternative proofs per theorem from one stepwise system. Using 1,486
+theorems with ≥3 proofs each (9,196 proof samples):
+
+| source of variance | vocabulary ratio | proof length |
+|---|---|---|
+| between theorems | 82.2% | 73.4% |
+| **within theorem, same system (resampling)** | **17.8%** | **26.6%** |
+| *(for comparison)* between systems, §5f-bis | 25.7% | 11.0% |
+
+**For proof length, resampling one system on one theorem generates more variance (26.6%) than system
+identity does (11.0%).** The within-theorem standard deviation is 0.44–0.55 of the between-theorem
+standard deviation on every metric.
+
+This sharply qualifies the "system style" result without contradicting it. Both things are true:
+system *medians* order themselves consistently across problems (Kendall W ≈ 0.7 for length, in two
+independent corpora), *and* the distributions overlap so heavily that a single proof is a weak
+signal of its author. Style is real as a tendency and nearly useless as a classifier — which is the
+same conclusion the corpus-level test reached for vocabulary ratio in §5e, arrived at by a different
+route.
+
+It also explains why the human/AI contrast needed the paired design of §5g to see cleanly: with a
+noise floor this high, only holding the theorem fixed *and* comparing within-statement can resolve
+an authorship effect.
+
 ## 5g. Study 12: Same statement, same length — the decisive paired test
 
 The NuminaMath proof-artifact corpus supplies what nothing else in this project does: for a single

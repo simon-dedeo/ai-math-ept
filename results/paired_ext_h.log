@@ -157,3 +157,28 @@ has type
   x * (x * 5 + 2) / (x * 5 + 2) = (x * 5 + 2) * 6 / (x * 5 + 2)
 but is expected to have typ
 [ok ] pair_19517b6c
+[FAIL] pair_1b9f23f3  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_1b9f23f3_x.lean:14:79: error: unsolved goals
+f : ℕ → ℕ
+h1 : f 1 = 1
+h2 : ∀ n > 0, f (2 * n) = n * f n
+⊢ f (2 ^ 100) = 2 ^ 4950
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1b9f23f3_x.lean:16:0: error: unexpected token 'have'; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1b9f23f3_x.lean:303:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_95206 term0: 159 nodes, 238 edges, 238 visi
+[ok ] pair_19f291ba
+[FAIL] pair_1bd1b908  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_1bd1b908_x.lean:85:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1bd1b908_x.lean:88:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1bd1b908_x.lean:363:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_188296 term0: 11511 nodes, 22266 edges, 22266 visits
+[ok] algebra_188296 term: 31248 nodes, 60380 edges, 1 levels
+[ok] algebra_188296 decl:
