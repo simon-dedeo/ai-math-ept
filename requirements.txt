@@ -1,0 +1,18 @@
+# Pinned environment for the analysis toolkit — these are the versions actually
+# used to produce results/ (verified with `venv/bin/pip freeze` on akdeniz,
+# Python 3.12).
+#
+#   python3 -m venv venv
+#   venv/bin/pip install -r requirements.txt
+#
+# `powerlaw` is required by proofnet.py and test_toolkit.py; omitting it is what
+# made the advertised sanity suite fail during review.
+matplotlib==3.11.1
+networkx==3.6.1
+numba==0.66.0
+numpy==2.4.6
+pandas==3.0.5
+powerlaw==2.0.0
+pyarrow==25.0.0
+python-louvain==0.16
+scipy==1.18.0
