@@ -18,8 +18,8 @@ and isolates the remaining question about the original power-law convention.
 **Reviewing this work?** [`REVIEW.md`](REVIEW.md) maps every claim in the report to the script and
 output file that produced it, lists the seven claims withdrawn during the work and why, and names
 the places the work is weakest. [`results/DATA_INVENTORY.md`](results/DATA_INVENTORY.md) enumerates
-the bulk reproducibility data. These data are excluded from Git, but are mirrored both in this
-working directory on Simon's Mac and at `akdeniz.lan.cmu.edu:~/ai_math_ept/`.
+the bulk reproducibility data. These data are excluded from Git, but Simon retains complete local
+and private cluster mirrors; the versioned derived evidence is sufficient for the public audits.
 
 ## What was found, in one paragraph
 
