@@ -9,6 +9,12 @@ Extending Viteri & DeDeo, *Epistemic phase transitions in mathematical proofs*
 Proofs*](output/pdf/epistemic_decoupling_human_ai_proofs.pdf), with LaTeX source in
 [`report/standalone/`](report/standalone/).
 
+**For Scott Viteri and other readers of the 2022 work:**
+[`SCOTT_GUIDE.md`](SCOTT_GUIDE.md) gives a short route through the new results,
+documents the exact connection to
+[`scottviteri/ManipulateProofTrees`](https://github.com/scottviteri/ManipulateProofTrees),
+and isolates the remaining question about the original power-law convention.
+
 **Reviewing this work?** [`REVIEW.md`](REVIEW.md) maps every claim in the report to the script and
 output file that produced it, lists the seven claims withdrawn during the work and why, and names
 the places the work is weakest. [`results/DATA_INVENTORY.md`](results/DATA_INVENTORY.md) enumerates

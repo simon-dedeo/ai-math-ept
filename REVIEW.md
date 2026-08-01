@@ -24,9 +24,10 @@ Git-ignored local mirror, while `results/census_manifests/` carries the collecti
 manifests, and `results/DATA_INVENTORY.md` records corpus file counts and sizes so
 a reviewer can see what exists without SSH access.
 
-Access: `ssh akdeniz.lan.cmu.edu` (Simon's credentials; the box is a shared
-32-core machine — please `nice -n 15` anything heavy, other users' jobs run there).
-Python env: `~/ai_math_ept/venv/bin/python`. Lean: `export PATH=$HOME/.elan/bin:$PATH`.
+The bulk-data mirrors are private working storage, not anonymous download endpoints.
+The original Coq DAGs are independently available from Scott Viteri's public
+[`ManipulateProofTrees`](https://github.com/scottviteri/ManipulateProofTrees)
+repository. Contact Simon for the larger Lean-network and corpus mirrors.
 
 ## 2. Claim → script → output map
 
