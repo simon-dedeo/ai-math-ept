@@ -312,6 +312,14 @@ def main() -> None:
     require(paired_out["n_pairs"] == 251, "normalized matched out-degree pairs")
     close(paired_out["median_paired_difference_ai_minus_human"], .0254771766, 1e-9,
           "normalized paired out-degree alpha difference")
+    require(out_groups["Matched human Lean root values"]["model_comparisons"]["lognormal"] ==
+            {"n": 274, "power_law_favored": 0, "alternative_favored": 3,
+             "inconclusive": 271},
+            "normalized matched-human power-law versus lognormal counts")
+    require(out_groups["Matched AI Lean root values"]["model_comparisons"]["lognormal"] ==
+            {"n": 261, "power_law_favored": 0, "alternative_favored": 7,
+             "inconclusive": 254},
+            "normalized matched-AI power-law versus lognormal counts")
     require("strong expanded-graph evidence against an exponential does not survive" in flat_tex,
             "out-degree representation qualification missing")
     checks.append("common-schema out-degree boundary sensitivity")
@@ -338,6 +346,15 @@ def main() -> None:
     mean32 = statistics.fmean(paired_belief_average(row) for row in belief_rows)
     require(abs(mean8) < .002 and abs(mean32) < .002,
             "near-zero belief contrast is not stable across chain counts")
+    belief_metrics = belief_metadata["metrics"]
+    close(belief_metrics["theorem_0.01"]["human_median"], .98017113095, 1e-10,
+          "paired human theorem belief at epsilon .01")
+    close(belief_metrics["theorem_0.01"]["ai_median"], .9828125, 1e-10,
+          "paired AI theorem belief at epsilon .01")
+    require("Matched Lean roots, H / AI" in tex and
+            "theorem .980 / .983 (312 pairs)" in flat_tex and
+            "paired test open" in flat_tex,
+            "AI Lean evidence or unmeasured-cell qualification missing from Table 3")
     sanity = (ROOT / "results/test_toolkit.log").read_text()
     chain = re.search(r"chain n=200.*?([0-9.]+).*?expect low", sanity)
     copy = re.search(r"eps=0\.010\s+mean=([0-9.]+)\s+thm=([0-9.]+)", sanity)

@@ -664,7 +664,7 @@ arity itself is representation-dependent, and a Poisson law is not confirmed.  T
 weaken the main epistemic-decoupling result, whose paired structural and belief measurements do not
 rely on a universal degree distribution.
 
-\subsection{What else confirms}
+\subsection{What confirms---and what AI adds}
 
 Modularity is especially stable at the term level: median $Q$ is \CoqModularity{} in the recovered
 Coq graphs and \LeanModularity{} in the human Lean graphs.  At $\epsilon=.01$, both collections reach
@@ -674,27 +674,42 @@ firewall contrast under the updated implementation.  The sign agrees with the or
 modules can localize reversals, but its magnitude should not be compared to the published
 $\Delta\mathcal L_1$: the normalization changed.
 
+The historical question and the AI question use different designs.  The first compares recovered
+Coq with 33 later human Lean formalizations at an expanded-term boundary.  The second compares 312
+human and AI proofs of the same Lean theorem, using root proof terms.  Table~\ref{tab:coqlean}
+reports both rather than allowing the historical comparison to stand in for AI evidence.  A dash
+means that the statistic was not estimated in the paired-root analysis, not that the effect is
+absent.
+
 \begin{table}[h]
 \centering
-\caption{A claim-by-claim comparison.  Except for the explicitly normalized local-arity row,
-medians use the recovered Coq graphs and the 33 expanded human Lean term graphs.  ``Model'' means
-that the result is a consequence of the specified belief dynamics, not a behavioral measurement.}
+\caption{The historical replication and the paired AI extension.  Coq and classic human Lean
+columns use expanded graphs except in the explicitly normalized local-arity row.  The paired
+column uses normalized Lean roots for degree fits and \code{term0} roots for belief.  H/A denotes
+human/AI.  ``Model'' denotes a consequence of the specified belief dynamics, not a behavioral
+measurement.}
 \label{tab:coqlean}
-\small
-\begin{tabularx}{\textwidth}{P{.21\textwidth}P{.20\textwidth}P{.20\textwidth}Y}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{P{.16\textwidth}P{.14\textwidth}P{.14\textwidth}P{.25\textwidth}Y}
 \toprule
-Claim & Recovered Coq & Human Lean terms & Judgment \\
+Claim & Coq expanded & Human Lean expanded & Matched Lean roots, H / AI & Judgment \\
 \midrule
-Reuse tail above degree 10 & $\alpha=\CoqAlpha$ & $\alpha=\LeanAlpha$ & Expanded-graph
-confirmation; root-boundary sensitive \\
+Reuse tail above degree 10 & $\alpha=\CoqAlpha$ & $\alpha=\LeanAlpha$ &
+$\alpha=\NormOutHumanAlpha$ / $\NormOutAIAlpha$ (\NormOutPairN{} pairs) & Expanded replication;
+root-boundary sensitive; paired values close \\
 Heavy tail is specifically a pure power law & Lognormal favored in 2/45; unresolved in 43/45 &
-Lognormal unresolved in 33/33 & Not confirmed \\
-High modularity & median $Q=\CoqModularity$ & median $Q=\LeanModularity$ & Confirmed descriptively \\
-High belief at $\epsilon=.01$ & median theorem belief 1.0; mean-node belief \CoqMeanBelief & median
-theorem belief 1.0; mean-node belief \LeanMeanBelief & Confirmed within the model \\
-Positive modular firewalls & positive in 49/49 & positive in 33/33 & Qualitative confirmation \\
+Lognormal unresolved in 33/33 & Power law beats lognormal in 0/274 H and 0/261 AI fits & Not
+confirmed at either boundary \\
+High modularity & median $Q=\CoqModularity$ & median $Q=\LeanModularity$ & --- / --- & Descriptive
+expanded-graph confirmation; paired test open \\
+High belief at $\epsilon=.01$ & theorem 1.0; mean-node \CoqMeanBelief & theorem 1.0; mean-node
+\LeanMeanBelief & theorem .980 / .983 (312 pairs) & Confirmed within the model; paired endpoint
+nearly invariant \\
+Positive modular firewalls & positive in 49/49 & positive in 33/33 & --- / --- & Qualitative
+expanded-graph confirmation; paired test open \\
 Poisson local arity (normalized roots) & Rejected in \NormCoqReject & Rejected in \NormLeanReject &
-Not confirmed; local arity is grammar-constrained \\
+Rejected in \NormHumanReject{} / \NormAIReject & Not confirmed; all are grammar-constrained \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -712,10 +727,13 @@ analytic scale, not as evidence for a privileged or representation-free atomic s
 
 The overall verdict is therefore precise.  Human Lean terms confirm that fine-grained expanded
 proof graphs can exhibit concentrated reuse, strong modularity, positive firewall structure, and
-high theorem belief under bidirectional dynamics.  They do not justify the stronger claim that all
-proof networks instantiate one pure power law with a universal exponent, or that these summaries
-are unchanged when the graph boundary moves to the root proof value.  Epistemic decoupling depends
-on the paired measurements reported in the main text, not on exact scale freedom.
+high theorem belief under bidirectional dynamics.  The paired AI extension adds near-identical
+root-level reuse indices and theorem belief, as well as the same grammar-constrained local arity;
+paired modularity and firewall comparisons remain open.  None of these results justifies the
+stronger claim that all proof networks instantiate one pure power law with a universal exponent,
+or that network summaries are unchanged when the graph boundary moves to the root proof value.
+Epistemic decoupling depends on the paired measurements reported in the main text, not on exact
+scale freedom.
 
 \section{Supplementary estimates and reproducibility}
 \label{app:repro}
