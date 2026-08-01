@@ -5,7 +5,9 @@
     "sample accounting",
     "same-theorem estimates and manuscript macros",
     "fixed-xmin Coq--Lean confirmation",
-    "Poisson, zero-inflation, and hurdle-model local-arity tests",
+    "native-format historical Poisson and special-zero replication",
+    "common-schema local arity and parser-artifact diagnosis",
+    "common-schema out-degree boundary sensitivity",
     "ORCHARD artifact identity",
     "belief dynamics and Monte Carlo sensitivity",
     "scope and non-equivalence qualifications",
@@ -15,6 +17,8 @@
     "paired_summary": "results/standalone_paper/summary.json",
     "historical_summary": "results/coq_lean_confirmation_xmin10/summary.json",
     "poisson_summary": "results/poisson_indegree/summary.json",
+    "normalized_arity_summary": "results/normalized_term_arity/summary.json",
+    "normalized_outdegree_summary": "results/normalized_outdegree/summary.json",
     "manuscript": "report/standalone/main.tex"
   }
 }

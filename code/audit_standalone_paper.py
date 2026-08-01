@@ -15,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 TEX = ROOT / "report/standalone/main.tex"
 NUMBERS = ROOT / "report/standalone/numbers.tex"
 POISSON_NUMBERS = ROOT / "report/standalone/poisson_numbers.tex"
+NORMALIZED_ARITY_NUMBERS = ROOT / "report/standalone/normalized_arity_numbers.tex"
+NORMALIZED_OUTDEGREE_NUMBERS = ROOT / "report/standalone/normalized_outdegree_numbers.tex"
 OUT = ROOT / "results/paper_claim_audit.json"
 
 
@@ -79,11 +81,19 @@ def main() -> None:
     tex = TEX.read_text()
     macros = macro_map(NUMBERS.read_text())
     poisson_macros = macro_map(POISSON_NUMBERS.read_text())
+    normalized_arity_macros = macro_map(NORMALIZED_ARITY_NUMBERS.read_text())
+    normalized_outdegree_macros = macro_map(NORMALIZED_OUTDEGREE_NUMBERS.read_text())
     paired = json.loads((ROOT / "results/standalone_paper/summary.json").read_text())
     historical = json.loads(
         (ROOT / "results/coq_lean_confirmation_xmin10/summary.json").read_text()
     )
     poisson = json.loads((ROOT / "results/poisson_indegree/summary.json").read_text())
+    normalized_arity = json.loads(
+        (ROOT / "results/normalized_term_arity/summary.json").read_text()
+    )
+    normalized_outdegree = json.loads(
+        (ROOT / "results/normalized_outdegree/summary.json").read_text()
+    )
     coq_tail_fits = read_csv(
         ROOT / "results/coq_lean_confirmation_xmin10/coq_model_comparisons_xmin10.csv"
     )
@@ -192,7 +202,8 @@ def main() -> None:
             "fixed-tail lognormal eligibility changed")
     checks.append("fixed-xmin Coq--Lean confirmation")
 
-    # Direct local-arity distribution tests, including the special-zero check.
+    # Native-format distribution tests are retained as a historical replication,
+    # not treated as a comparable Coq--Lean measurement.
     poisson_groups = poisson["corpora"]
     expected_poisson = {
         "Coq expanded terms": (49, {"cmp": 35, "negative_binomial": 14}),
@@ -229,10 +240,81 @@ def main() -> None:
     close(float(poisson_macros["CoqZIPPi"]),
           poisson_groups["Coq expanded terms"]["median_zip_zero_inflation"], .0005,
           "Coq ZIP mixing-weight macro")
-    require("ZIP is rejected in all 49 and is never the best full-distribution model" in
-            re.sub(r"\s+", " ", tex),
-            "missing special-zero conclusion")
-    checks.append("Poisson, zero-inflation, and hurdle-model local-arity tests")
+    flat_tex = re.sub(r"\s+", " ", tex)
+    require("withdraw the direct native-format Coq--Lean comparison" in flat_tex,
+            "native local-arity contrast was not explicitly withdrawn")
+    checks.append("native-format historical Poisson and special-zero replication")
+
+    # Common-schema local arity: binary App, binder-name removal, and root proof
+    # values on both sides.  This is the cross-language evidence used in print.
+    normalized_groups = normalized_arity["shared_binary_core"]
+    normalized_expected = {
+        "Coq root values": (45, "NormCoq", .9902912621, 2.009708738),
+        "Human Lean root values": (29, "NormLean", .9976247031, 2.0),
+        "Matched human Lean root values": (312, "NormHuman", .9981016551, 2.000374002),
+        "Matched AI Lean root values": (312, "NormAI", .9977398902, 2.000912014),
+    }
+    for corpus, (n, macro, degree_two, mean) in normalized_expected.items():
+        group = normalized_groups[corpus]
+        require(group["n_networks"] == n, f"{corpus} normalized sample size")
+        require(group["poisson_rejected_bh_0_05"] == n,
+                f"{corpus} normalized ZTP rejection count")
+        require(group["zip_rejected_bh_0_05"] == n,
+                f"{corpus} normalized ZIP rejection count")
+        require(group["aic_winners"] == {"cmp": n}, f"{corpus} normalized positive AIC")
+        require(group["mixed_model_aic_winners"] == {"hurdle_cmp": n},
+                f"{corpus} normalized full AIC")
+        close(group["median_fraction_degree_2"], degree_two, 1e-9,
+              f"{corpus} normalized degree-two share")
+        close(group["median_positive_mean"], mean, 1e-9,
+              f"{corpus} normalized positive mean")
+        require(normalized_arity_macros[f"{macro}N"] == str(n), f"{macro}N macro")
+        require(normalized_arity_macros[f"{macro}Reject"] == f"{n}/{n}",
+                f"{macro}Reject macro")
+        require(normalized_arity_macros[f"{macro}ZIPReject"] == f"{n}/{n}",
+                f"{macro}ZIPReject macro")
+    native = normalized_arity["native_representation_diagnostic"]
+    close(native["Coq expanded terms"]["application_mean_degree"], 4.012677410, 1e-9,
+          "native Coq application arity")
+    close(native["Human Lean expanded terms"]["application_mean_degree"], 2.0, 1e-12,
+          "native Lean application arity")
+    for corpus, group in normalized_arity["all_constructor_sensitivity"].items():
+        n = group["n_networks"]
+        require(group["poisson_rejected_bh_0_05"] == n and
+                group["zip_rejected_bh_0_05"] == n and
+                group["mixed_model_aic_winners"] == {"hurdle_cmp": n},
+                f"{corpus} all-constructor arity sensitivity")
+    checks.append("common-schema local arity and parser-artifact diagnosis")
+
+    # Reuse-tail sensitivity under the same root-proof normalization.
+    out_groups = normalized_outdegree["corpora"]["shared binary core"]
+    for corpus, n, fits, alpha, prefix in (
+        ("Coq root values", 48, 23, 2.3403715833, "NormOutCoq"),
+        ("Human Lean root values", 33, 12, 2.4891065984, "NormOutLean"),
+    ):
+        group = out_groups[corpus]
+        require(group["n_networks"] == n and group["n_fixed_xmin_fits"] == fits,
+                f"{corpus} normalized out-degree eligibility")
+        close(group["median_alpha_xmin10"], alpha, 1e-9,
+              f"{corpus} normalized out-degree alpha")
+        require(normalized_outdegree_macros[f"{prefix}N"] == str(n), f"{prefix}N macro")
+        require(normalized_outdegree_macros[f"{prefix}Fits"] == str(fits),
+                f"{prefix}Fits macro")
+    require(out_groups["Coq root values"]["model_comparisons"]["exponential"] ==
+            {"n": 23, "power_law_favored": 3, "alternative_favored": 4,
+             "inconclusive": 16},
+            "normalized Coq power-law versus exponential counts")
+    require(out_groups["Human Lean root values"]["model_comparisons"]["exponential"] ==
+            {"n": 12, "power_law_favored": 1, "alternative_favored": 1,
+             "inconclusive": 10},
+            "normalized Lean power-law versus exponential counts")
+    paired_out = normalized_outdegree["matched_pairs"]["shared binary core"]
+    require(paired_out["n_pairs"] == 251, "normalized matched out-degree pairs")
+    close(paired_out["median_paired_difference_ai_minus_human"], .0254771766, 1e-9,
+          "normalized paired out-degree alpha difference")
+    require("strong expanded-graph evidence against an exponential does not survive" in flat_tex,
+            "out-degree representation qualification missing")
+    checks.append("common-schema out-degree boundary sensitivity")
 
     # The exact artifact that was reproduced on ORCHARD and cited in the appendix.
     archive = ROOT / "results/standalone_paper/standalone_paper_outputs.tar.gz"
@@ -314,6 +396,8 @@ def main() -> None:
             "paired_summary": "results/standalone_paper/summary.json",
             "historical_summary": "results/coq_lean_confirmation_xmin10/summary.json",
             "poisson_summary": "results/poisson_indegree/summary.json",
+            "normalized_arity_summary": "results/normalized_term_arity/summary.json",
+            "normalized_outdegree_summary": "results/normalized_outdegree/summary.json",
             "manuscript": "report/standalone/main.tex",
         },
     }

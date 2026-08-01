@@ -65,6 +65,8 @@ does not accumulate.**
 | `repro_xmin.py`, `implied_xmin.py`, `xmin_robust.py`, `repro_alpha.py` | reproduction of Table 1 and the x_min-convention analysis |
 | `repro_validate.py` | power-law vs alternative distributions; random-DAG null models |
 | `poisson_indegree_appendix.py` | direct Poisson, ZIP, hurdle, NB, and CMP tests of local arity in Coq and human/AI Lean |
+| `normalized_term_arity.py` | common-schema Coq/Lean local-arity test: binary applications, binder-name removal, root proof values |
+| `normalized_outdegree_sensitivity.py` | fixed-x_min reuse-tail sensitivity under that same normalized root-proof boundary |
 | `convert_coq_dags.py`, `convert_hand_networks.py` | import the 2022 paper's own machine and hand-coded networks |
 | `study4_etp.py`, `study4b_vampire.py`, `etp_belief.py` | Equational Theories Project: skeleton, percolation, ATP difficulty census |
 | `study5_mathlib.py` | belief dynamics on all of Mathlib (308k declarations, 8.4M edges) |
@@ -89,8 +91,17 @@ random DAGs (α 2.27 vs 2.75), so heavy-tailed reuse is a fact about proofs rath
 of the fit. It is *not* separable from a lognormal, which is the standard caveat for power-law
 claims and applies to the published values equally.
 
-`poisson_indegree_appendix.py` tests the complementary in-degree claim directly. Poisson is rejected
-in all 49 recovered Coq networks, all 33 expanded human Lean networks, and every network in 312
-same-theorem human/AI Lean pairs. Giving leaves a special zero term does not rescue it: ZIP is never
-the AIC winner, while hurdle CMP or negative binomial models win because the principal mismatch is
-among positive local arities.
+`poisson_indegree_appendix.py` reproduces the complementary in-degree claim in each corpus's native
+graph format. It rejects Poisson in all 49 recovered Coq networks; giving leaves a special zero term
+does not rescue the fit. Its original direct Coq--Lean contrast is withdrawn, however, because
+CoqAST applications are variadic while Lean applications are binary. The apples-to-apples
+`normalized_term_arity.py` analysis makes applications binary on both sides, removes Coq binder-name
+children, and uses root proof values. The degree-two share then becomes 0.9903 in Coq and 0.9976 in
+human Lean. Every eligible graph still rejects both zero-truncated and zero-inflated Poisson, with
+hurdle CMP preferred. The conclusion is about grammar-constrained local arity, not a cognitive
+signature.
+
+The same normalization also qualifies out-degree. At fixed x_min = 10 the median exponent remains
+near two (2.340 in Coq, 2.489 in human Lean), but only 23/48 and 12/33 root proofs are estimable and
+most power-law-versus-exponential tests are inconclusive. Strong heavy-tail evidence therefore
+belongs to the expanded-network scale; it is not invariant to moving the boundary to one root proof.

@@ -1,0 +1,97 @@
+corpus,model,degree,probability
+Coq root values,empirical,1,0.00020717340190197026
+Coq root values,empirical,2,0.9847459481077167
+Coq root values,empirical,3,0.01504687849038138
+Coq root values,empirical,4,0.0
+Coq root values,empirical,5,0.0
+Coq root values,empirical,6,0.0
+Coq root values,empirical,7,0.0
+Coq root values,empirical,>7,0.0
+Coq root values,poisson,1,0.401373925834808
+Coq root values,poisson,2,0.32373878852445537
+Coq root values,poisson,3,0.17411305965477386
+Coq root values,poisson,4,0.07024454382969199
+Coq root values,poisson,5,0.022676096245372583
+Coq root values,poisson,6,0.006101382865393397
+Coq root values,poisson,7,0.0014074341515803966
+Coq root values,poisson,>7,0.0003447688939243903
+Coq root values,cmp,1,0.00020708190393440464
+Coq root values,cmp,2,0.9847462770655073
+Coq root values,cmp,3,0.015046512706244837
+Coq root values,cmp,4,1.28324295854031e-07
+Coq root values,cmp,5,1.8756960072481892e-14
+Coq root values,cmp,6,4.1029213448051684e-23
+Coq root values,cmp,7,2.3292272050441432e-33
+Coq root values,cmp,>7,1.2927930331190711e-15
+Human Lean root values,empirical,1,0.0033938297045027653
+Human Lean root values,empirical,2,0.9935596236606344
+Human Lean root values,empirical,3,0.0030465466348630122
+Human Lean root values,empirical,4,0.0
+Human Lean root values,empirical,5,0.0
+Human Lean root values,empirical,6,0.0
+Human Lean root values,empirical,7,0.0
+Human Lean root values,empirical,>7,0.0
+Human Lean root values,poisson,1,0.4065308517133226
+Human Lean root values,poisson,2,0.32377362731009995
+Human Lean root values,poisson,3,0.17193703421676226
+Human Lean root values,poisson,4,0.0684903720125431
+Human Lean root values,poisson,5,0.021829822905097378
+Human Lean root values,poisson,6,0.0057990936272594735
+Human Lean root values,poisson,7,0.0013206681035886167
+Human Lean root values,poisson,>7,0.00031853011132658855
+Human Lean root values,cmp,1,0.003393835113700849
+Human Lean root values,cmp,2,0.9935596333914349
+Human Lean root values,cmp,3,0.003046530829130567
+Human Lean root values,cmp,4,6.657361535232456e-10
+Human Lean root values,cmp,5,4.092035591982495e-18
+Human Lean root values,cmp,6,2.813636877584634e-28
+Human Lean root values,cmp,7,3.5725845821252835e-40
+Human Lean root values,cmp,>7,1.6232226291071255e-15
+Matched human Lean root values,empirical,1,0.0009829752845736228
+Matched human Lean root values,empirical,2,0.996767401962906
+Matched human Lean root values,empirical,3,0.002249622752519776
+Matched human Lean root values,empirical,4,0.0
+Matched human Lean root values,empirical,5,0.0
+Matched human Lean root values,empirical,6,0.0
+Matched human Lean root values,empirical,7,0.0
+Matched human Lean root values,empirical,>7,0.0
+Matched human Lean root values,poisson,1,0.4059494588777615
+Matched human Lean root values,poisson,2,0.3237989917795577
+Matched human Lean root values,poisson,3,0.17218714390840031
+Matched human Lean root values,poisson,4,0.06867537822239791
+Matched human Lean root values,poisson,5,0.021913219137610882
+Matched human Lean root values,poisson,6,0.005827011673243724
+Matched human Lean root values,poisson,7,0.0013281763867395173
+Matched human Lean root values,poisson,>7,0.00032062001428758617
+Matched human Lean root values,cmp,1,0.0009829639239713566
+Matched human Lean root values,cmp,2,0.9967673681051116
+Matched human Lean root values,cmp,3,0.00224965027962134
+Matched human Lean root values,cmp,4,1.7691278658340277e-08
+Matched human Lean root values,cmp,5,1.8861521237301978e-14
+Matched human Lean root values,cmp,6,6.387091277230596e-22
+Matched human Lean root values,cmp,7,9.935010344620425e-31
+Matched human Lean root values,cmp,>7,1.402012409302281e-15
+Matched AI Lean root values,empirical,1,0.0009801391084510234
+Matched AI Lean root values,empirical,2,0.9963109374217259
+Matched AI Lean root values,empirical,3,0.0027089234698234503
+Matched AI Lean root values,empirical,4,0.0
+Matched AI Lean root values,empirical,5,0.0
+Matched AI Lean root values,empirical,6,0.0
+Matched AI Lean root values,empirical,7,0.0
+Matched AI Lean root values,empirical,>7,0.0
+Matched AI Lean root values,poisson,1,0.40579019127479243
+Matched AI Lean root values,poisson,2,0.32379981863763746
+Matched AI Lean root values,poisson,3,0.17225479826732676
+Matched AI Lean root values,poisson,4,0.06872876501439962
+Matched AI Lean root values,poisson,5,0.02193851674436862
+Matched AI Lean root values,poisson,6,0.005835882939882259
+Matched AI Lean root values,poisson,7,0.0013306727092299642
+Matched AI Lean root values,poisson,>7,0.0003213544123617913
+Matched AI Lean root values,cmp,1,0.0009801318743554671
+Matched AI Lean root values,cmp,2,0.9963109559554317
+Matched AI Lean root values,cmp,3,0.0027089021129022253
+Matched AI Lean root values,cmp,4,1.0057306234199639e-08
+Matched AI Lean root values,cmp,5,4.8640904115756065e-15
+Matched AI Lean root values,cmp,6,6.675776895692613e-23
+Matched AI Lean root values,cmp,7,3.677609423023896e-32
+Matched AI Lean root values,cmp,>7,1.582423650803869e-15

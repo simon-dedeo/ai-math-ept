@@ -1,0 +1,355 @@
+normalized 10/49 Coq roots
+normalized 20/49 Coq roots
+normalized 30/49 Coq roots
+normalized 40/49 Coq roots
+normalized 50/312 matched pairs
+normalized 100/312 matched pairs
+normalized 150/312 matched pairs
+normalized 200/312 matched pairs
+normalized 250/312 matched pairs
+normalized 300/312 matched pairs
+{
+  "normalization": {
+    "scope": "root proof value only; no recursively expanded declarations or theorem type",
+    "application": "binary",
+    "binders": "binder names removed; domain and body retained",
+    "let": "type, value, and body retained",
+    "primary_positive_sample": [
+      "App",
+      "Lam",
+      "Let",
+      "Pi"
+    ],
+    "system_specific_constructors": "retained only in all-constructor sensitivity"
+  },
+  "exclusions": {
+    "Coq root values": [
+      {
+        "name": "Zgcd_is_gcd",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 16
+      },
+      {
+        "name": "euclid_book",
+        "reason": "hand-coded dependency list has no root proof AST"
+      },
+      {
+        "name": "four_color",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 14
+      },
+      {
+        "name": "sum_of_two_squares",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 15
+      }
+    ],
+    "Human Lean root values": [
+      {
+        "name": "bertrand_postulate_term",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 0
+      },
+      {
+        "name": "law_of_cosines_term",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 0
+      },
+      {
+        "name": "reals_uncountable_term",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 2
+      },
+      {
+        "name": "sqrt2_irrational_term",
+        "reason": "fewer than 20 positive shared-core nodes",
+        "positive_core_nodes": 6
+      }
+    ],
+    "Matched human Lean root values": [],
+    "Matched AI Lean root values": []
+  },
+  "native_representation_diagnostic": {
+    "note": "pooled nodes; diagnostic only because native constructor schemas differ",
+    "Coq expanded terms": {
+      "positive_nodes": 687686,
+      "positive_mean": 3.5969773995689893,
+      "degree_two_share": 0.10908030700057875,
+      "application_share_of_positive": 0.5901530640437641,
+      "application_mean_degree": 4.012677409816677
+    },
+    "Human Lean expanded terms": {
+      "positive_nodes": 569549,
+      "positive_mean": 1.9702571683911305,
+      "degree_two_share": 0.9668720338372994,
+      "application_share_of_positive": 0.8473037438394239,
+      "application_mean_degree": 2.0
+    },
+    "Matched human Lean term0": {
+      "positive_nodes": 2190591,
+      "positive_mean": 1.998242026923328,
+      "degree_two_share": 0.9966406325964089,
+      "application_share_of_positive": 0.9494373892707493,
+      "application_mean_degree": 2.0
+    },
+    "Matched AI Lean term0": {
+      "positive_nodes": 2259772,
+      "positive_mean": 1.9982657542442335,
+      "degree_two_share": 0.9962009441660487,
+      "application_share_of_positive": 0.9690039526111484,
+      "application_mean_degree": 2.0
+    }
+  },
+  "shared_binary_core": {
+    "Coq root values": {
+      "n_networks": 45,
+      "median_nodes": 625.0,
+      "median_positive_nodes": 521.0,
+      "median_zero_fraction": 0.18257874015748032,
+      "median_positive_mean": 2.0097087378640777,
+      "median_positive_variance": 0.00961447827316429,
+      "median_variance_ratio_to_ztp": 0.008014331102447468,
+      "median_fraction_degree_2": 0.9902912621359223,
+      "median_poisson_ks": 0.40306736794917625,
+      "poisson_rejected_p_lt_0_05": 45,
+      "poisson_rejected_bh_0_05": 45,
+      "zip_rejected_p_lt_0_05": 45,
+      "zip_rejected_bh_0_05": 45,
+      "aic_winners": {
+        "cmp": 45
+      },
+      "median_delta_aic_poisson_cmp": 1159.727200794066,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.1559561185842906,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 29,
+      "zip_positive_mixing_weight_n": 16,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 45
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.32718301720543885,
+      "median_delta_aic_zip_hurdle_cmp": 1172.5201693046224,
+      "median_delta_aic_zip_best_full_model": 1172.5201693046224,
+      "median_delta_aic_hurdle_poisson_cmp": 1159.727200794066
+    },
+    "Human Lean root values": {
+      "n_networks": 29,
+      "median_nodes": 518.0,
+      "median_positive_nodes": 421.0,
+      "median_zero_fraction": 0.18613138686131386,
+      "median_positive_mean": 2.0,
+      "median_positive_variance": 0.002369654876693317,
+      "median_variance_ratio_to_ztp": 0.0020010384038662084,
+      "median_fraction_degree_2": 0.997624703087886,
+      "median_poisson_ks": 0.4053322646417787,
+      "poisson_rejected_p_lt_0_05": 29,
+      "poisson_rejected_bh_0_05": 29,
+      "zip_rejected_p_lt_0_05": 29,
+      "zip_rejected_bh_0_05": 29,
+      "aic_winners": {
+        "cmp": 29
+      },
+      "median_delta_aic_poisson_cmp": 932.9113435569218,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.2159414336268926,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 19,
+      "zip_positive_mixing_weight_n": 10,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 29
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.3287205965827669,
+      "median_delta_aic_zip_hurdle_cmp": 933.354143647133,
+      "median_delta_aic_zip_best_full_model": 933.354143647133,
+      "median_delta_aic_hurdle_poisson_cmp": 932.9113435569218
+    },
+    "Matched human Lean root values": {
+      "n_networks": 312,
+      "median_nodes": 2928.5,
+      "median_positive_nodes": 2717.5,
+      "median_zero_fraction": 0.07718207718207717,
+      "median_positive_mean": 2.0003740017063656,
+      "median_positive_variance": 0.0018968960904066322,
+      "median_variance_ratio_to_ztp": 0.0015961041084100046,
+      "median_fraction_degree_2": 0.9981016551456967,
+      "median_poisson_ks": 0.4054647060759668,
+      "poisson_rejected_p_lt_0_05": 312,
+      "poisson_rejected_bh_0_05": 312,
+      "zip_rejected_p_lt_0_05": 312,
+      "zip_rejected_bh_0_05": 312,
+      "aic_winners": {
+        "cmp": 312
+      },
+      "median_delta_aic_poisson_cmp": 6040.357409213098,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.2251836623433627,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 295,
+      "zip_positive_mixing_weight_n": 17,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 312
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.3713014651658285,
+      "median_delta_aic_zip_hurdle_cmp": 6343.422543126461,
+      "median_delta_aic_zip_best_full_model": 6343.422543126461,
+      "median_delta_aic_hurdle_poisson_cmp": 6040.357409213098
+    },
+    "Matched AI Lean root values": {
+      "n_networks": 312,
+      "median_nodes": 3409.5,
+      "median_positive_nodes": 3206.5,
+      "median_zero_fraction": 0.06768148625429553,
+      "median_positive_mean": 2.0009120140885255,
+      "median_positive_variance": 0.002258621828211601,
+      "median_variance_ratio_to_ztp": 0.0019002319850370253,
+      "median_fraction_degree_2": 0.9977398902057255,
+      "median_poisson_ks": 0.40541118542328747,
+      "poisson_rejected_p_lt_0_05": 312,
+      "poisson_rejected_bh_0_05": 312,
+      "zip_rejected_p_lt_0_05": 312,
+      "zip_rejected_bh_0_05": 312,
+      "aic_winners": {
+        "cmp": 312
+      },
+      "median_delta_aic_poisson_cmp": 7124.666491138563,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.2206352618652163,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 293,
+      "zip_positive_mixing_weight_n": 19,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 312
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.375161129781873,
+      "median_delta_aic_zip_hurdle_cmp": 7483.643567268663,
+      "median_delta_aic_zip_best_full_model": 7483.643567268663,
+      "median_delta_aic_hurdle_poisson_cmp": 7124.666491138563
+    }
+  },
+  "all_constructor_sensitivity": {
+    "Coq root values": {
+      "n_networks": 45,
+      "median_nodes": 643.0,
+      "median_positive_nodes": 530.0,
+      "median_zero_fraction": 0.17915904936014626,
+      "median_positive_mean": 2.009355961705831,
+      "median_positive_variance": 0.0302734375,
+      "median_variance_ratio_to_ztp": 0.02472941884338442,
+      "median_fraction_degree_2": 0.9782608695652174,
+      "median_poisson_ks": 0.3958036705248564,
+      "poisson_rejected_p_lt_0_05": 45,
+      "poisson_rejected_bh_0_05": 45,
+      "zip_rejected_p_lt_0_05": 45,
+      "zip_rejected_bh_0_05": 45,
+      "aic_winners": {
+        "cmp": 45
+      },
+      "median_delta_aic_poisson_cmp": 1164.2299904895663,
+      "median_delta_aic_poisson_cmp_per_positive_node": 1.994996051305656,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 29,
+      "zip_positive_mixing_weight_n": 16,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 45
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.3245236328420984,
+      "median_delta_aic_zip_hurdle_cmp": 1177.2461318712353,
+      "median_delta_aic_zip_best_full_model": 1177.2461318712353,
+      "median_delta_aic_hurdle_poisson_cmp": 1164.2299904895663
+    },
+    "Human Lean root values": {
+      "n_networks": 29,
+      "median_nodes": 518.0,
+      "median_positive_nodes": 421.0,
+      "median_zero_fraction": 0.18613138686131386,
+      "median_positive_mean": 2.0,
+      "median_positive_variance": 0.002369654876693317,
+      "median_variance_ratio_to_ztp": 0.0020010384038662084,
+      "median_fraction_degree_2": 0.997624703087886,
+      "median_poisson_ks": 0.4053322646417787,
+      "poisson_rejected_p_lt_0_05": 29,
+      "poisson_rejected_bh_0_05": 29,
+      "zip_rejected_p_lt_0_05": 29,
+      "zip_rejected_bh_0_05": 29,
+      "aic_winners": {
+        "cmp": 29
+      },
+      "median_delta_aic_poisson_cmp": 932.9113435569218,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.2159414336268926,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 19,
+      "zip_positive_mixing_weight_n": 10,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 29
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.3287205965827669,
+      "median_delta_aic_zip_hurdle_cmp": 933.354143647133,
+      "median_delta_aic_zip_best_full_model": 933.354143647133,
+      "median_delta_aic_hurdle_poisson_cmp": 932.9113435569218
+    },
+    "Matched human Lean root values": {
+      "n_networks": 312,
+      "median_nodes": 2928.5,
+      "median_positive_nodes": 2717.5,
+      "median_zero_fraction": 0.07718207718207717,
+      "median_positive_mean": 2.0003740017063656,
+      "median_positive_variance": 0.0018968960904066322,
+      "median_variance_ratio_to_ztp": 0.0015961041084100046,
+      "median_fraction_degree_2": 0.9981016551456967,
+      "median_poisson_ks": 0.40545899955052334,
+      "poisson_rejected_p_lt_0_05": 312,
+      "poisson_rejected_bh_0_05": 312,
+      "zip_rejected_p_lt_0_05": 312,
+      "zip_rejected_bh_0_05": 312,
+      "aic_winners": {
+        "cmp": 312
+      },
+      "median_delta_aic_poisson_cmp": 6040.357409213098,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.2251836623433627,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 295,
+      "zip_positive_mixing_weight_n": 17,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 312
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.3713014651658285,
+      "median_delta_aic_zip_hurdle_cmp": 6343.422543126461,
+      "median_delta_aic_zip_best_full_model": 6343.422543126461,
+      "median_delta_aic_hurdle_poisson_cmp": 6040.357409213098
+    },
+    "Matched AI Lean root values": {
+      "n_networks": 312,
+      "median_nodes": 3409.5,
+      "median_positive_nodes": 3206.5,
+      "median_zero_fraction": 0.06768148625429553,
+      "median_positive_mean": 2.0009120140885255,
+      "median_positive_variance": 0.002258621828211601,
+      "median_variance_ratio_to_ztp": 0.0019002319850370253,
+      "median_fraction_degree_2": 0.9977398902057255,
+      "median_poisson_ks": 0.40541118542328747,
+      "poisson_rejected_p_lt_0_05": 312,
+      "poisson_rejected_bh_0_05": 312,
+      "zip_rejected_p_lt_0_05": 312,
+      "zip_rejected_bh_0_05": 312,
+      "aic_winners": {
+        "cmp": 312
+      },
+      "median_delta_aic_poisson_cmp": 7124.666491138563,
+      "median_delta_aic_poisson_cmp_per_positive_node": 2.2206352618652163,
+      "cmp_upper_bound_n": 0,
+      "zip_at_zero_boundary_n": 293,
+      "zip_positive_mixing_weight_n": 19,
+      "mixed_model_aic_winners": {
+        "hurdle_cmp": 312
+      },
+      "median_zip_zero_inflation": 0.0,
+      "median_zip_ks": 0.375161129781873,
+      "median_delta_aic_zip_hurdle_cmp": 7483.643567268663,
+      "median_delta_aic_zip_best_full_model": 7483.643567268663,
+      "median_delta_aic_hurdle_poisson_cmp": 7124.666491138563
+    }
+  }
+}

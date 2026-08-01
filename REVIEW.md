@@ -39,7 +39,9 @@ repository. Contact Simon for the larger Lean-network and corpus mirrors.
 | §1a-bis | hand-coded human networks recovered; Wiles α 3.46 vs 3.39 | `code/convert_hand_networks.py`, `code/hand_alpha.py` | `results/hand_human/` |
 | §1b | heavy tail beats exponential 47/47; lognormal not excluded | `code/repro_validate.py` | `results/repro_validate.csv` |
 | §1b | α discriminates vs random-DAG null (2.27 / 2.46 / 2.75) | `code/repro_validate.py` | same |
-| appendix A.3 | direct local-arity tests: Poisson and ZIP vs hurdle/NB/CMP alternatives in Coq and human/AI Lean | `code/poisson_indegree_appendix.py` | `results/poisson_indegree/` |
+| appendix A.2 | common-schema out-degree sensitivity at fixed x_min=10 | `code/normalized_outdegree_sensitivity.py` | `results/normalized_outdegree/` |
+| appendix A.3 | historical native-format Poisson/ZIP replication | `code/poisson_indegree_appendix.py` | `results/poisson_indegree/` |
+| appendix A.3 | comparable Coq/Lean local arity after binary normalization | `code/normalized_term_arity.py` | `results/normalized_term_arity/` |
 | §2 | AI proof-term tails *heavier* than human (x_min sweep) | `code/refit_xmin10.py`, `code/xmin_robust.py` | `results/alpha_xmin10.csv` |
 | §3 | Gauss vs human source census (reuse, duplication, defs) | `results/study3_source/study3.py` | `results/study3_source/` |
 | §4/§5a | ETP skeleton, percolation, edge-disjoint paths | `code/study4_etp.py` | `results/study4/etp_stats.json` |
@@ -75,6 +77,8 @@ A reviewer should check these were actually corrected in the report, not just no
 | "vocabulary collapse is downstream of verbosity" | paired design holds length fixed, effect undiminished | §5g |
 | "`have`-step concordance W=0.73" | did not replicate at scale (W=0.07) | §5f-bis |
 | "path disjointness does not distinguish these objects" | too strong — real *vs random* is significant | §1b |
+| "native Lean arity is much more concentrated than native Coq arity" | parser artifact: Lean `App` is binary; archived CoqAST `App` is variadic and binder names are children | appendix A.3: common-schema Coq 0.9903 vs Lean 0.9976 degree-two share |
+| "expanded-graph out-degree evidence is representation-robust" | normalized root proofs retain similar exponents but usually cannot distinguish power law from exponential | appendix A.2: strong tail evidence restricted to the expanded-network scale |
 
 ## 4. Where I think this is weakest — please attack these first
 

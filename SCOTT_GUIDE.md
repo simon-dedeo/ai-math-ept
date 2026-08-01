@@ -61,12 +61,23 @@ look contradictory if one compares their degree labels rather than their edges.
 The 49 recovered Coq networks include 47 networks that match rows in the published
 table by exact node count. With a fixed discrete tail cutoff
 \(x_{\min}=10\), 40 of the 44 networks that meet the modern audit's minimum-tail
-rule are within 0.010 of the published values (43 within 0.020). Reuse is
-unambiguously heavy relative to an exponential null. The stronger
+rule are within 0.010 of the published values (43 within 0.020). In these archived
+expanded graphs, reuse is unambiguously heavy relative to an exponential null. The stronger
 claim that it is a *pure* power law is not identified: at fixed \(x_{\min}=10\),
 a power law beats a lognormal in none of 45 estimable Coq networks, a lognormal wins
 in two, and 43 are unresolved. All 33 human Lean networks are unresolved between
 those two heavy-tailed families.
+
+There is a second representation qualification. Archived CoqAST applications are
+variadic and include binder-name children; Lean applications are binary and binder
+names are metadata. Native in-degree is therefore not comparable across the two.
+After normalizing both to binary root proof values, Coq and Lean positive local arity
+is almost deterministic at two (median shares 0.9903 and 0.9976), and every eligible
+network rejects both Poisson and a zero-inflated Poisson. The same root-boundary check
+leaves out-degree exponents near two but greatly weakens model discrimination: most
+power-law-versus-exponential comparisons become inconclusive. See
+[`results/normalized_term_arity/`](results/normalized_term_arity/) and
+[`results/normalized_outdegree/`](results/normalized_outdegree/).
 
 The old archive resolves the main provenance question. Its production `pl.py`
 hard-codes `cutf=10` and calls

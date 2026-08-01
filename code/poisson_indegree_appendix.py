@@ -1,4 +1,4 @@
-"""Test the Viteri--DeDeo Poisson in-degree claim directly.
+"""Test the Viteri--DeDeo Poisson in-degree claim in native graph formats.
 
 The repository uses premise -> dependent edges, so in-degree is the number of
 distinct immediate premises of an expression: its local arity.  The historical
@@ -6,6 +6,11 @@ plot discarded degree-zero leaves.  We retain that positive-degree conditioning
 for direct comparability and fit the corresponding zero-truncated models.  We
 also restore the leaves and compare ordinary Poisson, zero-inflated Poisson,
 and hurdle models on the full degree distribution.
+
+CoqAST applications are variadic while Lean Expr applications are binary, so
+the cross-language rows produced here are diagnostics and must not be compared
+as though local arity had the same atomic meaning.  The comparable reanalysis
+is ``normalized_term_arity.py``.
 
 Outputs:
   results/poisson_indegree/per_network.csv

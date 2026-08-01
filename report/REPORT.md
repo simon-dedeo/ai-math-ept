@@ -207,12 +207,21 @@ arity in the same networks. **The heavy tail is a fact about proofs, not an arti
 the paper's tinkering-and-reuse claim survives its null model. This tail diagnostic is not itself a
 test of the article's separate Poisson claim.
 
-We now test that claim directly. After reproducing the historical exclusion of degree-zero leaves
-and fitting the correct zero-truncated likelihood, Poisson is rejected in all 49 Coq networks, all
-33 expanded human Lean networks, and all 624 theorem-matched human and AI Lean networks. A special
-zero term does not repair the fit. ZIP is never the AIC winner; hurdle CMP wins every Lean network,
-while Coq splits between hurdle CMP (35) and hurdle negative binomial (14). The robust result is
-concentrated local dependence versus heavy-tailed reuse, not a specifically Poisson local-arity law.
+**Representation update (1 August 2026).** That conclusion is secure for the archived expanded
+graphs, but it is not invariant to the network boundary. After converting Coq and Lean to binary
+root-proof DAGs without recursive library expansion, the median fixed-tail exponent remains near
+two (2.340 Coq; 2.489 human Lean), yet only 23/48 and 12/33 networks are estimable and most
+power-law-versus-exponential comparisons are inconclusive. The expanded-graph null-model result
+should therefore not be presented as a universal property of every representation of a proof.
+
+We now test that claim directly. In the native archived Coq representation, fitting the correct
+zero-truncated likelihood rejects Poisson in all 49 networks. A special zero term does not repair
+the fit: ZIP is rejected in all 49, while hurdle CMP wins 35 and hurdle negative binomial 14.
+The initial Coq--Lean contrast is withdrawn because it compared variadic CoqAST applications with
+binary Lean applications. Under one binary root-proof schema, the degree-two share is instead
+0.9903 in Coq and 0.9976 in human Lean; every eligible graph still rejects Poisson and ZIP, and
+hurdle CMP wins throughout. The robust result is grammar-constrained local dependence, not a
+specifically Poisson law or a native-format difference between proof assistants.
 
 **Independent paths**, the estimator-free quantity the EPT mechanism actually needs: real proof DAGs
 average 1.04 edge-disjoint paths between reachable pairs with 3.8% of pairs having ≥2, against 1.01

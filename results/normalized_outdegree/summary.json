@@ -1,0 +1,257 @@
+{
+  "scope": "normalized root proof values; fixed out-degree tail xmin=10",
+  "warning": "not directly interchangeable with recursively expanded historical graphs",
+  "exclusions": [
+    {
+      "corpus": "Coq root values",
+      "name": "euclid_book",
+      "reason": "hand-coded dependency list has no root proof AST"
+    }
+  ],
+  "corpora": {
+    "shared binary core": {
+      "Coq root values": {
+        "n_networks": 48,
+        "n_fixed_xmin_fits": 23,
+        "median_nodes": 619.0,
+        "median_maximum_out_degree": 26.5,
+        "median_tail_n_when_fitted": 32.0,
+        "median_alpha_xmin10": 2.340371583286749,
+        "model_comparisons": {
+          "exponential": {
+            "n": 23,
+            "power_law_favored": 3,
+            "alternative_favored": 4,
+            "inconclusive": 16
+          },
+          "lognormal": {
+            "n": 23,
+            "power_law_favored": 0,
+            "alternative_favored": 4,
+            "inconclusive": 19
+          },
+          "stretched_exponential": {
+            "n": 23,
+            "power_law_favored": 0,
+            "alternative_favored": 4,
+            "inconclusive": 19
+          }
+        }
+      },
+      "Human Lean root values": {
+        "n_networks": 33,
+        "n_fixed_xmin_fits": 12,
+        "median_nodes": 314.0,
+        "median_maximum_out_degree": 40.0,
+        "median_tail_n_when_fitted": 30.5,
+        "median_alpha_xmin10": 2.489106598424058,
+        "model_comparisons": {
+          "exponential": {
+            "n": 12,
+            "power_law_favored": 1,
+            "alternative_favored": 1,
+            "inconclusive": 10
+          },
+          "lognormal": {
+            "n": 12,
+            "power_law_favored": 0,
+            "alternative_favored": 1,
+            "inconclusive": 11
+          },
+          "stretched_exponential": {
+            "n": 12,
+            "power_law_favored": 0,
+            "alternative_favored": 1,
+            "inconclusive": 11
+          }
+        }
+      },
+      "Matched AI Lean root values": {
+        "n_networks": 312,
+        "n_fixed_xmin_fits": 261,
+        "median_nodes": 3409.5,
+        "median_maximum_out_degree": 184.5,
+        "median_tail_n_when_fitted": 85.0,
+        "median_alpha_xmin10": 2.3809129756038088,
+        "model_comparisons": {
+          "exponential": {
+            "n": 261,
+            "power_law_favored": 115,
+            "alternative_favored": 3,
+            "inconclusive": 143
+          },
+          "lognormal": {
+            "n": 261,
+            "power_law_favored": 0,
+            "alternative_favored": 7,
+            "inconclusive": 254
+          },
+          "stretched_exponential": {
+            "n": 261,
+            "power_law_favored": 2,
+            "alternative_favored": 8,
+            "inconclusive": 251
+          }
+        }
+      },
+      "Matched human Lean root values": {
+        "n_networks": 312,
+        "n_fixed_xmin_fits": 274,
+        "median_nodes": 2928.5,
+        "median_maximum_out_degree": 183.5,
+        "median_tail_n_when_fitted": 66.0,
+        "median_alpha_xmin10": 2.359172697690806,
+        "model_comparisons": {
+          "exponential": {
+            "n": 274,
+            "power_law_favored": 109,
+            "alternative_favored": 1,
+            "inconclusive": 164
+          },
+          "lognormal": {
+            "n": 274,
+            "power_law_favored": 0,
+            "alternative_favored": 3,
+            "inconclusive": 271
+          },
+          "stretched_exponential": {
+            "n": 274,
+            "power_law_favored": 3,
+            "alternative_favored": 3,
+            "inconclusive": 268
+          }
+        }
+      }
+    },
+    "all normalized constructors": {
+      "Coq root values": {
+        "n_networks": 48,
+        "n_fixed_xmin_fits": 23,
+        "median_nodes": 636.5,
+        "median_maximum_out_degree": 26.5,
+        "median_tail_n_when_fitted": 33.0,
+        "median_alpha_xmin10": 2.366755877376483,
+        "model_comparisons": {
+          "exponential": {
+            "n": 23,
+            "power_law_favored": 3,
+            "alternative_favored": 5,
+            "inconclusive": 15
+          },
+          "lognormal": {
+            "n": 23,
+            "power_law_favored": 0,
+            "alternative_favored": 3,
+            "inconclusive": 20
+          },
+          "stretched_exponential": {
+            "n": 23,
+            "power_law_favored": 0,
+            "alternative_favored": 3,
+            "inconclusive": 20
+          }
+        }
+      },
+      "Human Lean root values": {
+        "n_networks": 33,
+        "n_fixed_xmin_fits": 12,
+        "median_nodes": 314.0,
+        "median_maximum_out_degree": 40.0,
+        "median_tail_n_when_fitted": 30.5,
+        "median_alpha_xmin10": 2.489106598424058,
+        "model_comparisons": {
+          "exponential": {
+            "n": 12,
+            "power_law_favored": 1,
+            "alternative_favored": 1,
+            "inconclusive": 10
+          },
+          "lognormal": {
+            "n": 12,
+            "power_law_favored": 0,
+            "alternative_favored": 1,
+            "inconclusive": 11
+          },
+          "stretched_exponential": {
+            "n": 12,
+            "power_law_favored": 0,
+            "alternative_favored": 1,
+            "inconclusive": 11
+          }
+        }
+      },
+      "Matched AI Lean root values": {
+        "n_networks": 312,
+        "n_fixed_xmin_fits": 261,
+        "median_nodes": 3409.5,
+        "median_maximum_out_degree": 184.5,
+        "median_tail_n_when_fitted": 85.0,
+        "median_alpha_xmin10": 2.3809129756038088,
+        "model_comparisons": {
+          "exponential": {
+            "n": 261,
+            "power_law_favored": 115,
+            "alternative_favored": 3,
+            "inconclusive": 143
+          },
+          "lognormal": {
+            "n": 261,
+            "power_law_favored": 0,
+            "alternative_favored": 7,
+            "inconclusive": 254
+          },
+          "stretched_exponential": {
+            "n": 261,
+            "power_law_favored": 2,
+            "alternative_favored": 8,
+            "inconclusive": 251
+          }
+        }
+      },
+      "Matched human Lean root values": {
+        "n_networks": 312,
+        "n_fixed_xmin_fits": 274,
+        "median_nodes": 2928.5,
+        "median_maximum_out_degree": 183.5,
+        "median_tail_n_when_fitted": 66.0,
+        "median_alpha_xmin10": 2.359172697690806,
+        "model_comparisons": {
+          "exponential": {
+            "n": 274,
+            "power_law_favored": 109,
+            "alternative_favored": 1,
+            "inconclusive": 164
+          },
+          "lognormal": {
+            "n": 274,
+            "power_law_favored": 0,
+            "alternative_favored": 3,
+            "inconclusive": 271
+          },
+          "stretched_exponential": {
+            "n": 274,
+            "power_law_favored": 3,
+            "alternative_favored": 3,
+            "inconclusive": 268
+          }
+        }
+      }
+    }
+  },
+  "matched_pairs": {
+    "shared binary core": {
+      "n_pairs": 251,
+      "median_human_alpha_xmin10": 2.3553125104228134,
+      "median_ai_alpha_xmin10": 2.3810755098476633,
+      "median_paired_difference_ai_minus_human": 0.0254771765864632,
+      "wilcoxon_p": 0.009326296993390716
+    },
+    "all normalized constructors": {
+      "n_pairs": 251,
+      "median_human_alpha_xmin10": 2.3553125104228134,
+      "median_ai_alpha_xmin10": 2.3810755098476633,
+      "median_paired_difference_ai_minus_human": 0.0254771765864632,
+      "wilcoxon_p": 0.009326296993390716
+    }
+  }
+}

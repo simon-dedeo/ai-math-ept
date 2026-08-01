@@ -24,6 +24,8 @@
 
 \input{numbers.tex}
 \input{poisson_numbers.tex}
+\input{normalized_arity_numbers.tex}
+\input{normalized_outdegree_numbers.tex}
 
 \definecolor{human}{HTML}{294C60}
 \definecolor{machine}{HTML}{B24C3D}
@@ -551,133 +553,116 @@ inconclusive.  Thus reuse above degree 10 is heavy relative to an exponential, b
 usually cannot distinguish a power law from a lognormal.  We do not confirm a universal,
 cutoff-free pure power law.
 
+This out-degree result is also sensitive to representation, although not in the same way as local
+arity.  We repeated the fixed-$x_{\min}=10$ analysis after putting Coq and Lean into the common
+binary root-proof schema described below.  Only \NormOutCoqFits{} of \NormOutCoqN{} Coq roots and
+\NormOutLeanFits{} of \NormOutLeanN{} human Lean roots then had enough tail observations and
+variation to fit.  Their median exponents remain in the same neighborhood
+($\alpha=\NormOutCoqAlpha$ and $\NormOutLeanAlpha$), but a power law beats an exponential in only
+3/23 and 1/12 fits; it loses in 4/23 and 1/12, with the rest inconclusive.  It never beats a
+lognormal.  Thus the exponent near two is recurrent where a root-proof tail exists, but the strong
+expanded-graph evidence against an exponential does not survive the change of proof boundary.
+Constructor normalization and removal of recursive library expansion occur together here, so this
+check cannot assign the change to one of them alone.
+
+The same-theorem result is correspondingly modest.  Among \NormOutPairN{} pairs for which both
+normalized roots are estimable, median $\alpha$ is \NormOutHumanAlpha{} for human proofs and
+\NormOutAIAlpha{} for AI proofs.  The paired shift is only \NormOutPairDiff{} ($p=\NormOutPairP$),
+despite its statistical detectability.  Proof identity again constrains the two populations more
+clearly than tail family distinguishes them.
+
 \subsection{Does local arity follow a Poisson distribution?}
 \label{app:poisson}
 
-The original article's in-degree claim is straightforward to test once edge orientation and zero
-degree are made explicit.  With edges directed from premise to dependent, in-degree is the number
-of distinct immediate premises of an expression---its local arity.  The archived
-\code{histogram\_in.rb} removed degree-zero leaves, so we likewise take positive in-degrees as the
-primary sample.  This choice asks whether local arity is zero-truncated Poisson; it does not ask
-whether the proportion of leaves is Poisson-generated.
+This claim cannot be compared across assistants until the objects being counted are made the same.
+With edges directed from premise to dependent, in-degree counts the immediate children of an AST
+node: its local arity.  But local arity is partly a choice made by the language and extractor.  We
+therefore separate a historical replication in the archived representation from a new comparison
+in a common representation.
 
-The archived figure was only a visual overlay.  Its plotting code set the Poisson parameter equal
-to the mean positive degree and renormalized over $k\geq1$.  That is not the maximum-likelihood
-parameter after zero truncation: the fitted $\lambda$ instead solves
+\paragraph{Historical Coq representation.}
+The archived \code{histogram\_in.rb} removed degree-zero leaves and overlaid a Poisson using the
+mean positive degree.  Conditional on $K>0$, however, the maximum-likelihood parameter solves
 \[
   \bar k=\frac{\lambda}{1-e^{-\lambda}}.
 \]
-For Four Color, for example, the plotted value was $\bar k=3.154$, whereas the correctly fitted
-parameter is $\lambda=2.997$.  We fit this model separately to every network and test absolute fit
-with a discrete Kolmogorov--Smirnov statistic and 199 parametric bootstrap samples, refitting
-$\lambda$ in each sample.  Rejections below use Benjamini--Hochberg correction within each corpus.
+We refit this zero-truncated Poisson to each of the 49 recovered Coq graphs.  Absolute fit is tested
+by a discrete Kolmogorov--Smirnov statistic with 199 parametric bootstrap samples, refitting the
+parameter in every sample; rejections use Benjamini--Hochberg correction.  All 49 graphs reject.
+By AIC, a Conway--Maxwell--Poisson (CMP) model \citep{shmueli2005} wins 35 comparisons and a
+negative binomial wins 14.  Restoring leaves does not rescue the model: a zero-inflated Poisson
+(ZIP) is rejected in all 49 and is never the best full-distribution model; hurdle CMP wins 35 and
+hurdle negative binomial wins 14.  This is a direct correction to the historical visual fit, but it
+is a result about the native archived Coq graphs.
 
-Likelihood comparison uses three natural positive-count alternatives: a geometric distribution,
-a zero-truncated negative binomial for overdispersion, and a zero-truncated
-Conway--Maxwell--Poisson distribution for underdispersion \citep{shmueli2005}.  The last contains
-Poisson as the special case $\nu=1$ and can concentrate probability on the small set of arities
-imposed by a term grammar.  We compare Akaike information criterion (AIC), charging both flexible
-models for their additional parameter.
+\paragraph{Why the native Lean result is almost always two.}
+Lean represents an application as \code{Expr.app f a}, a binary node.  The archived Coq
+\code{CoqAST} instead stores \code{App} with a head and a list of arguments, and its graph converter
+joins all of them to one node; it also retains binder names as children.  In the pooled native
+graphs, applications have mean arity 4.013 in Coq and exactly 2 in Lean.  Applications account for
+59.0\% and 84.7\% of positive-arity nodes, respectively.  This explains the earlier result: 96.7\%
+of native human-Lean positive nodes have degree two, against 10.9\% in native Coq.  The contrast is
+primarily representational.  We therefore withdraw the direct native-format Coq--Lean comparison.
+
+\paragraph{Common-schema reanalysis.}
+We normalize both corpora to the root proof value, excluding the theorem type and recursive library
+expansion.  Applications are binary in both; binder names are removed while binder domain and body
+are retained; and \code{let} keeps its type, value, and body.  The primary positive sample contains
+only the constructors shared across systems---application, lambda, product, and let.  Structural
+hash-consing then produces a DAG in each system.  A sensitivity analysis retaining system-specific
+constructors gives the same conclusion.  Networks with fewer than 20 positive shared-core nodes
+are excluded, leaving \NormCoqN{} of 49 Coq proofs and \NormLeanN{} of 33 human Lean proofs; all 312
+matched human--AI pairs remain eligible.
 
 \begin{table}[ht]
 \centering
-\caption{Direct tests of the Poisson local-arity claim.  Distributions are fitted separately to
-each network after conditioning on positive in-degree, matching the historical figure.  The
-dispersion ratio is observed variance divided by the variance of the fitted zero-truncated
-Poisson; one is the Poisson expectation.  Best AIC counts network-level winners among Poisson,
-geometric, negative binomial (NB), and Conway--Maxwell--Poisson (CMP).}
+\caption{Local arity after common-schema normalization.  Means and degree-two shares are medians
+across networks.  ZTP is the zero-truncated Poisson fit to positive arities; ZIP includes all nodes
+and a special zero mass.  Rejection counts use refitted parametric-bootstrap KS tests and
+Benjamini--Hochberg correction.}
 \label{tab:poisson}
 \small
-\begin{tabularx}{\textwidth}{YrrrrY}
+\begin{tabularx}{\textwidth}{YrrrrrY}
 \toprule
-Corpus & Networks & Median $\bar k$ & Dispersion ratio & Poisson rejected & Best AIC \\
+Corpus & $n$ & Mean $K\mid K>0$ & Share $K=2$ & ZTP rejected & ZIP rejected & Best full AIC \\
 \midrule
-Recovered Coq expanded terms & 49 & 3.498 & \CoqDispersionRatio & \PoissonCoqReject &
-CMP 35; NB 14 \\
-Human Lean expanded terms & 33 & 1.968 & \LeanDispersionRatio & \PoissonLeanReject &
-CMP \LeanCMPWins \\
-Matched human Lean \code{term0} & 312 & 2.000 & 0.0017 & \PoissonHumanReject &
-CMP \HumanCMPWins \\
-Matched AI Lean \code{term0} & 312 & 2.000 & 0.0021 & \PoissonAIReject &
-CMP \AICMPWins \\
+Coq root values & \NormCoqN & \NormCoqMean & \NormCoqDegreeTwo & \NormCoqReject &
+\NormCoqZIPReject & hurdle CMP (45) \\
+Human Lean root values & \NormLeanN & \NormLeanMean & \NormLeanDegreeTwo & \NormLeanReject &
+\NormLeanZIPReject & hurdle CMP (29) \\
+Matched human Lean & \NormHumanN & \NormHumanMean & \NormHumanDegreeTwo & \NormHumanReject &
+\NormHumanZIPReject & hurdle CMP (312) \\
+Matched AI Lean & \NormAIN & \NormAIMean & \NormAIDegreeTwo & \NormAIReject &
+\NormAIZIPReject & hurdle CMP (312) \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{figures/indegree_poisson_check.pdf}
-\caption{Observed and fitted positive in-degree distributions.  Curves average probabilities
-across networks, giving each proof equal weight after fitting it separately; the final category
-combines degrees above seven.  A Poisson allocates substantial probability to arities that the Lean
-term grammar almost never produces.  Coq is less rigid, but neither Poisson nor a single flexible
-count family captures all of its constructor mixture.}
+\includegraphics[width=\textwidth]{figures/normalized_indegree_check.pdf}
+\caption{Positive local arity under one constructor schema.  Curves average network-level
+probabilities, giving each proof equal weight; the last category combines degrees above seven.
+Once application is binary on both sides, Coq and Lean are similarly concentrated at two.  The
+fitted Poisson necessarily places mass on arities absent from the grammar.}
 \label{fig:poisson}
 \end{figure}
-
-The answer is unambiguous.  Poisson is rejected in every Coq, human Lean, matched-human, and
-matched-AI network.  The featured Four Color and G\"odel networks are both underdispersed relative
-to the correctly fitted Poisson (dispersion ratios 0.502 and 0.545) and reject at the bootstrap's
-minimum attainable $p=.005$.  Thirty-five Coq networks prefer the underdispersed CMP alternative;
-the other 14 are overdispersed and prefer a negative binomial.  All 657 Lean networks prefer CMP.
-Thus the result is not merely that a different heavy-tailed family wins.  Poisson fails in both
-directions across Coq, and Lean arity is vastly more concentrated than Poisson.
-
-We next fit the suggested special-zero model,
-\[
- P(K=0)=\pi+(1-\pi)e^{-\lambda},\qquad
- P(K=k)=(1-\pi)e^{-\lambda}\frac{\lambda^k}{k!},\quad k\geq1,
-\]
-as well as a hurdle model in which $P(K=0)$ is completely free.  A standard zero-inflated
-Poisson (ZIP) can accommodate excess leaves; a hurdle Poisson can accommodate either excess or
-deficient leaves.  Crucially, neither changes the conditional shape for $K>0$, which remains the
-zero-truncated Poisson tested above.  We nevertheless repeat the refitted parametric-bootstrap test
-on all nodes and compare full-count AIC against hurdle geometric, NB, and CMP alternatives.
-
-\begin{table}[H]
-\centering
-\caption{Sensitivity to a special zero term.  ``Boundary'' counts fits for which standard ZIP is
-constrained to $\pi=0$ because the network has fewer zeros than its Poisson component predicts.}
-\label{tab:zero-mixture}
-\small
-\begin{tabularx}{\textwidth}{YrrrrY}
-\toprule
-Corpus & Networks & ZIP rejected & Boundary $\pi=0$ & Median $\pi$ & Best full-count AIC \\
-\midrule
-Recovered Coq expanded terms & 49 & \ZIPCoqReject & \ZIPCoqBoundary & \CoqZIPPi &
-hurdle CMP 35; hurdle NB 14 \\
-Human Lean expanded terms & 33 & \ZIPLeanReject & \ZIPLeanBoundary & 0 & hurdle CMP 33 \\
-Matched human Lean \code{term0} & 312 & \ZIPHumanReject & \ZIPHumanBoundary & 0 & hurdle CMP 312 \\
-Matched AI Lean \code{term0} & 312 & \ZIPAIReject & \ZIPAIBoundary & 0 & hurdle CMP 312 \\
-\bottomrule
-\end{tabularx}
-\end{table}
 \FloatBarrier
-\newpage
 
-Giving zero a special term does not change the verdict.  Coq has enough excess leaves for an
-interior ZIP mixture in 48 of 49 networks (median $\pi=\CoqZIPPi$), but ZIP is rejected in all 49
-and is never the best full-distribution model.  Lean generally has the opposite problem.
-Its observed zero fraction is smaller than the Poisson implied by its positive degrees, so the ZIP
-inflation weight is forced to its zero boundary in \ZIPLeanBoundary{} expanded human networks,
-\ZIPHumanBoundary{} matched-human networks, and \ZIPAIBoundary{} matched-AI networks.  Hurdle CMP
-wins all 657 Lean comparisons, and ZIP is rejected in every one.  A free leaf probability therefore
-improves the bookkeeping but cannot repair the Poisson shape among non-leaves.
+The cross-language difference has nearly disappeared: the median degree-two share is
+\NormCoqDegreeTwo{} in Coq and \NormLeanDegreeTwo{} in human Lean.  Yet neither is Poisson.  Every
+eligible graph rejects both ZTP and ZIP, and CMP wins every positive-count comparison while hurdle
+CMP wins every full-count comparison.  A special zero term addresses the number of leaves, not the
+almost deterministic positive arity imposed by the common binary grammar.
 
-The same-theorem comparison shows almost no authorship signal.  The median share of positive-arity
-nodes with degree exactly two is \HumanDegreeTwo{} for human proofs and \AIDegreeTwo{} for AI proofs;
-the paired difference is not detectable ($p=\DegreeTwoPairP$).  The paired Poisson KS difference is
-exactly zero at the median ($p=.965$).  A tiny difference in mean arity is statistically detectable
-because there are 312 large graphs, but it is only $0.00019$ premises per positive-arity node.
-
-The corrected conclusion is therefore structural rather than distributional.  Local dependence is
-small and concentrated, while reuse is broad and heavy-tailed; that contrast survives.  But local
-arity is not Poisson-distributed.  In Lean especially, it is largely a signature of the binary
-application structure and the extractor's atomic scale.  The near identity of human and AI
-\code{term0} arity says that both certificates pass through the same elaborator and term grammar,
-not that their authors use the same cognitive process.  Treating leaves as a separately fitted
-hurdle component does not rescue Poisson, because its positive component is rejected in every
-network.
+The same-theorem human--AI comparison is similarly uninformative about authorship: its median
+degree-two shares are \NormHumanDegreeTwo{} and \NormAIDegreeTwo{}.  Both populations pass through
+the same elaborator and constructor grammar.  The defensible conclusion is therefore narrower than
+the original claim.  Local dependence is small and concentrated.  Reuse is broad and heavy-tailed
+at the expanded-network scale, but its tail evidence weakens at the root-proof boundary; local
+arity itself is representation-dependent, and a Poisson law is not confirmed.  This does not
+weaken the main epistemic-decoupling result, whose paired structural and belief measurements do not
+rely on a universal degree distribution.
 
 \subsection{What else confirms}
 
@@ -691,44 +676,46 @@ $\Delta\mathcal L_1$: the normalization changed.
 
 \begin{table}[h]
 \centering
-\caption{A claim-by-claim comparison.  Medians use the recovered Coq graphs and the 33 expanded
-human Lean term graphs.  ``Model'' means that the result is a consequence of the specified belief
-dynamics, not a behavioral measurement.}
+\caption{A claim-by-claim comparison.  Except for the explicitly normalized local-arity row,
+medians use the recovered Coq graphs and the 33 expanded human Lean term graphs.  ``Model'' means
+that the result is a consequence of the specified belief dynamics, not a behavioral measurement.}
 \label{tab:coqlean}
 \small
 \begin{tabularx}{\textwidth}{P{.21\textwidth}P{.20\textwidth}P{.20\textwidth}Y}
 \toprule
 Claim & Recovered Coq & Human Lean terms & Judgment \\
 \midrule
-Reuse tail above degree 10 & $\alpha=\CoqAlpha$ & $\alpha=\LeanAlpha$ & Fixed-cutoff confirmation \\
+Reuse tail above degree 10 & $\alpha=\CoqAlpha$ & $\alpha=\LeanAlpha$ & Expanded-graph
+confirmation; root-boundary sensitive \\
 Heavy tail is specifically a pure power law & Lognormal favored in 2/45; unresolved in 43/45 &
 Lognormal unresolved in 33/33 & Not confirmed \\
 High modularity & median $Q=\CoqModularity$ & median $Q=\LeanModularity$ & Confirmed descriptively \\
 High belief at $\epsilon=.01$ & median theorem belief 1.0; mean-node belief \CoqMeanBelief & median
 theorem belief 1.0; mean-node belief \LeanMeanBelief & Confirmed within the model \\
 Positive modular firewalls & positive in 49/49 & positive in 33/33 & Qualitative confirmation \\
-Poisson-like in-degree & Rejected in \PoissonCoqReject & Rejected in \PoissonLeanReject &
+Poisson local arity (normalized roots) & Rejected in \NormCoqReject & Rejected in \NormLeanReject &
 Not confirmed; local arity is grammar-constrained \\
 \bottomrule
 \end{tabularx}
 \end{table}
 \FloatBarrier
 
-The direct tests in \cref{app:poisson} replace the earlier tail-family proxy.  The broad contrast
-survives; the specific Poisson claim does not.
+The direct tests in \cref{app:poisson} replace the earlier tail-family proxy.  The contrast between
+bounded local arity and broader reuse is visible, but neither a Poisson local law nor one
+representation-invariant reuse-tail family is confirmed.
 
 The representation check explains why these confirmations must remain qualified.  For the same 33
 Lean theorems, declaration graphs have median $Q=0.465$ and fixed-tail median $\alpha=1.751$, far from
 the term-graph values.  A proof network has no representation-free exponent or modularity.  The
-cross-language agreement is meaningful because the Coq and Lean term pipelines are analogous, not
-because either reveals a privileged atomic scale.
+cross-language agreement in the expanded graphs is meaningful as a replication at a similar
+analytic scale, not as evidence for a privileged or representation-free atomic scale.
 
-The overall verdict is therefore precise.  Human Lean terms confirm the original paper's central
-network claim: fine-grained proof graphs exhibit concentrated reuse, strong modularity, positive
-firewall structure, and high theorem belief under bidirectional dynamics.  They do not justify the
-stronger folklore that all proof networks instantiate one pure power law with a universal exponent.
-That correction strengthens the present paper.  Epistemic decoupling depends on network robustness,
-not on exact scale freedom.
+The overall verdict is therefore precise.  Human Lean terms confirm that fine-grained expanded
+proof graphs can exhibit concentrated reuse, strong modularity, positive firewall structure, and
+high theorem belief under bidirectional dynamics.  They do not justify the stronger claim that all
+proof networks instantiate one pure power law with a universal exponent, or that these summaries
+are unchanged when the graph boundary moves to the root proof value.  Epistemic decoupling depends
+on the paired measurements reported in the main text, not on exact scale freedom.
 
 \section{Supplementary estimates and reproducibility}
 \label{app:repro}
@@ -784,6 +771,11 @@ The local-arity analysis is implemented in
 and machine-readable summary are under
 \path{results/poisson_indegree/}.  The script uses the same 49 recovered Coq networks, 33 human Lean
 expanded term networks, and 312 clean theorem-matched \code{term0} pairs as the main analyses.
+That native-format replication is supplemented by
+\path{code/normalized_term_arity.py} and
+\path{code/normalized_outdegree_sensitivity.py}.  Their common-schema results, exclusions, and
+network-level fits are under \path{results/normalized_term_arity/} and
+\path{results/normalized_outdegree/}.
 
 The compact derived tables and code are included with this working directory.  Before publication,
 the raw elaborated graphs and upstream corpus should be deposited with immutable manifests,
