@@ -5,6 +5,7 @@
     "sample accounting",
     "same-theorem estimates and manuscript macros",
     "fixed-xmin Coq--Lean confirmation",
+    "Poisson, zero-inflation, and hurdle-model local-arity tests",
     "ORCHARD artifact identity",
     "belief dynamics and Monte Carlo sensitivity",
     "scope and non-equivalence qualifications",
@@ -13,6 +14,7 @@
   "evidence": {
     "paired_summary": "results/standalone_paper/summary.json",
     "historical_summary": "results/coq_lean_confirmation_xmin10/summary.json",
+    "poisson_summary": "results/poisson_indegree/summary.json",
     "manuscript": "report/standalone/main.tex"
   }
 }

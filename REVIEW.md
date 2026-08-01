@@ -39,6 +39,7 @@ repository. Contact Simon for the larger Lean-network and corpus mirrors.
 | §1a-bis | hand-coded human networks recovered; Wiles α 3.46 vs 3.39 | `code/convert_hand_networks.py`, `code/hand_alpha.py` | `results/hand_human/` |
 | §1b | heavy tail beats exponential 47/47; lognormal not excluded | `code/repro_validate.py` | `results/repro_validate.csv` |
 | §1b | α discriminates vs random-DAG null (2.27 / 2.46 / 2.75) | `code/repro_validate.py` | same |
+| appendix A.3 | direct local-arity tests: Poisson and ZIP vs hurdle/NB/CMP alternatives in Coq and human/AI Lean | `code/poisson_indegree_appendix.py` | `results/poisson_indegree/` |
 | §2 | AI proof-term tails *heavier* than human (x_min sweep) | `code/refit_xmin10.py`, `code/xmin_robust.py` | `results/alpha_xmin10.csv` |
 | §3 | Gauss vs human source census (reuse, duplication, defs) | `results/study3_source/study3.py` | `results/study3_source/` |
 | §4/§5a | ETP skeleton, percolation, edge-disjoint paths | `code/study4_etp.py` | `results/study4/etp_stats.json` |

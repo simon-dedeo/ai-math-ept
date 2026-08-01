@@ -64,6 +64,7 @@ does not accumulate.**
 | `within_system.py` | within-system noise floor (the control that calibrates the above) |
 | `repro_xmin.py`, `implied_xmin.py`, `xmin_robust.py`, `repro_alpha.py` | reproduction of Table 1 and the x_min-convention analysis |
 | `repro_validate.py` | power-law vs alternative distributions; random-DAG null models |
+| `poisson_indegree_appendix.py` | direct Poisson, ZIP, hurdle, NB, and CMP tests of local arity in Coq and human/AI Lean |
 | `convert_coq_dags.py`, `convert_hand_networks.py` | import the 2022 paper's own machine and hand-coded networks |
 | `study4_etp.py`, `study4b_vampire.py`, `etp_belief.py` | Equational Theories Project: skeleton, percolation, ATP difficulty census |
 | `study5_mathlib.py` | belief dynamics on all of Mathlib (308k declarations, 8.4M edges) |
@@ -87,3 +88,9 @@ exponential in 47 of 47 networks and is significantly heavier-tailed than size- 
 random DAGs (α 2.27 vs 2.75), so heavy-tailed reuse is a fact about proofs rather than an artifact
 of the fit. It is *not* separable from a lognormal, which is the standard caveat for power-law
 claims and applies to the published values equally.
+
+`poisson_indegree_appendix.py` tests the complementary in-degree claim directly. Poisson is rejected
+in all 49 recovered Coq networks, all 33 expanded human Lean networks, and every network in 312
+same-theorem human/AI Lean pairs. Giving leaves a special zero term does not rescue it: ZIP is never
+the AIC winner, while hurdle CMP or negative binomial models win because the principal mismatch is
+among positive local arities.

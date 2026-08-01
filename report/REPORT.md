@@ -199,12 +199,20 @@ same estimator to three degree sequences per network:
 | sequence | α |
 |---|---|
 | out-degree (claimed heavy-tailed) | **2.270 ± 0.136** |
-| in-degree (claimed Poisson) | 2.461 ± 0.195 |
+| positive local-arity degree (tail diagnostic only) | 2.461 ± 0.195 |
 | size- and density-matched random DAG | 2.746 ± 0.131 |
 
-Real out-degree tails are significantly heavier than matched random DAGs, and heavier than the
-in-degree of the same networks. **The heavy tail is a fact about proofs, not an artifact of the
-fit** — the paper's tinkering-and-reuse claim survives its null model.
+Real out-degree tails are significantly heavier than matched random DAGs, and heavier than local
+arity in the same networks. **The heavy tail is a fact about proofs, not an artifact of the fit** —
+the paper's tinkering-and-reuse claim survives its null model. This tail diagnostic is not itself a
+test of the article's separate Poisson claim.
+
+We now test that claim directly. After reproducing the historical exclusion of degree-zero leaves
+and fitting the correct zero-truncated likelihood, Poisson is rejected in all 49 Coq networks, all
+33 expanded human Lean networks, and all 624 theorem-matched human and AI Lean networks. A special
+zero term does not repair the fit. ZIP is never the AIC winner; hurdle CMP wins every Lean network,
+while Coq splits between hurdle CMP (35) and hurdle negative binomial (14). The robust result is
+concentrated local dependence versus heavy-tailed reuse, not a specifically Poisson local-arity law.
 
 **Independent paths**, the estimator-free quantity the EPT mechanism actually needs: real proof DAGs
 average 1.04 edge-disjoint paths between reachable pairs with 3.8% of pairs having ≥2, against 1.01

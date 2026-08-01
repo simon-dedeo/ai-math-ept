@@ -17,10 +17,13 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning}
 \usepackage{caption}
+\usepackage{float}
+\usepackage{placeins}
 \usepackage{fancyhdr}
 \setlength{\headheight}{14pt}
 
 \input{numbers.tex}
+\input{poisson_numbers.tex}
 
 \definecolor{human}{HTML}{294C60}
 \definecolor{machine}{HTML}{B24C3D}
@@ -548,9 +551,145 @@ inconclusive.  Thus reuse above degree 10 is heavy relative to an exponential, b
 usually cannot distinguish a power law from a lognormal.  We do not confirm a universal,
 cutoff-free pure power law.
 
+\subsection{Does local arity follow a Poisson distribution?}
+\label{app:poisson}
+
+The original article's in-degree claim is straightforward to test once edge orientation and zero
+degree are made explicit.  With edges directed from premise to dependent, in-degree is the number
+of distinct immediate premises of an expression---its local arity.  The archived
+\code{histogram\_in.rb} removed degree-zero leaves, so we likewise take positive in-degrees as the
+primary sample.  This choice asks whether local arity is zero-truncated Poisson; it does not ask
+whether the proportion of leaves is Poisson-generated.
+
+The archived figure was only a visual overlay.  Its plotting code set the Poisson parameter equal
+to the mean positive degree and renormalized over $k\geq1$.  That is not the maximum-likelihood
+parameter after zero truncation: the fitted $\lambda$ instead solves
+\[
+  \bar k=\frac{\lambda}{1-e^{-\lambda}}.
+\]
+For Four Color, for example, the plotted value was $\bar k=3.154$, whereas the correctly fitted
+parameter is $\lambda=2.997$.  We fit this model separately to every network and test absolute fit
+with a discrete Kolmogorov--Smirnov statistic and 199 parametric bootstrap samples, refitting
+$\lambda$ in each sample.  Rejections below use Benjamini--Hochberg correction within each corpus.
+
+Likelihood comparison uses three natural positive-count alternatives: a geometric distribution,
+a zero-truncated negative binomial for overdispersion, and a zero-truncated
+Conway--Maxwell--Poisson distribution for underdispersion \citep{shmueli2005}.  The last contains
+Poisson as the special case $\nu=1$ and can concentrate probability on the small set of arities
+imposed by a term grammar.  We compare Akaike information criterion (AIC), charging both flexible
+models for their additional parameter.
+
+\begin{table}[ht]
+\centering
+\caption{Direct tests of the Poisson local-arity claim.  Distributions are fitted separately to
+each network after conditioning on positive in-degree, matching the historical figure.  The
+dispersion ratio is observed variance divided by the variance of the fitted zero-truncated
+Poisson; one is the Poisson expectation.  Best AIC counts network-level winners among Poisson,
+geometric, negative binomial (NB), and Conway--Maxwell--Poisson (CMP).}
+\label{tab:poisson}
+\small
+\begin{tabularx}{\textwidth}{YrrrrY}
+\toprule
+Corpus & Networks & Median $\bar k$ & Dispersion ratio & Poisson rejected & Best AIC \\
+\midrule
+Recovered Coq expanded terms & 49 & 3.498 & \CoqDispersionRatio & \PoissonCoqReject &
+CMP 35; NB 14 \\
+Human Lean expanded terms & 33 & 1.968 & \LeanDispersionRatio & \PoissonLeanReject &
+CMP \LeanCMPWins \\
+Matched human Lean \code{term0} & 312 & 2.000 & 0.0017 & \PoissonHumanReject &
+CMP \HumanCMPWins \\
+Matched AI Lean \code{term0} & 312 & 2.000 & 0.0021 & \PoissonAIReject &
+CMP \AICMPWins \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/indegree_poisson_check.pdf}
+\caption{Observed and fitted positive in-degree distributions.  Curves average probabilities
+across networks, giving each proof equal weight after fitting it separately; the final category
+combines degrees above seven.  A Poisson allocates substantial probability to arities that the Lean
+term grammar almost never produces.  Coq is less rigid, but neither Poisson nor a single flexible
+count family captures all of its constructor mixture.}
+\label{fig:poisson}
+\end{figure}
+
+The answer is unambiguous.  Poisson is rejected in every Coq, human Lean, matched-human, and
+matched-AI network.  The featured Four Color and G\"odel networks are both underdispersed relative
+to the correctly fitted Poisson (dispersion ratios 0.502 and 0.545) and reject at the bootstrap's
+minimum attainable $p=.005$.  Thirty-five Coq networks prefer the underdispersed CMP alternative;
+the other 14 are overdispersed and prefer a negative binomial.  All 657 Lean networks prefer CMP.
+Thus the result is not merely that a different heavy-tailed family wins.  Poisson fails in both
+directions across Coq, and Lean arity is vastly more concentrated than Poisson.
+
+We next fit the suggested special-zero model,
+\[
+ P(K=0)=\pi+(1-\pi)e^{-\lambda},\qquad
+ P(K=k)=(1-\pi)e^{-\lambda}\frac{\lambda^k}{k!},\quad k\geq1,
+\]
+as well as a hurdle model in which $P(K=0)$ is completely free.  A standard zero-inflated
+Poisson (ZIP) can accommodate excess leaves; a hurdle Poisson can accommodate either excess or
+deficient leaves.  Crucially, neither changes the conditional shape for $K>0$, which remains the
+zero-truncated Poisson tested above.  We nevertheless repeat the refitted parametric-bootstrap test
+on all nodes and compare full-count AIC against hurdle geometric, NB, and CMP alternatives.
+
+\begin{table}[H]
+\centering
+\caption{Sensitivity to a special zero term.  ``Boundary'' counts fits for which standard ZIP is
+constrained to $\pi=0$ because the network has fewer zeros than its Poisson component predicts.}
+\label{tab:zero-mixture}
+\small
+\begin{tabularx}{\textwidth}{YrrrrY}
+\toprule
+Corpus & Networks & ZIP rejected & Boundary $\pi=0$ & Median $\pi$ & Best full-count AIC \\
+\midrule
+Recovered Coq expanded terms & 49 & \ZIPCoqReject & \ZIPCoqBoundary & \CoqZIPPi &
+hurdle CMP 35; hurdle NB 14 \\
+Human Lean expanded terms & 33 & \ZIPLeanReject & \ZIPLeanBoundary & 0 & hurdle CMP 33 \\
+Matched human Lean \code{term0} & 312 & \ZIPHumanReject & \ZIPHumanBoundary & 0 & hurdle CMP 312 \\
+Matched AI Lean \code{term0} & 312 & \ZIPAIReject & \ZIPAIBoundary & 0 & hurdle CMP 312 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+\newpage
+
+Giving zero a special term does not change the verdict.  Coq has enough excess leaves for an
+interior ZIP mixture in 48 of 49 networks (median $\pi=\CoqZIPPi$), but ZIP is rejected in all 49
+and is never the best full-distribution model.  Lean generally has the opposite problem.
+Its observed zero fraction is smaller than the Poisson implied by its positive degrees, so the ZIP
+inflation weight is forced to its zero boundary in \ZIPLeanBoundary{} expanded human networks,
+\ZIPHumanBoundary{} matched-human networks, and \ZIPAIBoundary{} matched-AI networks.  Hurdle CMP
+wins all 657 Lean comparisons, and ZIP is rejected in every one.  A free leaf probability therefore
+improves the bookkeeping but cannot repair the Poisson shape among non-leaves.
+
+The same-theorem comparison shows almost no authorship signal.  The median share of positive-arity
+nodes with degree exactly two is \HumanDegreeTwo{} for human proofs and \AIDegreeTwo{} for AI proofs;
+the paired difference is not detectable ($p=\DegreeTwoPairP$).  The paired Poisson KS difference is
+exactly zero at the median ($p=.965$).  A tiny difference in mean arity is statistically detectable
+because there are 312 large graphs, but it is only $0.00019$ premises per positive-arity node.
+
+The corrected conclusion is therefore structural rather than distributional.  Local dependence is
+small and concentrated, while reuse is broad and heavy-tailed; that contrast survives.  But local
+arity is not Poisson-distributed.  In Lean especially, it is largely a signature of the binary
+application structure and the extractor's atomic scale.  The near identity of human and AI
+\code{term0} arity says that both certificates pass through the same elaborator and term grammar,
+not that their authors use the same cognitive process.  Treating leaves as a separately fitted
+hurdle component does not rescue Poisson, because its positive component is rejected in every
+network.
+
 \subsection{What else confirms}
 
-\begin{table}[t]
+Modularity is especially stable at the term level: median $Q$ is \CoqModularity{} in the recovered
+Coq graphs and \LeanModularity{} in the human Lean graphs.  At $\epsilon=.01$, both collections reach
+median theorem belief 1.0; the median belief averaged over all nodes is \CoqMeanBelief{} and
+\LeanMeanBelief{}, respectively.  Every recovered Coq and human Lean term graph also has a positive
+firewall contrast under the updated implementation.  The sign agrees with the original claim that
+modules can localize reversals, but its magnitude should not be compared to the published
+$\Delta\mathcal L_1$: the normalization changed.
+
+\begin{table}[h]
 \centering
 \caption{A claim-by-claim comparison.  Medians use the recovered Coq graphs and the 33 expanded
 human Lean term graphs.  ``Model'' means that the result is a consequence of the specified belief
@@ -568,26 +707,15 @@ High modularity & median $Q=\CoqModularity$ & median $Q=\LeanModularity$ & Confi
 High belief at $\epsilon=.01$ & median theorem belief 1.0; mean-node belief \CoqMeanBelief & median
 theorem belief 1.0; mean-node belief \LeanMeanBelief & Confirmed within the model \\
 Positive modular firewalls & positive in 49/49 & positive in 33/33 & Qualitative confirmation \\
-Poisson-like in-degree & Power law loses to exponential in 35/36 & Term arity leaves too little
-variation for the same fit & Poisson form not retested; cross-language comparison unresolved \\
+Poisson-like in-degree & Rejected in \PoissonCoqReject & Rejected in \PoissonLeanReject &
+Not confirmed; local arity is grammar-constrained \\
 \bottomrule
 \end{tabularx}
 \end{table}
+\FloatBarrier
 
-Modularity is especially stable at the term level: median $Q$ is \CoqModularity{} in the recovered
-Coq graphs and \LeanModularity{} in the human Lean graphs.  At $\epsilon=.01$, both collections reach
-median theorem belief 1.0; the median belief averaged over all nodes is \CoqMeanBelief{} and
-\LeanMeanBelief{}, respectively.  Every recovered Coq and human Lean term graph also has a positive
-firewall contrast under the updated implementation.  The sign agrees with the original claim that
-modules can localize reversals, but its magnitude should not be compared to the published
-$\Delta\mathcal L_1$: the normalization changed.
-
-The original article also described Coq in-degree as Poisson-distributed.  At the fixed cutoff, 36
-Coq graphs have estimable in-degree tails; a power law loses to an exponential in 35 and the last is
-inconclusive.  This comparison does not directly fit a Poisson model.  Lean term in-degree is
-constrained by expression arity and has no observations at degree 10, so the same tail test is not
-defined.  The broad contrast between concentrated reuse and bounded local dependence survives; the
-specific Poisson claim remains unreplicated.
+The direct tests in \cref{app:poisson} replace the earlier tail-family proxy.  The broad contrast
+survives; the specific Poisson claim does not.
 
 The representation check explains why these confirmations must remain qualified.  For the same 33
 Lean theorems, declaration graphs have median $Q=0.465$ and fixed-tail median $\alpha=1.751$, far from
@@ -650,6 +778,12 @@ The Coq--Lean confirmation is implemented in
 niced core on Akdeniz.  The script independently refits all 49 recovered Coq and 33 human Lean edge
 lists at $x_{\min}=10$; its Lean exponent values agree with the prior table to floating-point
 precision.
+
+The local-arity analysis is implemented in
+\path{code/poisson_indegree_appendix.py}; its network-level fits, paired table, calibration curves,
+and machine-readable summary are under
+\path{results/poisson_indegree/}.  The script uses the same 49 recovered Coq networks, 33 human Lean
+expanded term networks, and 312 clean theorem-matched \code{term0} pairs as the main analyses.
 
 The compact derived tables and code are included with this working directory.  Before publication,
 the raw elaborated graphs and upstream corpus should be deposited with immutable manifests,

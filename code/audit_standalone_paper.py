@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEX = ROOT / "report/standalone/main.tex"
 NUMBERS = ROOT / "report/standalone/numbers.tex"
+POISSON_NUMBERS = ROOT / "report/standalone/poisson_numbers.tex"
 OUT = ROOT / "results/paper_claim_audit.json"
 
 
@@ -77,10 +78,12 @@ def sha256(path: Path) -> str:
 def main() -> None:
     tex = TEX.read_text()
     macros = macro_map(NUMBERS.read_text())
+    poisson_macros = macro_map(POISSON_NUMBERS.read_text())
     paired = json.loads((ROOT / "results/standalone_paper/summary.json").read_text())
     historical = json.loads(
         (ROOT / "results/coq_lean_confirmation_xmin10/summary.json").read_text()
     )
+    poisson = json.loads((ROOT / "results/poisson_indegree/summary.json").read_text())
     coq_tail_fits = read_csv(
         ROOT / "results/coq_lean_confirmation_xmin10/coq_model_comparisons_xmin10.csv"
     )
@@ -189,6 +192,48 @@ def main() -> None:
             "fixed-tail lognormal eligibility changed")
     checks.append("fixed-xmin Coq--Lean confirmation")
 
+    # Direct local-arity distribution tests, including the special-zero check.
+    poisson_groups = poisson["corpora"]
+    expected_poisson = {
+        "Coq expanded terms": (49, {"cmp": 35, "negative_binomial": 14}),
+        "Human Lean expanded terms": (33, {"cmp": 33}),
+        "Matched human Lean term0": (312, {"cmp": 312}),
+        "Matched AI Lean term0": (312, {"cmp": 312}),
+    }
+    for corpus, (n, winners) in expected_poisson.items():
+        group = poisson_groups[corpus]
+        require(group["n_networks"] == n, f"{corpus} local-arity sample size")
+        require(group["poisson_rejected_bh_0_05"] == n,
+                f"{corpus} Poisson rejection count")
+        require(group["zip_rejected_bh_0_05"] == n,
+                f"{corpus} ZIP rejection count")
+        require(group["aic_winners"] == winners, f"{corpus} positive-model AIC winners")
+    require(poisson_groups["Coq expanded terms"]["mixed_model_aic_winners"] ==
+            {"hurdle_cmp": 35, "hurdle_negative_binomial": 14},
+            "Coq special-zero model winners")
+    for corpus in ("Human Lean expanded terms", "Matched human Lean term0",
+                   "Matched AI Lean term0"):
+        n = poisson_groups[corpus]["n_networks"]
+        require(poisson_groups[corpus]["mixed_model_aic_winners"] == {"hurdle_cmp": n},
+                f"{corpus} special-zero model winners")
+    expected_boundaries = {
+        "ZIPCoqBoundary": ("Coq expanded terms", 1, 49),
+        "ZIPLeanBoundary": ("Human Lean expanded terms", 33, 33),
+        "ZIPHumanBoundary": ("Matched human Lean term0", 298, 312),
+        "ZIPAIBoundary": ("Matched AI Lean term0", 296, 312),
+    }
+    for macro, (corpus, boundary_n, n) in expected_boundaries.items():
+        require(poisson_groups[corpus]["zip_at_zero_boundary_n"] == boundary_n,
+                f"{corpus} ZIP boundary count")
+        require(poisson_macros[macro] == f"{boundary_n}/{n}", f"{macro} manuscript macro")
+    close(float(poisson_macros["CoqZIPPi"]),
+          poisson_groups["Coq expanded terms"]["median_zip_zero_inflation"], .0005,
+          "Coq ZIP mixing-weight macro")
+    require("ZIP is rejected in all 49 and is never the best full-distribution model" in
+            re.sub(r"\s+", " ", tex),
+            "missing special-zero conclusion")
+    checks.append("Poisson, zero-inflation, and hurdle-model local-arity tests")
+
     # The exact artifact that was reproduced on ORCHARD and cited in the appendix.
     archive = ROOT / "results/standalone_paper/standalone_paper_outputs.tar.gz"
     require(sha256(archive) ==
@@ -268,6 +313,7 @@ def main() -> None:
         "evidence": {
             "paired_summary": "results/standalone_paper/summary.json",
             "historical_summary": "results/coq_lean_confirmation_xmin10/summary.json",
+            "poisson_summary": "results/poisson_indegree/summary.json",
             "manuscript": "report/standalone/main.tex",
         },
     }
