@@ -5,7 +5,7 @@ import glob, json, os, sys
 import numpy as np, pandas as pd
 from scipy import stats
 sys.path.insert(0,"code")
-from census import proof_bodies, proof_metrics, IDENT, STOP
+from census import proof_bodies, proof_metrics, IDENT, STOP, strip_noncode
 
 UNVERIFIED = {"ahyxie","Yuxuan13"}   # raw generations, no verification field
 def metrics(src):
@@ -16,7 +16,7 @@ def metrics(src):
         ok=True
         for k in tot: tot[k]+=m[k]
     if not ok: return None
-    prem={t for t in IDENT.findall(src) if t not in STOP and not t.isdigit() and ("." in t or t[:1].isupper())}
+    prem={t for t in IDENT.findall(strip_noncode(src)) if t not in STOP and not t.isdigit() and ("." in t or t[:1].isupper())}
     tot["n_distinct_premises"]=len(prem); tot["vocab_ratio"]=len(prem)/max(tot["n_premise_refs"],1)
     return tot
 

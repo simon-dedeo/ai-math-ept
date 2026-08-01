@@ -61,6 +61,20 @@ STRUCTURAL = {
     "left", "right", "injection", "symm", "trans", "nth_rewrite", "suffices",
 }
 # tokens that are Lean keywords / binders, not premise references
+# Comments and string literals must be removed before ANY token counting:
+# human proofs routinely carry the natural-language problem statement in a
+# /- ... -/ docstring, whose capitalised words were previously counted as
+# library premises. This inflated human premise counts and produced a spurious
+# human-vs-AI "premise deficit" (see report 5g, corrected).
+COMMENT = re.compile(r"--[^\n]*|/-.*?-/", re.S)
+STRLIT = re.compile(r'"[^"\n]*"')
+
+
+def strip_noncode(src):
+    """Remove line comments, block comments and string literals."""
+    return STRLIT.sub(" ", COMMENT.sub(" ", src))
+
+
 STOP = set("""theorem lemma def abbrev instance structure class problem by have
 show from fun let in with this at to using exact apply intro intros refine rfl
 if then else match do return where deriving open import namespace end section
@@ -69,8 +83,11 @@ set_option macro notation infixl infixr prefix postfix example sorry
 forall exists and or not iff true false Type Prop Sort""".split())
 
 
-def proof_bodies(src):
-    """Yield (name, kind, body) for each declaration in a source string."""
+def proof_bodies(src, strip=True):
+    """Yield (name, kind, body) for each declaration in a source string.
+    Comments/strings are stripped by default (see strip_noncode)."""
+    if strip:
+        src = strip_noncode(src)
     ms = list(DECL.finditer(src))
     for i, m in enumerate(ms):
         start = m.end()
@@ -128,7 +145,7 @@ def analyze_corpus(slug, root, meta=None):
     per_proof, decls, bodies = [], [], {}
     for p in files:
         try:
-            src = open(p, encoding="utf-8", errors="ignore").read()
+            src = strip_noncode(open(p, encoding="utf-8", errors="ignore").read())
         except Exception:
             continue
         if re.search(r"\bsorry\b", src):

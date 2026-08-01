@@ -7,7 +7,7 @@ one stepwise system -> a direct estimate of within-system variability."""
 import json, sys, os
 import numpy as np, pandas as pd
 sys.path.insert(0,"code")
-from census import proof_bodies, proof_metrics, IDENT, STOP
+from census import proof_bodies, proof_metrics, IDENT, STOP, strip_noncode
 
 def metrics(src):
     tot=dict(n_lines=0,n_tactics=0,n_have=0,n_premise_refs=0); ok=False
@@ -17,7 +17,7 @@ def metrics(src):
         ok=True
         for k in tot: tot[k]+=m[k]
     if not ok: return None
-    prem={t for t in IDENT.findall(src) if t not in STOP and not t.isdigit() and ("." in t or t[:1].isupper())}
+    prem={t for t in IDENT.findall(strip_noncode(src)) if t not in STOP and not t.isdigit() and ("." in t or t[:1].isupper())}
     tot["n_distinct_premises"]=len(prem); tot["vocab_ratio"]=len(prem)/max(tot["n_premise_refs"],1)
     return tot
 

@@ -570,46 +570,56 @@ It also explains why the human/AI contrast needed the paired design of §5g to s
 noise floor this high, only holding the theorem fixed *and* comparing within-statement can resolve
 an authorship effect.
 
-## 5g. Study 12: Same statement, same length — the decisive paired test
+## 5g. Study 12: Same statement — paired human vs AI  ⚠️ **CORRECTED**
 
-The NuminaMath proof-artifact corpus supplies what nothing else in this project does: for a single
-formal statement, **both a human formal proof and a prover formal proof, each independently
-validated**. Restricting to rows where both are present and both validate gives **2,583 matched
-pairs** — identical theorem, identical ambient library, only authorship differs.
+> **This section previously reported that AI proofs cite half as many distinct library premises
+> (10 → 5) at identical proof length, and called the result decisive. That was largely an artifact
+> of the premise metric counting identifiers inside comments and string literals — human proofs in
+> this corpus carry the natural-language problem statement in a `/- … -/` docstring, whose
+> capitalised words were being counted as library references. After stripping comments and strings,
+> the premise gap disappears. The corrected result is below; the original is retained in git history
+> (commit `e31725d`).**
 
-| metric | human | AI | Wilcoxon p | % of pairs where AI > human |
-|---|---|---|---|---|
-| proof length (lines) | 29 | 27 | **0.20 (n.s.)** | 48.1% |
-| tactic invocations | 14 | 11 | 10⁻¹⁶ | 39.1% |
-| **`have` steps** | 3 | **6** | 10⁻⁴⁷ | 51.1% |
-| **distinct premises cited** | 10 | **5** | **10⁻²⁴⁹** | **15.2%** |
-| vocabulary ratio | 1.00 | 0.75 | 10⁻¹⁵⁷ | 22.8% |
+The NuminaMath proof-artifact corpus gives, per row, one formal statement with **both** a human and
+a prover formal proof, each independently validated. Restricting to rows where both are present and
+valid gives **2,321 matched pairs** across 12 problem sources.
 
-**Proof length is indistinguishable** (p = 0.20) — and yet the AI proof cites **half as many distinct
-library results** (10 → 5) while introducing **twice as many inline `have` steps** (3 → 6). In only
-15% of pairs does the machine draw on more of the library than the human did.
+Metrics are now computed on comment- and string-stripped source. We report two premise counts: a
+*loose* one (dotted or capitalised identifiers, the original heuristic) and a *strict* one (dotted
+identifiers only, which are unambiguously library references rather than local binders). Rather than
+reading non-significance as sameness, we report bootstrap CIs on the median paired difference and an
+equivalence test against a ±10% bound; and because pairs from one source are not independent, a
+cluster bootstrap over source.
 
-And the gap survives length stratification *within* the paired design, at every band:
+| metric | human | AI | median diff | 95% CI | equivalent within ±10%? | Wilcoxon p |
+|---|---|---|---|---|---|---|
+| proof length (lines) | 23 | 26 | +2 | [1, 2] | yes | 9×10⁻¹³ |
+| tactic invocations | 12 | 11 | 0 | [0, 0] | yes | 0.008 |
+| **`have` steps** | **3** | **6** | **+1** | **[0, 1]** | **no** | **3×10⁻⁴⁷** |
+| distinct premises (loose) | 5 | 4 | **0** | **[0, 0]** | yes | 3×10⁻²⁴ |
+| distinct premises (strict) | 3 | 2 | **0** | **[0, 0]** | yes | 6×10⁻¹⁵ |
 
-| human proof length | 1–5 | 6–10 | 11–20 | 21–40 | 40+ |
-|---|---|---|---|---|---|
-| n pairs | 305 | 266 | 414 | 670 | 928 |
-| p | 10⁻³⁹ | 10⁻²⁶ | 10⁻³⁹ | 10⁻⁴⁰ | 10⁻²¹ |
+Cluster bootstrap over the 12 sources gives the same picture: median difference 0 [0, 0] for both
+premise metrics, +2 [1, 3] lines.
 
-**This corrects §5f.** In the lean-eval data, between-system differences in vocabulary looked
-downstream of verbosity. Here, with the theorem *and* the length held fixed, the premise deficit is
-undiminished. Verbosity mediates differences *between AI systems*; it does not explain the
-difference *between AI and human authorship*.
+**What survives.** AI proofs of the same statement use about **twice as many inline `have` steps**
+(3 → 6), and this is the one contrast that is *not* equivalent within the ±10% band. They are also
+slightly longer (+2 lines, statistically significant but inside the equivalence bound).
 
-The mechanism is now visible in a single sentence, and it is the accumulation deficit seen at the
-scale of one proof: **where a human reaches for an existing lemma, the machine builds the step
-inline.** Same theorem, same length, half the library touched, twice the scaffolding erected and
-discarded. Scale that across a corpus and you get exactly what Studies 3, 5b and 5d measure — proofs
-that verify but leave nothing reusable behind.
+**What does not survive.** The premise deficit. Distinct library premises are statistically
+equivalent between human and AI proofs of the same theorem, on both the loose and the strict metric,
+with and without clustering. The claim that machine proofs "touch half the library" was wrong.
 
-*(Metric note: this variant of vocabulary ratio counts distinct premises over the whole submission
-against premise references in proof bodies, so it can exceed 1; only the paired contrast is
-interpreted, and both sides are measured identically.)*
+**What this does to the argument.** The single-proof mechanism I proposed — *where a human reaches
+for a lemma, the machine builds the step inline* — is now only half supported. The "builds the step
+inline" half stands (twice the `have` steps, at equivalent premise count and near-equivalent
+length). The "instead of reaching for a lemma" half does not: machines cite as many distinct results
+as humans do. The honest reading is that AI proofs **decompose more finely at equal library
+contact**, which is a claim about proof presentation, not about library consumption.
+
+Note also that the Wilcoxon p-values remain tiny even where the effect is equivalent-within-bound —
+with 2,321 pairs, statistical significance is nearly guaranteed and carries no information about
+magnitude. The CIs are the informative quantity here.
 
 ## 6. Hypotheses: status after these studies
 

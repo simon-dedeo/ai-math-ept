@@ -1,0 +1,7 @@
+[ok] apollonius: N=452 E=997 f2=1.0 alpha=2.42 Q=0.612
+[ok] herstein: N=303 E=369 f2=0.9238 alpha=2.419 Q=0.764
+[ok] orlik_strauch: N=61 E=86 f2=0.9 alpha=2.204 Q=0.657
+[ok] spinoza_ethics: N=578 E=1498 f2=1.0 alpha=2.678 Q=0.57
+[ok] wiles_flt: N=148 E=184 f2=0.9017 alpha=2.727 Q=0.735
+wrote 5 rows to results/hand_human/results.csv
+HAND_DONE

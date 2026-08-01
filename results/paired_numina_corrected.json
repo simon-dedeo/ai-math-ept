@@ -1,0 +1,78 @@
+{
+ "n_lines": {
+  "n": 2321,
+  "median_x": 23.0,
+  "median_y": 26.0,
+  "median_diff": 2.0,
+  "ci_low": 1.0,
+  "ci_high": 2.0,
+  "equiv_bound": 2.3000000000000003,
+  "equivalent_within_bound": true,
+  "wilcoxon_p": 9.337222988734544e-13
+ },
+ "n_tactics": {
+  "n": 2321,
+  "median_x": 12.0,
+  "median_y": 11.0,
+  "median_diff": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 0.0,
+  "equiv_bound": 1.2000000000000002,
+  "equivalent_within_bound": true,
+  "wilcoxon_p": 0.007506161880387311
+ },
+ "n_have": {
+  "n": 2321,
+  "median_x": 3.0,
+  "median_y": 6.0,
+  "median_diff": 1.0,
+  "ci_low": 0.0,
+  "ci_high": 1.0,
+  "equiv_bound": 0.30000000000000004,
+  "equivalent_within_bound": false,
+  "wilcoxon_p": 2.5633807548396473e-47
+ },
+ "premises_loose": {
+  "n": 2321,
+  "median_x": 5.0,
+  "median_y": 4.0,
+  "median_diff": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 0.0,
+  "equiv_bound": 0.5,
+  "equivalent_within_bound": true,
+  "wilcoxon_p": 3.3499097378141144e-24
+ },
+ "premises_strict": {
+  "n": 2321,
+  "median_x": 3.0,
+  "median_y": 2.0,
+  "median_diff": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 0.0,
+  "equiv_bound": 0.30000000000000004,
+  "equivalent_within_bound": true,
+  "wilcoxon_p": 6.0427498686530735e-15
+ },
+ "n_lines_cluster": {
+  "n_pairs": 2321,
+  "n_clusters": 12,
+  "median_diff": 2.0,
+  "ci_low": 1.0,
+  "ci_high": 3.0
+ },
+ "premises_loose_cluster": {
+  "n_pairs": 2321,
+  "n_clusters": 12,
+  "median_diff": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 0.0
+ },
+ "premises_strict_cluster": {
+  "n_pairs": 2321,
+  "n_clusters": 12,
+  "median_diff": 0.0,
+  "ci_low": 0.0,
+  "ci_high": 0.0
+ }
+}

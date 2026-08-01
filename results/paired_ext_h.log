@@ -182,3 +182,2165 @@ instead of
 [ok] algebra_188296 term0: 11511 nodes, 22266 edges, 22266 visits
 [ok] algebra_188296 term: 31248 nodes, 60380 edges, 1 levels
 [ok] algebra_188296 decl:
+[FAIL] pair_1d10baad  rc=1 :: simon/ai_math_ept/mathlib4/eptx_work/pair_1d10baad_x.lean:31:10: error: Type mismatch
+  h5
+has type
+  HasDerivAt ((fun x => log (x + 1)) / fun x => log x) ((x * log x - (x + 1) * log (x + 1)) / (x * (x + 1) * log x ^ 2))
+    x
+but is expected to have type
+  HasDerivAt (fun x => log (x + 1) / log x) ((log x * x - (x + 1) * log (x + 1)) / ((x + 1) * x * log x ^ 2)) x
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1d10baad_x.lean:48:13: error: invalid 'calc' step, left-hand side is
+  x * log x : ℝ
+but is expected to be
+  x * log x - (x + 1) * log (x + 1) : ℝ
+/home/simon/ai_math_ept/mathlib4/eptx
+[ok ] pair_1d8c3d03
+[ok ] pair_1d99af92
+[FAIL] pair_1d8bef20  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_1d8bef20_x.lean:39:6: error: linarith failed to find a contradiction
+case h1
+f : ℝ → ℝ
+h : ∀ (x : ℝ), f x + x * f (1 - x) = x ^ 2 - 1
+x : ℝ
+h1 : f x + x * f (1 - x) = x ^ 2 - 1
+h2 : f (1 - x) + (1 - x) * f (1 - (1 - x)) = (1 - x) ^ 2 - 1
+eq1 : f x + x * f (1 - x) = x ^ 2 - 1
+eq2 eq2' : f (1 - x) + (1 - x) * f x = (1 - x) ^ 2 - 1
+eq3' : x ^ 2 - 1 - f x + x * (1 - x) * f x = x * ((1 - x) ^ 2 - 1)
+eq4 : x * f (1 - x) = x ^ 2 - 1 - f x
+hne : x ^ 2 - x + 1 ≠ 0
+a✝ : f x < (x ^ 2 * (-x + 3) - 1) / (x * (x - 1) + 1)
+⊢ False
+failed
+Try this:
+  [apply] rin
+[ok ] pair_1e273c45
+[ok ] pair_1e4638c2
+[ok ] pair_1e6ca847
+[FAIL] pair_1f6c5f2d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_1f6c5f2d_x.lean:8:10: error(lean.unknownIdentifier): Unknown identifier `le_of_not_lt`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1f6c5f2d_x.lean:9:2: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1f6c5f2d_x.lean:231:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_15414 term0: 308 nodes, 464 edges, 464 visits
+[ok] number_theory_15414 term: 17184 nodes, 33330 ed
+[ok ] pair_1eac5349
+[FAIL] pair_1fffe880  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_1fffe880_x.lean:20:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1fffe880_x.lean:26:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1fffe880_x.lean:31:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_1fffe880_x.lean:22:12: warning: This simp argument is unused:
+  h_pos
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pa
+[ok ] pair_2000cc20
+[ok ] pair_20f6251a
+[ok ] pair_204207d6
+[ok ] pair_21d4e69e
+[ok ] pair_22599b6f
+[ok ] pair_2347fae1
+[FAIL] pair_221506da  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_221506da_x.lean:9:15: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_221506da_x.lean:32:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  {?a}.ncard
+in the target expression
+  {35, 58, 59, 95, 118, 119, 155, 178, 179, 215, 238, 239, 275, 298, 299, 335, 358, 359, 395, 418, 419, 455, 478, 479,
+        515, 538, 539, 575, 598, 599, 635, 658, 659, 695, 718, 719, 755, 778, 779, 815, 838, 839, 875, 898, 899, 935,
+        958, 959, 995}.ncard =
+[FAIL] pair_241a8561  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_241a8561_x.lean:7:50: error: unsolved goals
+f : ℝ → ℝ
+hf : 2 * f = fun x => -3 * x + 6
+x : ℝ
+⊢ 3 * (-x + 2) = 2 * ((-(3 * x) + 6) / 2)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_241a8561_x.lean:238:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_13412 term0: 1856 nodes, 3257 edges, 3257 visits
+[ok] algebra_13412 term: 13082 nodes, 24254 edges, 1 levels
+[ok] algebra_13412 decl: 12785 nodes, 267931 
+[FAIL] pair_2579febe  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_2579febe_x.lean:44:39: error: unsolved goals
+x : ℝ := π / 9
+hx : x = π / 9
+hcos : cos x > 0
+hsin : sin x > 0
+cos_sq_1 : 1 - cos x ^ 2 = sin x ^ 2
+⊢ 1 - cos x ^ 2 = -(cos x ^ 2 * sin x ^ 2) + sin x ^ 2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_2579febe_x.lean:45:13: error: unsolved goals
+x : ℝ := π / 9
+hx : x = π / 9
+hcos : cos x > 0
+hsin : sin x > 0
+cos_sq_1 : 1 - cos x ^ 2 = sin x ^ 2
+⊢ sin x ^ 2 * sin x ^ 2 = sin x ^ 2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_2579febe_x.lean:267:21: warning: `String.trim` has been deprecated: Use `
+[ok ] pair_2590c3a7
+[ok ] pair_26771bf6
+[ok ] pair_2748f3f1
+[FAIL] pair_28bb1bc1  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_28bb1bc1_x.lean:32:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_28bb1bc1_x.lean:33:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (x * x + y * y) * x * y / (y * x)
+in the target expression
+  2 * x * y ≤ x * y * (x ^ 2 + y ^ 2) / (x * y)
+
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+h : a + b + c = 9
+x y : ℝ
+hx : x ≠ 0
+hy : y ≠ 0
+this : (x * x + y * y) * x * y / (y * x) = x * x + y * y
+⊢ 2 * x * y ≤ x * y * (x ^ 2 + y ^ 2) / (x * y)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_28b
+[FAIL] pair_28dc9b96  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_28dc9b96_x.lean:29:62: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_28dc9b96_x.lean:37:8: error(lean.unknownIdentifier): Unknown identifier `gt_or_eq_of_le`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_28dc9b96_x.lean:37:2: error: Tactic `cases` failed: major premise type is not an inductive type
+  ?m.998
+
+Explanation: the `cases` tactic is for constructor-based reasoning as well as for applying custom cases principles with a 'using' clause or a registered '@[cases_eliminator]' theorem. The above type neither is
+[ok ] pair_271fa579
+[ok ] pair_29059eae
+[ok ] pair_2a4dc8cc
+[ok ] pair_2a66f969
+[ok ] pair_2b09aabd
+[FAIL] pair_2b3de622  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_2b3de622_x.lean:31:8: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_2b3de622_x.lean:260:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_9220 term0: 1607 nodes, 2802 edges, 2802 visits
+[ok] algebra_9220 term: 26371 nodes, 50408 edges, 2 levels
+[ok] algebra_9220 decl: 6944 nodes, 150045 edges, 23 levels
+
+[ok ] pair_2d283418
+[FAIL] pair_2e298ffa  rc=1 :: ence of the pattern
+  ?a ^ ?n * ?b ^ ?n
+in the target expression
+  log x * ((log 2)⁻¹ ^ 3 * (2 / 5)) + log (x ^ 4) * (log 2)⁻¹ ^ 3 * (1 / 20) + log (x ^ 3) * (log 2)⁻¹ ^ 3 * (1 / 15) +
+      log (x ^ 2) * (log 2)⁻¹ ^ 3 * (1 / 10) =
+    log 2 * (log 2)⁻¹ ^ 3 * 8
+
+case mp
+x : ℝ
+hx : 0 < x
+k2 : log √2 = 1 / 2 * log 2
+k0 : log √x = 1 / 2 * log x
+k3 : log 4 = 2 * log 2
+k4 : log 8 = 3 * log 2
+k5 : log 16 = 4 * log 2
+h : log x * 48 + log (x ^ 4) * 6 + log (x ^ 3) * 8 + log (x ^ 2) * 12 = log 2 * 960
+hk :
+  log x * ((log 2)⁻¹ ^ 3 * (2 / 5)) + log (x ^ 4) * (log 2)⁻¹ ^ 3 * (1 / 20) + log (x ^ 3) * (log
+[ok ] pair_2fba10ea
+[ok ] pair_2fde2018
+[ok ] pair_301c1ff9
+[ok ] pair_32e87abf
+[ok ] pair_326a8dc3
+[ok ] pair_32d5762e
+[ok ] pair_33135e91
+[ok ] pair_34b2dbc3
+[ok ] pair_33b83cd5
+[ok ] pair_34e33ffa
+[ok ] pair_34d6974b
+[FAIL] pair_35fa6fbf  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_35fa6fbf_x.lean:20:17: error: unexpected token ':='; expected term
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_35fa6fbf_x.lean:16:4: error: unsolved goals
+case h.refine_2.refine_2
+m : ℤ
+n : ℕ
+r : ℝ
+npos : 0 < n
+rpos : 0 < r
+hr : r < 1 / 1000
+hmn : ↑m = (↑n + r) ^ 3
+⊢ 6860 = (6860 ^ 3⁻¹) ^ 3
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_35fa6fbf_x.lean:20:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat (Matroid ?m.206) 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context
+[ok ] pair_358e95d5
+[FAIL] pair_369d2c1d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_369d2c1d_x.lean:12:18: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  b ^ 3 * 27
+in the target expression
+  27 * b ^ 3 = 4 * a
+
+a b : ℝ
+h₀ : a ^ 2 * b ^ 3 = 32 / 27
+this : b ≠ 0
+h₁ : a * 4 = b ^ 3 * 27
+⊢ 27 * b ^ 3 = 4 * a
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_369d2c1d_x.lean:267:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_21442 term0: 5909 nodes, 11078 edges,
+[FAIL] pair_3719e144  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3719e144_x.lean:31:39: error: linarith failed to find a contradiction
+case h1
+θ : ℝ
+h : ∑' (n : ℕ), (Real.cos θ ^ 2) ^ n = 5
+hcos : Real.cos θ ^ 2 < 1
+h' : 1 / (1 - Real.cos θ ^ 2) = 5
+this✝¹ : 1 - Real.cos θ ^ 2 ≠ 0
+this✝ : 1 = 5 * (1 - Real.cos θ ^ 2)
+this : Real.cos θ ^ 2 = 4 / 5
+a✝ : Real.cos (2 * θ) * 5 < 3
+⊢ False
+failed
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3719e144_x.lean:253:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+in
+[FAIL] pair_37334f86  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_37334f86_x.lean:30:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  n + 1 - 2
+in the target expression
+  ∑ x ∈ Finset.range (n - 1), a (2 + x) ^ 2 = ∑ x ∈ Finset.range (1 + n - 2), a (2 + x) ^ 2
+
+case e_a
+a : ℕ → ℝ
+h₀ : a 1 = 0
+h₁ : ∀ (n : ℕ), a (1 + n) ^ 2 = 1 + a n * 2 + a n ^ 2
+n : ℕ
+hn_pos : n > 0
+h : ∑ i ∈ Finset.Ico 1 (n + 1), a (i + 1) ^ 2 = ∑ i ∈ Finset.Ico 1 (n + 1), (a i ^ 2 + 2 * a i + 1)
+⊢ ∑ x ∈ Finset.range (n - 1), a (2 + x) ^ 2 = ∑ x ∈ Finset.range (1 + n - 2), a (2 + x) ^ 2
+/home/simon/ai_math_ept/mat
+[ok ] pair_37c40664
+[ok ] pair_3757881d
+[ok ] pair_37d880cd
+[FAIL] pair_38baa893  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_38baa893_x.lean:23:8: error(lean.unknownIdentifier): Unknown identifier `sq_eq_sq`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_38baa893_x.lean:6:63: error: unsolved goals
+x c : ℝ
+hx : x ≥ 1 / 2
+ha : c = √(x + √(2 * x - 1)) + √(x - √(2 * x - 1))
+h₀ : x + √(2 * x - 1) ≥ 0
+h₁ : x - √(2 * x - 1) ≥ 0
+h₂ : c ≥ 0
+⊢ (c = √2 ↔ x ≤ 1) ∧ c ≠ 1 ∧ (c = 2 ↔ x = 3 / 2)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_38baa893_x.lean:285:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different 
+[FAIL] pair_3a87aeb7  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3a87aeb7_x.lean:33:6: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3a87aeb7_x.lean:280:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_607816 term0: 1830 nodes, 3204 edges, 3204 visits
+[ok] number_theory_607816 term: 31632 nodes, 60273 edges, 2 levels
+[ok] number_theory_607816 decl: 5691 nodes, 99058 edges, 20 levels
+
+[FAIL] pair_3ae19d99  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3ae19d99_x.lean:63:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3ae19d99_x.lean:100:14: warning: Possibly looping simp theorem: `Nat.sqrt.eq_1`
+
+Note: Possibly caused by: `Nat.sqrt.iter`
+
+Hint: You can disable a simp theorem from the defaul
+[ok ] pair_3b1172ec
+[FAIL] pair_3b35a861  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3b35a861_x.lean:24:28: error: Application type mismatch: The argument
+  h2
+has type
+  a ∣ -184
+but is expected to have type
+  ↑?m.47 ∣ ?m.46
+in the application
+  Int.dvd_gcd ?m.48 h2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3b35a861_x.lean:57:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  -?m.456 = ?m.457
+in the target expression
+  (∃ a_1, a_1 ∣ 2 ∧ ↑a_1 = a) ∨ ∃ a_1, a_1 ∣ 2 ∧ ↑a_1 = -a
+
+case e'_1
+a : ℤ
+Q : ℤ[X]
+P : ℤ[X] := X ^ 2 + X + C a
+R : ℤ[X] := X ^ 17 + X ^ 13 + X ^ 5 - 90 * X ^ 4 + X - 90
+h : P * Q 
+[ok ] pair_3b470502
+[FAIL] pair_3bf62fff  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3bf62fff_x.lean:13:46: error: unsolved goals
+h1 : Complex.I ^ 5 = Complex.I
+hh1 : Complex.I ^ (-5) * Complex.I = 1
+hh2 : Complex.I ^ 5 = Complex.I ^ 5
+hh3 : Complex.I ^ (-5) = 1 / Complex.I
+⊢ 1 = -Complex.I ^ 2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3bf62fff_x.lean:30:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3bf62fff_x.lean:275:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String →
+[FAIL] pair_3bac32b8  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3bac32b8_x.lean:19:2: error: unsolved goals
+case h
+⊢ True ∧ √3 ^ 2 = 3
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3bac32b8_x.lean:281:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_290816 term0: 14365 nodes, 28006 edges, 28006 visits
+[ok] inequalities_290816 term: 14365 nodes, 28006 edges, 0 levels
+[ok] inequalities_290816 decl: 11054 nodes, 236781 edges, 29 levels
+
+[ok ] pair_3c635c38
+[ok ] pair_3cca9874
+[ok ] pair_3c7de8b2
+[FAIL] pair_3cd000e2  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3cd000e2_x.lean:30:26: error: unsolved goals
+a : ℝ
+h1 : |a + 15| < 17
+h2 : |a - 19| < 17
+⊢ |34| = 34
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3cd000e2_x.lean:266:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_21612 term0: 2211 nodes, 3958 edges, 3958 visits
+[ok] algebra_21612 term: 23227 nodes, 44328 edges, 2 levels
+[ok] algebra_21612 decl: 6528 nodes, 138169 edges, 24 levels
+
+[ok ] pair_3e5837da
+[ok ] pair_3da844f5
+[ok ] pair_3e7604ad
+[ok ] pair_3db79af4
+[ok ] pair_40400f26
+[ok ] pair_412ad836
+[ok ] pair_409b71b8
+[FAIL] pair_3eaf1908  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_3eaf1908_x.lean:31:36: error(lean.unknownIdentifier): Unknown constant `Multiset.le_cons_of_not_mem`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_3eaf1908_x.lean:406:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_16405 term0: 8423 nodes, 16096 edges, 16096 visits
+[ok] algebra_16405 term: 19935 nodes, 37717 edges, 1 levels
+[ok] algebra_16405 decl: 10919 nodes, 222051 edges, 25 levels
+
+[FAIL] pair_41624ef7  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_41624ef7_x.lean:32:6: error: ring failed, ring expressions not equal
+α : ℝ
+hα : α ∈ Set.Ioo 0 (π / 2)
+left✝ : 0 < α
+right✝ : α < π / 2
+this✝ : cos (α / 2) > 0
+this : sin (α / 2) > 0
+tan_cot : 2 * (sin (α / 2) ^ 2 + cos (α / 2) ^ 2) = sin (α / 2) * cos (α / 2) * 5
+⊢ 4 / 5 + sin (α / 2) ^ 2 * (-4 / 5) + cos (α / 2) ^ 2 * (-4 / 5) = 0
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_41624ef7_x.lean:278:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Sli
+[FAIL] pair_41f0b641  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_41f0b641_x.lean:43:28: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MulRightStrictMono ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_41f0b641_x.lean:314:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_300072 term0: 16242 nodes, 31684 edges, 3
+[FAIL] pair_43d40622  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_43d40622_x.lean:13:20: error: linarith failed to find a contradiction
+case h.left
+a✝ : √3 ≤ 0
+⊢ False
+failed
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_43d40622_x.lean:13:20: error: linarith failed to find a contradiction
+case h.right
+⊢ False
+failed
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_43d40622_x.lean:239:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_216249 term0: 9470 nodes, 18430 ed
+[ok ] pair_43cbe160
+[ok ] pair_44418174
+[ok ] pair_4453d7a8
+[ok ] pair_446352d0
+[FAIL] pair_4518cc0a  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_4518cc0a_x.lean:17:60: error: unsolved goals
+⊢ 1 / logb 2 π = log 2 / log π
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4518cc0a_x.lean:20:60: error: unsolved goals
+h1 : 1 / logb 2 π = log 2 / log π
+⊢ 1 / logb 5 π = log 5 / log π
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4518cc0a_x.lean:56:13: error(lean.unknownIdentifier): Unknown identifier `div_lt_div_right`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4518cc0a_x.lean:57:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4518cc0a_x.lean:68:60: error: u
+[FAIL] pair_44904cd0  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_44904cd0_x.lean:5:91: error: unsolved goals
+m : ℝ
+⊢ {x | x ^ 2 - x ≤ 0} ⊆ {x | x ^ 2 - 4 * x + m ≥ 0} ↔ m ≥ 3
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_44904cd0_x.lean:6:0: error: unexpected identifier; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_44904cd0_x.lean:255:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_9036 term0: 213 nodes, 314 edges, 314 visits
+[ok] algebra_9036 
+[ok ] pair_452bb14f
+[ok ] pair_45b25f4e
+[ok ] pair_47d24c12
+[FAIL] pair_480deb3e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_480deb3e_x.lean:12:58: error: unsolved goals
+A B : ℝ
+h : ∀ (x : ℝ), x ≠ 3 → x ≠ 5 → 4 * x / (x ^ 2 - 8 * x + 15) = A / (x - 3) + B / (x - 5)
+x : ℝ
+n3 : x ≠ 3
+n5 : x ≠ 5
+hh1 : 4 * x / (x ^ 2 - 8 * x + 15) = A / (x - 3) + B / (x - 5)
+hh2 : x ^ 2 - 8 * x + 15 = (x - 3) * (x - 5)
+this : x ^ 2 - 8 * x + 15 ≠ 0
+⊢ x = x * (x * (x - 8) + 15) / (x * (x - 8) + 15)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_480deb3e_x.lean:262:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type
+[FAIL] pair_4835072e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_4835072e_x.lean:34:55: error(lean.unknownIdentifier): Unknown identifier `Mathlib.Tactic.Ring.add_pf_add_lt`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4835072e_x.lean:100:36: warning: This simp argument is unused:
+  neg_one_pow_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pow_add, pow_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4835072e_x.lean:364:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: T
+[ok ] pair_4860e4db
+[ok ] pair_49366beb
+[ok ] pair_48881c66
+[ok ] pair_496aea54
+[ok ] pair_496f71fb
+[ok ] pair_49737f41
+[ok ] pair_496fbd44
+[ok ] pair_49e73559
+[ok ] pair_49f9b472
+[FAIL] pair_4a05b004  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_4a05b004_x.lean:5:90: error(lean.invalidField): Invalid field `unbot'`: The environment does not contain `Option.unbot'`, so it is not possible to project the field `unbot'` from an expression
+  (n ^ 2 + 1).primeFactors.max
+of type `Option ℕ`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4a05b004_x.lean:12:4: error: Tactic `native_decide` failed: Could not evaluate decidable instance. Error: cannot evaluate code because 'number_theory_610317._native.native_decide.decl_1_1._lam_0' uses 'sorry' and/or contains errors
+/home/simon/ai_math_ept/mathl
+[ok ] pair_4a23a011
+[ok ] pair_4beb2458
+[ok ] pair_4c39d86a
+[FAIL] pair_4c690fec  rc=1 :: lved goals
+x y : ℝ
+hx : x ≠ 0
+h : x + 1 / x = 2 * Real.cos y
+n✝ m : ℕ
+hm : ∀ n ≤ m + 1, x ^ n + 1 / x ^ n = 2 * Real.cos (↑n * y)
+n : ℕ
+hn : n ≤ m + 1 + 1
+nlemp1 : ¬n ≤ m + 1
+nemp1 : n = m + 1 + 1
+k : ℕ
+hk : k = n - 2
+hhk : n = k + 2
+⊢ x ^ 2 * x ^ k * x ^ ((2 + k - 1) * 2) * x ^ (2 + k - 2) + x ^ 2 * x ^ k * x ^ (2 + k - 2) +
+        x ^ 4 * x ^ k * x ^ ((2 + k - 1) * 2) * x ^ (2 + k - 2) +
+      x ^ 4 * x ^ k * x ^ (2 + k - 2) =
+    x * x ^ (2 + k - 1) * x ^ (2 + k - 2) + x ^ 3 * x ^ k * x ^ (2 + k - 1) +
+        x ^ 3 * x ^ k * x ^ (2 + k - 1) * x ^ ((2 + k - 2) * 2) +
+      x ^ 5 * x ^ (k *
+[ok ] pair_4cffc8e6
+[ok ] pair_4c7ab903
+[ok ] pair_4d68f3d1
+[ok ] pair_4d494975
+[ok ] pair_4eec1381
+[ok ] pair_4d25cb85
+[FAIL] pair_4f35c0f5  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_4f35c0f5_x.lean:14:114: error: Type mismatch
+  (lt_div_iff₀ g1).mpr this
+has type
+  2 < (((b + c) * b + (c + a) * a) * c + (a + b) * (a * b) - (a ^ 3 + b ^ 3 + c ^ 3)) / (a * b * c)
+but is expected to have type
+  2 * b * c * a < c * (b * (b + c) + a * (c + a)) + b * a * (a + b) - (a ^ 3 + b ^ 3 + c ^ 3)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_4f35c0f5_x.lean:28:114: error: Type mismatch
+  (div_le_iff₀ g1).mpr this
+has type
+  (((b + c) * b + (c + a) * a) * c + (a + b) * (a * b) - (a ^ 3 + b ^ 3 + c ^ 3)) / (a * b * c) ≤ 3
+but is expected t
+[ok ] pair_517e0184
+[ok ] pair_4fd720f4
+[ok ] pair_512e1ab2
+[FAIL] pair_51aae4ed  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_51aae4ed_x.lean:50:134: error: Application type mismatch: The argument
+  h1
+has type
+  2003 ^ (2 * k) ≡ 4 ^ k [MOD 3]
+but is expected to have type
+  2003 ^ (2 * k) + 3 ≡ 4 ^ k [MOD 3]
+in the application
+  Nat.ModEq.symm h1
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_51aae4ed_x.lean:308:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_35692 term0: 3150 nodes, 5753 edges, 5753 visits
+[ok] number
+[ok ] pair_52f16799
+[ok ] pair_54aff7bc
+[ok ] pair_535c413d
+[FAIL] pair_55285261  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_55285261_x.lean:27:16: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_55285261_x.lean:263:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] Inequalities_239474 term0: 15745 nodes, 30789 edges, 30789 visits
+[ok] Inequalities_239474 term: 15745 nodes, 30789 edges, 0 levels
+[ok] Inequalities_239474 decl: 11075 nodes, 235017 edges, 30 levels
+
+[ok ] pair_55b8ecf1
+[FAIL] pair_55fe8a19  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_55fe8a19_x.lean:9:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  deriv (?m.37 + ?m.38) ?m.39
+in the target expression
+  deriv (fun x => x * Real.sin x + Real.cos x) x = x * Real.cos x
+
+f : ℝ → ℝ
+hf : f = fun x => x * Real.sin x + Real.cos x
+x : ℝ
+⊢ deriv (fun x => x * Real.sin x + Real.cos x) x = x * Real.cos x
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_55fe8a19_x.lean:237:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String 
+[ok ] pair_564fee0e
+[ok ] pair_5688be7b
+[ok ] pair_567a7178
+[ok ] pair_572dc7d4
+[ok ] pair_58e22ef3
+[ok ] pair_57c4dba0
+[FAIL] pair_5816eda3  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_5816eda3_x.lean:20:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_5816eda3_x.lean:22:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it 
+[ok ] pair_587b1256
+[ok ] pair_5a6fca10
+[ok ] pair_59111b24
+[FAIL] pair_5a186a3d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_5a186a3d_x.lean:56:11: error: invalid 'calc' step, left-hand side is
+  15 + (-(x * 2) - x ^ 2) : ℝ
+but is expected to be
+  15 - x * 2 - x ^ 2 : ℝ
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_5a186a3d_x.lean:285:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_231967 term0: 1341 nodes, 2276 edges, 2276 visits
+[ok] algebra_231967 term: 20005 nodes, 37891 edges, 2 levels
+[ok] algebra_231967 decl: 12863 
+[FAIL] pair_5b255c96  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_5b255c96_x.lean:27:13: error(lean.unknownIdentifier): Unknown constant `Set.ncard_coe_Finset`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_5b255c96_x.lean:6:85: error: unsolved goals
+K :
+  {x | 1 ≤ x ∧ x ≤ 200 ∧ 3 ∣ x ∧ 5 ∣ x ∧ ¬4 ∣ x ∧ ¬7 ∣ x} =
+    ↑({x ∈ {x ∈ Finset.Icc 1 200 | 3 ∣ x ∧ 5 ∣ x} | ¬4 ∣ x ∧ ¬7 ∣ x})
+H1 : {x ∈ Finset.Icc 1 200 | 3 ∣ x ∧ 5 ∣ x} = {15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195}
+H2 : {x ∈ {x ∈ Finset.Icc 1 200 | 3 ∣ x ∧ 5 ∣ x} | ¬4 ∣ x ∧ ¬7 ∣ x} = {15, 30, 45, 75, 90, 135, 150, 165, 195}
+⊢ (↑{15, 30, 45
+[FAIL] pair_5c1cd10b  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_5c1cd10b_x.lean:28:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_5c1cd10b_x.lean:45:8: error: linarith failed to find a contradiction
+case h1
+y : ℕ
+x : ℝ
+hx : ↑y = 2021 / (x ^ 2 - 8 * x + 60)
+h1 : x ^ 2 - 8 * x + 60 ≠ 0
+h2 : ↑y = 2021 / (x ^
+[ok ] pair_5d026d45
+[ok ] pair_5daf2594
+[ok ] pair_5cf7a965
+[ok ] pair_5df84962
+[ok ] pair_5ee839bd
+[ok ] pair_5eec702b
+[ok ] pair_5eff76b6
+[ok ] pair_5f2b86ca
+[FAIL] pair_5f2e06a9  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_5f2e06a9_x.lean:12:8: error(lean.unknownIdentifier): Unknown identifier `le_or_lt`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_5f2e06a9_x.lean:12:2: error: Tactic `cases` failed: major premise type is not an inductive type
+  ?m.98
+
+Explanation: the `cases` tactic is for constructor-based reasoning as well as for applying custom cases principles with a 'using' clause or a registered '@[cases_eliminator]' theorem. The above type neither is an inductive type nor has a registered theorem.
+
+a b c d : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+hd : 0 < d
+h
+[ok ] pair_5feca8f4
+[ok ] pair_60565fc7
+[FAIL] pair_600728af  rc=1 ::  : f.coeff 3 = 1
+f4 : f.natDegree = 3
+f5 : f.leadingCoeff = 1
+f6 : f ≠ 0
+hroots : ∀ {x : ℝ}, x ∈ ↑[p, q, r] → x ≠ 0
+hp : p ≠ 0
+hq : q ≠ 0
+hr : r ≠ 0
+h1 :
+  f.roots.card = 3 →
+    ∀ {k : ℕ},
+      k ≤ 3 →
+        f.coeff k =
+          (-1) ^ (3 - k) *
+            (Multiset.map Multiset.prod (Quot.liftOn f.roots (fun l => ↑(Multiset.powersetCardAux (3 - k) l)) ⋯)).sum
+⊢ False
+failed
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_600728af_x.lean:60:10: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [f4] at h1
+
+Note: This linter can be disabl
+[ok ] pair_606263d6
+[ok ] pair_62b6e279
+[FAIL] pair_631baaf3  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_631baaf3_x.lean:27:49: error: unsolved goals
+m : ℝ
+M : Set ℝ
+hM : M = {x | m * x - 1 = 0}
+h : M ⊆ {x | x ^ 2 - 5 * x + 6 = 0}
+h1 : ¬m = 0
+h2 : m ≠ 0
+h3 : ∀ (x : ℝ), m * x - 1 = 0 → x ^ 2 - 5 * x + 6 = 0
+⊢ 1 - 1 = 0
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_631baaf3_x.lean:300:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_157393 term0: 6467 nodes, 12258 edges, 12258 visits
+[ok] algebra_157393 te
+[ok ] pair_61c6d911
+[FAIL] pair_63577ea4  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_63577ea4_x.lean:38:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  312 + (r * 8 - r ^ 2 * 10)
+in the target expression
+  312 + r * 8 - r ^ 2 * 10 = 0
+
+case mp
+a b : ℕ
+hab : a.Coprime b
+hb : 0 < b
+h : ∑ᶠ (r : ℝ) (_ : r ∈ {r | ∃ x, x ^ 2 + (r - 1) * x + 6 = 0 ∧ x ^ 2 + (2 * r + 1) * x + 22 = 0}), r = ↑a / ↑b
+r x : ℝ
+h2 : x ^ 2 + (2 * r + 1) * x + 22 = 0
+ne : r + 2 ≠ 0
+h4 : x = -16 / (r + 2)
+h3 : (r + 2) * x = -16
+h1 : 312 + r * 8 - r ^ 2 * 10 = 0
+⊢ r = 6 ∨ r = -26 / 5
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_6
+[ok ] pair_6369b437
+[FAIL] pair_648874aa  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_648874aa_x.lean:4:189: error: unsolved goals
+a b c : ℕ
+ha : Nat.digits 2 a = [0, 1, 1, 0, 1]
+hb : Nat.digits 2 b = [0, 0, 1, 0, 1]
+hc : Nat.digits 2 c = [0, 1]
+⊢ Nat.digits 2 (a * b / c) = [0, 0, 1, 1, 1, 0, 1, 1]
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_648874aa_x.lean:6:0: error: unexpected token 'have'; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_648874aa_x.lean:235:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+[ok ] pair_6357c298
+[ok ] pair_659419e1
+[ok ] pair_665c7b43
+[FAIL] pair_6709058c  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_6709058c_x.lean:49:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_6709058c_x.lean:275:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_21184 term0: 5306 nodes, 9938 edges, 9938 visits
+[ok] algebra_21184 term: 17975 nodes, 33919 edges, 1 levels
+[ok] algebra_21184 decl: 12013 nodes, 257311 edges, 25 levels
+
+[ok ] pair_677749e1
+[ok ] pair_66b87803
+[ok ] pair_68455911
+[ok ] pair_6801c12d
+[FAIL] pair_68858a6d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_68858a6d_x.lean:21:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  a * d ^ 2 * 8 - a ^ 2 * d * 6 + a ^ 3
+in the target expression
+  -(a * d * 6) + a ^ 2 + d ^ 2 * 8 = 0
+
+a d : ℝ
+ha : a ≠ 0
+h : a ^ 2 - 6 * a * d + 8 * d ^ 2 = 0
+x : ℝ := d / a
+_1 : a * d ^ 2 * 8 - a ^ 2 * d * 6 + a ^ 3 = a * (a ^ 2 - 6 * a * d + 8 * d ^ 2)
+_2 : a ^ 2 - 6 * a * d + 8 * d ^ 2 = 0
+⊢ -(a * d * 6) + a ^ 2 + d ^ 2 * 8 = 0
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_68858a6d_x.lean:259:21: warning: `String.trim` has been deprecated: Use 
+[ok ] pair_6920c5e4
+[ok ] pair_68e74a3f
+[ok ] pair_69286778
+[FAIL] pair_6b6aeee2  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_6b6aeee2_x.lean:21:25: error(lean.unknownIdentifier): Unknown identifier `lt_of_not_le`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_6b6aeee2_x.lean:255:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_95549 term0: 3985 nodes, 7383 edges, 7383 visits
+[ok] algebra_95549 term: 16359 nodes, 30979 edges, 1 levels
+[ok] algebra_95549 decl: 10865 nodes, 229912 edges, 29 levels
+
+[FAIL] pair_6a6d5739  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_6a6d5739_x.lean:17:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_6a6d5739_x.lean:246:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_618378 term0: 14199 nodes, 27827 edges, 27827 visits
+[ok] inequalities_618378 term: 14199 nodes, 27827 edges, 0 levels
+[ok] inequalities_618378 decl: 11040 nodes, 234067 edges, 30 levels
+
+[ok ] pair_6bcfd203
+[ok ] pair_6ba505c0
+[FAIL] pair_6c09f387  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_6c09f387_x.lean:39:74: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_6c09f387_x.lean:289:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_316091 term0: 16935 nodes, 32825 edges, 32825 visits
+[ok] algebra_316091 term: 16935 nodes, 32825 edges, 0 levels
+[ok] algebra_316091 decl: 11420 nodes, 244773 edges, 30 levels
+
+[ok ] pair_6d3a0d6c
+[ok ] pair_6e98ad25
+[ok ] pair_6d779213
+[FAIL] pair_701fe448  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_701fe448_x.lean:53:8: error: Failed to rewrite using equation theorems for `Nat.ModEq`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_701fe448_x.lean:280:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_14989 term0: 996 nodes, 1752 edges, 1752 visits
+[ok] number_theory_14989 term: 25382 nodes, 49097 edges, 3 levels
+[ok] number_theory_14989 decl: 6672 nodes, 107808 edges, 30 levels
+
+[ok ] pair_7007ed35
+[FAIL] pair_706e7c21  rc=1 ::  [apply] simp [hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_706e7c21_x.lean:36:54: warning: This simp argument is unused:
+  hi
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [show (10 : Fin 20).val = 10 from rfl]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_706e7c21_x.lean:42:16: warning: This simp argument is unused:
+  show (10 : Fin 20).val = 10 from rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] sim
+[ok ] pair_7187bdc5
+[FAIL] pair_72211475  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_72211475_x.lean:8:10: error(lean.unknownIdentifier): Unknown identifier `le_of_not_lt`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_72211475_x.lean:9:2: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_72211475_x.lean:231:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_15084 term0: 231 nodes, 342 edges, 342 visits
+[ok] number_theory_15084 term: 11223 nodes, 21733 ed
+[ok ] pair_71cf0c00
+[FAIL] pair_722331ce  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_722331ce_x.lean:11:0: error: unsolved goals
+h : ℝ
+⊢ (h⊗h⊗h) = h
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_722331ce_x.lean:13:0: error: unexpected token 'have'; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_722331ce_x.lean:238:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] Algebra_1165 term0: 91 nodes, 132 edges, 132 visits
+[ok] Algebra_1165 term: 22345 nodes, 42213 edges, 8 levels
+[ok
+[FAIL] pair_7287b6df  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_7287b6df_x.lean:14:33: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_7287b6df_x.lean:23:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √2500
+in the target expression
+  0 ≤ 1e-2 + √(2501 - 1)
+
+case left.hy
+sq50 : √2500 = 50
+⊢ 0 ≤ 1e-2 + √(2501 - 1)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_7287b6df_x.lean:268:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a differen
+[FAIL] pair_738253dc  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_738253dc_x.lean:7:22: error: unsolved goals
+b : ℝ
+h : √((4 - 1) ^ 2 + (b - 2) ^ 2) = 5
+⊢ b = 6 ∨ b = -2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_738253dc_x.lean:9:0: error: unexpected token 'have'; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_738253dc_x.lean:272:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_18701 term0: 216 nodes, 326 edges, 326 visits
+[ok] algebra_18701 te
+[ok ] pair_73bd6122
+[ok ] pair_7415487b
+[ok ] pair_7580a01f
+[FAIL] pair_75897832  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_75897832_x.lean:34:139: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_75897832_x.lean:48:19: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_75897832_x.lean:273:21: warning: `String.trim` has been deprecated: Use `S
+[ok ] pair_759606e4
+[ok ] pair_76494dbd
+[ok ] pair_77658e38
+[ok ] pair_78234522
+[FAIL] pair_77cdd95e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_77cdd95e_x.lean:15:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_77cdd95e_x.lean:240:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_94822 term0: 110 nodes, 160 edges, 160 visits
+[ok] number_theory_94822 term: 4117 nodes, 7862 edges, 13 levels
+[ok] number_theory_94822 decl: 197 nodes, 1436 edges, 14 levels
+
+[ok ] pair_788625c0
+[FAIL] pair_79d7166e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_79d7166e_x.lean:16:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_79d7166e_x.lean:278:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_15054 term0: 6145 nodes, 11587 edges, 11587 visits
+[ok] algebra_15054 term: 23248 nodes, 44328 edges, 1 levels
+[ok] algebra_15054 decl: 11153 nodes, 237321 edges, 29 levels
+
+[ok ] pair_7a30a024
+[ok ] pair_7b0b98d6
+[ok ] pair_7a9abe33
+[ok ] pair_7b176d5c
+[FAIL] pair_7bfb79d1  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_7bfb79d1_x.lean:28:15: error(lean.unknownIdentifier): Unknown constant `Polynomial.prod_roots_eq_coeff_zero_of_monic_of_splits`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_7bfb79d1_x.lean:80:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  a ^ (1 / 3) * b ^ (1 / 3) * c ^ (1 / 3)
+in the target expression
+  3 * a ^ (1 / 3) * b ^ (1 / 3) * c ^ (1 / 3) ≤ a + b + c
+
+p q r a✝ b✝ : ℝ
+f : ℝ[X]
+hf : f = X ^ 3 - C a✝ * X ^ 2 + C b✝ * X - C 48
+hmo : f.Monic
+h_pos : 0 < p
+h_lt : p < q
+h_lt2 : q < r
+h_roots : f.roots = ↑[p, 
+[FAIL] pair_7c5427fa  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_7c5427fa_x.lean:27:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  √169
+in the target expression
+  Real.sin α = -(3 / 5)
+
+case inr
+α : ℝ
+h : Real.sin α ≠ 0
+h1 : 5 * (Real.sin α * Real.sin α) + -7 * Real.sin α + -6 = 0
+h2 : 5 * Real.sin α ^ 2 - 7 * Real.sin α - 6 = 5 * Real.sin α * Real.sin α + -7 * Real.sin α + -6
+sqrt169_eq_13 : √169 = 13
+root1 : Real.sin α = -(3 / 5)
+⊢ Real.sin (-α - 3 * Real.pi / 2) * Real.sin (3 * Real.pi / 2 - α) * Real.tan (2 * Real.pi - α) ^ 2 /
+      (Real.cos (Real.pi / 2 - α) * Real.cos (
+[ok ] pair_7cb6be3d
+[ok ] pair_7f6de6ca
+[FAIL] pair_7f32ef1d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_7f32ef1d_x.lean:9:6: error(lean.unknownIdentifier): Unknown constant `Real.sqrt_eq_iff_sq_eq`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_7f32ef1d_x.lean:6:35: error: unsolved goals
+a : ℝ
+ha : a = 50 * √2
+⊢ √((50 * √2) ^ 2 + (50 * √2) ^ 2) = 100
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_7f32ef1d_x.lean:234:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_11262 term0: 227 nodes, 346 edges, 346 
+[FAIL] pair_7f8597bd  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_7f8597bd_x.lean:33:8: error: unsolved goals
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+ha1 : a ≤ √2
+hb1 : b ≤ √2
+hc1 : c ≤ √2
+h : a * b * c = 2
+h1 : a * b = 2 / c
+h2 : b * c = 2 / a
+h3 : c * a = 2 / b
+x : ℝ
+hx : x ≤ √2
+⊢ √2 * 2 + √2 * x ^ 2 * 3 - x * 6 - x ^ 3 = √2 * x ^ 2 * 3 - √2 ^ 2 * x * 3 + √2 ^ 3 - x ^ 3
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_7f8597bd_x.lean:268:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String
+[ok ] pair_7fda4fb2
+[FAIL] pair_8016ed30  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_8016ed30_x.lean:21:8: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `mul_le_mul_right ?m.138
+  ?a` is a proof of
+  ?a * ?m.136 ≤ ?a * ?m.137
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_8016ed30_x.lean:21:29: error: linarith failed to find a contradiction
+n : ℕ
+h₁ : 0 < n
+m : ℕ
+h₂ : m ^ 3 = n
+h₃ : n / 1000 = m
+h₄ : 1000 * m ≤ m ^ 2 * m
+⊢ False
+failed
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_8016ed30_x.lean:280:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Not
+[ok ] pair_807fa532
+[ok ] pair_80de1ec1
+[ok ] pair_80fc276c
+[ok ] pair_81db3cca
+[ok ] pair_81dfa8e6
+[ok ] pair_82f26bd9
+[ok ] pair_842aefbb
+[ok ] pair_84334dbe
+[FAIL] pair_849a0a8a  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_849a0a8a_x.lean:63:6: error: unsolved goals
+case h
+f : ℝ → ℝ
+hf : f = fun x => min (2 - x ^ 2) x
+y : ℝ
+hy : y ≤ 1
+h : y < -2
+r1 : 4 < 2 - y
+r2 : 2 < √(2 - y)
+⊢ 2 - √(2 - y) ^ 2 = y
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_849a0a8a_x.lean:293:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_9275 term0: 3011 nodes, 5532 edges, 5532 visits
+[ok] algebra_9275 term: 12479 nodes, 23521 edges, 1 levels
+[
+[FAIL] pair_84cbeacd  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_84cbeacd_x.lean:12:25: error: unsolved goals
+a b : ℝ
+ha : 0 < a
+hb : 0 < b
+h : 1 / b + 1 / b - 1 / (b - b) = 0
+h2 : a - b = 0
+h3 : a = b
+h5 : a ≠ 0
+h4 : 1 + 1 - 1 / (1 - 1) = a * 0
+⊢ False
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_84cbeacd_x.lean:41:12: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_84cbeacd_x.lean:45:55: error: unsolved goals
+a b : ℝ
+ha : 0 < a
+hb : 0 < b
+h : 1 / a + 1 / b - 1 / (a - b) = 0
+h1 : a - b ≠ 0
+h2 : a ≠ 0
+h3 : b ≠ 0
+eq1 : a ^ 2 - a * b - b ^ 2 = 0
+h5 : a ≠ 0
+eq2 : a ^ 2 - a * b - b 
+[FAIL] pair_84da66e6  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_84da66e6_x.lean:61:10: error(lean.unknownIdentifier): Unknown constant `Int.coprime_iff_nat_coprime.mpr`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_84da66e6_x.lean:62:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_84da66e6_x.lean:66:54: error(lean.unknownIdentifier): Unknown constant `Int.sq_of_coprime`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_84da66e6_x.lean:322:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → S
+[FAIL] pair_85381100  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_85381100_x.lean:67:52: error: unsolved goals
+a b : ℝ
+ha : 0 < a
+hb : 0 < b
+h : ∀ x > 1, a * x + x / (x - 1) > b
+h2 : √a > 0
+h3 : 1 + 1 / √a > 1
+h4 : a * (1 + 1 / √a) + (1 + 1 / √a) / (1 + 1 / √a - 1) > b
+h6 : 1 + 1 / √a = (√a + 1) / √a
+⊢ √a + 1 - √a = 1
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_85381100_x.lean:315:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_597741 term0: 18970 nodes, 371
+[ok ] pair_87179bc6
+[ok ] pair_877062a7
+[ok ] pair_87ba057a
+[FAIL] pair_85e41370  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_85e41370_x.lean:20:6: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_85e41370_x.lean:63:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_85e41370_x.lean:285:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_610843 term0: 3101 nodes, 5789 edges, 5789 visits
+[ok] number_theory_610843 term: 19249 nodes, 37036 edges, 2 levels
+[ok] number_th
+[ok ] pair_8793031c
+[ok ] pair_87d2dbfe
+[ok ] pair_88838551
+[FAIL] pair_88c15796  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_88c15796_x.lean:6:143: error: unsolved goals
+a : ℝ
+h : 2 ∈ {0, a, a ^ 2 - 3 * a + 2}
+h1 : 0 ≠ a
+h2 : a ≠ a ^ 2 - 3 * a + 2
+h3 : 0 ≠ a ^ 2 - 3 * a + 2
+⊢ a = 3
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_88c15796_x.lean:8:0: error: unexpected identifier; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_88c15796_x.lean:238:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_9038 term0: 236
+[ok ] pair_896a11b6
+[ok ] pair_8956508b
+[FAIL] pair_89c9c092  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_89c9c092_x.lean:15:8: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `mul_le_mul_right ?m.76
+  ?a` is a proof of
+  ?a * ?m.67 ≤ ?a * ?m.68
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_89c9c092_x.lean:21:6: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `mul_le_mul_right ?m.100
+  ?a` is a proof of
+  ?a * ?m.91 ≤ ?a * ?m.92
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_89c9c092_x.lean:249:21: warning: `String.trim` has been deprecated: Use `String.trimAscii
+[FAIL] pair_89e16f38  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_89e16f38_x.lean:23:10: error(lean.unknownIdentifier): Unknown identifier `lt_of_not_le`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_89e16f38_x.lean:24:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_89e16f38_x.lean:248:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_254329 term0: 1047 nodes, 1795 edges, 1795 visits
+[ok] inequalities_254329 term: 15668 nodes, 296
+[ok ] pair_8a45bd25
+[ok ] pair_8a465ac4
+[FAIL] pair_8a81e6cf  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_8a81e6cf_x.lean:64:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  225
+in the target expression
+  √(-5 + ↑x) = 15 - ↑y ^ 2
+
+case mpr.inl
+x y : ℤ
+hx : 5 ≤ x
+xeq : x = 230
+yeq : y = 0
+this : 225 = 15 * 15
+⊢ √(-5 + ↑x) = 15 - ↑y ^ 2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_8a81e6cf_x.lean:324:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_118463 term0: 8699 nodes, 16
+[ok ] pair_8bccc147
+[ok ] pair_8b90dce5
+[ok ] pair_8d6d2aa2
+[ok ] pair_8e7faa3b
+[FAIL] pair_8e82b67b  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_8e82b67b_x.lean:31:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_8e82b67b_x.lean:253:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_93068 term0: 2139 nodes, 3862 edges, 3862 visits
+[ok] algebra_93068 term: 13526 nodes, 25638 edges, 1 levels
+[ok] algebra_93068 decl: 6985 nodes, 151668 edges, 21 levels
+
+[ok ] pair_915d7da0
+[ok ] pair_916a65a8
+[ok ] pair_919a0d3c
+[ok ] pair_9216aca3
+[ok ] pair_92daf189
+[FAIL] pair_9337fb95  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_9337fb95_x.lean:37:45: error(lean.unknownIdentifier): Unknown constant `Nat.pow_le_pow_of_le_left`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9337fb95_x.lean:42:45: error(lean.unknownIdentifier): Unknown constant `Nat.pow_le_pow_of_le_left`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9337fb95_x.lean:53:45: error(lean.unknownIdentifier): Unknown constant `Nat.pow_le_pow_of_le_left`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9337fb95_x.lean:58:45: error(lean.unknownIdentifier): Unknown constant `Nat.pow_le_pow_of_le_left`
+/home/simon/
+[FAIL] pair_93b3229a  rc=1 :: + 5 + 6
+h2 : ∑ i ∈ s, ff i ^ 2 = a + b + c + d + e + f
+⊢ √b ^ 2 * √a ^ 2 * √c ^ 2 * √d ^ 2 * √e ^ 2 * a * b * c * d * e * f * 36 +
+              √b ^ 2 * √a ^ 2 * √c ^ 2 * √d ^ 2 * √f ^ 2 * a * b * c * d * e * f * 25 +
+            √b ^ 2 * √a ^ 2 * √c ^ 2 * √e ^ 2 * √f ^ 2 * a * b * c * d * e * f * 16 +
+          √b ^ 2 * √a ^ 2 * √d ^ 2 * √e ^ 2 * √f ^ 2 * a * b * c * d * e * f * 9 +
+        √b ^ 2 * √c ^ 2 * √d ^ 2 * √e ^ 2 * √f ^ 2 * a * b * c * d * e * f +
+      √a ^ 2 * √c ^ 2 * √d ^ 2 * √e ^ 2 * √f ^ 2 * a * b * c * d * e * f * 4 =
+    √b ^ 2 * √a ^ 2 * √c ^ 2 * √d ^ 2 * √e ^ 2 * √f ^ 2 
+[FAIL] pair_94602a37  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_94602a37_x.lean:18:69: error: unsolved goals
+h1 : Real.logb 14 2401 = 4 * Real.logb 14 7
+h2 : Real.logb 14 49 = 2 * Real.logb 14 7
+⊢ Real.logb 28 56 = Real.logb 14 56 / Real.logb 14 28
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_94602a37_x.lean:50:8: error: `field_simp` made no progress on the goal
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_94602a37_x.lean:53:4: error: linarith failed to find a contradiction
+case h1
+h1 : Real.logb 14 2401 = 4 * Real.logb 14 7
+h2 : Real.logb 14 49 = 2 * Real.logb 14 7
+h4 : Real.logb 28 56 = Real.logb 14 5
+[ok ] pair_95cc16d3
+[FAIL] pair_93e96c29  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_93e96c29_x.lean:39:16: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_93e96c29_x.lean:47:12: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_93e96c29_x.lean:278:21: warning: `String.trim` has been deprecated: Use `St
+[ok ] pair_95ff000b
+[ok ] pair_965e479d
+[FAIL] pair_965489cb  rc=1 :: ion of `@mul_nonneg`
+  0 ≤ ?a * ?b
+with the goal
+  a ^ 2 * b ^ 2 + b ^ 2 * c ^ 2 + c ^ 2 * d ^ 2 + d ^ 2 * a ^ 2 =
+    √(a * b ^ 3) * √(a ^ 3 * b) + √(b * c ^ 3) * √(b ^ 3 * c) + √(c * d ^ 3) * √(c ^ 3 * d) +
+      √(d * a ^ 3) * √(d ^ 3 * a)
+
+Note: The full type of `@mul_nonneg` is
+  ∀ {α : Type ?u.592} [inst : MulZeroClass α] {a b : α} [inst_1 : Preorder α] [PosMulMono α], 0 ≤ a → 0 ≤ b → 0 ≤ a * b
+
+case e'_3.e_a
+a b c d : ℝ
+ha : 0 ≤ a
+hb : a ≤ b
+hc : b ≤ c
+hd : c ≤ d
+l_le_of_sq_le_sq_of_rpos : ∀ {a b : ℝ}, 0 ≤ b → a ^ 2 ≤ b ^ 2 → a ≤ b
+r0 : 0 ≤ a * b ^ 3 + b * c ^ 3 + c * d ^ 3 + d * a ^ 3
+
+[FAIL] pair_97ce892f  rc=1 :: a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_97ce892f_x.lean:30:128: error: unsolved goals
+x : ℕ → ℝ
+hx1 : x 1 > 3
+hxn : ∀ n ≥ 2, x n = (3 * x (n - 1) ^ 2 - x (n - 1)) / (4 * (x (n - 1) - 1))
+ih : 0 ≥ 1 → 3 < x (0 + 1) ∧ x (0 + 1) < x 0
+hn : 0 + 1 ≥ 1
+h2 : x 2 = (3 * x 1 ^ 2 - x 1) / (4 * (x 1 - 1))
+h3 : x 1 > 3
+h4 : 4 * (x 1 - 1) > 0
+⊢ -12 - x 1 * (-1 + x 1)⁻¹ + x 1 ^ 2 * (-1 + x 1)⁻¹ * 3 =
+    -(x 1 * (-1 + x 1)⁻¹ * 13) + x 1 ^ 2 * (-1 + x 1)⁻¹ * 3 + (-1 + x 1)⁻¹ * 12
+Try this:
+  [ap
+[FAIL] pair_98273f65  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_98273f65_x.lean:21:30: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_98273f65_x.lean:27:69: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_98273f65_x.lean:250:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_113985 term0: 6722 nodes, 12809 edges, 12809 visits
+[ok] inequalities_113985 term: 23181 nodes, 44298 edges, 1 levels
+[ok] inequalit
+[FAIL] pair_994abb32  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_994abb32_x.lean:29:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_994abb32_x.lean:49:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_994abb32_x.lean:281:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_110295 term0: 6642 nodes, 12744 edges, 12744 visits
+[ok] inequalities_110295 term: 21300 nodes, 40721 edges, 1 levels
+[ok] inequalitie
+[FAIL] pair_991e5429  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_991e5429_x.lean:35:4: error: invalid 'calc' step, left-hand side is
+  -2 - y * 6 + (y ^ 2 * 6 - y ^ 3) + (y ^ 4 * 3 - y ^ 5 * 3) + y ^ 6 : ℝ
+but is expected to be
+  -2 - y * 6 + y ^ 2 * 6 - y ^ 3 + y ^ 4 * 3 - y ^ 5 * 3 + y ^ 6 : ℝ
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_991e5429_x.lean:259:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] Algebra_609252 term0: 1338 nodes, 2290 edges, 2290 visits
+[ok] Al
+[ok ] pair_99ea5bb6
+[ok ] pair_99eea8ae
+[FAIL] pair_9a43f44e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a43f44e_x.lean:25:26: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a43f44e_x.lean:33:10: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case h
+⊢ 1 = ↑1
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a43f44e_x.lean:273:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok]
+[FAIL] pair_9a49a7d5  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a49a7d5_x.lean:33:99: error: Application type mismatch: The argument
+  H
+has type
+  3 ∣ m ^ n
+but is expected to have type
+  m ^ n + 1 ≡ 1 [MOD 3]
+in the application
+  Nat.ModEq.trans (id (Nat.ModEq.symm h)) H
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a49a7d5_x.lean:72:8: error: Type mismatch
+  g1
+has type
+  True
+but is expected to have type
+  2 ≡ -1 [ZMOD 3]
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a49a7d5_x.lean:156:44: error: Type mismatch
+  g1
+has type
+  True
+but is expected to have type
+  4 * l + 5 ≡ 1 [MOD 4]
+/home/simon/ai_
+[FAIL] pair_9a64ef28  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a64ef28_x.lean:24:6: error: Tactic `decide` proved that the proposition
+  ¬0 ^ 3 + 5 * 0 ^ 3 = 0
+is false
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9a64ef28_x.lean:257:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_609561 term0: 691 nodes, 1153 edges, 1153 visits
+[ok] number_theory_609561 term: 12507 nodes, 23523 edges, 2 levels
+[ok] number_theory_609561 decl: 2562 nodes, 38134 edges, 22 
+[ok ] pair_9af28884
+[ok ] pair_9a84ead7
+[ok ] pair_9a76e23c
+[ok ] pair_9b461a0f
+[ok ] pair_9d50620a
+[FAIL] pair_9c8d40df  rc=1 ::                                                                     (-(1 / (-((a + 1) / (-1 + (a + 1))) + 1)) +
+                                                                            1)) +
+                                                                      1)) +
+                                                                1)) +
+                                                          1)) +
+                                                    1)) +
+                                              1)) +
+                                        1)) +
+                                  1)) +
+
+[FAIL] pair_9e7751c1  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_9e7751c1_x.lean:9:13: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9e7751c1_x.lean:12:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9e7751c1_x.lean:12:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9e7751c1_x.lean:12:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9e7751c1_x.lean:12:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_9e775
+[ok ] pair_9d3572bb
+[ok ] pair_9effdc53
+[ok ] pair_9f0d7c77
+[ok ] pair_a0095248
+[ok ] pair_a00e8681
+[FAIL] pair_a39ff5f8  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_a39ff5f8_x.lean:18:12: error: numerals are data in Lean, but the expected type is a proposition
+  Nat.Prime (55 * 2 * 3 + 1) : Prop
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a39ff5f8_x.lean:25:12: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a39ff5f8_x.lean:32:50: error: Tactic `cases` failed with a nested error:
+Dependent elimination failed: Failed to solve equation
+  55 * p1 * p2 = p2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a39ff5f8_x.lean:261:21: warning: `String.trim` has been deprecated: Use `Str
+[ok ] pair_a10926bc
+[ok ] pair_a302a9d8
+[ok ] pair_a3b6f8e9
+[FAIL] pair_a4f257d5  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_a4f257d5_x.lean:8:6: error(lean.unknownIdentifier): Unknown identifier `div_le_div_iff`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a4f257d5_x.lean:6:73: error: unsolved goals
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+⊢ 9 * (a + b) * (b + c) * (c + a) ≤ 2 * (a + b + c) * ((b + c + (a + b)) * (c + a) + (a + b) * (b + c))
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a4f257d5_x.lean:231:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+inst
+[ok ] pair_a41e71a8
+[FAIL] pair_a4fd0d21  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_a4fd0d21_x.lean:20:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  p * q * 2 + p ^ 2 + q ^ 2
+in the target expression
+  x * y * 2 + x ^ 2 + y ^ 2 + 1 + x - x * y - y = 0
+
+x y : ℝ
+p : ℝ := x + 1
+q : ℝ := y - 1
+eq_aux : x = p - 1
+eq_aux' : y = q + 1
+h : p * q * 2 + p ^ 2 + q ^ 2 = p * q
+⊢ x * y * 2 + x ^ 2 + y ^ 2 + 1 + x - x * y - y = 0
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a4fd0d21_x.lean:22:43: error: unsolved goals
+x y : ℝ
+p : ℝ := x + 1
+q : ℝ := y - 1
+eq_aux : x = p - 1
+eq_aux' : y = q + 1
+h : p * q * 2
+[ok ] pair_a57e4b7b
+[ok ] pair_a6d289a6
+[ok ] pair_aa25e669
+[FAIL] pair_a6e402d7  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_a6e402d7_x.lean:113:10: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a6e402d7_x.lean:146:50: error: unsolved goals
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+x : ℝ
+hx : x > 0
+invx : 1 / x > 0
+one_half : 0 ≤ 1 / 2
+cub_nneg : 0 ≤ x ^ 3
+⊢ 1 + 1 = 2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a6e402d7_x.lean:155:6: error: Type mismatch
+  gm_am_ineq
+has type
+  2 * x ≤ x ^ 3 + x⁻¹
+but is expected to have type
+  2 * x ≤ x ^ ↑3 + x⁻¹
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_a6e402d7_x.lean:387:21: warning: `Stri
+[ok ] pair_ab0f093e
+[ok ] pair_acbd062f
+[ok ] pair_ad39313c
+[FAIL] pair_ad18a26b  rc=1 :: ean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ad18a26b_x.lean:124:2: error: unsolved goals
+case left
+floor_add_half_eq : ∀ (x : ℝ), ⌊x + 1 / 2⌋ = ⌊2 * x⌋ - ⌊x⌋
+this✝² : (fun k => ⌊(2012 + 2 ^ k) / 2 ^ (k + 1)⌋) = fun k => ⌊2012 / 2 ^ k⌋ - ⌊2012 / 2 ^ (k + 1)⌋
+this✝¹ :
+  ∑ k ∈ Finset.Icc 0 2012, (⌊2012 / 2 ^ k⌋ - ⌊2012 / 2 ^ (k + 1)⌋) =
+    ∑ k ∈ Fi
+[ok ] pair_ad62fc3e
+[ok ] pair_ae900f0c
+[ok ] pair_ad4ad267
+[ok ] pair_b0ad8896
+[ok ] pair_ae9ff2a1
+[ok ] pair_af58b0a0
+[FAIL] pair_b151469f  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_b151469f_x.lean:80:10: error(lean.unknownIdentifier): Unknown identifier `gt_or_eq_of_le`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b151469f_x.lean:80:58: error: Tactic `rcases` failed: `x✝ : ?m.1511` is not an inductive datatype
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b151469f_x.lean:372:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_604194 term0: 266 nodes, 418 edges, 418 visits
+
+[ok ] pair_b21abbab
+[FAIL] pair_b1947faf  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_b1947faf_x.lean:28:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  100 ^ (m + 1) * ↑m ! / (↑(m + 1)! * 100 ^ m)
+in the target expression
+  100 ^ (m + 1) * ↑m ! < ↑(m + 1)! * 100 ^ m
+
+m : ℕ
+hm : 100 < m
+aux : 100 ^ (m + 1) * ↑m ! / (↑(m + 1)! * 100 ^ m) = 100 / (↑m + 1)
+⊢ 100 ^ (m + 1) * ↑m ! < ↑(m + 1)! * 100 ^ m
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b1947faf_x.lean:260:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String 
+[ok ] pair_b1a1594e
+[ok ] pair_b39511ce
+[ok ] pair_b2674d55
+[ok ] pair_b40cb2db
+[ok ] pair_b4b63346
+[ok ] pair_b5dab1a1
+[ok ] pair_b4d61cac
+[ok ] pair_b4b897fd
+[ok ] pair_b7bb3d8e
+[ok ] pair_b94f69f4
+[FAIL] pair_b999f6b1  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_b999f6b1_x.lean:28:26: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b999f6b1_x.lean:32:26: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b999f6b1_x.lean:39:26: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b999f6b1_x.lean:43:26: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b999f6b1_x.lean:50:26: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_b999f6b1_x.lean:54:26: error: `simp` made 
+[ok ] pair_b9bbcc78
+[ok ] pair_ba39d0a3
+[ok ] pair_bb5a8572
+[ok ] pair_bc3e9c75
+[ok ] pair_babc83eb
+[ok ] pair_bf349feb
+[FAIL] pair_beb0794d  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_beb0794d_x.lean:5:160: error: unsolved goals
+f : ℝ → ℝ
+hf : f = fun x => x ^ 2 - 6 * x + 8
+⊢ IsGreatest (f '' Set.Icc 2 6) 8 ∧ IsLeast (f '' Set.Icc 2 6) (-1)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_beb0794d_x.lean:7:0: error: unexpected token 'have'; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_beb0794d_x.lean:294:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_9409 term0: 
+[ok ] pair_bde52c9a
+[ok ] pair_bf419b23
+[ok ] pair_bd329034
+[ok ] pair_bf40e969
+[ok ] pair_bf476baa
+[ok ] pair_c021c917
+[ok ] pair_bfdd51b8
+[FAIL] pair_c0c7a36e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c0c7a36e_x.lean:17:4: error: unsolved goals
+case h
+⊢ 8 = √2 ^ 4 + 4
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c0c7a36e_x.lean:26:81: error: unsolved goals
+x a b : ℝ
+ha : 0 < a
+hb : 0 < b
+hx : x = a ^ 2 + 1 / (b * (a - b))
+hab : 0 < a - b
+⊢ a ^ 2 * b * (a - b) + 1 = a ^ 2 * b * (a - b) + 1 - b * (a - b) * 4 + b * (a - b) * 4
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c0c7a36e_x.lean:257:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+[ok ] pair_c0d3928e
+[ok ] pair_c287c8cc
+[FAIL] pair_c3a8e335  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c3a8e335_x.lean:36:9: error(lean.unknownIdentifier): Unknown identifier `le_or_lt`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c3a8e335_x.lean:36:27: error: Tactic `rcases` failed: `x✝ : ?m.607` is not an inductive datatype
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c3a8e335_x.lean:278:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_159039 term0: 616 nodes, 1050 edges, 1050 visits
+[ok] n
+[ok ] pair_c3b332ce
+[FAIL] pair_c2ce0366  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c2ce0366_x.lean:36:20: error: unsolved goals
+a✝ b✝ c✝ : ℝ
+ha✝ : 0 < a✝
+hb✝ : 0 < b✝
+hc✝ : 0 < c✝
+h✝ : a✝ * b✝ + b✝ * c✝ + c✝ * a✝ = 3
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+h1 : a ≥ b
+h2 : b ≥ c
+g1✝ : a * b ≥ 1
+g2 : a * b ≤ 3
+h : c = (3 - a * b) / (a + b)
+g1 : -(√a * √b * 2) + a + b ≥ 0
+⊢ √a * √b = √(a * b)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c2ce0366_x.lean:65:105: error: linarith failed to find a contradiction
+case h1
+a✝¹ b✝ c✝ : ℝ
+ha : 0 < a✝¹
+hb : 0 < b✝
+hc : 0 < c✝
+h : a✝¹ * b✝ + b✝ * c✝ + c✝ * a✝¹ = 3
+a b c x : ℝ
+hx : x = √(
+[FAIL] pair_c4d62175  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c4d62175_x.lean:13:43: error: unsolved goals
+emily emerson : ℚ
+h₂ : emily = 12
+h₃ : emerson = 8
+⊢ 120 / (emily - emerson) = 30
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c4d62175_x.lean:237:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_97169 term0: 1253 nodes, 2218 edges, 2218 visits
+[ok] algebra_97169 term: 15015 nodes, 28449 edges, 2 levels
+[ok] algebra_97169 decl: 3284 nodes, 54799 edges, 21 
+[FAIL] pair_c42bc5b1  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c42bc5b1_x.lean:8:53: warning: exponent 2013 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c42bc5b1_x.lean:8:
+[FAIL] pair_c4537555  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c4537555_x.lean:14:6: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c4537555_x.lean:16:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  tan y
+in the target expression
+  y.cot = 5
+
+x y : ℝ
+h_tan_x_eq_zero : tan x = 0
+h₁ : y.cot = 5
+h_tan_y_nonzero : tan y ≠ 0
+h₀ : tan y = 4
+⊢ False
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c4537555_x.lean:30:8: error(lean.unknownIdentifier): Unknown identifier `div_add_div_same`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c4537555_x.lean:41:3
+[ok ] pair_c4fe0db7
+[FAIL] pair_c682b8c7  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c682b8c7_x.lean:8:36: error: unsolved goals
+s u : Set ℚ
+hu : u = {0.12345}
+hs : s = {0.8, 7e-2, 6e-3, 5e-4, 4e-5}
+⊢ IsGreatest (s + u) 0.92345
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c682b8c7_x.lean:10:0: error: unexpected identifier; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c682b8c7_x.lean:275:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_97338 term0: 174 nodes,
+[ok ] pair_c5fb8da2
+[FAIL] pair_c722018c  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c722018c_x.lean:37:26: error(lean.unknownIdentifier): Unknown identifier `pow_eq_zero`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c722018c_x.lean:38:26: error(lean.unknownIdentifier): Unknown identifier `pow_eq_zero`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c722018c_x.lean:39:26: error(lean.unknownIdentifier): Unknown identifier `pow_eq_zero`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c722018c_x.lean:279:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type
+[ok ] pair_c76ace53
+[FAIL] pair_c6a13d04  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c6a13d04_x.lean:10:8: error: unsolved goals
+⊢ 2 = √(2 ^ 2)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c6a13d04_x.lean:16:4: error: linarith failed to find a contradiction
+g1 : 3 ≤ 4
+a✝ : 2 - √3 < 0
+⊢ False
+failed
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c6a13d04_x.lean:24:6: error: unsolved goals
+g1 : 2 - √3 ≥ 0
+⊢ √(2 - √3) * √(2 + √3) = √((2 - √3) * (2 + √3))
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c6a13d04_x.lean:34:2: error: linarith failed to find a contradiction
+case h1
+g1 : 2 - √3 ≥ 0
+a✝ :
+  -(√3 * √(2 - √3) ^ 2 * 4) + √
+[ok ] pair_c84a0169
+[FAIL] pair_c9acf82e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_c9acf82e_x.lean:14:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_c9acf82e_x.lean:245:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_602768 term0: 11566 nodes, 22527 edges, 22527 visits
+[ok] inequalities_602768 term: 29052 nodes, 56082 edges, 1 levels
+[ok] inequalities_602768 decl: 11096 nodes, 236040 edges, 30 levels
+
+[ok ] pair_c8cf6c63
+[FAIL] pair_ca2874ed  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ca2874ed_x.lean:18:4: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ca2874ed_x.lean:247:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_9320 term0: 1936 nodes, 3397 edges, 3397 visits
+[ok] algebra_9320 term: 25063 nodes, 47652 edges, 2 levels
+[ok] algebra_9320 decl: 10917 nodes, 232220 edges, 29 levels
+
+[ok ] pair_cb3b726a
+[FAIL] pair_ca2ed0ca  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ca2ed0ca_x.lean:29:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.122 * logb ?m.120 ?m.121
+in the target expression
+  4 = logb 2011 2011 * (1 + 1) / logb (2011 ^ 2) 2011
+
+case h.right
+h : logb (2011 * 2011) 2011 ≠ 0
+⊢ 4 = logb 2011 2011 * (1 + 1) / logb (2011 ^ 2) 2011
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ca2ed0ca_x.lean:29:53: error: unsolved goals
+h : logb (2011 * 2011) 2011 ≠ 0
+⊢ 0 < ?m.121
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ca2ed0ca_x.lean:44:10: error: Tactic `left` failed: left tac
+[ok ] pair_cc98e98a
+[FAIL] pair_cd6e37be  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_cd6e37be_x.lean:5:169: error: unsolved goals
+f : ℝ → ℝ
+hf : f = fun x => x * Real.sin x
+⊢ ∃ m c, ∀ (x : ℝ), x = Real.pi → f x = m * x + c ∧ m = deriv f Real.pi ∧ c = f Real.pi - m * Real.pi
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_cd6e37be_x.lean:7:0: error: unexpected identifier; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_cd6e37be_x.lean:255:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → Str
+[FAIL] pair_ce282cda  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce282cda_x.lean:7:173: error: unexpected token ':='; expected term
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce282cda_x.lean:251:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[fail] AIME_Algebra_724: declaration AIME_Algebra_724 not found
+
+[ok ] pair_cc4ae138
+[ok ] pair_c7a11f6b
+[FAIL] pair_ce354bfd  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce354bfd_x.lean:48:59: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce354bfd_x.lean:59:11: error: numerals are data in Lean, but the expected type is a proposition
+  0 < 2 : Prop
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce354bfd_x.lean:59:14: error: numerals are data in Lean, but the expected type is a proposition
+  2 * 2 + 2 * 2 - 2 * 2 ^ 2 = 2 : Prop
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce354bfd_x.lean:60:4: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce354bfd_x.
+[ok ] pair_ce95c511
+[FAIL] pair_ce9aff5a  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce9aff5a_x.lean:5:182: error: unsolved goals
+f : ℝ → ℝ
+m : ℝ
+h₀ : ∀ (x : ℝ), f x = Real.sin (x + Real.pi / 2) + Real.cos (x - Real.pi / 2) + m
+hG : IsGreatest {x | ∃ x_1, f x_1 = x} (2 * √2)
+⊢ m = √2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce9aff5a_x.lean:7:0: error: unexpected token 'have'; expected command
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ce9aff5a_x.lean:292:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  
+[FAIL] pair_cfd687db  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_cfd687db_x.lean:13:34: error: unsolved goals
+A : Matrix (Fin 2) (Fin 2) ℝ
+hA : A = !![3, 7; -1, -2]
+⊢ (True ∧ True) ∧ True ∧ True
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_cfd687db_x.lean:16:23: error: unsolved goals
+A : Matrix (Fin 2) (Fin 2) ℝ
+hA : A = !![3, 7; -1, -2]
+h1 : A ^ 2 = !![2, 7; -1, -3]
+⊢ (True ∧ True) ∧ True
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_cfd687db_x.lean:273:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+
+[ok ] pair_cffa85ea
+[FAIL] pair_d0941621  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_d0941621_x.lean:32:19: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but `mul_le_mul_left ?m.437
+  ?a` is a proof of
+  ?m.435 * ?a ≤ ?m.436 * ?a
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d0941621_x.lean:32:35: error: Application type mismatch: The argument
+  hk
+has type
+  0 < k
+but is expected to have type
+  ?m.435 ≤ ?m.436
+in the application
+  mul_le_mul_left hk
+neg_le_neg_iff.{u} {α : Type u} [AddGroup α] [LE α] [AddLeftMono α] {a b : α} [AddRightMono α] : -a ≤ -b ↔ b ≤ a
+/home/simon/ai_math_ept/ma
+[ok ] pair_d020f221
+[FAIL] pair_d14f424f  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_d14f424f_x.lean:11:36: error: unsolved goals
+⊢ √(5 * 80) = √80 * √5
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d14f424f_x.lean:24:49: error: unsolved goals
+h1 : 5 / √80 / √5 = 1 / 4
+⊢ √(9 ^ 2 * 5) = 9 * √5
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d14f424f_x.lean:296:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_21644 term0: 3346 nodes, 6219 edges, 6219 visits
+[ok] algebra_21644 term: 1520
+[ok ] pair_d0c1af2e
+[ok ] pair_d2343074
+[ok ] pair_d339e847
+[ok ] pair_d43fae54
+[ok ] pair_d4f64e9c
+[ok ] pair_d72cfd93
+[ok ] pair_d71a4f84
+[ok ] pair_d869cc1a
+[ok ] pair_d746cf8d
+[FAIL] pair_d78203e9  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_d78203e9_x.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `differentiable_id'`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d78203e9_x.lean:19:12: warning: This simp argument is unused:
+  deriv_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [deriv_pow, deriv_const]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d78203e9_x.lean:19:23: warning: This simp argument is unused:
+  deriv_pow
+
+Hint: Omit it from the simp argument list.
+  [ap
+[FAIL] pair_d8f4a871  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_d8f4a871_x.lean:24:26: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d8f4a871_x.lean:31:38: error: Type mismatch
+  add_lt_add_right hn 1
+has type
+  1 + 1000 < 1 + (2 ^ n - 1)
+but is expected to have type
+  1000 + 1 < 2 ^ n - 1 + 1
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_d8f4a871_x.lean:257:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  Stri
+[ok ] pair_d9e524cd
+[ok ] pair_d92632b4
+[ok ] pair_da3b17ea
+[ok ] pair_d96197fd
+[FAIL] pair_daf50f9f  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_daf50f9f_x.lean:36:6: error: Type mismatch
+  Int.gcd_dvd_left
+has type
+  ∀ (a b : ℤ), ↑(a.gcd b) ∣ a
+but is expected to have type
+  ↑((a n).gcd (a (n + 1))) ∣ a n
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_daf50f9f_x.lean:40:6: error: Type mismatch
+  Int.gcd_dvd_right
+has type
+  ∀ (a b : ℤ), ↑(a.gcd b) ∣ b
+but is expected to have type
+  ↑((a n).gcd (a (n + 1))) ∣ a (n + 1)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_daf50f9f_x.lean:262:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated const
+[ok ] pair_db881e0a
+[ok ] pair_db1d04db
+[FAIL] pair_dd39098e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_dd39098e_x.lean:38:2: error: `field_simp` made no progress at `h`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_dd39098e_x.lean:288:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_259171 term0: 230 nodes, 352 edges, 352 visits
+[ok] number_theory_259171 term: 14091 nodes, 27381 edges, 10 levels
+[ok] number_theory_259171 decl: 601 nodes, 6540 edges, 17 levels
+
+[ok ] pair_dd457978
+[FAIL] pair_dd06269e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_dd06269e_x.lean:36:6: error: unsolved goals
+case h.right.right.right.left
+c : ℝ
+hc : c > 0
+hc3 : c < 3
+⊢ 0 + 36 ≤ 36
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_dd06269e_x.lean:277:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_74101 term0: 8502 nodes, 16269 edges, 16269 visits
+[ok] inequalities_74101 term: 25178 nodes, 48235 edges, 1 levels
+[ok] inequalities_74101 decl: 11067 nodes, 234840 e
+[FAIL] pair_ddc717c2  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ddc717c2_x.lean:39:12: error: unsolved goals
+case h.right
+f : ℝ → ℝ
+hf : f = fun x => 1 / (1 - x)
+h1 : {x | ∃ a, ¬a = 1 ∧ (1 - a)⁻¹ = x} ⊆ {y | ¬y = 0}
+x : ℝ
+hx : ¬x = 0
+⊢ 1 = x - (x - 1)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ddc717c2_x.lean:265:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_21392 term0: 1224 nodes, 2082 edges, 2082 visits
+[ok] algebra_21392 term: 16046 nodes, 30133 edges, 2
+[ok ] pair_de1e8e19
+[ok ] pair_de5a08c0
+[FAIL] pair_de450765  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_de450765_x.lean:16:6: error(lean.unknownIdentifier): Unknown identifier `div_le_div_iff`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_de450765_x.lean:10:109: error: unsolved goals
+x y : ℝ
+hx : 2 / 5 ≤ x ∧ x ≤ 1 / 2
+hy : 1 / 3 ≤ y ∧ y ≤ 3 / 8
+h1 : 0 < x ^ 2 + y ^ 2
+h2 : 0 < x * y
+⊢ 6 / 13 ≤ x * y / (x ^ 2 + y ^ 2)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_de450765_x.lean:238:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  
+[ok ] pair_de483a80
+[FAIL] pair_deb0d50b  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_deb0d50b_x.lean:11:111: error: unsolved goals
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+⊢ √(a * b / ((a + c) * (b + c))) = √(a / (a + c)) * √(b / (b + c))
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_deb0d50b_x.lean:12:113: error: unsolved goals
+a b c : ℝ
+ha : 0 < a
+hb : 0 < b
+hc : 0 < c
+eq1 : √(a * b / ((a + c) * (b + c))) = √(a / (a + c)) * √(b / (b + c))
+⊢ √(b * c / ((b + a) * (c + a))) = √(b / (b + a)) * √(c / (c + a))
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_deb0d50b_x.lean:13:113: error: unsolved goals
+a b c : ℝ
+ha : 0 < a
+hb : 0
+[ok ] pair_df433d2d
+[ok ] pair_debcd118
+[FAIL] pair_df1cba21  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_df1cba21_x.lean:34:6: error: Invalid rewrite argument: Expected an equality or iff proof or definition name, but
+  mul_le_mul_left
+    (have this := ?m.166;
+    ?m.167)
+    ?a
+is a proof of
+  ?m.155 * ?a ≤ ?m.156 * ?a
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_df1cba21_x.lean:270:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_293960 term0: 2084 nodes, 3730 edges, 3730 visits
+[ok] number_the
+[FAIL] pair_e21630bd  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e21630bd_x.lean:49:8: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e21630bd_x.lean:297:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_241493 term0: 19327 nodes, 37571 edges, 37571 visits
+[ok] algebra_241493 term: 19327 nodes, 37571 edges, 0 levels
+[ok] algebra_241493 decl: 12009 nodes, 243323 edges, 9 levels
+
+[ok ] pair_e23940b8
+[ok ] pair_e24e2569
+[ok ] pair_e38bc8a1
+[ok ] pair_e289753a
+[ok ] pair_e39b5195
+[FAIL] pair_e43c8a3b  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e43c8a3b_x.lean:26:17: warning: `not_lt_zero'` has been deprecated: Use `not_lt_zero` instead
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e43c8a3b_x.lean:39:16: error(lean.unknownIdentifier): Unknown identifier `pow_lt_pow_left`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e43c8a3b_x.lean:40:10: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e43c8a3b_x.lean:298:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slic
+[FAIL] pair_e42dcbc5  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e42dcbc5_x.lean:21:9: error(lean.unknownIdentifier): Unknown constant `Set.ncard_coe_Finset`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e42dcbc5_x.lean:8:79: error: unsolved goals
+H :
+  {(a, b) | 1 ≤ a ∧ a < b ∧ b ≤ 57 ∧ a ^ 2 % 57 < b ^ 2 % 57} =
+    ↑({x ∈ Icc 1 57 ×ˢ Icc 1 57 |
+        match x with
+        | (a, b) => a < b ∧ a ^ 2 % 57 < b ^ 2 % 57})
+⊢ (↑({x ∈ Icc 1 57 ×ˢ Icc 1 57 |
+          match x with
+          | (a, b) => a < b ∧ a ^ 2 % 57 < b ^ 2 % 57})).ncard =
+    738
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e42dcbc5_x.le
+[ok ] pair_e4b3d3b7
+[ok ] pair_e45dd21b
+[ok ] pair_e5328112
+[ok ] pair_e5e14291
+[FAIL] pair_e4ffaada  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e4ffaada_x.lean:20:12: error(lean.unknownIdentifier): Unknown identifier `sum_roots_eq_nextCoeff_of_monic_of_split`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e4ffaada_x.lean:26:12: error(lean.unknownIdentifier): Unknown identifier `prod_roots_eq_coeff_zero_of_monic_of_splits`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e4ffaada_x.lean:261:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_2
+[ok ] pair_e653c233
+[ok ] pair_e7575bee
+[FAIL] pair_e662ae99  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e662ae99_x.lean:5:0: error: This instance has 1 argument that cannot be inferred using typeclass synthesis. Specifically
+
+  argument 2: `(hp2 : Odd p)`
+
+These arguments are not instance-implicit and appear neither in another instance-implicit argument nor the return type, so they cannot be inferred using typeclass synthesis.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e662ae99_x.lean:20:2: error: Failed: ?m.118 is not the type of a function.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e662ae99_x.lean:264:21: warning: `String.trim` has bee
+[ok ] pair_e6f73d93
+[ok ] pair_e83bd10d
+[FAIL] pair_e8464b73  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e8464b73_x.lean:29:8: error(lean.unknownIdentifier): Unknown identifier `pow_eq_zero`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e8464b73_x.lean:29:2: error: Failed: ?m.426 is not the type of a function.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e8464b73_x.lean:261:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] calculus_15258 term0: 354 nodes, 546 edges, 546 visits
+[ok] calculus_15258 term: 18689 n
+[ok ] pair_e8903db6
+[ok ] pair_e8d98c67
+[FAIL] pair_e9e4fe91  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_e9e4fe91_x.lean:23:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b - d ≥ 1
+  a ≥ 1
+where
+ a := c
+ b := y
+ d := x
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e9e4fe91_x.lean:21:34: warning: This simp argument is unused:
+  List.mem_toFinset
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.toFinset_coe, mul_eq_mul_left_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_e9e4fe91_x.lean:21:53: 
+[ok ] pair_e970e4c4
+[ok ] pair_eb63c4a0
+[ok ] pair_eabc1c29
+[ok ] pair_ebc61bc9
+[ok ] pair_ec20e9b4
+[FAIL] pair_ebd7b419  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ebd7b419_x.lean:14:9: error: Type mismatch
+  4 / 25
+has type
+  ℕ
+of sort `Type` but is expected to have type
+  -4 / 5 = 4 * (a1 * (-2 / 5)) + 5 * (a1 * (-2 / 5) ^ 2)
+of sort `Prop`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ebd7b419_x.lean:17:12: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case right
+a1 : ℝ
+h0 : a1 = 1
+x : ℝ
+⊢ -4 / 5 ≤ 4 * (a1 * x) + 5 * (a1 * x ^ 2)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ebd7b419_x.lean:246:21: warning: `String.trim` has been deprecated
+[ok ] pair_ec7f806f
+[ok ] pair_ec8eb018
+[FAIL] pair_eca058c6  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_eca058c6_x.lean:22:26: error(lean.unknownIdentifier): Unknown identifier `add_left_eq_self`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_eca058c6_x.lean:26:8: error: unsolved goals
+n : ℕ
+x✝ : n ∈ {n | Nat.Prime n ∧ ∃ m, n = m ^ 3 + 1}
+hn : Nat.Prime n
+m : ℕ
+hm : n = m ^ 3 + 1
+this : n = (m + 1) * (m ^ 2 - m + 1)
+h : ¬m = 0 ∧ ¬m = 1
+h₁ : m + 1 ≠ 1
+⊢ 1 - ↑m + ↑m ^ 2 = 1 ↔ -↑m + ↑m ^ 2 = 0
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_eca058c6_x.lean:30:12: error(lean.unknownIdentifier): Unknown constant `Nat.not_prime_mul'`
+/home/simon/ai_math
+[ok ] pair_edc1fe33
+[ok ] pair_edf1abe4
+[ok ] pair_ee1554cd
+[ok ] pair_ee294964
+[ok ] pair_ee52321c
+[ok ] pair_eed4f922
+[ok ] pair_eeb3bb08
+[FAIL] pair_f04e2b35  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_f04e2b35_x.lean:18:24: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f04e2b35_x.lean:53:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f04e2b35_x.lean:278:21: warning: `String.trim` has been deprecated: Use `Str
+[FAIL] pair_f087056e  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_f087056e_x.lean:53:42: error(lean.unknownIdentifier): Unknown identifier `pow_eq_zero`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f087056e_x.lean:54:44: error(lean.unknownIdentifier): Unknown identifier `pow_eq_zero`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f087056e_x.lean:277:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] intermediate_algebra_4098 term0: 17581 nodes, 34619 edges, 34619 visits
+[ok
+[ok ] pair_f1a813ba
+[ok ] pair_f0d3d3dd
+[ok ] pair_f2ee8d3a
+[FAIL] pair_f38173b7  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_f38173b7_x.lean:41:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a ^ 2
+in the target expression
+  0 ≤ a
+
+f : ℝ → ℝ
+hf : f = fun t => t / √(t - 3)
+x t : ℝ
+htgt : t > 3
+hteq : t / √(t - 3) = x
+a : ℝ := √(t - 3)
+h1 : a ^ 2 = t - 3
+h2 : t = a ^ 2 + 3
+agt : 0 < a
+⊢ 0 ≤ a
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f38173b7_x.lean:278:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[
+[ok ] pair_f39ff433
+[FAIL] pair_f441e309  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_f441e309_x.lean:61:41: error(lean.unknownIdentifier): Unknown constant `Int.dvd_sub_of_emod_eq`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f441e309_x.lean:353:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_16009 term0: 3887 nodes, 7013 edges, 7013 visits
+[ok] number_theory_16009 term: 15873 nodes, 29704 edges, 1 levels
+[ok] number_theory_16009 decl: 5985 nodes, 105864 edges, 22 levels
+
+[ok ] pair_f46b4569
+[ok ] pair_f4b1f0c5
+[ok ] pair_f508c4f1
+[ok ] pair_f54301fd
+[ok ] pair_f549052a
+[FAIL] pair_f59827f2  rc=1 :: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f59827f2_x.lean:6:127: error: unsolved goals
+x y : ℝ
+hx : x ≠ 0
+h : !![-7 / 25, 24 / 25; 24 / 25, 7 / 25].mulVecᵣ ![x, y] = ![x, y]
+eq1 : x * (-7 / 25) + y * (24 / 25) = x
+this : y = 4 / 3 * x
+⊢ y * 3 = x * 4
+/home/simon/ai_math_ept/mathlib4/eptx_work/p
+[ok ] pair_f5a9005d
+[ok ] pair_f5d4e5bf
+[ok ] pair_f700873e
+[ok ] pair_f5e39d77
+[FAIL] pair_f77032d5  rc=1 :: _work/pair_f77032d5_x.lean:46:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f77032d5_x.lean:46:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f77032d5_x.lean:46:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f77032d5_x.lean:46:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f77032d5_x.lean:46:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f77032d5_x.lean:46:6: error: No goals to be solved
+/home/simon/ai_math_ept/mathlib4/eptx_work/
+[ok ] pair_f7ca2998
+[FAIL] pair_f7c29af4  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_f7c29af4_x.lean:41:9: error: invalid 'calc' step, left-hand side is
+  a * 100 + b * 10 + c : ℕ
+but is expected to be
+  100 * a + 10 * b + c : ℕ
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_f7c29af4_x.lean:309:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_94882 term0: 35998 nodes, 71160 edges, 71160 visits
+[ok] number_theory_94882 term: 35998 nodes, 71160 edges, 0 levels
+[ok] number_theory_94
+[ok ] pair_f8026f2d
+[ok ] pair_f827a253
+[ok ] pair_f9baa4be
+[ok ] pair_f85a44af
+[FAIL] pair_fb9a9d44  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_fb9a9d44_x.lean:40:4: error: `simp` made no progress
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fb9a9d44_x.lean:266:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] inequalities_192965 term0: 2287 nodes, 4053 edges, 4053 visits
+[ok] inequalities_192965 term: 13386 nodes, 25190 edges, 1 levels
+[ok] inequalities_192965 decl: 11837 nodes, 254841 edges, 27 levels
+
+[FAIL] pair_fc017bd5  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc017bd5_x.lean:20:42: error: unsolved goals
+⊢ 0 < -1 + √5 ^ 2
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc017bd5_x.lean:30:97: error: unsolved goals
+⊢ -24064 + √5 * 27648 + √5 ^ 2 * 32256 + √5 ^ 3 * 18432 + √5 ^ 4 * 7680 + √5 ^ 5 * 3072 + √5 ^ 6 * 512 =
+    393216 + √5 * 196608
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc017bd5_x.lean:38:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  64 * ((1 + √5) ^ 6 * 8 + 2 * (1 + √5) ^ 3 * 64 - 512)
+in the target expression
+  1 = 24 * (1 + √5) ^ 2 * ((1 + √5) ^ 2 
+[FAIL] pair_fc8ce097  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc8ce097_x.lean:5:59: error(lean.unknownIdentifier): Unknown constant `Complex.abs`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc8ce097_x.lean:8:4: error(lean.unknownIdentifier): Unknown constant `Complex.abs`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc8ce097_x.lean:8:22: error(lean.unknownIdentifier): Unknown constant `Complex.abs`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc8ce097_x.lean:9:10: error(lean.unknownIdentifier): Unknown constant `Complex.abs`
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fc8ce097_x.lean:236:21: w
+[ok ] pair_fc9929da
+[ok ] pair_fccad9e3
+[FAIL] pair_fd008cdf  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_fd008cdf_x.lean:30:103: error: unsolved goals
+S : Finset ℕ := Finset.Icc 20 100
+a : ℕ
+ha : a ∈ S
+b : ℕ
+hb : b ∈ S
+discr_nonneg : ↑a ^ 2 - 4 * ↑b ≥ 0
+discr : ℝ := ↑a ^ 2 - 4 * ↑b
+x : ℝ
+⊢ x * ↑a + x ^ 2 + ↑b = x * ↑a + x ^ 2 + ↑a ^ 2 * (1 / 4) + discr * (-1 / 4)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_fd008cdf_x.lean:301:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] algebra_200004 term0: 3999 nodes, 73
+[ok ] pair_fd852ae5
+[ok ] pair_fe3e5ba4
+[FAIL] pair_feaf5a17  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_feaf5a17_x.lean:22:42: error: Application type mismatch: The argument
+  hpos
+has type
+  k > 0
+but is expected to have type
+  ?m.179 ≠ 0
+in the application
+  mul_factorial_pred hpos
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_feaf5a17_x.lean:260:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[ok] number_theory_4572' term0: 915 nodes, 1609 edges, 1609 visits
+[ok] number_theory_4572' term: 26692 nodes, 51212 edge
+[FAIL] pair_ff9f44c9  rc=1 :: /home/simon/ai_math_ept/mathlib4/eptx_work/pair_ff9f44c9_x.lean:9:93: error: Type mismatch
+  ![-1, 4, 2]
+has type
+  Fin (Nat.succ 0).succ.succ → ℤ
+but is expected to have type
+  EuclideanSpace ℝ (Fin 3)
+/home/simon/ai_math_ept/mathlib4/eptx_work/pair_ff9f44c9_x.lean:245:21: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+[fail] calculus_23032: declaration calculus_23032 not found
+
+[FAIL] pair_e65dff79  rc=-9 :: timeout
+{"total": 500, "ran": 500, "ok": 339, "fail": 161}

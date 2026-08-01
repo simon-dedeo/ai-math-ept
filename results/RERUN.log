@@ -1,0 +1,31 @@
+=== RERUN after comment-stripping fix, Sat Aug  1 09:05:03 AM EDT 2026 ===
+148 corpora
+[ok] aristotle-putnam25: 135 decls, 192 proofs, never_cited=0.237
+[ok] aleph-prover-proofs: 184 decls, 310 proofs, never_cited=0.196
+[ok] axiomprover-fc: 73 decls, 114 proofs, never_cited=0.041
+[ok] archon-firstproof: 245 decls, 356 proofs, never_cited=0.020
+[ok] dsp15rl-minif2f-sampling: 262 decls, 923 proofs, never_cited=1.000
+[ok] dsp15rl-proofnet-sampling: 61 decls, 61 proofs, never_cited=1.000
+[ok] dsp15rl-minif2f-rmaxts: 4 decls, 1440 proofs, never_cited=1.000
+[ok] apollo-dspv2-o3: 397 decls, 1812 proofs, never_cited=1.000
+[ok] internlm-lean-workbook: 2000 decls, 96 proofs, never_cited=1.000
+[ok] agenticsnz-unsorry: 4808 decls, 6722 proofs, never_cited=0.986
+[ok] axiom: 7013 decls, 10772 proofs, never_cited=0.116
+[ok] lean-eval-bench: 953 decls, 189 proofs, never_cited=0.380
+[ok] itpeval: 3327 decls, 1781 proofs, never_cited=0.470
+[ok] lean-eval-submissions: 8478 decls, 11826 proofs, never_cited=0.201
+[ok] leanabell-sft: 1444 decls, 1836 proofs, never_cited=1.000
+[ok] leanabell-v2-coldstart: 17 decls, 1765 proofs, never_cited=1.000
+[ok] leanagent2603: 455 decls, 854 proofs, never_cited=0.923
+[ok] matharena-arxivlean-outputs: 667 decls, 542 proofs, never_cited=0.183
+[ok] mcb-minif2f-6provers: 519 decls, 2069 proofs, never_cited=1.000
+[ok] numinamath-proof-artifacts: 4442 decls, 4406 proofs, never_cited=0.896
+[ok] jayyhk-erdos-lean: 18930 decls, 37604 proofs, never_cited=0.173
+[ok] paired_numina: 534 decls, 1019 proofs, never_cited=0.953
+[ok] pythagoras-sft: 46 decls, 1589 proofs, never_cited=0.978
+[ok] stp-lean-0320: 1927 decls, 712 proofs, never_cited=1.000
+[ok] theoremllama: 88 decls, 92 proofs, never_cited=1.000
+[ok] agenticcommons-formalmath: 1253 decls, 1219 proofs, never_cited=0.994
+[ok] ahyxie-minif2f-deepseek: 250 decls, 476 proofs, never_cited=1.000
+[ok] human: 117377 decls, 15806 proofs, never_cited=0.455
+[ok] ahyxie-minif2f-kimina: 33 decls, 2002 proofs, never_cited=1.000

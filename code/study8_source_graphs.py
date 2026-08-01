@@ -30,6 +30,7 @@ OUT = f"{ROOT}/results/study8"
 os.makedirs(OUT, exist_ok=True)
 sys.path.insert(0, f"{ROOT}/code")
 from proofnet import gini, to_arrays, powerlaw_alpha
+from census import strip_noncode
 from belief import beliefs
 
 t0 = time.time()
@@ -45,7 +46,7 @@ def parse_corpus(files):
     decls, bodies = [], {}
     for p in files:
         try:
-            src = open(p, encoding="utf-8", errors="ignore").read()
+            src = strip_noncode(open(p, encoding="utf-8", errors="ignore").read())
         except Exception:
             continue
         ms = list(DECL.finditer(src))

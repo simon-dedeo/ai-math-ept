@@ -130,3 +130,7 @@ machine            0.145        2.036             0.983       0.999           0.
 done 48s
 === [2026-07-31 15:37:20] END study8_source_graphs (rc=0)
 === [2026-07-31 15:37:20] START study9_matched_pairs
+[human_compfiles] 306 proofs (36051s)
+=== [2026-08-01 03:42:12] START study2_comparison (phase2)
+1044 proofs to analyze
+[dsv2] 210 proofs (44110s)

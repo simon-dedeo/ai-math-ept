@@ -44,7 +44,7 @@ print(f"{len(idx)} proof records, {idx.problem_id.nunique()} problems, "
 # --- measure every proof file, grouping by (problem, model, record) parsed
 # from the filename: <problem>__<model_slug>__<idx>[__<extra>].lean
 # (INDEX.saved_path only resolves for ~1/3 of records, so we go by filename.)
-from census import IDENT, STOP
+from census import IDENT, STOP, strip_noncode
 NAME = re.compile(r"^(?P<prob>.+?)__(?P<model>.+?)__(?P<idx>\d+)(?:__(?P<extra>.*))?\.lean$")
 groups = {}
 for f in sorted(glob.glob(os.path.join(CEN, "proofs", "*.lean"))):
@@ -81,7 +81,7 @@ for (prob, mslug, ridx), files in groups.items():
             ok = True
             for k in tot:
                 tot[k] += mtr[k]
-        prem |= {t for t in IDENT.findall(src)
+        prem |= {t for t in IDENT.findall(strip_noncode(src))
                  if t not in STOP and not t.isdigit()
                  and ("." in t or t[:1].isupper())}
     if not ok:
