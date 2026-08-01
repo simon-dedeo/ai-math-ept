@@ -237,9 +237,15 @@ to \code{TEMP/data.dat}, invokes \code{./pl.py}, and prints the resulting expone
 archive file \code{proof\_dist.rb} also begins with \code{xmin=10}.  This is direct provenance, not
 an inference from approximate numerical matching.
 
+The recovered convention has a small-network qualification.  The four smallest published Coq
+networks reproduce jointly in exponent and standard error at $\xmin=5$, not 10.  No surviving
+script contains that branch, suggesting an earlier or uncommitted small-network exception.  The
+fixed-$\xmin=10$ comparison below remains well defined because it applies one declared estimand
+uniformly across the recovered Coq and Lean samples.
+
 The later Python analysis used the standard \code{powerlaw} behavior of choosing $\xmin$ to minimize
-a KS distance.  It often chose a cutoff near one.  Fixed $\xmin=10$ reproduces 40 of 47 archived
-exponents within 0.010; automatic estimates have essentially no cross-network correlation with the
+a KS distance.  It often chose a cutoff near one.  Fixed $\xmin=10$ reproduces 40 of 44 estimable
+archived exponents within 0.010; automatic estimates have essentially no cross-network correlation with the
 published numbers.  This behavior is unsurprising.  Tail inference depends strongly on where the
 tail begins, and model checking requires goodness-of-fit and comparisons to alternatives
 \citep{clauset2009,alstott2014}.  In the recovered networks, a power law consistently beats an

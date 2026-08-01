@@ -59,21 +59,27 @@ look contradictory if one compares their degree labels rather than their edges.
 ## What survives from the 2022 analysis
 
 The 49 recovered Coq networks include 47 networks that match rows in the published
-table by exact node count. With a fixed discrete tail cutoff near
-\(x_{\min}=10\), 40 of those 47 fitted exponents are within 0.010 of the published
-values. Reuse is unambiguously heavy relative to an exponential null. The stronger
+table by exact node count. With a fixed discrete tail cutoff
+\(x_{\min}=10\), 40 of the 44 networks that meet the modern audit's minimum-tail
+rule are within 0.010 of the published values (43 within 0.020). Reuse is
+unambiguously heavy relative to an exponential null. The stronger
 claim that it is a *pure* power law is not identified: at fixed \(x_{\min}=10\),
 a power law beats a lognormal in none of 45 estimable Coq networks, a lognormal wins
 in two, and 43 are unresolved. All 33 human Lean networks are unresolved between
 those two heavy-tailed families.
 
-The main discrepancy in reported exponents is therefore largely a cutoff issue.
-Automatic Clauset--Shalizi--Newman selection often chooses \(x_{\min}\) near 1 for
-these networks; the published values are closely recovered near 10. The original
-repository imports `powerlaw`, but its checked-in notebook does not contain the
-per-theorem fitting code that generated the published table. If Scott remembers the
-exact cutoff rule or has the missing analysis cell/script, that would resolve the
-remaining provenance question cleanly.
+The old archive resolves the main provenance question. Its production `pl.py`
+hard-codes `cutf=10` and calls
+`powerlaw.Fit(..., discrete=True, xmin=cutf)`; `convert_final_check.rb` feeds it
+the reuse degrees used in the table. Saved figure data record `xmin=10` and recover
+the published Four Color and Gödel exponents exactly after rounding. This was an
+explicit fitting cutoff, not a plotting convention.
+
+There is one qualification. The four smallest table entries jointly reproduce in
+both exponent and standard error at `xmin=5`, not 10, suggesting a small-network
+exception in an earlier or uncommitted fitter. The archive search did not recover
+that code path. The evidence, fingerprints, and exact refits are recorded in the
+[historical provenance note](results/HISTORICAL_POWERLAW_PROVENANCE.md).
 
 Relevant files:
 
@@ -119,14 +125,14 @@ are versioned here; Simon also retains private local and cluster mirrors. The
 original Coq inputs can be recovered independently by cloning
 `scottviteri/ManipulateProofTrees` at commit `7aeaf156`.
 
-## Questions where Scott's memory would be especially valuable
+## Questions where Scott's memory would still be valuable
 
-1. Was the published out-degree exponent fitted with an explicit cutoff near 10, or
-   by a plotting/range convention outside the checked-in Org notebook?
-2. Was “out-degree” in the paper defined in premise-to-dependent orientation, despite
-   the constructor-to-children representation used by `ManipulateProofTrees`?
-3. Does an uncommitted script, notebook cell, or output table survive that records the
-   exact `powerlaw.Fit` call used for the published exponents?
+1. Was there a small-network rule that changed `xmin` from 10 to 5? That change
+   recovers all four sub-1,000-node entries in both alpha and standard error.
+2. Which version of the Python `powerlaw` package was installed for the final run?
+3. Does an earlier or uncommitted table script explain the remaining 0.012 difference
+   for Triangle Inequality?
 
-Answers to those questions would sharpen the historical appendix, but they do not
-alter the fixed-tail human--AI comparisons or the epistemic-decoupling result.
+The cutoff and edge-orientation questions themselves are now resolved by archived
+code. These residual details do not alter the fixed-tail human--AI comparisons or
+the epistemic-decoupling result.

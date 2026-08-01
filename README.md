@@ -13,7 +13,7 @@ Proofs*](output/pdf/epistemic_decoupling_human_ai_proofs.pdf), with LaTeX source
 [`SCOTT_GUIDE.md`](SCOTT_GUIDE.md) gives a short route through the new results,
 documents the exact connection to
 [`scottviteri/ManipulateProofTrees`](https://github.com/scottviteri/ManipulateProofTrees),
-and isolates the remaining question about the original power-law convention.
+and links the recovered provenance of the original power-law convention.
 
 **Reviewing this work?** [`REVIEW.md`](REVIEW.md) maps every claim in the report to the script and
 output file that produced it, lists the seven claims withdrawn during the work and why, and names
@@ -24,8 +24,8 @@ and private cluster mirrors; the versioned derived evidence is sufficient for th
 ## What was found, in one paragraph
 
 The 2022 results replicate across a change of proof assistant, four years, and a tenfold larger
-library — and Table 1 itself reproduces once the fixed tail-cutoff convention is recovered (40 of 47
-networks within 0.010 of the published α). Applied to AI-generated mathematics, the headline is
+library — and Table 1 itself reproduces once the fixed tail-cutoff convention is recovered (40 of 44
+estimable networks within 0.010 of the published α). Applied to AI-generated mathematics, the headline is
 narrower than "AI proofs are structurally different," because at matched difficulty most apparent
 differences dissolve: the theorem explains far more structural variance than the system does, and
 one system resampled on one theorem varies more than systems differ from each other. What survives
@@ -73,8 +73,11 @@ does not accumulate.**
 
 ## Reproducing the 2022 paper
 
-`repro_xmin.py` shows Table 1 reproduces to within 0.010 on 40 of 47 networks using a **fixed** tail
-cutoff x_min ≈ 10. It does *not* reproduce under Clauset–Shalizi–Newman's KS-selected x_min, which
+`repro_xmin.py` shows Table 1 reproduces to within 0.010 on 40 of 44 estimable networks using a
+**fixed** tail cutoff x_min = 10. Archived production code confirms this was an explicit fitting
+cutoff, although four sub-1,000-node rows reproduce at x_min = 5; see the
+[historical provenance note](results/HISTORICAL_POWERLAW_PROVENANCE.md). It does *not* reproduce
+under Clauset–Shalizi–Newman's KS-selected x_min, which
 chooses x_min ≈ 1 on these degree sequences because the distribution is power-law-like all the way
 down. Any α quoted for a proof network should carry its x_min: the two conventions differ by ≈0.2
 and correlate at zero.

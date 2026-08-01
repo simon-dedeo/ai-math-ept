@@ -514,11 +514,22 @@ report the actual sample size for each check rather than forcing the archive int
 
 \subsection{The fixed tail at \texorpdfstring{$x_{\min}=10$}{xmin = 10}}
 
-The main exponent discrepancy arose from a cutoff choice.  The publication script fixed
+The main exponent discrepancy arose from a cutoff choice.  The surviving publication script fixed
 $x_{\min}=10$; a later audit initially allowed software to choose $x_{\min}$ by minimizing a
 Kolmogorov--Smirnov distance.  Those procedures estimate different parts of the degree distribution.
-When the original convention is restored, 40 of the 44 estimable archived exponents agree with the
+When the fixed-10 convention is restored, 40 of the 44 estimable archived exponents agree with the
 published values within 0.01, and 43 agree within 0.02; the median absolute discrepancy is 0.003.
+This is direct provenance rather than a reconstruction from the table alone: the archived fitter
+hard-codes \texttt{cutf=10}, and saved plotting data record that cutoff together with the published
+Four Color and G\"odel exponents.
+
+The convention was not completely uniform.  The four smallest published networks do not reproduce
+under the surviving fixed-10 call.  Applying the same discrete fitter at $x_{\min}=5$ recovers both
+their exponents and standard errors after rounding.  No surviving script contains this fixed-5
+branch, so the evidence supports a small-network exception in an earlier or uncommitted version,
+but does not recover its rule.  One further row, Triangle Inequality, differs by 0.012 at
+$x_{\min}=10$.  These historical exceptions do not enter the cross-assistant comparison below,
+which applies one declared cutoff uniformly to every estimable Coq and Lean network.
 
 For the tail that begins at reuse degree 10, recovered Coq networks have median
 $\alpha=\CoqAlpha$ (network-bootstrap interval \CoqAlphaCI{}; $n=45$).  The \HumanLeanN{} human Lean

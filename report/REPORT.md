@@ -39,7 +39,7 @@ withdrawn claims are listed in `REVIEW.md` with what replaced them. What follows
 an exploratory study with several imperfect proxies, not as a settled result.
 
 **What the evidence currently supports.** The 2022 results replicate: Table 1 reproduces to within
-0.010 on 40 of 47 networks under a fixed tail cutoff, heavy-tailed reuse beats an exponential in
+0.010 on 40 of 44 estimable networks under a fixed tail cutoff, heavy-tailed reuse beats an exponential in
 47/47 networks and beats a size-matched random-DAG null, and every Lean network we extracted shows
 an epistemic phase transition. That part is solid.
 
@@ -92,18 +92,21 @@ Sweeping *fixed* x_min with an explicit discrete MLE identifies the band that re
 | mean abs. deviation from published | 0.218 | 0.080 | 0.034 | **0.014** | 0.041 | 0.087 | — |
 | correlation with published | −0.36 | 0.63 | 0.90 | **0.90** | 0.91 | 0.72 | — |
 
-At x_min ≈ 10 the reproduction is essentially exact: **40 of 47 networks within 0.010 of the
-published value, 43 within 0.020** (Euclid 2.138 vs 2.14; Gödel 1.985 vs 1.98; Pythagoras 1.938 vs
-1.93; the one outlier is the smallest network, N = 739, where x_min = 10 leaves no tail).
+At x_min = 10 the reproduction is essentially exact for the estimable networks: **40 of 44 within
+0.010 of the published value, 43 within 0.020** (Euclid 2.138 vs 2.14; Gödel 1.985 vs 1.98;
+Pythagoras 1.938 vs 1.93). Three of the 47 node-matched networks have fewer than ten observations
+in that tail and are excluded by the modern audit's minimum-tail rule.
 **Table 1 of Viteri & DeDeo (2022) reproduces** — under a fixed tail cutoff, not under KS-selected
 x_min.
 
-We should not over-claim that x_min = 10 *was* the original convention. Asking each network which
-x_min would exactly reproduce its published α gives a broad spread (median 18, IQR 10–54), because
-α varies only slowly with x_min across this band — which is itself evidence that these are decently
-power-law-like distributions. What is solid: the published numbers are tail indices at a fixed
-cutoff of order 10, they are not KS-auto values, and **any α reported for a proof network should be
-quoted with its x_min, since the two conventions differ by ~0.2 and correlate at zero.**
+The old archive now supplies direct provenance: `pl.py` hard-codes `cutf=10`, and the table script
+passes it the reuse-degree sequence. Saved Four Color and Gödel outputs also record `xmin=10`.
+Four sub-1,000-node rows are an exception: their published alpha and standard error are jointly
+recovered at `xmin=5`, although the corresponding earlier or uncommitted code path has not been
+found. See [`results/HISTORICAL_POWERLAW_PROVENANCE.md`](../results/HISTORICAL_POWERLAW_PROVENANCE.md).
+What is solid is that these were explicit fixed-tail fits, not KS-auto estimates or plotting-range
+effects. **Any alpha reported for a proof network should be quoted with its x_min, since the
+conventions differ by about 0.2 and can change cross-network comparisons.**
 
 **Results, with x_min sensitivity made explicit.** Every one of the 33 Lean networks shows an
 epistemic phase transition (ε_crit 0.03–0.20), reaches f₂ = 0.986 ± 0.02 at ε = 0.01, and has
