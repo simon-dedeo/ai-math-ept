@@ -414,67 +414,48 @@ Two results, one confirming and one correcting:
   reuse deficit is real only on the size-normalized, per-opportunity measure. Both numbers belong in
   any honest account.
 
-## 5e. Study 10: A census of 137,382 proofs
+## 5e. Study 10: A census of proof corpora  ⚠️ **CORRECTED**
 
-To move from a handful of systems to a population, we built a two-tier census pipeline
-(`code/census.py`). **Tier 1** computes per-proof structural metrics and a corpus-level citation
-graph directly from source, with no compilation, so it scales to any repository; **Tier 2** is the
-expensive elaborated proof-term extraction, reserved for corpora that build.
+> **All token metrics in this section were recomputed after review found that comments and string
+> literals were being tokenised. The direction of that artifact turns out to differ by corpus, so
+> both the old and new numbers are given.**
 
-The census now covers **49 corpora and 137,382 proofs**: AI output from AlphaProof, Aristotle,
-Seed-Prover, DeepSeek-Prover V1/V1.5/V2, Kimina, Goedel, Leanabell, STP, Lean-STaR, LeanAgent and
-Math Inc.'s Gauss, against 27 human corpora spanning Lean 4, Lean 3, Coq and Isabelle's AFP
-(8.6M lines, ~480k declarations). The human control was audited for contamination: `carleson`
-carries exactly one Aristotle-proved lemma, `PhysLean` explicitly welcomes AI PRs (excluded from
-strict comparisons), and Lean 3 `mathlib3` — frozen October 2023 — is a guaranteed pre-LLM baseline.
+Two-tier census pipeline (`code/census.py`): Tier 1 computes per-proof metrics and a corpus-level
+citation graph from source with no compilation; Tier 2 is elaborated proof-term extraction. The
+census covers 49 corpora — AI output from AlphaProof, Aristotle, Seed-Prover, DeepSeek-Prover
+V1/V1.5/V2, Kimina, Goedel, Leanabell, STP, Lean-STaR, LeanAgent and Gauss — against 27 human
+corpora spanning Lean 4, Lean 3, Coq and Isabelle's AFP. The human control was audited for
+contamination (`carleson` carries one Aristotle-proved lemma; `PhysLean` welcomes AI PRs and is
+excluded from strict comparisons; Lean 3 `mathlib3`, frozen October 2023, is a pre-LLM baseline).
 
-**The headline metric, and an important correction.** Vocabulary ratio (distinct library lemmas
-invoked per proof ÷ total premise references) measures repetition-without-reuse. On a four-corpus
-pilot it looked like a clean separator. **At population scale it is not.** Three levels of analysis
-give three different answers, and the differences between them are the finding:
+**The comment artifact cuts both ways.** On the 27 corpora common to both runs:
 
-*Pooled over proofs* (n = 9,679 human, 25,007 AI, Lean 4 only): human 0.700 vs AI 0.611,
-p = 10⁻¹⁷⁴. But with tens of thousands of proofs drawn from a few dozen corpora, this is
-pseudo-replication; the p-value measures sample size, not evidence.
+| metric | before: human | before: AI | after: human | after: AI |
+|---|---|---|---|---|
+| vocabulary ratio | 0.700 | 0.611 | 0.667 | 0.556 |
+| distinct premises | 8 | 7 | 7 | 5 |
+| proof length | 10 | 12 | 9 | 9 |
+| corpus-level p (vocab) | — | **0.51 (n.s.)** | — | **0.011** |
 
-*Controlling for proof length* — the gap survives in every length band, and it **widens sharply
-with length**:
+Stripping comments *widened* the gap here and made the corpus-level test significant — the opposite
+of what happened in the paired corpus (§5g), where stripping *eliminated* the gap. The reason is
+that comment content differs by corpus: human proofs in the NuminaMath corpus embed the
+natural-language problem statement, while several AI corpora (reasoning-trace provers) embed long
+model commentary. **Any token-level metric on Lean source is sensitive to this, and the bias has no
+consistent sign.** That is a methodological result worth stating on its own.
 
-| proof length (lines) | 1–5 | 6–10 | 11–20 | 21–40 | 41–80 | 80+ |
+Post-fix, length-stratified (Lean 4 only, 10,005 human and 191,501 AI proofs):
+
+| proof length | 1–5 | 6–10 | 11–20 | 21–40 | 41–80 | 80+ |
 |---|---|---|---|---|---|---|
-| human | 0.800 | 0.750 | 0.667 | 0.611 | 0.562 | **0.495** |
-| AI | 0.667 | 0.667 | 0.643 | 0.593 | 0.409 | **0.287** |
-| p | 10⁻⁶⁰ | 10⁻⁵⁸ | 10⁻¹⁸ | 10⁻⁶ | 10⁻³⁹ | 10⁻⁴⁷ |
+| human | 0.778 | 0.733 | 0.667 | 0.579 | 0.521 | 0.427 |
+| AI | 0.667 | 0.560 | 0.472 | 0.385 | 0.312 | 0.243 |
 
-Short proofs differ modestly; **long proofs differ enormously**. In proofs over 80 lines, AI
-vocabulary ratio collapses to 0.287 against the human 0.495 — the same premises recycled three or
-four times each. Repetition-without-reuse is real, and it is a *long-proof* phenomenon: precisely
-where a human would stop and name a lemma, these systems repeat themselves.
-
-*Treating each corpus as one observation* (the conservative unit, n = 14 human vs 13 AI corpora):
-medians 0.667 vs 0.583, **p = 0.51 — not significant**. Four AI corpora exceed the human median and
-four human corpora fall below the AI median. Corpus-level heterogeneity swamps the authorship
-signal.
-
-So **N5 must be weakened**: repetition-without-reuse is a robust property of AI *proofs* at matched
-length, especially long ones, but it is **not** a reliable corpus-level classifier of machine
-authorship. An earlier draft of this report claimed the latter on the strength of a four-corpus
-convenience sample; that claim is withdrawn. The one metric that separates cleanly at every level
-is **automation share** — AI proofs delegate to closer tactics at twice the human rate (0.250 vs
-0.113, p = 10⁻¹⁹⁴).
-
-**Does search architecture predict proof structure?** Suggestively, but not yet defensibly. Within
-a controlled 6–40-line band, whole-proof generators (Kimina, DeepSeek-V1.5 sampling, Leanabell) sit
-at vocabulary ratio 0.75, while long-horizon agentic and tree-search systems (Seed-Prover, Gauss,
-AlphaProof, Aristotle) sit at 0.52–0.62. But architecture is confounded with corpus identity and
-with problem difficulty — tree-search corpora alone span 0.38 to 0.77 — and the systems attacking
-harder problems are exactly the ones writing longer proofs. Observational corpora cannot separate
-these.
-
-The design that can is a **matched-problem** corpus: the same theorem proved by many systems. We
-found one — `leanprover/lean-eval-submissions`, ~460 public proofs from 15+ 2026 systems over 168
-research-level problems — and harvesting it is the natural next step, along with AxiomMath's
-agentic proofs of IMO 2026, Putnam 2025 and seven Erdős problems.
+**How much weight this carries.** The census is observational: systems choose their own problems, so
+authorship is confounded with domain and difficulty. It says AI corpora *as collected* show lower
+vocabulary ratios at every length. It does **not** establish an authorship effect — the paired
+design in §5g, which holds the theorem fixed, finds premise counts equivalent. Where the two
+disagree, the paired design wins, and the census difference is most plausibly corpus composition.
 
 ## 5f. Study 11: The matched-theorem experiment — problem, not system, governs structure
 

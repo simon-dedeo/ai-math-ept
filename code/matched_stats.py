@@ -27,18 +27,50 @@ from scipy import stats
 
 
 def complete_block(pm, metric, index="problem", columns="system",
-                   min_problems=5, max_systems=10):
-    """Largest complete (no-missing) problems x systems block, chosen on raw
-    values. Returns the raw-value block, NOT ranks."""
+                   min_problems=5, max_systems=10, n_restarts=40, seed=0):
+    """Largest complete (no-missing) problems x systems submatrix, chosen on raw
+    values.
+
+    The first implementation only considered the top-k most-covering systems as
+    a prefix, which returns nothing when the widest-coverage systems have
+    disjoint problem sets (this happened on the HF census, where one system
+    covers LeanWorkbook and another miniF2F). We now do a randomised greedy
+    search over system subsets and keep the largest complete submatrix.
+    """
     piv = pm.pivot_table(index=index, columns=columns, values=metric,
                          aggfunc="median")
-    order = piv.notna().sum().sort_values(ascending=False).index
+    rng = np.random.default_rng(seed)
+    cols = list(piv.columns)
     best, best_size = None, 0
-    # Friedman needs >= 3 systems; require it here so callers get a valid block
-    for k in range(3, min(max_systems, len(order)) + 1):
-        blk = piv[list(order[:k])].dropna()
-        if len(blk) >= min_problems and len(blk) * k > best_size:
-            best, best_size = blk, len(blk) * k
+
+    def score(cs):
+        blk = piv[list(cs)].dropna()
+        return ((len(blk) * len(cs), blk) if len(blk) >= min_problems
+                else (0, None))
+
+    order = list(piv.notna().sum().sort_values(ascending=False).index)
+    starts = [order[:k] for k in range(3, min(max_systems, len(order)) + 1)]
+    for _ in range(n_restarts):
+        if len(cols) < 3:
+            break
+        starts.append(list(rng.choice(cols, size=3, replace=False)))
+    for start in starts:
+        cur = list(start)
+        sz, blk = score(cur)
+        if sz > best_size:
+            best, best_size = blk, sz
+        improved = True
+        while improved and len(cur) < max_systems:
+            improved = False
+            for c in cols:
+                if c in cur:
+                    continue
+                sz2, blk2 = score(cur + [c])
+                if sz2 > sz:
+                    cur, sz, blk = cur + [c], sz2, blk2
+                    improved = True
+            if sz > best_size:
+                best, best_size = blk, sz
     return best
 
 
@@ -99,6 +131,8 @@ def variance_components(pm, metric, problem="problem", system="system",
     Uncertainty is a cluster bootstrap resampling PROBLEMS (the clustering unit).
     """
     d = pm.dropna(subset=[metric, problem, system]).copy()
+    n_par = d[problem].nunique() + d[system].nunique()
+    identifiable = len(d) >= 3 * n_par     # need observations >> parameters
     r2_both = _r2(d, metric, [problem, system])
     r2_prob = _r2(d, metric, [problem])
     r2_sys = _r2(d, metric, [system])
@@ -138,6 +172,7 @@ def variance_components(pm, metric, problem="problem", system="system",
     return dict(
         n_cells=int(len(d)), n_problems=int(d[problem].nunique()),
         n_systems=int(d[system].nunique()),
+        identifiable=bool(identifiable), n_parameters=int(n_par),
         r2_problem_only=r2_prob, r2_system_only=r2_sys, r2_both=r2_both,
         unique_problem=uniq_prob, unique_problem_ci=[float(lo_p), float(hi_p)],
         unique_system=uniq_sys, unique_system_ci=[float(lo_s), float(hi_s)],

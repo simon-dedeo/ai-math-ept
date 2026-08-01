@@ -1,0 +1,11 @@
+entries: 140214
+theorems with >=3 proofs used: 1462, proof samples: 9168
+
+metric                 within-thm SD between-thm SD  ratio W/B
+n_lines                     0.617          1.420      0.435
+n_have                      0.122          0.431      0.283
+n_distinct_premises         0.616          1.113      0.554
+vocab_ratio                 0.077          0.226      0.340
+
+vocab_ratio    between-THEOREM 82.2%   within-theorem (same system) 17.8%
+n_lines        between-THEOREM 73.4%   within-theorem (same system) 26.6%

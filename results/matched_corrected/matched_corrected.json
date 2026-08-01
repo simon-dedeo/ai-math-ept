@@ -1,0 +1,153 @@
+{
+ "lean_eval": {
+  "vocab_ratio": {
+   "friedman": {
+    "n_problems": 27,
+    "n_systems": 3,
+    "friedman_chi2": 7.407407407407391,
+    "friedman_p": 0.02463212721614108,
+    "kendall_W": 0.13717421124828502,
+    "kendall_W_perm_p": 0.035,
+    "null_W_mean": 0.03861591220850449,
+    "null_W_p95": 0.12482853223593898,
+    "mean_ranks": {
+     "GPT-5.6": 1.6296296296296295,
+     "Humanifa + GPT 5.6 sol": 2.0,
+     "Aristotle (Harmonic)": 2.3703703703703702
+    }
+   },
+   "variance": {
+    "n_cells": 370,
+    "n_problems": 144,
+    "n_systems": 29,
+    "r2_problem_only": 0.928891029317632,
+    "r2_system_only": 0.2734481797145274,
+    "r2_both": 0.9483092373649784,
+    "unique_problem": 0.674861057650451,
+    "unique_problem_ci": [
+     0.39055316727258044,
+     0.8449635207944639
+    ],
+    "unique_system": 0.019418208047346397,
+    "unique_system_ci": [
+     0.0,
+     0.0
+    ],
+    "shared": 0.254029971667181,
+    "system_perm_p": 0.0
+   }
+  },
+  "n_lines": {
+   "friedman": {
+    "n_problems": 27,
+    "n_systems": 3,
+    "friedman_chi2": 31.62962962962962,
+    "friedman_p": 1.354294745955022e-07,
+    "kendall_W": 0.5857338820301782,
+    "kendall_W_perm_p": 0.0,
+    "null_W_mean": 0.038894375857338494,
+    "null_W_p95": 0.1157064471879283,
+    "mean_ranks": {
+     "Humanifa + GPT 5.6 sol": 1.3703703703703705,
+     "Aristotle (Harmonic)": 1.7777777777777777,
+     "GPT-5.6": 2.8518518518518516
+    }
+   },
+   "variance": {
+    "n_cells": 370,
+    "n_problems": 144,
+    "n_systems": 29,
+    "r2_problem_only": 0.9320492282349521,
+    "r2_system_only": 0.9610539480926502,
+    "r2_both": 0.9999372740159705,
+    "unique_problem": 0.03888332592332033,
+    "unique_problem_ci": [
+     0.0019073635198465916,
+     0.07129453213813429
+    ],
+    "unique_system": 0.06788804578101848,
+    "unique_system_ci": [
+     0.0,
+     0.0
+    ],
+    "shared": 0.8931659023116317,
+    "system_perm_p": 0.0
+   }
+  },
+  "n_have": {
+   "friedman": {
+    "n_problems": 27,
+    "n_systems": 3,
+    "friedman_chi2": 33.21495327102802,
+    "friedman_p": 6.130057367813576e-08,
+    "kendall_W": 0.6150917272412597,
+    "kendall_W_perm_p": 0.0,
+    "null_W_mean": 0.03821737625475911,
+    "null_W_p95": 0.1131879543094494,
+    "mean_ranks": {
+     "Humanifa + GPT 5.6 sol": 1.4259259259259258,
+     "Aristotle (Harmonic)": 1.6851851851851851,
+     "GPT-5.6": 2.888888888888889
+    }
+   },
+   "variance": {
+    "n_cells": 370,
+    "n_problems": 144,
+    "n_systems": 29,
+    "r2_problem_only": 0.9405796133311337,
+    "r2_system_only": 0.959167788568762,
+    "r2_both": 0.9997902279658286,
+    "unique_problem": 0.04062243939706667,
+    "unique_problem_ci": [
+     0.0017735513362403116,
+     0.07416521799123686
+    ],
+    "unique_system": 0.0592106146346949,
+    "unique_system_ci": [
+     0.0,
+     0.0
+    ],
+    "shared": 0.899957173934067,
+    "system_perm_p": 0.0
+   }
+  },
+  "n_distinct_premises": {
+   "friedman": {
+    "n_problems": 27,
+    "n_systems": 3,
+    "friedman_chi2": 40.22222222222223,
+    "friedman_p": 1.8444012993523736e-09,
+    "kendall_W": 0.7448559670781895,
+    "kendall_W_perm_p": 0.0,
+    "null_W_mean": 0.0353978052126197,
+    "null_W_p95": 0.10836762688614533,
+    "mean_ranks": {
+     "Humanifa + GPT 5.6 sol": 1.037037037037037,
+     "GPT-5.6": 2.259259259259259,
+     "Aristotle (Harmonic)": 2.7037037037037037
+    }
+   },
+   "variance": {
+    "n_cells": 370,
+    "n_problems": 144,
+    "n_systems": 29,
+    "r2_problem_only": 0.9727036312179335,
+    "r2_system_only": 0.8776785610698584,
+    "r2_both": 0.9995630922007563,
+    "unique_problem": 0.12188453113089792,
+    "unique_problem_ci": [
+     0.014597979723039193,
+     0.18428540048623987
+    ],
+    "unique_system": 0.02685946098282288,
+    "unique_system_ci": [
+     0.0,
+     0.0
+    ],
+    "shared": 0.8508191000870355,
+    "system_perm_p": 0.0
+   }
+  }
+ },
+ "hf_census": {}
+}

@@ -2,44 +2,44 @@
  "vocab_ratio": {
   "n_problems": 7,
   "n_models": 7,
-  "friedman_p": 0.01762995539253163,
-  "kendall_W": 0.3657289002557541,
+  "friedman_p": 0.0063874342307772445,
+  "kendall_W": 0.4271099744245523,
   "mean_ranks": {
-   "EVO-deepthought.com.au": 2.0,
-   "GPT-5.6": 4.285714285714286,
-   "GPT-5.5": 5.0,
-   "Claude-Opus-4.7-1M-context": 5.642857142857143,
-   "Aristotle (Harmonic)": 6.0,
-   "Humanifa + GPT 5.6 sol": 6.071428571428571,
-   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 6.357142857142857
+   "EVO-deepthought.com.au": 2.2857142857142856,
+   "GPT-5.6": 3.857142857142857,
+   "Claude-Opus-4.7-1M-context": 4.428571428571429,
+   "GPT-5.5": 5.142857142857143,
+   "Aristotle (Harmonic)": 6.071428571428571,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 6.714285714285714,
+   "Humanifa + GPT 5.6 sol": 6.857142857142857
   }
  },
  "n_lines": {
   "n_problems": 7,
   "n_models": 7,
-  "friedman_p": 4.3766013627040516e-05,
-  "kendall_W": 0.7084398976982095,
+  "friedman_p": 3.127414640590448e-05,
+  "kendall_W": 0.7267080745341611,
   "mean_ranks": {
-   "Humanifa + GPT 5.6 sol": 1.4285714285714286,
-   "Aristotle (Harmonic)": 2.142857142857143,
-   "GPT-5.5": 4.928571428571429,
-   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 5.0,
-   "Claude-Opus-4.7-1M-context": 5.357142857142857,
-   "GPT-5.6": 5.785714285714286,
+   "Humanifa + GPT 5.6 sol": 1.5714285714285714,
+   "Aristotle (Harmonic)": 2.0,
+   "Claude-Opus-4.7-1M-context": 4.928571428571429,
+   "GPT-5.5": 5.214285714285714,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 5.285714285714286,
+   "GPT-5.6": 5.5,
    "EVO-deepthought.com.au": 8.571428571428571
   }
  },
  "n_have": {
   "n_problems": 7,
   "n_models": 7,
-  "friedman_p": 3.0197929852278565e-05,
-  "kendall_W": 0.7286081527726773,
+  "friedman_p": 3.2959676021491926e-05,
+  "kendall_W": 0.7238586156111931,
   "mean_ranks": {
    "Humanifa + GPT 5.6 sol": 1.5714285714285714,
    "Aristotle (Harmonic)": 2.642857142857143,
    "GPT-5.5": 4.071428571428571,
-   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 4.571428571428571,
-   "Claude-Opus-4.7-1M-context": 6.214285714285714,
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 4.642857142857143,
+   "Claude-Opus-4.7-1M-context": 6.142857142857143,
    "GPT-5.6": 6.285714285714286,
    "EVO-deepthought.com.au": 8.5
   }
@@ -47,16 +47,16 @@
  "n_distinct_premises": {
   "n_problems": 7,
   "n_models": 7,
-  "friedman_p": 0.0004399933030042293,
-  "kendall_W": 0.5810510732790524,
+  "friedman_p": 0.00234691158526679,
+  "kendall_W": 0.4857881136950904,
   "mean_ranks": {
-   "Humanifa + GPT 5.6 sol": 1.0714285714285714,
-   "GPT-5.6": 4.0,
-   "GPT-5.5": 4.214285714285714,
-   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 5.785714285714286,
+   "Humanifa + GPT 5.6 sol": 1.5,
+   "GPT-5.6": 3.857142857142857,
+   "Claude-Opus-4.7-1M-context": 4.714285714285714,
+   "GPT-5.5": 4.785714285714286,
    "Aristotle (Harmonic)": 5.785714285714286,
-   "Claude-Opus-4.7-1M-context": 6.642857142857143,
-   "EVO-deepthought.com.au": 6.928571428571429
+   "Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)": 6.071428571428571,
+   "EVO-deepthought.com.au": 7.071428571428571
   }
  }
 }
