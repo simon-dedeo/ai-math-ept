@@ -1,7 +1,7 @@
 #!/bin/bash
 # sync.sh — mirror akdeniz working results into this repo and push.
-# Bulk data (networks/, corpora/, projects/) stays on akdeniz; this pulls the
-# code and the derived results, which are what the analysis actually rests on.
+# Bulk data is mirrored separately into Git-ignored local directories; this
+# lightweight helper pulls versioned code and derived results and then pushes.
 set -u
 REPO="$(cd "$(dirname "$0")" && pwd)"
 REMOTE=akdeniz.lan.cmu.edu:ai_math_ept

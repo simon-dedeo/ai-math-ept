@@ -1,0 +1,120 @@
+common=494 already=0
+20/494 retained=10
+30/494 retained=18
+40/494 retained=26
+50/494 retained=30
+80/494 retained=50
+90/494 retained=59
+110/494 retained=66
+120/494 retained=72
+140/494 retained=85
+150/494 retained=92
+170/494 retained=105
+180/494 retained=112
+200/494 retained=125
+230/494 retained=143
+250/494 retained=157
+260/494 retained=162
+270/494 retained=169
+280/494 retained=174
+290/494 retained=178
+300/494 retained=183
+310/494 retained=191
+320/494 retained=196
+330/494 retained=203
+340/494 retained=210
+350/494 retained=219
+360/494 retained=227
+380/494 retained=236
+430/494 retained=267
+440/494 retained=275
+450/494 retained=282
+460/494 retained=290
+470/494 retained=296
+490/494 retained=310
+/home/sdedeo/ai_math_ept_orchard/venv/lib/python3.10/site-packages/scipy/stats/_wilcoxon.py:172: RuntimeWarning: invalid value encountered in scalar divide
+  z = (r_plus - mn) / se
+{
+  "n_pairs": 312,
+  "runs": 8,
+  "sweeps": 10,
+  "metrics": {
+    "N": {
+      "human_median": 3816.5,
+      "ai_median": 4561.0,
+      "median_paired_diff": 290.0,
+      "wilcoxon_p": 6.0812908816144675e-05,
+      "prob_ai_greater": 0.5833333333333334
+    },
+    "root_component_share": {
+      "human_median": 1.0,
+      "ai_median": 1.0,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": NaN,
+      "prob_ai_greater": 0.0
+    },
+    "theorem_0.1": {
+      "human_median": 0.9761904761904762,
+      "ai_median": 0.9761904761904762,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": 0.46383654671836794,
+      "prob_ai_greater": 0.47115384615384615
+    },
+    "mean_all_0.1": {
+      "human_median": 0.9860894681862836,
+      "ai_median": 0.9869752249772042,
+      "median_paired_diff": 0.0005358805493777541,
+      "wilcoxon_p": 0.011833877908793554,
+      "prob_ai_greater": 0.5801282051282052
+    },
+    "mean_root_component_0.1": {
+      "human_median": 0.9860894681862836,
+      "ai_median": 0.9869752249772042,
+      "median_paired_diff": 0.0005358805493777541,
+      "wilcoxon_p": 0.011833877908793554,
+      "prob_ai_greater": 0.5801282051282052
+    },
+    "theorem_0.05": {
+      "human_median": 0.9970238095238095,
+      "ai_median": 1.0,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": 0.24682507487006455,
+      "prob_ai_greater": 0.36538461538461536
+    },
+    "mean_all_0.05": {
+      "human_median": 0.9911667838312603,
+      "ai_median": 0.9916197067251933,
+      "median_paired_diff": 0.0005341909358256292,
+      "wilcoxon_p": 0.014895350148003339,
+      "prob_ai_greater": 0.592948717948718
+    },
+    "mean_root_component_0.05": {
+      "human_median": 0.9911667838312603,
+      "ai_median": 0.9916197067251933,
+      "median_paired_diff": 0.0005341909358256292,
+      "wilcoxon_p": 0.014895350148003339,
+      "prob_ai_greater": 0.592948717948718
+    },
+    "theorem_0.01": {
+      "human_median": 1.0,
+      "ai_median": 1.0,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": 0.41359402437378046,
+      "prob_ai_greater": 0.2948717948717949
+    },
+    "mean_all_0.01": {
+      "human_median": 0.9931690510678215,
+      "ai_median": 0.9938207281558711,
+      "median_paired_diff": 0.0003854276020553993,
+      "wilcoxon_p": 0.007429293083398718,
+      "prob_ai_greater": 0.5801282051282052
+    },
+    "mean_root_component_0.01": {
+      "human_median": 0.9931690510678215,
+      "ai_median": 0.9938207281558711,
+      "median_paired_diff": 0.0003854276020553993,
+      "wilcoxon_p": 0.007429293083398718,
+      "prob_ai_greater": 0.5801282051282052
+    }
+  }
+}

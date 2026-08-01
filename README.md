@@ -5,10 +5,15 @@ Extending Viteri & DeDeo, *Epistemic phase transitions in mathematical proofs*
 
 **Start here:** [`report/REPORT.md`](report/REPORT.md).
 
+**Latest standalone paper:** [*Epistemic Decoupling in Human and Machine
+Proofs*](output/pdf/epistemic_decoupling_human_ai_proofs.pdf), with LaTeX source in
+[`report/standalone/`](report/standalone/).
+
 **Reviewing this work?** [`REVIEW.md`](REVIEW.md) maps every claim in the report to the script and
 output file that produced it, lists the seven claims withdrawn during the work and why, and names
 the places the work is weakest. [`results/DATA_INVENTORY.md`](results/DATA_INVENTORY.md) enumerates
-the ~80 GB of data that lives on `akdeniz` rather than in git.
+the bulk reproducibility data. These data are excluded from Git, but are mirrored both in this
+working directory on Simon's Mac and at `akdeniz.lan.cmu.edu:~/ai_math_ept/`.
 
 ## What was found, in one paragraph
 
@@ -34,6 +39,8 @@ does not accumulate.**
 | `code/` | analysis toolkit (below) |
 | `results/` | derived results: CSVs, JSONs, per-study outputs, logs |
 | `report/` | working report + figures |
+| `output/pdf/` | versioned final paper PDFs |
+| `networks/`, `original_data/`, `corpora/`, `census/`, `projects/`, `mathlib4/` | local, Git-ignored reproducibility cache mirrored from Akdeniz |
 | `REVIEW.md` | reviewer's guide: claim → script → output, withdrawn claims, weak points |
 | `sync.sh` | pull code + results from akdeniz, commit, push |
 

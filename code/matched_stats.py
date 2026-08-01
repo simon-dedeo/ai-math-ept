@@ -21,6 +21,8 @@ and variance components come with a cluster bootstrap over problems.
 """
 from __future__ import annotations
 
+import itertools
+
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -39,7 +41,6 @@ def complete_block(pm, metric, index="problem", columns="system",
     """
     piv = pm.pivot_table(index=index, columns=columns, values=metric,
                          aggfunc="median")
-    rng = np.random.default_rng(seed)
     cols = list(piv.columns)
     best, best_size = None, 0
 
@@ -48,12 +49,19 @@ def complete_block(pm, metric, index="problem", columns="system",
         return ((len(blk) * len(cs), blk) if len(blk) >= min_problems
                 else (0, None))
 
-    order = list(piv.notna().sum().sort_values(ascending=False).index)
-    starts = [order[:k] for k in range(3, min(max_systems, len(order)) + 1)]
-    for _ in range(n_restarts):
-        if len(cols) < 3:
-            break
-        starts.append(list(rng.choice(cols, size=3, replace=False)))
+    # Exhaustively seed with all triples.  The former random 40-triple search
+    # missed obvious HF blocks (45 systems => 14,190 triples), and incorrectly
+    # reported that no complete block existed.  Set intersections make this
+    # deterministic search cheap even when the pivot has tens of thousands of
+    # problems.
+    present = {c: set(piv.index[piv[c].notna()]) for c in cols}
+    seeded = []
+    for cs in itertools.combinations(cols, 3):
+        common = present[cs[0]] & present[cs[1]] & present[cs[2]]
+        if len(common) >= min_problems:
+            seeded.append((len(common) * 3, list(cs)))
+    # Greedy enlargement need only start from the strongest diverse seeds.
+    starts = [cs for _, cs in sorted(seeded, reverse=True)[:250]]
     for start in starts:
         cur = list(start)
         sz, blk = score(cur)
@@ -145,9 +153,16 @@ def variance_components(pm, metric, problem="problem", system="system",
     boots = []
     for _ in range(n_boot):
         pick = rng.choice(probs, size=len(probs), replace=True)
-        b = pd.concat([d[d[problem] == p] for p in pick], ignore_index=True)
-        # relabel resampled problems so repeats are distinct clusters
-        b["_p"] = b.groupby(problem).cumcount().astype(str) + "_" + b[problem].astype(str)
+        parts = []
+        for draw, p in enumerate(pick):
+            part = d[d[problem] == p].copy()
+            # Every row from one sampled problem must share a label.  Repeated
+            # draws of that problem need different labels.  The old cumcount
+            # expression instead assigned a unique pseudo-problem to each row,
+            # saturating the model and collapsing the bootstrap CI to [0, 0].
+            part["_p"] = f"{draw}:{p}"
+            parts.append(part)
+        b = pd.concat(parts, ignore_index=True)
         try:
             rb = _r2(b, metric, ["_p", system])
             rp = _r2(b, metric, ["_p"])
@@ -180,11 +195,13 @@ def variance_components(pm, metric, problem="problem", system="system",
 
 
 def tost_paired(x, y, bound_frac=0.1, n_boot=2000, seed=0):
-    """Equivalence test for a paired comparison (two one-sided tests).
+    """Descriptive SESOI check based on a paired bootstrap interval.
 
     A non-significant Wilcoxon is NOT evidence of equivalence. This asks whether
     the paired difference lies within +/- bound_frac * median(x), and returns a
-    cluster-free bootstrap CI on the median difference.
+    cluster-free bootstrap CI on the median difference.  Despite the historical
+    function name, this is not a formal two-one-sided-tests (TOST) procedure:
+    the margin is scale-derived and inference is by percentile bootstrap.
     """
     x = np.asarray(x, float); y = np.asarray(y, float)
     ok = np.isfinite(x) & np.isfinite(y)
@@ -204,7 +221,8 @@ def tost_paired(x, y, bound_frac=0.1, n_boot=2000, seed=0):
                 median_y=float(np.median(y)),
                 median_diff=float(np.median(d)), ci_low=float(lo),
                 ci_high=float(hi), equiv_bound=float(bound),
-                equivalent_within_bound=equivalent, wilcoxon_p=w_p)
+                equivalent_within_bound=equivalent, wilcoxon_p=w_p,
+                method="paired percentile-bootstrap SESOI check (not formal TOST)")
 
 
 def cluster_bootstrap_paired(df, xcol, ycol, cluster, n_boot=2000, seed=0):

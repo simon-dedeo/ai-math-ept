@@ -1,0 +1,398 @@
+{
+  "lean_eval": {
+    "vocab_ratio": {
+      "systems": [
+        "Aristotle (Harmonic)",
+        "GPT-5.6",
+        "Humanifa + GPT 5.6 sol"
+      ],
+      "friedman": {
+        "n_problems": 27,
+        "n_systems": 3,
+        "friedman_chi2": 20.22222222222223,
+        "friedman_p": 4.062564213208221e-05,
+        "kendall_W": 0.37448559670781906,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.03711810699588446,
+        "null_W_p95": 0.10836762688614533,
+        "mean_ranks": {
+          "GPT-5.6": 1.2962962962962963,
+          "Humanifa + GPT 5.6 sol": 2.2962962962962963,
+          "Aristotle (Harmonic)": 2.4074074074074074
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.7722169756181754,
+            "bootstrap_ci": [
+              0.6417613861943217,
+              0.849497535944172
+            ]
+          },
+          "system": {
+            "share": 0.07113681804721961,
+            "bootstrap_ci": [
+              0.04079517087121662,
+              0.12890938174381142
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.15664620633460502,
+            "bootstrap_ci": [
+              0.08876817359778429,
+              0.2607506667181296
+            ]
+          }
+        }
+      }
+    },
+    "n_lines": {
+      "systems": [
+        "Aristotle (Harmonic)",
+        "GPT-5.6",
+        "Humanifa + GPT 5.6 sol"
+      ],
+      "friedman": {
+        "n_problems": 27,
+        "n_systems": 3,
+        "friedman_chi2": 24.66666666666663,
+        "friedman_p": 4.402520529974011e-06,
+        "kendall_W": 0.45679012345678943,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.03724787379972535,
+        "null_W_p95": 0.10836762688614533,
+        "mean_ranks": {
+          "Humanifa + GPT 5.6 sol": 1.5555555555555556,
+          "Aristotle (Harmonic)": 1.6666666666666667,
+          "GPT-5.6": 2.7777777777777777
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.8825366324532031,
+            "bootstrap_ci": [
+              0.772080229838651,
+              0.9419083711103116
+            ]
+          },
+          "system": {
+            "share": 0.038639331881701294,
+            "bootstrap_ci": [
+              0.018322097475473996,
+              0.08773534964464229
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.07882403566509558,
+            "bootstrap_ci": [
+              0.030401610145836328,
+              0.1535610352725989
+            ]
+          }
+        }
+      }
+    },
+    "n_have": {
+      "systems": [
+        "Aristotle (Harmonic)",
+        "GPT-5.6",
+        "Humanifa + GPT 5.6 sol"
+      ],
+      "friedman": {
+        "n_problems": 27,
+        "n_systems": 3,
+        "friedman_chi2": 35.18518518518516,
+        "friedman_p": 2.2889384505087593e-08,
+        "kendall_W": 0.6515775034293548,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.03705651577503397,
+        "null_W_p95": 0.10836762688614533,
+        "mean_ranks": {
+          "Humanifa + GPT 5.6 sol": 1.4444444444444444,
+          "Aristotle (Harmonic)": 1.6296296296296295,
+          "GPT-5.6": 2.925925925925926
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.761870943571352,
+            "bootstrap_ci": [
+              0.6328592156729966,
+              0.831621502429568
+            ]
+          },
+          "system": {
+            "share": 0.13528712001594423,
+            "bootstrap_ci": [
+              0.0971382176657801,
+              0.21499489516229572
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.10284193641270378,
+            "bootstrap_ci": [
+              0.06093779937618441,
+              0.1700093841270972
+            ]
+          }
+        }
+      }
+    },
+    "n_distinct_premises": {
+      "systems": [
+        "Aristotle (Harmonic)",
+        "GPT-5.6",
+        "Humanifa + GPT 5.6 sol"
+      ],
+      "friedman": {
+        "n_problems": 27,
+        "n_systems": 3,
+        "friedman_chi2": 31.62962962962962,
+        "friedman_p": 1.354294745955022e-07,
+        "kendall_W": 0.5857338820301782,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.03690987654320957,
+        "null_W_p95": 0.10836762688614533,
+        "mean_ranks": {
+          "Humanifa + GPT 5.6 sol": 1.1481481481481481,
+          "GPT-5.6": 2.2222222222222223,
+          "Aristotle (Harmonic)": 2.6296296296296298
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.8969776133268582,
+            "bootstrap_ci": [
+              0.7984442117854869,
+              0.9477524755172426
+            ]
+          },
+          "system": {
+            "share": 0.045780077898104454,
+            "bootstrap_ci": [
+              0.024124701391149517,
+              0.09813427635273946
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.05724230877503735,
+            "bootstrap_ci": [
+              0.025157239773978424,
+              0.11120101927611901
+            ]
+          }
+        }
+      }
+    }
+  },
+  "hf_census": {
+    "vocab_ratio": {
+      "systems": [
+        "lukebailey-dsprover-sols",
+        "lukebailey-dsprover-sols-v0",
+        "yidan-goedel",
+        "yidan-dsproverv2"
+      ],
+      "friedman": {
+        "n_problems": 138,
+        "n_systems": 4,
+        "friedman_chi2": 220.95037220843665,
+        "friedman_p": 1.2510541840444013e-47,
+        "kendall_W": 0.5336965512281079,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.007160480574435763,
+        "null_W_p95": 0.01865837139329394,
+        "mean_ranks": {
+          "yidan-goedel": 1.1884057971014492,
+          "lukebailey-dsprover-sols": 2.851449275362319,
+          "lukebailey-dsprover-sols-v0": 2.851449275362319,
+          "yidan-dsproverv2": 3.108695652173913
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.6591635706984995,
+            "bootstrap_ci": [
+              0.5993031564628707,
+              0.7093307437771177
+            ]
+          },
+          "system": {
+            "share": 0.15931762910735886,
+            "bootstrap_ci": [
+              0.1319573142815796,
+              0.1971126503413383
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.18151880019414157,
+            "bootstrap_ci": [
+              0.14440601482325624,
+              0.2247209336358369
+            ]
+          }
+        }
+      }
+    },
+    "n_lines": {
+      "systems": [
+        "lukebailey-dsprover-sols",
+        "lukebailey-dsprover-sols-v0",
+        "yidan-goedel",
+        "yidan-dsproverv2"
+      ],
+      "friedman": {
+        "n_problems": 138,
+        "n_systems": 4,
+        "friedman_chi2": 20.696013289036507,
+        "friedman_p": 0.00012174212907027555,
+        "kendall_W": 0.049990370263373204,
+        "kendall_W_perm_p": 0.0001,
+        "null_W_mean": 0.007174049063508175,
+        "null_W_p95": 0.01851978910876833,
+        "mean_ranks": {
+          "yidan-dsproverv2": 2.1050724637681157,
+          "lukebailey-dsprover-sols": 2.5905797101449277,
+          "lukebailey-dsprover-sols-v0": 2.5905797101449277,
+          "yidan-goedel": 2.713768115942029
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.8644102238271106,
+            "bootstrap_ci": [
+              0.8269577830184779,
+              0.8936820222821714
+            ]
+          },
+          "system": {
+            "share": 0.007631711026050093,
+            "bootstrap_ci": [
+              0.003817764801292268,
+              0.015402995698770268
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.12795806514683924,
+            "bootstrap_ci": [
+              0.09892418948282759,
+              0.16276938485796644
+            ]
+          }
+        }
+      }
+    },
+    "n_have": {
+      "systems": [
+        "lukebailey-dsprover-sols",
+        "lukebailey-dsprover-sols-v0",
+        "yidan-goedel",
+        "yidan-dsproverv2"
+      ],
+      "friedman": {
+        "n_problems": 138,
+        "n_systems": 4,
+        "friedman_chi2": 49.95412844036705,
+        "friedman_p": 8.170925918491204e-11,
+        "kendall_W": 0.12066214599122475,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.007208278154500805,
+        "null_W_p95": 0.018650113016885954,
+        "mean_ranks": {
+          "yidan-dsproverv2": 1.9384057971014492,
+          "lukebailey-dsprover-sols": 2.5905797101449277,
+          "lukebailey-dsprover-sols-v0": 2.5905797101449277,
+          "yidan-goedel": 2.880434782608696
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.8521658954421866,
+            "bootstrap_ci": [
+              0.8134663596449097,
+              0.8845419672832241
+            ]
+          },
+          "system": {
+            "share": 0.013067724337070869,
+            "bootstrap_ci": [
+              0.007327115092484973,
+              0.02357837277625882
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.1347663802207425,
+            "bootstrap_ci": [
+              0.10370348850519022,
+              0.17016188450224098
+            ]
+          }
+        }
+      }
+    },
+    "n_distinct_premises": {
+      "systems": [
+        "lukebailey-dsprover-sols",
+        "lukebailey-dsprover-sols-v0",
+        "yidan-goedel",
+        "yidan-dsproverv2"
+      ],
+      "friedman": {
+        "n_problems": 138,
+        "n_systems": 4,
+        "friedman_chi2": 306.1269841269841,
+        "friedman_p": 4.6954008202236096e-66,
+        "kendall_W": 0.7394371597270147,
+        "kendall_W_perm_p": 0.0,
+        "null_W_mean": 0.007275511208240749,
+        "null_W_p95": 0.019062316284538604,
+        "mean_ranks": {
+          "yidan-goedel": 1.0,
+          "yidan-dsproverv2": 2.8405797101449277,
+          "lukebailey-dsprover-sols-v0": 3.079710144927536,
+          "lukebailey-dsprover-sols": 3.079710144927536
+        }
+      },
+      "variance_partition": {
+        "scale": "log1p",
+        "components": {
+          "problem": {
+            "share": 0.3315939520419317,
+            "bootstrap_ci": [
+              0.24711404457804204,
+              0.41396032846211367
+            ]
+          },
+          "system": {
+            "share": 0.5661999906737821,
+            "bootstrap_ci": [
+              0.4894808135676347,
+              0.6481507342821958
+            ]
+          },
+          "residual_interaction": {
+            "share": 0.10220605728428614,
+            "bootstrap_ci": [
+              0.0829418086666421,
+              0.1237431431602928
+            ]
+          }
+        }
+      }
+    }
+  }
+}

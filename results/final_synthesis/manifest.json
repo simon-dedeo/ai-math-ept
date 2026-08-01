@@ -1,0 +1,16 @@
+{
+  "bootstraps": 10000,
+  "permutations": 10000,
+  "paired_source_n": 2321,
+  "paired_source_clusters": 12,
+  "paired_term_clean_n": 312,
+  "paired_term_clusters": 12,
+  "paired_term_exclusion": "both graphs required; excludes either graph containing sorry/SyntheticOpaque",
+  "belief_pairs": 312,
+  "belief_runs_final": 32,
+  "belief_sweeps": 10,
+  "belief_diagnostic_slurm_job": 128433,
+  "belief_final_slurm_job": 128465,
+  "belief_input_sha256": "d0100b65be314d1d8466328a27cdfe0db8e53417e0cd03a9adec91eae777bc1f",
+  "belief_output_archive_sha256": "d7b168c956c6216da5e885afa65f3ec7dc70b1b596e1cdb4300ca251b4151bfc"
+}

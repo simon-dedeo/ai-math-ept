@@ -5,12 +5,33 @@ projects/
 census/
 mathlib4/
 venv/
+.venv/
+# Full raw copy of the ORCHARD staging directory; compact provenance bundles
+# and Slurm logs are versioned under results/ instead.
+results/orchard_snapshot/
 original_data/
 *.olean
 *.vo
 # source PDFs (copyright) stay out of the repo
 *.pdf
 !report/figures/*.pdf
+# Generated figures and final paper deliverables are part of the repository.
+!report/final/figures/*.pdf
+!report/standalone/figures/*.pdf
+!output/
+!output/pdf/
+!output/pdf/*.pdf
+
+# Rebuildable LaTeX and visual-QA products.
+report/**/main.aux
+report/**/main.bbl
+report/**/main.blg
+report/**/main.fdb_latexmk
+report/**/main.fls
+report/**/main.log
+report/**/main.out
+report/**/render/
+report/**/render-final/
 __pycache__/
 *.pyc
 *.nbc

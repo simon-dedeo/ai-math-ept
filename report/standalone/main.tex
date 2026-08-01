@@ -1,0 +1,650 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[round,authoryear]{natbib}
+\usepackage[colorlinks=true,allcolors=MidnightBlue]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+
+\input{numbers.tex}
+
+\definecolor{human}{HTML}{294C60}
+\definecolor{machine}{HTML}{B24C3D}
+\definecolor{interface}{HTML}{E7EEF2}
+\definecolor{interior}{HTML}{F7E9E5}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\CI}{95\% source-cluster interval}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Epistemic decoupling in proof}
+\rhead{August 2026}
+\cfoot{\thepage}
+
+\title{\textbf{Epistemic Decoupling in Human and AI Proofs}\\
+\large Same Theorem, Different Interior}
+\author{Working paper}
+\date{1 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Two correct proofs of the same theorem can be built very differently.  We ask whether those
+architectural differences also change the epistemic support that a proof network provides.  The
+question extends Viteri and DeDeo's account of epistemic phase transitions, in which converging
+deductive and abductive pathways allow confidence to survive local fallibility.
+
+We compare \SourcePairs{} theorem-matched human- and AI-provenance Lean scripts and, in a separately
+filtered sample, \TermPairs{} matched elaborated proof-term networks.  The theorem strongly constrains
+both populations: human and AI proof sizes correlate at $\rho_s=\LineRho$ in source and
+$\rho_s=\NodeRho$ after elaboration.  Within that common frame, AI proofs have a larger interior.
+They contain \HaveRatio{} times as many local claims per tactic and \InteriorRatio{} times as many
+non-constant term nodes per distinct library constant.  Their named interface changes much less.
+Yet the Viteri--DeDeo model assigns nearly the same theorem belief to both populations, and interior
+expansion has little association with belief change ($\rho_s=\DecouplingRho$).
+
+We call this pattern \emph{epistemic decoupling}: proof architecture can change without a
+commensurate change in modeled epistemic outcome.  The result is not a claim that all proofs are
+equally understandable.  It identifies the missing scientific object: the interface through which
+a checked certificate becomes available to a reader and a mathematical community.  For AI-for-math,
+the next problem is therefore not only proof search, but proof design.
+\end{abstract}
+
+\section{Introduction}
+
+Two proofs can agree on the theorem and disagree on nearly everything else.  They can choose
+different lemmas, introduce different intermediate claims, and distribute their work across
+different levels of abstraction.  In informal mathematics these differences are familiar.  In a
+proof assistant they become measurable, because both constructions can be checked against exactly
+the same formal statement.
+
+This creates a new problem for the study of mathematical reasoning.  When correctness is held fixed,
+which features of a proof remain epistemically important?  The question is practical as well as
+theoretical.  AI systems can now produce large numbers of kernel-checked proofs
+\citep{yang2023,ren2025,hubert2026}.  Correctness is indispensable, but abundance makes selection
+unavoidable.  We must decide which certificates are worth reading, maintaining, and reusing.
+
+We propose a simple answer and give it a name.  \emph{Epistemic decoupling} occurs when alternative
+proofs of the same theorem differ substantially in architecture but not in an epistemic outcome.
+In the present study, architecture is the amount of internal derivational structure placed behind
+a proof's named contact with the library.  The epistemic outcome is theorem belief under the network
+model of \citet{viteri2022}.  The term is deliberately narrow.  It describes a relation between a
+structural contrast and a specified epistemic functional; it does not declare proof structure
+irrelevant in general.
+
+The paired human--AI comparison reveals three parts of the pattern.  First, theorem identity imposes
+a common frame: human and AI proof sizes are strongly associated.  Second, AI provenance tracks a
+change inside that frame: AI proofs contain more local and elaborated structure per named interface
+element.  Third, this interior expansion neither produces a detectable reduction in modeled theorem
+belief nor clearly predicts the small human--AI belief difference.  Architecture moves; the modeled
+endpoint does not move with it.
+
+This result advances the phase-transition account in a controlled setting.  Viteri and DeDeo
+showed how a network of mutually supporting claims can sustain confidence despite fallible local
+inference.  Their historical and Coq examples differed in theorem, scale, representation, and
+provenance.  Here the theorem is fixed within every comparison.  The question is no longer only
+whether one proof network can sustain belief, but whether that belief is robust to another
+realization of the same formal target.
+
+The paper proceeds in that order.  We first define epistemic decoupling and the interface--interior
+distinction.  We then observe one paired comparison at two resolutions: the source script and the
+elaborated proof term.  The results follow a single sequence---common constraint, interior change,
+epistemic invariance.  We then consider what the pattern means for cognition, philosophy of proof,
+and AI proof design.  \Cref{app:coqlean} returns to the original Coq analysis and asks directly what
+the human Lean evidence confirms.
+
+\section{Epistemic decoupling}
+
+\subsection{From one proof to a paired contrast}
+
+Let $S$ be a formal statement and let $P_H$ and $P_A$ be checked proof terms of $S$ with human and AI
+provenance.  From a term $P$ we extract a directed acyclic expression graph $G(P)$.  Constant nodes
+refer to named declarations in the ambient library.  We call this named frontier the proof's
+\emph{interface}.  Applications, abstractions, variables, types, and other non-constant expressions
+form its \emph{interior}.
+
+The distinction is operational, not metaphysical.  A library constant is not necessarily a deep
+mathematical idea, and a non-constant node is not necessarily a trivial implementation detail.  The
+boundary asks a narrower question: how much internal expression structure is placed behind each
+named point of contact with the surrounding library?  We measure that load by
+\begin{equation}
+  \chi(P)=\frac{|V(G(P))|-|C_V(P)|}{|C_D(P)|+1},
+  \label{eq:interior}
+\end{equation}
+where $C_V(P)$ is the set of constant vertices in the structurally deduplicated graph and $C_D(P)$
+is the set of distinct library declarations they name.  At source level, explicit local \code{have}
+claims per tactic provide an independent, visible proxy for the same idea.
+
+Let $B_\epsilon(P)$ be theorem-node belief under a network model with local error rate $\epsilon$.
+For each theorem pair, define
+\begin{equation}
+  A=\log\frac{\chi(P_A)}{\chi(P_H)}, \qquad
+  E=B_\epsilon(P_A)-B_\epsilon(P_H).
+  \label{eq:decoupling}
+\end{equation}
+The empirical signature of decoupling is a systematic architectural contrast $A$ together with a
+small epistemic contrast $E$ and little association between the two.  This definition makes the
+claim falsifiable.  It would fail if larger AI interiors reliably produced lower theorem belief, or
+if the structural contrast vanished under elaboration.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=6mm and 9mm,
+  box/.style={draw,rounded corners,minimum height=9mm,align=center,font=\small},
+  arr/.style={-{Latex[length=2mm]},thick},
+  humanbox/.style={box,fill=interface,draw=human},
+  aibox/.style={box,fill=interior,draw=machine}
+]
+\node[box,fill=gray!10,minimum width=31mm] (statement) {same statement $S$};
+\node[humanbox,below left=9mm and 18mm of statement,minimum width=37mm] (human) {human proof\\interface $+$ interior};
+\node[aibox,below right=9mm and 18mm of statement,minimum width=37mm] (ai) {AI proof\\interface $+$ interior};
+\node[box,fill=gray!10,below=17mm of statement,yshift=-23mm,minimum width=42mm] (belief) {modeled theorem belief};
+\draw[arr] (statement) -- (human); \draw[arr] (statement) -- (ai);
+\draw[arr] (human) -- node[left,font=\footnotesize] {$B_\epsilon(P_H)$} (belief);
+\draw[arr] (ai) -- node[right,font=\footnotesize] {$B_\epsilon(P_A)$} (belief);
+\node[font=\footnotesize,text=machine,below=1mm of ai] {larger interior};
+\node[font=\footnotesize,text=gray!70!black,below=1mm of belief] {similar endpoint?};
+\end{tikzpicture}
+\caption{The design of the argument.  Pairing fixes the theorem.  The analysis then asks whether a
+change in proof interior is accompanied by a change in modeled theorem belief.}
+\label{fig:framework}
+\end{figure}
+
+\subsection{Why a network can decouple size from belief}
+
+A linear chain gives one intuition about proof reliability.  If every link can fail independently,
+each additional step is another liability.  A network gives another.  Claims can be reused;
+independent routes can converge; and a conclusion can provide abductive support for premises that
+also support it.  Under the Viteri--DeDeo dynamics, path proliferation can offset the loss of
+influence along any single path.  A sufficiently connected proof can therefore cross from local
+uncertainty to high global confidence \citep{viteri2022}.
+
+This mechanism makes decoupling possible but does not guarantee it.  Adding nodes could create
+redundant support, extend fragile chains, or merely expose compiler bookkeeping.  The paired design
+asks which of these possibilities dominates for current human- and AI-provenance Lean proofs.  It
+also exposes a deeper issue: kernel expressions need not be the units on which a human reader
+reasons.  If term-level expansion leaves network belief nearly unchanged, the cognitively consequential
+variation may lie in how those expressions are grouped and presented.
+
+\section{One comparison at two resolutions}
+
+\subsection{The paired corpus}
+
+The source data come from NuminaMath-LEAN proof artifacts \citep{numinamathlean}.  Each retained
+record supplies one formal statement, one human-provenance proof, one AI-provenance proof, validation
+metadata, and a coarse source label.  Both proofs must be marked valid and available, contain a
+measurable proof body, and expose at least one premise-like reference under the corrected lexical
+parser.  The source sample contains \SourcePairs{} theorem pairs from \SourceGroups{} source groups.
+
+``Human'' and ``AI'' refer to dataset provenance, not pure causal treatments.  Human editing,
+retrieval, shared training data, and selection can blur the categories.  The value of the design is
+more basic: within each row, statement, hypotheses, and ambient formal environment are shared.  The
+comparison therefore removes theorem identity, a major confound in cross-corpus studies.
+
+We observe the same conceptual contrast at two resolutions.  \Cref{tab:measurement} gives the map.
+The source and term samples are filtered separately, so evidence should be combined conceptually,
+not by pretending that every estimate comes from one common table.
+
+\begin{table}[t]
+\centering
+\caption{One comparison at two resolutions.  The source layer records visible proof organization;
+the term layer records the elaborated certificate.}
+\label{tab:measurement}
+\small
+\begin{tabularx}{\textwidth}{P{.10\textwidth}P{.18\textwidth}P{.28\textwidth}Y}
+\toprule
+Resolution & Paired sample & Interior measure & Interface measure \\
+\midrule
+Source & \SourcePairs{} statements & Explicit local \code{have} claims per tactic & Distinct
+premise-like identifiers after removing comments and strings \\
+Term & \TermPairs{} statements & Non-constant expression nodes per distinct constant &
+Distinct named library constants \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Visible organization in source}
+
+For each script we count lines, tactic invocations, and explicit \code{have} declarations.  We also
+use two deliberately conservative lexical measures of named premise contact: a loose count of
+distinct dotted or capitalized identifiers and a strict count of dotted identifiers.  Comments and
+strings are removed first.  These counts are not dependency graphs.  Their role is to check whether
+an apparent interface difference is visible before elaboration and whether it survives a change in
+token rule.
+
+To retain proofs with no explicit local claims, the source interior proxy is
+\begin{equation}
+  \chi_R=\frac{n_{\code{have}}+1/2}{n_{\mathrm{tactic}}+1}.
+\end{equation}
+Because this ratio uses pseudocounts, raw medians and paired differences are reported alongside it.
+
+\subsection{Certificate structure after elaboration}
+
+Lean elaboration turns each script into a kernel-checkable term.  We deduplicate structurally equal
+expressions to form a DAG and direct edges from child expressions toward the expressions that
+contain them.  The graph includes the theorem type and proof value.  Named constants remain at the
+frontier; imported declarations are not recursively expanded.  This \code{term0} representation is
+therefore the root certificate behind a fixed interface, not all of Mathlib.
+
+Both sides were extracted for \EligibleTermPairs{} eligible pairs.  We exclude a pair if either graph
+contains \code{sorryAx} or \code{SyntheticOpaque}, which mark Lean error recovery rather than a
+completed proof.  The clean term sample contains \TermPairs{} pairs.  This 36.8\% pairwise exclusion
+is substantial, and the retained terms should not be treated as a random sample of all valid source
+proofs.  The source and term samples overlap on \CrossLayerN{} statements.
+
+\subsection{The epistemic endpoint}
+
+For each clean term graph we implement the symmetric-error case of the asymmetric-Ising model in
+\citet{viteri2022}.  Nodes begin true with prior probability $0.75$.  Deductive and abductive
+couplings correspond to local error rates $\epsilon\in\{.10,.05,.01\}$.  We run ten sweeps and 32
+Monte Carlo chains per graph, using common seeds within each theorem pair.  Every retained graph is
+one weak component containing the theorem root, so disconnected isolates do not affect this
+comparison.
+
+The primary endpoint is theorem-node belief averaged across the three error settings.  It is a
+model implication, not a measurement of a reader.  This distinction matters throughout: the study
+can establish decoupling inside the network model and use that result to motivate, but not replace,
+a cognitive experiment.
+
+\subsection{Paired uncertainty}
+
+We report medians of paired differences or paired log ratios.  Spearman correlation measures how
+strongly theorem identity constrains proof scale and how the two paired contrasts co-vary.  The
+corpus contains many related competition problems, so ordinary proof-level intervals would be too
+narrow.  Our intervals resample the \SourceGroups{} coarse problem-source groups with replacement,
+retaining all observations in each selected group.  The analysis uses 20,000 resamples with a fixed
+seed.  An identical ORCHARD run reproduced the local numerical summary byte for byte.
+
+\section{The decoupling pattern}
+
+\subsection{First, the theorem supplies a common frame}
+
+Human and AI proofs of the same statement are not independent constructions.  Their script line
+counts correlate at $\rho_s=\LineRho$ (\CI{} \LineRhoCI{}), and their elaborated node counts correlate
+at $\rho_s=\NodeRho$ (\CI{} \NodeRhoCI{}).  \Cref{fig:constraint} shows the relationship at both
+resolutions.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.94\textwidth]{figures/theorem_constraint.pdf}
+\caption{The theorem supplies a common architectural frame.  Each point is a same-statement
+human/AI pair; the dashed line is parity.  The source panel uses density shading because the sample
+is large.  Coefficients are paired Spearman correlations.}
+\label{fig:constraint}
+\end{figure}
+
+This result is the control on which the rest of the argument depends.  The machine proof is not
+arbitrary text set against an organized human object.  Both proofs answer to the same type,
+hypotheses, and library.  Provenance appears as a deformation of theorem-specific structure,
+not as a replacement for it.
+
+\subsection{Second, AI provenance tracks an interior shift}
+
+At source level, the deformation appears as local decomposition.  The median script grows from 23
+to 26 lines, a paired change of $+2$ (\CI{} $[1,3]$).  The median number of explicit \code{have}
+claims grows from 3 to 6.  Relative to tactic count, the median paired AI/human ratio is
+\HaveRatio{} (\CI{} \HaveRatioCI{}).  Equal weighting of the 12 source groups gives a smaller raw
+\code{have} contrast of $+0.5$ $[0,1.5]$; the pooled direction is therefore not uniform across
+groups.
+
+Named premise contact shows no corresponding rise with this internal decomposition.  The loose and
+strict source proxies each have paired median difference zero.  Their zero-width bootstrap intervals reflect
+discrete counts, many ties, and only 12 clusters; they are not equivalence tests.  The defensible
+claim is comparative: a clear source-level increase in local claims is not accompanied by a clear
+increase in the breadth of the named interface.
+
+Elaborated terms show the same asymmetry without relying on source tokens.  AI terms contain a
+median 4,561 nodes, compared with 3,816.5 for human terms; the paired difference is $+290$
+$([20,529])$.  The number of distinct constants is nearly unchanged: 200.5 for human terms and 199
+for AI terms, with paired difference $-1$ $([-3,0])$.  AI terms therefore contain
+\InteriorRatio{} times as many non-constant nodes per distinct constant (\CI{}
+\InteriorRatioCI{}).  Giving every source group equal weight yields a similar ratio of 1.11
+$[1.02,1.21]$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.96\textwidth]{figures/interior_expansion.pdf}
+\caption{Interior expansion at two resolutions.  Left: median paired AI/human contrasts for visible
+local decomposition and elaborated expression structure.  Right: among the \CrossLayerN{} pairs
+observed both ways, the two changes have a modest positive association.  Intervals resample source
+groups; the black line joins six binned means.}
+\label{fig:interior}
+\end{figure}
+
+The two interior measures are not identical, but they are not unrelated.  Among the
+\CrossLayerN{} overlapping pairs, source-level change in local claims per tactic correlates with
+term-level change in internal nodes per constant at $\rho_s=\CrossLayerRho$ (\CI{}
+\CrossLayerRhoCI{}; \cref{fig:interior}).  The association is modest, as one would expect when a
+tactic can elaborate into many expressions.  Its importance is methodological: the interior result
+does not depend entirely on either source syntax or kernel structure.
+
+Taken together, these measurements support one claim.  In this corpus, AI proofs often put more internal
+scaffolding behind a named interface whose breadth changes much less.  The data do not identify the
+mechanism.  Explicit subgoal decomposition, coercions, normalization, repeated tactic templates,
+and less economical theorem APIs are all compatible with the result.  Nor does ``more interior''
+mean ``less understanding.''  It names an architectural contrast, not a mental state.
+
+\subsection{Third, the epistemic endpoint remains stable}
+
+If each additional expression were an independent chance to fail, the larger AI interior would
+reduce theorem confidence.  The network model does not produce that result.  Human and AI belief
+profiles nearly overlap at all three error rates (\cref{fig:belief}).  Averaged across settings, the
+mean paired AI-minus-human theorem-belief difference is \BeliefDifference{} (\CI{}
+\BeliefDifferenceCI{}); the paired median is zero.  Every setting-specific cluster interval includes
+zero.
+
+More importantly, structural change offers little predictive information about epistemic change.
+Across the \TermPairs{} pairs, the association between the AI/human log ratio in interior load and the paired change in mean
+theorem belief is $\rho_s=\DecouplingRho$ (\CI{} \DecouplingRhoCI{}).  Within the precision of this
+sample, proofs with much larger AI interiors show no clear tendency to receive lower modeled theorem
+belief.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.96\textwidth]{figures/belief_decoupling.pdf}
+\caption{The epistemic endpoint is stable.  Left: mean theorem belief for human and AI terms at
+three local-error rates.  Right: pairwise interior expansion is nearly unrelated to pairwise belief
+change.  The black line joins eight binned means and is descriptive, not causal.}
+\label{fig:belief}
+\end{figure}
+
+This conjunction is epistemic decoupling.  The architecture moves in a consistent direction, but
+the modeled endpoint does not move with it.  The conclusion is stronger than saying that group
+means happen to be close: we detect no tendency for proof pairs with the largest structural changes
+to show a correspondingly larger epistemic contrast.  It is also narrower than a claim about human belief:
+the invariance belongs to this network model at this representation.
+
+\section{What decoupling means}
+
+\subsection{The missing scale is the reader's scale}
+
+Experts do not normally inspect every primitive expression with equal attention.  They move
+backward from goals, examine warrants selectively, reconstruct omitted steps, test examples, and
+treat familiar lemmas as chunks \citep{weber2008,inglis2012,mejiaramos2014,panse2018}.  The kernel
+graph and the reader's proof are therefore different objects.
+
+Epistemic decoupling makes that difference visible.  A certificate can grow internally while a
+uniform network dynamics assigns its theorem nearly the same confidence.  If readers nevertheless
+find one presentation clearer, that difference must depend on features absent from the model: attention,
+chunking, names, prior familiarity, explanatory expectations, or navigation across levels.  The
+interface is a plausible place to look because it supplies the handles by which a reader can compress
+and revisit the interior.
+
+This interpretation extends rather than rejects the phase-transition framework.  The original
+model studies how evidence propagates through a fixed network.  A cognitive successor should study
+how a reader constructs the effective network in the first place.  Node granularity, prior belief,
+and attention should become endogenous to the interaction between proof and reader.
+
+\subsection{Confidence cannot select the explanatory proof}
+
+A formal certificate establishes derivability conditional on its statement and environment.  It
+does not by itself establish that the formal statement captures the intended mathematics, or that
+the certificate tracks the reasons a mathematician takes to matter
+\citep{dedeo2026correspondence}.  Proofs can reveal methods, dependencies, and unifying ideas beyond
+their conclusions \citep{rav1999,mancosu2008}.
+
+The paired data add a selection problem.  Even after the statement is fixed, multiple checked
+interiors remain possible.  The belief functional studied here supplies no clear criterion for
+choosing among them.  Other
+virtues must enter: explanatory relevance, modularity at a reader-appropriate scale, stability under
+library change, and capacity for communal correction.  This is consistent with accounts of
+mathematics in which reliability is secured not only by avoiding error, but by organizing work so
+that errors can be localized and repaired \citep{avigad2020reliability,detoffoli2021}.
+
+\subsection{Proof generation becomes proof design}
+
+AI proof systems are commonly trained and evaluated first on whether they produce a certificate
+that passes the kernel \citep{yang2023,ren2025}.  That objective has enabled remarkable progress,
+but it is indifferent
+among many proofs of the same theorem.  The
+paired comparison shows that the indifference already leaves an architectural trace: AI proofs
+often enlarge the interior without broadening the named interface.
+
+The engineering response is not indiscriminate compression.  A longer proof may expose a useful
+lemma; a shorter one may hide its main work inside automation.  The objective should be proof
+design: choosing intermediate claims, names, dependencies, and abstraction boundaries so that a
+valid term becomes a useful mathematical artifact.  Proof-refactoring systems already target
+readability, modularity, maintenance, and reuse \citep{fu2026refactor}; studies of human--AI
+formalization likewise point to the value of high-level control \citep{collins2026workflows}.
+Epistemic decoupling explains why these goals cannot be reduced to correctness or modeled confidence.
+
+\section{Tests that would break the decoupling claim}
+
+The present result is model-internal.  A decisive next study should hold correctness and theorem
+fixed while intervening on architecture.  For 40--60 Lean theorems, construct four checked
+presentations: the human-provenance proof, a raw AI proof, a refactored AI proof with designed
+intermediate lemmas, and a mechanically expanded human proof that preserves the original plan.
+Randomize the displayed authorship label independently of the underlying proof.
+
+Readers should perform a small set of preregistered tasks: validate the argument, locate a seeded
+defect in an informal rendering, summarize the main idea, identify essential assumptions, transfer
+the method to a nearby theorem, and repair the proof after an API change.  The primary outcomes are
+validation accuracy, calibrated confidence, conceptual recall, transfer, and repair cost.  Process
+measures---time, navigation traces, and inspected interface elements---can test the mechanism.
+
+This design can falsify the present interpretation in several ways.  Interior expansion may lower
+human confidence even when the network model is invariant.  Refactoring may fail to improve
+comprehension.  Authorship labels may dominate architecture.  Or the apparent interface may prove
+to be the wrong unit once reader behavior is observed.  Each failure would locate the scale at which
+the current model stops being adequate.
+
+A parallel library study should follow accepted human-, AI-, and mixed-provenance contributions
+through review and later use.  Outcomes include citation by later declarations, survival through API
+changes, repair time, reviewer effort, and reuse of introduced lemmas.  This would test the social
+half of the thesis: whether an intelligently designed interface helps a certificate become communal
+mathematical infrastructure \citep{pantsar2026}.
+
+\section{Limitations}
+
+The pairing removes theorem identity as a confound, but it does not identify a pure causal effect of
+AI authorship.  Provenance labels may conceal editing, retrieval, shared data, and selection.  The
+corpus is dominated by competition mathematics, and its 12 source groups are coarse.
+
+The two interior measures are proposed constructs.  Source identifiers are lexical heuristics.
+Term constants are more authoritative, but the graph boundary still depends on Lean, Mathlib, and
+the elaborator version.  Pairwise removal of error-recovery terms excludes 36.8\% of eligible pairs
+and may select on proof complexity.  The cross-layer association is positive but modest.
+
+The belief result is not behavioral evidence.  Thirty-two chains reduce Monte Carlo noise but do
+not validate the prior, symmetric error rates, node granularity, or update rule as a model of human
+reading.  The near-zero contrast should be read diagnostically: within this representation and
+model, a larger AI interior is not accompanied by a detectable epistemic deficit.
+
+Finally, decoupling is not equivalence.  Several intervals include zero because the data do not
+resolve a contrast; they do not prove identity.  Conversely, a statistically detectable structural
+effect need not be cognitively important.  The reader experiments above are required to establish
+that bridge.
+
+\section{Conclusion}
+
+Holding the theorem fixed changes what can be asked of a proof.  Human and AI constructions share a
+strong theorem-imposed frame, but they distribute work differently within it.  AI-provenance proofs
+in this corpus place more visible and elaborated structure behind each named interface element.  The network
+dynamics that motivated epistemic phase transitions nevertheless assign the two populations nearly
+the same theorem belief, and the size of the interior change has little association with the belief
+contrast.
+
+That is epistemic decoupling: architecture changes while a specified epistemic endpoint remains
+stable.  Its importance lies as much in what it withholds as in what it establishes.  Correctness and
+modeled confidence do not select the proof that a reader can understand, a maintainer can repair, or
+a library can reuse.  In a world of abundant certificates, the scientific object is the coupled
+system of theorem, proof, interface, reader, and community.
+
+\appendix
+\section{From the original Coq networks to human Lean proofs}
+\label{app:coqlean}
+
+This appendix asks a direct question: do the human Lean networks confirm the principal structural
+and epistemic findings reported by \citet{viteri2022}?  The answer is yes for the conceptual core,
+but not for every distributional claim.
+
+\subsection{Making the comparison commensurable}
+
+The original study extracted abstract-syntax trees from Coq proofs, identified repeated claims, and
+converted the trees into DAGs.  The updated human Lean sample applies the analogous pipeline to 33
+classic and frontier theorems in Mathlib: proof terms are expanded level by level, structurally
+identical expressions are shared, and expansion stops after crossing roughly 10,000 nodes.  These
+expanded term graphs are the appropriate Lean comparison.  Declaration graphs, which connect named
+theorems across a library, have a different boundary and are reported only as a representation
+sensitivity check.
+
+The historical count requires care.  The published article describes 48 Coq proofs.  Its archived
+table supplies \PublishedCoqN{} matchable exponent entries, while the recovered directories yield
+\RecoveredCoqN{} analyzable graphs under the updated pipeline.  The archive also contains a status
+list, but it includes aliases and does not specify a unique 48-graph analysis set.  We therefore
+report the actual sample size for each check rather than forcing the archive into one total.
+
+\subsection{The fixed tail at \texorpdfstring{$x_{\min}=10$}{xmin = 10}}
+
+The main exponent discrepancy arose from a cutoff choice.  The publication script fixed
+$x_{\min}=10$; a later audit initially allowed software to choose $x_{\min}$ by minimizing a
+Kolmogorov--Smirnov distance.  Those procedures estimate different parts of the degree distribution.
+When the original convention is restored, 40 of the 44 estimable archived exponents agree with the
+published values within 0.01, and 43 agree within 0.02; the median absolute discrepancy is 0.003.
+
+For the tail that begins at reuse degree 10, recovered Coq networks have median
+$\alpha=\CoqAlpha$ (network-bootstrap interval \CoqAlphaCI{}; $n=45$).  The \HumanLeanN{} human Lean
+term networks have median $\alpha=\LeanAlpha$ (\LeanAlphaCI{}).  The median difference is about
+$-0.05$, and a two-sided Mann--Whitney comparison gives $p=0.124$.  Thus a fixed-tail index close to
+two recurs across the two samples.  This is a qualitative replication, not an equivalence test; it
+answers the explicitly restricted question of what happens above reuse degree 10.
+
+Fixing the cutoff does not, by itself, establish a unique distribution family.  We therefore refit
+both alternatives on exactly the tail $k\geq10$.  Four recovered Coq networks have fewer than ten
+observations in that tail and are not estimable.  Against an exponential, the power law is favored
+in 43 of the remaining 45 Coq networks and is inconclusive in two; it is favored in all 33 human
+Lean networks.  Against a lognormal, the power law is favored in neither collection.  The lognormal
+is favored in two Coq networks and the remaining 43 are inconclusive; all 33 Lean comparisons are
+inconclusive.  Thus reuse above degree 10 is heavy relative to an exponential, but these data
+usually cannot distinguish a power law from a lognormal.  We do not confirm a universal,
+cutoff-free pure power law.
+
+\subsection{What else confirms}
+
+\begin{table}[t]
+\centering
+\caption{A claim-by-claim comparison.  Medians use the recovered Coq graphs and the 33 expanded
+human Lean term graphs.  ``Model'' means that the result is a consequence of the specified belief
+dynamics, not a behavioral measurement.}
+\label{tab:coqlean}
+\small
+\begin{tabularx}{\textwidth}{P{.21\textwidth}P{.20\textwidth}P{.20\textwidth}Y}
+\toprule
+Claim & Recovered Coq & Human Lean terms & Judgment \\
+\midrule
+Reuse tail above degree 10 & $\alpha=\CoqAlpha$ & $\alpha=\LeanAlpha$ & Fixed-cutoff confirmation \\
+Heavy tail is specifically a pure power law & Lognormal favored in 2/45; unresolved in 43/45 &
+Lognormal unresolved in 33/33 & Not confirmed \\
+High modularity & median $Q=\CoqModularity$ & median $Q=\LeanModularity$ & Confirmed descriptively \\
+High belief at $\epsilon=.01$ & median theorem belief 1.0; mean-node belief \CoqMeanBelief & median
+theorem belief 1.0; mean-node belief \LeanMeanBelief & Confirmed within the model \\
+Positive modular firewalls & positive in 49/49 & positive in 33/33 & Qualitative confirmation \\
+Poisson-like in-degree & Power law loses to exponential in 35/36 & Term arity leaves too little
+variation for the same fit & Poisson form not retested; cross-language comparison unresolved \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Modularity is especially stable at the term level: median $Q$ is \CoqModularity{} in the recovered
+Coq graphs and \LeanModularity{} in the human Lean graphs.  At $\epsilon=.01$, both collections reach
+median theorem belief 1.0; the median belief averaged over all nodes is \CoqMeanBelief{} and
+\LeanMeanBelief{}, respectively.  Every recovered Coq and human Lean term graph also has a positive
+firewall contrast under the updated implementation.  The sign agrees with the original claim that
+modules can localize reversals, but its magnitude should not be compared to the published
+$\Delta\mathcal L_1$: the normalization changed.
+
+The original article also described Coq in-degree as Poisson-distributed.  At the fixed cutoff, 36
+Coq graphs have estimable in-degree tails; a power law loses to an exponential in 35 and the last is
+inconclusive.  This comparison does not directly fit a Poisson model.  Lean term in-degree is
+constrained by expression arity and has no observations at degree 10, so the same tail test is not
+defined.  The broad contrast between concentrated reuse and bounded local dependence survives; the
+specific Poisson claim remains unreplicated.
+
+The representation check explains why these confirmations must remain qualified.  For the same 33
+Lean theorems, declaration graphs have median $Q=0.465$ and fixed-tail median $\alpha=1.751$, far from
+the term-graph values.  A proof network has no representation-free exponent or modularity.  The
+cross-language agreement is meaningful because the Coq and Lean term pipelines are analogous, not
+because either reveals a privileged atomic scale.
+
+The overall verdict is therefore precise.  Human Lean terms confirm the original paper's central
+network claim: fine-grained proof graphs exhibit concentrated reuse, strong modularity, positive
+firewall structure, and high theorem belief under bidirectional dynamics.  They do not justify the
+stronger folklore that all proof networks instantiate one pure power law with a universal exponent.
+That correction strengthens the present paper.  Epistemic decoupling depends on network robustness,
+not on exact scale freedom.
+
+\section{Supplementary estimates and reproducibility}
+\label{app:repro}
+
+\begin{table}[ht]
+\centering
+\caption{Principal same-theorem estimates.  Difference rows report AI minus human; ratio rows report
+AI divided by human.  Intervals resample the 12 problem-source groups.}
+\label{tab:estimates}
+\small
+\begin{tabularx}{\textwidth}{YrrrY}
+\toprule
+Measure & Human median & AI median & Paired estimate & 95\% interval \\
+\midrule
+Script lines & 23 & 26 & $+2$ & $[1,3]$ \\
+Explicit \code{have} claims & 3 & 6 & $+1$ & $[0,1]$ \\
+Loose source premise proxy & 5 & 4 & $0$ & $[0,0]$ \\
+Strict dotted premise proxy & 3 & 2 & $0$ & $[0,0]$ \\
+Local claims per tactic & .30 & .50 & $1.41\times$ & $[1.27,1.53]$ \\
+Elaborated term nodes & 3,816.5 & 4,561 & $+290$ & $[20,529]$ \\
+Distinct elaborated constants & 200.5 & 199 & $-1$ & $[-3,0]$ \\
+Constant-node share & .0530 & .0456 & $-.0046$ & $[-.0061,-.0028]$ \\
+Internal nodes per constant & 17.79 & 20.84 & $1.12\times$ & $[1.06,1.20]$ \\
+Mean theorem belief, three settings & --- & --- & $+.00012$ & $[-.0019,.0020]$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The same-theorem analysis is implemented in the following script, with its machine-readable summary
+immediately below:
+\par\noindent
+\path{code/standalone_paper_analysis.py}
+\par\noindent
+\path{results/standalone_paper/summary.json}
+\par\noindent
+It uses the corrected paired source table, the clean
+paired \code{term0} table, and the 32-run belief output.  The 20,000-resample analysis was executed
+locally and as ORCHARD Slurm job 128546; the summaries were byte-identical.  The ORCHARD output
+archive has SHA-256
+\par\noindent
+\texttt{b90b31e99003d40ffdc9e8bad9a027d0}\allowbreak
+\texttt{0d6302cc2798d7c4cf9a520468de48c4}.
+
+The Coq--Lean confirmation is implemented in
+\path{code/coq_lean_confirmation.py}; its summary is
+\path{results/coq_lean_confirmation_xmin10/summary.json}.  Model comparisons were run with one
+niced core on Akdeniz.  The script independently refits all 49 recovered Coq and 33 human Lean edge
+lists at $x_{\min}=10$; its Lean exponent values agree with the prior table to floating-point
+precision.
+
+The compact derived tables and code are included with this working directory.  Before publication,
+the raw elaborated graphs and upstream corpus should be deposited with immutable manifests,
+toolchain versions, and license metadata so that extraction can be reproduced end to end.
+
+\bibliographystyle{plainnat}
+\bibliography{../final/references,references_extra}
+
+\end{document}

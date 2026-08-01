@@ -1,0 +1,9 @@
+{
+  "checked_on": "akdeniz.lan.cmu.edu",
+  "checked_at": "2026-08-01",
+  "human_term0_files": 498,
+  "ai_term0_files": 494,
+  "paired_term0_ids": 494,
+  "clean_paired_term0_ids": 312,
+  "cleaning_rule": "pairwise exclusion when either graph contains sorryAx or SyntheticOpaque"
+}

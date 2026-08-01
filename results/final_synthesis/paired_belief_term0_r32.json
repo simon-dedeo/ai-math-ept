@@ -1,0 +1,84 @@
+{
+  "n_pairs": 312,
+  "runs": 32,
+  "sweeps": 10,
+  "metrics": {
+    "N": {
+      "human_median": 3816.5,
+      "ai_median": 4561.0,
+      "median_paired_diff": 290.0,
+      "wilcoxon_p": 6.0812908816144675e-05,
+      "prob_ai_greater": 0.5833333333333334
+    },
+    "root_component_share": {
+      "human_median": 1.0,
+      "ai_median": 1.0,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": NaN,
+      "prob_ai_greater": 0.0
+    },
+    "theorem_0.1": {
+      "human_median": 0.9593749999999999,
+      "ai_median": 0.9578125,
+      "median_paired_diff": -5.551115123125783e-17,
+      "wilcoxon_p": 0.3479223233544293,
+      "prob_ai_greater": 0.46474358974358976
+    },
+    "mean_all_0.1": {
+      "human_median": 0.9858897645231894,
+      "ai_median": 0.9870512480265179,
+      "median_paired_diff": 0.0004342994031887315,
+      "wilcoxon_p": 0.001043735336149779,
+      "prob_ai_greater": 0.5705128205128205
+    },
+    "mean_root_component_0.1": {
+      "human_median": 0.9858897645231894,
+      "ai_median": 0.9870512480265179,
+      "median_paired_diff": 0.0004342994031887315,
+      "wilcoxon_p": 0.001043735336149779,
+      "prob_ai_greater": 0.5705128205128205
+    },
+    "theorem_0.05": {
+      "human_median": 0.9747023809523809,
+      "ai_median": 0.9747023809523809,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": 0.6280604016142983,
+      "prob_ai_greater": 0.46794871794871795
+    },
+    "mean_all_0.05": {
+      "human_median": 0.9908128917615837,
+      "ai_median": 0.9916489876791079,
+      "median_paired_diff": 0.0005038529563305971,
+      "wilcoxon_p": 4.457972929136871e-06,
+      "prob_ai_greater": 0.6442307692307693
+    },
+    "mean_root_component_0.05": {
+      "human_median": 0.9908128917615837,
+      "ai_median": 0.9916489876791079,
+      "median_paired_diff": 0.0005038529563305971,
+      "wilcoxon_p": 4.457972929136871e-06,
+      "prob_ai_greater": 0.6442307692307693
+    },
+    "theorem_0.01": {
+      "human_median": 0.980171130952381,
+      "ai_median": 0.9828125000000001,
+      "median_paired_diff": 0.0,
+      "wilcoxon_p": 0.16955165738220612,
+      "prob_ai_greater": 0.49038461538461536
+    },
+    "mean_all_0.01": {
+      "human_median": 0.9931151503476325,
+      "ai_median": 0.9937628593659997,
+      "median_paired_diff": 0.00028930989781733585,
+      "wilcoxon_p": 0.0006098673792552917,
+      "prob_ai_greater": 0.5897435897435898
+    },
+    "mean_root_component_0.01": {
+      "human_median": 0.9931151503476325,
+      "ai_median": 0.9937628593659997,
+      "median_paired_diff": 0.00028930989781733585,
+      "wilcoxon_p": 0.0006098673792552917,
+      "prob_ai_greater": 0.5897435897435898
+    }
+  }
+}
