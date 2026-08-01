@@ -105,3 +105,5 @@ The same normalization also qualifies out-degree. At fixed x_min = 10 the median
 near two (2.340 in Coq, 2.489 in human Lean), but only 23/48 and 12/33 root proofs are estimable and
 most power-law-versus-exponential tests are inconclusive. Strong heavy-tail evidence therefore
 belongs to the expanded-network scale; it is not invariant to moving the boundary to one root proof.
+The paired human--AI exponent also reverses its tiny sign: `term0` gives 2.531 vs 2.527, while
+normalized proof values give 2.355 vs 2.381. There is no representation-robust authorship direction.

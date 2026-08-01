@@ -79,6 +79,7 @@ A reviewer should check these were actually corrected in the report, not just no
 | "path disjointness does not distinguish these objects" | too strong — real *vs random* is significant | §1b |
 | "native Lean arity is much more concentrated than native Coq arity" | parser artifact: Lean `App` is binary; archived CoqAST `App` is variadic and binder names are children | appendix A.3: common-schema Coq 0.9903 vs Lean 0.9976 degree-two share |
 | "expanded-graph out-degree evidence is representation-robust" | normalized root proofs retain similar exponents but usually cannot distinguish power law from exponential | appendix A.2: strong tail evidence restricted to the expanded-network scale |
+| "human or AI provenance has a directional effect on the fixed-10 out-degree exponent" | the tiny paired difference reverses from -0.009 in `term0` to +0.025 after proof-value normalization | appendix A.2 and Table 3: no representation-robust authorship effect |
 
 ## 4. Where I think this is weakest — please attack these first
 

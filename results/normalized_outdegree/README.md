@@ -12,6 +12,12 @@ Coq and 12/33 Lean roots are estimable; power law beats exponential in 3/23 and
 1/12, and most tests are inconclusive. In 251 same-theorem pairs where both sides
 are estimable, medians are 2.355 human and 2.381 AI.
 
+The paired authorship contrast is itself representation-sensitive. In the
+original `term0` graphs, 245 jointly estimable pairs have medians 2.531 human
+and 2.527 AI (paired difference -0.009, p=0.619). Under normalization, the
+difference is +0.025 (p=0.009). The sign reversal and small magnitudes rule out
+a representation-robust directional human--AI effect in this exponent.
+
 This does not invalidate the archived expanded-graph result. It localizes it:
 strong evidence for a broad reuse tail is a property of that expanded network
 boundary, not a representation-invariant law of a proof's root value.

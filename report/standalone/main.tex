@@ -553,23 +553,19 @@ inconclusive.  Thus reuse above degree 10 is heavy relative to an exponential, b
 usually cannot distinguish a power law from a lognormal.  We do not confirm a universal,
 cutoff-free pure power law.
 
-This out-degree result is also sensitive to representation, although not in the same way as local
-arity.  We repeated the fixed-$x_{\min}=10$ analysis after putting Coq and Lean into the common
-binary root-proof schema described below.  Only \NormOutCoqFits{} of \NormOutCoqN{} Coq roots and
-\NormOutLeanFits{} of \NormOutLeanN{} human Lean roots then had enough tail observations and
-variation to fit.  Their median exponents remain in the same neighborhood
-($\alpha=\NormOutCoqAlpha$ and $\NormOutLeanAlpha$), but a power law beats an exponential in only
-3/23 and 1/12 fits; it loses in 4/23 and 1/12, with the rest inconclusive.  It never beats a
-lognormal.  Thus the exponent near two is recurrent where a root-proof tail exists, but the strong
-expanded-graph evidence against an exponential does not survive the change of proof boundary.
-Constructor normalization and removal of recursive library expansion occur together here, so this
-check cannot assign the change to one of them alone.
+The tail fit is representation-sensitive.  In the common binary root-proof schema described below,
+only \NormOutCoqFits{}/\NormOutCoqN{} Coq and \NormOutLeanFits{}/\NormOutLeanN{} human Lean roots
+are estimable at $x_{\min}=10$; median $\alpha$ remains nearby
+(\NormOutCoqAlpha{} and \NormOutLeanAlpha{}), but power law beats exponential in only 3/23 and
+1/12 fits, loses in 4/23 and 1/12, and never beats lognormal.  The strong expanded-graph evidence
+against an exponential does not survive this change.  Because constructor normalization and
+removal of recursive library expansion occur together, this check cannot assign the change to one.
 
-The same-theorem result is correspondingly modest.  Among \NormOutPairN{} pairs for which both
-normalized roots are estimable, median $\alpha$ is \NormOutHumanAlpha{} for human proofs and
-\NormOutAIAlpha{} for AI proofs.  The paired shift is only \NormOutPairDiff{} ($p=\NormOutPairP$),
-despite its statistical detectability.  Proof identity again constrains the two populations more
-clearly than tail family distinguishes them.
+The same-theorem result makes the sensitivity concrete.  Original Lean \code{term0} graphs give
+human/AI medians 2.531/2.527 in 245 pairs (shift $-0.009$, $p=.619$); normalized proof values give
+\NormOutHumanAlpha{}/\NormOutAIAlpha{} in \NormOutPairN{} pairs (shift $+\NormOutPairDiff$,
+$p=\NormOutPairP$).  The effect is tiny in both analyses, but its sign reverses.  There is no
+representation-robust authorship effect in the out-degree exponent.
 
 \subsection{Does local arity follow a Poisson distribution?}
 \label{app:poisson}
@@ -685,9 +681,9 @@ absent.
 \centering
 \caption{The historical replication and the paired AI extension.  Coq and classic human Lean
 columns use expanded graphs except in the explicitly normalized local-arity row.  The paired
-column uses normalized Lean roots for degree fits and \code{term0} roots for belief.  H/A denotes
-human/AI.  ``Model'' denotes a consequence of the specified belief dynamics, not a behavioral
-measurement.}
+column reports both native \code{term0} and normalized proof-value roots for reuse, normalized
+roots for local arity, and \code{term0} roots for belief.  H/A denotes human/AI.  ``Model'' denotes
+a consequence of the specified belief dynamics, not a behavioral measurement.}
 \label{tab:coqlean}
 \scriptsize
 \setlength{\tabcolsep}{4pt}
@@ -696,8 +692,8 @@ measurement.}
 Claim & Coq expanded & Human Lean expanded & Matched Lean roots, H / AI & Judgment \\
 \midrule
 Reuse tail above degree 10 & $\alpha=\CoqAlpha$ & $\alpha=\LeanAlpha$ &
-$\alpha=\NormOutHumanAlpha$ / $\NormOutAIAlpha$ (\NormOutPairN{} pairs) & Expanded replication;
-root-boundary sensitive; paired values close \\
+\code{term0}: 2.531 / 2.527 (245); normalized: \NormOutHumanAlpha{} / \NormOutAIAlpha{}
+(\NormOutPairN{}) & Sign reverses; no robust authorship effect \\
 Heavy tail is specifically a pure power law & Lognormal favored in 2/45; unresolved in 43/45 &
 Lognormal unresolved in 33/33 & Power law beats lognormal in 0/274 H and 0/261 AI fits & Not
 confirmed at either boundary \\

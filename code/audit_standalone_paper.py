@@ -105,6 +105,9 @@ def main() -> None:
     )
     source_rows = read_csv(ROOT / "results/paired_numina_corrected.csv")
     term_rows = read_csv(ROOT / "results/paired_term_structure/term0.csv")
+    paired_term_summary = json.loads(
+        (ROOT / "results/final_synthesis/paired_term_summary.json").read_text()
+    )
     belief_rows = read_csv(ROOT / "results/final_synthesis/paired_belief_term0_r32.csv")
     belief_metadata = json.loads(
         (ROOT / "results/final_synthesis/paired_belief_term0_r32.json").read_text()
@@ -312,6 +315,16 @@ def main() -> None:
     require(paired_out["n_pairs"] == 251, "normalized matched out-degree pairs")
     close(paired_out["median_paired_difference_ai_minus_human"], .0254771766, 1e-9,
           "normalized paired out-degree alpha difference")
+    raw_xmin10 = next(row for row in paired_term_summary if row["metric"] == "alpha (xmin=10)")
+    require(raw_xmin10["n_pairs"] == 245, "raw matched out-degree pair count")
+    close(raw_xmin10["human_median"], 2.5309291988, 1e-10,
+          "raw matched-human out-degree alpha")
+    close(raw_xmin10["ai_median"], 2.527374953, 1e-10,
+          "raw matched-AI out-degree alpha")
+    close(raw_xmin10["pair_median_diff"], -.0090315143, 1e-10,
+          "raw matched out-degree alpha difference")
+    close(raw_xmin10["wilcoxon_pair_p"], .6193778484, 1e-10,
+          "raw matched out-degree paired test")
     require(out_groups["Matched human Lean root values"]["model_comparisons"]["lognormal"] ==
             {"n": 274, "power_law_favored": 0, "alternative_favored": 3,
              "inconclusive": 271},
@@ -322,6 +335,10 @@ def main() -> None:
             "normalized matched-AI power-law versus lognormal counts")
     require("strong expanded-graph evidence against an exponential does not survive" in flat_tex,
             "out-degree representation qualification missing")
+    require("The effect is tiny in both analyses, but its sign reverses" in flat_tex and
+            "no representation-robust authorship effect in the out-degree exponent" in flat_tex and
+            r"\code{term0}: 2.531 / 2.527 (245); normalized:" in tex,
+            "raw-versus-normalized paired out-degree sensitivity missing")
     checks.append("common-schema out-degree boundary sensitivity")
 
     # The exact artifact that was reproduced on ORCHARD and cited in the appendix.
