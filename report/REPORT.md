@@ -33,21 +33,32 @@ We rebuilt that entire pipeline for the AI era and ran five studies:
 5. **Study 5 — All of Mathlib as one proof network** (633,364 declarations, 10.9M edges), in two
    layers: the explicit citations a human reads vs. the full kernel-elaborated dependency structure.
 
-**The through-line: machine-generated mathematics is verifiable without being accumulable.** Human
-mathematical practice builds networks that *absorb* error — redundant, modular, heavy-tailed in
-reuse — and it is that structure, on the 2022 account, that produces both certainty and
-understanding. Machine-checked mathematics does not need it in order to be correct, and measurably
-invests less in it: AI-authored corpora draw on a narrower vocabulary within each proof and
-contribute far less reusable structure back to the library. The sharpest single demonstration is
-inside one project (§5d): the machine-generated files of the Equational Theories Project have 98.3%
-of declarations never cited and reach belief 0.54 under the 2022 model, while the human-written
-files of the *same* project sit at 45.6% and 0.99.
+**Status of this report.** It has been through one adversarial review, which found two code bugs
+and one metric artifact that invalidated the headline claim. Sections marked ⚠️ have been corrected;
+withdrawn claims are listed in `REVIEW.md` with what replaced them. What follows should be read as
+an exploratory study with several imperfect proxies, not as a settled result.
 
-Two claims we tested and had to give up are worth stating up front, because they sharpen the rest.
-Individual AI proof *terms* are not structurally degenerate — if anything they are more concentrated
-on library hubs than human ones (§2). And the Equational Theories skeleton is not epistemically
-fragile under the belief model, only under strict derivability semantics (§5a). The deficit is not
-in any single proof. It is in what a corpus leaves behind.
+**What the evidence currently supports.** The 2022 results replicate: Table 1 reproduces to within
+0.010 on 40 of 47 networks under a fixed tail cutoff, heavy-tailed reuse beats an exponential in
+47/47 networks and beats a size-matched random-DAG null, and every Lean network we extracted shows
+an epistemic phase transition. That part is solid.
+
+Applied to AI-generated mathematics, the honest summary is weaker than an earlier draft of this
+report claimed. At **matched statement** — the only design that controls the theorem — human and AI
+proofs cite an **equivalent** number of distinct library premises (median difference 0, CI [0,0]),
+differ in length by ~2 lines (inside a ±10% equivalence bound), and differ robustly in one respect:
+AI proofs use about **twice as many inline `have` steps**. Machines decompose more finely at equal
+library contact. Across unmatched corpora, AI collections do show lower vocabulary ratios at every
+proof length (§5e), but that comparison cannot separate authorship from domain and difficulty, and
+where it conflicts with the paired design the paired design should win.
+
+The corpus-scale observations that motivated the stronger reading — the Equational Theories
+Project's machine-generated files reaching 98.3% never-cited against 45.6% for the human files of
+the same project (§5d), Gauss's per-opportunity citation rate at a third of the human team's (§3) —
+survive as **observations about particular corpora**. They are not, on this evidence, a demonstration
+that machine mathematics categorically "verifies without accumulating." Different roles (certificate
+vs library lemma), different domains, and different project intentions are not controlled. Treating
+them as suggestive rather than conclusive is the position the data supports.
 
 ---
 
