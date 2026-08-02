@@ -12,6 +12,56 @@
   "claims_unambiguous": 2068,
   "source_claims_in_successful_tasks": 3227,
   "matching_method": "exact-name longest common subsequence in pre-order term traversal",
+  "source_sample_comparison": {
+    "full_corpus": {
+      "pairs": 3635,
+      "source_groups": 12,
+      "human": {
+        "claims_per_100_tokens": 1.9665304440215923,
+        "explicit_uses_per_claim": 1.4197060424605334,
+        "zero_uptake_share": 0.2277490473598258,
+        "placeholder_name_share": 0.5872346216657593
+      },
+      "ai": {
+        "claims_per_100_tokens": 3.169293038982193,
+        "explicit_uses_per_claim": 0.8643460654907916,
+        "zero_uptake_share": 0.36385936222403925,
+        "placeholder_name_share": 0.8888369738737686
+      }
+    },
+    "preselected_312": {
+      "pairs": 312,
+      "source_groups": 12,
+      "human": {
+        "claims_per_100_tokens": 1.9609526589625152,
+        "explicit_uses_per_claim": 1.3485113835376532,
+        "zero_uptake_share": 0.22854640980735552,
+        "placeholder_name_share": 0.6295971978984238
+      },
+      "ai": {
+        "claims_per_100_tokens": 3.2516650091914534,
+        "explicit_uses_per_claim": 0.8419833178869324,
+        "zero_uptake_share": 0.3568118628359592,
+        "placeholder_name_share": 0.8827618164967562
+      }
+    },
+    "complete_298": {
+      "pairs": 298,
+      "source_groups": 12,
+      "human": {
+        "claims_per_100_tokens": 2.026990210145849,
+        "explicit_uses_per_claim": 1.3440860215053763,
+        "zero_uptake_share": 0.23297491039426524,
+        "placeholder_name_share": 0.6379928315412187
+      },
+      "ai": {
+        "claims_per_100_tokens": 3.2761210726499823,
+        "explicit_uses_per_claim": 0.8473170731707317,
+        "zero_uptake_share": 0.3521951219512195,
+        "placeholder_name_share": 0.8824390243902439
+      }
+    }
+  },
   "paired": {
     "matched": {
       "n_pairs": 298,

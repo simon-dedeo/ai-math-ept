@@ -454,8 +454,11 @@ The representation audit imposes a further correction.  The earlier extractor in
 create false reuse paths in an unexpanded term DAG.  The extractor now instantiates loose indices
 with scope-specific free-variable identities, and a regression test constructs two lambdas and
 requires two distinct variable nodes.  Declaration graphs are unaffected, but earlier semantic
-interpretations of root-term topology should be withdrawn pending scope-correct reanalysis.  The
-binder-use results reported here use a separate depth-aware traversal and do not inherit that flaw.
+interpretations of root-term topology are withdrawn.  A scope-correct rerun on 298 clean pairs does
+not recover a robust authorship tail effect: at fixed $x_{\min}=10$, the median paired exponent
+difference is $-0.002$ (source-cluster interval $-0.016$ to $0.013$), and the median maximum-
+outdegree difference is zero ($-3$ to $0$).  The binder-use results reported here use a separate
+depth-aware traversal and do not inherit the original flaw.
 
 Three observations would falsify or sharply narrow the horizon account.  The claim fails if an
 objective-matched human--AI experiment retains the same difference; if downstream reward does not
@@ -533,6 +536,12 @@ claims; zero-use shares are 13.8\% and 23.8\%, respectively.  The surprisal boun
 present for four- and eight-token windows, marginal at 16, and absent at 32.  Excluding the keyword
 and claim name preserves the four- and eight-token effects.
 
+The preselected 312-pair term sample closely preserves the source contrasts.  Human/AI claim
+densities are 1.96/3.25 per 100 tokens in the sample versus 1.97/3.17 in the full corpus; explicit
+uses per claim are 1.35/0.84 versus 1.42/0.86; and zero-uptake shares are 22.9\%/35.7\% versus
+22.8\%/36.4\%.  All 12 source groups remain represented.  Compilation attrition reduces this to 298
+complete binder-use pairs but changes the profile little.
+
 The source direction also survives a coarse automation sensitivity.  For each of \code{linarith},
 \code{nlinarith}, \code{norm\_num}, \code{omega}, \code{ring}, and \code{simp}, we separately retain
 pairs in which both sides invoke the tactic and pairs in which neither does.  Across all 12 strata,
@@ -555,6 +564,13 @@ and replaces each entered binder with a fresh free-variable identity before hash
 The regression proof has two independent identity lambdas; the old representation produces one
 shared variable leaf, while the corrected representation produces two.  None of the main analyses
 in this paper uses a raw-term reuse tail.
+
+The scope-correct rerun elaborates 302 of 312 tasks on each side; applying the independent binder-
+task status filter leaves 298 complete pairs.  AI terms are slightly larger (median paired node
+difference 88.5; source-cluster interval 0--243) and have a slightly larger visit-to-unique-node
+ratio (difference 0.0068; 0.0023--0.0112).  But the proposed authorship signal in high-outdegree reuse remains absent:
+maximum outdegree and the fixed-$10$ tail exponent have intervals crossing zero.  These graph
+quantities remain representation-specific diagnostics, not measures of cognitive abstraction.
 
 \section{A proposed causal benchmark}
 

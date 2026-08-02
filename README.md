@@ -58,7 +58,11 @@ observed divide.
 
 | file | what it does |
 |---|---|
-| `ExtractNetwork.lean` | Lean 4 metaprogram: proof term → dependency DAG (`term0` raw term, `term` level-expanded, `decl` declaration-level). The Lean analogue of the 2022 CoqAST/ManipulateProofTrees pipeline. |
+| `paired_horizon.py` | 3,635-pair source analysis: local-claim density, uptake, visible reach, naming, and tactic-stratum sensitivity |
+| `ExtractBinderUse.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | depth-aware elaborated-binder use and source-to-term alignment |
+| `prepare_surprisal.py`, `token_surprisal.cpp`, `analyze_surprisal.py` | Goedel-Prover token information and claim-boundary timing assay |
+| `horizon_figures.py` | figures for the current paper |
+| `ExtractNetwork.lean` | Lean 4 metaprogram: proof term → dependency DAG (`term0` scope-aware root term, `term` level-expanded, `decl` declaration-level). The Lean analogue of the 2022 CoqAST/ManipulateProofTrees pipeline. |
 | `extract_corpus.py` | batch-elaborates a corpus of standalone `.lean` proofs (handles syntax drift, namespaces, per-corpus toolchains) |
 | `proofnet.py` | network construction + structural statistics (degree distributions, power-law fits, modularity, DAG depth) |
 | `belief.py` | the asymmetric-Ising belief model (numba): certainty curves, f₂, contour grids, ΔL₁ firewalls |

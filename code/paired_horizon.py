@@ -340,8 +340,9 @@ def main() -> None:
 
     proofs = pd.DataFrame(proof_rows).sort_values("pair")
     claims = pd.DataFrame(claim_rows).sort_values(["pair", "side", "claim_index"])
-    proofs.to_csv(outdir / "source_pairs.csv.gz", index=False, compression="gzip")
-    claims.to_csv(outdir / "claims.csv.gz", index=False, compression="gzip")
+    gzip = {"method": "gzip", "mtime": 0}
+    proofs.to_csv(outdir / "source_pairs.csv.gz", index=False, compression=gzip)
+    claims.to_csv(outdir / "claims.csv.gz", index=False, compression=gzip)
 
     rng = np.random.default_rng(args.seed)
     metrics = [

@@ -105,9 +105,8 @@ def main() -> None:
     claims = pd.read_csv(outdir / "claims.csv.gz").sort_values(
         ["pair", "side", "claim_index"]
     )
-    source_proofs = pd.read_csv(outdir / "source_pairs.csv.gz")[
-        ["pair", "source", "h_named_haves", "a_named_haves"]
-    ]
+    source_all = pd.read_csv(outdir / "source_pairs.csv.gz")
+    source_proofs = source_all[["pair", "source", "h_named_haves", "a_named_haves"]]
     rows: list[dict[str, Any]] = []
     proof_rows: list[dict[str, Any]] = []
 
@@ -182,7 +181,10 @@ def main() -> None:
 
     binder_claims = pd.DataFrame(rows)
     task_proofs = pd.DataFrame(proof_rows)
-    binder_claims.to_csv(outdir / "binder_claims.csv.gz", index=False, compression="gzip")
+    binder_claims.to_csv(
+        outdir / "binder_claims.csv.gz", index=False,
+        compression={"method": "gzip", "mtime": 0},
+    )
     task_proofs.to_csv(outdir / "binder_tasks.csv", index=False)
 
     wide = task_proofs[task_proofs.status.eq("ok")].pivot(index=["pair", "source"], columns="side")
@@ -214,6 +216,29 @@ def main() -> None:
         metric: paired_summary(complete, metric)
         for metric in ("matched", "match_share", "term_uses", "zero_term_use", "multi_term_use", "reuse_excess")
     }
+
+    def source_profile(frame: pd.DataFrame) -> dict[str, Any]:
+        profile: dict[str, Any] = {"pairs": len(frame), "source_groups": int(frame.source.nunique())}
+        for side, label in (("h", "human"), ("a", "ai")):
+            claims_n = max(int(frame[f"{side}_named_haves"].sum()), 1)
+            profile[label] = {
+                "claims_per_100_tokens": float(
+                    100 * frame[f"{side}_named_haves"].sum()
+                    / max(frame[f"{side}_tokens"].sum(), 1)
+                ),
+                "explicit_uses_per_claim": float(
+                    frame[f"{side}_explicit_uses"].sum() / claims_n
+                ),
+                "zero_uptake_share": float(
+                    frame[f"{side}_zero_uptake_haves"].sum() / claims_n
+                ),
+                "placeholder_name_share": float(
+                    frame[f"{side}_placeholder_haves"].sum() / claims_n
+                ),
+            }
+        return profile
+
+    selected_pairs = set(task_proofs.pair)
     summary = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -227,6 +252,11 @@ def main() -> None:
             task_proofs.loc[task_proofs.status.eq("ok"), "source_claims"].sum()
         ),
         "matching_method": "exact-name longest common subsequence in pre-order term traversal",
+        "source_sample_comparison": {
+            "full_corpus": source_profile(source_all),
+            "preselected_312": source_profile(source_all[source_all.pair.isin(selected_pairs)]),
+            "complete_298": source_profile(source_all[source_all.pair.isin(complete_pairs)]),
+        },
         "paired": paired,
         "claim_rates_complete_pairs": rates,
         "unambiguous_claim_sensitivity": {

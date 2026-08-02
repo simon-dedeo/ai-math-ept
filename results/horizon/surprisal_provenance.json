@@ -1,0 +1,12 @@
+{
+  "base_model": "Goedel-LM/Goedel-Prover-V2-8B",
+  "quantization": "Q4_K_M",
+  "gguf_source": "https://huggingface.co/mradermacher/Goedel-Prover-V2-8B-GGUF",
+  "gguf_filename": "Goedel-Prover-V2-8B.Q4_K_M.gguf",
+  "gguf_sha256": "919203ed088d6260fbbe124688ca04cb3e213cf63a9ed35346c69e4bec914c02",
+  "llama_cpp_version": "9982 (99f3dc3), Clang 22.1.8, Darwin arm64",
+  "scoring_context_tokens": 8192,
+  "scoring_batch_tokens": 256,
+  "prompt_mode": "raw final-target Lean source; full preceding document context; no chat template",
+  "hardware": "Apple M5 Max, 18 logical CPUs, 128 GiB unified memory"
+}

@@ -182,7 +182,10 @@ def main() -> None:
     claims = pd.DataFrame(claim_rows)
     suffix = f"_{args.tag}" if args.tag else ""
     proofs.to_csv(outdir / f"surprisal_proofs{suffix}.csv", index=False)
-    claims.to_csv(outdir / f"surprisal_claims{suffix}.csv.gz", index=False, compression="gzip")
+    claims.to_csv(
+        outdir / f"surprisal_claims{suffix}.csv.gz", index=False,
+        compression={"method": "gzip", "mtime": 0},
+    )
     summary = {
         "model": "Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization",
         "window_tokens": args.window,

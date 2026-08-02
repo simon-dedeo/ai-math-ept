@@ -139,7 +139,7 @@ def main():
     summary = dict(total=len(files), ran=len(jobs),
                    ok=sum(1 for v in results.values() if v == "ok"),
                    fail=sum(1 for v in results.values() if v == "fail"),
-                   skipped=skipped)
+                   skipped=skipped, status_by_stem=results)
     with open(os.path.join(args.out_dir, "SUMMARY.json"), "w") as f:
         json.dump(summary, f, indent=1)
     print(json.dumps({k: v for k, v in summary.items() if k != "skipped"}))

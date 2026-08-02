@@ -36,6 +36,22 @@
       "median_paired_difference": 0.029841357984291366,
       "probability_ai_greater": 0.5104895104895105,
       "wilcoxon_p": 0.815169968072661
+    },
+    "mean_content_boundary_delta_nll": {
+      "n_pairs": 168,
+      "human_median": -0.12247522969096344,
+      "ai_median": -0.111392797287009,
+      "median_paired_difference": 0.014161621374094789,
+      "probability_ai_greater": 0.5238095238095238,
+      "wilcoxon_p": 0.6585815403525985
+    },
+    "mean_content_boundary_excess_nll": {
+      "n_pairs": 143,
+      "human_median": -0.09684582524220063,
+      "ai_median": -0.07568483802562792,
+      "median_paired_difference": 0.015007028219006568,
+      "probability_ai_greater": 0.5174825174825175,
+      "wilcoxon_p": 0.5739543892095591
     }
   },
   "claim_level": {

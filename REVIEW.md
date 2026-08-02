@@ -13,14 +13,17 @@ paper audit below.
 | 3,635 valid same-statement pairs; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz` |
 | claim density, explicit uptake, visible reach, naming, and matched tactic strata | same | `results/horizon/claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
 | depth-aware use of elaborated local binders in 298 complete pairs | `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz` |
-| model-relative information pulse at claim boundaries | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_sensitivity.csv` |
-| scope-correct term-DAG construction | `code/ExtractNetwork.lean`, `code/ExtractCore.lean.tmpl` | `code/test_scoped_bvars.py`, scope-audited outputs under `results/horizon/` |
+| model-relative information pulse at claim boundaries | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_sensitivity.csv`, `surprisal_provenance.json` |
+| scope-correct term-DAG construction and 298-pair audit | `code/ExtractNetwork.lean`, `code/ExtractCore.lean.tmpl`, `code/extract_corpus.py`, `code/paired_term_structure.py` | `code/test_scoped_bvars.py`, `results/horizon/scoped_term_structure/` |
 
 The primary limitations are observational provenance, lexical recognition of
 named `have` rather than every possible source construct, current-Mathlib
 compilation attrition in the term sample, and possible training overlap or style
 affinity in the Goedel-Prover surprisal assay. The paper treats the last as
 exploratory and does not infer human cognitive surprisal from it.
+`code/test_horizon_report.py` checks the paper's headline values against the
+JSON results, enforces the sub-200-word abstract, and verifies that the
+bibliography begins after ten pages of main text.
 
 ## 1. Where things are
 
@@ -140,6 +143,33 @@ A reviewer should check these were actually corrected in the report, not just no
    reproduces (0.994 vs 0.991) — but a reviewer may want to run both.
 
 ## 5. How to re-run
+
+For the current paper, from this checkout with the local ignored data caches:
+
+```bash
+PY=.venv/bin/python
+$PY code/paired_horizon.py
+$PY code/extract_binder_use.py --pairs results/paired_term_structure/term0.csv --jobs 8
+$PY code/analyze_binder_use.py
+$PY code/horizon_figures.py
+$PY code/test_horizon_report.py
+
+c++ -std=c++17 $(pkg-config --cflags llama) code/token_surprisal.cpp \
+  -o tmp/token_surprisal $(pkg-config --libs llama)
+$PY code/prepare_surprisal.py
+tmp/token_surprisal models/Goedel-Prover-V2-8B.Q4_K_M.gguf \
+  tmp/horizon/surprisal_manifest.tsv results/horizon/token_surprisal.tsv 8192 256
+for w in 4 8 16 32; do
+  $PY code/analyze_surprisal.py --window "$w" --tag "w$w"
+done
+$PY code/collect_surprisal_sensitivity.py
+```
+
+The model URL, hash, inference version, prompt mode, and hardware are in
+`results/horizon/surprisal_provenance.json`. The raw 9.1 MB token table is
+ignored but deterministically regenerable from the local model and manifest.
+
+For the older network studies on the private mirror:
 
 ```bash
 ssh akdeniz.lan.cmu.edu

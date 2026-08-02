@@ -115,6 +115,8 @@ def main() -> None:
                     help="override directory containing AI network JSON files")
     ap.add_argument("--outdir", default="",
                     help="override results directory")
+    ap.add_argument("--status-csv", default="",
+                    help="optional task CSV; retain pairs with status=ok on both h/a sides")
     ap.add_argument("--boot", type=int, default=2000)
     ap.add_argument("--allow-sorry", action="store_true",
                     help="include networks containing sorryAx/SyntheticOpaque labels")
@@ -128,6 +130,14 @@ def main() -> None:
     human = {os.path.basename(p)[:-len(suffix)]: p for p in glob.glob(hpat)}
     ai = {os.path.basename(p)[:-len(suffix)]: p for p in glob.glob(apat)}
     common = sorted(set(human) & set(ai))
+    if args.status_csv:
+        status = pd.read_csv(args.status_csv)
+        clean = set(
+            status[status.status.eq("ok")]
+            .groupby("pair").filter(lambda group: set(group.side) >= {"h", "a"})
+            .pair
+        )
+        common = [pair for pair in common if pair in clean]
 
     # Prefer metadata for every validated human/prover pair.  The corrected
     # source-level CSV excludes proofs with zero regex-counted premises, which
@@ -181,6 +191,8 @@ def main() -> None:
     ]
     summary = {"mode": args.mode, "n_pairs": int(len(df)),
                "n_sources": int(df.source.nunique()), "metrics": {}}
+    if args.status_csv:
+        summary["status_filter"] = args.status_csv
     print(f"\nmode={args.mode} pairs={len(df)} sources={df.source.nunique()}")
     print(f"{'metric':24s} {'human':>11s} {'AI':>11s} {'med.diff':>11s} {'CI(cluster)':>23s} {'p':>10s}")
     for metric in metrics:
