@@ -9,6 +9,7 @@ from paired_horizon import (
     serialized_target_signature,
     serialized_target_value,
     side_metrics,
+    token_supply_difference,
     position_matched_family_associations,
     within_proof_feature_associations,
 )
@@ -52,16 +53,16 @@ def test_nested_tactic_scope_ends_before_sibling_branch() -> None:
     source = '''
 theorem demo : True ∧ True := by
   constructor
-  · have local : True := by trivial
-    exact local
-  · let local : Prop := True
+  · have hlocal : True := by trivial
+    exact hlocal
+  · let hlocal : Prop := True
     exact True.intro
 '''
     body = proof_body(source)
     declarations = named_have_declarations(body)
     local = declarations[0]
-    construction_end = body.index("\n    exact local")
-    scope_end = body.index("\n  · let local")
+    construction_end = body.index("\n    exact hlocal")
+    scope_end = body.index("\n  · let hlocal")
     claims = named_have_claims(
         source,
         [(local["start"], construction_end, scope_end)],
@@ -292,6 +293,36 @@ def test_family_position_matching_uses_nearest_claim() -> None:
             assert summary["multi_uptake"]["family_minus_instance"] == 1.0
 
 
+def test_token_supply_is_not_claim_selectivity() -> None:
+    frame = pd.DataFrame([
+        {
+            "source": "s1", "h_adopted_haves": 1, "h_tokens": 100,
+            "a_adopted_haves": 3, "a_tokens": 200,
+        },
+        {
+            "source": "s2", "h_adopted_haves": 1, "h_tokens": 100,
+            "a_adopted_haves": 3, "a_tokens": 200,
+        },
+    ])
+    result = token_supply_difference(
+        frame, "adopted_haves", 100, np.random.default_rng(3)
+    )
+    assert result["human"] == 1.0
+    assert result["ai"] == 1.5
+    assert result["ai_minus_human"] == 0.5
+
+
+def test_boundary_count_can_be_padded_without_uptake() -> None:
+    padding = "\n".join(
+        f"  have junk_{index} : True := by trivial" for index in range(7)
+    )
+    source = f"theorem demo : True := by\n{padding}\n  exact True.intro"
+    claims = named_have_claims(source)
+    assert len(claims) == 7
+    assert sum(claim["explicit_uses"] > 0 for claim in claims) == 0
+    assert sum(claim["explicit_uses"] == 0 for claim in claims) == 7
+
+
 if __name__ == "__main__":
     test_comments_and_strings_do_not_count()
     test_constructor_side_shadowed_name_is_not_downstream_use()
@@ -308,4 +339,6 @@ if __name__ == "__main__":
     test_serialized_value_is_proof_only_and_comment_normalized()
     test_within_proof_feature_association_holds_proof_fixed()
     test_family_position_matching_uses_nearest_claim()
+    test_token_supply_is_not_claim_selectivity()
+    test_boundary_count_can_be_padded_without_uptake()
     print("paired_horizon parser tests passed")

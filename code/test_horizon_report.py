@@ -74,6 +74,12 @@ def main() -> None:
     close(source["claim_rates"]["ai"]["zero_uptake_share"]["estimate"], 0.3694)
     close(source["claim_rates"]["human"]["multi_uptake_share"]["estimate"], 0.2401)
     close(source["claim_rates"]["ai"]["multi_uptake_share"]["estimate"], 0.1025)
+    supply = source["claim_supply_per_100_tokens"]
+    close(supply["adopted_at_least_once"]["human"], 1.5236)
+    close(supply["adopted_at_least_once"]["ai"], 1.9569)
+    assert supply["adopted_at_least_once"]["source_cluster_ci"][0] > 0
+    for metric in ("multiply_retrieved", "descriptively_named", "generalized"):
+        assert supply[metric]["source_cluster_ci"][1] < 0
     parametric = source["parametric_claim_difference"]
     close(parametric["human"], 0.02762)
     close(parametric["ai"], 0.00207)

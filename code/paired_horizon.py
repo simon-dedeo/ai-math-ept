@@ -476,12 +476,16 @@ def side_metrics(
         "zero_uptake_haves": int((uses == 0).sum()) if len(uses) else 0,
         "one_uptake_haves": int((uses == 1).sum()) if len(uses) else 0,
         "multi_uptake_haves": int((uses > 1).sum()) if len(uses) else 0,
+        "adopted_haves": int((uses > 0).sum()) if len(uses) else 0,
         "reuse_excess": int(np.maximum(uses - 1, 0).sum()) if len(uses) else 0,
         "long_horizon_haves": int((spans > 0).sum()) if len(spans) else 0,
         "total_claim_span": int(spans.sum()) if len(spans) else 0,
         "max_claim_span": int(spans.max()) if len(spans) else 0,
         "total_last_use_delay_tokens": int(last_delays.sum()) if len(last_delays) else 0,
         "placeholder_haves": sum(claim["placeholder_name"] for claim in claims),
+        "descriptively_named_haves": sum(
+            not claim["placeholder_name"] for claim in claims
+        ),
         "redeclared_haves": sum(claim["redeclared_name"] for claim in claims),
         "parametric_haves": sum(claim["parametric_claim"] for claim in claims),
         "universal_haves": sum(claim["universal_claim"] for claim in claims),
@@ -604,6 +608,43 @@ def claim_rate_difference(
         "ai_minus_human": a_rate - h_rate,
         "source_cluster_ci": _ci(differences),
         "paired_wilcoxon_p": pvalue,
+    }
+
+
+def token_supply_difference(
+    frame: pd.DataFrame,
+    numerator: str,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    """Compare pooled claim supply per 100 proof-body tokens.
+
+    Source-cluster resampling preserves the paired corpus while keeping the
+    denominator distinct from the per-claim selectivity estimands above.
+    """
+    columns = [
+        f"h_{numerator}", "h_tokens",
+        f"a_{numerator}", "a_tokens",
+    ]
+    grouped = frame.groupby("source")[columns].sum().to_numpy(float)
+    draws = rng.integers(0, len(grouped), size=(n_boot, len(grouped)))
+    sampled = grouped[draws].sum(axis=1)
+    differences = 100 * (
+        sampled[:, 2] / np.maximum(sampled[:, 3], 1)
+        - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+    )
+    human = float(100 * frame[columns[0]].sum() / max(frame[columns[1]].sum(), 1))
+    ai = float(100 * frame[columns[2]].sum() / max(frame[columns[3]].sum(), 1))
+    return {
+        "unit": "claims per 100 proof-body whitespace tokens",
+        "human_numerator": int(frame[columns[0]].sum()),
+        "human_denominator": int(frame[columns[1]].sum()),
+        "ai_numerator": int(frame[columns[2]].sum()),
+        "ai_denominator": int(frame[columns[3]].sum()),
+        "human": human,
+        "ai": ai,
+        "ai_minus_human": ai - human,
+        "source_cluster_ci": _ci(differences),
     }
 
 
@@ -1307,6 +1348,7 @@ def main() -> None:
         ),
         "pairs_fully_parsed_and_aligned": int(len(fully_parsed_pairs)),
     })
+    supply_rng = np.random.default_rng(args.seed + 991)
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -1370,6 +1412,18 @@ def main() -> None:
         "source_groups": int(proofs.source.nunique()),
         "paired": {metric: paired_metric(proofs, metric, args.boot, rng) for metric in metrics},
         "claim_rates": {},
+        "claim_supply_per_100_tokens": {
+            metric: token_supply_difference(
+                proofs, numerator, args.boot, supply_rng
+            )
+            for metric, numerator in (
+                ("all_named", "named_haves"),
+                ("adopted_at_least_once", "adopted_haves"),
+                ("multiply_retrieved", "multi_uptake_haves"),
+                ("descriptively_named", "descriptively_named_haves"),
+                ("generalized", "generalized_haves"),
+            )
+        },
         "name_lexicon": {
             "human": name_lexicon(claims, "h"),
             "ai": name_lexicon(claims, "a"),

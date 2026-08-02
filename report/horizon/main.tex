@@ -136,7 +136,9 @@ node in a directed acyclic graph.  A source claim referenced after several later
 memory with temporal reach.  An exported theorem cited by later files is persistent memory.  None
 is a universal measure of modularity.  In particular, raw occurrence counts can mistake tactic
 expansion for conceptual importance, while a theorem that is used only once may still identify the
-right explanatory cut.
+right explanatory cut.  This instantiates Larkin and Simon's distinction between informational and
+computational equivalence: the same content can impose different search and recognition costs on
+different operators \citep{larkin1987}.
 
 This separation imposes a methodological constraint.  Let $R_c(e)$ be consumer $c$'s response to
 artifact $e$, and write $e\sim_c e'$ when $R_c(e)=R_c(e')$.  The \emph{consumer-invariance
@@ -281,6 +283,16 @@ tokens (source-cluster interval 2--15).  They decompose that work differently.  
 of named claims is one versus four; pooled density is 1.96 human and 3.10 AI claims per 100 source
 tokens.
 
+The Kimina-Prover report treats abundant \code{have} statements as evidence of ``human-like''
+clarity \citep{kimina2025}.  Yet count alone is non-identifying: any proof can be prefixed by
+arbitrarily many unused claims of \code{True} without changing its target.  The empirical denominator
+matters too.  Per 100 tokens, AI emits more claims adopted at least once (1.96 versus 1.52), but
+humans emit more claims that are multiply retrieved (.470 versus .318), descriptively named (.805
+versus .348), or generalized (.103 versus .052); every difference has a source-cluster interval
+excluding zero.  AI supplies more transient checkpoints, while human source supplies more artifacts
+meeting each stricter interface criterion.  Decomposition---making a boundary---is not
+consolidation---making it addressable.
+
 The important contrast is what happens after introduction (\cref{fig:functions}).  Human claims
 receive 1.35 explicit references on average (source-cluster interval 1.26--1.49), compared with
 0.82 for AI (0.79--0.85).  Of human claims, 22.2\% have zero visible uptake and 24.0\% have multiple
@@ -300,11 +312,10 @@ as lower AI adoption, not a representation-free lifetime constant.  Indeed, with
 length-matched pairs neither conditional-duration measure separates the tracks; in 206 pairs with
 the same positive claim count, normalized duration is nearly identical (64.3\% versus 64.2\%).  The
 robust source divergence is explicit adoption, not how long an adopted claim lives.
-Nor is it arithmetic from emitting more claims.  In 206 pairs with the same positive claim count,
-explicit uses per claim remain 1.29 versus 1.04 (AI-minus-human source-cluster interval
-$-0.411$ to $-0.157$), and zero uptake remains 21.9\% versus 30.0\% ($0.053$ to $0.109$).
-Nor does repeated generic naming create the result: among names declared only once per proof,
-uses are 1.46 versus 0.88, zero uptake 19.7\% versus 34.0\%, and long reach 46.8\% versus 40.1\%.
+The result is not arithmetic from claim count: in 206 pairs with equal positive counts, uses remain
+1.29 versus 1.04 (AI-minus-human interval $-0.411$ to $-0.157$) and zero uptake 21.9\% versus
+30.0\% ($0.053$ to $0.109$).  Among names declared only once per proof, uses are 1.46 versus .88,
+zero uptake 19.7\% versus 34.0\%, and long reach 46.8\% versus 40.1\%.
 
 The strongest direct signature of counterfactual width is grammatical.  A local lemma can turn one
 fact into a callable family either with binders---\code{have sum\_range (n : Nat) : ...}---or with
@@ -619,22 +630,13 @@ that coincidence must hold.
 
 \section{What the result does and does not establish}
 
-The evidence supports a narrow, structural claim.  In this paired corpus, the AI track uses more
-source-level local state; more of it is visibly unreferenced, more of it vanishes from the final
-term's dependency structure, and its names are more generic.  Conditional source duration does not
-robustly separate the tracks.
-It does not support a claim that machine proof terms lack sharing: conditional on retention, AI
-binders are more often multiply represented.
-Nor does it show that human artifacts are globally reusable, since our primary analysis ends at the
-target declaration.  The distinction between episode and persistent interface remains to be tested
-on theorem sequences.
-
-The limitations are consequential: provenance is observational; the scanner/parser census misses other
-source constructs and implicit tactic use; current-version attrition can select on style; binder
-occurrence is representation-specific; the surprisal model may have training overlap; and names and
-spans remain proxies.  Direct reader experiments are still required \citep{kambhamettu2026}.
-A scope-correct 298-pair topology rerun also finds no robust authorship effect in reuse-tail exponent
-or maximum outdegree; the withdrawn extractor and regression are detailed in the appendix.
+The result is structural, not causal.  In this paired corpus, AI emits more source-local state, but
+less is visibly adopted, more vanishes under elaboration, and its names are more generic.
+Conditional duration does not robustly differ, and retained AI binders can be multiply represented.
+Global reuse remains unknown because observation ends at the target declaration.  Provenance is
+observational; the census misses other constructs and implicit tactic use; binder occurrence is
+representation-specific; and names, spans, and model surprisal are proxies.  Reader experiments
+remain necessary \citep{kambhamettu2026}; the topology null and its scope correction are in the appendix.
 
 \clearpage
 \bibliographystyle{plainnat}
@@ -662,6 +664,15 @@ The current parser aligns 39,646/40,626 candidates.  Restricting to the 3,511 th
 successful parsing and complete scanner/parser agreement gives human/AI uses per claim
 1.35/0.82, zero-uptake 22.2\%/36.9\%, and multi-uptake 24.0\%/10.3\%; the four source-cluster
 intervals for the between-track differences exclude zero.
+
+The supply/selectivity decomposition uses proof-body tokens as a second denominator.  AI-minus-human
+source-cluster intervals, in claims per 100 tokens, are $.304$--$.605$ for adoption at least once,
+$-.179$--$-.132$ for multiple retrieval, $-.514$--$-.368$ for non-placeholder naming, and
+$-.073$--$-.036$ for generalized claims.  The elementary boundary-padding construction explains
+why raw count cannot identify clarity: before any term $p:P$, insert distinct unused declarations
+\code{have junk\_i : True := by trivial}.  This produces $P$ for every finite number of insertions
+while raising source boundary count arbitrarily; fate and construction cost, unlike count, reveal
+the padding.
 
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
 Every source group has lower explicit uses per AI claim, higher AI zero-uptake, and lower AI

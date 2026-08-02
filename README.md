@@ -32,7 +32,12 @@ working memory for the current episode, and an interface for later proofs and
 readers. In **3,630 validated human/AI pairs of the identical Lean statement**,
 the AI track creates more named local claims, but those claims receive fewer
 explicit references, are less often adopted at all, use much more
-generic names, and less often state a callable family. The family comparison collapses
+generic names, and less often state a callable family. Thus the abundance of `have` statements
+previously offered as evidence of human-like clarity measures decomposition, not consolidation.
+The denominator matters: per 100 proof-body tokens AI still supplies more claims used at least once
+(1.96 versus 1.52), while humans supply more claims used repeatedly (0.470 versus 0.318), carrying
+non-placeholder names (0.805 versus 0.348), or stating a family (0.103 versus 0.052).
+The family comparison collapses
 equivalent binder and explicit-`forall` spellings: rates are 5.24% versus 1.68%, and within
 identical-theorem pairs family claims occur only on the human side 310 times versus only on the AI
 side 102 times. Within proofs containing both family and instance claims, family claims are

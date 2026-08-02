@@ -500,6 +500,78 @@
       }
     }
   },
+  "claim_supply_per_100_tokens": {
+    "all_named": {
+      "unit": "claims per 100 proof-body whitespace tokens",
+      "human_numerator": 14519,
+      "human_denominator": 741732,
+      "ai_numerator": 25127,
+      "ai_denominator": 809682,
+      "human": 1.957445546369848,
+      "ai": 3.1033171047398858,
+      "ai_minus_human": 1.1458715583700378,
+      "source_cluster_ci": [
+        0.9857013515884131,
+        1.342430324480458
+      ]
+    },
+    "adopted_at_least_once": {
+      "unit": "claims per 100 proof-body whitespace tokens",
+      "human_numerator": 11301,
+      "human_denominator": 741732,
+      "ai_numerator": 15845,
+      "ai_denominator": 809682,
+      "human": 1.5235961236673083,
+      "ai": 1.9569411200940616,
+      "ai_minus_human": 0.4333449964267533,
+      "source_cluster_ci": [
+        0.3044256254126838,
+        0.6049688550493182
+      ]
+    },
+    "multiply_retrieved": {
+      "unit": "claims per 100 proof-body whitespace tokens",
+      "human_numerator": 3486,
+      "human_denominator": 741732,
+      "ai_numerator": 2576,
+      "ai_denominator": 809682,
+      "human": 0.4699810713303457,
+      "ai": 0.31814959453217434,
+      "ai_minus_human": -0.15183147679817138,
+      "source_cluster_ci": [
+        -0.17915511464648598,
+        -0.13190374891566486
+      ]
+    },
+    "descriptively_named": {
+      "unit": "claims per 100 proof-body whitespace tokens",
+      "human_numerator": 5970,
+      "human_denominator": 741732,
+      "ai_numerator": 2816,
+      "ai_denominator": 809682,
+      "human": 0.8048729190597143,
+      "ai": 0.34779086110349494,
+      "ai_minus_human": -0.4570820579562193,
+      "source_cluster_ci": [
+        -0.5144919079299208,
+        -0.3675643335946503
+      ]
+    },
+    "generalized": {
+      "unit": "claims per 100 proof-body whitespace tokens",
+      "human_numerator": 761,
+      "human_denominator": 741732,
+      "ai_numerator": 422,
+      "ai_denominator": 809682,
+      "human": 0.10259770375283796,
+      "ai": 0.05211922705457204,
+      "ai_minus_human": -0.05047847669826592,
+      "source_cluster_ci": [
+        -0.07340446610966468,
+        -0.03557263504328042
+      ]
+    }
+  },
   "name_lexicon": {
     "human": {
       "tokens": 14519,
