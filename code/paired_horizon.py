@@ -345,6 +345,23 @@ def named_have_claims(
             if token.group(0) == name
         ]
         use_positions = [token.start() for token in token_matches]
+        consumer_sites: set[int | str] = set()
+        for use_position in use_positions:
+            containing_claims = [
+                int(later["source_claim_index"])
+                for later in matches
+                if (
+                    later["start"] > construction_end
+                    and later["start"] < next_same
+                    and later["start"] <= use_position < later["construction_end"]
+                )
+            ]
+            # Attribute a token inside nested constructions to the innermost
+            # named claim; collapse all other downstream tactics into one
+            # conservative residual consumer site.
+            consumer_sites.add(
+                max(containing_claims) if containing_claims else "residual"
+            )
         first_delay = (
             len(TOKEN.findall(body[construction_end : use_positions[0]]))
             if use_positions else None
@@ -378,6 +395,11 @@ def named_have_claims(
                     match["binder_groups"] or match["universal_type"]
                 ),
                 "explicit_uses": len(use_positions),
+                "distinct_consumer_sites": len(consumer_sites),
+                "named_claim_consumer_sites": sum(
+                    isinstance(site, int) for site in consumer_sites
+                ),
+                "has_residual_consumer_site": "residual" in consumer_sites,
                 "unscoped_explicit_uses": len(unscoped_token_matches),
                 "scope_excluded_reference_tokens": (
                     len(unscoped_token_matches) - len(token_matches)
@@ -476,7 +498,15 @@ def side_metrics(
         "zero_uptake_haves": int((uses == 0).sum()) if len(uses) else 0,
         "one_uptake_haves": int((uses == 1).sum()) if len(uses) else 0,
         "multi_uptake_haves": int((uses > 1).sum()) if len(uses) else 0,
+        "use_ge_3_haves": int((uses >= 3).sum()) if len(uses) else 0,
+        "use_ge_4_haves": int((uses >= 4).sum()) if len(uses) else 0,
         "adopted_haves": int((uses > 0).sum()) if len(uses) else 0,
+        "multi_consumer_haves": sum(
+            claim["distinct_consumer_sites"] > 1 for claim in claims
+        ),
+        "total_consumer_sites": sum(
+            claim["distinct_consumer_sites"] for claim in claims
+        ),
         "reuse_excess": int(np.maximum(uses - 1, 0).sum()) if len(uses) else 0,
         "long_horizon_haves": int((spans > 0).sum()) if len(spans) else 0,
         "total_claim_span": int(spans.sum()) if len(spans) else 0,
@@ -627,6 +657,10 @@ def token_supply_difference(
         f"a_{numerator}", "a_tokens",
     ]
     grouped = frame.groupby("source")[columns].sum().to_numpy(float)
+    source_differences = 100 * (
+        grouped[:, 2] / np.maximum(grouped[:, 3], 1)
+        - grouped[:, 0] / np.maximum(grouped[:, 1], 1)
+    )
     draws = rng.integers(0, len(grouped), size=(n_boot, len(grouped)))
     sampled = grouped[draws].sum(axis=1)
     differences = 100 * (
@@ -645,6 +679,11 @@ def token_supply_difference(
         "ai": ai,
         "ai_minus_human": ai - human,
         "source_cluster_ci": _ci(differences),
+        "source_groups_ai_higher": int((source_differences > 0).sum()),
+        "source_groups_total": int(len(source_differences)),
+        "source_group_difference_range": [
+            float(source_differences.min()), float(source_differences.max())
+        ],
     }
 
 
@@ -1349,6 +1388,8 @@ def main() -> None:
         "pairs_fully_parsed_and_aligned": int(len(fully_parsed_pairs)),
     })
     supply_rng = np.random.default_rng(args.seed + 991)
+    length_supply_rng = np.random.default_rng(args.seed + 992)
+    consumer_rng = np.random.default_rng(args.seed + 993)
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -1422,8 +1463,43 @@ def main() -> None:
                 ("multiply_retrieved", "multi_uptake_haves"),
                 ("descriptively_named", "descriptively_named_haves"),
                 ("generalized", "generalized_haves"),
+                ("referenced_at_least_3_times", "use_ge_3_haves"),
+                ("referenced_at_least_4_times", "use_ge_4_haves"),
+                ("multiple_consumer_sites", "multi_consumer_haves"),
             )
         },
+        "claim_supply_length_matched": {
+            "rule": "retain pairs whose proof-body token counts differ by at most 10%",
+            "pairs": int(length_within_ten_percent.sum()),
+            "reference_survival": {
+                metric: token_supply_difference(
+                    proofs[length_within_ten_percent], numerator,
+                    args.boot, length_supply_rng,
+                )
+                for metric, numerator in (
+                    ("zero_or_more", "named_haves"),
+                    ("one_or_more", "adopted_haves"),
+                    ("two_or_more", "multi_uptake_haves"),
+                    ("three_or_more", "use_ge_3_haves"),
+                    ("four_or_more", "use_ge_4_haves"),
+                    ("multiple_consumer_sites", "multi_consumer_haves"),
+                )
+            },
+        },
+        "consumer_site_definition": {
+            "unit": (
+                "the innermost later parser-matched named-have construction "
+                "containing a reference token, plus one residual site for all "
+                "other in-scope downstream reference tokens"
+            ),
+            "multi_site_rule": "a claim reaches at least two distinct consumer sites",
+            "conservative_limitation": (
+                "separate unnamed tactic episodes in the residual region are collapsed"
+            ),
+        },
+        "multi_consumer_site_claim_share": claim_rate_difference(
+            proofs, "multi_consumer_haves", args.boot, consumer_rng
+        ),
         "name_lexicon": {
             "human": name_lexicon(claims, "h"),
             "ai": name_lexicon(claims, "a"),

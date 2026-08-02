@@ -80,6 +80,34 @@ def main() -> None:
     assert supply["adopted_at_least_once"]["source_cluster_ci"][0] > 0
     for metric in ("multiply_retrieved", "descriptively_named", "generalized"):
         assert supply[metric]["source_cluster_ci"][1] < 0
+    assert supply["all_named"]["source_groups_ai_higher"] == 12
+    assert supply["adopted_at_least_once"]["source_groups_ai_higher"] == 11
+    for metric in (
+        "multiply_retrieved", "referenced_at_least_3_times",
+        "referenced_at_least_4_times",
+    ):
+        assert supply[metric]["source_groups_ai_higher"] == 0
+    matched_supply = source["claim_supply_length_matched"]
+    assert matched_supply["pairs"] == 834
+    assert matched_supply["reference_survival"]["zero_or_more"][
+        "source_cluster_ci"
+    ][0] > 0
+    for metric in ("two_or_more", "three_or_more", "four_or_more"):
+        assert matched_supply["reference_survival"][metric][
+            "source_cluster_ci"
+        ][1] < 0
+    matched_multi_site = matched_supply["reference_survival"][
+        "multiple_consumer_sites"
+    ]["source_cluster_ci"]
+    assert matched_multi_site[0] < 0 < matched_multi_site[1]
+    multi_site = source["multi_consumer_site_claim_share"]
+    close(multi_site["human"], 0.09133)
+    close(multi_site["ai"], 0.06256)
+    assert multi_site["source_cluster_ci"][1] < 0
+    absolute_multi_site = supply["multiple_consumer_sites"]
+    assert absolute_multi_site["source_cluster_ci"][0] < 0 < absolute_multi_site[
+        "source_cluster_ci"
+    ][1]
     parametric = source["parametric_claim_difference"]
     close(parametric["human"], 0.02762)
     close(parametric["ai"], 0.00207)

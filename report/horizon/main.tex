@@ -42,9 +42,9 @@ A checked proof establishes that a proposition follows, but not what future it w
 We propose the \emph{amortization horizon}: the range over which a
 constructor expects an abstraction to repay its cost. A proof produces a certificate,
 working memory, and an interface for users. In 3,630 pairs of Lean proofs of
-identical statements, AI-provenance scripts create more claims, yet each receives fewer
-downstream references, is almost threefold less likely to state a callable family, and is more
-generically named. Human claims are retrieved more often after adoption. Elaboration then
+identical statements, AI scripts create more claims, but their absolute supply advantage reverses
+between one and two later references; they are also almost threefold less likely to state a callable
+family and more generically named. Elaboration then
 inverts the reuse story: AI boundaries more often vanish, but surviving AI binders more
 often fan out to multiple term occurrences. This consolidation--composition split distinguishes
 deliberate source retrieval from compiler fan-out. Certificate topology also fails consumer-invariance: Lean versions encode the same
@@ -287,11 +287,13 @@ The Kimina-Prover report treats abundant \code{have} statements as evidence of `
 clarity \citep{kimina2025}.  Yet count alone is non-identifying: any proof can be prefixed by
 arbitrarily many unused claims of \code{True} without changing its target.  The empirical denominator
 matters too.  Per 100 tokens, AI emits more claims adopted at least once (1.96 versus 1.52), but
-humans emit more claims that are multiply retrieved (.470 versus .318), descriptively named (.805
+humans emit more claims that are multiply referenced (.470 versus .318), descriptively named (.805
 versus .348), or generalized (.103 versus .052); every difference has a source-cluster interval
-excluding zero.  AI supplies more transient checkpoints, while human source supplies more artifacts
-meeting each stricter interface criterion.  Decomposition---making a boundary---is not
-consolidation---making it addressable.
+excluding zero.  The absolute advantage reverses between the first and second exact-name reference,
+and every source group favors humans at two or more.  This \emph{lexical consolidation crossover}
+shows that decomposition---making a boundary---is not consolidation---making it addressable.
+A conservative distinct-consumer-site audit finds no absolute per-token difference (appendix), so
+the crossover identifies repeated textual addressability, not distinct acts of use by a reader.
 
 The important contrast is what happens after introduction (\cref{fig:functions}).  Human claims
 receive 1.35 explicit references on average (source-cluster interval 1.26--1.49), compared with
@@ -343,11 +345,10 @@ side invokes \code{native\_decide}, family shares remain 5.11\% versus 1.72\%.
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/claim_functions.pdf}
-  \caption{Three consumers of local claims. Source results use all 3,630 theorem pairs; term results
-  use the pairs that compiled on both sides. Error bars in panels B--D are 95\% source-cluster intervals.
-  ``Outside placeholder'' means a name outside the conservative generic-form list; ``explicitly
-  adopted'' means at least one later exact-name reference; ``local family'' collapses
-  binder and explicit-universal spellings.}
+  \caption{Three consumers of local claims. Panel A gives pooled source-claim supply at each minimum
+  later exact-name-reference count (log scale), crossing at two. Source panels use all 3,630 pairs;
+  the term panel uses complete pairs. Error bars in B--D are 95\% source-cluster intervals.
+  ``Non-generic'' excludes placeholder forms; ``local family'' unions binder and universal spellings.}
   \label{fig:functions}
 \end{figure}
 
@@ -630,13 +631,12 @@ that coincidence must hold.
 
 \section{What the result does and does not establish}
 
-The result is structural, not causal.  In this paired corpus, AI emits more source-local state, but
-less is visibly adopted, more vanishes under elaboration, and its names are more generic.
-Conditional duration does not robustly differ, and retained AI binders can be multiply represented.
-Global reuse remains unknown because observation ends at the target declaration.  Provenance is
-observational; the census misses other constructs and implicit tactic use; binder occurrence is
-representation-specific; and names, spans, and model surprisal are proxies.  Reader experiments
-remain necessary \citep{kambhamettu2026}; the topology null and its scope correction are in the appendix.
+The result is structural, not causal.  Here AI emits more local state, but less is adopted, more
+vanishes under elaboration, and names are more generic; conditional duration does not robustly
+differ, while surviving binders can fan out.  Global reuse is unobserved.  Provenance is
+observational; the census misses other constructs and implicit use; binder occurrence is
+representation-specific; and names, spans, and surprisal are proxies.  Reader experiments remain
+necessary \citep{kambhamettu2026}; the topology null and scope correction are in the appendix.
 
 \clearpage
 \bibliographystyle{plainnat}
@@ -672,7 +672,18 @@ $-.073$--$-.036$ for generalized claims.  The elementary boundary-padding constr
 why raw count cannot identify clarity: before any term $p:P$, insert distinct unused declarations
 \code{have junk\_i : True := by trivial}.  This produces $P$ for every finite number of insertions
 while raising source boundary count arbitrarily; fate and construction cost, unlike count, reveal
-the padding.
+the padding.  At minimum reference counts three and four, human/AI supply is .221/.109 and
+.124/.052; all 12 source groups favor humans at thresholds two through four.  Among the 834
+length-matched pairs, the AI advantage remains at zero references (interval $.372$--$.694$), is
+unresolved at one ($-.004$--$.311$), and reverses at two ($-.151$--$-.004$), three, and four.
+
+For a stricter episode proxy, each name token is assigned to the innermost later named-claim
+construction containing it; all remaining in-scope tokens form one conservative residual site.
+Human claims reach multiple such sites more often (9.13\%/6.26\%; difference interval
+$-.049$--$-.018$), but greater AI boundary supply cancels the absolute contrast: .179/.194 claims
+per 100 tokens (AI-minus-human $-.004$--$.030$), also unresolved in the length match.  This site
+metric undercounts separate unnamed tactic episodes, but prevents two mentions inside one
+construction from masquerading as two consumers.
 
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
 Every source group has lower explicit uses per AI claim, higher AI zero-uptake, and lower AI

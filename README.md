@@ -34,9 +34,13 @@ the AI track creates more named local claims, but those claims receive fewer
 explicit references, are less often adopted at all, use much more
 generic names, and less often state a callable family. Thus the abundance of `have` statements
 previously offered as evidence of human-like clarity measures decomposition, not consolidation.
-The denominator matters: per 100 proof-body tokens AI still supplies more claims used at least once
-(1.96 versus 1.52), while humans supply more claims used repeatedly (0.470 versus 0.318), carrying
+The denominator matters: per 100 proof-body tokens AI still supplies more claims referenced at least
+once (1.96 versus 1.52), while humans supply more claims referenced repeatedly (0.470 versus 0.318), carrying
 non-placeholder names (0.805 versus 0.348), or stating a family (0.103 versus 0.052).
+The absolute lexical-reference curve therefore crosses between one and two later mentions; the
+human advantage at two or more holds in all 12 source groups and survives the 834-pair length match.
+But after mentions within one downstream construction are collapsed, absolute multi-consumer-site
+supply is unresolved; the crossover is textual addressability, not a count of cognitive retrieval episodes.
 The family comparison collapses
 equivalent binder and explicit-`forall` spellings: rates are 5.24% versus 1.68%, and within
 identical-theorem pairs family claims occur only on the human side 310 times versus only on the AI
@@ -100,7 +104,7 @@ carry an adopted claim forward.
 
 | file | what it does |
 |---|---|
-| `paired_horizon.py`, `ExtractHaveRanges.lean` | 3,630-pair exact-statement audit and Lean-parser-bounded source analysis: local-claim density, uptake, visible reach, naming, generalized-family syntax, and automation sensitivities |
+| `paired_horizon.py`, `ExtractHaveRanges.lean` | 3,630-pair exact-statement audit and Lean-parser-bounded source analysis: local-claim density, lexical uptake, conservative consumer sites, visible reach, naming, generalized-family syntax, and automation sensitivities |
 | `ExtractBinderUseMemoLegacy.lean.tmpl`, `ExtractBinderUseLegacy.lean.tmpl`, `ExtractBinderUseLinear.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | semantic decoding of production Lean 4.15 `letFun` and current Lean `letE` encodings, stack-safe memoized binder use, source-to-term alignment, and source/term transitions |
 | `binder_memo_audit.py` | equivalence audit of the memoized production traversal against the legacy recursive traversal, including the largest legacy-success terms and every source group |
 | `results/horizon/binder_root_tree_extremes.csv` | ranked, exact arbitrary-precision tree-occurrence counts; these diagnose representation expansion and are not treated as intrinsic proof sizes |

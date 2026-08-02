@@ -26,22 +26,32 @@ def save(fig: plt.Figure, name: str) -> None:
 def claim_functions() -> None:
     source = json.loads((ROOT / "results/horizon/source_summary.json").read_text())
     binder = json.loads((ROOT / "results/horizon/binder_summary.json").read_text())
-    proofs = pd.read_csv(ROOT / "results/horizon/source_pairs.csv.gz")
 
     fig, axes = plt.subplots(1, 4, figsize=(11.2, 2.75))
-    colors = [HUMAN, AI]
-    labels = ["Human", "AI"]
 
-    rates = [
-        100 * proofs.h_named_haves.sum() / proofs.h_tokens.sum(),
-        100 * proofs.a_named_haves.sum() / proofs.a_tokens.sum(),
+    survival_keys = [
+        "all_named", "adopted_at_least_once", "multiply_retrieved",
+        "referenced_at_least_3_times", "referenced_at_least_4_times",
     ]
-    axes[0].bar(labels, rates, color=colors, width=0.62)
-    axes[0].set_ylabel("named claims per 100 tokens")
-    axes[0].set_title("A  Local decomposition", loc="left", fontweight="bold")
-    axes[0].set_ylim(0, max(rates) * 1.25)
-    for i, value in enumerate(rates):
-        axes[0].text(i, value + 0.08, f"{value:.2f}", ha="center", fontsize=9)
+    x_survival = np.arange(len(survival_keys))
+    for side, label, color in (("human", "Human", HUMAN), ("ai", "AI", AI)):
+        values = [
+            source["claim_supply_per_100_tokens"][key][side]
+            for key in survival_keys
+        ]
+        axes[0].plot(
+            x_survival, values, marker="o", ms=4.5, lw=1.6,
+            color=color, label=label,
+        )
+    axes[0].axvline(1.5, color=GRAY, lw=0.8, ls="--")
+    axes[0].text(1.58, 0.58, "crossover", color=GRAY, fontsize=7, rotation=90)
+    axes[0].set_yscale("log")
+    axes[0].set_ylim(0.04, 4.2)
+    axes[0].set_xticks(x_survival, ["0+", "1+", "2+", "3+", "4+"])
+    axes[0].set_ylabel("claims / 100 tokens (log)")
+    axes[0].set_xlabel("later exact-name references", fontsize=8)
+    axes[0].set_title("A  Reference survival", loc="left", fontweight="bold")
+    axes[0].legend(frameon=False, fontsize=8, loc="upper right")
 
     fates = ["zero_uptake_share", "one_uptake_share", "multi_uptake_share"]
     fate_labels = ["zero", "one", "multiple"]
@@ -132,7 +142,7 @@ def claim_functions() -> None:
     )
     axes[3].set_xticks(
         x,
-        ["outside\nplaceholder list", "explicitly\nadopted", "states a\nlocal family"],
+        ["non-generic\nname", "adopted\n(1+)", "local\nfamily"],
     )
     axes[3].set_ylim(0, 0.90)
     axes[3].set_ylabel("share of named claims")

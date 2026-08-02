@@ -310,6 +310,8 @@ def test_token_supply_is_not_claim_selectivity() -> None:
     assert result["human"] == 1.0
     assert result["ai"] == 1.5
     assert result["ai_minus_human"] == 0.5
+    assert result["source_groups_ai_higher"] == 2
+    assert result["source_groups_total"] == 2
 
 
 def test_boundary_count_can_be_padded_without_uptake() -> None:
@@ -321,6 +323,53 @@ def test_boundary_count_can_be_padded_without_uptake() -> None:
     assert len(claims) == 7
     assert sum(claim["explicit_uses"] > 0 for claim in claims) == 0
     assert sum(claim["explicit_uses"] == 0 for claim in claims) == 7
+
+
+def test_distinct_consumer_sites_collapse_tokens_within_one_construction() -> None:
+    source = '''
+theorem demo : True := by
+  have basis : True := by trivial
+  have use1 : True := by exact basis
+  have use2 : True := by exact basis
+  exact use1
+'''
+    body = proof_body(source)
+    declarations = named_have_declarations(body)
+    ends = [
+        body.index("\n  have use1"),
+        body.index("\n  have use2"),
+        body.index("\n  exact use1"),
+    ]
+    claims = named_have_claims(
+        source,
+        [
+            (declaration["start"], end, len(body))
+            for declaration, end in zip(declarations, ends)
+        ],
+        require_parser_match=True,
+    )
+    assert claims[0]["explicit_uses"] == 2
+    assert claims[0]["distinct_consumer_sites"] == 2
+    assert claims[0]["named_claim_consumer_sites"] == 2
+
+    one_consumer = '''
+theorem demo : True := by
+  have basis : True := by trivial
+  have use_both : True ∧ True := by exact ⟨basis, basis⟩
+  exact use_both.1
+'''
+    body = proof_body(one_consumer)
+    declarations = named_have_declarations(body)
+    claims = named_have_claims(
+        one_consumer,
+        [
+            (declarations[0]["start"], body.index("\n  have use_both"), len(body)),
+            (declarations[1]["start"], body.index("\n  exact use_both"), len(body)),
+        ],
+        require_parser_match=True,
+    )
+    assert claims[0]["explicit_uses"] == 2
+    assert claims[0]["distinct_consumer_sites"] == 1
 
 
 if __name__ == "__main__":
@@ -341,4 +390,5 @@ if __name__ == "__main__":
     test_family_position_matching_uses_nearest_claim()
     test_token_supply_is_not_claim_selectivity()
     test_boundary_count_can_be_padded_without_uptake()
+    test_distinct_consumer_sites_collapse_tokens_within_one_construction()
     print("paired_horizon parser tests passed")

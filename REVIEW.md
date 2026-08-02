@@ -12,7 +12,7 @@ paper audit below.
 |---|---|---|
 | 3,630 exact-statement pairs after auditing 3,635 validation-flag candidates; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz`, `target_pair_exclusions.csv` |
 | exact construction-bounded claim density, uptake, opportunity-normalized reach, naming, and matched tactic strata (39,646/40,626 candidate claims) | `code/paired_horizon.py`, `code/ExtractHaveRanges.lean` | `results/horizon/source_summary.json` → `have_scope_parser_audit`, `claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
-| supply--selectivity decomposition: AI has more once-adopted claims per token, humans more multiply retrieved, descriptively named, and generalized claims per token | `code/paired_horizon.py` | `results/horizon/source_summary.json` → `claim_supply_per_100_tokens` |
+| lexical consolidation crossover: AI has more once-referenced claims per token, humans more claims with two or more exact-name references (all 12 source groups; persists at matched length); the stricter absolute multi-consumer-site contrast is unresolved | `code/paired_horizon.py` | `results/horizon/source_summary.json` → `claim_supply_per_100_tokens`, `claim_supply_length_matched`, `multi_consumer_site_claim_share` |
 | within-proof association of family syntax with adoption and repeated use in both tracks, including nearest-position matching | same | `results/horizon/source_summary.json` → `within_proof_feature_associations`, `position_matched_family_associations` |
 | depth-aware use of elaborated local binders in all 3,630 pairs (7,260 successful tasks), including exact expanded-tree extremes | `code/ExtractBinderUseMemoLegacy.lean.tmpl`, `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz`, `binder_root_tree_extremes.csv` |
 | within-proof family syntax predicts term retention in both tracks after nearby-position matching; family-specific multi-use estimates diverge but the direct interaction is unresolved | `code/analyze_binder_use.py` | `results/horizon/binder_summary.json` → `within_proof_generality_term_association`, `position_matched_generality_term_association` |
@@ -137,6 +137,7 @@ A reviewer should check these were actually corrected in the report, not just no
 | "Lean 4.15 erases source `have` boundaries" | the first extractor looked only for `letE`, while Lean 4.15 encodes `have` as `letFun` applied to a named lambda | a semantic decoder recovers both the production `letFun` and current nondependent-`letE` encodings; a real-theorem two-version regression pins the shift |
 | generalized claims cause the human-side surprisal pulse | the pooled contrast is selected by document; after exact-boundary filtering the within-document content contrast is null for humans ($p=.656$) and nominal for AI ($p=.040$), opposite the proposed human explanation and uncorrected for multiplicity | the paper keeps boundary surprisal exploratory and logically separate from the family classifier |
 | crossing one later claim boundary directly measures a claim's temporal lifetime | the number of available in-scope boundaries is endogenous: AI scripts introduce many more claims, and conditional crossing is 83.6% human versus 85.0% AI | reach is decomposed into adoption and duration; adoption is robust, while conditional-duration differences are unresolved in matched controls |
+| two exact-name tokens are two retrieval episodes | both tokens may occur inside one later construction; formatting and tactic structure determine token multiplicity | the paper calls the sign flip a lexical crossover and adds a conservative consumer-site audit; human per-claim multi-site selectivity is higher, but absolute multi-site supply is unresolved |
 | human names are demonstrably better semantic retrieval keys | longer and more diverse names do not by themselves establish semantic fit; a 229-pair within-proof Goedel embedding assay is null after chance and claim-count normalization | naming remains a conservative generic-form/interface-investment proxy, not evidence of semantic quality |
 
 ## 4. Where I think this is weakest — please attack these first
@@ -150,7 +151,9 @@ For the current horizon paper, the serious attack points are:
 2. **Source use is lexical and local.** A scanner recognizes named `have`; Lean's parser marks the
    complete construction and enclosing tactic-sequence tail; the counter also stops at same-name
    redeclaration and counts exact later name tokens. The 2.4% unmatched candidates are excluded. It
-   misses anonymous claims, implicit tactic use, and finer binder scopes within exotic tactic
+   additionally collapses tokens inside the same later named construction for a conservative
+   consumer-site audit, treating all remaining downstream tokens as one residual site. It misses
+   anonymous claims, implicit tactic use, separate unnamed residual episodes, and finer binder scopes within exotic tactic
    combinators. The production-term audit is the main
    check against treating lexical non-use as semantic non-use.
 3. **A callable family is still a syntactic classifier.** Binder and leading-`forall` spellings are
