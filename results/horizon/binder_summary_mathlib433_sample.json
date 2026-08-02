@@ -281,6 +281,25 @@
       }
     }
   },
+  "multi_term_use_conditional_on_retention": {
+    "human": {
+      "numerator": 395,
+      "denominator": 963,
+      "estimate": 0.4101765316718588
+    },
+    "ai": {
+      "numerator": 734,
+      "denominator": 1569,
+      "estimate": 0.4678138942001275
+    },
+    "ai_minus_human": {
+      "estimate": 0.057637362528268676,
+      "source_cluster_ci": [
+        0.02123398432631998,
+        0.1133471614530371
+      ]
+    }
+  },
   "matched_claim_profiles_by_generality": {
     "human_instance": {
       "claims": 1082,
@@ -309,6 +328,518 @@
       "one_term_use_share": 0.6333333333333333,
       "multi_term_use_share": 0.36666666666666664,
       "mean_term_uses": 1.7333333333333334
+    }
+  },
+  "within_proof_generality_term_association": {
+    "human": {
+      "proofs": 19,
+      "source_groups": 9,
+      "family_claims": 31,
+      "instance_claims": 122,
+      "zero_term_use": {
+        "family_proof_mean": 0.05263157894736842,
+        "instance_proof_mean": 0.05855723224144277,
+        "family_minus_instance": -0.005925653294074351,
+        "source_cluster_ci": [
+          -0.09294143356643356,
+          0.2012987012987013
+        ],
+        "paired_wilcoxon_p": 0.5001842570707944
+      },
+      "one_term_use": {
+        "family_proof_mean": 0.48120300751879697,
+        "instance_proof_mean": 0.5621251555462082,
+        "family_minus_instance": -0.0809221480274112,
+        "source_cluster_ci": [
+          -0.28411195286195284,
+          0.10353535353535354
+        ],
+        "paired_wilcoxon_p": 0.7774044086922148
+      },
+      "multi_term_use": {
+        "family_proof_mean": 0.4661654135338346,
+        "instance_proof_mean": 0.37931761221234905,
+        "family_minus_instance": 0.08684780132148553,
+        "source_cluster_ci": [
+          -0.2243250278761643,
+          0.2827475649350648
+        ],
+        "paired_wilcoxon_p": 0.40124662279565404
+      },
+      "term_uses": {
+        "family_proof_mean": 1.8834586466165413,
+        "instance_proof_mean": 2.078824245929509,
+        "family_minus_instance": -0.1953655993129678,
+        "source_cluster_ci": [
+          -2.1971763905286634,
+          0.8308314635998052
+        ],
+        "paired_wilcoxon_p": 0.3632943955710277
+      }
+    },
+    "ai": {
+      "proofs": 18,
+      "source_groups": 4,
+      "family_claims": 30,
+      "instance_claims": 178,
+      "zero_term_use": {
+        "family_proof_mean": 0.0,
+        "instance_proof_mean": 0.15173060370428793,
+        "family_minus_instance": -0.15173060370428793,
+        "source_cluster_ci": [
+          -0.41818181818181815,
+          -0.03333333333333333
+        ],
+        "paired_wilcoxon_p": 0.007685794055213263
+      },
+      "one_term_use": {
+        "family_proof_mean": 0.574074074074074,
+        "instance_proof_mean": 0.4176801025485236,
+        "family_minus_instance": 0.15639397152555048,
+        "source_cluster_ci": [
+          -0.28587412587412586,
+          0.4637445887445888
+        ],
+        "paired_wilcoxon_p": 0.18483166127771478
+      },
+      "multi_term_use": {
+        "family_proof_mean": 0.4259259259259259,
+        "instance_proof_mean": 0.43058929374718846,
+        "family_minus_instance": -0.004663367821262556,
+        "source_cluster_ci": [
+          -0.3286286984429399,
+          0.5076923076923077
+        ],
+        "paired_wilcoxon_p": 0.8683330200772976
+      },
+      "term_uses": {
+        "family_proof_mean": 1.8703703703703702,
+        "instance_proof_mean": 1.7046400237189712,
+        "family_minus_instance": 0.16573034665139924,
+        "source_cluster_ci": [
+          -0.2488974132162987,
+          0.85002331002331
+        ],
+        "paired_wilcoxon_p": 0.7402622602613693
+      }
+    }
+  },
+  "position_matched_generality_term_association": {
+    "estimand": "proof-mean family-minus-instance term fate after minimum-cost one-to-one matching on source claim position",
+    "all_matches": {
+      "human": {
+        "eligible_proofs": 19,
+        "matched_claim_pairs": 26,
+        "mean_abs_relative_position_gap": 0.23899550741656003,
+        "zero_term_use": {
+          "family_minus_instance": 0.02631578947368421,
+          "source_cluster_ci": [
+            -0.046875,
+            0.2222222222222222
+          ],
+          "leave_one_source_out_range": [
+            -0.029411764705882353,
+            0.09090909090909091
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.0,
+          "source_cluster_ci": [
+            -0.16666666666666666,
+            0.11764705882352941
+          ],
+          "leave_one_source_out_range": [
+            -0.045454545454545456,
+            0.0625
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": -0.02631578947368421,
+          "source_cluster_ci": [
+            -0.25,
+            0.13636363636363635
+          ],
+          "leave_one_source_out_range": [
+            -0.09375,
+            0.029411764705882353
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 18,
+        "matched_claim_pairs": 30,
+        "mean_abs_relative_position_gap": 0.14816787577365492,
+        "zero_term_use": {
+          "family_minus_instance": -0.12962962962962962,
+          "source_cluster_ci": [
+            -0.6,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.16666666666666666,
+            -0.0784313725490196
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.16666666666666663,
+          "source_cluster_ci": [
+            -0.23076923076923078,
+            0.4444444444444444
+          ],
+          "leave_one_source_out_range": [
+            0.0,
+            0.2857142857142857
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": -0.03703703703703704,
+          "source_cluster_ci": [
+            -0.29824561403508776,
+            0.5714285714285714
+          ],
+          "leave_one_source_out_range": [
+            -0.11904761904761905,
+            0.14285714285714285
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 5,
+        "estimand": "AI minus human position-matched family association",
+        "zero_term_use": {
+          "ai_minus_human": -0.2,
+          "source_cluster_ci": [
+            -0.25,
+            0.0
+          ]
+        },
+        "one_term_use": {
+          "ai_minus_human": 0.4,
+          "source_cluster_ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "multi_term_use": {
+          "ai_minus_human": -0.2,
+          "source_cluster_ci": [
+            -0.25,
+            0.0
+          ]
+        }
+      }
+    },
+    "caliper_0_25": {
+      "human": {
+        "eligible_proofs": 14,
+        "matched_claim_pairs": 19,
+        "mean_abs_relative_position_gap": 0.14577961720818863,
+        "zero_term_use": {
+          "family_minus_instance": -0.03571428571428571,
+          "source_cluster_ci": [
+            -0.06666666666666667,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.045454545454545456,
+            0.0
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.0,
+          "source_cluster_ci": [
+            -0.2,
+            0.16666666666666666
+          ],
+          "leave_one_source_out_range": [
+            -0.0625,
+            0.09090909090909091
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": 0.03571428571428571,
+          "source_cluster_ci": [
+            -0.16666666666666666,
+            0.20588235294117646
+          ],
+          "leave_one_source_out_range": [
+            -0.045454545454545456,
+            0.07692307692307693
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 16,
+        "matched_claim_pairs": 27,
+        "mean_abs_relative_position_gap": 0.1086531459596475,
+        "zero_term_use": {
+          "family_minus_instance": -0.14583333333333331,
+          "source_cluster_ci": [
+            -1.0,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.17948717948717946,
+            -0.08888888888888888
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.12499999999999997,
+          "source_cluster_ci": [
+            -0.6153846153846154,
+            0.42857142857142855
+          ],
+          "leave_one_source_out_range": [
+            -0.16666666666666666,
+            0.3076923076923077
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": 0.02083333333333333,
+          "source_cluster_ci": [
+            -0.5,
+            1.0
+          ],
+          "leave_one_source_out_range": [
+            -0.12820512820512822,
+            0.3333333333333333
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 5,
+        "estimand": "AI minus human position-matched family association",
+        "zero_term_use": {
+          "ai_minus_human": -0.2,
+          "source_cluster_ci": [
+            -0.25,
+            0.0
+          ]
+        },
+        "one_term_use": {
+          "ai_minus_human": 0.4,
+          "source_cluster_ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "multi_term_use": {
+          "ai_minus_human": -0.2,
+          "source_cluster_ci": [
+            -0.25,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "position_matched_generality_term_unambiguous_sensitivity": {
+    "estimand": "proof-mean family-minus-instance term fate after minimum-cost one-to-one matching on source claim position",
+    "all_matches": {
+      "human": {
+        "eligible_proofs": 15,
+        "matched_claim_pairs": 20,
+        "mean_abs_relative_position_gap": 0.27878787878787875,
+        "zero_term_use": {
+          "family_minus_instance": 0.03333333333333333,
+          "source_cluster_ci": [
+            -0.0625,
+            0.23076923076923078
+          ],
+          "leave_one_source_out_range": [
+            -0.038461538461538464,
+            0.1111111111111111
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.16666666666666666,
+          "source_cluster_ci": [
+            0.0,
+            0.3333333333333333
+          ],
+          "leave_one_source_out_range": [
+            0.10714285714285714,
+            0.19230769230769232
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": -0.2,
+          "source_cluster_ci": [
+            -0.4,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.2222222222222222,
+            -0.14285714285714285
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 16,
+        "matched_claim_pairs": 22,
+        "mean_abs_relative_position_gap": 0.20346136679582888,
+        "zero_term_use": {
+          "family_minus_instance": -0.14583333333333331,
+          "source_cluster_ci": [
+            -0.6666666666666666,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.17948717948717946,
+            -0.08888888888888888
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.23958333333333331,
+          "source_cluster_ci": [
+            -0.3333333333333333,
+            0.4351851851851852
+          ],
+          "leave_one_source_out_range": [
+            0.0,
+            0.37179487179487186
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": -0.09375,
+          "source_cluster_ci": [
+            -0.5,
+            1.0
+          ],
+          "leave_one_source_out_range": [
+            -0.19230769230769232,
+            0.16666666666666666
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 2,
+        "estimand": "AI minus human position-matched family association",
+        "zero_term_use": {
+          "ai_minus_human": 0.0,
+          "source_cluster_ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "one_term_use": {
+          "ai_minus_human": 0.25,
+          "source_cluster_ci": [
+            0.0,
+            0.25
+          ]
+        },
+        "multi_term_use": {
+          "ai_minus_human": -0.25,
+          "source_cluster_ci": [
+            -0.25,
+            0.0
+          ]
+        }
+      }
+    },
+    "caliper_0_25": {
+      "human": {
+        "eligible_proofs": 9,
+        "matched_claim_pairs": 12,
+        "mean_abs_relative_position_gap": 0.14983164983164984,
+        "zero_term_use": {
+          "family_minus_instance": -0.05555555555555555,
+          "source_cluster_ci": [
+            -0.1,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.0625,
+            0.0
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.16666666666666666,
+          "source_cluster_ci": [
+            0.0,
+            0.3
+          ],
+          "leave_one_source_out_range": [
+            0.0,
+            0.1875
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": -0.1111111111111111,
+          "source_cluster_ci": [
+            -0.2,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.125,
+            0.0
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 13,
+        "matched_claim_pairs": 18,
+        "mean_abs_relative_position_gap": 0.1309084953970641,
+        "zero_term_use": {
+          "family_minus_instance": -0.17948717948717946,
+          "source_cluster_ci": [
+            -0.6,
+            0.0
+          ],
+          "leave_one_source_out_range": [
+            -0.2121212121212121,
+            -0.1111111111111111
+          ]
+        },
+        "one_term_use": {
+          "family_minus_instance": 0.21794871794871792,
+          "source_cluster_ci": [
+            -0.8888888888888888,
+            0.4895833333333333
+          ],
+          "leave_one_source_out_range": [
+            -0.2,
+            0.43939393939393945
+          ]
+        },
+        "multi_term_use": {
+          "family_minus_instance": -0.038461538461538464,
+          "source_cluster_ci": [
+            -0.5,
+            1.0
+          ],
+          "leave_one_source_out_range": [
+            -0.22727272727272727,
+            0.4
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 2,
+        "estimand": "AI minus human position-matched family association",
+        "zero_term_use": {
+          "ai_minus_human": 0.0,
+          "source_cluster_ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "one_term_use": {
+          "ai_minus_human": 0.25,
+          "source_cluster_ci": [
+            0.0,
+            0.25
+          ]
+        },
+        "multi_term_use": {
+          "ai_minus_human": -0.25,
+          "source_cluster_ci": [
+            -0.25,
+            0.0
+          ]
+        }
+      }
     }
   },
   "claim_rate_differences_complete_pairs": {

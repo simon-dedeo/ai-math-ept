@@ -108,7 +108,7 @@ def main() -> None:
     close(no_native_decide["generalized_claim_share"]["ai"], 0.01919)
     assert no_native_decide["generalized_claim_share"]["source_cluster_ci"][1] < 0
     coordinates = source["interface_coordinate_correlations"]
-    assert coordinates["pairs_with_claims_on_both_sides"] == 1885
+    assert coordinates["pairs_with_claims_on_both_sides"] == 1883
     close(coordinates["spearman"]["explicit_uses"]["long_reach"], 0.3230, 0.002)
     count_matched = source["claim_count_sensitivity"]["exact_equal_positive"]
     assert count_matched["pairs"] == 210
@@ -122,20 +122,20 @@ def main() -> None:
     assert length_matched["long_horizon_share"]["source_cluster_ci"][1] < 0
     assert length_matched["generalized_claim_share"]["source_cluster_ci"][1] < 0
     reach = source["uptake_reach_decomposition"]
-    close(reach["adoption_probability"]["human"], 0.7773)
+    close(reach["adoption_probability"]["human"], 0.7781)
     close(reach["adoption_probability"]["ai"], 0.6368)
-    close(reach["explicit_use_count_given_adoption"]["human"], 1.8556)
+    close(reach["explicit_use_count_given_adoption"]["human"], 1.8533)
     close(reach["explicit_use_count_given_adoption"]["ai"], 1.3627)
     assert reach["explicit_use_count_given_adoption"]["source_cluster_ci"][1] < 0
-    close(reach["last_use_token_distance_given_adoption"]["human"], 56.7969)
+    close(reach["last_use_token_distance_given_adoption"]["human"], 56.7723)
     close(reach["last_use_token_distance_given_adoption"]["ai"], 43.0957)
     assert reach["last_use_token_distance_given_adoption"]["source_cluster_ci"][1] < 0
     crossing = reach["crosses_any_later_boundary_given_adoption_and_opportunity"]
-    close(crossing["human"], 0.7512)
+    close(crossing["human"], 0.7511)
     close(crossing["ai"], 0.7520)
     assert crossing["source_cluster_ci"][0] < 0 < crossing["source_cluster_ci"][1]
     normalized_reach = reach["fraction_available_boundaries_crossed_given_adoption"]
-    close(normalized_reach["human"], 0.4914)
+    close(normalized_reach["human"], 0.4912)
     close(normalized_reach["ai"], 0.4543)
     assert normalized_reach["source_cluster_ci"][1] < 0
     reach_controls = source["uptake_reach_matched_controls"]
@@ -186,6 +186,49 @@ def main() -> None:
     assert zero_delta["source_cluster_ci"][0] > 0
     assert multi_delta["source_cluster_ci"][0] < 0 < multi_delta["source_cluster_ci"][1]
     assert polarized_delta["source_cluster_ci"][0] > 0
+    conditional_multi = binder["multi_term_use_conditional_on_retention"]
+    close(conditional_multi["human"]["estimate"], 0.3559)
+    close(conditional_multi["ai"]["estimate"], 0.4356)
+    assert conditional_multi["ai_minus_human"]["source_cluster_ci"][0] > 0
+    family_term = binder["within_proof_generality_term_association"]
+    assert family_term["human"]["proofs"] == 395
+    assert family_term["ai"]["proofs"] == 271
+    for side in ("human", "ai"):
+        assert family_term[side]["zero_term_use"]["source_cluster_ci"][1] < 0
+    assert family_term["human"]["multi_term_use"]["source_cluster_ci"][0] > 0
+    ai_family_multi = family_term["ai"]["multi_term_use"]["source_cluster_ci"]
+    assert ai_family_multi[0] < 0 < ai_family_multi[1]
+    matched_family_term = binder["position_matched_generality_term_association"][
+        "caliper_0_25"
+    ]
+    assert matched_family_term["human"]["eligible_proofs"] == 263
+    assert matched_family_term["ai"]["eligible_proofs"] == 226
+    for side in ("human", "ai"):
+        assert matched_family_term[side]["zero_term_use"]["source_cluster_ci"][1] < 0
+        assert matched_family_term[side]["zero_term_use"][
+            "leave_one_source_out_range"
+        ][1] < 0
+    assert matched_family_term["human"]["multi_term_use"]["source_cluster_ci"][0] > 0
+    assert matched_family_term["human"]["multi_term_use"][
+        "leave_one_source_out_range"
+    ][0] > 0
+    matched_ai_multi = matched_family_term["ai"]["multi_term_use"]["source_cluster_ci"]
+    assert matched_ai_multi[0] < 0 < matched_ai_multi[1]
+    matched_interaction = matched_family_term["paired_both_tracks"]
+    assert matched_interaction["eligible_pairs"] == 85
+    for metric in ("zero_term_use", "one_term_use", "multi_term_use"):
+        lo, hi = matched_interaction[metric]["source_cluster_ci"]
+        assert lo < 0 < hi
+    unambiguous_family_term = binder[
+        "position_matched_generality_term_unambiguous_sensitivity"
+    ]["caliper_0_25"]
+    for side in ("human", "ai"):
+        assert unambiguous_family_term[side]["zero_term_use"]["source_cluster_ci"][1] < 0
+    assert unambiguous_family_term["human"]["multi_term_use"]["source_cluster_ci"][0] > 0
+    unambiguous_ai_multi = unambiguous_family_term["ai"]["multi_term_use"][
+        "source_cluster_ci"
+    ]
+    assert unambiguous_ai_multi[0] < 0 < unambiguous_ai_multi[1]
     tree = binder["root_tree_representation"]
     assert tree["human"]["max_decimal_digits"] == 11
     assert tree["ai"]["max_decimal_digits"] == 535

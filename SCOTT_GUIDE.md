@@ -133,7 +133,15 @@ the same source `have` with different core node kinds, so the analysis decodes t
 semantic construct before aligning it. Across all 7,260 production tasks, AI boundaries
 are more often absent from the final term (21.7% versus 9.7%) or multiply represented;
 human boundaries more often map one-to-one (58.2% versus 44.2%). Yet aggregate multi-use
-is nearly equal (32.1% versus 34.1%). A stack-safe dynamic program agrees exactly with the
+is nearly equal (32.1% versus 34.1%); conditional on retention, AI multi-use is higher (43.6%
+versus 35.6% human). Within proof sides containing both aligned forms, family
+binders are less likely than instance binders to disappear in both tracks. Their multi-use uplift
+remains robust for humans (17.8 points) but unresolved for AI (-2.6 points) after matching nearby
+binders one-to-one within the same proof. The direct between-track interaction is itself unresolved,
+so this does not establish a provenance difference in family-specific term composition. It does
+show that the family classifier
+predicts compiled retention, while family-specific repeated composition supplies a sharper
+provenance asymmetry than aggregate reuse. A stack-safe dynamic program agrees exactly with the
 legacy traversal on every one of its 7,186 successful tasks and recovers its 74 timeouts. A typed
 zeta-reduction regression also changes a 99-node shared term into a 65,533-node tree
 without changing its type. The result is about visible interface allocation under

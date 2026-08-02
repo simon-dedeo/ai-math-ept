@@ -42,7 +42,11 @@ earlier-position advantage. The gap is therefore in how often that interface for
 whether AI can use it. In the complete
 production-term census, AI source boundaries more often disappear (21.7% versus 9.7%) or are
 duplicated, while human boundaries more often map one-to-one (58.2% versus 44.2%). Aggregate
-multi-use remains nearly equal (32.1% versus 34.1%). The divergence is
+multi-use remains nearly equal (32.1% versus 34.1%), but conditional on surviving at all it is
+higher for AI (43.6% versus 35.6% human). Within proofs containing both aligned family
+and instance binders, however, families are preferentially retained on both tracks, while their
+multi-use uplift is robust only for humans after within-proof position matching; the direct
+between-track interaction is unresolved. The divergence is
 therefore not “humans reuse, machines do not.” It lies in whether source
 structure is transient search state or an addressable interface. This is the
 **consolidation–composition split**: large differences in whether abstractions become explicit

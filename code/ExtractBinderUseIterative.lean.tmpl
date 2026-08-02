@@ -36,7 +36,7 @@ def collectLetsIterative (root : Expr) : Nat × Array BinderUse := Id.run do
     | .visit expr scope =>
         match expr with
         | .bvar i =>
-            match scope.get? i with
+            match scope[i]? with
             | some (some id) =>
                 counts := counts.set! id (counts[id]! + 1)
             | _ => pure ()

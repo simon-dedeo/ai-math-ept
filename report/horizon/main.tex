@@ -345,7 +345,7 @@ interface investment, but it is not by itself proof of semantic quality.  A shor
 may be excellent, and a long name may be decorative.  A paired within-proof embedding assay finds
 no robust human advantage after chance and claim-count normalization (appendix), so we make no
 semantic naming claim.
-Nor do the proxies collapse into one style score.  Across the 1,885 pairs with claims on both sides,
+Nor do the proxies collapse into one style score.  Across the 1,883 pairs with claims on both sides,
 Spearman correlations among proof-level human advantages in uptake, reach, family construction, and
 naming range only from .07 to .32.  We therefore keep the coordinates separate.
 
@@ -353,21 +353,32 @@ The elaborated term analysis both confirms and corrects the source story.  All 7
 snapshot tasks compile; exact-name alignment retains 14,832 of 14,911 human and 25,677 of 25,715 AI
 claims.  Among aligned binders, 9.7\% human versus 21.7\% AI have zero occurrence in the final term.
 But multiple occurrence is 32.1\% versus 34.1\% (AI-minus-human interval $-0.05$ to 4.89 points).
+Conditional on occurring at least once, however, multi-use is 35.6\% versus 43.6\% (difference
+interval 4.8--12.5 points).
 The sharper result is a polarized source-to-certificate channel: zero-or-multiple occurrence is
 41.8\% human and 55.8\% AI (difference 14.0 points, interval 9.9--20.6), leaving one-to-one mapping
 at 58.2\% versus 44.2\%.  Within both the source-single-use and source-multi-use strata, AI claims
 are more likely to disappear and more likely to be duplicated; polarization is higher for AI in
 all 12 matched tactic strata.  Contextual tactics can amplify a fact massively, so raw means are not
-cognitive reuse measures.  What survives is more precise: AI source boundaries align less often
-one-to-one with certificate structure, while aggregate kernel multi-use is not uniquely human.
+cognitive reuse measures.
+
+Family syntax nevertheless predicts compiled function.  Repeating the one-to-one position match on
+aligned binders (quarter-proof caliper; 263 human and 226 AI proofs), family-minus-instance
+disappearance is $-2.5$ points human (interval $-5.4$ to $-1.2$) and $-7.5$ AI ($-9.6$ to $-5.1$).
+The corresponding multi-use uplift is 17.8 points human (10.8--25.3), but $-2.6$ AI ($-10.9$ to
+12.6).  The direct AI-minus-human interaction among 85 pairs eligible on both tracks remains
+unresolved (interval $-17.8$ to 6.0).  Thus families preferentially survive on both tracks; the
+different composition estimates are suggestive, not an established provenance difference.  This
+validates the classifier functionally without making occurrence count a general cognitive-reuse
+measure.
 
 The three resolutions reveal a \emph{consolidation--composition split}.  The human track more often
 turns intermediate state into a visibly adopted, repeatedly invoked, named, and general interface;
 the AI track more often leaves its bound fact absent from or amplified within the returned certificate.  Yet
 conditional duration is control-dependent, AI families are at least as long-reaching in the pooled
-comparison, and retained term binders are just as often multiply used.  The present divergence is
-therefore better localized to consolidation policy---where compositional structure is made
-explicit---than to capacity for composing in a checked term.
+comparison, and aggregate term multi-use does not favor humans.  The present divergence is therefore
+better localized to consolidation policy---where reusable compositional structure is made
+explicit---than to deductive capacity.
 
 \begin{figure}[t]
   \centering
@@ -503,7 +514,9 @@ and exporting too many lemmas makes the library harder to search.  Long-horizon 
 therefore not maximization of lemma count.  It is selection of a small basis whose elements remain
 useful after the local context has vanished.
 
-The equality of multi-use term binders is theoretically important here.  Kernel sharing and
+The aggregate near-equality of multi-use term binders is theoretically important here.  It hides
+opposite channel components: AI binders disappear more often, but those retained are more often
+multiply represented.  Kernel sharing and
 communicative abstraction are different achievements.  Automation can expand a generic hypothesis
 into many term occurrences without ever identifying a concept for a reader.  Conversely, a
 well-chosen explanatory lemma can deserve a name even when invoked once in the current theorem,
@@ -546,7 +559,8 @@ $|P_t\mid L|$ is its residual certificate size, define
  \label{eq:apc}
 \end{equation}
 with $\lambda\geq 1$.  Thus neither a circular declaration nor an unpriced advice oracle is allowed.
-The factor $\lambda$ prices the design and maintenance of shared structure.  A richer version can price names,
+Unlike nonuniform proof systems with advice \citep{beyersdorff2011}, $L$ is stream-specific,
+checked in the same environment, and fully charged.  The factor $\lambda$ prices the design and maintenance of shared structure.  A richer version can price names,
 dependency fragility, retrieval, and human validation separately.  An online version charges when
 each declaration is introduced and compares cumulative cost with the best hindsight library.
 
@@ -602,37 +616,24 @@ The evidence supports a narrow, structural claim.  In this paired corpus, the AI
 source-level local state; more of it is visibly unreferenced, more of it vanishes from the final
 term's dependency structure, and its names are more generic.  Conditional source duration does not
 robustly separate the tracks.
-It does not support a claim that machine proof terms lack sharing: retained binders are multiply
-used at the same rate.
+It does not support a claim that machine proof terms lack sharing: conditional on retention, AI
+binders are more often multiply represented.
 Nor does it show that human artifacts are globally reusable, since our primary analysis ends at the
 target declaration.  The distinction between episode and persistent interface remains to be tested
 on theorem sequences.
 
-Several limitations are consequential.  First, source provenance is observational.  Second, the
-lexical parser recognizes named \code{have}, not every \code{let}, \code{suffices}, anonymous claim,
-or tactic-generated subgoal.  Third, the production-snapshot census is complete, but the independent
-current-snapshot sensitivity leaves 298 of 312 pairs; version attrition can select on style.
-Fourth, binder occurrence is syntactic and can be amplified massively by automation.  Fifth, the
-main surprisal model may have seen related text, while a source-held-out bigram weakens the
-content-only contrast.  The boundary effect is exploratory.  Sixth, meaningful names and long spans are only proxies
-for explanatory value.  Interactive links from written proof steps to Lean state have improved
-comprehension in a small reader study, but our boundary measures still require a direct experiment
-\citep{kambhamettu2026}.
+The limitations are consequential: provenance is observational; the lexical parser misses other
+source constructs and implicit tactic use; current-version attrition can select on style; binder
+occurrence is representation-specific; the surprisal model may have training overlap; and names and
+spans remain proxies.  Direct reader experiments are still required \citep{kambhamettu2026}.
+A scope-correct 298-pair topology rerun also finds no robust authorship effect in reuse-tail exponent
+or maximum outdegree; the withdrawn extractor and regression are detailed in the appendix.
 
-The representation audit adds one correction.  An earlier root-term extractor globally interned
-raw de Bruijn indices from unrelated scopes, creating false reuse paths.  Scope-specific identities
-remove the error, and a corrected 298-pair rerun finds no robust authorship effect in either the
-fixed-$10$ reuse-tail exponent ($-0.002$, source-cluster interval $-0.016$ to $0.013$) or maximum
-outdegree (median difference zero, $-3$ to $0$).  The binder-use traversal here is independently
-scope-aware; details and regression construction appear in the appendix.
-
-Three observations would falsify or sharply narrow the horizon account.  The claim fails if an
-objective-matched human--AI experiment retains the same difference; if downstream reward does not
-produce longer-lived machine interfaces; or if the proposed interface measures fail to predict
-future proof cost, maintenance, or reader comprehension.  Conversely, a machine system that builds
-a durable, intelligible library is not an exception to be explained away.  It is the decisive
-prediction.  Ultimately, a proof is a wager on its next use: evaluation should measure whether
-proving today changes tomorrow's cost and intelligibility.
+The account fails if an objective-matched experiment retains the same difference, downstream reward
+does not lengthen machine interfaces, or the measures fail to predict future cost, maintenance, and
+comprehension.  A machine-built durable library is the decisive prediction, not an exception.
+Ultimately, a proof is a wager on its next use: evaluation should measure whether proving today
+changes tomorrow's cost and intelligibility.
 
 \clearpage
 \bibliographystyle{plainnat}
@@ -651,7 +652,11 @@ Seeds and inclusion rules are serialized with the estimates.
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
 Every source group has lower explicit uses per AI claim and higher AI zero-uptake; 11 of 12 have
 lower AI long-reach share.  The production term alignment's unique-name subset contains 9,477 human
-and 15,058 AI claims; zero-use shares are 9.5\% and 21.7\%, respectively.  The surprisal boundary contrast is
+and 15,058 AI claims; zero-use shares are 9.5\% and 21.7\%, respectively.
+The position-matched family-retention result also survives this unique-name restriction (202 human
+and 167 AI proof sides); the human within-track multi-use association remains positive, while the
+AI association and the direct multi-use provenance interaction remain unresolved.
+The surprisal boundary contrast is
 present for four-, eight-, and more weakly 16-token windows, and absent at 32.  Excluding the complete
 claim header preserves the four- and eight-token effects.  In the leave-one-source-out bigram,
 which excludes every document in the held-out proof's coarse source group from training, the raw
@@ -664,7 +669,7 @@ available before the same-name stopping point and excludes declarations with no 
 reach and normalized reach are higher in all 12 source groups.  In contrast, the conditional chance
 of crossing at least one available boundary is 75.1\%/75.2\% (AI-minus-human source-cluster interval
 $-.013$ to $.011$).  In the length-matched subset, both conditional-duration intervals cross zero;
-under equal positive claim counts, normalized duration is 50.9\%/53.8\%.  The claim-density ruler
+under equal positive claim counts, normalized duration is 51.1\%/53.6\%.  The claim-density ruler
 alone would conceal both the null result and the instability of the pooled direction.
 
 The local functional check on the family classifier holds separately for its two equivalent

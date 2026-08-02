@@ -18,7 +18,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
-from scipy import stats
+from scipy import optimize, stats
 
 
 def lcs_matches(source_names: list[str], term_names: list[str]) -> list[tuple[int, int]]:
@@ -118,6 +118,45 @@ def retention_difference(
     }
 
 
+def conditional_retained_multi_use(
+    frame: pd.DataFrame,
+    rng: np.random.Generator,
+    boot: int,
+) -> dict[str, Any]:
+    """Multi-occurrence rate conditional on a matched binder occurring at all."""
+    work = frame.copy()
+    for side in ("h", "a"):
+        work[f"{side}_retained"] = (
+            work[f"{side}_matched"] - work[f"{side}_zero_term_use"]
+        )
+    columns = [
+        "h_multi_term_use", "h_retained", "a_multi_term_use", "a_retained"
+    ]
+    grouped = work.groupby("source")[columns].sum().to_numpy(float)
+    draws = rng.integers(0, len(grouped), size=(boot, len(grouped)))
+    sampled = grouped[draws].sum(axis=1)
+    differences = (
+        sampled[:, 2] / np.maximum(sampled[:, 3], 1)
+        - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+    )
+    output: dict[str, Any] = {}
+    for side, label in (("h", "human"), ("a", "ai")):
+        numerator = int(work[f"{side}_multi_term_use"].sum())
+        denominator = int(work[f"{side}_retained"].sum())
+        output[label] = {
+            "numerator": numerator,
+            "denominator": denominator,
+            "estimate": float(numerator / denominator) if denominator else None,
+        }
+    output["ai_minus_human"] = {
+        "estimate": output["ai"]["estimate"] - output["human"]["estimate"],
+        "source_cluster_ci": [
+            float(x) for x in np.percentile(differences, [2.5, 97.5])
+        ],
+    }
+    return output
+
+
 def transition_summary(
     claims: pd.DataFrame,
     rng: np.random.Generator,
@@ -189,6 +228,228 @@ def transition_summary(
                 ],
             }
             output[source_class][term_class] = side_summary
+    return output
+
+
+def within_proof_generality_term_association(
+    claims: pd.DataFrame,
+    rng: np.random.Generator,
+    boot: int,
+) -> dict[str, Any]:
+    """Family-minus-instance term outcomes, restricted to proofs containing both.
+
+    Proofs, rather than claims, receive equal weight.  Confidence intervals
+    resample source projects so that repeated theorem pairs from one corpus do
+    not masquerade as independent evidence.
+    """
+    output: dict[str, Any] = {}
+    outcomes = ("zero_term_use", "one_term_use", "multi_term_use", "term_uses")
+    for side, label in (("h", "human"), ("a", "ai")):
+        side_claims = claims[claims.side.eq(side)]
+        proof_rows: list[dict[str, Any]] = []
+        for (pair, source), group in side_claims.groupby(["pair", "source"]):
+            family = group[group.generalized_claim]
+            instance = group[~group.generalized_claim]
+            if family.empty or instance.empty:
+                continue
+            row: dict[str, Any] = {
+                "pair": pair,
+                "source": source,
+                "family_claims": len(family),
+                "instance_claims": len(instance),
+            }
+            for metric in outcomes:
+                row[f"family_{metric}"] = float(family[metric].mean())
+                row[f"instance_{metric}"] = float(instance[metric].mean())
+                row[f"difference_{metric}"] = (
+                    row[f"family_{metric}"] - row[f"instance_{metric}"]
+                )
+            proof_rows.append(row)
+
+        frame = pd.DataFrame(proof_rows)
+        side_output: dict[str, Any] = {
+            "proofs": len(frame),
+            "source_groups": int(frame.source.nunique()) if len(frame) else 0,
+            "family_claims": int(frame.family_claims.sum()) if len(frame) else 0,
+            "instance_claims": int(frame.instance_claims.sum()) if len(frame) else 0,
+        }
+        for metric in outcomes:
+            if frame.empty:
+                side_output[metric] = {
+                    "family_proof_mean": None,
+                    "instance_proof_mean": None,
+                    "family_minus_instance": None,
+                    "source_cluster_ci": [None, None],
+                    "paired_wilcoxon_p": None,
+                }
+                continue
+            difference = frame[f"difference_{metric}"].to_numpy(float)
+            by_source = (
+                frame.groupby("source")[f"difference_{metric}"]
+                .agg(["sum", "count"])
+                .to_numpy(float)
+            )
+            draws = rng.integers(0, len(by_source), size=(boot, len(by_source)))
+            sampled = by_source[draws].sum(axis=1)
+            distribution = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+            try:
+                p_value = float(stats.wilcoxon(difference).pvalue)
+            except ValueError:
+                p_value = 1.0
+            side_output[metric] = {
+                "family_proof_mean": float(frame[f"family_{metric}"].mean()),
+                "instance_proof_mean": float(frame[f"instance_{metric}"].mean()),
+                "family_minus_instance": float(difference.mean()),
+                "source_cluster_ci": [
+                    float(x) for x in np.percentile(distribution, [2.5, 97.5])
+                ],
+                "paired_wilcoxon_p": p_value,
+            }
+        output[label] = side_output
+    return output
+
+
+def position_matched_generality_term_association(
+    claims: pd.DataFrame,
+    rng: np.random.Generator,
+    boot: int,
+) -> dict[str, Any]:
+    """Family-minus-instance term outcomes after within-proof position matching."""
+    work = claims.copy()
+    outcomes = ("zero_term_use", "one_term_use", "multi_term_use")
+    sources = sorted(work.source.unique())
+    output: dict[str, Any] = {
+        "estimand": (
+            "proof-mean family-minus-instance term fate after minimum-cost one-to-one "
+            "matching on source claim position"
+        )
+    }
+    for block, caliper in (("all_matches", None), ("caliper_0_25", 0.25)):
+        output[block] = {}
+        side_frames: dict[str, pd.DataFrame] = {}
+        for side, label in (("h", "human"), ("a", "ai")):
+            proof_rows: list[dict[str, Any]] = []
+            for (pair, source), group in work[work.side.eq(side)].groupby(
+                ["pair", "source"]
+            ):
+                family = group[group.generalized_claim].copy()
+                instance = group[~group.generalized_claim].copy()
+                if family.empty or instance.empty:
+                    continue
+                scale = max(float(group.source_claims_in_proof.iloc[0] - 1), 1.0)
+                family_position = family.claim_index.to_numpy(float) / scale
+                instance_position = instance.claim_index.to_numpy(float) / scale
+                cost = np.abs(
+                    family_position[:, None] - instance_position[None, :]
+                )
+                family_i, instance_i = optimize.linear_sum_assignment(cost)
+                gaps = cost[family_i, instance_i]
+                keep = np.ones(len(gaps), dtype=bool)
+                if caliper is not None:
+                    keep = gaps <= caliper
+                if not keep.any():
+                    continue
+                family_i, instance_i, gaps = (
+                    family_i[keep], instance_i[keep], gaps[keep]
+                )
+                row: dict[str, Any] = {
+                    "pair": pair,
+                    "source": source,
+                    "matches": int(len(gaps)),
+                    "mean_abs_relative_position_gap": float(gaps.mean()),
+                }
+                for metric in outcomes:
+                    row[metric] = float(
+                        family.iloc[family_i][metric].to_numpy(float).mean()
+                        - instance.iloc[instance_i][metric].to_numpy(float).mean()
+                    )
+                proof_rows.append(row)
+
+            contrasts = pd.DataFrame(
+                proof_rows,
+                columns=[
+                    "pair", "source", "matches", "mean_abs_relative_position_gap",
+                    *outcomes,
+                ],
+            )
+            side_frames[side] = contrasts
+            side_output: dict[str, Any] = {
+                "eligible_proofs": int(len(contrasts)),
+                "matched_claim_pairs": (
+                    int(contrasts.matches.sum()) if len(contrasts) else 0
+                ),
+                "mean_abs_relative_position_gap": (
+                    float(contrasts.mean_abs_relative_position_gap.mean())
+                    if len(contrasts) else None
+                ),
+            }
+            for metric in outcomes:
+                if contrasts.empty:
+                    side_output[metric] = {
+                        "family_minus_instance": None,
+                        "source_cluster_ci": [None, None],
+                    }
+                    continue
+                grouped = (
+                    contrasts.groupby("source")[metric]
+                    .agg(["sum", "size"])
+                    .reindex(sources, fill_value=0)
+                    .to_numpy(float)
+                )
+                draws = rng.integers(0, len(grouped), size=(boot, len(grouped)))
+                sampled = grouped[draws].sum(axis=1)
+                distribution = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+                leave_one_source_out = [
+                    float(contrasts.loc[contrasts.source.ne(source), metric].mean())
+                    for source in sources
+                    if contrasts.source.ne(source).any()
+                ]
+                if not leave_one_source_out:
+                    leave_one_source_out = [float(contrasts[metric].mean())]
+                side_output[metric] = {
+                    "family_minus_instance": float(contrasts[metric].mean()),
+                    "source_cluster_ci": [
+                        float(x) for x in np.percentile(distribution, [2.5, 97.5])
+                    ],
+                    "leave_one_source_out_range": [
+                        min(leave_one_source_out), max(leave_one_source_out)
+                    ],
+                }
+            output[block][label] = side_output
+
+        paired = side_frames["h"].merge(
+            side_frames["a"], on=["pair", "source"], suffixes=("_human", "_ai")
+        )
+        paired_output: dict[str, Any] = {
+            "eligible_pairs": int(len(paired)),
+            "estimand": "AI minus human position-matched family association",
+        }
+        for metric in outcomes:
+            if paired.empty:
+                paired_output[metric] = {
+                    "ai_minus_human": None,
+                    "source_cluster_ci": [None, None],
+                }
+                continue
+            paired_difference = (
+                paired[f"{metric}_ai"] - paired[f"{metric}_human"]
+            )
+            grouped = (
+                pd.DataFrame({"source": paired.source, "difference": paired_difference})
+                .groupby("source").difference.agg(["sum", "size"])
+                .reindex(sources, fill_value=0)
+                .to_numpy(float)
+            )
+            draws = rng.integers(0, len(grouped), size=(boot, len(grouped)))
+            sampled = grouped[draws].sum(axis=1)
+            distribution = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+            paired_output[metric] = {
+                "ai_minus_human": float(paired_difference.mean()),
+                "source_cluster_ci": [
+                    float(x) for x in np.percentile(distribution, [2.5, 97.5])
+                ],
+            }
+        output[block]["paired_both_tracks"] = paired_output
     return output
 
 
@@ -343,6 +604,7 @@ def main() -> None:
                 "side": side,
                 "source": source_name,
                 "claim_index": int(claim.claim_index),
+                "source_claims_in_proof": int(len(source_claims)),
                 "name": source_names[source_i],
                 "binder_kind": str(binder.get("kind", "unknown")),
                 "explicit_uses": int(claim.explicit_uses),
@@ -388,7 +650,7 @@ def main() -> None:
         proof_rows.append(base)
 
     claim_columns = [
-        "pair", "side", "source", "claim_index", "name", "binder_kind", "explicit_uses",
+        "pair", "side", "source", "claim_index", "source_claims_in_proof", "name", "binder_kind", "explicit_uses",
         "term_uses", "zero_term_use", "one_term_use", "multi_term_use",
         "polarized_term_use", "reuse_excess", "value_nodes",
         "potential_inlining_nodes", "placeholder_name", "redeclared_name",
@@ -556,6 +818,9 @@ def main() -> None:
             "ai_minus_human": retention_difference(complete, rng, args.boot),
         },
         "claim_rates_complete_pairs": rates,
+        "multi_term_use_conditional_on_retention": conditional_retained_multi_use(
+            complete, np.random.default_rng(args.seed + 20), args.boot
+        ),
         "matched_claim_profiles_by_generality": {
             f"{label}_{'generalized' if generalized else 'instance'}": {
                 "claims": int(len(group)),
@@ -571,6 +836,23 @@ def main() -> None:
                 & complete_claims.generalized_claim.eq(generalized)
             ]]
         },
+        "within_proof_generality_term_association": (
+            within_proof_generality_term_association(
+                complete_claims, np.random.default_rng(args.seed + 17), args.boot
+            )
+        ),
+        "position_matched_generality_term_association": (
+            position_matched_generality_term_association(
+                complete_claims, np.random.default_rng(args.seed + 18), args.boot
+            )
+        ),
+        "position_matched_generality_term_unambiguous_sensitivity": (
+            position_matched_generality_term_association(
+                complete_claims[complete_claims.unambiguous_name],
+                np.random.default_rng(args.seed + 19),
+                args.boot,
+            )
+        ),
         "claim_rate_differences_complete_pairs": rate_differences,
         "source_to_term_use_transitions": transition_summary(
             complete_claims, rng, args.boot
