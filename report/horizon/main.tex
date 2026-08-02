@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=.92in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern,microtype}
@@ -18,7 +18,7 @@
 \setlength{\emergencystretch}{2em}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\APC}{\operatorname{APC}}
+\newcommand{\LAPC}{\operatorname{LAPC}}
 \definecolor{human}{HTML}{294C60}
 \definecolor{machine}{HTML}{B24C3D}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
@@ -51,7 +51,7 @@ kernel sharing. An exploratory Lean-model analysis finds a short information pul
 boundaries, strongly attenuated at AI boundaries. These results locate the divergence not in deductive power
 or biological kind, but in which consumer the construction serves. Recent machine refactoring and
 library-building systems support the corresponding prediction: changing the horizon changes the
-artifact. We formalize the idea as amortized proof complexity over theorem streams, a quantity that
+artifact. We formalize the idea as library-amortized proof complexity over theorem streams, a quantity that
 single-theorem benchmarks cannot observe.
 \end{abstract}
 
@@ -228,7 +228,7 @@ may be excellent, and a long name may be decorative.
 
 The elaborated term analysis both confirms and corrects the source story.  Among aligned binders,
 14.0\% of human versus 23.4\% of AI claims have zero occurrence in the final theorem term.  Thus the
-AI track more often externalizes transient state that the certificate does not retain.  But the
+AI track more often externalizes transient state on which the certificate does not depend.  But the
 rate of multiple term occurrences is essentially equal: 35.0\% human and 35.9\% AI.  This is a
 substantive falsification of the simplest ``AI does not reuse'' narrative.  Contextual tactics can
 duplicate an available fact many times during elaboration; raw mean use counts have enormous
@@ -316,6 +316,16 @@ with compression \citep{lu2026leanrefactor}.  Rtl2lean asks a generator to build
 library and reports that 287 of 358 foundational lemmas are available for automatic reuse
 \citep{lyu2026rtl2lean}.
 
+Lemma invention itself is not new.  Mining unnamed HOL Light inferences showed that useful
+intermediate statements, combined with relevance filtering, can strengthen later proving even when
+millions of candidates exist \citep{kaliszyk2014}.  LEGO-Prover grows a verified skill library
+during theorem proving \citep{wang2023lego}; DreamProver alternates a wake phase that proposes
+lemmas with a sleep phase that abstracts and consolidates them \citep{zhang2026dream}.  These systems
+make the retrieval cost visible: persistent memory is useful only if a later agent can select from
+it.  Our contribution is not the observation that lemmas can be learned, but a common account of
+why compile-first artifacts, refactored proofs, human-readable boundaries, and growing libraries
+differ---and an evaluation target that charges construction against future savings.
+
 These systems do not prove that their artifacts match mature human libraries, and their metrics are
 not directly comparable with ours.  They establish the more fundamental point: machines can be
 made to externalize persistent mathematical memory.  The observed human--AI difference is therefore
@@ -388,22 +398,33 @@ refactored artifacts---and observe how representations change between them.  The
 predicts that the largest human--AI gap will occur not in local inference, where both can exploit
 formal context, but in deciding what part of a successful episode should become shared memory.
 
-\section{Amortized proof complexity}
+\section{Library-amortized proof complexity}
 
 Ordinary proof complexity asks for the size of a certificate for one formula in a fixed proof
 system.  This leaves library construction outside the objective.  Let
 $\Phi=(\varphi_1,\ldots,\varphi_T)$ be a stream of targets.  For a checked auxiliary library $L$ and
 proofs $P_t$ that may use it, define
 \begin{equation}
- \APC_\lambda(\Phi)=
+ \LAPC_\lambda(\Phi)=
  \min_{L,P_1,\ldots,P_T}
  \left[\lambda |L|+\sum_{t=1}^T |P_t\mid L|\right],
  \label{eq:apc}
 \end{equation}
-subject to every declaration in $L$ and every $P_t$ checking in the base environment.  The factor
-$\lambda$ prices the design and maintenance of shared structure.  A richer version can price names,
+subject to every declaration in $L$ and every $P_t$ checking in the base environment, with
+$\lambda\geq 1$.  The factor $\lambda$ prices the design and maintenance of shared structure.  A richer version can price names,
 dependency fragility, retrieval, and human validation separately.  An online version charges when
 each declaration is introduced and compares cumulative cost with the best hindsight library.
+
+Let $C(\varphi)$ be the shortest proof of one target without a new library.  Because $L$ may be
+empty, $\LAPC_\lambda(\Phi)\leq\sum_t C(\varphi_t)$.  The gap
+\begin{equation}
+ G_\lambda(\Phi)=\sum_t C(\varphi_t)-\LAPC_\lambda(\Phi)
+ \label{eq:gain}
+\end{equation}
+is the compression attributable to shared mathematical infrastructure at the chosen interface
+price.  At $\lambda=1$ the objective is a restricted two-part description length: library plus
+residual certificates.  It is not Kolmogorov complexity; the language is fixed to checked Lean
+artifacts and retrieval cost can be charged explicitly.
 
 Equation \eqref{eq:apc} changes what counts as an optimal proof.  A declaration that lengthens the
 first episode may lower total cost if it compresses later proofs.  A generic helper that is short
@@ -432,8 +453,9 @@ that coincidence must hold.
 
 The evidence supports a narrow, structural claim.  In this paired corpus, the AI track uses more
 source-level local state; more of it is visibly unreferenced, more of it vanishes from the final
-term, its names are more generic, and its visible temporal reach is shorter.  It does not support a
-claim that machine proof terms lack sharing: retained binders are multiply used at the same rate.
+term's dependency structure, its names are more generic, and its visible temporal reach is shorter.
+It does not support a claim that machine proof terms lack sharing: retained binders are multiply
+used at the same rate.
 Nor does it show that human artifacts are globally reusable, since our primary analysis ends at the
 target declaration.  The distinction between episode and persistent interface remains to be tested
 on theorem sequences.

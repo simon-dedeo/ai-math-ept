@@ -56,11 +56,13 @@ Library construction suggests a sequence-level object. For targets
 `phi_1, ..., phi_T`, define informally
 
 ```text
-APC_lambda(phi_1:T) = min_{library L, proofs P_1:T}
+LAPC_lambda(phi_1:T) = min_{library L, proofs P_1:T}
     lambda * size(L) + sum_t size(P_t | L),
 ```
 
-subject to every library declaration and proof checking in the base system.
+subject to every library declaration and proof checking in the base system,
+with lambda >= 1. The name is **library-amortized proof complexity**; the L
+avoids collision with the established bounded-arithmetic notation APC_1.
 An online version charges when declarations are introduced and measures regret
 against the best hindsight library. This is closely related to grammar-based
 compression and reusable subroutines: a library is valuable when shared

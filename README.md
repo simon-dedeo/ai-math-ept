@@ -32,7 +32,7 @@ working memory for the current episode, and an interface for later proofs and
 readers. In **3,635 validated human/AI pairs of the identical Lean statement**,
 the AI track creates more named local claims, but those claims receive fewer
 explicit references, remain visibly live for less of the proof, use much more
-generic names, and are more often absent from the final elaborated term. The
+generic names, and more often become unused binders in the final elaborated term. The
 kernel-level result is equally important: among claims that survive,
 multi-use binders occur at essentially the same rate. The divergence is
 therefore not “humans reuse, machines do not.” It lies in whether source

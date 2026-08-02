@@ -59,7 +59,7 @@ def main() -> None:
     assert pdf.exists()
     assert "References" not in page_text(pdf, 10)
     assert "References" in page_text(pdf, 11)
-    assert "Reproducibility and robustness" in page_text(pdf, 12)
+    assert "Reproducibility and robustness" in page_text(pdf, 13)
     print({"source_pairs": 3635, "term_pairs": 298, "abstract_words": len(words),
            "main_text_pages": 10})
 
