@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from paired_horizon import (
+    named_have_declarations,
     named_have_claims,
     proof_body,
     serialized_target_signature,
@@ -26,6 +27,25 @@ theorem demo : True := by
     claims = named_have_claims(source)
     assert len(claims) == 1
     assert claims[0]["explicit_uses"] == 1
+
+
+def test_constructor_side_shadowed_name_is_not_downstream_use() -> None:
+    source = '''
+theorem demo (h : True) : True := by
+  have h : True := h
+  exact h
+'''
+    body = proof_body(source)
+    declaration = named_have_declarations(body)[0]
+    construction_end = body.index("\n  exact h")
+    claims = named_have_claims(
+        source,
+        [(declaration["start"], construction_end)],
+        require_parser_match=True,
+    )
+    assert len(claims) == 1
+    assert claims[0]["explicit_uses"] == 1
+    assert claims[0]["first_use_delay_tokens"] == 1
 
 
 def test_only_final_target_declaration_is_analyzed() -> None:
@@ -225,6 +245,7 @@ def test_family_position_matching_uses_nearest_claim() -> None:
 
 if __name__ == "__main__":
     test_comments_and_strings_do_not_count()
+    test_constructor_side_shadowed_name_is_not_downstream_use()
     test_only_final_target_declaration_is_analyzed()
     test_redeclaration_ends_counting_window()
     test_redeclaration_also_ends_reach_opportunity()

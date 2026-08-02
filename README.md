@@ -33,24 +33,24 @@ readers. In **3,630 validated human/AI pairs of the identical Lean statement**,
 the AI track creates more named local claims, but those claims receive fewer
 explicit references, are less often adopted at all, use much more
 generic names, and less often state a callable family. The family comparison collapses
-equivalent binder and explicit-`forall` spellings: rates are 5.60% versus 1.91%, and within
-identical-theorem pairs family claims occur only on the human side 320 times versus only on the AI
-side 108 times. Within proofs containing both family and instance claims, family claims are
+equivalent binder and explicit-`forall` spellings: rates are 5.24% versus 1.68%, and within
+identical-theorem pairs family claims occur only on the human side 310 times versus only on the AI
+side 102 times. Within proofs containing both family and instance claims, family claims are
 substantially more likely to be adopted and multiply referenced in both tracks. This persists after
 matching each family to a nearby instance claim within the same proof, so it is not merely an
 earlier-position advantage. The gap is therefore in how often that interface form is selected, not
 whether AI can use it. In the complete
-production-term census, AI source boundaries more often disappear (21.7% versus 9.7%) or are
-duplicated, while human boundaries more often map one-to-one (58.2% versus 44.2%). Aggregate
-multi-use remains nearly equal (32.1% versus 34.1%), but conditional on surviving at all it is
-higher for AI (43.6% versus 35.6% human). Within proofs containing both aligned family
+production-term census, AI source boundaries more often disappear (21.8% versus 9.8%) or are
+duplicated, while human boundaries more often map one-to-one (58.0% versus 44.0%). Aggregate
+multi-use remains nearly equal (32.2% versus 34.2%), but conditional on surviving at all it is
+higher for AI (43.7% versus 35.7% human). Within proofs containing both aligned family
 and instance binders, however, families are preferentially retained on both tracks, while their
 multi-use uplift is robust only for humans after within-proof position matching; the direct
 between-track interaction is unresolved. The divergence is
 therefore not “humans reuse, machines do not.” It lies in whether source
 structure is transient search state or an addressable interface. This is the
-**consolidation–composition split**: large differences in whether abstractions become explicit
-interfaces, but weak or reversed differences in source duration and kernel composition. We call its
+**consolidation–composition split**: large differences in deliberate source retrieval, but weak or
+reversed differences in compiler-produced term fan-out. We call its
 governing variable the **amortization horizon**: how far into future reasoning a
 constructor expects an abstraction to repay its cost. The hypothesis predicts
 that AI given refactoring and downstream-library objectives can cross the
@@ -64,11 +64,15 @@ unfolding with a reusable closed form; the AI's one-line `norm_num` proof denote
 fully expanded tree count has 535 digits. This is a representation fact, not a cognitive score, but
 it makes the difference between naming an invariant and delegating the present computation concrete.
 
-One measurement correction is especially important. Conditional on adoption and on a later claim
+One measurement correction is especially important. Lean's parser now identifies the end of each
+complete `have` construction before reference counting; this prevents an older shadowed name in
+`have h : P := f h` from being counted as use of the new `h`. Exact ranges cover 39,646 of 40,626
+candidate claims, and the result is unchanged in the 3,511 theorem pairs with complete two-sided
+alignment. Conditional on adoption and on a later claim
 boundary being available, human and AI claims are equally likely to cross at least one such
-boundary (75.1% versus 75.2%); AI scripts simply create more boundaries. Pooled human claims remain
-referenced across more source tokens (56.8 versus 43.1) and a larger fraction of available
-boundaries (49.1% versus 45.4%), but those duration effects disappear under length matching, and
+boundary (75.7% versus 75.8%); AI scripts simply create more boundaries. Pooled human claims remain
+referenced across more source tokens (37.5 versus 25.9, measured after construction) and a larger fraction of available
+boundaries (49.6% versus 46.0%), but those duration effects disappear under length matching, and
 normalized duration slightly reverses under equal claim counts. “Horizon” is therefore decomposed
 into adoption and duration: the robust difference is selection for uptake, not an AI inability to
 carry an adopted claim forward.
@@ -89,7 +93,7 @@ carry an adopted claim forward.
 
 | file | what it does |
 |---|---|
-| `paired_horizon.py` | 3,630-pair exact-statement audit and source analysis: local-claim density, uptake, visible reach, naming, generalized-family syntax, and automation sensitivities |
+| `paired_horizon.py`, `ExtractHaveRanges.lean` | 3,630-pair exact-statement audit and Lean-parser-bounded source analysis: local-claim density, uptake, visible reach, naming, generalized-family syntax, and automation sensitivities |
 | `ExtractBinderUseMemoLegacy.lean.tmpl`, `ExtractBinderUseLegacy.lean.tmpl`, `ExtractBinderUseLinear.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | semantic decoding of production Lean 4.15 `letFun` and current Lean `letE` encodings, stack-safe memoized binder use, source-to-term alignment, and source/term transitions |
 | `binder_memo_audit.py` | equivalence audit of the memoized production traversal against the legacy recursive traversal, including the largest legacy-success terms and every source group |
 | `results/horizon/binder_root_tree_extremes.csv` | ranked, exact arbitrary-precision tree-occurrence counts; these diagnose representation expansion and are not treated as intrinsic proof sizes |

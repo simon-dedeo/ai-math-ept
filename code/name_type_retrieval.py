@@ -168,8 +168,8 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def analyze(root: Path, outdir: Path, embeddings_path: Path, pooling: str,
-            boot: int, seed: int) -> None:
+def analyze(root: Path, outdir: Path, result_outdir: Path, embeddings_path: Path,
+            pooling: str, boot: int, seed: int) -> None:
     manifest = pd.read_csv(outdir / "manifest.csv")
     payload = json.loads(embeddings_path.read_text())
     embeddings = np.asarray([row["embedding"] for row in payload["data"]], dtype=np.float32)
@@ -263,10 +263,11 @@ def analyze(root: Path, outdir: Path, embeddings_path: Path, pooling: str,
             "ai": float(ai_equal.mean()),
             "ai_minus_human": float((ai_equal - human_equal).mean()),
         }
-    claim_frame.to_csv(outdir / "claim_scores.csv.gz", index=False,
+    result_outdir.mkdir(parents=True, exist_ok=True)
+    claim_frame.to_csv(result_outdir / "claim_scores.csv.gz", index=False,
                        compression={"method": "gzip", "mtime": 0})
-    paired.to_csv(outdir / "proof_scores.csv", index=False)
-    (outdir / "summary.json").write_text(json.dumps(summary, indent=2))
+    paired.to_csv(result_outdir / "proof_scores.csv", index=False)
+    (result_outdir / "summary.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))
 
 
@@ -275,6 +276,10 @@ def main() -> None:
     parser.add_argument("mode", choices=("prepare", "analyze"))
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--outdir", type=Path, default=Path("tmp/horizon/name_retrieval"))
+    parser.add_argument(
+        "--result-outdir", type=Path,
+        help="analysis output directory; defaults to --outdir",
+    )
     parser.add_argument("--embeddings", type=Path)
     parser.add_argument("--pooling", default="mean")
     parser.add_argument("--max-pairs", type=int, default=300)
@@ -289,7 +294,12 @@ def main() -> None:
         if args.embeddings is None:
             parser.error("analyze requires --embeddings")
         embeddings = args.embeddings if args.embeddings.is_absolute() else root / args.embeddings
-        analyze(root, outdir, embeddings, args.pooling, args.boot, args.seed)
+        result_outdir = (
+            args.result_outdir if args.result_outdir is not None else outdir
+        )
+        if not result_outdir.is_absolute():
+            result_outdir = root / result_outdir
+        analyze(root, outdir, result_outdir, embeddings, args.pooling, args.boot, args.seed)
 
 
 if __name__ == "__main__":

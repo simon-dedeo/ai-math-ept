@@ -139,6 +139,19 @@ def conditional_retained_multi_use(
         sampled[:, 2] / np.maximum(sampled[:, 3], 1)
         - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
     )
+    source_differences = (
+        grouped[:, 2] / np.maximum(grouped[:, 3], 1)
+        - grouped[:, 0] / np.maximum(grouped[:, 1], 1)
+    )
+    leave_one_source_out = []
+    for index in range(len(grouped)):
+        remainder = np.delete(grouped, index, axis=0).sum(axis=0)
+        leave_one_source_out.append(
+            float(
+                remainder[2] / max(remainder[3], 1)
+                - remainder[0] / max(remainder[1], 1)
+            )
+        )
     output: dict[str, Any] = {}
     for side, label in (("h", "human"), ("a", "ai")):
         numerator = int(work[f"{side}_multi_term_use"].sum())
@@ -152,6 +165,11 @@ def conditional_retained_multi_use(
         "estimate": output["ai"]["estimate"] - output["human"]["estimate"],
         "source_cluster_ci": [
             float(x) for x in np.percentile(differences, [2.5, 97.5])
+        ],
+        "source_groups_ai_higher": int((source_differences > 0).sum()),
+        "source_groups": int(len(source_differences)),
+        "leave_one_source_out_range": [
+            min(leave_one_source_out), max(leave_one_source_out)
         ],
     }
     return output

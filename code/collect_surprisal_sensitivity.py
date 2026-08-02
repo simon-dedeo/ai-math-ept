@@ -18,10 +18,16 @@ def main() -> None:
         path = outdir / f"surprisal_summary_w{window}.json"
         data = json.loads(path.read_text())
         for metric, record in data["paired"].items():
-            rows.append({"window": window, "metric": metric, **record})
+            row = {"window": window, "metric": metric, **record}
+            row["source_cluster_ci_low"], row["source_cluster_ci_high"] = record[
+                "source_cluster_ci"
+            ]
+            rows.append(row)
     fields = [
         "window", "metric", "n_pairs", "human_median", "ai_median",
-        "median_paired_difference", "probability_ai_greater", "wilcoxon_p",
+        "mean_paired_difference", "median_paired_difference",
+        "source_cluster_ci_low", "source_cluster_ci_high",
+        "probability_ai_greater", "wilcoxon_p",
     ]
     with (outdir / "surprisal_sensitivity.csv").open("w", newline="") as stream:
         writer = csv.DictWriter(

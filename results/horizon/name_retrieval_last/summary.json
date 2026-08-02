@@ -3,11 +3,11 @@
   "pairs": 229,
   "claims": 1866,
   "embedding_provenance": {
-    "pooling": "mean",
+    "pooling": "last",
     "prompt": "Lean mathematical concept: <naturalized name or exact explicit type>",
     "prompt_file_sha256": "12d473e40630d7740f3b92afd829eed0f89d53269388cd96ece4126b5acdb98b",
     "manifest_sha256": "725b1523db56542280ce4d3840dfb1b4749d1a929f88fef90ddf0c80b1e6559c",
-    "embedding_output_sha256": "c71182e5c42c7ea50e8ebaf650656ad68c81cdd9e062676933b6c21e14ecb4c8",
+    "embedding_output_sha256": "c778929d70f75cb3af052fd3fe5f77a41cb7a067bba69739efe50aea5ed47a1f",
     "model": {
       "base_model": "Goedel-LM/Goedel-Prover-V2-8B",
       "quantization": "Q4_K_M",
@@ -20,54 +20,54 @@
   },
   "metrics": {
     "retrieval_percentile": {
-      "human": 0.5269494697442296,
-      "ai": 0.51876689540445,
-      "ai_minus_human": -0.00818257433977958,
-      "paired_wilcoxon_p": 0.08786531444455209,
+      "human": 0.5182938240798503,
+      "ai": 0.504262840507382,
+      "ai_minus_human": -0.014030983572468287,
+      "paired_wilcoxon_p": 0.11122533241668316,
       "source_cluster_ci": [
-        -0.02001089979260928,
-        0.006293979312466981
+        -0.035175575517671184,
+        0.003653441379611877
       ]
     },
     "top1": {
-      "human": 0.3696402578498649,
-      "ai": 0.29950093574547726,
-      "ai_minus_human": -0.0701393221043876,
-      "paired_wilcoxon_p": 2.4123135702747584e-07,
+      "human": 0.3525213142025369,
+      "ai": 0.2889270118527761,
+      "ai_minus_human": -0.06359430234976086,
+      "paired_wilcoxon_p": 3.1054750906954435e-06,
       "source_cluster_ci": [
-        -0.0849564126401784,
-        -0.046213697169231065
+        -0.08866042070551569,
+        -0.03391838706387886
       ]
     },
     "top1_excess_chance": {
-      "human": 0.057569141193595345,
-      "ai": 0.03637970472031607,
-      "ai_minus_human": -0.02118943647327927,
-      "paired_wilcoxon_p": 0.03229391567913109,
+      "human": 0.03373882304013308,
+      "ai": 0.016022042004574754,
+      "ai_minus_human": -0.01771678103555833,
+      "paired_wilcoxon_p": 0.342198078581606,
       "source_cluster_ci": [
-        -0.04403496483339099,
-        0.008305487763967863
+        -0.061994831767994495,
+        0.02269407242063491
       ]
     }
   },
   "equal_claim_count_sensitivity": {
     "retrieval_percentile": {
       "pairs": 61,
-      "human": 0.5434035909445745,
-      "ai": 0.5324746291959407,
-      "ai_minus_human": -0.010928961748633883
+      "human": 0.5356752537080406,
+      "ai": 0.5043715846994535,
+      "ai_minus_human": -0.03130366900858704
     },
     "top1": {
       "pairs": 61,
-      "human": 0.40663544106167054,
-      "ai": 0.39886807181889145,
-      "ai_minus_human": -0.0077673692427790795
+      "human": 0.39324746291959406,
+      "ai": 0.3711163153786105,
+      "ai_minus_human": -0.02213114754098361
     },
     "top1_excess_chance": {
       "pairs": 61,
-      "human": 0.08169398907103825,
-      "ai": 0.07158469945355192,
-      "ai_minus_human": -0.010109289617486337
+      "human": 0.06420765027322403,
+      "ai": 0.01830601092896175,
+      "ai_minus_human": -0.04590163934426229
     }
   }
 }

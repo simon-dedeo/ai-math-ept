@@ -1,15 +1,22 @@
 {
+  "seed": 20260802,
+  "bootstraps": 10000,
   "model": "Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization",
   "window_tokens": 4,
   "documents": 624,
   "pairs": 312,
-  "claims": 3315,
+  "claims": 3227,
   "paired": {
     "mean_nll": {
       "n_pairs": 312,
       "human_median": 1.1454324395310347,
       "ai_median": 0.7261674119640272,
+      "mean_paired_difference": -0.396430878169448,
       "median_paired_difference": -0.3711431439506248,
+      "source_cluster_ci": [
+        -0.4823022644620601,
+        -0.304357955051878
+      ],
       "probability_ai_greater": 0.14102564102564102,
       "wilcoxon_p": 1.1209582562914749e-39
     },
@@ -17,118 +24,143 @@
       "n_pairs": 312,
       "human_median": 6.3296425,
       "ai_median": 4.261986750000002,
+      "mean_paired_difference": -1.809889955929487,
       "median_paired_difference": -1.5361109999999978,
+      "source_cluster_ci": [
+        -2.1632600371423303,
+        -1.3742883036832947
+      ],
       "probability_ai_greater": 0.13141025641025642,
       "wilcoxon_p": 2.313890074163652e-40
     },
     "mean_boundary_delta_nll": {
-      "n_pairs": 177,
-      "human_median": 0.25075527750000015,
-      "ai_median": 0.01577419405761662,
-      "median_paired_difference": -0.2279495886859749,
-      "probability_ai_greater": 0.4011299435028249,
-      "wilcoxon_p": 0.0012862945103410473
+      "n_pairs": 169,
+      "human_median": 0.21684559134980938,
+      "ai_median": 0.022629381736664417,
+      "mean_paired_difference": -0.34397613767859686,
+      "median_paired_difference": -0.15877081384208103,
+      "source_cluster_ci": [
+        -0.5139119082595904,
+        -0.13169850735343872
+      ],
+      "probability_ai_greater": 0.41420118343195267,
+      "wilcoxon_p": 0.0057444499637133665
     },
     "mean_boundary_excess_nll": {
-      "n_pairs": 177,
-      "human_median": 0.3160958831599821,
-      "ai_median": 0.0332431575117258,
-      "median_paired_difference": -0.2351976861836964,
-      "probability_ai_greater": 0.4067796610169492,
-      "wilcoxon_p": 0.0008998676453972705
+      "n_pairs": 169,
+      "human_median": 0.2686378406076234,
+      "ai_median": 0.036537336467079386,
+      "mean_paired_difference": -0.3595628680455824,
+      "median_paired_difference": -0.18463512671234275,
+      "source_cluster_ci": [
+        -0.5417677034818599,
+        -0.1299763750638287
+      ],
+      "probability_ai_greater": 0.42011834319526625,
+      "wilcoxon_p": 0.004287324983652804
     },
     "mean_content_boundary_delta_nll": {
-      "n_pairs": 177,
-      "human_median": 0.2626425248375,
-      "ai_median": 0.010177711612625711,
-      "median_paired_difference": -0.18246008278750006,
-      "probability_ai_greater": 0.423728813559322,
-      "wilcoxon_p": 0.008757996625860485
+      "n_pairs": 169,
+      "human_median": 0.21882548270416669,
+      "ai_median": 0.017092778408846616,
+      "mean_paired_difference": -0.3042649836833432,
+      "median_paired_difference": -0.172073619536172,
+      "source_cluster_ci": [
+        -0.5708592079356564,
+        -0.12115302542091864
+      ],
+      "probability_ai_greater": 0.4319526627218935,
+      "wilcoxon_p": 0.03022897311448259
     },
     "mean_content_boundary_excess_nll": {
-      "n_pairs": 177,
-      "human_median": 0.2794193154462131,
-      "ai_median": 0.03895538219793956,
-      "median_paired_difference": -0.17991318715778082,
-      "probability_ai_greater": 0.4011299435028249,
-      "wilcoxon_p": 0.006713825505664719
+      "n_pairs": 169,
+      "human_median": 0.2704694679880159,
+      "ai_median": 0.03942770970912335,
+      "mean_paired_difference": -0.31985171405032886,
+      "median_paired_difference": -0.14585399408984245,
+      "source_cluster_ci": [
+        -0.5924399272221212,
+        -0.13522575167212317
+      ],
+      "probability_ai_greater": 0.40828402366863903,
+      "wilcoxon_p": 0.024134292565245227
     }
   },
   "claim_level": {
     "human": {
-      "claims": 1157,
-      "median_boundary_delta_nll": 0.0011708393155000002,
-      "median_boundary_excess_nll": 0.04714330480269008,
-      "median_definition_name_nll": 0.0808169,
-      "median_reference_name_nll": 0.05346779693333333,
-      "median_name_reuse_relief_nll": 0.00017010466916666665
+      "claims": 1129,
+      "median_boundary_delta_nll": 0.0004805764175,
+      "median_boundary_excess_nll": 0.04557647101472113,
+      "median_definition_name_nll": 0.07064543200000001,
+      "median_reference_name_nll": 0.051902885483333334,
+      "median_name_reuse_relief_nll": 0.000116373
     },
     "ai": {
-      "claims": 2158,
+      "claims": 2098,
       "median_boundary_delta_nll": -2.392885000000004e-06,
       "median_boundary_excess_nll": 0.013878246205145302,
-      "median_definition_name_nll": 0.004078056816666667,
-      "median_reference_name_nll": 0.0031622573699999997,
-      "median_name_reuse_relief_nll": 9.7235e-06
+      "median_definition_name_nll": 0.0041983465,
+      "median_reference_name_nll": 0.00296126,
+      "median_name_reuse_relief_nll": 1.0738493e-05
     }
   },
   "claim_level_by_generality": {
     "human_instance": {
-      "claims": 1113,
-      "median_boundary_excess_nll": 0.04665150729925114,
-      "median_content_boundary_excess_nll": 0.04113981768952708,
-      "mean_boundary_excess_nll": 0.25105148923950116,
-      "mean_content_boundary_excess_nll": 0.3032251856785604
+      "claims": 1086,
+      "median_boundary_excess_nll": 0.04474818204518462,
+      "median_content_boundary_excess_nll": 0.03894416962627185,
+      "mean_boundary_excess_nll": 0.24025374743784195,
+      "mean_content_boundary_excess_nll": 0.29251872212075924
     },
     "human_generalized": {
-      "claims": 44,
-      "median_boundary_excess_nll": 0.5115637906940245,
-      "median_content_boundary_excess_nll": 0.36296728409903917,
-      "mean_boundary_excess_nll": 0.9816251414018216,
-      "mean_content_boundary_excess_nll": 1.0102248906219353
+      "claims": 43,
+      "median_boundary_excess_nll": 0.2802490578792387,
+      "median_content_boundary_excess_nll": 0.1299172966862129,
+      "mean_boundary_excess_nll": 0.9849658260981677,
+      "mean_content_boundary_excess_nll": 0.9366790654745629
     },
     "ai_instance": {
-      "claims": 2123,
-      "median_boundary_excess_nll": 0.014574591230214672,
-      "median_content_boundary_excess_nll": 0.011861548763772522,
-      "mean_boundary_excess_nll": 0.021744609666310703,
-      "mean_content_boundary_excess_nll": 0.07080801089766163
+      "claims": 2068,
+      "median_boundary_excess_nll": 0.013878246205145302,
+      "median_content_boundary_excess_nll": 0.012451473835542943,
+      "mean_boundary_excess_nll": 0.02150879214205533,
+      "mean_content_boundary_excess_nll": 0.07316577433123099
     },
     "ai_generalized": {
-      "claims": 35,
-      "median_boundary_excess_nll": -0.014075139668885205,
-      "median_content_boundary_excess_nll": 0.025737901017125,
-      "mean_boundary_excess_nll": -0.03522779260822914,
-      "mean_content_boundary_excess_nll": 0.2996052231665501
+      "claims": 30,
+      "median_boundary_excess_nll": 0.008936068584858532,
+      "median_content_boundary_excess_nll": 0.09438683010891218,
+      "mean_boundary_excess_nll": 0.04720175320901966,
+      "mean_content_boundary_excess_nll": 0.39073621289007804
     }
   },
   "within_document_generality": {
     "human": {
       "boundary_excess_nll": {
-        "documents": 23,
-        "mean_generalized_minus_instance": 0.15019502190527695,
-        "median_generalized_minus_instance": 0.22072407018700013,
-        "wilcoxon_p": 0.8932116031646729
+        "documents": 22,
+        "mean_generalized_minus_instance": 0.16967499268126673,
+        "median_generalized_minus_instance": 0.3392708191566819,
+        "wilcoxon_p": 0.8736042976379395
       },
       "content_boundary_excess_nll": {
-        "documents": 23,
-        "mean_generalized_minus_instance": -0.2844385008911587,
-        "median_generalized_minus_instance": -0.6866032317311875,
-        "wilcoxon_p": 0.5599584579467773
+        "documents": 22,
+        "mean_generalized_minus_instance": -0.33644917326030216,
+        "median_generalized_minus_instance": -0.8482185869312542,
+        "wilcoxon_p": 0.5235109329223633
       }
     },
     "ai": {
       "boundary_excess_nll": {
-        "documents": 22,
-        "mean_generalized_minus_instance": -0.2103788266054333,
-        "median_generalized_minus_instance": -0.118949591297657,
-        "wilcoxon_p": 0.5445904731750488
+        "documents": 19,
+        "mean_generalized_minus_instance": -0.21672826250336277,
+        "median_generalized_minus_instance": -0.05378007452397021,
+        "wilcoxon_p": 0.6225624084472656
       },
       "content_boundary_excess_nll": {
-        "documents": 22,
-        "mean_generalized_minus_instance": 0.4402809672757529,
-        "median_generalized_minus_instance": 0.000524473642154133,
-        "wilcoxon_p": 0.42448854446411133
+        "documents": 19,
+        "mean_generalized_minus_instance": 0.5482892014013694,
+        "median_generalized_minus_instance": 0.2982438742035771,
+        "wilcoxon_p": 0.2934989929199219
       }
     }
   },

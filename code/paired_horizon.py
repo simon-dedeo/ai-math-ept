@@ -5,11 +5,12 @@ annotation and the prover output are marked valid.  Unlike the earlier source
 analysis, it does not require a regex-detected library premise, so the inclusion
 rule is independent of the outcome metrics.
 
-The primary source-level object is a named ``have`` claim.  For each claim we
-count later *explicit* references to its name, stopping before a later claim
-that shadows the same name.  This is intentionally not called semantic use:
-context-sensitive tactics can consume a hypothesis without naming it.  A
-separate elaborated-term analysis is needed for that stronger claim.
+The primary source-level object is a named ``have`` claim.  Lean parser ranges
+exclude the complete tactic that constructs each claim; we then count later
+*explicit* references to its name, stopping before a later claim that shadows
+the same name.  This is intentionally not called semantic use: context-sensitive
+tactics can consume a hypothesis without naming it.  A separate elaborated-term
+analysis is needed for that stronger claim.
 """
 from __future__ import annotations
 
@@ -20,6 +21,7 @@ import json
 import math
 import os
 import re
+import subprocess
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -77,6 +79,32 @@ def proof_body(source: str) -> str:
     clean = strip_noncode(source if isinstance(source, str) else "")
     bodies = list(proof_bodies(clean, strip=False))
     return bodies[-1][2] if bodies else clean
+
+
+def target_value_fragment(body: str) -> tuple[str, int] | None:
+    """Return the target proof value and its character offset in ``body``.
+
+    ``proof_body`` deliberately retains the declaration suffix so earlier
+    analyses can inspect theorem parameters.  For parsing local tactics, scan
+    to the first top-level ``:=``; binders can contain their own defaults, but
+    those separators occur inside balanced delimiters.
+    """
+    closing = {"(": ")", "[": "]", "{": "}"}
+    stack: list[str] = []
+    position = 0
+    while position + 1 < len(body):
+        char = body[position]
+        if char in closing:
+            stack.append(closing[char])
+        elif stack and char == stack[-1]:
+            stack.pop()
+        elif not stack and body.startswith(":=", position):
+            start = position + 2
+            while start < len(body) and body[start].isspace():
+                start += 1
+            return body[start:], start
+        position += 1
+    return None
 
 
 def pretarget_audit(source: str) -> dict[str, Any]:
@@ -201,38 +229,106 @@ def named_have_declarations(body: str) -> list[dict[str, Any]]:
     return declarations
 
 
-def named_have_claims(source: str) -> list[dict[str, Any]]:
+def parser_have_ranges(
+    sources: list[str], root: Path, environment: str = "mathlib4"
+) -> tuple[list[list[tuple[int, int]] | None], dict[str, Any]]:
+    """Get exact tactic-`have` ranges from Lean's own parser in one process.
+
+    Lean reports UTF-8 byte positions, while Python regular expressions use
+    Unicode-codepoint offsets.  Convert positions here so every downstream
+    window is expressed in the same coordinate system as ``source``.
+    ``None`` denotes a body that the current Mathlib parser could not read.
+    """
+    helper = root / "code" / "ExtractHaveRanges.lean"
+    fragments_with_offsets = [target_value_fragment(source) for source in sources]
+    fragments = [item[0] if item is not None else "" for item in fragments_with_offsets]
+    completed = subprocess.run(
+        ["lake", "env", "lean", "--run", str(helper)],
+        cwd=root / environment,
+        input="\0".join(fragments),
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    lines = completed.stdout.splitlines()
+    if len(lines) != len(sources):
+        raise RuntimeError(
+            f"Lean range helper returned {len(lines)} lines for {len(sources)} sources"
+        )
+    output: list[list[tuple[int, int]] | None] = []
+    for source, fragment_info, line in zip(sources, fragments_with_offsets, lines):
+        if fragment_info is None or line.startswith("ERROR"):
+            output.append(None)
+            continue
+        fragment, character_offset = fragment_info
+        byte_ranges = [] if not line else [
+            tuple(int(value) for value in item.split(":"))
+            for item in line.split(",")
+        ]
+        encoded = fragment.encode("utf-8")
+        output.append([
+            (
+                character_offset + len(encoded[:start].decode("utf-8")),
+                character_offset + len(encoded[:tail].decode("utf-8")),
+            )
+            for start, tail in byte_ranges
+        ])
+    return output, {
+        "terms": len(sources),
+        "parsed": sum(ranges is not None for ranges in output),
+        "failed": sum(ranges is None for ranges in output),
+        "helper": "code/ExtractHaveRanges.lean",
+        "environment": environment,
+        "coordinate_conversion": "Lean UTF-8 byte offsets to Python Unicode offsets",
+    }
+
+
+def named_have_claims(
+    source: str,
+    construction_ranges: list[tuple[int, int]] | None = None,
+    require_parser_match: bool = False,
+) -> list[dict[str, Any]]:
     """Extract named haves and count later explicit uptake.
 
-    If a name is declared again, the first claim's counting window ends at the
+    Counting begins after the complete construction range supplied by Lean's
+    parser.  If a name is declared again, the first claim's window ends at the
     second declaration.  This conservative rule prevents obvious shadowing from
     being mistaken for reuse.  Lean scoping is richer than this lexical rule;
     ``redeclared_name`` is retained for sensitivity audits.
     """
     body = proof_body(source)
     matches = named_have_declarations(body)
-    next_same: dict[int, int] = {}
-    next_by_name: dict[str, int] = {}
-    for i in range(len(matches) - 1, -1, -1):
-        name = matches[i]["name"]
-        next_same[i] = next_by_name.get(name, len(body))
-        next_by_name[name] = matches[i]["start"]
+    for source_claim_index, match in enumerate(matches):
+        match["source_claim_index"] = source_claim_index
+    all_matches = matches
+    counts = Counter(match["name"] for match in all_matches)
+    range_by_start = {start: tail for start, tail in (construction_ranges or [])}
+    for match in matches:
+        match["parser_range_matched"] = match["start"] in range_by_start
+        match["construction_end"] = range_by_start.get(match["start"], match["end"])
+    if require_parser_match:
+        matches = [match for match in matches if match["parser_range_matched"]]
 
     claims: list[dict[str, Any]] = []
-    counts = Counter(match["name"] for match in matches)
     for i, match in enumerate(matches):
         name = match["name"]
+        construction_end = int(match["construction_end"])
+        next_same = next((
+            later["start"]
+            for later in all_matches[int(match["source_claim_index"]) + 1:]
+            if later["name"] == name and later["start"] >= construction_end
+        ), len(body))
         token_matches = [
-            token for token in TOKEN.finditer(body, match["end"], next_same[i])
+            token for token in TOKEN.finditer(body, construction_end, next_same)
             if token.group(0) == name
         ]
         use_positions = [token.start() for token in token_matches]
         first_delay = (
-            len(TOKEN.findall(body[match["end"] : use_positions[0]]))
+            len(TOKEN.findall(body[construction_end : use_positions[0]]))
             if use_positions else None
         )
         last_delay = (
-            len(TOKEN.findall(body[match["end"] : use_positions[-1]]))
+            len(TOKEN.findall(body[construction_end : use_positions[-1]]))
             if use_positions else None
         )
         claim_span = (
@@ -243,13 +339,15 @@ def named_have_claims(source: str) -> list[dict[str, Any]]:
             if use_positions else None
         )
         later_claims_available = sum(
-            match["start"] < later["start"] < next_same[i]
+            match["start"] < later["start"] < next_same
             for later in matches
         )
         claims.append(
             {
-                "claim_index": i,
+                "claim_index": int(match["source_claim_index"]),
                 "name": name,
+                "parser_range_matched": bool(match["parser_range_matched"]),
+                "construction_end": construction_end,
                 "binder_groups": int(match["binder_groups"]),
                 "parametric_claim": bool(match["binder_groups"]),
                 "universal_claim": bool(match["universal_type"]),
@@ -313,9 +411,16 @@ def tactic_annotation_metrics(value: Any) -> dict[str, Any]:
     return out
 
 
-def side_metrics(source: str, tactics: Any) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def side_metrics(
+    source: str,
+    tactics: Any,
+    construction_ranges: list[tuple[int, int]] | None = None,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     body = proof_body(source)
-    claims = named_have_claims(source)
+    regex_claim_count = len(named_have_declarations(body))
+    claims = named_have_claims(
+        source, construction_ranges, require_parser_match=True
+    )
     uses = np.asarray([claim["explicit_uses"] for claim in claims], dtype=int)
     spans = np.asarray([
         claim["intervening_claims_to_last_use"]
@@ -329,6 +434,8 @@ def side_metrics(source: str, tactics: Any) -> tuple[dict[str, Any], list[dict[s
         "tokens": len(re.findall(r"\S+", body)),
         "chars": len(body),
         "named_haves": len(claims),
+        "regex_named_haves": regex_claim_count,
+        "parser_unmatched_named_haves": regex_claim_count - len(claims),
         "anonymous_haves": len(ANON_HAVE.findall(body)),
         "explicit_uses": int(uses.sum()) if len(uses) else 0,
         "zero_uptake_haves": int((uses == 0).sum()) if len(uses) else 0,
@@ -1053,6 +1160,13 @@ def main() -> None:
     target_pair_audit = raw.attrs["target_pair_audit"]
     target_pair_exclusions = raw.attrs["target_pair_exclusions"]
 
+    parser_bodies = sum(([
+        proof_body(record.human_formal_proof),
+        proof_body(record.prover_formal_proof),
+    ] for record in raw.itertuples(index=False)), [])
+    parsed_have_ranges, have_parser_audit = parser_have_ranges(parser_bodies, root)
+    range_index = 0
+
     proof_rows: list[dict[str, Any]] = []
     claim_rows: list[dict[str, Any]] = []
     for record in raw.itertuples(index=False):
@@ -1096,7 +1210,10 @@ def main() -> None:
             ("h", record.human_formal_proof, record.human_all_tactics),
             ("a", record.prover_formal_proof, record.prover_all_tactics),
         ):
-            metrics, claims = side_metrics(source, tactics)
+            construction_ranges = parsed_have_ranges[range_index]
+            range_index += 1
+            row[f"{side}_have_parser_success"] = construction_ranges is not None
+            metrics, claims = side_metrics(source, tactics, construction_ranges)
             row.update({f"{side}_{key}": value for key, value in metrics.items()})
             for claim in claims:
                 claim_rows.append(
@@ -1136,6 +1253,25 @@ def main() -> None:
         proofs[["h_tokens", "a_tokens"]].min(axis=1).clip(lower=1)
     )
     length_within_ten_percent = token_ratio.le(1.10)
+    fully_parsed_pairs = proofs[
+        proofs.h_have_parser_success
+        & proofs.a_have_parser_success
+        & proofs.h_parser_unmatched_named_haves.eq(0)
+        & proofs.a_parser_unmatched_named_haves.eq(0)
+    ]
+    have_parser_audit.update({
+        "regex_named_claims": int(
+            proofs.h_regex_named_haves.sum() + proofs.a_regex_named_haves.sum()
+        ),
+        "parser_matched_named_claims": int(
+            proofs.h_named_haves.sum() + proofs.a_named_haves.sum()
+        ),
+        "named_claim_coverage": float(
+            (proofs.h_named_haves.sum() + proofs.a_named_haves.sum())
+            / max(proofs.h_regex_named_haves.sum() + proofs.a_regex_named_haves.sum(), 1)
+        ),
+        "pairs_fully_parsed_and_aligned": int(len(fully_parsed_pairs)),
+    })
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -1146,6 +1282,7 @@ def main() -> None:
         ),
         "target_pair_audit": target_pair_audit,
         "target_pair_exclusions_file": "results/horizon/target_pair_exclusions.csv",
+        "have_scope_parser_audit": have_parser_audit,
         "dataset_provenance": {
             "source": "https://huggingface.co/datasets/AI-MO/NuminaMath-LEAN",
             "huggingface_revision": huggingface_revisions(root),
@@ -1241,6 +1378,24 @@ def main() -> None:
         "nonredeclared_name_sensitivity": nonredeclared_name_sensitivity(
             claims, args.boot, rng
         ),
+        "fully_parsed_pair_sensitivity": {
+            "rule": (
+                "retain pairs for which both proof values parse and every "
+                "regex-detected named have has an exact parser range"
+            ),
+            "pairs": int(len(fully_parsed_pairs)),
+            **{
+                metric: claim_rate_difference(
+                    fully_parsed_pairs, numerator, args.boot, rng
+                )
+                for metric, numerator in (
+                    ("explicit_uses_per_claim", "explicit_uses"),
+                    ("zero_uptake_share", "zero_uptake_haves"),
+                    ("multi_uptake_share", "multi_uptake_haves"),
+                    ("long_horizon_share", "long_horizon_haves"),
+                )
+            },
+        },
         "parametric_claim_difference": claim_rate_difference(
             proofs, "parametric_haves", args.boot, rng
         ),

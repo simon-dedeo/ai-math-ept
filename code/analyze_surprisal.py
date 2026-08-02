@@ -19,9 +19,24 @@ def overlap_mean(tokens: pd.DataFrame, start: int, end: int) -> float:
     return float(selected.nll_nats.mean()) if len(selected) else math.nan
 
 
-def paired_summary(frame: pd.DataFrame, metric: str) -> dict[str, Any]:
+def paired_summary(
+    frame: pd.DataFrame,
+    metric: str,
+    rng: np.random.Generator,
+    boot: int,
+) -> dict[str, Any]:
     wide = frame.pivot(index=["pair", "source"], columns="side", values=metric).dropna()
     h, a = wide["h"].to_numpy(float), wide["a"].to_numpy(float)
+    differences = a - h
+    clustered = (
+        wide.assign(difference=differences)
+        .reset_index()
+        .groupby("source").difference.agg(["sum", "size"])
+        .to_numpy(float)
+    )
+    draws = rng.integers(0, len(clustered), size=(boot, len(clustered)))
+    sampled = clustered[draws].sum(axis=1)
+    bootstrap_differences = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
     try:
         pvalue = float(stats.wilcoxon(h, a).pvalue)
     except ValueError:
@@ -30,7 +45,11 @@ def paired_summary(frame: pd.DataFrame, metric: str) -> dict[str, Any]:
         "n_pairs": len(wide),
         "human_median": float(np.median(h)),
         "ai_median": float(np.median(a)),
-        "median_paired_difference": float(np.median(a - h)),
+        "mean_paired_difference": float(np.mean(differences)),
+        "median_paired_difference": float(np.median(differences)),
+        "source_cluster_ci": [
+            float(x) for x in np.percentile(bootstrap_differences, [2.5, 97.5])
+        ],
         "probability_ai_greater": float(np.mean(a > h)),
         "wilcoxon_p": pvalue,
     }
@@ -67,6 +86,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--window", type=int, default=8)
+    parser.add_argument("--boot", type=int, default=10_000)
+    parser.add_argument("--seed", type=int, default=20260802)
     parser.add_argument("--tag", default="")
     parser.add_argument("--token-file", type=Path, default=Path("results/horizon/token_surprisal.tsv"))
     parser.add_argument("--model-label", default="Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization")
@@ -121,6 +142,15 @@ def main() -> None:
         for claim_index, (match, boundary) in enumerate(zip(matches, boundary_indices)):
             if boundary < args.window or boundary + args.window > len(token_frame):
                 continue
+            metadata = source_claims[
+                source_claims.pair.eq(pair)
+                & source_claims.side.eq(side)
+                & source_claims.claim_index.eq(claim_index)
+            ]
+            # Keep the information assay on the same exact-boundary claim
+            # census as the source and elaborated-term analyses.
+            if metadata.empty:
+                continue
             pre = float(token_frame.iloc[boundary - args.window : boundary].nll_nats.mean())
             post = float(token_frame.iloc[boundary : boundary + args.window].nll_nats.mean())
             after_name_candidates = token_frame.index[token_frame.byte_end > match["end"]].tolist()
@@ -137,8 +167,9 @@ def main() -> None:
                 (later["start"] for later in matches[claim_index + 1 :] if later["name"] == name),
                 len(text),
             )
+            construction_end = int(metadata.iloc[0].construction_end)
             references = [
-                token for token in TOKEN.finditer(text, match["end"], next_same)
+                token for token in TOKEN.finditer(text, construction_end, next_same)
                 if token.group(0) == name
             ]
             reference_nlls = [overlap_mean(token_frame, ref.start(), ref.end()) for ref in references]
@@ -165,18 +196,12 @@ def main() -> None:
                     if reference_nlls else math.nan
                 ),
             }
-            metadata = source_claims[
-                source_claims.pair.eq(pair)
-                & source_claims.side.eq(side)
-                & source_claims.claim_index.eq(claim_index)
-            ]
-            if len(metadata):
-                for key in (
-                    "explicit_uses", "placeholder_name", "redeclared_name",
-                    "intervening_claims_to_last_use", "parametric_claim",
-                    "universal_claim", "generalized_claim",
-                ):
-                    row[key] = metadata.iloc[0][key]
+            for key in (
+                "explicit_uses", "placeholder_name", "redeclared_name",
+                "intervening_claims_to_last_use", "parametric_claim",
+                "universal_claim", "generalized_claim",
+            ):
+                row[key] = metadata.iloc[0][key]
             term = term_claims[
                 term_claims.pair.eq(pair)
                 & term_claims.side.eq(side)
@@ -224,14 +249,19 @@ def main() -> None:
         outdir / f"surprisal_claims{suffix}.csv.gz", index=False,
         compression={"method": "gzip", "mtime": 0},
     )
+    rng = np.random.default_rng(args.seed)
     summary = {
+        "seed": args.seed,
+        "bootstraps": args.boot,
         "model": args.model_label,
         "window_tokens": args.window,
         "documents": len(proofs),
         "pairs": int(proofs.groupby("pair").side.nunique().eq(2).sum()),
         "claims": len(claims),
         "paired": {
-            metric: paired_summary(proofs.dropna(subset=[metric]), metric)
+            metric: paired_summary(
+                proofs.dropna(subset=[metric]), metric, rng, args.boot
+            )
             for metric in (
                 "mean_nll", "p95_nll", "mean_boundary_delta_nll",
                 "mean_boundary_excess_nll", "mean_content_boundary_delta_nll",

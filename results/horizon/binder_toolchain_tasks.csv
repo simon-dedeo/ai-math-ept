@@ -149,8 +149,8 @@ pair_45b25f4e,h,olympiads_ref,3,3,3
 pair_45b25f4e,a,olympiads_ref,1,1,1
 pair_47d24c12,h,olympiads_ref,0,0,0
 pair_47d24c12,a,olympiads_ref,1,1,1
-pair_4860e4db,h,olympiads,6,6,6
-pair_4860e4db,a,olympiads,9,9,9
+pair_4860e4db,h,olympiads,0,0,0
+pair_4860e4db,a,olympiads,0,0,0
 pair_48881c66,h,amc_aime,2,2,2
 pair_48881c66,a,amc_aime,8,8,8
 pair_49366beb,h,cn_contest,0,0,0
@@ -193,8 +193,8 @@ pair_564fee0e,h,cn_k12,2,2,2
 pair_564fee0e,a,cn_k12,2,2,2
 pair_567a7178,h,olympiads,13,13,13
 pair_567a7178,a,olympiads,6,6,6
-pair_5688be7b,h,olympiads_ref,5,5,5
-pair_5688be7b,a,olympiads_ref,4,4,4
+pair_5688be7b,h,olympiads_ref,0,0,0
+pair_5688be7b,a,olympiads_ref,0,0,0
 pair_57c4dba0,h,aops_forum,0,0,0
 pair_57c4dba0,a,aops_forum,0,0,0
 pair_587b1256,h,olympiads,0,0,0
@@ -259,8 +259,8 @@ pair_6e98ad25,h,aops_forum,0,0,0
 pair_6e98ad25,a,aops_forum,0,0,0
 pair_7007ed35,h,math_train,0,0,0
 pair_7007ed35,a,math_train,2,2,2
-pair_7187bdc5,h,amc_aime,6,6,6
-pair_7187bdc5,a,amc_aime,10,9,9
+pair_7187bdc5,h,amc_aime,0,0,0
+pair_7187bdc5,a,amc_aime,0,0,0
 pair_71cf0c00,h,olympiads,0,0,0
 pair_71cf0c00,a,olympiads,0,0,0
 pair_73bd6122,h,cn_k12,0,0,0
@@ -347,7 +347,7 @@ pair_99eea8ae,h,math_test,1,1,1
 pair_99eea8ae,a,math_test,1,1,1
 pair_9a76e23c,h,cn_contest,21,21,21
 pair_9a76e23c,a,cn_contest,31,31,31
-pair_9a84ead7,h,math_test,1,1,1
+pair_9a84ead7,h,math_test,0,0,0
 pair_9a84ead7,a,math_test,0,0,0
 pair_9af28884,h,math_train,1,1,1
 pair_9af28884,a,math_train,0,0,0
@@ -425,7 +425,7 @@ pair_bf349feb,h,math_train,0,0,0
 pair_bf349feb,a,math_train,5,5,5
 pair_bf40e969,h,amc_aime,0,0,0
 pair_bf40e969,a,amc_aime,10,10,10
-pair_bf419b23,h,math_train,1,1,1
+pair_bf419b23,h,math_train,0,0,0
 pair_bf419b23,a,math_train,0,0,0
 pair_bf476baa,h,inequalities,0,0,0
 pair_bf476baa,a,inequalities,3,3,3

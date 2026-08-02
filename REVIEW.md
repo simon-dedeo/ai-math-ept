@@ -11,14 +11,14 @@ paper audit below.
 | claim | script | output |
 |---|---|---|
 | 3,630 exact-statement pairs after auditing 3,635 validation-flag candidates; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz`, `target_pair_exclusions.csv` |
-| claim density, uptake, opportunity-normalized reach, naming, and matched tactic strata | same | `results/horizon/claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
+| exact construction-bounded claim density, uptake, opportunity-normalized reach, naming, and matched tactic strata (39,646/40,626 candidate claims) | `code/paired_horizon.py`, `code/ExtractHaveRanges.lean` | `results/horizon/source_summary.json` → `have_scope_parser_audit`, `claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
 | within-proof association of family syntax with adoption and repeated use in both tracks, including nearest-position matching | same | `results/horizon/source_summary.json` → `within_proof_feature_associations`, `position_matched_family_associations` |
 | depth-aware use of elaborated local binders in all 3,630 pairs (7,260 successful tasks), including exact expanded-tree extremes | `code/ExtractBinderUseMemoLegacy.lean.tmpl`, `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz`, `binder_root_tree_extremes.csv` |
 | within-proof family syntax predicts term retention in both tracks after nearby-position matching; family-specific multi-use estimates diverge but the direct interaction is unresolved | `code/analyze_binder_use.py` | `results/horizon/binder_summary.json` → `within_proof_generality_term_association`, `position_matched_generality_term_association` |
 | exact equivalence of the stack-safe memoized extractor to the legacy traversal on a stratified 430-task audit and every 7,186 legacy-success task | `code/binder_memo_audit.py` | `results/horizon/binder_memo_equivalence.json`, `binder_memo_full_equivalence.json` |
 | consolidation--composition split: large interface/generality/term-dependency differences, control-dependent source duration, near-equal aggregate term multi-use, but higher AI multi-use conditional on retention | `code/paired_horizon.py`, `code/analyze_binder_use.py` | `results/horizon/source_summary.json`, `binder_summary.json` |
-| model-relative information pulse at claim boundaries | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_sensitivity.csv`, `surprisal_provenance.json` |
-| null chance-normalized name-to-type retrieval assay | `code/name_type_retrieval.py`, `llama-embedding` | `results/horizon/name_retrieval_mean/`, `name_retrieval_last_summary.json` |
+| exploratory model-relative information pulse at claim boundaries, with paired-rank and source-cluster inference plus a leave-one-source-out character control | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/ngram_surprisal.py`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_summary_loso_bigram_w8.json`, `surprisal_sensitivity.csv`, `surprisal_provenance.json` |
+| null chance-normalized name-to-type retrieval assay | `code/name_type_retrieval.py`, `llama-embedding` | `results/horizon/name_retrieval_mean/`, `name_retrieval_last/` |
 | scope-correct term-DAG construction and 298-pair audit | `code/ExtractNetwork.lean`, `code/ExtractCore.lean.tmpl`, `code/extract_corpus.py`, `code/paired_term_structure.py` | `code/test_scoped_bvars.py`, `results/horizon/scoped_term_structure/` |
 
 The source inclusion audit compares the final structured declaration signatures emitted by the
@@ -27,8 +27,12 @@ artifact with no declaration and four mismatches (a wrong theorem join, a helper
 two changed propositions). The counts are serialized under `target_pair_audit` in
 `source_summary.json`; `code/test_horizon_report.py` makes them a regression condition.
 
-Two source-level failure modes are audited separately. Because the parser stops an explicit-use
-window at a same-name redeclaration, `nonredeclared_name_sensitivity` removes every claim whose name
+Three source-level failure modes are audited separately. Lean's parser supplies the end of the
+complete `have` construction, preventing constructor-side name collisions from becoming false
+downstream uses. It covers 97.6% of scanner candidates; `fully_parsed_pair_sensitivity` retains
+3,511 pairs with complete two-sided parser alignment and preserves all headline directions.
+Because the counter then stops an explicit-use window at a same-name redeclaration,
+`nonredeclared_name_sensitivity` removes every claim whose name
 occurs more than once in its proof; all uptake and reach directions strengthen. The structured
 proof-value overlap audit finds 181 token-identical values, 180 of which also have identical source
 bodies. Excluding all 230 pairs with proof-value token similarity at least .90 leaves 3,400 pairs
@@ -122,11 +126,12 @@ A reviewer should check these were actually corrected in the report, not just no
 | "expanded-graph out-degree evidence is representation-robust" | normalized root proofs retain similar exponents but usually cannot distinguish power law from exponential | appendix A.2: strong tail evidence restricted to the expanded-network scale |
 | "human or AI provenance has a directional effect on the fixed-10 out-degree exponent" | the tiny paired difference reverses from -0.009 in `term0` to +0.025 after proof-value normalization | appendix A.2 and Table 3: no representation-robust authorship effect |
 | unexpanded term-DAG reuse is a semantic reuse measure | raw de Bruijn indices from unrelated binder scopes were interned together, creating false shared variable nodes | the extractor now assigns scope-specific identities; current paper uses depth-aware binder occurrence and withdraws old semantic readings of `term0` topology |
-| "binder-bearing `have` is a fourteenfold human advantage in abstraction" | Lean can state the same local family with an explicit `forall`; the binder-only statistic violates the paper's own invariance principle | the primary family classifier unions the equivalent spellings; the gap remains 5.60% vs 1.91% (about 2.9-fold), with 320 human-only vs 108 AI-only same-theorem pairs |
+| "binder-bearing `have` is a fourteenfold human advantage in abstraction" | Lean can state the same local family with an explicit `forall`; the binder-only statistic violates the paper's own invariance principle | the primary family classifier unions the equivalent spellings; after exact construction parsing the gap is 5.24% vs 1.68% (about 3.1-fold), with 310 human-only vs 102 AI-only same-theorem pairs |
+| explicit references can be counted from the end of a `have` header | the claim's type and constructor precede introduction of the new binder, so `have h : P := f h` may refer to an older `h` | Lean parser ranges now begin uptake only after the complete construction tactic; coverage is 97.6%, and the strict 3,511-pair alignment sensitivity preserves the result |
 | "Lean 4.15 erases source `have` boundaries" | the first extractor looked only for `letE`, while Lean 4.15 encodes `have` as `letFun` applied to a named lambda | a semantic decoder recovers both the production `letFun` and current nondependent-`letE` encodings; a real-theorem two-version regression pins the shift |
-| generalized claims cause the human-side surprisal pulse | the pooled generalized-claim contrast is selected by document; within documents containing both claim kinds it is not detectable (content pulse: human p=.62, AI p=.10) | the paper keeps boundary surprisal exploratory and logically separate from the family classifier |
-| crossing one later claim boundary directly measures a claim's temporal lifetime | the number of available boundaries is endogenous: AI scripts introduce many more claims, and conditional crossing is 75.1% human versus 75.2% AI | reach is decomposed into adoption and duration; adoption is robust, while conditional-duration differences disappear or reverse in matched controls |
-| human names are demonstrably better semantic retrieval keys | longer and more diverse names do not by themselves establish semantic fit; a 230-pair within-proof Goedel embedding assay is null after chance and claim-count normalization | naming remains a conservative generic-form/interface-investment proxy, not evidence of semantic quality |
+| generalized claims cause the human-side surprisal pulse | the pooled contrast is selected by document; after exact-boundary filtering the within-document content contrast is null for humans ($p=.656$) and nominal for AI ($p=.040$), opposite the proposed human explanation and uncorrected for multiplicity | the paper keeps boundary surprisal exploratory and logically separate from the family classifier |
+| crossing one later claim boundary directly measures a claim's temporal lifetime | the number of available boundaries is endogenous: AI scripts introduce many more claims, and conditional crossing is 75.7% human versus 75.8% AI | reach is decomposed into adoption and duration; adoption is robust, while conditional-duration differences disappear or reverse in matched controls |
+| human names are demonstrably better semantic retrieval keys | longer and more diverse names do not by themselves establish semantic fit; a 229-pair within-proof Goedel embedding assay is null after chance and claim-count normalization | naming remains a conservative generic-form/interface-investment proxy, not evidence of semantic quality |
 
 ## 4. Where I think this is weakest — please attack these first
 
@@ -136,9 +141,10 @@ For the current horizon paper, the serious attack points are:
    the annotation workflow, training exposure, search budget, or objective. “Human” and “AI” mean
    dataset artifact fields. The horizon account makes a causal prediction but the horizon-swap
    experiment has not yet been run.
-2. **Source use is lexical and local.** The parser recognizes named `have`, stops at same-name
-   redeclaration, and counts exact later name tokens. It misses anonymous claims and implicit tactic
-   use, and Lean scoping is richer than the stopping rule. The production-term audit is the main
+2. **Source use is lexical and local.** A scanner recognizes named `have`; Lean's parser marks the
+   complete construction; the counter stops at same-name redeclaration and counts exact later name
+   tokens. The 2.4% unmatched candidates are excluded. It misses anonymous claims and implicit tactic
+   use, and Lean scoping is richer than the conservative stopping rule. The production-term audit is the main
    check against treating lexical non-use as semantic non-use.
 3. **A callable family is still a syntactic classifier.** Binder and leading-`forall` spellings are
    quotient together and executable regressions pin their equivalence, but other encodings exist;

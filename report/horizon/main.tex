@@ -40,16 +40,16 @@
 \begin{abstract}
 A checked proof establishes that a proposition follows, but not what future it was built to serve.
 We propose the \emph{amortization horizon}: the range over which a
-constructor expects an abstraction to repay its cost. A proof produces a kernel certificate,
-working memory, and an interface for later users. In 3,630 pairs of validated Lean proofs of
-identical statements, AI-provenance scripts create more local claims, yet each receives fewer
+constructor expects an abstraction to repay its cost. A proof produces a certificate,
+working memory, and an interface for users. In 3,630 pairs of Lean proofs of
+identical statements, AI-provenance scripts create more claims, yet each receives fewer
 downstream references, is almost threefold less likely to state a callable family, and is more
-generically named. Elaboration more often erases or duplicates AI boundaries; human boundaries
-more often map one-to-one. Neither conditional source duration nor aggregate multi-use sharing
-robustly favors humans. This consolidation--composition split locates the divergence in interface
-selection. Certificate topology also fails consumer-invariance: Lean versions encode the same
+generically named. Human claims are retrieved more often after adoption. Elaboration then
+inverts the reuse story: AI boundaries more often vanish, but surviving AI binders more
+often fan out to multiple term occurrences. This consolidation--composition split distinguishes
+deliberate source retrieval from compiler fan-out. Certificate topology also fails consumer-invariance: Lean versions encode the same
 source claim differently, while extensionally equivalent representatives can differ exponentially
-in tree size. An exploratory model finds a short information pulse at human claim boundaries,
+in tree size. An exploratory model finds an information pulse at human claim boundaries,
 attenuated at AI boundaries. The divergence lies not in deductive power or biological kind, but in
 which future consumer construction serves. We formalize the principle as library-amortized proof
 complexity over theorem streams, a quantity single-theorem benchmarks cannot observe.
@@ -73,8 +73,8 @@ graph statistics.  More importantly, it mistakes an objective for an organism.  
 proofs are rewarded when the current declaration compiles.  Much human formalization occurs inside
 a longer activity of exposition, maintenance, and library construction; early workflow evidence
 also finds that users want AI assistance while preserving high-level control \citep{collins2026}.
-Different artifacts are
-therefore rational even before any difference in cognitive machinery is posited.
+In resource-rational terms, different artifacts may be optimal under different costs even before
+any difference in cognitive machinery is posited \citep{lieder2020}.
 
 We call the relevant variable the \emph{amortization horizon}: how far into future reasoning the
 constructor expects a present abstraction to pay.  At a short horizon, a local claim can be useful
@@ -233,8 +233,11 @@ training data, and annotation workflows remain possible causes.  Pairing removes
 not those process differences.  Our estimand is consequently descriptive: how these two artifact
 tracks differ under the workflows that produced them.
 
-At source level, a Unicode-aware parser removes comments and strings, locates named \code{have}
-claims in the final proof body, and counts later exact-name references.  The counting window stops
+At source level, a Unicode-aware scanner removes comments and strings and locates named
+\code{have} headers in the final proof body.  Lean's own parser then supplies the end of the
+complete construction tactic, so occurrences in a claim's type or proof term cannot be mistaken
+for downstream use.  It exactly locates 39,646 of 40,626 scanner candidates (97.6\%); all primary
+source estimates use those claims.  We count later exact-name references.  The window stops
 at same-name redeclaration, a conservative guard against shadowing.  A claim has \emph{long visible
 reach} when its last reference occurs after at least one intervening claim boundary.  Names matching
 generic forms such as \code{h}, \code{h7}, \code{this}, \code{step2}, and \code{aux} are classified
@@ -275,55 +278,55 @@ understanding.
 The paired proofs are not radically different in raw size: median final-body length is 125
 whitespace tokens for the human track and 145 for AI, with a median within-pair increase of five
 tokens (source-cluster interval 2--15).  They decompose that work differently.  The median number
-of named claims is one versus four; pooled density is 2.02 human and 3.18 AI claims per 100 source
+of named claims is one versus four; pooled density is 1.96 human and 3.10 AI claims per 100 source
 tokens.
 
 The important contrast is what happens after introduction (\cref{fig:functions}).  Human claims
-receive 1.44 explicit references on average (source-cluster interval 1.34--1.59), compared with
-0.87 for AI (0.83--0.89).  Of human claims, 22.2\% have zero visible uptake and 26.5\% have multiple
-references.  For AI the corresponding values are 36.3\% and 12.1\%.  All 12 source groups show
+receive 1.43 explicit references on average (source-cluster interval 1.33--1.56), compared with
+0.87 for AI (0.83--0.89).  Of human claims, 21.5\% have zero visible uptake and 26.0\% have multiple
+references.  For AI the corresponding values are 36.0\% and 11.8\%.  All 12 source groups show
 lower references per AI claim and higher zero-uptake share.  Human claims also more often remain
-live across a later claim boundary: 48.4\% versus 41.8\%, in the human direction for 11 of 12
+live across a later claim boundary: 49.4\% versus 42.4\%, in the human direction for all 12
 groups.  The result is not simply that AI proofs are longer; it concerns the conditional fate of an
 introduced abstraction.  In 834 pairs within 10\% in body length, uses remain 1.35 versus 1.06,
-zero uptake 24.8\% versus 33.4\%, and long reach 49.4\% versus 43.4\%.
-Reach has an extensive and an intensive margin.  Human claims are explicitly adopted 77.7\% of
-the time versus 63.7\% for AI; conditional on adoption, they receive 1.86 versus 1.36 explicit calls,
-and their last reference lies 56.8 versus 43.1 source tokens away.  Counts of intervening claims are endogenous to decomposition density:
+zero uptake 23.5\% versus 33.3\%, and long reach 50.9\% versus 43.8\%.
+Reach has an extensive and an intensive margin.  Human claims are explicitly adopted 78.5\% of
+the time versus 64.0\% for AI; conditional on adoption, they receive 1.82 versus 1.36 explicit calls,
+and their last reference lies 37.5 versus 25.9 source tokens beyond the completed construction.  Counts of intervening claims are endogenous to decomposition density:
 given adoption and at least one available later boundary, the probability of crossing one is
-indistinguishable (75.1\% versus 75.2\%).  Human claims instead cross a larger fraction of the
-available later boundaries (49.1\% versus 45.4\%).  We therefore interpret the aggregate difference
+indistinguishable (75.7\% versus 75.8\%).  Human claims instead cross a larger fraction of the
+available later boundaries (49.6\% versus 46.0\%).  We therefore interpret the aggregate difference
 as lower AI adoption, not a representation-free lifetime constant.  Indeed, within 834
-length-matched pairs neither conditional-duration measure separates the tracks; in 210 pairs with
-the same positive claim count, normalized duration reverses (51.1\% versus 53.6\%).  The
+length-matched pairs neither conditional-duration measure separates the tracks; in 206 pairs with
+the same positive claim count, normalized duration reverses (51.8\% versus 53.9\%).  The
 robust source divergence is explicit adoption, not how long an adopted claim lives.
-Nor is it arithmetic from emitting more claims.  In 210 pairs with the same positive claim count,
-explicit uses per claim remain 1.39 versus 1.11 (AI-minus-human source-cluster interval
-$-0.428$ to $-0.182$), and zero uptake remains 21.8\% versus 29.7\% ($0.050$ to $0.107$).
+Nor is it arithmetic from emitting more claims.  In 206 pairs with the same positive claim count,
+explicit uses per claim remain 1.33 versus 1.07 (AI-minus-human source-cluster interval
+$-0.418$ to $-0.152$), and zero uptake remains 21.5\% versus 28.9\% ($0.048$ to $0.100$).
 Nor does repeated generic naming create the result: among names declared only once per proof,
-uses are 1.54 versus 0.92, zero uptake 19.1\% versus 33.2\%, and long reach 52.5\% versus 46.0\%.
+uses are 1.50 versus 0.91, zero uptake 19.4\% versus 33.5\%, and long reach 52.4\% versus 45.9\%.
 
 The strongest direct signature of counterfactual width is grammatical.  A local lemma can turn one
 fact into a callable family either with binders---\code{have sum\_range (n : Nat) : ...}---or with
 an explicitly universal type, \code{have sum\_range : forall n, ...}.  Counting only the first
 spelling produces a dramatic but non-invariant fourteenfold contrast.  Quotienting the two forms
-still leaves a large difference: 835 of 14,911 human claims (5.60\%) and 491 of 25,715 AI claims
-(1.91\%) state a family, with the human direction in all 12 source groups.  Within identical-theorem
-pairs, a generalized claim occurs only on the human side in 320 cases, only on the AI side in 108,
-and on both in 171.  This remains a syntactic classifier, not proof that a statement chose the best
+still leaves a large difference: 761 of 14,519 human claims (5.24\%) and 422 of 25,127 AI claims
+(1.68\%) state a family, with the human direction in all 12 source groups.  Within identical-theorem
+pairs, a generalized claim occurs only on the human side in 310 cases, only on the AI side in 102,
+and on both in 145.  This remains a syntactic classifier, not proof that a statement chose the best
 generality.  But it records a real construction cost: making an intermediate result vary over an
-argument.  Conditional on paying that cost, AI families are not shorter-lived by this pooled measure: 72.0\% of the human
-and 77.2\% of the AI generalized claims remain live across a later claim boundary.  Here too the
+argument.  Conditional on paying that cost, AI families are not shorter-lived by this pooled measure: 74.1\% of the human
+and 82.2\% of the AI generalized claims remain live across a later claim boundary.  Here too the
 difference lies in how often the abstraction is selected, not an inability to use it once made.
 The classifier has the same functional correlate in both tracks.  Minimum-cost matching to nearby
-instance claims, with a quarter-proof position caliper, retains 269 human and 226 AI proofs: family
-claims are respectively 10.2 and 15.8 points more likely to be adopted, and 20.8 and 31.0 points
+instance claims, with a quarter-proof position caliper, retains 248 human and 199 AI proofs: family
+claims are respectively 13.4 and 19.8 points more likely to be adopted, and 22.3 and 34.1 points
 more likely to be multiply referenced; all four intervals exclude zero.  The association is not
 explained by families occurring earlier.  It remains descriptive, but the rarer AI families are not
 inert when selected.
-In the 210 pairs with the same positive claim count, family shares remain 4.48\% versus 2.47\%.
+In the 206 pairs with the same positive claim count, family shares remain 4.36\% versus 2.56\%.
 The difference is not carried by closed-goal computation: after excluding 416 pairs in which either
-side invokes \code{native\_decide}, family shares remain 5.35\% versus 1.92\%.
+side invokes \code{native\_decide}, family shares remain 5.11\% versus 1.72\%.
 
 \begin{figure}[t]
   \centering
@@ -336,49 +339,54 @@ side invokes \code{native\_decide}, family shares remain 5.35\% versus 1.92\%.
   \label{fig:functions}
 \end{figure}
 
-Names show an even larger difference.  Placeholder forms account for 58.4\% of human claims and
-88.8\% of AI claims.  The pooled human name distribution has 3,716 types, Shannon entropy 8.58 bits,
-and effective vocabulary 384; the AI distribution has 1,710 types, 6.28 bits, and effective
+Names show an even larger difference.  Placeholder forms account for 58.9\% of human claims and
+88.8\% of AI claims.  The pooled human name distribution has 3,578 types, Shannon entropy 8.53 bits,
+and effective vocabulary 369; the AI distribution has 1,662 types, 6.28 bits, and effective
 vocabulary 78 despite containing 72\% more name tokens.  Length is a crude but convergent check:
-24.1\% of human names and 9.4\% of AI names have at least four characters.  This is consistent with
+23.8\% of human names and 9.4\% of AI names have at least four characters.  This is consistent with
 interface investment, but it is not by itself proof of semantic quality.  A short conventional name
 may be excellent, and a long name may be decorative.  A paired within-proof embedding assay finds
 no robust human advantage after chance and claim-count normalization (appendix), so we make no
 semantic naming claim.
-Nor do the proxies collapse into one style score.  Across the 1,883 pairs with claims on both sides,
+Nor do the proxies collapse into one style score.  Across the 1,816 pairs with claims on both sides,
 Spearman correlations among proof-level human advantages in uptake, reach, family construction, and
 naming range only from .07 to .32.  We therefore keep the coordinates separate.
 
 The elaborated term analysis both confirms and corrects the source story.  All 7,260 production-
-snapshot tasks compile; exact-name alignment retains 14,832 of 14,911 human and 25,677 of 25,715 AI
-claims.  Among aligned binders, 9.7\% human versus 21.7\% AI have zero occurrence in the final term.
-But multiple occurrence is 32.1\% versus 34.1\% (AI-minus-human interval $-0.05$ to 4.89 points).
-Conditional on occurring at least once, however, multi-use is 35.6\% versus 43.6\% (difference
-interval 4.8--12.5 points).
+snapshot tasks compile; exact-name alignment retains 14,469 of 14,519 human and 25,090 of 25,127 AI
+claims.  Among aligned binders, 9.8\% human versus 21.8\% AI have zero occurrence in the final term.
+But multiple occurrence is 32.2\% versus 34.2\% (AI-minus-human interval $-0.04$ to 5.08 points).
+Conditional on occurring at least once, however, multi-use is 35.7\% versus 43.7\%, higher for AI
+in 11 of 12 groups (difference interval 4.8--12.7 points).
 The sharper result is a polarized source-to-certificate channel: zero-or-multiple occurrence is
-41.8\% human and 55.8\% AI (difference 14.0 points, interval 9.9--20.6), leaving one-to-one mapping
-at 58.2\% versus 44.2\%.  Within both the source-single-use and source-multi-use strata, AI claims
+42.0\% human and 56.0\% AI (difference 14.0 points, interval 9.9--20.7), leaving one-to-one mapping
+at 58.0\% versus 44.0\%.  Within both the source-single-use and source-multi-use strata, AI claims
 are more likely to disappear and more likely to be duplicated; polarization is higher for AI in
 all 12 matched tactic strata.  Contextual tactics can amplify a fact massively, so raw means are not
 cognitive reuse measures.
 
+The inversion holds claim by claim.  Among source-single-use claims, 20.6\% human versus 31.2\% AI
+become multi-occurrence binders; among source-multiple claims, 55.2\% versus 61.4\%.  AI
+disappearance is also higher in both strata.  Retrieval and term fan-out are distinct channels.
+
 Family syntax nevertheless predicts compiled function.  Repeating the one-to-one position match on
-aligned binders (quarter-proof caliper; 263 human and 226 AI proofs), family-minus-instance
-disappearance is $-2.5$ points human (interval $-5.4$ to $-1.2$) and $-7.5$ AI ($-9.6$ to $-5.1$).
-The corresponding multi-use uplift is 17.8 points human (10.8--25.3), but $-2.6$ AI ($-10.9$ to
-12.6).  The direct AI-minus-human interaction among 85 pairs eligible on both tracks remains
-unresolved (interval $-17.8$ to 6.0).  Thus families preferentially survive on both tracks; the
+aligned binders (quarter-proof caliper; 245 human and 199 AI proofs), family-minus-instance
+disappearance is $-2.3$ points human (interval $-5.3$ to $-1.0$) and $-8.4$ AI ($-10.5$ to $-5.6$).
+The corresponding multi-use uplift is 17.7 points human (10.4--25.4), but $-0.3$ AI ($-9.9$ to
+16.4).  The direct AI-minus-human interaction among 79 pairs eligible on both tracks remains
+unresolved (interval $-19.0$ to 7.1).  Thus families preferentially survive on both tracks; the
 different composition estimates are suggestive, not an established provenance difference.  This
 validates the classifier functionally without making occurrence count a general cognitive-reuse
 measure.
 
 The three resolutions reveal a \emph{consolidation--composition split}.  The human track more often
 turns intermediate state into a visibly adopted, repeatedly invoked, named, and general interface;
-the AI track more often leaves its bound fact absent from or amplified within the returned certificate.  Yet
-conditional duration is control-dependent, AI families are at least as long-reaching in the pooled
-comparison, and aggregate term multi-use does not favor humans.  The present divergence is therefore
-better localized to consolidation policy---where reusable compositional structure is made
-explicit---than to deductive capacity.
+the AI track more often leaves its bound fact absent from or amplified within the returned certificate.
+This is a surface--certificate inversion: explicit retrieval is a construction decision, whereas
+term fan-out is partly an effect of tactics and elaboration.  Aggregate term multi-use does not
+favor humans, and AI families are at least as long-reaching in the pooled source comparison.  The
+present divergence is therefore better localized to consolidation policy---where reusable
+compositional structure is made explicit---than to deductive capacity.
 
 \begin{figure}[t]
   \centering
@@ -421,12 +429,12 @@ changes in information rate \citep{bergey2024}.  If a named claim is an explanat
 than only syntax, it might likewise concentrate material that a predictive model finds locally
 unexpected.
 
-The exploratory result is compatible with that prediction (\cref{fig:surprise}).  Across the 177
+The exploratory result is compatible with that prediction (\cref{fig:surprise}).  Across the 169
 pairs in which both proofs contain eligible boundaries, the median eight-token boundary excess---
-post-boundary minus pre-boundary NLL, corrected by same-document control positions---is 0.357 nats
-per token for human scripts and 0.028 for AI.  The paired difference is $-0.236$ ($p=8.9\times
-10^{-6}$).  Removing the complete \code{have} header leaves an excess of 0.207 versus 0.044
-($p=.009$).  The effect is present in 4-, 8-, and more weakly 16-token windows, and disappears by 32 tokens.
+post-boundary minus pre-boundary NLL, corrected by same-document control positions---is 0.334 nats
+per token human and 0.020 AI; the mean AI-minus-human source-cluster interval is $-.557$ to $-.276$.
+Removing the complete \code{have} header leaves medians 0.175 versus 0.036 (mean-difference interval
+$-.401$ to $-.130$).  The effect is present in 4-, 8-, and more weakly 16-token windows, and disappears by 32 tokens.
 Thus it is a local pulse, not sustained global difficulty.
 
 \begin{figure}[t]
@@ -441,8 +449,8 @@ Thus it is a local pulse, not sustained global difficulty.
 \end{figure}
 
 The model assigns AI documents much lower NLL overall (median 0.73 versus 1.15), a warning about
-style affinity or data overlap.  A leave-one-source-out token bigram preserves the raw boundary
-direction ($p=.017$), but its content-only contrast is marginal ($p=.051$).  We infer
+style affinity or data overlap.  A leave-one-source-out character bigram preserves both mean directions
+under source-cluster resampling, but its rank-based content contrast is marginal ($p=.093$).  We infer
 neither creativity nor cognitive surprise.  Nor does the pulse specifically validate the family
 classifier: within documents containing both kinds of claim, family and instance content pulses do
 not differ detectably (human $p=.62$; AI $p=.10$).  At most, human boundaries mark a brief predictive
@@ -515,14 +523,13 @@ therefore not maximization of lemma count.  It is selection of a small basis who
 useful after the local context has vanished.
 
 The aggregate near-equality of multi-use term binders is theoretically important here.  It hides
-opposite channel components: AI binders disappear more often, but those retained are more often
-multiply represented.  Kernel sharing and
-communicative abstraction are different achievements.  Automation can expand a generic hypothesis
+opposite channel components: AI binders disappear more often, but survivors are more often
+multiply represented.  Kernel sharing and communicative abstraction differ.  Automation can expand a generic hypothesis
 into many term occurrences without ever identifying a concept for a reader.  Conversely, a
 well-chosen explanatory lemma can deserve a name even when invoked once in the current theorem,
 because its intended reuse lies in another proof or another mind.  Any cognitive account based
-only on the certificate DAG will confuse these cases.  The units of human mathematical thought are
-not guaranteed to coincide with the compiler's units of common-subexpression elimination.
+only on the certificate DAG will confuse these cases.  Source names expose deliberate retrieval;
+the term records compiled dependencies.  Human--AI divergence can reverse between these planes.
 
 The local surprisal pulse offers a tentative temporal signature of this selection.  A useful
 boundary often arrives when prior manipulations have made a new description possible: monotonicity,
@@ -534,13 +541,12 @@ renegotiate common ground.  The pulse's disappearance after 16 tokens is consist
 event rather than generally ornate prose.  But this interpretation must remain provisional until
 human reading time, recall, and transfer are measured directly.
 
-This perspective also distinguishes discovery from presentation without separating them
-absolutely.  A source proof can be a search trace, a pedagogical artifact, or both.  Humans often
-refactor scratch work into a proof idea; present generators are commonly evaluated before that
-second pass.  The central divergence may thus be procedural: one workflow includes consolidation,
-naming, and anticipation of reuse, while another terminates at verification.  A cognitively serious
-comparison should align stages---first attempts with first attempts, refactored artifacts with
-refactored artifacts---and observe how representations change between them.  The horizon principle
+This distinction echoes geometry-expertise models in which abstract key steps and perceptual chunks
+guide solving rather than stepwise planning \citep{koedinger1990}.  A source proof can be a search
+trace, a pedagogical artifact, or both.  Humans often refactor scratch work into a proof idea;
+present generators are commonly evaluated before that second pass.  A cognitively serious comparison
+should align stages---first attempts with first attempts, refactored artifacts with refactored
+artifacts---and observe how representations change between them.  The horizon principle
 predicts that the largest human--AI gap will occur not in local inference, where both can exploit
 formal context, but in deciding what part of a successful episode should become shared memory.
 
@@ -622,18 +628,12 @@ Nor does it show that human artifacts are globally reusable, since our primary a
 target declaration.  The distinction between episode and persistent interface remains to be tested
 on theorem sequences.
 
-The limitations are consequential: provenance is observational; the lexical parser misses other
+The limitations are consequential: provenance is observational; the scanner/parser census misses other
 source constructs and implicit tactic use; current-version attrition can select on style; binder
 occurrence is representation-specific; the surprisal model may have training overlap; and names and
 spans remain proxies.  Direct reader experiments are still required \citep{kambhamettu2026}.
 A scope-correct 298-pair topology rerun also finds no robust authorship effect in reuse-tail exponent
 or maximum outdegree; the withdrawn extractor and regression are detailed in the appendix.
-
-The account fails if an objective-matched experiment retains the same difference, downstream reward
-does not lengthen machine interfaces, or the measures fail to predict future cost, maintenance, and
-comprehension.  A machine-built durable library is the decisive prediction, not an exception.
-Ultimately, a proof is a wager on its next use: evaluation should measure whether proving today
-changes tomorrow's cost and intelligibility.
 
 \clearpage
 \bibliographystyle{plainnat}
@@ -641,6 +641,7 @@ changes tomorrow's cost and intelligibility.
 
 \appendix
 \clearpage
+\small
 \section{Reproducibility and robustness}
 
 All reported paired source results are produced by \path{code/paired_horizon.py}; scope-aware term
@@ -649,10 +650,18 @@ use by \path{code/extract_binder_use.py} and \path{code/analyze_binder_use.py}; 
 \path{code/ngram_surprisal.py}, and \path{code/analyze_surprisal.py}.  Machine-readable summaries live in \path{results/horizon/}.
 Seeds and inclusion rules are serialized with the estimates.
 
+The source census uses \path{code/ExtractHaveRanges.lean} to parse the complete tactic that
+constructs each claim before searching for later references.  This prevents an outer same-name
+hypothesis used in \code{have h : P := f h} from being credited to the newly introduced \code{h}.
+The current parser aligns 39,646/40,626 candidates.  Restricting to the 3,511 theorem pairs with
+successful parsing and complete scanner/parser agreement gives human/AI uses per claim
+1.43/0.87, zero-uptake 21.5\%/36.0\%, and multi-uptake 25.9\%/11.8\%; the four source-cluster
+intervals for the between-track differences exclude zero.
+
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
-Every source group has lower explicit uses per AI claim and higher AI zero-uptake; 11 of 12 have
-lower AI long-reach share.  The production term alignment's unique-name subset contains 9,477 human
-and 15,058 AI claims; zero-use shares are 9.5\% and 21.7\%, respectively.
+Every source group has lower explicit uses per AI claim, higher AI zero-uptake, and lower AI
+long-reach share.  The production term alignment's unique-name subset contains 9,226 human
+and 14,706 AI claims; zero-use shares are 9.5\% and 21.8\%, respectively.
 The position-matched family-retention result also survives this unique-name restriction (202 human
 and 167 AI proof sides); the human within-track multi-use association remains positive, while the
 AI association and the direct multi-use provenance interaction remain unresolved.
@@ -660,16 +669,17 @@ The surprisal boundary contrast is
 present for four-, eight-, and more weakly 16-token windows, and absent at 32.  Excluding the complete
 claim header preserves the four- and eight-token effects.  In the leave-one-source-out bigram,
 which excludes every document in the held-out proof's coarse source group from training, the raw
-eight-token difference remains ($p=.017$) but content-only evidence weakens ($p=.051$).
+eight-token rank difference remains ($p=.020$) but content-only rank evidence weakens ($p=.093$);
+their mean source-cluster intervals are $-.426$ to $-.081$ and $-.540$ to $-.062$.
 
 The adoption--duration decomposition guards against a changing temporal ruler.  For every adopted
-claim, token reach is the number of lexical tokens from the end of its header to its last explicit
+claim, token reach is the number of lexical tokens from the end of its complete construction tactic to its last explicit
 reference.  Opportunity-normalized reach divides crossed later claim boundaries by the number
 available before the same-name stopping point and excludes declarations with no later boundary.  Human token
 reach and normalized reach are higher in all 12 source groups.  In contrast, the conditional chance
-of crossing at least one available boundary is 75.1\%/75.2\% (AI-minus-human source-cluster interval
-$-.013$ to $.011$).  In the length-matched subset, both conditional-duration intervals cross zero;
-under equal positive claim counts, normalized duration is 51.1\%/53.6\%.  The claim-density ruler
+of crossing at least one available boundary is 75.7\%/75.8\% (AI-minus-human source-cluster interval
+$-.011$ to $.011$).  In the length-matched subset, both conditional-duration intervals cross zero;
+under equal positive claim counts, normalized duration is 51.8\%/53.9\%.  The claim-density ruler
 alone would conceal both the null result and the instability of the pooled direction.
 
 The local functional check on the family classifier holds separately for its two equivalent
@@ -680,27 +690,27 @@ human-favored and an AI-favored surface form.
 
 Claim position is a second mechanical alternative: an early family simply has more remaining text
 in which to be referenced.  Within each proof we therefore use minimum-cost one-to-one matching on
-claim index normalized by the proof's final claim index.  With no caliper this yields 637 human and
-478 AI claim pairs; with an absolute position-gap caliper of .25, it yields 433 and 409 pairs in 269
-and 226 proofs.  In the calipered comparison, family-minus-instance adoption is 10.2 points human
-and 15.8 AI, while multiple-reference uplift is 20.8 and 31.0 points.  All intervals exclude zero.
+claim index normalized by the proof's final claim index.  With no caliper this yields 577 human and
+409 AI claim pairs; with an absolute position-gap caliper of .25, it yields 394 and 348 pairs in 248
+and 199 proofs.  In the calipered comparison, family-minus-instance adoption is 13.4 points human
+and 19.8 AI, while multiple-reference uplift is 22.3 and 34.1 points.  All intervals exclude zero.
 The explicit-reference count itself is less stable for humans, but the two binary functional
 outcomes are not explained by simple exposure time.
 
-We also attempted a stronger test of the naming interpretation.  In 230 pairs with two to eight
+We also attempted a stronger test of the naming interpretation.  In 229 pairs with two to eight
 unique, explicitly typed claims per proof, each naturalized name had to retrieve its own type from
 the other types in that proof using Goedel-Prover mean embeddings.  Mean percentile rank is .528
-human and .518 AI (AI-minus-human source-cluster interval $-.022$ to $.009$); chance-adjusted top-one
-accuracy is likewise unresolved.  Last-token pooling gives the same null direction, and among 57
-equal-claim-count pairs mean-pooling top-one accuracy is 40.9\% human and 40.7\% AI.  Because this causal
+human and .519 AI (AI-minus-human source-cluster interval $-.020$ to $.006$); chance-adjusted top-one
+accuracy is likewise unresolved.  Last-token pooling gives the same null direction, and among 61
+equal-claim-count pairs mean-pooling top-one accuracy is 40.7\% human and 39.9\% AI.  Because this causal
 model was not trained as a contrastive encoder, even a positive result would have been exploratory.
 The null is sufficient for the present inference: vocabulary size and generic-form frequency do not
 establish that human names are semantically better retrieval keys.
 
 The preselected 312-pair current-version sample closely preserves the source contrasts.  Human/AI claim
-densities are 1.98/3.25 per 100 tokens in the sample versus 2.01/3.18 in the full corpus; explicit
-uses per claim are 1.38/0.84 versus 1.44/0.87; and zero-uptake shares are 22.3\%/35.7\% versus
-22.2\%/36.3\%.  All 12 source groups remain represented.  Current-version attrition reduces this to 298
+densities are 1.94/3.16 per 100 tokens in the sample versus 1.96/3.10 in the full corpus; explicit
+uses per claim are 1.42/0.84 versus 1.43/0.87; and zero-uptake shares are 20.2\%/35.3\% versus
+21.5\%/36.0\%.  All 12 source groups remain represented.  Current-version attrition reduces this to 298
 complete binder-use pairs but changes the profile little.
 
 Paired does not mean independent: 181 structured proof values are token-identical and 230 have
@@ -708,7 +718,7 @@ whitespace-token similarity at least .90 after comments and strings are removed.
 attenuate rather than create the result.  Of the 181 exact value matches, 180 also have identical
 source bodies, so they are duplicate mass rather than a source/certificate natural experiment.
 Excluding all 230 leaves 3,400 pairs; explicit uses per
-claim are 1.42/0.85, zero-uptake shares 22.9\%/36.7\%, and placeholder shares 59.0\%/89.5\%.
+claim are 1.43/0.86, zero-uptake shares 21.5\%/36.4\%, and placeholder shares 59.0\%/89.5\%.
 
 The source direction also survives a coarse automation sensitivity.  For each of \code{linarith},
 \code{nlinarith}, \code{norm\_num}, \code{omega}, \code{ring}, and \code{simp}, we separately retain
@@ -787,8 +797,8 @@ The regression proof has two independent identity lambdas; the old representatio
 shared variable leaf, while the corrected representation produces two.  None of the main analyses
 in this paper uses a raw-term reuse tail.
 
-The scope-correct rerun elaborates 302 of 312 tasks on each side; applying the independent binder-
-task status filter leaves 298 complete pairs.  AI terms are slightly larger (median paired node
+The scope-correct rerun elaborates 302 of 312 tasks on each side; applying the independent
+binder-task status filter leaves 298 complete pairs.  AI terms are slightly larger (median paired node
 difference 88.5; source-cluster interval 0--243) and have a slightly larger visit-to-unique-node
 ratio (difference 0.0068; 0.0023--0.0112).  But the proposed authorship signal in high-outdegree reuse remains absent:
 maximum outdegree and the fixed-$10$ tail exponent have intervals crossing zero.  These graph
@@ -809,6 +819,8 @@ A consumer-specific interface frontier is
  R_c(\delta)=\min_{p(z\mid E):\;\mathbb{E}D_c(E,Z)\leq\delta} I(E;Z).
 \]
 For a deterministic encoder, the rate is the information retained in the chosen interface.  A
+shared encoder is assumed: $I(E;Z)$ does not itself charge for inventing or communicating the
+codebook, a cost restored by the explicit $|L|$ term in \cref{eq:apc}.  A
 short horizon changes $q_{\gamma}$ toward the immediate goal, making positional scratch state cheap
 and distant transfer nearly irrelevant.  A different consumer changes $D_c$: an opaque lemma may
 have low distortion for a prover with effective retrieval and high distortion for a reader who
