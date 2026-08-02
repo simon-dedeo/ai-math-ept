@@ -48,6 +48,55 @@ theorem demo (h : True) : True := by
     assert claims[0]["first_use_delay_tokens"] == 1
 
 
+def test_nested_tactic_scope_ends_before_sibling_branch() -> None:
+    source = '''
+theorem demo : True ∧ True := by
+  constructor
+  · have local : True := by trivial
+    exact local
+  · let local : Prop := True
+    exact True.intro
+'''
+    body = proof_body(source)
+    declarations = named_have_declarations(body)
+    local = declarations[0]
+    construction_end = body.index("\n    exact local")
+    scope_end = body.index("\n  · let local")
+    claims = named_have_claims(
+        source,
+        [(local["start"], construction_end, scope_end)],
+        require_parser_match=True,
+    )
+    assert len(claims) == 1
+    assert claims[0]["explicit_uses"] == 1
+    assert claims[0]["unscoped_explicit_uses"] == 2
+    assert claims[0]["scope_excluded_reference_tokens"] == 1
+
+
+def test_inner_construction_claims_are_not_later_outer_boundaries() -> None:
+    source = '''
+theorem demo : True := by
+  have outer : True := by
+    have inner : True := by trivial
+    exact inner
+  exact outer
+'''
+    body = proof_body(source)
+    declarations = named_have_declarations(body)
+    outer_end = body.index("\n  exact outer")
+    inner_end = body.index("\n    exact inner")
+    claims = named_have_claims(
+        source,
+        [
+            (declarations[0]["start"], outer_end, len(body)),
+            (declarations[1]["start"], inner_end, outer_end),
+        ],
+        require_parser_match=True,
+    )
+    assert claims[0]["later_claims_available"] == 0
+    assert claims[0]["intervening_claims_to_last_use"] == 0
+
+
 def test_only_final_target_declaration_is_analyzed() -> None:
     source = '''
 lemma helper : True := by

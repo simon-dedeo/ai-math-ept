@@ -92,16 +92,16 @@
       "median_boundary_delta_nll": 0.0230276553818074,
       "median_boundary_excess_nll": -0.0073133484636937005,
       "median_definition_name_nll": 2.6959057151102894,
-      "median_reference_name_nll": 2.786980977380513,
-      "median_name_reuse_relief_nll": -0.032732861129288304
+      "median_reference_name_nll": 2.7656882885982412,
+      "median_name_reuse_relief_nll": -0.033005854562662584
     },
     "ai": {
       "claims": 2098,
       "median_boundary_delta_nll": -0.0785574643532968,
       "median_boundary_excess_nll": -0.07457520881417105,
       "median_definition_name_nll": 2.239771136372475,
-      "median_reference_name_nll": 2.271397035280603,
-      "median_name_reuse_relief_nll": -0.02897082199126544
+      "median_reference_name_nll": 2.2477872150547844,
+      "median_name_reuse_relief_nll": -0.015148783713422799
     }
   },
   "claim_level_by_generality": {
@@ -164,5 +164,5 @@
       }
     }
   },
-  "caveat": "Exploratory model-relative information; the character bigram excludes the complete coarse source group but remains a weak model of mathematical expectation."
+  "caveat": "Character-level control trained without the held-out source group; still a surface model, not cognitive surprisal."
 }

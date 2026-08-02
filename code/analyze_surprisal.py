@@ -163,11 +163,17 @@ def main() -> None:
             name = match["name"]
             name_start, name_end = match["name_start"], match["name_end"]
             definition_nll = overlap_mean(token_frame, name_start, name_end)
-            next_same = next(
-                (later["start"] for later in matches[claim_index + 1 :] if later["name"] == name),
-                len(text),
-            )
             construction_end = int(metadata.iloc[0].construction_end)
+            scope_end = int(metadata.iloc[0].scope_end)
+            next_same = next(
+                (
+                    later["start"]
+                    for later in matches[claim_index + 1 :]
+                    if later["name"] == name
+                    and construction_end <= later["start"] < scope_end
+                ),
+                scope_end,
+            )
             references = [
                 token for token in TOKEN.finditer(text, construction_end, next_same)
                 if token.group(0) == name

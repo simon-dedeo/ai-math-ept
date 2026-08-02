@@ -4,7 +4,7 @@
   "token_offsets_from": "results/horizon/token_surprisal.tsv",
   "token_offsets_sha256": "ee53f6394aa84b9f36d1e8c02290a38f36283876982b475de8f950ec53991eae",
   "document_bytes_sha256": "8501a859b5ac52ce31e151fd416ff55003b896dc57e8c28edf4af1cdef244318",
-  "source_pairs_sha256": "f9047e9154b286f9d2a8d91662c4a36dddfac5051fb1620814554da343bf039b",
+  "source_pairs_sha256": "0a3148d399e56bba1772cdb16bd6e24edd9b155ac2dd1fd733a21430b1e87150",
   "alpha_bigram_backoff": 10.0,
   "beta_unigram_smoothing": 0.1,
   "documents": 624,

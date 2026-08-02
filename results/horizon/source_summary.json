@@ -16,10 +16,38 @@
     "helper": "code/ExtractHaveRanges.lean",
     "environment": "mathlib4",
     "coordinate_conversion": "Lean UTF-8 byte offsets to Python Unicode offsets",
+    "scope_rule": "tail of nearest enclosing tacticSeq parser node",
     "regex_named_claims": 40626,
     "parser_matched_named_claims": 39646,
     "named_claim_coverage": 0.9758775168611235,
     "pairs_fully_parsed_and_aligned": 3511
+  },
+  "scope_clipping_audit": {
+    "rule": "explicit-use windows end at the tail of the nearest enclosing tacticSeq, or earlier at a same-name redeclaration",
+    "human": {
+      "claims": 14519,
+      "claims_in_nested_scope": 7583,
+      "claims_with_excluded_name_tokens": 442,
+      "excluded_name_tokens": 1068,
+      "unscoped_uses_per_claim": 1.426200151525587,
+      "scoped_uses_per_claim": 1.3526413664852952,
+      "unscoped_zero_share": 0.21482195743508506,
+      "scoped_zero_share": 0.2216406088573593,
+      "unscoped_multi_share": 0.25959088091466354,
+      "scoped_multi_share": 0.24009918038432398
+    },
+    "ai": {
+      "claims": 25127,
+      "claims_in_nested_scope": 15284,
+      "claims_with_excluded_name_tokens": 568,
+      "excluded_name_tokens": 1157,
+      "unscoped_uses_per_claim": 0.8668364707286982,
+      "scoped_uses_per_claim": 0.8207903848449875,
+      "unscoped_zero_share": 0.36048871731603455,
+      "scoped_zero_share": 0.3694034305726907,
+      "unscoped_multi_share": 0.11815974847773311,
+      "scoped_multi_share": 0.10251920245154615
+    }
   },
   "dataset_provenance": {
     "source": "https://huggingface.co/datasets/AI-MO/NuminaMath-LEAN",
@@ -86,108 +114,108 @@
       "human_median": 1.0,
       "ai_median": 2.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4099173553719008,
+      "probability_ai_greater": 0.41046831955922863,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 3.750517861331027e-11
+      "wilcoxon_p": 2.0286320135272345e-11
     },
     "zero_uptake_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 0.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4041322314049587,
+      "probability_ai_greater": 0.4046831955922865,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 4.423004474398695e-143
+      "wilcoxon_p": 5.205317188423336e-144
     },
     "one_uptake_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 2.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4553719008264463,
+      "probability_ai_greater": 0.45454545454545453,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 3.446733316021434e-79
+      "wilcoxon_p": 1.6452941652157315e-77
     },
     "multi_uptake_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 0.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.18953168044077134,
+      "probability_ai_greater": 0.17079889807162535,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 1.3440645517516425e-07
+      "wilcoxon_p": 9.654776661034326e-12
     },
     "reuse_excess": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 0.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.18236914600550963,
+      "probability_ai_greater": 0.16639118457300275,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 8.663413309264826e-23
+      "wilcoxon_p": 4.359962752580971e-29
     },
     "long_horizon_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.38071625344352616,
+      "probability_ai_greater": 0.36363636363636365,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 2.0158790318017278e-47
+      "wilcoxon_p": 1.8640890322417975e-41
     },
     "total_claim_span": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.39834710743801655,
+      "probability_ai_greater": 0.3743801652892562,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 2.3510062659237413e-52
+      "wilcoxon_p": 1.062922709396127e-45
     },
     "max_claim_span": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.38925619834710745,
+      "probability_ai_greater": 0.36391184573002755,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 3.8385462156728466e-57
+      "wilcoxon_p": 6.464928937255331e-45
     },
     "total_last_use_delay_tokens": {
       "n": 3630,
       "human_median": 2.0,
-      "ai_median": 11.0,
+      "ai_median": 10.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4300275482093664,
+      "probability_ai_greater": 0.4256198347107438,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 3.423569240107122e-11
+      "wilcoxon_p": 3.8404720707086935e-10
     },
     "placeholder_haves": {
       "n": 3630,
@@ -289,48 +317,48 @@
   "claim_rates": {
     "human": {
       "explicit_uses_per_claim": {
-        "numerator": 20707,
+        "numerator": 19639,
         "denominator": 14519,
-        "estimate": 1.426200151525587,
+        "estimate": 1.3526413664852952,
         "source_cluster_ci": [
-          1.3348042363511934,
-          1.5612969769106733
+          1.256422163475105,
+          1.4915743857553807
         ]
       },
       "zero_uptake_share": {
-        "numerator": 3119,
+        "numerator": 3218,
         "denominator": 14519,
-        "estimate": 0.21482195743508506,
+        "estimate": 0.2216406088573593,
         "source_cluster_ci": [
-          0.15264448275252,
-          0.25396099493748703
+          0.15787474950740535,
+          0.2616485604431937
         ]
       },
       "one_uptake_share": {
-        "numerator": 7631,
+        "numerator": 7815,
         "denominator": 14519,
-        "estimate": 0.5255871616502514,
+        "estimate": 0.5382602107583166,
         "source_cluster_ci": [
-          0.49599846036629985,
-          0.5761390355461917
+          0.5060326355891274,
+          0.5904002820467342
         ]
       },
       "multi_uptake_share": {
-        "numerator": 3769,
+        "numerator": 3486,
         "denominator": 14519,
-        "estimate": 0.25959088091466354,
+        "estimate": 0.24009918038432398,
         "source_cluster_ci": [
-          0.23063610763961526,
-          0.3022977392014616
+          0.20918952946140248,
+          0.2868270737818468
         ]
       },
       "long_horizon_share": {
-        "numerator": 7178,
+        "numerator": 6163,
         "denominator": 14519,
-        "estimate": 0.4943866657483298,
+        "estimate": 0.4244782698532957,
         "source_cluster_ci": [
-          0.4790465616757675,
-          0.5211535816731502
+          0.4027466433234559,
+          0.45990366507365177
         ]
       },
       "placeholder_name_share": {
@@ -381,48 +409,48 @@
     },
     "ai": {
       "explicit_uses_per_claim": {
-        "numerator": 21781,
+        "numerator": 20624,
         "denominator": 25127,
-        "estimate": 0.8668364707286982,
+        "estimate": 0.8207903848449875,
         "source_cluster_ci": [
-          0.834926757136667,
-          0.8881614615602786
+          0.7914049167299295,
+          0.8468646808654058
         ]
       },
       "zero_uptake_share": {
-        "numerator": 9058,
+        "numerator": 9282,
         "denominator": 25127,
-        "estimate": 0.36048871731603455,
+        "estimate": 0.3694034305726907,
         "source_cluster_ci": [
-          0.3248457027016556,
-          0.3859913377710198
+          0.33269487030106143,
+          0.3955133236510829
         ]
       },
       "one_uptake_share": {
-        "numerator": 13100,
+        "numerator": 13269,
         "denominator": 25127,
-        "estimate": 0.5213515342062324,
+        "estimate": 0.5280773669757631,
         "source_cluster_ci": [
-          0.4972977835639416,
-          0.5558605316034244
+          0.5029427164635509,
+          0.5639611336378882
         ]
       },
       "multi_uptake_share": {
-        "numerator": 2969,
+        "numerator": 2576,
         "denominator": 25127,
-        "estimate": 0.11815974847773311,
+        "estimate": 0.10251920245154615,
         "source_cluster_ci": [
-          0.10936138292840372,
-          0.12224528675565902
+          0.09359009695529948,
+          0.10684051687778504
         ]
       },
       "long_horizon_share": {
-        "numerator": 10645,
+        "numerator": 8968,
         "denominator": 25127,
-        "estimate": 0.4236478688263621,
+        "estimate": 0.3569069128825566,
         "source_cluster_ci": [
-          0.40574462800423783,
-          0.4476639981591954
+          0.33906113850699465,
+          0.3811042419336056
         ]
       },
       "placeholder_name_share": {
@@ -497,10 +525,10 @@
       "claims": 401,
       "source_groups": 12,
       "mean_binder_groups": 1.8204488778054864,
-      "explicit_uses_per_claim": 2.2069825436408976,
+      "explicit_uses_per_claim": 2.1920199501246884,
       "zero_uptake_share": 0.00997506234413965,
       "multi_uptake_share": 0.5336658354114713,
-      "long_horizon_share": 0.71571072319202,
+      "long_horizon_share": 0.6334164588528678,
       "placeholder_name_share": 0.3690773067331671,
       "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
     },
@@ -508,10 +536,10 @@
       "claims": 52,
       "source_groups": 9,
       "mean_binder_groups": 1.5769230769230769,
-      "explicit_uses_per_claim": 2.5,
+      "explicit_uses_per_claim": 2.480769230769231,
       "zero_uptake_share": 0.057692307692307696,
       "multi_uptake_share": 0.5576923076923077,
-      "long_horizon_share": 0.8076923076923077,
+      "long_horizon_share": 0.7692307692307693,
       "placeholder_name_share": 0.4423076923076923,
       "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
     }
@@ -521,10 +549,10 @@
       "claims": 761,
       "source_groups": 12,
       "mean_binder_groups": 0.9592641261498029,
-      "explicit_uses_per_claim": 2.5348226018396844,
+      "explicit_uses_per_claim": 2.512483574244415,
       "zero_uptake_share": 0.013140604467805518,
-      "multi_uptake_share": 0.545335085413929,
-      "long_horizon_share": 0.7411300919842313,
+      "multi_uptake_share": 0.5440210249671484,
+      "long_horizon_share": 0.6320630749014454,
       "placeholder_name_share": 0.43101182654402104,
       "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
     },
@@ -532,10 +560,10 @@
       "claims": 422,
       "source_groups": 11,
       "mean_binder_groups": 0.1943127962085308,
-      "explicit_uses_per_claim": 1.8909952606635072,
+      "explicit_uses_per_claim": 1.8696682464454977,
       "zero_uptake_share": 0.04028436018957346,
-      "multi_uptake_share": 0.495260663507109,
-      "long_horizon_share": 0.8222748815165877,
+      "multi_uptake_share": 0.4881516587677725,
+      "long_horizon_share": 0.6753554502369669,
       "placeholder_name_share": 0.8151658767772512,
       "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
     }
@@ -547,31 +575,31 @@
         "eligible_proofs": 180,
         "source_groups": 12,
         "adopted": {
-          "flagged_minus_unflagged": 0.11843733786789343,
+          "flagged_minus_unflagged": 0.12207236025291582,
           "source_cluster_ci": [
-            0.06565847018740896,
-            0.1597326592724381
+            0.06769877452794121,
+            0.16434139656259267
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": 0.17937463811605966,
+          "flagged_minus_unflagged": 0.20728685038938308,
           "source_cluster_ci": [
-            0.09537504803658667,
-            0.24089041477713372
+            0.13686927600749896,
+            0.26707656327610185
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": 0.31966667615850625,
+          "flagged_minus_unflagged": 0.22240064867352446,
           "source_cluster_ci": [
-            0.22354092334613804,
-            0.4024540982158688
+            0.1427590249386468,
+            0.2727169922331731
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": 0.4632529776716868,
+          "flagged_minus_unflagged": 0.6114654909814223,
           "source_cluster_ci": [
-            0.055743510227476534,
-            0.7312711900608334
+            0.3174800620764254,
+            0.8117590455493517
           ]
         }
       },
@@ -586,24 +614,24 @@
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": 0.2848534360217367,
+          "flagged_minus_unflagged": 0.291389383734155,
           "source_cluster_ci": [
-            0.15435525346673706,
-            0.5248737373737373
+            0.16053494622034542,
+            0.5421604938271606
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": 0.3078885402905011,
+          "flagged_minus_unflagged": 0.32151975072454375,
           "source_cluster_ci": [
-            0.12050803171773761,
-            0.4843394303373523
+            0.15291151182964136,
+            0.4967955807055729
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": 0.856425269941065,
+          "flagged_minus_unflagged": 0.8846387775663374,
           "source_cluster_ci": [
-            0.47324865514387576,
-            1.2972688846080391
+            0.5187534467806159,
+            1.3321402049109998
           ]
         }
       },
@@ -619,24 +647,24 @@
           ]
         },
         "multi_uptake": {
-          "ai_minus_human": 0.09041960245636715,
+          "ai_minus_human": 0.07840979853479853,
           "source_cluster_ci": [
-            -0.04124986242360191,
-            0.34843294811514347
+            -0.055687830687830675,
+            0.3276155535932319
           ]
         },
         "long_horizon": {
-          "ai_minus_human": 0.048324974861739554,
+          "ai_minus_human": 0.14889115133232778,
           "source_cluster_ci": [
-            -0.050183823529411795,
-            0.12520906570961715
+            -0.028183581124757603,
+            0.27286456837008305
           ]
         },
         "explicit_uses": {
-          "ai_minus_human": 0.4130274904833728,
+          "ai_minus_human": 0.3996573924441571,
           "source_cluster_ci": [
-            0.08538100077463663,
-            0.8856358953837946
+            0.10677648989733383,
+            0.8222414792346914
           ]
         }
       }
@@ -646,31 +674,31 @@
         "eligible_proofs": 205,
         "source_groups": 11,
         "adopted": {
-          "flagged_minus_unflagged": 0.15141509129594394,
+          "flagged_minus_unflagged": 0.16335100091478036,
           "source_cluster_ci": [
-            0.1112666142639818,
-            0.17843772901518828
+            0.11957694086772505,
+            0.1979103215773748
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": 0.28772305032753415,
+          "flagged_minus_unflagged": 0.30796004138420285,
           "source_cluster_ci": [
-            0.23807851310993378,
-            0.3508083106069716
+            0.24975467006016425,
+            0.3863338210873701
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": 0.37856189949370334,
+          "flagged_minus_unflagged": 0.26208558887321004,
           "source_cluster_ci": [
-            0.27973147492698663,
-            0.43156236755896454
+            0.19646365439679758,
+            0.30463760698441233
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": 1.3425808335563416,
+          "flagged_minus_unflagged": 1.4673285568336643,
           "source_cluster_ci": [
-            0.8280776308991491,
-            1.6755327361440435
+            0.9208484741132282,
+            1.9319537713336299
           ]
         }
       },
@@ -678,31 +706,31 @@
         "eligible_proofs": 216,
         "source_groups": 11,
         "adopted": {
-          "flagged_minus_unflagged": 0.21531481665114946,
+          "flagged_minus_unflagged": 0.22191246930378886,
           "source_cluster_ci": [
-            0.19284434321365246,
-            0.25566742451698515
+            0.1990686304241486,
+            0.26490750281742054
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": 0.370216698193159,
+          "flagged_minus_unflagged": 0.3861931810996019,
           "source_cluster_ci": [
-            0.3243559635425272,
-            0.4632030003318669
+            0.33833205068870237,
+            0.4866382990903577
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": 0.45367820475115095,
+          "flagged_minus_unflagged": 0.3766182406309484,
           "source_cluster_ci": [
-            0.3975392400079312,
-            0.5020677390221577
+            0.30375239423880934,
+            0.45621231178238986
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": 0.9182018820133494,
+          "flagged_minus_unflagged": 0.9517037808210551,
           "source_cluster_ci": [
-            0.7447108768328723,
-            1.3000498261065234
+            0.7806558826230543,
+            1.3631236994009357
           ]
         }
       },
@@ -711,31 +739,31 @@
         "source_groups": 9,
         "estimand": "AI minus human within-proof feature association",
         "adopted": {
-          "ai_minus_human": 0.01754443627259016,
+          "ai_minus_human": 0.015042488024764855,
           "source_cluster_ci": [
-            -0.043987346551306684,
-            0.11790971233019694
+            -0.04551129149099003,
+            0.11539534141910396
           ]
         },
         "multi_uptake": {
-          "ai_minus_human": 0.14720953540764603,
+          "ai_minus_human": 0.1410504406564562,
           "source_cluster_ci": [
-            0.07765528868451534,
-            0.22769052008619808
+            0.06722584050220183,
+            0.2180800392462654
           ]
         },
         "long_horizon": {
-          "ai_minus_human": 0.1325510463148043,
+          "ai_minus_human": 0.18355319352722405,
           "source_cluster_ci": [
-            0.038243911405296004,
-            0.31590642715213507
+            0.1256133617852477,
+            0.307921588144102
           ]
         },
         "explicit_uses": {
-          "ai_minus_human": -0.1902777587120129,
+          "ai_minus_human": -0.20189035850018214,
           "source_cluster_ci": [
-            -0.4251662763159279,
-            0.25106854977301063
+            -0.44217986139290155,
+            0.1542075568285626
           ]
         }
       }
@@ -745,31 +773,31 @@
         "eligible_proofs": 369,
         "source_groups": 12,
         "adopted": {
-          "flagged_minus_unflagged": 0.1375559951250089,
+          "flagged_minus_unflagged": 0.14566987762913533,
           "source_cluster_ci": [
-            0.09450055049488248,
-            0.16814934245789728
+            0.10045171948570246,
+            0.1792322323762074
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": 0.23987322801231026,
+          "flagged_minus_unflagged": 0.26401954182102305,
           "source_cluster_ci": [
-            0.18732221593140244,
-            0.2938645580689803
+            0.2155838766919486,
+            0.3275172150197964
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": 0.36150624928384506,
+          "flagged_minus_unflagged": 0.2521561403605864,
           "source_cluster_ci": [
-            0.29173308149698707,
-            0.40887234102960585
+            0.2030801070154442,
+            0.2772370918163711
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": 0.9545069789435608,
+          "flagged_minus_unflagged": 1.0941386636653316,
           "source_cluster_ci": [
-            0.47769196903125843,
-            1.294693801849054
+            0.6717218718492445,
+            1.473806009499807
           ]
         }
       },
@@ -777,31 +805,31 @@
         "eligible_proofs": 239,
         "source_groups": 11,
         "adopted": {
-          "flagged_minus_unflagged": 0.21890162504967187,
+          "flagged_minus_unflagged": 0.22486435715414926,
           "source_cluster_ci": [
-            0.1965250400652247,
-            0.25824773397577433
+            0.20315003689776626,
+            0.26643747127188033
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": 0.36523184986532614,
+          "flagged_minus_unflagged": 0.38040921763112934,
           "source_cluster_ci": [
-            0.31188007175689997,
-            0.4661430716764967
+            0.3254640950549147,
+            0.4868197053975794
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": 0.439305271407747,
+          "flagged_minus_unflagged": 0.372947533619368,
           "source_cluster_ci": [
-            0.37443753720775086,
-            0.4821214396704561
+            0.2927365416239744,
+            0.4528862796115596
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": 0.9173298625647772,
+          "flagged_minus_unflagged": 0.9507950292942616,
           "source_cluster_ci": [
-            0.7441636713612508,
-            1.2879063371288813
+            0.7820841112715415,
+            1.3430801932068122
           ]
         }
       },
@@ -810,31 +838,31 @@
         "source_groups": 10,
         "estimand": "AI minus human within-proof feature association",
         "adopted": {
-          "ai_minus_human": 0.05899552205456915,
+          "ai_minus_human": 0.057528843449755056,
           "source_cluster_ci": [
-            0.03639218635840853,
-            0.10548894245893886
+            0.03124165503015305,
+            0.10452309303082695
           ]
         },
         "multi_uptake": {
-          "ai_minus_human": 0.1364400778961879,
+          "ai_minus_human": 0.1284083054422188,
           "source_cluster_ci": [
-            0.09887325019213224,
-            0.238572145971411
+            0.09088901626000857,
+            0.22402790125321334
           ]
         },
         "long_horizon": {
-          "ai_minus_human": 0.06584242741686959,
+          "ai_minus_human": 0.1334804006683629,
           "source_cluster_ci": [
-            0.02060371039981043,
-            0.14705332828939913
+            0.05343190671114371,
+            0.1876991112300817
           ]
         },
         "explicit_uses": {
-          "ai_minus_human": 0.10442830941053813,
+          "ai_minus_human": 0.025102673761735146,
           "source_cluster_ci": [
-            -0.09648901241354374,
-            0.5484215022422301
+            -0.14935252750025188,
+            0.4172506321124568
           ]
         }
       }
@@ -844,31 +872,31 @@
         "eligible_proofs": 759,
         "source_groups": 12,
         "adopted": {
-          "flagged_minus_unflagged": -0.0009908577042674152,
+          "flagged_minus_unflagged": 0.002766839843541296,
           "source_cluster_ci": [
-            -0.03676263426490088,
-            0.027432808049386005
+            -0.032685576988241094,
+            0.03145998557843199
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": -0.051757758965468234,
+          "flagged_minus_unflagged": -0.032763873581663105,
           "source_cluster_ci": [
-            -0.11185537217582198,
-            -0.006793536930926845
+            -0.09674555699036956,
+            0.018204561702462176
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": -0.039268598119718875,
+          "flagged_minus_unflagged": -0.01659289468175283,
           "source_cluster_ci": [
-            -0.08015881213963931,
-            0.020445145302502882
+            -0.05095824141544856,
+            0.03180623789372774
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": -0.36702257148856926,
+          "flagged_minus_unflagged": -0.2580220360491078,
           "source_cluster_ci": [
-            -0.5943563829781086,
-            -0.2159186662281726
+            -0.487635865190511,
+            -0.10237660709700942
           ]
         }
       },
@@ -876,31 +904,31 @@
         "eligible_proofs": 723,
         "source_groups": 12,
         "adopted": {
-          "flagged_minus_unflagged": 0.02204689105567734,
+          "flagged_minus_unflagged": 0.028442312840947063,
           "source_cluster_ci": [
-            -0.003495299824663498,
-            0.06175948152809321
+            0.004438497408450249,
+            0.0649564453631573
           ]
         },
         "multi_uptake": {
-          "flagged_minus_unflagged": -0.009627854222190035,
+          "flagged_minus_unflagged": -0.0007160057716749326,
           "source_cluster_ci": [
-            -0.028468708399860213,
-            0.012824639191060454
+            -0.017066793925720768,
+            0.01764916806479232
           ]
         },
         "long_horizon": {
-          "flagged_minus_unflagged": -0.03182159134600383,
+          "flagged_minus_unflagged": -0.0008752655012552838,
           "source_cluster_ci": [
-            -0.07683564901843672,
-            0.0052518942320086606
+            -0.04581922624357423,
+            0.037712279955796
           ]
         },
         "explicit_uses": {
-          "flagged_minus_unflagged": -0.06709927183828676,
+          "flagged_minus_unflagged": -0.033579397894323355,
           "source_cluster_ci": [
-            -0.11266812721739289,
-            0.010591871407668901
+            -0.07403774930746057,
+            0.028729557304434165
           ]
         }
       },
@@ -909,31 +937,31 @@
         "source_groups": 12,
         "estimand": "AI minus human within-proof feature association",
         "adopted": {
-          "ai_minus_human": 0.001838727666651107,
+          "ai_minus_human": 0.004746101304262458,
           "source_cluster_ci": [
-            -0.04545098667960784,
-            0.046846091568441335
+            -0.04442514379392337,
+            0.05118578265755514
           ]
         },
         "multi_uptake": {
-          "ai_minus_human": 0.0005404451151523514,
+          "ai_minus_human": 0.003062579097380798,
           "source_cluster_ci": [
-            -0.058715845036375953,
-            0.07199877514185574
+            -0.05818631273905608,
+            0.07008476444879247
           ]
         },
         "long_horizon": {
-          "ai_minus_human": -0.01576508910380531,
+          "ai_minus_human": -0.00857863233213403,
           "source_cluster_ci": [
-            -0.0830211044873785,
-            0.03542991595933601
+            -0.06603142222020218,
+            0.040771961182465115
           ]
         },
         "explicit_uses": {
-          "ai_minus_human": 0.25784210551035,
+          "ai_minus_human": 0.19909237464115645,
           "source_cluster_ci": [
-            0.10575906902453329,
-            0.4511901976164457
+            0.03633726515567605,
+            0.38238198149218217
           ]
         }
       }
@@ -948,24 +976,24 @@
         "matched_claim_pairs": 577,
         "mean_abs_relative_position_gap": 0.28556991961081896,
         "adopted": {
-          "family_minus_instance": 0.11269196025293589,
+          "family_minus_instance": 0.1289521228545619,
           "source_cluster_ci": [
-            0.08040395370009103,
-            0.14381763161166014
+            0.09282912322908315,
+            0.17601455697703366
           ]
         },
         "multi_uptake": {
-          "family_minus_instance": 0.19175377468060398,
+          "family_minus_instance": 0.23222351271131758,
           "source_cluster_ci": [
-            0.12604260142842438,
-            0.24668177828316076
+            0.1694248175405965,
+            0.31202795802393435
           ]
         },
         "explicit_uses": {
-          "family_minus_instance": 0.760014195380049,
+          "family_minus_instance": 1.0161117563556588,
           "source_cluster_ci": [
-            0.28737829200996595,
-            1.0106319066642948
+            0.5765049455115538,
+            1.3978829595730382
           ]
         }
       },
@@ -974,24 +1002,24 @@
         "matched_claim_pairs": 409,
         "mean_abs_relative_position_gap": 0.1881973088719534,
         "adopted": {
-          "family_minus_instance": 0.18045065116194825,
+          "family_minus_instance": 0.1867268017895633,
           "source_cluster_ci": [
-            0.1230433983453447,
-            0.23976642667990733
+            0.1309245625266752,
+            0.25166401786583387
           ]
         },
         "multi_uptake": {
-          "family_minus_instance": 0.3212904598887862,
+          "family_minus_instance": 0.35807567606730784,
           "source_cluster_ci": [
-            0.27446044426542543,
-            0.42467795496936606
+            0.302810435248734,
+            0.47588226018762897
           ]
         },
         "explicit_uses": {
-          "family_minus_instance": 0.7745340433624952,
+          "family_minus_instance": 0.8895968048687715,
           "source_cluster_ci": [
-            0.5646975915569187,
-            1.1908335710538
+            0.7042927494900657,
+            1.3356513982408587
           ]
         }
       },
@@ -999,24 +1027,24 @@
         "eligible_pairs": 110,
         "estimand": "AI minus human position-matched family association",
         "adopted": {
-          "ai_minus_human": 0.03243801652892562,
+          "ai_minus_human": 0.036983471074380166,
           "source_cluster_ci": [
-            -0.02743344044957774,
-            0.05851873385012919
+            -0.020812293430629826,
+            0.06012837837837837
           ]
         },
         "multi_uptake": {
-          "ai_minus_human": 0.15751377410468317,
+          "ai_minus_human": 0.14486225895316804,
           "source_cluster_ci": [
-            0.06951806259693963,
-            0.21741102634199586
+            0.10296728019021834,
+            0.21549798650961444
           ]
         },
         "explicit_uses": {
-          "ai_minus_human": 0.06860881542699725,
+          "ai_minus_human": 0.03209366391184572,
           "source_cluster_ci": [
-            -0.1106401971580036,
-            0.3505635964912279
+            -0.16627134724857687,
+            0.3547672352523098
           ]
         }
       }
@@ -1027,24 +1055,24 @@
         "matched_claim_pairs": 394,
         "mean_abs_relative_position_gap": 0.13786374332681536,
         "adopted": {
-          "family_minus_instance": 0.1336693548387097,
+          "family_minus_instance": 0.1497983870967742,
           "source_cluster_ci": [
-            0.1008919346506522,
-            0.1798071545777242
+            0.10941717134008073,
+            0.20550635409266707
           ]
         },
         "multi_uptake": {
-          "family_minus_instance": 0.22341589861751152,
+          "family_minus_instance": 0.2681067588325653,
           "source_cluster_ci": [
-            0.14323241352783633,
-            0.29035776771069277
+            0.17895541785493516,
+            0.3573990169468144
           ]
         },
         "explicit_uses": {
-          "family_minus_instance": 0.8156394009216589,
+          "family_minus_instance": 1.133918970814132,
           "source_cluster_ci": [
-            0.44090539100234477,
-            1.0213523784203506
+            0.7191561677255037,
+            1.6115872676343264
           ]
         }
       },
@@ -1053,24 +1081,24 @@
         "matched_claim_pairs": 348,
         "mean_abs_relative_position_gap": 0.10151646164832115,
         "adopted": {
-          "family_minus_instance": 0.19829667819617572,
+          "family_minus_instance": 0.20583436663838675,
           "source_cluster_ci": [
-            0.12755304183386376,
-            0.2656313048286581
+            0.13653615175194736,
+            0.28036750179255215
           ]
         },
         "multi_uptake": {
-          "family_minus_instance": 0.34085470643259586,
+          "family_minus_instance": 0.3701679392634167,
           "source_cluster_ci": [
-            0.28293867050801524,
-            0.4615545162428948
+            0.2970917234927844,
+            0.5301093922417451
           ]
         },
         "explicit_uses": {
-          "family_minus_instance": 0.8803867823968327,
+          "family_minus_instance": 0.9921958276229632,
           "source_cluster_ci": [
-            0.6357708871741183,
-            1.3905885399420463
+            0.759294989422154,
+            1.5355266955266955
           ]
         }
       },
@@ -1078,24 +1106,24 @@
         "eligible_pairs": 79,
         "estimand": "AI minus human position-matched family association",
         "adopted": {
-          "ai_minus_human": -0.02318757192174914,
+          "ai_minus_human": -0.016858457997698507,
           "source_cluster_ci": [
-            -0.05915541866397555,
-            0.0382522891744203
+            -0.05691076946366398,
+            0.04838769282120973
           ]
         },
         "multi_uptake": {
-          "ai_minus_human": 0.16563099347909477,
+          "ai_minus_human": 0.14980820866896816,
           "source_cluster_ci": [
-            0.002855158730158747,
-            0.2626882161163877
+            0.035144403521379805,
+            0.23215365108937536
           ]
         },
         "explicit_uses": {
-          "ai_minus_human": 0.024856156501726092,
+          "ai_minus_human": -0.055734560797851926,
           "source_cluster_ci": [
-            -0.2841570478863466,
-            0.3349167950693368
+            -0.38922006954793836,
+            0.2606160663236134
           ]
         }
       }
@@ -1107,25 +1135,25 @@
     "spearman": {
       "explicit_uses": {
         "explicit_uses": 1.0,
-        "long_reach": 0.34128189309357465,
-        "generalized": 0.19156304383757364,
-        "outside_placeholder": 0.10715427703649685
+        "long_reach": 0.34160022390964645,
+        "generalized": 0.19256999847924955,
+        "outside_placeholder": 0.12643356578327478
       },
       "long_reach": {
-        "explicit_uses": 0.34128189309357465,
+        "explicit_uses": 0.34160022390964645,
         "long_reach": 1.0,
-        "generalized": 0.1197898104948564,
-        "outside_placeholder": 0.042770600739914316
+        "generalized": 0.10221452565282514,
+        "outside_placeholder": 0.041507648906486984
       },
       "generalized": {
-        "explicit_uses": 0.19156304383757364,
-        "long_reach": 0.1197898104948564,
+        "explicit_uses": 0.19256999847924955,
+        "long_reach": 0.10221452565282514,
         "generalized": 1.0,
         "outside_placeholder": 0.1368856498910274
       },
       "outside_placeholder": {
-        "explicit_uses": 0.10715427703649685,
-        "long_reach": 0.042770600739914316,
+        "explicit_uses": 0.12643356578327478,
+        "long_reach": 0.041507648906486984,
         "generalized": 0.1368856498910274,
         "outside_placeholder": 1.0
       }
@@ -1134,70 +1162,70 @@
   "uptake_reach_decomposition": {
     "interpretation": "adoption is the extensive margin; remaining measures condition on explicit uptake and distinguish token distance from claim-boundary opportunity",
     "adoption_probability": {
-      "human": 0.785178042564915,
-      "ai": 0.6395112826839655,
-      "ai_minus_human": -0.14566675988094946,
+      "human": 0.7783593911426406,
+      "ai": 0.6305965694273092,
+      "ai_minus_human": -0.1477628217153314,
       "source_cluster_ci": [
-        -0.18279630220587276,
-        -0.1250355216194125
+        -0.1844571950552403,
+        -0.12654441086201892
       ],
       "human_claims": 14519,
       "ai_claims": 25127
     },
     "last_use_token_distance_all_claims": {
-      "human": 29.427715407397205,
-      "ai": 16.53965853464401,
-      "ai_minus_human": -12.888056872753197,
+      "human": 27.277498450306496,
+      "ai": 15.067616508138656,
+      "ai_minus_human": -12.20988194216784,
       "source_cluster_ci": [
-        -17.6245291934159,
-        -10.254594170793068
+        -16.901858921492753,
+        -9.586174683381419
       ],
       "human_claims": 14519,
       "ai_claims": 25127
     },
     "explicit_use_count_given_adoption": {
-      "human": 1.81640350877193,
-      "ai": 1.3554670483539735,
-      "ai_minus_human": -0.46093646041795644,
+      "human": 1.7378108132023715,
+      "ai": 1.3016093404859577,
+      "ai_minus_human": -0.43620147271641385,
       "source_cluster_ci": [
-        -0.5893963419952171,
-        -0.36876198354323436
+        -0.559284535126217,
+        -0.3455472375798431
       ],
-      "human_claims": 11400,
-      "ai_claims": 16069
+      "human_claims": 11301,
+      "ai_claims": 15845
     },
     "last_use_token_distance_given_adoption": {
-      "human": 37.479035087719296,
-      "ai": 25.862965959300517,
-      "ai_minus_human": -11.61606912841878,
+      "human": 35.044863286434826,
+      "ai": 23.894225307668034,
+      "ai_minus_human": -11.150637978766792,
       "source_cluster_ci": [
-        -17.134667768641233,
-        -8.440131349873518
+        -16.6516415569148,
+        -7.986580400946852
       ],
-      "human_claims": 11400,
-      "ai_claims": 16069
+      "human_claims": 11301,
+      "ai_claims": 15845
     },
     "crosses_any_later_boundary_given_adoption_and_opportunity": {
-      "human": 0.7566143143248656,
-      "ai": 0.7582989029776321,
-      "ai_minus_human": 0.00168458865276655,
+      "human": 0.8364549402823018,
+      "ai": 0.8496447181430602,
+      "ai_minus_human": 0.013189777860758367,
       "source_cluster_ci": [
-        -0.01122913380512325,
-        0.010968233761152477
+        -0.0047293243714271365,
+        0.027964755003624234
       ],
-      "human_claims": 9487,
-      "ai_claims": 14038
+      "human_claims": 7368,
+      "ai_claims": 10555
     },
     "fraction_available_boundaries_crossed_given_adoption": {
-      "human": 0.49628934213940656,
-      "ai": 0.45980585596421747,
-      "ai_minus_human": -0.036483486175189095,
+      "human": 0.6369799271168353,
+      "ai": 0.6204505178947094,
+      "ai_minus_human": -0.016529409222125868,
       "source_cluster_ci": [
-        -0.05312072972216413,
-        -0.026957819739007807
+        -0.0461014541127113,
+        0.003479025408742166
       ],
-      "human_claims": 9487,
-      "ai_claims": 14038
+      "human_claims": 7368,
+      "ai_claims": 10555
     }
   },
   "uptake_reach_matched_controls": {
@@ -1206,70 +1234,70 @@
       "profile": {
         "interpretation": "adoption is the extensive margin; remaining measures condition on explicit uptake and distinguish token distance from claim-boundary opportunity",
         "adoption_probability": {
-          "human": 0.784629981024668,
-          "ai": 0.7106261859582542,
-          "ai_minus_human": -0.07400379506641375,
+          "human": 0.7808349146110057,
+          "ai": 0.7001897533206831,
+          "ai_minus_human": -0.08064516129032262,
           "source_cluster_ci": [
-            -0.0998534543746693,
-            -0.046189100631058695
+            -0.10762942779291551,
+            -0.051630234385019944
           ],
           "human_claims": 1054,
           "ai_claims": 1054
         },
         "last_use_token_distance_all_claims": {
-          "human": 31.61480075901328,
-          "ai": 27.92314990512334,
-          "ai_minus_human": -3.691650853889943,
+          "human": 30.922201138519924,
+          "ai": 27.053130929791273,
+          "ai_minus_human": -3.869070208728651,
           "source_cluster_ci": [
-            -6.66750966798717,
-            -2.0617595759233933
+            -6.7612427832493,
+            -2.275473950960212
           ],
           "human_claims": 1054,
           "ai_claims": 1054
         },
         "explicit_use_count_given_adoption": {
-          "human": 1.6916565900846432,
-          "ai": 1.5113484646194926,
-          "ai_minus_human": -0.18030812546515063,
+          "human": 1.6561360874848117,
+          "ai": 1.4796747967479675,
+          "ai_minus_human": -0.17646129073684413,
           "source_cluster_ci": [
-            -0.3570905982877486,
-            -0.0649850852508889
+            -0.34029560370957973,
+            -0.06683355884259985
           ],
-          "human_claims": 827,
-          "ai_claims": 749
+          "human_claims": 823,
+          "ai_claims": 738
         },
         "last_use_token_distance_given_adoption": {
-          "human": 40.29262394195889,
-          "ai": 39.293724966622165,
-          "ai_minus_human": -0.9988989753367221,
+          "human": 39.60145808019441,
+          "ai": 38.636856368563684,
+          "ai_minus_human": -0.9646017116307277,
           "source_cluster_ci": [
-            -6.020611130400673,
-            1.88063580626591
+            -6.057580276422561,
+            2.3665473361237583
           ],
-          "human_claims": 827,
-          "ai_claims": 749
+          "human_claims": 823,
+          "ai_claims": 738
         },
         "crosses_any_later_boundary_given_adoption_and_opportunity": {
-          "human": 0.7565084226646248,
-          "ai": 0.7864583333333334,
-          "ai_minus_human": 0.029949910668708557,
+          "human": 0.8275862068965517,
+          "ai": 0.838012958963283,
+          "ai_minus_human": 0.01042675206673127,
           "source_cluster_ci": [
-            0.013045424368596188,
-            0.05870041557206647
+            -0.010645992462730703,
+            0.04389003406840675
           ],
-          "human_claims": 653,
-          "ai_claims": 576
+          "human_claims": 522,
+          "ai_claims": 463
         },
         "fraction_available_boundaries_crossed_given_adoption": {
-          "human": 0.5184904795869025,
-          "ai": 0.5390165943185671,
-          "ai_minus_human": 0.020526114731664546,
+          "human": 0.6427927360711728,
+          "ai": 0.642495629476429,
+          "ai_minus_human": -0.0002971065947438012,
           "source_cluster_ci": [
-            5.550417801933888e-05,
-            0.05589735610137858
+            -0.03312672527748957,
+            0.04879640827536009
           ],
-          "human_claims": 653,
-          "ai_claims": 576
+          "human_claims": 522,
+          "ai_claims": 463
         }
       }
     },
@@ -1278,70 +1306,70 @@
       "profile": {
         "interpretation": "adoption is the extensive margin; remaining measures condition on explicit uptake and distinguish token distance from claim-boundary opportunity",
         "adoption_probability": {
-          "human": 0.7647987371744278,
-          "ai": 0.6666666666666666,
-          "ai_minus_human": -0.09813207050776118,
+          "human": 0.754932912391476,
+          "ai": 0.6567593480345159,
+          "ai_minus_human": -0.09817356435696012,
           "source_cluster_ci": [
-            -0.1201202997514853,
-            -0.07686692460255466
+            -0.1221311794918814,
+            -0.07909133475641124
           ],
           "human_claims": 2534,
           "ai_claims": 3129
         },
         "last_use_token_distance_all_claims": {
-          "human": 29.810970797158642,
-          "ai": 24.017257909875358,
-          "ai_minus_human": -5.793712887283284,
+          "human": 27.26835043409629,
+          "ai": 22.3237456056248,
+          "ai_minus_human": -4.9446048284714905,
           "source_cluster_ci": [
-            -16.059909843889546,
-            -1.5305213816068106
+            -15.442682139837975,
+            -0.68107863058575
           ],
           "human_claims": 2534,
           "ai_claims": 3129
         },
         "explicit_use_count_given_adoption": {
-          "human": 1.7652218782249742,
-          "ai": 1.571907957813998,
-          "ai_minus_human": -0.19331392041097617,
+          "human": 1.6555148980658652,
+          "ai": 1.4851581508515814,
+          "ai_minus_human": -0.17035674721428373,
           "source_cluster_ci": [
-            -0.5278188889906557,
-            -0.06019291963800136
+            -0.4899473407100017,
+            -0.04497618413442951
           ],
-          "human_claims": 1938,
-          "ai_claims": 2086
+          "human_claims": 1913,
+          "ai_claims": 2055
         },
         "last_use_token_distance_given_adoption": {
-          "human": 38.97884416924665,
-          "ai": 36.02588686481304,
-          "ai_minus_human": -2.9529573044336104,
+          "human": 36.12023000522739,
+          "ai": 33.99075425790754,
+          "ai_minus_human": -2.1294757473198516,
           "source_cluster_ci": [
-            -15.238116614865936,
-            2.558938389741055
+            -14.378241149478166,
+            3.2963243983468167
           ],
-          "human_claims": 1938,
-          "ai_claims": 2086
+          "human_claims": 1913,
+          "ai_claims": 2055
         },
         "crosses_any_later_boundary_given_adoption_and_opportunity": {
-          "human": 0.7631734754292481,
-          "ai": 0.7562051847766134,
-          "ai_minus_human": -0.006968290652634712,
+          "human": 0.8334624322230829,
+          "ai": 0.8292682926829268,
+          "ai_minus_human": -0.004194139540156128,
           "source_cluster_ci": [
-            -0.03659364343337048,
-            0.014365589155559862
+            -0.046849851719160084,
+            0.019412546283559422
           ],
-          "human_claims": 1689,
-          "ai_claims": 1813
+          "human_claims": 1291,
+          "ai_claims": 1394
         },
         "fraction_available_boundaries_crossed_given_adoption": {
-          "human": 0.4705048450477099,
-          "ai": 0.46521003177167397,
-          "ai_minus_human": -0.005294813276035926,
+          "human": 0.6213510323153654,
+          "ai": 0.6276804389843652,
+          "ai_minus_human": 0.006329406668999837,
           "source_cluster_ci": [
-            -0.06268602029699324,
-            0.018071077145158723
+            -0.06766129258991604,
+            0.0415321252893295
           ],
-          "human_claims": 1689,
-          "ai_claims": 1813
+          "human_claims": 1291,
+          "ai_claims": 1394
         }
       }
     }
@@ -1368,24 +1396,24 @@
       "pairs": 206,
       "source_groups": 11,
       "explicit_uses_per_claim": {
-        "human": 1.3273244781783682,
-        "ai": 1.0740037950664136,
-        "ai_minus_human": -0.25332068311195455,
+        "human": 1.293168880455408,
+        "ai": 1.0360531309297913,
+        "ai_minus_human": -0.25711574952561667,
         "source_cluster_ci": [
-          -0.4178579283619607,
-          -0.15231356515657365
+          -0.4107197971781306,
+          -0.15680027803521768
         ],
-        "paired_wilcoxon_p": 2.929644450678432e-07
+        "paired_wilcoxon_p": 1.5157478488640218e-07
       },
       "zero_uptake_share": {
-        "human": 0.21537001897533206,
-        "ai": 0.2893738140417457,
-        "ai_minus_human": 0.07400379506641366,
+        "human": 0.21916508538899432,
+        "ai": 0.2998102466793169,
+        "ai_minus_human": 0.08064516129032256,
         "source_cluster_ci": [
-          0.047514064487489224,
-          0.10041919416860608
+          0.05293186019610598,
+          0.10892166823743142
         ],
-        "paired_wilcoxon_p": 0.001058269698186625
+        "paired_wilcoxon_p": 0.001044132784370881
       },
       "generalized_claim_share": {
         "human": 0.04364326375711575,
@@ -1402,24 +1430,24 @@
       "pairs": 419,
       "source_groups": 11,
       "explicit_uses_per_claim": {
-        "human": 1.371826371826372,
-        "ai": 1.0173877881116054,
-        "ai_minus_human": -0.35443858371476655,
+        "human": 1.3177723177723177,
+        "ai": 0.9716942984229681,
+        "ai_minus_human": -0.3460780193493497,
         "source_cluster_ci": [
-          -0.5309902679556128,
-          -0.2536659924830634
+          -0.5119421389166513,
+          -0.2524717372163264
         ],
-        "paired_wilcoxon_p": 2.9520197254901448e-15
+        "paired_wilcoxon_p": 9.520850221067425e-15
       },
       "zero_uptake_share": {
-        "human": 0.23300573300573302,
-        "ai": 0.3206631621512333,
-        "ai_minus_human": 0.08765742914550029,
+        "human": 0.24037674037674037,
+        "ai": 0.33158107561665995,
+        "ai_minus_human": 0.09120433523991958,
         "source_cluster_ci": [
-          0.05599397824274812,
-          0.15195793908872343
+          0.058694229717742505,
+          0.1557003261396927
         ],
-        "paired_wilcoxon_p": 1.0828205457106193e-06
+        "paired_wilcoxon_p": 1.0719739954698814e-06
       },
       "generalized_claim_share": {
         "human": 0.042997542997543,
@@ -1438,34 +1466,34 @@
       "pairs": 834,
       "source_groups": 12,
       "explicit_uses_per_claim": {
-        "human": 1.3500394632991317,
-        "ai": 1.0479386385426654,
-        "ai_minus_human": -0.30210082475646627,
+        "human": 1.249802683504341,
+        "ai": 0.9753914988814317,
+        "ai_minus_human": -0.27441118462290925,
         "source_cluster_ci": [
-          -0.5315865778600669,
-          -0.19869746666659246
+          -0.5050989705708138,
+          -0.17323804517594854
         ],
-        "paired_wilcoxon_p": 2.2414895563075437e-10
+        "paired_wilcoxon_p": 1.0836900462747568e-10
       },
       "zero_uptake_share": {
-        "human": 0.23520126282557222,
-        "ai": 0.3333333333333333,
-        "ai_minus_human": 0.0981320705077611,
+        "human": 0.24506708760852408,
+        "ai": 0.3432406519654842,
+        "ai_minus_human": 0.09817356435696012,
         "source_cluster_ci": [
-          0.07715655536473773,
-          0.1203464682775962
+          0.07899335775934277,
+          0.12187999481778222
         ],
-        "paired_wilcoxon_p": 3.9051803736804385e-08
+        "paired_wilcoxon_p": 4.468343699819743e-09
       },
       "long_horizon_share": {
-        "human": 0.5086819258089976,
-        "ai": 0.43815915627996166,
-        "ai_minus_human": -0.07052276952903597,
+        "human": 0.4246250986582478,
+        "ai": 0.3694471077021413,
+        "ai_minus_human": -0.05517799095610654,
         "source_cluster_ci": [
-          -0.09879436861126234,
-          -0.04597687457008185
+          -0.09831377008048814,
+          -0.030373265918785457
         ],
-        "paired_wilcoxon_p": 0.012671747873099515
+        "paired_wilcoxon_p": 0.008079359558925457
       },
       "generalized_claim_share": {
         "human": 0.03235990528808208,
@@ -1482,34 +1510,34 @@
       "pairs": 1162,
       "source_groups": 12,
       "explicit_uses_per_claim": {
-        "human": 1.310716208939149,
-        "ai": 1.0463414634146342,
-        "ai_minus_human": -0.2643747455245149,
+        "human": 1.2170166935918147,
+        "ai": 0.9727642276422764,
+        "ai_minus_human": -0.2442524659495383,
         "source_cluster_ci": [
-          -0.5130836310333585,
-          -0.1266897374216222
+          -0.4828214709434207,
+          -0.10650862492224451
         ],
-        "paired_wilcoxon_p": 9.379700114060212e-10
+        "paired_wilcoxon_p": 4.4229963129203846e-10
       },
       "zero_uptake_share": {
-        "human": 0.23424878836833601,
-        "ai": 0.3227642276422764,
-        "ai_minus_human": 0.0885154392739404,
+        "human": 0.2412493268712978,
+        "ai": 0.32926829268292684,
+        "ai_minus_human": 0.08801896581162905,
         "source_cluster_ci": [
-          0.06290402464489397,
-          0.1219257634423578
+          0.06306240818271437,
+          0.1221993151566955
         ],
-        "paired_wilcoxon_p": 3.0521471608299246e-08
+        "paired_wilcoxon_p": 4.355116763598122e-09
       },
       "long_horizon_share": {
-        "human": 0.47334410339256866,
-        "ai": 0.4060975609756098,
-        "ai_minus_human": -0.06724654241695888,
+        "human": 0.4076467420570813,
+        "ai": 0.35121951219512193,
+        "ai_minus_human": -0.05642722986195936,
         "source_cluster_ci": [
-          -0.10289229027622637,
-          -0.04267424945404866
+          -0.10506521419196786,
+          -0.025359708522831446
         ],
-        "paired_wilcoxon_p": 0.10862857802315817
+        "paired_wilcoxon_p": 0.027838330703973437
       },
       "generalized_claim_share": {
         "human": 0.03607969843834141,
@@ -1526,45 +1554,45 @@
   "nonredeclared_name_sensitivity": {
     "rule": "retain only claim names occurring exactly once in that proof",
     "explicit_uses_per_claim": {
-      "human": 1.5012898565679496,
-      "ai": 0.9076715106454883,
-      "ai_minus_human": -0.5936183459224612,
+      "human": 1.4625941595294603,
+      "ai": 0.8779317336938155,
+      "ai_minus_human": -0.5846624258356448,
       "source_cluster_ci": [
-        -0.6869446983237293,
-        -0.513479968830745
+        -0.6800525445026124,
+        -0.505139819515639
       ],
       "human_claims": 9691,
       "ai_claims": 14795
     },
     "zero_uptake_share": {
-      "human": 0.1942008048704984,
-      "ai": 0.3348428523149713,
-      "ai_minus_human": 0.1406420474444729,
+      "human": 0.19678051800639768,
+      "ai": 0.33950659006421086,
+      "ai_minus_human": 0.14272607205781318,
       "source_cluster_ci": [
-        0.12380597690343814,
-        0.16463667704297447
+        0.12613778457026134,
+        0.16536166312516024
       ],
       "human_claims": 9691,
       "ai_claims": 14795
     },
     "multi_uptake_share": {
-      "human": 0.2844907646269735,
-      "ai": 0.13186887461980398,
-      "ai_minus_human": -0.1526218900071695,
+      "human": 0.2758229284903519,
+      "ai": 0.12240621831699898,
+      "ai_minus_human": -0.1534167101733529,
       "source_cluster_ci": [
-        -0.19059222143771362,
-        -0.1254555998300508
+        -0.19264170757655086,
+        -0.12567895011965582
       ],
       "human_claims": 9691,
       "ai_claims": 14795
     },
     "long_horizon_share": {
-      "human": 0.5238881436384274,
-      "ai": 0.45907401149036836,
-      "ai_minus_human": -0.06481413214805903,
+      "human": 0.4683727169538747,
+      "ai": 0.40067590402162895,
+      "ai_minus_human": -0.06769681293224578,
       "source_cluster_ci": [
-        -0.08236105659864729,
-        -0.05045865701407791
+        -0.08311782121964209,
+        -0.05269498418022131
       ],
       "human_claims": 9691,
       "ai_claims": 14795
@@ -1574,44 +1602,44 @@
     "rule": "retain pairs for which both proof values parse and every regex-detected named have has an exact parser range",
     "pairs": 3511,
     "explicit_uses_per_claim": {
-      "human": 1.425527470231878,
-      "ai": 0.8675464713929347,
-      "ai_minus_human": -0.5579809988389434,
+      "human": 1.3515075551841793,
+      "ai": 0.8212762533193853,
+      "ai_minus_human": -0.5302313018647941,
       "source_cluster_ci": [
-        -0.6820270695061732,
-        -0.47956869650115713
+        -0.6520418947598094,
+        -0.4505159389825777
       ],
-      "paired_wilcoxon_p": 2.7053019383760534e-109
+      "paired_wilcoxon_p": 3.3703248302175394e-111
     },
     "zero_uptake_share": {
-      "human": 0.21516607478587843,
-      "ai": 0.3598213567232639,
-      "ai_minus_human": 0.14465528193738544,
+      "human": 0.22205974514309587,
+      "ai": 0.3687937555323087,
+      "ai_minus_human": 0.14673401038921283,
       "source_cluster_ci": [
-        0.12386722235421406,
-        0.18163226226285942
+        0.12536052151246002,
+        0.18329863645889494
       ],
-      "paired_wilcoxon_p": 4.807789534828983e-69
+      "paired_wilcoxon_p": 1.1937709275141112e-69
     },
     "multi_uptake_share": {
-      "human": 0.2592437852517234,
-      "ai": 0.1184517582682868,
-      "ai_minus_human": -0.14079202698343662,
+      "human": 0.23967690272265163,
+      "ai": 0.10271988412327995,
+      "ai_minus_human": -0.13695701859937168,
       "source_cluster_ci": [
-        -0.18304210703101265,
-        -0.11453908536551412
+        -0.18213969088331744,
+        -0.10875021529557137
       ],
-      "paired_wilcoxon_p": 2.281546086635744e-87
+      "paired_wilcoxon_p": 3.558200904193505e-90
     },
     "long_horizon_share": {
-      "human": 0.4948123389736091,
-      "ai": 0.4241168423593788,
-      "ai_minus_human": -0.0706954966142303,
+      "human": 0.4244829747232087,
+      "ai": 0.3571658485555645,
+      "ai_minus_human": -0.06731712616764418,
       "source_cluster_ci": [
-        -0.09634943845585497,
-        -0.0518534563404906
+        -0.09507278439941672,
+        -0.050177776793180036
       ],
-      "paired_wilcoxon_p": 0.546936283117484
+      "paired_wilcoxon_p": 0.13495600000248814
     }
   },
   "parametric_claim_difference": {
@@ -1736,44 +1764,44 @@
     "sensitivity_excluding_similarity_at_least_0_9": {
       "pairs": 3400,
       "explicit_uses_per_claim": {
-        "human": 1.42963227418779,
-        "ai": 0.8574214782008045,
-        "ai_minus_human": -0.5722107959869855,
+        "human": 1.3543734380578365,
+        "ai": 0.8109788306042014,
+        "ai_minus_human": -0.5433946074536351,
         "source_cluster_ci": [
-          -0.691974767517131,
-          -0.4971454464721499
+          -0.6615139835630564,
+          -0.4667208054150442
         ],
-        "paired_wilcoxon_p": 9.82233212459902e-110
+        "paired_wilcoxon_p": 1.799616863338401e-111
       },
       "zero_uptake_share": {
-        "human": 0.21492324169939309,
-        "ai": 0.3636178944374467,
-        "ai_minus_human": 0.1486946527380536,
+        "human": 0.22192074259193145,
+        "ai": 0.3726788834261103,
+        "ai_minus_human": 0.15075814083417882,
         "source_cluster_ci": [
-          0.12797180470762368,
-          0.18573489482054897
+          0.12968955880169072,
+          0.18740922862886053
         ],
-        "paired_wilcoxon_p": 2.516921597213431e-69
+        "paired_wilcoxon_p": 6.297844091986466e-70
       },
       "multi_uptake_share": {
-        "human": 0.258836129953588,
-        "ai": 0.11490796798179675,
-        "ai_minus_human": -0.14392816197179126,
+        "human": 0.2390574794716173,
+        "ai": 0.0991020275486571,
+        "ai_minus_human": -0.1399554519229602,
         "source_cluster_ci": [
-          -0.1852095298664147,
-          -0.11879280022079869
+          -0.18446894287602586,
+          -0.11312170160834714
         ],
-        "paired_wilcoxon_p": 2.534150737281646e-88
+        "paired_wilcoxon_p": 4.811870064688303e-91
       },
       "long_horizon_share": {
-        "human": 0.49325240985362373,
-        "ai": 0.42155946527975297,
-        "ai_minus_human": -0.07169294457387076,
+        "human": 0.42384862549089614,
+        "ai": 0.3551663890130429,
+        "ai_minus_human": -0.06868223647785321,
         "source_cluster_ci": [
-          -0.09743068303493292,
-          -0.05306089673901924
+          -0.09617544198312862,
+          -0.05232442398848167
         ],
-        "paired_wilcoxon_p": 0.5356729707951898
+        "paired_wilcoxon_p": 0.12337997116796465
       },
       "placeholder_name_share": {
         "human": 0.5900035701535166,

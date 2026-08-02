@@ -231,8 +231,8 @@ def named_have_declarations(body: str) -> list[dict[str, Any]]:
 
 def parser_have_ranges(
     sources: list[str], root: Path, environment: str = "mathlib4"
-) -> tuple[list[list[tuple[int, int]] | None], dict[str, Any]]:
-    """Get exact tactic-`have` ranges from Lean's own parser in one process.
+) -> tuple[list[list[tuple[int, int, int]] | None], dict[str, Any]]:
+    """Get exact tactic-`have` construction and scope ranges from Lean.
 
     Lean reports UTF-8 byte positions, while Python regular expressions use
     Unicode-codepoint offsets.  Convert positions here so every downstream
@@ -255,7 +255,7 @@ def parser_have_ranges(
         raise RuntimeError(
             f"Lean range helper returned {len(lines)} lines for {len(sources)} sources"
         )
-    output: list[list[tuple[int, int]] | None] = []
+    output: list[list[tuple[int, int, int]] | None] = []
     for source, fragment_info, line in zip(sources, fragments_with_offsets, lines):
         if fragment_info is None or line.startswith("ERROR"):
             output.append(None)
@@ -270,8 +270,9 @@ def parser_have_ranges(
             (
                 character_offset + len(encoded[:start].decode("utf-8")),
                 character_offset + len(encoded[:tail].decode("utf-8")),
+                character_offset + len(encoded[:scope_tail].decode("utf-8")),
             )
-            for start, tail in byte_ranges
+            for start, tail, scope_tail in byte_ranges
         ])
     return output, {
         "terms": len(sources),
@@ -280,21 +281,21 @@ def parser_have_ranges(
         "helper": "code/ExtractHaveRanges.lean",
         "environment": environment,
         "coordinate_conversion": "Lean UTF-8 byte offsets to Python Unicode offsets",
+        "scope_rule": "tail of nearest enclosing tacticSeq parser node",
     }
 
 
 def named_have_claims(
     source: str,
-    construction_ranges: list[tuple[int, int]] | None = None,
+    construction_ranges: list[tuple[int, int] | tuple[int, int, int]] | None = None,
     require_parser_match: bool = False,
 ) -> list[dict[str, Any]]:
     """Extract named haves and count later explicit uptake.
 
     Counting begins after the complete construction range supplied by Lean's
-    parser.  If a name is declared again, the first claim's window ends at the
-    second declaration.  This conservative rule prevents obvious shadowing from
-    being mistaken for reuse.  Lean scoping is richer than this lexical rule;
-    ``redeclared_name`` is retained for sensitivity audits.
+    parser.  The window ends at the nearest enclosing tactic sequence's tail,
+    or earlier at a same-name redeclaration.  The latter is conservative in
+    constructs whose exact binder scope is smaller than the tactic sequence.
     """
     body = proof_body(source)
     matches = named_have_declarations(body)
@@ -302,10 +303,17 @@ def named_have_claims(
         match["source_claim_index"] = source_claim_index
     all_matches = matches
     counts = Counter(match["name"] for match in all_matches)
-    range_by_start = {start: tail for start, tail in (construction_ranges or [])}
+    range_by_start = {
+        item[0]: (item[1], item[2] if len(item) == 3 else len(body))
+        for item in (construction_ranges or [])
+    }
     for match in matches:
         match["parser_range_matched"] = match["start"] in range_by_start
-        match["construction_end"] = range_by_start.get(match["start"], match["end"])
+        construction_end, scope_end = range_by_start.get(
+            match["start"], (match["end"], len(body))
+        )
+        match["construction_end"] = construction_end
+        match["scope_end"] = scope_end
     if require_parser_match:
         matches = [match for match in matches if match["parser_range_matched"]]
 
@@ -313,13 +321,27 @@ def named_have_claims(
     for i, match in enumerate(matches):
         name = match["name"]
         construction_end = int(match["construction_end"])
-        next_same = next((
+        scope_end = int(match["scope_end"])
+        unscoped_next_same = next((
             later["start"]
             for later in all_matches[int(match["source_claim_index"]) + 1:]
             if later["name"] == name and later["start"] >= construction_end
         ), len(body))
+        next_same = next((
+            later["start"]
+            for later in all_matches[int(match["source_claim_index"]) + 1:]
+            if (
+                later["name"] == name
+                and construction_end <= later["start"] < scope_end
+            )
+        ), scope_end)
         token_matches = [
             token for token in TOKEN.finditer(body, construction_end, next_same)
+            if token.group(0) == name
+        ]
+        unscoped_token_matches = [
+            token
+            for token in TOKEN.finditer(body, construction_end, unscoped_next_same)
             if token.group(0) == name
         ]
         use_positions = [token.start() for token in token_matches]
@@ -333,13 +355,13 @@ def named_have_claims(
         )
         claim_span = (
             sum(
-                match["start"] < later["start"] < use_positions[-1]
+                construction_end < later["start"] < use_positions[-1]
                 for later in matches
             )
             if use_positions else None
         )
         later_claims_available = sum(
-            match["start"] < later["start"] < next_same
+            construction_end < later["start"] < next_same
             for later in matches
         )
         claims.append(
@@ -348,6 +370,7 @@ def named_have_claims(
                 "name": name,
                 "parser_range_matched": bool(match["parser_range_matched"]),
                 "construction_end": construction_end,
+                "scope_end": scope_end,
                 "binder_groups": int(match["binder_groups"]),
                 "parametric_claim": bool(match["binder_groups"]),
                 "universal_claim": bool(match["universal_type"]),
@@ -355,6 +378,11 @@ def named_have_claims(
                     match["binder_groups"] or match["universal_type"]
                 ),
                 "explicit_uses": len(use_positions),
+                "unscoped_explicit_uses": len(unscoped_token_matches),
+                "scope_excluded_reference_tokens": (
+                    len(unscoped_token_matches) - len(token_matches)
+                ),
+                "scope_clipped": scope_end < len(body),
                 "first_use_delay_tokens": first_delay,
                 "last_use_delay_tokens": last_delay,
                 "intervening_claims_to_last_use": claim_span,
@@ -414,7 +442,7 @@ def tactic_annotation_metrics(value: Any) -> dict[str, Any]:
 def side_metrics(
     source: str,
     tactics: Any,
-    construction_ranges: list[tuple[int, int]] | None = None,
+    construction_ranges: list[tuple[int, int] | tuple[int, int, int]] | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     body = proof_body(source)
     regex_claim_count = len(named_have_declarations(body))
@@ -438,6 +466,13 @@ def side_metrics(
         "parser_unmatched_named_haves": regex_claim_count - len(claims),
         "anonymous_haves": len(ANON_HAVE.findall(body)),
         "explicit_uses": int(uses.sum()) if len(uses) else 0,
+        "unscoped_explicit_uses": sum(
+            claim["unscoped_explicit_uses"] for claim in claims
+        ),
+        "scope_excluded_references": sum(
+            claim["scope_excluded_reference_tokens"] for claim in claims
+        ),
+        "scope_clipped_haves": sum(claim["scope_clipped"] for claim in claims),
         "zero_uptake_haves": int((uses == 0).sum()) if len(uses) else 0,
         "one_uptake_haves": int((uses == 1).sum()) if len(uses) else 0,
         "multi_uptake_haves": int((uses > 1).sum()) if len(uses) else 0,
@@ -1283,6 +1318,40 @@ def main() -> None:
         "target_pair_audit": target_pair_audit,
         "target_pair_exclusions_file": "results/horizon/target_pair_exclusions.csv",
         "have_scope_parser_audit": have_parser_audit,
+        "scope_clipping_audit": {
+            "rule": (
+                "explicit-use windows end at the tail of the nearest enclosing "
+                "tacticSeq, or earlier at a same-name redeclaration"
+            ),
+            **{
+                label: {
+                    "claims": int(len(selected)),
+                    "claims_in_nested_scope": int(selected.scope_clipped.sum()),
+                    "claims_with_excluded_name_tokens": int(
+                        selected.scope_excluded_reference_tokens.gt(0).sum()
+                    ),
+                    "excluded_name_tokens": int(
+                        selected.scope_excluded_reference_tokens.sum()
+                    ),
+                    "unscoped_uses_per_claim": float(
+                        selected.unscoped_explicit_uses.mean()
+                    ),
+                    "scoped_uses_per_claim": float(selected.explicit_uses.mean()),
+                    "unscoped_zero_share": float(
+                        selected.unscoped_explicit_uses.eq(0).mean()
+                    ),
+                    "scoped_zero_share": float(selected.explicit_uses.eq(0).mean()),
+                    "unscoped_multi_share": float(
+                        selected.unscoped_explicit_uses.gt(1).mean()
+                    ),
+                    "scoped_multi_share": float(selected.explicit_uses.gt(1).mean()),
+                }
+                for label, selected in (
+                    ("human", claims[claims.side.eq("h")]),
+                    ("ai", claims[claims.side.eq("a")]),
+                )
+            },
+        },
         "dataset_provenance": {
             "source": "https://huggingface.co/datasets/AI-MO/NuminaMath-LEAN",
             "huggingface_revision": huggingface_revisions(root),

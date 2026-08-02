@@ -92,16 +92,16 @@
       "median_boundary_delta_nll": -0.03423199883321876,
       "median_boundary_excess_nll": -0.02048623729951297,
       "median_definition_name_nll": 0.0677172635,
-      "median_reference_name_nll": 0.05509940853375,
-      "median_name_reuse_relief_nll": 0.00010267044780952382
+      "median_reference_name_nll": 0.04749624599,
+      "median_name_reuse_relief_nll": 0.000112042
     },
     "ai": {
       "claims": 2074,
       "median_boundary_delta_nll": -0.028953733119140034,
       "median_boundary_excess_nll": -0.013888171852540689,
       "median_definition_name_nll": 0.004060408941666666,
-      "median_reference_name_nll": 0.0028122825333333334,
-      "median_name_reuse_relief_nll": 1.062923625e-05
+      "median_reference_name_nll": 0.00235496895,
+      "median_name_reuse_relief_nll": 1.3958724222625e-05
     }
   },
   "claim_level_by_generality": {

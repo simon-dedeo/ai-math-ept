@@ -43,14 +43,14 @@
       "source_groups": 12,
       "human": {
         "claims_per_100_tokens": 1.957445546369848,
-        "explicit_uses_per_claim": 1.426200151525587,
-        "zero_uptake_share": 0.21482195743508506,
+        "explicit_uses_per_claim": 1.3526413664852952,
+        "zero_uptake_share": 0.2216406088573593,
         "placeholder_name_share": 0.5888146566567946
       },
       "ai": {
         "claims_per_100_tokens": 3.1033171047398858,
-        "explicit_uses_per_claim": 0.8668364707286982,
-        "zero_uptake_share": 0.36048871731603455,
+        "explicit_uses_per_claim": 0.8207903848449875,
+        "zero_uptake_share": 0.3694034305726907,
         "placeholder_name_share": 0.8879293190591794
       }
     },
@@ -59,14 +59,14 @@
       "source_groups": 12,
       "human": {
         "claims_per_100_tokens": 1.957445546369848,
-        "explicit_uses_per_claim": 1.426200151525587,
-        "zero_uptake_share": 0.21482195743508506,
+        "explicit_uses_per_claim": 1.3526413664852952,
+        "zero_uptake_share": 0.2216406088573593,
         "placeholder_name_share": 0.5888146566567946
       },
       "ai": {
         "claims_per_100_tokens": 3.1033171047398858,
-        "explicit_uses_per_claim": 0.8668364707286982,
-        "zero_uptake_share": 0.36048871731603455,
+        "explicit_uses_per_claim": 0.8207903848449875,
+        "zero_uptake_share": 0.3694034305726907,
         "placeholder_name_share": 0.8879293190591794
       }
     },
@@ -75,14 +75,14 @@
       "source_groups": 12,
       "human": {
         "claims_per_100_tokens": 1.957445546369848,
-        "explicit_uses_per_claim": 1.426200151525587,
-        "zero_uptake_share": 0.21482195743508506,
+        "explicit_uses_per_claim": 1.3526413664852952,
+        "zero_uptake_share": 0.2216406088573593,
         "placeholder_name_share": 0.5888146566567946
       },
       "ai": {
         "claims_per_100_tokens": 3.1033171047398858,
-        "explicit_uses_per_claim": 0.8668364707286982,
-        "zero_uptake_share": 0.36048871731603455,
+        "explicit_uses_per_claim": 0.8207903848449875,
+        "zero_uptake_share": 0.3694034305726907,
         "placeholder_name_share": 0.8879293190591794
       }
     }
@@ -881,58 +881,58 @@
     "zero": {
       "zero": {
         "human": {
-          "numerator": 901,
-          "denominator": 3101,
-          "estimate": 0.290551435020961
+          "numerator": 931,
+          "denominator": 3200,
+          "estimate": 0.2909375
         },
         "ai": {
-          "numerator": 3903,
-          "denominator": 9035,
-          "estimate": 0.43198671831765356
+          "numerator": 3998,
+          "denominator": 9259,
+          "estimate": 0.4317960902905281
         },
         "ai_minus_human": {
-          "estimate": 0.14143528329669258,
+          "estimate": 0.1408585902905281,
           "source_cluster_ci": [
-            0.11099650548966035,
-            0.2095549630008194
+            0.11059979164832191,
+            0.20778733535623842
           ]
         }
       },
       "one": {
         "human": {
-          "numerator": 1190,
-          "denominator": 3101,
-          "estimate": 0.3837471783295711
+          "numerator": 1241,
+          "denominator": 3200,
+          "estimate": 0.3878125
         },
         "ai": {
-          "numerator": 2459,
-          "denominator": 9035,
-          "estimate": 0.272163807415606
+          "numerator": 2528,
+          "denominator": 9259,
+          "estimate": 0.2730316448860568
         },
         "ai_minus_human": {
-          "estimate": -0.11158337091396514,
+          "estimate": -0.1147808551139432,
           "source_cluster_ci": [
-            -0.1992079449425875,
-            -0.06520477025344178
+            -0.20248665460737444,
+            -0.0679975731806251
           ]
         }
       },
       "multi": {
         "human": {
-          "numerator": 1010,
-          "denominator": 3101,
-          "estimate": 0.3257013866494679
+          "numerator": 1028,
+          "denominator": 3200,
+          "estimate": 0.32125
         },
         "ai": {
-          "numerator": 2673,
-          "denominator": 9035,
-          "estimate": 0.29584947426674046
+          "numerator": 2733,
+          "denominator": 9259,
+          "estimate": 0.2951722648234151
         },
         "ai_minus_human": {
-          "estimate": -0.02985191238272744,
+          "estimate": -0.026077735176584904,
           "source_cluster_ci": [
-            -0.07864589519529092,
-            0.010355706746436256
+            -0.07412715656142757,
+            0.01328726192048148
           ]
         }
       }
@@ -940,58 +940,58 @@
     "one": {
       "zero": {
         "human": {
-          "numerator": 429,
-          "denominator": 7602,
-          "estimate": 0.05643251775848461
+          "numerator": 421,
+          "denominator": 7786,
+          "estimate": 0.054071410223478035
         },
         "ai": {
-          "numerator": 1278,
-          "denominator": 13088,
-          "estimate": 0.09764669926650367
+          "numerator": 1247,
+          "denominator": 13255,
+          "estimate": 0.0940777065258393
         },
         "ai_minus_human": {
-          "estimate": 0.04121418150801906,
+          "estimate": 0.040006296302361265,
           "source_cluster_ci": [
-            0.015361290241296255,
-            0.07842526344689135
+            0.014955206170419134,
+            0.07630172397445623
           ]
         }
       },
       "one": {
         "human": {
-          "numerator": 5608,
-          "denominator": 7602,
-          "estimate": 0.73770060510392
+          "numerator": 5774,
+          "denominator": 7786,
+          "estimate": 0.7415874646801952
         },
         "ai": {
-          "numerator": 7727,
-          "denominator": 13088,
-          "estimate": 0.590388141809291
+          "numerator": 7888,
+          "denominator": 13255,
+          "estimate": 0.595096190116937
         },
         "ai_minus_human": {
-          "estimate": -0.147312463294629,
+          "estimate": -0.14649127456325817,
           "source_cluster_ci": [
-            -0.23021468945475076,
-            -0.08867850157250495
+            -0.23021360486819353,
+            -0.08745623616010052
           ]
         }
       },
       "multi": {
         "human": {
-          "numerator": 1565,
-          "denominator": 7602,
-          "estimate": 0.20586687713759538
+          "numerator": 1591,
+          "denominator": 7786,
+          "estimate": 0.20434112509632674
         },
         "ai": {
-          "numerator": 4083,
-          "denominator": 13088,
-          "estimate": 0.3119651589242054
+          "numerator": 4120,
+          "denominator": 13255,
+          "estimate": 0.3108261033572237
         },
         "ai_minus_human": {
-          "estimate": 0.10609828178661002,
+          "estimate": 0.10648497826089698,
           "source_cluster_ci": [
-            0.07171227139967014,
-            0.15727902623018725
+            0.07114787232176074,
+            0.15927433505941405
           ]
         }
       }
@@ -999,58 +999,58 @@
     "multi": {
       "zero": {
         "human": {
-          "numerator": 89,
-          "denominator": 3766,
-          "estimate": 0.023632501327668615
+          "numerator": 67,
+          "denominator": 3483,
+          "estimate": 0.01923629055412001
         },
         "ai": {
-          "numerator": 288,
-          "denominator": 2967,
-          "estimate": 0.09706774519716886
+          "numerator": 224,
+          "denominator": 2576,
+          "estimate": 0.08695652173913043
         },
         "ai_minus_human": {
-          "estimate": 0.07343524386950025,
+          "estimate": 0.06772023118501042,
           "source_cluster_ci": [
-            0.05190884616733316,
-            0.09029394480290213
+            0.05163396747136626,
+            0.08754830504742415
           ]
         }
       },
       "one": {
         "human": {
-          "numerator": 1599,
-          "denominator": 3766,
-          "estimate": 0.42458842272968667
+          "numerator": 1382,
+          "denominator": 3483,
+          "estimate": 0.3967843812805053
         },
         "ai": {
-          "numerator": 856,
-          "denominator": 2967,
-          "estimate": 0.2885069093360297
+          "numerator": 626,
+          "denominator": 2576,
+          "estimate": 0.24301242236024845
         },
         "ai_minus_human": {
-          "estimate": -0.13608151339365698,
+          "estimate": -0.15377195892025686,
           "source_cluster_ci": [
-            -0.1790841113287736,
-            -0.09382374299904891
+            -0.20436573735490518,
+            -0.1091941967776181
           ]
         }
       },
       "multi": {
         "human": {
-          "numerator": 2078,
-          "denominator": 3766,
-          "estimate": 0.5517790759426447
+          "numerator": 2034,
+          "denominator": 3483,
+          "estimate": 0.5839793281653747
         },
         "ai": {
-          "numerator": 1823,
-          "denominator": 2967,
-          "estimate": 0.6144253454668015
+          "numerator": 1726,
+          "denominator": 2576,
+          "estimate": 0.6700310559006211
         },
         "ai_minus_human": {
-          "estimate": 0.06264626952415675,
+          "estimate": 0.08605172773524639,
           "source_cluster_ci": [
-            0.02777231430073391,
-            0.09852818241372198
+            0.0460467354235129,
+            0.12759017964638672
           ]
         }
       }

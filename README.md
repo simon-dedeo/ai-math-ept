@@ -38,8 +38,9 @@ identical-theorem pairs family claims occur only on the human side 310 times ver
 side 102 times. Within proofs containing both family and instance claims, family claims are
 substantially more likely to be adopted and multiply referenced in both tracks. This persists after
 matching each family to a nearby instance claim within the same proof, so it is not merely an
-earlier-position advantage. The gap is therefore in how often that interface form is selected, not
-whether AI can use it. In the complete
+earlier-position advantage; conditional source multi-reference uplift is actually larger for AI in
+the directly comparable subset. The gap is therefore in how often that interface form is selected,
+not whether AI can use it. In the complete
 production-term census, AI source boundaries more often disappear (21.8% versus 9.8%) or are
 duplicated, while human boundaries more often map one-to-one (58.0% versus 44.0%). Aggregate
 multi-use remains nearly equal (32.2% versus 34.2%), but conditional on surviving at all it is
@@ -64,16 +65,17 @@ unfolding with a reusable closed form; the AI's one-line `norm_num` proof denote
 fully expanded tree count has 535 digits. This is a representation fact, not a cognitive score, but
 it makes the difference between naming an invariant and delegating the present computation concrete.
 
-One measurement correction is especially important. Lean's parser now identifies the end of each
-complete `have` construction before reference counting; this prevents an older shadowed name in
-`have h : P := f h` from being counted as use of the new `h`. Exact ranges cover 39,646 of 40,626
+One measurement correction is especially important. Lean's parser now identifies both the end of
+each complete `have` construction and the tail of its enclosing tactic scope before reference
+counting. This prevents an older shadowed name in `have h : P := f h` from being credited to the new
+`h`, and excludes same-spelled tokens in sibling branches. Exact ranges cover 39,646 of 40,626
 candidate claims, and the result is unchanged in the 3,511 theorem pairs with complete two-sided
-alignment. Conditional on adoption and on a later claim
-boundary being available, human and AI claims are equally likely to cross at least one such
-boundary (75.7% versus 75.8%); AI scripts simply create more boundaries. Pooled human claims remain
-referenced across more source tokens (37.5 versus 25.9, measured after construction) and a larger fraction of available
-boundaries (49.6% versus 46.0%), but those duration effects disappear under length matching, and
-normalized duration slightly reverses under equal claim counts. “Horizon” is therefore decomposed
+alignment: scoped uses are 1.35 human versus 0.82 AI, while zero uptake is 22.2% versus 36.9%.
+Conditional on adoption and on a later claim boundary being available, human and AI claims are
+equally likely to cross at least one such boundary (83.6% versus 85.0%). Pooled human claims remain
+referenced across more source tokens (35.0 versus 23.9, measured after construction), while the
+fraction of available boundaries crossed is statistically unresolved (63.7% versus 62.0%). Both
+duration measures are unresolved under length matching. “Horizon” is therefore decomposed
 into adoption and duration: the robust difference is selection for uptake, not an AI inability to
 carry an adopted claim forward.
 

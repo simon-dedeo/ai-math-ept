@@ -63,12 +63,17 @@ def main() -> None:
     assert strict_parser["pairs"] == 3511
     assert strict_parser["explicit_uses_per_claim"]["source_cluster_ci"][1] < 0
     assert strict_parser["zero_uptake_share"]["source_cluster_ci"][0] > 0
-    close(source["claim_rates"]["human"]["explicit_uses_per_claim"]["estimate"], 1.4262)
-    close(source["claim_rates"]["ai"]["explicit_uses_per_claim"]["estimate"], 0.8668)
-    close(source["claim_rates"]["human"]["zero_uptake_share"]["estimate"], 0.2148)
-    close(source["claim_rates"]["ai"]["zero_uptake_share"]["estimate"], 0.3605)
-    close(source["claim_rates"]["human"]["multi_uptake_share"]["estimate"], 0.2596)
-    close(source["claim_rates"]["ai"]["multi_uptake_share"]["estimate"], 0.1182)
+    scope_audit = source["scope_clipping_audit"]
+    assert scope_audit["human"]["excluded_name_tokens"] == 1068
+    assert scope_audit["ai"]["excluded_name_tokens"] == 1157
+    assert scope_audit["human"]["claims_with_excluded_name_tokens"] == 442
+    assert scope_audit["ai"]["claims_with_excluded_name_tokens"] == 568
+    close(source["claim_rates"]["human"]["explicit_uses_per_claim"]["estimate"], 1.3526)
+    close(source["claim_rates"]["ai"]["explicit_uses_per_claim"]["estimate"], 0.8208)
+    close(source["claim_rates"]["human"]["zero_uptake_share"]["estimate"], 0.2216)
+    close(source["claim_rates"]["ai"]["zero_uptake_share"]["estimate"], 0.3694)
+    close(source["claim_rates"]["human"]["multi_uptake_share"]["estimate"], 0.2401)
+    close(source["claim_rates"]["ai"]["multi_uptake_share"]["estimate"], 0.1025)
     parametric = source["parametric_claim_difference"]
     close(parametric["human"], 0.02762)
     close(parametric["ai"], 0.00207)
@@ -112,6 +117,9 @@ def main() -> None:
     for side in ("human", "ai"):
         assert position_family[side]["adopted"]["source_cluster_ci"][0] > 0
         assert position_family[side]["multi_uptake"]["source_cluster_ci"][0] > 0
+    assert position_family["paired_both_tracks"]["multi_uptake"][
+        "source_cluster_ci"
+    ][0] > 0
     no_native_decide = source["automation_exclusion_sensitivity"]["native_decide"]
     assert no_native_decide["pairs"] == 3214
     close(no_native_decide["generalized_claim_share"]["human"], 0.05113)
@@ -137,30 +145,33 @@ def main() -> None:
     assert length_matched["long_horizon_share"]["source_cluster_ci"][1] < 0
     assert length_matched["generalized_claim_share"]["source_cluster_ci"][1] < 0
     reach = source["uptake_reach_decomposition"]
-    close(reach["adoption_probability"]["human"], 0.7852)
-    close(reach["adoption_probability"]["ai"], 0.6395)
-    close(reach["explicit_use_count_given_adoption"]["human"], 1.8164)
-    close(reach["explicit_use_count_given_adoption"]["ai"], 1.3555)
+    close(reach["adoption_probability"]["human"], 0.7784)
+    close(reach["adoption_probability"]["ai"], 0.6306)
+    close(reach["explicit_use_count_given_adoption"]["human"], 1.7378)
+    close(reach["explicit_use_count_given_adoption"]["ai"], 1.3016)
     assert reach["explicit_use_count_given_adoption"]["source_cluster_ci"][1] < 0
-    close(reach["last_use_token_distance_given_adoption"]["human"], 37.4790)
-    close(reach["last_use_token_distance_given_adoption"]["ai"], 25.8630)
+    close(reach["last_use_token_distance_given_adoption"]["human"], 35.0449)
+    close(reach["last_use_token_distance_given_adoption"]["ai"], 23.8942)
     assert reach["last_use_token_distance_given_adoption"]["source_cluster_ci"][1] < 0
     crossing = reach["crosses_any_later_boundary_given_adoption_and_opportunity"]
-    close(crossing["human"], 0.7566)
-    close(crossing["ai"], 0.7583)
+    close(crossing["human"], 0.8365)
+    close(crossing["ai"], 0.8496)
     assert crossing["source_cluster_ci"][0] < 0 < crossing["source_cluster_ci"][1]
     normalized_reach = reach["fraction_available_boundaries_crossed_given_adoption"]
-    close(normalized_reach["human"], 0.4963)
-    close(normalized_reach["ai"], 0.4598)
-    assert normalized_reach["source_cluster_ci"][1] < 0
+    close(normalized_reach["human"], 0.6370)
+    close(normalized_reach["ai"], 0.6205)
+    assert normalized_reach["source_cluster_ci"][0] < 0 < normalized_reach[
+        "source_cluster_ci"
+    ][1]
     reach_controls = source["uptake_reach_matched_controls"]
     equal_claims = reach_controls["exact_equal_positive_claim_count"]
     assert equal_claims["pairs"] == 206
     equal_profile = equal_claims["profile"]
     assert equal_profile["adoption_probability"]["source_cluster_ci"][1] < 0
-    assert equal_profile["fraction_available_boundaries_crossed_given_adoption"][
-        "source_cluster_ci"
-    ][0] > 0
+    equal_normalized = equal_profile[
+        "fraction_available_boundaries_crossed_given_adoption"
+    ]["source_cluster_ci"]
+    assert equal_normalized[0] < 0 < equal_normalized[1]
     matched_length = reach_controls["within_ten_percent_length"]
     assert matched_length["pairs"] == 834
     matched_profile = matched_length["profile"]

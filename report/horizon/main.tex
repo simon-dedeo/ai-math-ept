@@ -238,7 +238,7 @@ At source level, a Unicode-aware scanner removes comments and strings and locate
 complete construction tactic, so occurrences in a claim's type or proof term cannot be mistaken
 for downstream use.  It exactly locates 39,646 of 40,626 scanner candidates (97.6\%); all primary
 source estimates use those claims.  We count later exact-name references.  The window stops
-at same-name redeclaration, a conservative guard against shadowing.  A claim has \emph{long visible
+at the tail of the nearest enclosing tactic sequence, or earlier at same-name redeclaration.  A claim has \emph{long visible
 reach} when its last reference occurs after at least one intervening claim boundary.  Names matching
 generic forms such as \code{h}, \code{h7}, \code{this}, \code{step2}, and \code{aux} are classified
 as placeholders.  A family claim has either binders before its type or a type beginning with
@@ -282,29 +282,29 @@ of named claims is one versus four; pooled density is 1.96 human and 3.10 AI cla
 tokens.
 
 The important contrast is what happens after introduction (\cref{fig:functions}).  Human claims
-receive 1.43 explicit references on average (source-cluster interval 1.33--1.56), compared with
-0.87 for AI (0.83--0.89).  Of human claims, 21.5\% have zero visible uptake and 26.0\% have multiple
-references.  For AI the corresponding values are 36.0\% and 11.8\%.  All 12 source groups show
+receive 1.35 explicit references on average (source-cluster interval 1.26--1.49), compared with
+0.82 for AI (0.79--0.85).  Of human claims, 22.2\% have zero visible uptake and 24.0\% have multiple
+references.  For AI the corresponding values are 36.9\% and 10.3\%.  All 12 source groups show
 lower references per AI claim and higher zero-uptake share.  Human claims also more often remain
-live across a later claim boundary: 49.4\% versus 42.4\%, in the human direction for all 12
+live across a later claim boundary: 42.4\% versus 35.7\%, in the human direction for all 12
 groups.  The result is not simply that AI proofs are longer; it concerns the conditional fate of an
-introduced abstraction.  In 834 pairs within 10\% in body length, uses remain 1.35 versus 1.06,
-zero uptake 23.5\% versus 33.3\%, and long reach 50.9\% versus 43.8\%.
-Reach has an extensive and an intensive margin.  Human claims are explicitly adopted 78.5\% of
-the time versus 64.0\% for AI; conditional on adoption, they receive 1.82 versus 1.36 explicit calls,
-and their last reference lies 37.5 versus 25.9 source tokens beyond the completed construction.  Counts of intervening claims are endogenous to decomposition density:
+introduced abstraction.  In 834 pairs within 10\% in body length, uses remain 1.25 versus 0.98,
+zero uptake 24.5\% versus 34.3\%, and long reach 42.5\% versus 36.9\%.
+Reach has an extensive and an intensive margin.  Human claims are explicitly adopted 77.8\% of
+the time versus 63.1\% for AI; conditional on adoption, they receive 1.74 versus 1.30 explicit calls,
+and their last reference lies 35.0 versus 23.9 source tokens beyond the completed construction.  Counts of intervening claims are endogenous to decomposition density:
 given adoption and at least one available later boundary, the probability of crossing one is
-indistinguishable (75.7\% versus 75.8\%).  Human claims instead cross a larger fraction of the
-available later boundaries (49.6\% versus 46.0\%).  We therefore interpret the aggregate difference
+indistinguishable (83.6\% versus 85.0\%).  The fraction of available boundaries crossed is likewise
+unresolved (63.7\% versus 62.0\%).  We therefore interpret the aggregate difference
 as lower AI adoption, not a representation-free lifetime constant.  Indeed, within 834
 length-matched pairs neither conditional-duration measure separates the tracks; in 206 pairs with
-the same positive claim count, normalized duration reverses (51.8\% versus 53.9\%).  The
+the same positive claim count, normalized duration is nearly identical (64.3\% versus 64.2\%).  The
 robust source divergence is explicit adoption, not how long an adopted claim lives.
 Nor is it arithmetic from emitting more claims.  In 206 pairs with the same positive claim count,
-explicit uses per claim remain 1.33 versus 1.07 (AI-minus-human source-cluster interval
-$-0.418$ to $-0.152$), and zero uptake remains 21.5\% versus 28.9\% ($0.048$ to $0.100$).
+explicit uses per claim remain 1.29 versus 1.04 (AI-minus-human source-cluster interval
+$-0.411$ to $-0.157$), and zero uptake remains 21.9\% versus 30.0\% ($0.053$ to $0.109$).
 Nor does repeated generic naming create the result: among names declared only once per proof,
-uses are 1.50 versus 0.91, zero uptake 19.4\% versus 33.5\%, and long reach 52.4\% versus 45.9\%.
+uses are 1.46 versus 0.88, zero uptake 19.7\% versus 34.0\%, and long reach 46.8\% versus 40.1\%.
 
 The strongest direct signature of counterfactual width is grammatical.  A local lemma can turn one
 fact into a callable family either with binders---\code{have sum\_range (n : Nat) : ...}---or with
@@ -315,15 +315,16 @@ still leaves a large difference: 761 of 14,519 human claims (5.24\%) and 422 of 
 pairs, a generalized claim occurs only on the human side in 310 cases, only on the AI side in 102,
 and on both in 145.  This remains a syntactic classifier, not proof that a statement chose the best
 generality.  But it records a real construction cost: making an intermediate result vary over an
-argument.  Conditional on paying that cost, AI families are not shorter-lived by this pooled measure: 74.1\% of the human
-and 82.2\% of the AI generalized claims remain live across a later claim boundary.  Here too the
+argument.  Conditional on paying that cost, AI families are not shorter-lived by this pooled measure: 63.2\% of the human
+and 67.5\% of the AI generalized claims remain live across a later claim boundary.  Here too the
 difference lies in how often the abstraction is selected, not an inability to use it once made.
 The classifier has the same functional correlate in both tracks.  Minimum-cost matching to nearby
 instance claims, with a quarter-proof position caliper, retains 248 human and 199 AI proofs: family
-claims are respectively 13.4 and 19.8 points more likely to be adopted, and 22.3 and 34.1 points
-more likely to be multiply referenced; all four intervals exclude zero.  The association is not
-explained by families occurring earlier.  It remains descriptive, but the rarer AI families are not
-inert when selected.
+claims are respectively 15.0 and 20.6 points more likely to be adopted, and 26.8 and 37.0 points
+more likely to be multiply referenced; all four intervals exclude zero.  Among 79 pairs eligible
+on both tracks, the multi-reference uplift is larger for AI (interval 3.5--23.2 points).  The
+association is not explained by families occurring earlier.  It remains descriptive, but the rarer
+AI families are especially active when selected.
 In the 206 pairs with the same positive claim count, family shares remain 4.36\% versus 2.56\%.
 The difference is not carried by closed-goal computation: after excluding 416 pairs in which either
 side invokes \code{native\_decide}, family shares remain 5.11\% versus 1.72\%.
@@ -365,8 +366,8 @@ are more likely to disappear and more likely to be duplicated; polarization is h
 all 12 matched tactic strata.  Contextual tactics can amplify a fact massively, so raw means are not
 cognitive reuse measures.
 
-The inversion holds claim by claim.  Among source-single-use claims, 20.6\% human versus 31.2\% AI
-become multi-occurrence binders; among source-multiple claims, 55.2\% versus 61.4\%.  AI
+The inversion holds claim by claim.  Among source-single-use claims, 20.4\% human versus 31.1\% AI
+become multi-occurrence binders; among source-multiple claims, 58.4\% versus 67.0\%.  AI
 disappearance is also higher in both strata.  Retrieval and term fan-out are distinct channels.
 
 Family syntax nevertheless predicts compiled function.  Repeating the one-to-one position match on
@@ -650,12 +651,16 @@ use by \path{code/extract_binder_use.py} and \path{code/analyze_binder_use.py}; 
 \path{code/ngram_surprisal.py}, and \path{code/analyze_surprisal.py}.  Machine-readable summaries live in \path{results/horizon/}.
 Seeds and inclusion rules are serialized with the estimates.
 
-The source census uses \path{code/ExtractHaveRanges.lean} to parse the complete tactic that
-constructs each claim before searching for later references.  This prevents an outer same-name
-hypothesis used in \code{have h : P := f h} from being credited to the newly introduced \code{h}.
+The source census uses \path{code/ExtractHaveRanges.lean} to parse both the complete tactic that
+constructs each claim and the nearest enclosing tactic-sequence scope before searching for later
+references.  This prevents an outer same-name hypothesis used in \code{have h : P := f h} from
+being credited to the newly introduced \code{h}, and prevents a same-spelled token in a sibling
+branch from being counted after the binder has gone out of scope.  Scope clipping removes 1,068
+reference-like tokens from 442 human claims and 1,157 from 568 AI claims; the older unscoped rates
+were 1.43/0.87 uses per claim, compared with the corrected 1.35/0.82.
 The current parser aligns 39,646/40,626 candidates.  Restricting to the 3,511 theorem pairs with
 successful parsing and complete scanner/parser agreement gives human/AI uses per claim
-1.43/0.87, zero-uptake 21.5\%/36.0\%, and multi-uptake 25.9\%/11.8\%; the four source-cluster
+1.35/0.82, zero-uptake 22.2\%/36.9\%, and multi-uptake 24.0\%/10.3\%; the four source-cluster
 intervals for the between-track differences exclude zero.
 
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
@@ -675,16 +680,17 @@ their mean source-cluster intervals are $-.426$ to $-.081$ and $-.540$ to $-.062
 The adoption--duration decomposition guards against a changing temporal ruler.  For every adopted
 claim, token reach is the number of lexical tokens from the end of its complete construction tactic to its last explicit
 reference.  Opportunity-normalized reach divides crossed later claim boundaries by the number
-available before the same-name stopping point and excludes declarations with no later boundary.  Human token
-reach and normalized reach are higher in all 12 source groups.  In contrast, the conditional chance
-of crossing at least one available boundary is 75.7\%/75.8\% (AI-minus-human source-cluster interval
-$-.011$ to $.011$).  In the length-matched subset, both conditional-duration intervals cross zero;
-under equal positive claim counts, normalized duration is 51.8\%/53.9\%.  The claim-density ruler
-alone would conceal both the null result and the instability of the pooled direction.
+available before the scope or same-name stopping point and excludes declarations with no later
+boundary.  Human token reach is higher in all 12 source groups.  In contrast, the conditional chance
+of crossing at least one available boundary is 83.6\%/85.0\% (AI-minus-human source-cluster interval
+$-.005$ to $.028$), and normalized reach is 63.7\%/62.0\% (interval $-.046$ to $.003$).
+In the length-matched subset, both conditional-duration intervals cross zero; under equal positive
+claim counts, normalized duration is 64.3\%/64.2\%.  The claim-density ruler alone would conceal
+both null results.
 
 The local functional check on the family classifier holds separately for its two equivalent
-spellings.  Within eligible proofs, the multi-use uplift for a pre-type-binder family is 17.2
-points human and 25.5 points AI; for a leading-universal family it is 25.6 and 33.0 points.
+spellings.  Within eligible proofs, the multi-use uplift for a pre-type-binder family is 20.7
+points human and 29.1 points AI; for a leading-universal family it is 30.8 and 38.6 points.
 All four source-cluster intervals exclude zero.  Thus the result is not created by unioning a
 human-favored and an AI-favored surface form.
 
@@ -692,8 +698,8 @@ Claim position is a second mechanical alternative: an early family simply has mo
 in which to be referenced.  Within each proof we therefore use minimum-cost one-to-one matching on
 claim index normalized by the proof's final claim index.  With no caliper this yields 577 human and
 409 AI claim pairs; with an absolute position-gap caliper of .25, it yields 394 and 348 pairs in 248
-and 199 proofs.  In the calipered comparison, family-minus-instance adoption is 13.4 points human
-and 19.8 AI, while multiple-reference uplift is 22.3 and 34.1 points.  All intervals exclude zero.
+and 199 proofs.  In the calipered comparison, family-minus-instance adoption is 15.0 points human
+and 20.6 AI, while multiple-reference uplift is 26.8 and 37.0 points.  All intervals exclude zero.
 The explicit-reference count itself is less stable for humans, but the two binary functional
 outcomes are not explained by simple exposure time.
 
@@ -709,8 +715,8 @@ establish that human names are semantically better retrieval keys.
 
 The preselected 312-pair current-version sample closely preserves the source contrasts.  Human/AI claim
 densities are 1.94/3.16 per 100 tokens in the sample versus 1.96/3.10 in the full corpus; explicit
-uses per claim are 1.42/0.84 versus 1.43/0.87; and zero-uptake shares are 20.2\%/35.3\% versus
-21.5\%/36.0\%.  All 12 source groups remain represented.  Current-version attrition reduces this to 298
+uses per claim are 1.33/0.80 versus 1.35/0.82; and zero-uptake shares are 20.8\%/35.8\% versus
+22.2\%/36.9\%.  All 12 source groups remain represented.  Current-version attrition reduces this to 298
 complete binder-use pairs but changes the profile little.
 
 Paired does not mean independent: 181 structured proof values are token-identical and 230 have
@@ -718,7 +724,7 @@ whitespace-token similarity at least .90 after comments and strings are removed.
 attenuate rather than create the result.  Of the 181 exact value matches, 180 also have identical
 source bodies, so they are duplicate mass rather than a source/certificate natural experiment.
 Excluding all 230 leaves 3,400 pairs; explicit uses per
-claim are 1.43/0.86, zero-uptake shares 21.5\%/36.4\%, and placeholder shares 59.0\%/89.5\%.
+claim are 1.35/0.81, zero-uptake shares 22.2\%/37.3\%, and placeholder shares 59.0\%/89.5\%.
 
 The source direction also survives a coarse automation sensitivity.  For each of \code{linarith},
 \code{nlinarith}, \code{norm\_num}, \code{omega}, \code{ring}, and \code{simp}, we separately retain
