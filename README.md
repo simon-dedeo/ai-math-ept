@@ -1,13 +1,17 @@
-# Proof networks in the age of AI
+# Proofs for now and proofs for later
 
-Extending Viteri & DeDeo, *Epistemic phase transitions in mathematical proofs*
-(Cognition 225:105120, 2022) to machine-generated mathematics.
+Research on the construction horizon of human- and AI-provenance Lean proofs,
+building on Viteri & DeDeo, *Epistemic phase transitions in mathematical
+proofs* (Cognition 225:105120, 2022).
 
-**Start here:** [`report/REPORT.md`](report/REPORT.md).
+**Start here:** [*Proofs for Now and Proofs for Later: The Amortization Horizon
+of Human and Artificial Reasoning in Lean*](output/pdf/proofs_for_now_and_proofs_for_later.pdf),
+with LaTeX source and figures in [`report/horizon/`](report/horizon/).
 
-**Latest standalone paper:** [*Epistemic Decoupling in Human and Machine
-Proofs*](output/pdf/epistemic_decoupling_human_ai_proofs.pdf), with LaTeX source in
-[`report/standalone/`](report/standalone/).
+The earlier network replication and synthesis remain in
+[`report/REPORT.md`](report/REPORT.md), and the preceding standalone paper remains
+in [`report/standalone/`](report/standalone/). They are now background rather
+than the main claim.
 
 **For Scott Viteri and other readers of the 2022 work:**
 [`SCOTT_GUIDE.md`](SCOTT_GUIDE.md) gives a short route through the new results,
@@ -23,20 +27,20 @@ and private cluster mirrors; the versioned derived evidence is sufficient for th
 
 ## What was found, in one paragraph
 
-The 2022 results replicate across a change of proof assistant, four years, and a tenfold larger
-library — and Table 1 itself reproduces once the fixed tail-cutoff convention is recovered (40 of 44
-estimable networks within 0.010 of the published α). Applied to AI-generated mathematics, the headline is
-narrower than "AI proofs are structurally different," because at matched difficulty most apparent
-differences dissolve: the theorem explains far more structural variance than the system does, and
-one system resampled on one theorem varies more than systems differ from each other. What survives
-every control is a paired result. Given **2,583 statements with both a validated human proof and a
-validated machine proof**, proof length is statistically identical (p = 0.20) while the machine
-cites **half as many distinct library results** (10 → 5) and introduces **twice as many inline
-`have` steps** (3 → 6). Where a human reaches for an existing lemma, the machine builds the step
-itself. Scaled to a corpus, that is the accumulation deficit measured directly: the
-machine-generated files of the Equational Theories Project have 98.3% of declarations never cited
-against 45.6% for the human files of the same project. **Machine-generated mathematics verifies but
-does not accumulate.**
+A formal proof has at least three products: a certificate for the kernel,
+working memory for the current episode, and an interface for later proofs and
+readers. In **3,635 validated human/AI pairs of the identical Lean statement**,
+the AI track creates more named local claims, but those claims receive fewer
+explicit references, remain visibly live for less of the proof, use much more
+generic names, and are more often absent from the final elaborated term. The
+kernel-level result is equally important: among claims that survive,
+multi-use binders occur at essentially the same rate. The divergence is
+therefore not “humans reuse, machines do not.” It lies in whether source
+structure is transient search state or an addressable interface. We call its
+governing variable the **amortization horizon**: how far into future reasoning a
+constructor expects an abstraction to repay its cost. The hypothesis predicts
+that AI given refactoring and downstream-library objectives can cross the
+observed divide.
 
 ## Layout
 

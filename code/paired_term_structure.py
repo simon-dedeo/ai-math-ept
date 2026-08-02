@@ -109,13 +109,21 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=os.path.expanduser("~/ai_math_ept"))
     ap.add_argument("--mode", default="term0", choices=["term0", "term"])
+    ap.add_argument("--human-dir", default="",
+                    help="override directory containing human network JSON files")
+    ap.add_argument("--ai-dir", default="",
+                    help="override directory containing AI network JSON files")
+    ap.add_argument("--outdir", default="",
+                    help="override results directory")
     ap.add_argument("--boot", type=int, default=2000)
     ap.add_argument("--allow-sorry", action="store_true",
                     help="include networks containing sorryAx/SyntheticOpaque labels")
     args = ap.parse_args()
 
-    hpat = os.path.join(args.root, "networks", "paired_human", f"*_{args.mode}.json")
-    apat = os.path.join(args.root, "networks", "paired_ai", f"*_{args.mode}.json")
+    hdir = args.human_dir or os.path.join(args.root, "networks", "paired_human")
+    adir = args.ai_dir or os.path.join(args.root, "networks", "paired_ai")
+    hpat = os.path.join(hdir, f"*_{args.mode}.json")
+    apat = os.path.join(adir, f"*_{args.mode}.json")
     suffix = f"_{args.mode}.json"
     human = {os.path.basename(p)[:-len(suffix)]: p for p in glob.glob(hpat)}
     ai = {os.path.basename(p)[:-len(suffix)]: p for p in glob.glob(apat)}
@@ -162,7 +170,7 @@ def main() -> None:
             print(f"{i}/{len(common)}", flush=True)
 
     df = pd.DataFrame(rows)
-    outdir = os.path.join(args.root, "results", "paired_term_structure")
+    outdir = args.outdir or os.path.join(args.root, "results", "paired_term_structure")
     os.makedirs(outdir, exist_ok=True)
     df.to_csv(os.path.join(outdir, f"{args.mode}.csv"), index=False)
 

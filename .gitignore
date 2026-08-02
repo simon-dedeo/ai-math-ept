@@ -6,9 +6,15 @@ census/
 mathlib4/
 venv/
 .venv/
+.venv-surprise/
 # Full raw copy of the ORCHARD staging directory; compact provenance bundles
 # and Slurm logs are versioned under results/ instead.
 results/orchard_snapshot/
+results/horizon/binder_raw/
+results/horizon/scoped_human/
+results/horizon/scoped_ai/
+results/horizon/scoped_pilot/
+results/horizon/token_surprisal.tsv
 original_data/
 *.olean
 *.vo
@@ -18,9 +24,11 @@ original_data/
 # Generated figures and final paper deliverables are part of the repository.
 !report/final/figures/*.pdf
 !report/standalone/figures/*.pdf
+!report/horizon/figures/*.pdf
 !output/
 !output/pdf/
 !output/pdf/*.pdf
+output/rendered_horizon/
 
 # Rebuildable LaTeX and visual-QA products.
 report/**/main.aux
@@ -37,3 +45,5 @@ __pycache__/
 *.nbc
 *.nbi
 .DS_Store
+tmp/
+models/

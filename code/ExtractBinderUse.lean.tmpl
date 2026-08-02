@@ -1,0 +1,95 @@
+/-
+ExtractBinderUse.lean.tmpl -- measure how elaborated local binders are used.
+
+Append this file to a standalone Lean source and invoke
+
+  #eval Horizon.writeBinderStats `theoremName "output.json"
+
+The crucial count is de-Bruijn aware.  When traversal enters another binder,
+the index of the outer target is incremented.  This avoids the global bvar0
+collision that arises if bound-variable leaves are structurally deduplicated
+without their contexts.
+-/
+namespace Horizon
+open Lean
+
+structure BinderUse where
+  kind       : String
+  name       : String
+  uses       : Nat
+  typeNodes  : Nat
+  valueNodes : Nat
+  bodyNodes  : Nat
+
+partial def exprNodes (e : Expr) : Nat :=
+  1 + match e with
+  | .app f a => exprNodes f + exprNodes a
+  | .lam _ t b _ => exprNodes t + exprNodes b
+  | .forallE _ t b _ => exprNodes t + exprNodes b
+  | .letE _ t v b _ => exprNodes t + exprNodes v + exprNodes b
+  | .mdata _ b => exprNodes b
+  | .proj _ _ b => exprNodes b
+  | _ => 0
+
+/-- Count occurrences of the binder that is at index `depth` here. -/
+partial def countTarget (e : Expr) (depth : Nat := 0) : Nat :=
+  match e with
+  | .bvar i => if i == depth then 1 else 0
+  | .app f a => countTarget f depth + countTarget a depth
+  | .lam _ t b _ => countTarget t depth + countTarget b (depth + 1)
+  | .forallE _ t b _ => countTarget t depth + countTarget b (depth + 1)
+  | .letE _ t v b _ =>
+      countTarget t depth + countTarget v depth + countTarget b (depth + 1)
+  | .mdata _ b => countTarget b depth
+  | .proj _ _ b => countTarget b depth
+  | _ => 0
+
+partial def collectLets (e : Expr) : Array BinderUse := Id.run do
+  let mut out := #[]
+  match e with
+  | .app f a =>
+      out := out ++ collectLets f
+      out := out ++ collectLets a
+  | .lam _ t b _ =>
+      out := out ++ collectLets t
+      out := out ++ collectLets b
+  | .forallE _ t b _ =>
+      out := out ++ collectLets t
+      out := out ++ collectLets b
+  | .letE n t v b _ =>
+      out := out.push {
+        kind := "let", name := n.toString, uses := countTarget b,
+        typeNodes := exprNodes t, valueNodes := exprNodes v, bodyNodes := exprNodes b }
+      out := out ++ collectLets t
+      out := out ++ collectLets v
+      out := out ++ collectLets b
+  | .mdata _ b => out := out ++ collectLets b
+  | .proj _ _ b => out := out ++ collectLets b
+  | _ => pure ()
+  return out
+
+def jsonQuote (s : String) : String :=
+  "\"" ++ ((s.replace "\\" "\\\\").replace "\"" "\\\"") ++ "\""
+
+def binderJson (b : BinderUse) : String :=
+  "{\"kind\":" ++ jsonQuote b.kind ++
+  ",\"name\":" ++ jsonQuote b.name ++
+  ",\"uses\":" ++ toString b.uses ++
+  ",\"type_nodes\":" ++ toString b.typeNodes ++
+  ",\"value_nodes\":" ++ toString b.valueNodes ++
+  ",\"body_nodes\":" ++ toString b.bodyNodes ++ "}"
+
+def writeBinderStats (root : Name) (path : String) : CoreM Unit := do
+  let env <- getEnv
+  let some info := env.find? root
+    | throwError "declaration {root} not found"
+  let value := (info.value? (allowOpaque := true)).getD info.type
+  let lets := collectLets value
+  let payload :=
+    "{\"name\":" ++ jsonQuote root.toString ++
+    ",\"root_nodes\":" ++ toString (exprNodes value) ++
+    ",\"n_lets\":" ++ toString lets.size ++
+    ",\"lets\":[" ++ String.intercalate "," (lets.map binderJson).toList ++ "]}"
+  IO.FS.writeFile path payload
+
+end Horizon

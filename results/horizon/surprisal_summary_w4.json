@@ -1,0 +1,76 @@
+{
+  "model": "Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization",
+  "window_tokens": 4,
+  "documents": 624,
+  "pairs": 312,
+  "claims": 3300,
+  "paired": {
+    "mean_nll": {
+      "n_pairs": 312,
+      "human_median": 1.1454324395310347,
+      "ai_median": 0.7261674119640272,
+      "median_paired_difference": -0.3711431439506248,
+      "probability_ai_greater": 0.14102564102564102,
+      "wilcoxon_p": 1.1209582562914749e-39
+    },
+    "p95_nll": {
+      "n_pairs": 312,
+      "human_median": 6.3296425,
+      "ai_median": 4.261986750000002,
+      "median_paired_difference": -1.5361109999999978,
+      "probability_ai_greater": 0.13141025641025642,
+      "wilcoxon_p": 2.313890074163652e-40
+    },
+    "mean_boundary_delta_nll": {
+      "n_pairs": 174,
+      "human_median": 0.2212017711584995,
+      "ai_median": 0.0137067517499011,
+      "median_paired_difference": -0.17368467497786466,
+      "probability_ai_greater": 0.40804597701149425,
+      "wilcoxon_p": 0.004228840477596619
+    },
+    "mean_boundary_excess_nll": {
+      "n_pairs": 174,
+      "human_median": 0.2757907057467173,
+      "ai_median": 0.02878234471939156,
+      "median_paired_difference": -0.19192048651463522,
+      "probability_ai_greater": 0.41379310344827586,
+      "wilcoxon_p": 0.003232433586814783
+    },
+    "mean_content_boundary_delta_nll": {
+      "n_pairs": 174,
+      "human_median": 0.20743847171431548,
+      "ai_median": 0.013635245010736163,
+      "median_paired_difference": -0.16532295000976732,
+      "probability_ai_greater": 0.43103448275862066,
+      "wilcoxon_p": 0.027324400407213102
+    },
+    "mean_content_boundary_excess_nll": {
+      "n_pairs": 174,
+      "human_median": 0.23754214128806356,
+      "ai_median": 0.039191545953531456,
+      "median_paired_difference": -0.15523442071710677,
+      "probability_ai_greater": 0.41379310344827586,
+      "wilcoxon_p": 0.022578709645613922
+    }
+  },
+  "claim_level": {
+    "human": {
+      "claims": 1142,
+      "median_boundary_delta_nll": 0.00113854294525,
+      "median_boundary_excess_nll": 0.046813360938827056,
+      "median_definition_name_nll": 0.07548315,
+      "median_reference_name_nll": 0.0453703,
+      "median_name_reuse_relief_nll": 0.0002497420203
+    },
+    "ai": {
+      "claims": 2158,
+      "median_boundary_delta_nll": -2.392885000000004e-06,
+      "median_boundary_excess_nll": 0.013878246205145302,
+      "median_definition_name_nll": 0.004078056816666667,
+      "median_reference_name_nll": 0.0031622573699999997,
+      "median_name_reuse_relief_nll": 9.7235e-06
+    }
+  },
+  "caveat": "Exploratory model-relative information, not human cognitive surprisal; training-set overlap and theorem-prover style affinity are not excluded."
+}

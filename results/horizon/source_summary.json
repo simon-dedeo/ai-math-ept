@@ -1,0 +1,313 @@
+{
+  "seed": 20260802,
+  "bootstraps": 10000,
+  "inclusion_rule": "both proofs available; both validation statuses valid; human ground truth complete; no outcome-dependent premise filter",
+  "pairs": 3635,
+  "source_groups": 12,
+  "paired": {
+    "tokens": {
+      "n": 3635,
+      "human_median": 126.0,
+      "ai_median": 145.0,
+      "median_paired_difference": 5.0,
+      "probability_ai_greater": 0.5653370013755158,
+      "cluster_ci": [
+        2.0,
+        15.0
+      ],
+      "wilcoxon_p": 7.534908893092261e-30
+    },
+    "named_haves": {
+      "n": 3635,
+      "human_median": 1.0,
+      "ai_median": 4.0,
+      "median_paired_difference": 1.0,
+      "probability_ai_greater": 0.5246217331499312,
+      "cluster_ci": [
+        0.0,
+        1.0
+      ],
+      "wilcoxon_p": 6.966030381084431e-120
+    },
+    "explicit_uses": {
+      "n": 3635,
+      "human_median": 1.0,
+      "ai_median": 2.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.42420907840440164,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 4.0063588460363465e-14
+    },
+    "zero_uptake_haves": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.41430536451169186,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.3573179743575408e-142
+    },
+    "one_uptake_haves": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 2.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.465474552957359,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.0411267929660094e-86
+    },
+    "multi_uptake_haves": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.20082530949105915,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 2.544239705852902e-05
+    },
+    "reuse_excess": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.19257221458046767,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.2028477652377784e-21
+    },
+    "long_horizon_haves": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.39614855570839064,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 2.0710025455990647e-55
+    },
+    "total_claim_span": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.4140302613480055,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 2.1723424789683436e-61
+    },
+    "max_claim_span": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.40440165061898214,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.2730384258288159e-65
+    },
+    "placeholder_haves": {
+      "n": 3635,
+      "human_median": 0.0,
+      "ai_median": 3.0,
+      "median_paired_difference": 1.0,
+      "probability_ai_greater": 0.5708390646492435,
+      "cluster_ci": [
+        1.0,
+        2.0
+      ],
+      "wilcoxon_p": 8.4493674394741e-214
+    },
+    "tactic_events": {
+      "n": 3635,
+      "human_median": 18.0,
+      "ai_median": 19.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.49793672627235214,
+      "cluster_ci": [
+        0.0,
+        1.0
+      ],
+      "wilcoxon_p": 1.6062080080575184e-16
+    },
+    "tactic_types": {
+      "n": 3635,
+      "human_median": 8.0,
+      "ai_median": 7.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.35570839064649246,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 4.708355109858916e-18
+    },
+    "used_constants": {
+      "n": 3635,
+      "human_median": 139.0,
+      "ai_median": 103.0,
+      "median_paired_difference": -6.0,
+      "probability_ai_greater": 0.33700137551581844,
+      "cluster_ci": [
+        -18.0,
+        0.0
+      ],
+      "wilcoxon_p": 5.2126464722894124e-89
+    }
+  },
+  "claim_rates": {
+    "human": {
+      "explicit_uses_per_claim": {
+        "numerator": 20864,
+        "denominator": 14696,
+        "estimate": 1.4197060424605334,
+        "source_cluster_ci": [
+          1.3210104798104352,
+          1.5562604112826377
+        ]
+      },
+      "zero_uptake_share": {
+        "numerator": 3347,
+        "denominator": 14696,
+        "estimate": 0.2277490473598258,
+        "source_cluster_ci": [
+          0.16580581825823154,
+          0.2669372318050699
+        ]
+      },
+      "one_uptake_share": {
+        "numerator": 7564,
+        "denominator": 14696,
+        "estimate": 0.514697876973326,
+        "source_cluster_ci": [
+          0.4864253365175214,
+          0.5647807983259747
+        ]
+      },
+      "multi_uptake_share": {
+        "numerator": 3785,
+        "denominator": 14696,
+        "estimate": 0.2575530756668481,
+        "source_cluster_ci": [
+          0.23017850067814685,
+          0.2989937847759214
+        ]
+      },
+      "long_horizon_share": {
+        "numerator": 7000,
+        "denominator": 14696,
+        "estimate": 0.4763200870985302,
+        "source_cluster_ci": [
+          0.4611123289617075,
+          0.50221764873307
+        ]
+      },
+      "placeholder_name_share": {
+        "numerator": 8630,
+        "denominator": 14696,
+        "estimate": 0.5872346216657593,
+        "source_cluster_ci": [
+          0.5078947987968302,
+          0.6488244551881328
+        ]
+      }
+    },
+    "ai": {
+      "explicit_uses_per_claim": {
+        "numerator": 22199,
+        "denominator": 25683,
+        "estimate": 0.8643460654907916,
+        "source_cluster_ci": [
+          0.832830327252915,
+          0.882727583008403
+        ]
+      },
+      "zero_uptake_share": {
+        "numerator": 9345,
+        "denominator": 25683,
+        "estimate": 0.36385936222403925,
+        "source_cluster_ci": [
+          0.33042710700458466,
+          0.3873868486587551
+        ]
+      },
+      "one_uptake_share": {
+        "numerator": 13261,
+        "denominator": 25683,
+        "estimate": 0.5163337616322081,
+        "source_cluster_ci": [
+          0.494156365328042,
+          0.5492387946626852
+        ]
+      },
+      "multi_uptake_share": {
+        "numerator": 3077,
+        "denominator": 25683,
+        "estimate": 0.11980687614375268,
+        "source_cluster_ci": [
+          0.11035865806736199,
+          0.12416995966521044
+        ]
+      },
+      "long_horizon_share": {
+        "numerator": 10700,
+        "denominator": 25683,
+        "estimate": 0.4166179963399914,
+        "source_cluster_ci": [
+          0.39912010217941896,
+          0.43854367168312075
+        ]
+      },
+      "placeholder_name_share": {
+        "numerator": 22828,
+        "denominator": 25683,
+        "estimate": 0.8888369738737686,
+        "source_cluster_ci": [
+          0.8785334460235917,
+          0.8995582334503375
+        ]
+      }
+    }
+  },
+  "name_lexicon": {
+    "human": {
+      "tokens": 14696,
+      "types": 3598,
+      "shannon_entropy_bits": 8.519599312791652,
+      "effective_vocabulary": 366.99060312472324,
+      "mean_name_length": 3.266807294501905,
+      "share_length_at_least_4": 0.2344855743059336,
+      "share_with_underscore": 0.1317365269461078
+    },
+    "ai": {
+      "tokens": 25683,
+      "types": 1686,
+      "shannon_entropy_bits": 6.270558482651916,
+      "effective_vocabulary": 77.20158074452299,
+      "mean_name_length": 2.6266401900089553,
+      "share_length_at_least_4": 0.09356383600046723,
+      "share_with_underscore": 0.03469220885410583
+    }
+  },
+  "by_source_file": "results/horizon/by_source.csv",
+  "tactic_sensitivity_file": "results/horizon/tactic_matched_strata.csv"
+}

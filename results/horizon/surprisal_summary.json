@@ -1,0 +1,60 @@
+{
+  "model": "Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization",
+  "window_tokens": 8,
+  "documents": 624,
+  "pairs": 312,
+  "claims": 3300,
+  "paired": {
+    "mean_nll": {
+      "n_pairs": 312,
+      "human_median": 1.1454324395310347,
+      "ai_median": 0.7261674119640272,
+      "median_paired_difference": -0.3711431439506248,
+      "probability_ai_greater": 0.14102564102564102,
+      "wilcoxon_p": 1.1209582562914749e-39
+    },
+    "p95_nll": {
+      "n_pairs": 312,
+      "human_median": 6.3296425,
+      "ai_median": 4.261986750000002,
+      "median_paired_difference": -1.5361109999999978,
+      "probability_ai_greater": 0.13141025641025642,
+      "wilcoxon_p": 2.313890074163652e-40
+    },
+    "mean_boundary_delta_nll": {
+      "n_pairs": 174,
+      "human_median": 0.29934264255545534,
+      "ai_median": -0.010190921151316378,
+      "median_paired_difference": -0.23319484813421976,
+      "probability_ai_greater": 0.3563218390804598,
+      "wilcoxon_p": 2.2189816936298595e-05
+    },
+    "mean_boundary_excess_nll": {
+      "n_pairs": 174,
+      "human_median": 0.34451342552521924,
+      "ai_median": 0.02407787864895493,
+      "median_paired_difference": -0.23493048265940897,
+      "probability_ai_greater": 0.3620689655172414,
+      "wilcoxon_p": 3.89035510390811e-05
+    }
+  },
+  "claim_level": {
+    "human": {
+      "claims": 1142,
+      "median_boundary_delta_nll": 0.022049612943749998,
+      "median_boundary_excess_nll": 0.07620516028817301,
+      "median_definition_name_nll": 0.07548315,
+      "median_reference_name_nll": 0.0453703,
+      "median_name_reuse_relief_nll": 0.0002497420203
+    },
+    "ai": {
+      "claims": 2158,
+      "median_boundary_delta_nll": 7.1326897500000015e-06,
+      "median_boundary_excess_nll": 0.018701210385017233,
+      "median_definition_name_nll": 0.004078056816666667,
+      "median_reference_name_nll": 0.0031622573699999997,
+      "median_name_reuse_relief_nll": 9.7235e-06
+    }
+  },
+  "caveat": "Exploratory model-relative information, not human cognitive surprisal; training-set overlap and theorem-prover style affinity are not excluded."
+}

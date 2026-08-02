@@ -1,0 +1,180 @@
+{
+  "seed": 20260802,
+  "bootstraps": 10000,
+  "tasks": 624,
+  "task_status": {
+    "ok": 604,
+    "failed": 20
+  },
+  "pairs_with_both_sides": 298,
+  "source_groups_with_both_sides": 12,
+  "claims_matched": 3215,
+  "claims_unambiguous": 2068,
+  "source_claims_in_successful_tasks": 3227,
+  "matching_method": "exact-name longest common subsequence in pre-order term traversal",
+  "paired": {
+    "matched": {
+      "n_pairs": 298,
+      "human_median": 2.0,
+      "ai_median": 4.0,
+      "median_paired_difference": 2.0,
+      "probability_ai_greater": 0.5805369127516778,
+      "wilcoxon_p": 3.1350270861628264e-14
+    },
+    "match_share": {
+      "n_pairs": 298,
+      "human_median": 1.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.016778523489932886,
+      "wilcoxon_p": 0.044009956390248774
+    },
+    "term_uses": {
+      "n_pairs": 298,
+      "human_median": 2.0,
+      "ai_median": 5.0,
+      "median_paired_difference": 1.5,
+      "probability_ai_greater": 0.5838926174496645,
+      "wilcoxon_p": 1.1131571547715754e-14
+    },
+    "zero_term_use": {
+      "n_pairs": 298,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.412751677852349,
+      "wilcoxon_p": 1.089554893538209e-11
+    },
+    "multi_term_use": {
+      "n_pairs": 298,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.3859060402684564,
+      "wilcoxon_p": 1.7366294520162195e-10
+    },
+    "reuse_excess": {
+      "n_pairs": 298,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.4261744966442953,
+      "wilcoxon_p": 9.164520018476727e-12
+    }
+  },
+  "claim_rates_complete_pairs": {
+    "human": {
+      "term_uses": {
+        "numerator": 9708,
+        "denominator": 1107,
+        "estimate": 8.769647696476964,
+        "source_cluster_ci": [
+          2.2249641238670694,
+          13.184251444332947
+        ]
+      },
+      "zero_term_use": {
+        "numerator": 155,
+        "denominator": 1107,
+        "estimate": 0.14001806684733514,
+        "source_cluster_ci": [
+          0.0921565665541141,
+          0.16967917123037604
+        ]
+      },
+      "one_term_use": {
+        "numerator": 564,
+        "denominator": 1107,
+        "estimate": 0.5094850948509485,
+        "source_cluster_ci": [
+          0.4510442490594316,
+          0.5814548390206284
+        ]
+      },
+      "multi_term_use": {
+        "numerator": 388,
+        "denominator": 1107,
+        "estimate": 0.35049683830171635,
+        "source_cluster_ci": [
+          0.3040925794215268,
+          0.39650912213935935
+        ]
+      },
+      "reuse_excess": {
+        "numerator": 8756,
+        "denominator": 1107,
+        "estimate": 7.9096657633243,
+        "source_cluster_ci": [
+          1.3304828122273764,
+          12.18916784737238
+        ]
+      }
+    },
+    "ai": {
+      "term_uses": {
+        "numerator": 10996,
+        "denominator": 2047,
+        "estimate": 5.371763556424035,
+        "source_cluster_ci": [
+          2.9855093217220654,
+          7.711849183192879
+        ]
+      },
+      "zero_term_use": {
+        "numerator": 478,
+        "denominator": 2047,
+        "estimate": 0.2335124572545188,
+        "source_cluster_ci": [
+          0.19581166757890897,
+          0.2557028124424716
+        ]
+      },
+      "one_term_use": {
+        "numerator": 835,
+        "denominator": 2047,
+        "estimate": 0.407914020517831,
+        "source_cluster_ci": [
+          0.3796756164567833,
+          0.4281616073904832
+        ]
+      },
+      "multi_term_use": {
+        "numerator": 734,
+        "denominator": 2047,
+        "estimate": 0.3585735222276502,
+        "source_cluster_ci": [
+          0.32570896953424916,
+          0.41374213238509944
+        ]
+      },
+      "reuse_excess": {
+        "numerator": 9427,
+        "denominator": 2047,
+        "estimate": 4.605276013678554,
+        "source_cluster_ci": [
+          2.280896861110957,
+          6.84363397066707
+        ]
+      }
+    }
+  },
+  "unambiguous_claim_sensitivity": {
+    "human": {
+      "claims": 753,
+      "zero_term_use_share": 0.13811420982735723,
+      "one_term_use_share": 0.46215139442231074,
+      "multi_term_use_share": 0.399734395750332,
+      "median_term_uses": 1.0,
+      "mean_term_uses": 8.840637450199203
+    },
+    "ai": {
+      "claims": 1258,
+      "zero_term_use_share": 0.23767885532591415,
+      "one_term_use_share": 0.3934817170111288,
+      "multi_term_use_share": 0.3688394276629571,
+      "median_term_uses": 1.0,
+      "mean_term_uses": 3.773449920508744
+    }
+  },
+  "by_source_file": "results/horizon/binder_by_source.csv"
+}

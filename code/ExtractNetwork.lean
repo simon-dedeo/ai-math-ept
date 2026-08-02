@@ -37,10 +37,12 @@ structure BuildSt where
   seenConsts : Std.HashMap Name Bool := {}   -- true = expanded
   frontier   : Array Name := #[]
   visits     : Nat := 0   -- tree size (walk calls incl. cache hits)
+  nextBinder : Nat := 0   -- unique identities for de-Bruijn binder scopes
 
 abbrev BuildM := StateRefT BuildSt CoreM
 
-def canonical (e : Expr) : Expr :=
+def canonical (e : Expr) (fvars : Array Expr := #[]) : Expr :=
+  let e := e.instantiateRev fvars
   match e with
   | .const n _ => .const n []      -- unify same constant across universe insts
   | _ => e
@@ -70,8 +72,20 @@ def childrenOf (e : Expr) : List Expr :=
   | .proj _ _ b     => [b]
   | _               => []
 
-partial def walk (e0 : Expr) : BuildM NodeId := do
-  let e := canonical e0
+def freshBinder : BuildM Expr := do
+  let index := (← get).nextBinder
+  modify fun st => { st with nextBinder := index + 1 }
+  return .fvar ⟨Name.str `__eptx_scope (toString index)⟩
+
+/-- Walk an expression with explicit identities for its surrounding binders.
+
+The raw `Expr` representation uses de-Bruijn indices, so `.bvar 0` under two
+different binders is not the same variable.  Instantiating loose variables with
+scope-specific free-variable IDs before interning prevents those occurrences,
+and composite open subterms containing them, from being spuriously merged.
+-/
+partial def walk (e0 : Expr) (fvars : Array Expr := #[]) : BuildM NodeId := do
+  let e := canonical e0 fvars
   modify fun st => { st with visits := st.visits + 1 }
   if let some id := (← get).ids[e]? then
     return id
@@ -88,8 +102,24 @@ partial def walk (e0 : Expr) : BuildM NodeId := do
           constNode := st.constNode.insert n id,
           seenConsts := st.seenConsts.insert n false,
           frontier := st.frontier.push n }
-  for c in childrenOf e do
-    let cid ← walk c
+  let mut children : Array (Expr × Array Expr) := #[]
+  match e0 with
+  | .app f a =>
+      children := children.push (f, fvars) |>.push (a, fvars)
+  | .lam _ t b _ =>
+      let binder ← freshBinder
+      children := children.push (t, fvars) |>.push (b, fvars.push binder)
+  | .forallE _ t b _ =>
+      let binder ← freshBinder
+      children := children.push (t, fvars) |>.push (b, fvars.push binder)
+  | .letE _ t v b _ =>
+      let binder ← freshBinder
+      children := children.push (t, fvars) |>.push (v, fvars) |>.push (b, fvars.push binder)
+  | .mdata _ b => children := children.push (b, fvars)
+  | .proj _ _ b => children := children.push (b, fvars)
+  | _ => pure ()
+  for (c, childScope) in children do
+    let cid ← walk c childScope
     -- child subterm is a premise of the containing term
     modify fun st => { st with edges := st.edges.push (cid, id) }
   return id
@@ -229,6 +259,10 @@ def processTargets : CoreM Unit := do
     try
       if mode == "all" then
         extractFor name outPath maxNodes
+      else if mode == "term0" then
+        let (st, levels, truncated) ← buildTermNet name maxNodes (maxLevels := 0)
+        writeNet outPath fields[0]! mode st.labels st.edges levels truncated st.visits
+        IO.println s!"[ok] {name} term0: {st.labels.size} nodes, {st.edges.size} edges"
       else if mode == "term" then
         let (st, levels, truncated) ← buildTermNet name maxNodes
         writeNet outPath fields[0]! mode st.labels st.edges levels truncated

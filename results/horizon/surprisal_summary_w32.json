@@ -1,0 +1,60 @@
+{
+  "model": "Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization",
+  "window_tokens": 32,
+  "documents": 624,
+  "pairs": 312,
+  "claims": 3257,
+  "paired": {
+    "mean_nll": {
+      "n_pairs": 312,
+      "human_median": 1.1454324395310347,
+      "ai_median": 0.7261674119640272,
+      "median_paired_difference": -0.3711431439506248,
+      "probability_ai_greater": 0.14102564102564102,
+      "wilcoxon_p": 1.1209582562914749e-39
+    },
+    "p95_nll": {
+      "n_pairs": 312,
+      "human_median": 6.3296425,
+      "ai_median": 4.261986750000002,
+      "median_paired_difference": -1.5361109999999978,
+      "probability_ai_greater": 0.13141025641025642,
+      "wilcoxon_p": 2.313890074163652e-40
+    },
+    "mean_boundary_delta_nll": {
+      "n_pairs": 168,
+      "human_median": -0.09652966448793789,
+      "ai_median": -0.0934950575718144,
+      "median_paired_difference": 0.01092279974714657,
+      "probability_ai_greater": 0.5178571428571429,
+      "wilcoxon_p": 0.8393516828059908
+    },
+    "mean_boundary_excess_nll": {
+      "n_pairs": 143,
+      "human_median": -0.08407398026095449,
+      "ai_median": -0.06910104179768742,
+      "median_paired_difference": 0.029841357984291366,
+      "probability_ai_greater": 0.5104895104895105,
+      "wilcoxon_p": 0.815169968072661
+    }
+  },
+  "claim_level": {
+    "human": {
+      "claims": 1124,
+      "median_boundary_delta_nll": -0.04325465542796875,
+      "median_boundary_excess_nll": -0.024252172751936904,
+      "median_definition_name_nll": 0.07087486600000001,
+      "median_reference_name_nll": 0.045554525,
+      "median_name_reuse_relief_nll": 0.00018295493833333333
+    },
+    "ai": {
+      "claims": 2133,
+      "median_boundary_delta_nll": -0.029222389831929693,
+      "median_boundary_excess_nll": -0.0178487880704139,
+      "median_definition_name_nll": 0.0039052715199999997,
+      "median_reference_name_nll": 0.00299548,
+      "median_name_reuse_relief_nll": 9.449485e-06
+    }
+  },
+  "caveat": "Exploratory model-relative information, not human cognitive surprisal; training-set overlap and theorem-prover style affinity are not excluded."
+}

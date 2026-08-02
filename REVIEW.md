@@ -1,9 +1,26 @@
 # Reviewer's guide
 
 This document exists so a reviewer can check the work rather than take it on trust.
-It maps every claim in [`report/REPORT.md`](report/REPORT.md) to the script that produced
-it and the file it landed in, says where the data lives, and lists the places
-where I think the work is weakest.
+The current paper is [`report/horizon/main.tex`](report/horizon/main.tex), rendered
+as [`output/pdf/proofs_for_now_and_proofs_for_later.pdf`](output/pdf/proofs_for_now_and_proofs_for_later.pdf).
+The older claim map for [`report/REPORT.md`](report/REPORT.md) follows the current
+paper audit below.
+
+## 0. Current paper: claim → script → output
+
+| claim | script | output |
+|---|---|---|
+| 3,635 valid same-statement pairs; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz` |
+| claim density, explicit uptake, visible reach, naming, and matched tactic strata | same | `results/horizon/claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
+| depth-aware use of elaborated local binders in 298 complete pairs | `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz` |
+| model-relative information pulse at claim boundaries | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_sensitivity.csv` |
+| scope-correct term-DAG construction | `code/ExtractNetwork.lean`, `code/ExtractCore.lean.tmpl` | `code/test_scoped_bvars.py`, scope-audited outputs under `results/horizon/` |
+
+The primary limitations are observational provenance, lexical recognition of
+named `have` rather than every possible source construct, current-Mathlib
+compilation attrition in the term sample, and possible training overlap or style
+affinity in the Goedel-Prover surprisal assay. The paper treats the last as
+exploratory and does not infer human cognitive surprisal from it.
 
 ## 1. Where things are
 
@@ -80,6 +97,7 @@ A reviewer should check these were actually corrected in the report, not just no
 | "native Lean arity is much more concentrated than native Coq arity" | parser artifact: Lean `App` is binary; archived CoqAST `App` is variadic and binder names are children | appendix A.3: common-schema Coq 0.9903 vs Lean 0.9976 degree-two share |
 | "expanded-graph out-degree evidence is representation-robust" | normalized root proofs retain similar exponents but usually cannot distinguish power law from exponential | appendix A.2: strong tail evidence restricted to the expanded-network scale |
 | "human or AI provenance has a directional effect on the fixed-10 out-degree exponent" | the tiny paired difference reverses from -0.009 in `term0` to +0.025 after proof-value normalization | appendix A.2 and Table 3: no representation-robust authorship effect |
+| unexpanded term-DAG reuse is a semantic reuse measure | raw de Bruijn indices from unrelated binder scopes were interned together, creating false shared variable nodes | the extractor now assigns scope-specific identities; current paper uses depth-aware binder occurrence and withdraws old semantic readings of `term0` topology |
 
 ## 4. Where I think this is weakest — please attack these first
 

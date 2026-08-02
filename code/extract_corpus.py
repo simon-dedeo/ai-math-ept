@@ -29,13 +29,16 @@ def find_theorem(src):
     return names[-1] if names else None
 
 
-def gen_workfile(src, thm, out_base, core_text, maxnodes):
+def gen_workfile(src, thm, out_base, core_text, maxnodes, term0_only=False):
     # ensure `import Mathlib` present at least once, imports must stay on top
     body = src.rstrip() + "\n\n"
+    command = (f'\n#eval EPTX.extractTerm0 `{thm} "{out_base}_term0.json"\n'
+               if term0_only else
+               f'\n#eval EPTX.extractFor `{thm} "{out_base}" (maxNodes := {maxnodes})\n')
     return (body
             + "-- ===== EPTX extraction (appended) =====\n"
             + core_text
-            + f"\n#eval EPTX.extractFor `{thm} \"{out_base}\" (maxNodes := {maxnodes})\n")
+            + command)
 
 
 def run_one(args, work_path, project_dir, env):
@@ -58,6 +61,10 @@ def main():
     ap.add_argument("--jobs", type=int, default=8)
     ap.add_argument("--max-files", type=int, default=0)
     ap.add_argument("--maxnodes", type=int, default=12000)
+    ap.add_argument("--pairs", default="",
+                    help="optional text/CSV file; keep stems whose pair_XXXXXXXX key occurs")
+    ap.add_argument("--term0-only", action="store_true",
+                    help="extract only the unexpanded, scope-correct proof-term DAG")
     ap.add_argument("--strip-imports", action="store_true",
                     help="replace all imports with 'import Mathlib'")
     ap.add_argument("--fix-syntax", action="store_true",
@@ -67,13 +74,22 @@ def main():
     core_text = open(args.core).read()
     args.project_dir = os.path.abspath(args.project_dir)
     os.makedirs(args.out_dir, exist_ok=True)
-    workdir = os.path.join(args.project_dir, "eptx_work")
+    # Separate concurrent corpus runs (for example paired human/AI sides).
+    # Sharing filenames here can make one Lean process elaborate the other
+    # side's generated source.
+    work_tag = re.sub(r"[^A-Za-z0-9_.-]+", "_", os.path.abspath(args.out_dir))[-80:]
+    workdir = os.path.join(args.project_dir, "eptx_work", work_tag)
     os.makedirs(workdir, exist_ok=True)
 
     env = dict(os.environ)
     env["PATH"] = os.path.expanduser("~/.elan/bin") + ":" + env["PATH"]
 
     files = sorted(glob.glob(os.path.join(args.corpus_dir, "*.lean")))
+    if args.pairs:
+        pair_text = open(args.pairs).read()
+        selected = set(re.findall(r"pair_[0-9a-fA-F]{8}", pair_text))
+        files = [p for p in files
+                 if os.path.splitext(os.path.basename(p))[0] in selected]
     if args.max_files:
         files = files[: args.max_files]
 
@@ -97,11 +113,13 @@ def main():
             src = re.sub(r"([∑∏⨆⨅⋃⋂][^,\n]{0,60}?) in ", r"\1 ∈ ", src)
         out_base = os.path.abspath(os.path.join(args.out_dir, stem))
         # skip if already done
-        if os.path.exists(out_base + "_decl.json"):
+        done_path = out_base + ("_term0.json" if args.term0_only else "_decl.json")
+        if os.path.exists(done_path):
             continue
         wp = os.path.join(workdir, stem + "_x.lean")
         with open(wp, "w") as f:
-            f.write(gen_workfile(src, thm, out_base, core_text, args.maxnodes))
+            f.write(gen_workfile(src, thm, out_base, core_text, args.maxnodes,
+                                 args.term0_only))
         jobs.append((stem, wp))
 
     print(f"{len(jobs)} jobs, {len(skipped)} skipped", flush=True)
