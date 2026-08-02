@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from paired_horizon import HAVE, TOKEN
+from paired_horizon import TOKEN, named_have_declarations
 
 
 def overlap_mean(tokens: pd.DataFrame, start: int, end: int) -> float:
@@ -32,6 +32,33 @@ def paired_summary(frame: pd.DataFrame, metric: str) -> dict[str, Any]:
         "ai_median": float(np.median(a)),
         "median_paired_difference": float(np.median(a - h)),
         "probability_ai_greater": float(np.mean(a > h)),
+        "wilcoxon_p": pvalue,
+    }
+
+
+def within_document_generality(
+    claims: pd.DataFrame, side: str, metric: str
+) -> dict[str, Any]:
+    """Compare family and instance claims only inside documents containing both."""
+    selected = claims[claims.side.eq(side)].copy()
+    selected["generalized"] = selected.generalized_claim.astype(bool)
+    differences: list[float] = []
+    for _pair, group in selected.groupby("pair"):
+        if not group.generalized.any() or group.generalized.all():
+            continue
+        differences.append(float(
+            group.loc[group.generalized, metric].mean()
+            - group.loc[~group.generalized, metric].mean()
+        ))
+    values = np.asarray(differences, dtype=float)
+    try:
+        pvalue = float(stats.wilcoxon(values).pvalue)
+    except ValueError:
+        pvalue = 1.0
+    return {
+        "documents": int(len(values)),
+        "mean_generalized_minus_instance": float(values.mean()) if len(values) else None,
+        "median_generalized_minus_instance": float(np.median(values)) if len(values) else None,
         "wilcoxon_p": pvalue,
     }
 
@@ -69,11 +96,11 @@ def main() -> None:
         pair, side = document[:-2], document[-1]
         text = (docs_dir / f"{document}.lean").read_text(encoding="utf-8")
         token_frame = token_frame.sort_values("token_index").reset_index(drop=True)
-        matches = list(HAVE.finditer(text))
+        matches = named_have_declarations(text)
         boundary_rows: list[dict[str, Any]] = []
         boundary_indices: list[int] = []
         for match in matches:
-            candidates = token_frame.index[token_frame.byte_end > match.start()].tolist()
+            candidates = token_frame.index[token_frame.byte_end > match["start"]].tolist()
             if not candidates:
                 continue
             boundary_indices.append(candidates[0])
@@ -96,22 +123,22 @@ def main() -> None:
                 continue
             pre = float(token_frame.iloc[boundary - args.window : boundary].nll_nats.mean())
             post = float(token_frame.iloc[boundary : boundary + args.window].nll_nats.mean())
-            after_name_candidates = token_frame.index[token_frame.byte_end > match.end()].tolist()
+            after_name_candidates = token_frame.index[token_frame.byte_end > match["end"]].tolist()
             after_name = after_name_candidates[0] if after_name_candidates else boundary
             content_post = float(
                 token_frame.iloc[after_name : after_name + args.window].nll_nats.mean()
             )
             control_delta = document_control_delta
 
-            name = match.group(1)
-            name_start, name_end = match.span(1)
+            name = match["name"]
+            name_start, name_end = match["name_start"], match["name_end"]
             definition_nll = overlap_mean(token_frame, name_start, name_end)
             next_same = next(
-                (later.start() for later in matches[claim_index + 1 :] if later.group(1) == name),
+                (later["start"] for later in matches[claim_index + 1 :] if later["name"] == name),
                 len(text),
             )
             references = [
-                token for token in TOKEN.finditer(text, match.end(), next_same)
+                token for token in TOKEN.finditer(text, match["end"], next_same)
                 if token.group(0) == name
             ]
             reference_nlls = [overlap_mean(token_frame, ref.start(), ref.end()) for ref in references]
@@ -146,7 +173,8 @@ def main() -> None:
             if len(metadata):
                 for key in (
                     "explicit_uses", "placeholder_name", "redeclared_name",
-                    "intervening_claims_to_last_use",
+                    "intervening_claims_to_last_use", "parametric_claim",
+                    "universal_claim", "generalized_claim",
                 ):
                     row[key] = metadata.iloc[0][key]
             term = term_claims[
@@ -221,6 +249,34 @@ def main() -> None:
             }
             for side, label in (("h", "human"), ("a", "ai"))
             for group in [claims[claims.side.eq(side)]]
+        },
+        "claim_level_by_generality": {
+            f"{label}_{'generalized' if generalized else 'instance'}": {
+                "claims": int(len(group)),
+                "median_boundary_excess_nll": float(group.boundary_excess_nll.median()),
+                "median_content_boundary_excess_nll": float(
+                    group.content_boundary_excess_nll.median()
+                ),
+                "mean_boundary_excess_nll": float(group.boundary_excess_nll.mean()),
+                "mean_content_boundary_excess_nll": float(
+                    group.content_boundary_excess_nll.mean()
+                ),
+            }
+            for side, label in (("h", "human"), ("a", "ai"))
+            for generalized in (False, True)
+            for group in [claims[
+                claims.side.eq(side)
+                & claims.generalized_claim.astype(bool).eq(generalized)
+            ]]
+        },
+        "within_document_generality": {
+            label: {
+                metric: within_document_generality(claims, side, metric)
+                for metric in (
+                    "boundary_excess_nll", "content_boundary_excess_nll"
+                )
+            }
+            for side, label in (("h", "human"), ("a", "ai"))
         },
         "caveat": args.caveat,
     }

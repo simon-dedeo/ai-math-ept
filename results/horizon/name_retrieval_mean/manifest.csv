@@ -1,0 +1,1875 @@
+pair,source,side,claim_index,name,type,name_prompt_index,type_prompt_index
+pair_006b5904,olympiads,h,0,h₁,Irrational (Real.sqrt 2),0,1
+pair_006b5904,olympiads,h,1,h₂,¬ Irrational (x),2,3
+pair_006b5904,olympiads,a,0,h2,Irrational (Real.sqrt 2),4,5
+pair_006b5904,olympiads,a,1,h3,¬ Irrational (Real.sqrt 2),6,7
+pair_00b23e63,cn_contest,h,0,h1,a^3 + b^3 = (a + b) * (a^2 - a * b + b^2),8,9
+pair_00b23e63,cn_contest,h,1,h2,a^2 - a * b + b^2 = 12,10,11
+pair_00b23e63,cn_contest,h,2,h3,(a + b) ^ 2 = 36,12,13
+pair_00b23e63,cn_contest,h,3,h4,(a + b) ^ 2 = a^2 + 2 * a * b + b^2,14,15
+pair_00b23e63,cn_contest,h,4,hab,a * b = 8,16,17
+pair_00b23e63,cn_contest,a,0,h1,a^3 + b^3 = (a + b) ^ 3 - 3 * a * b * (a + b),18,19
+pair_00b23e63,cn_contest,a,1,h2,a * b = 8,20,21
+pair_00b23e63,cn_contest,a,2,h3,a^2 + b^2 = (a + b)^2 - 2 * (a * b),22,23
+pair_00c3ecd5,math_test,h,0,ineq₁,B2 - A2 ≤ 3,24,25
+pair_00c3ecd5,math_test,h,1,ineq₂,2 ≤ B1 - A1,26,27
+pair_00c3ecd5,math_test,a,0,h1,(B.2 - A.2) / (B.1 - A.1) ≤ (3 / (2 : ℝ)),28,29
+pair_00c3ecd5,math_test,a,1,h4,B.2 - A.2 ≤ 3,30,31
+pair_00c3ecd5,math_test,a,2,h5,B.1 - A.1 ≥ 2,32,33
+pair_00c3ecd5,math_test,a,3,h_denom_nonpos,B.1 - A.1 ≤ 0,34,35
+pair_00c3ecd5,math_test,a,4,h_denom_zero,B.1 - A.1 = 0,36,37
+pair_0262cdc9,amc_aime,h,0,e,y ^ 2 = x ^2,38,39
+pair_0262cdc9,amc_aime,h,1,ip,x = 0 ∧ y = 0,40,41
+pair_0262cdc9,amc_aime,a,0,h1,(x - y) * (x + y) * (x + y + 1) = 0,42,43
+pair_0262cdc9,amc_aime,a,1,h2,y = x ∨ y = -x ∨ x + y + 1 = 0,44,45
+pair_0262cdc9,amc_aime,a,2,h3,"∀ x : ℝ, ¬ ∃ y, y = x ∧ y = -x ∧ x + y + 1 = 0",46,47
+pair_0262cdc9,amc_aime,a,3,h4,x = 0,48,49
+pair_0262cdc9,amc_aime,a,4,h5,y = 0,50,51
+pair_047a9beb,amc_aime,h,0,h1,d = (t + 1/20) * 40,52,53
+pair_047a9beb,amc_aime,h,1,h2,d = (t - 1/20) * 60,54,55
+pair_047a9beb,amc_aime,h,2,h3,(t + 1/20) * 40 = (t - 1/20) * 60,56,57
+pair_047a9beb,amc_aime,h,3,h4,t = 1 / 4,58,59
+pair_047a9beb,amc_aime,a,0,eq1,40 * (t + 3 / 60) = d,60,61
+pair_047a9beb,amc_aime,a,1,eq2,60 * (t - 3 / 60) = d,62,63
+pair_047a9beb,amc_aime,a,2,ht,t = 1 / 4,64,65
+pair_047a9beb,amc_aime,a,3,hd,d = 12,66,67
+pair_04c5bf83,olympiads,h,0,eq1,x + y + z = 7,68,69
+pair_04c5bf83,olympiads,h,1,ineq1,x + y + z ≤ 10,70,71
+pair_04c5bf83,olympiads,h,2,ineq2,6 ≤ x + y + z,72,73
+pair_04c5bf83,olympiads,h,3,hx,x + 2 = z,74,75
+pair_04c5bf83,olympiads,h,4,hy,y + 2 * z = 9,76,77
+pair_04c5bf83,olympiads,h,5,hz1,2 ≤ z,78,79
+pair_04c5bf83,olympiads,h,6,hz2,z ≤ 4,80,81
+pair_04c5bf83,olympiads,a,0,h2,x ≤ 10,82,83
+pair_04c5bf83,olympiads,a,1,h3,y ≤ 7,84,85
+pair_04c5bf83,olympiads,a,2,h4,z ≤ 6,86,87
+pair_04c5bf83,olympiads,a,3,h5,x ≤ 10,88,89
+pair_04c5bf83,olympiads,a,4,h6,y ≤ 7,90,91
+pair_04c5bf83,olympiads,a,5,h7,z ≤ 6,92,93
+pair_05f39502,olympiads,h,0,bla,b < a,94,95
+pair_05f39502,olympiads,h,1,clb,c < b,96,97
+pair_05f39502,olympiads,h,2,cla,c < a,98,99
+pair_05f39502,olympiads,h,3,ale15,a ≤ 15,100,101
+pair_05f39502,olympiads,h,4,ble23,b ≤ 23,102,103
+pair_05f39502,olympiads,h,5,cle47,c ≤ 47,104,105
+pair_05f39502,olympiads,h,6,cge17,17 ≤ c,106,107
+pair_05f39502,olympiads,a,0,h1,a ≤ 47,108,109
+pair_05f39502,olympiads,a,1,h2,b ≤ 47,110,111
+pair_05f39502,olympiads,a,2,h3,c ≤ 47,112,113
+pair_070c0d6f,amc_aime,h,0,factor_768,768 = 2^8 * 3,114,115
+pair_070c0d6f,amc_aime,h,1,factor_384,384 = 2^7 * 3,116,117
+pair_070c0d6f,amc_aime,h,2,primes_768,"primeFactors 768 = {2, 3}",118,119
+pair_070c0d6f,amc_aime,h,3,primes_384,"primeFactors 384 = {2, 3}",120,121
+pair_070c0d6f,amc_aime,h,4,factorization_768,(768).factorization 2 = 8 ∧ (768).factorization 3 = 1,122,123
+pair_070c0d6f,amc_aime,h,5,factorization_384,(384).factorization 2 = 7 ∧ (384).factorization 3 = 1,124,125
+pair_070c0d6f,amc_aime,h,6,f768,f 768 = 2044 / 768,126,127
+pair_070c0d6f,amc_aime,h,7,f384,f 384 = 1020 / 384,128,129
+pair_070c0d6f,amc_aime,a,0,h1,"(∑ d in (768 : ℕ).divisors, d) = 2044",130,131
+pair_070c0d6f,amc_aime,a,1,h2,"(∑ d in (384 : ℕ).divisors, d) = 1020",132,133
+pair_085513ab,olympiads_ref,h,0,h1,sin θ > 0 ∧ sin θ < 1,134,135
+pair_085513ab,olympiads_ref,h,1,h2,cos θ > 0 ∧ cos θ < 1,136,137
+pair_085513ab,olympiads_ref,h,2,h3,sin θ * cos θ > 0,138,139
+pair_085513ab,olympiads_ref,h,3,h4,x ^ 3 ≥ 2 * x ^ 2 - x,140,141
+pair_085513ab,olympiads_ref,h,4,heq,sin θ + cos θ + tan θ + cot θ - 1 / cos θ - 1 / sin θ = (1 - (sin θ) ^ 3 - (cos θ) ^ 3) / (sin θ * cos θ),142,143
+pair_085513ab,olympiads_ref,a,0,h3,sin θ > 0,144,145
+pair_085513ab,olympiads_ref,a,1,h4,cos θ > 0,146,147
+pair_085513ab,olympiads_ref,a,2,h5,sin θ * cos θ > 0,148,149
+pair_085513ab,olympiads_ref,a,3,h6,sin θ + cos θ - 1 > 0,150,151
+pair_085513ab,olympiads_ref,a,4,htan,tan θ = sin θ / cos θ,152,153
+pair_085513ab,olympiads_ref,a,5,hcot,cot θ = cos θ / sin θ,154,155
+pair_085513ab,olympiads_ref,a,6,h11,sin θ + cos θ + tan θ + cot θ - 1 / cos θ - 1 / sin θ = (sin θ^2 * cos θ + sin θ * cos θ^2 + sin θ^2 + cos θ^2 - sin θ - cos θ) / (sin θ * cos θ),156,157
+pair_085513ab,olympiads_ref,a,7,h13,sin θ^2 + cos θ^2 = 1,158,159
+pair_08d7b69c,amc_aime,h,0,aux1,(1 : ℝ) / k ^ (2 * n + 1) = ((1 : ℝ) / k) • (1 / k ^ 2) ^ n,160,161
+pair_08d7b69c,amc_aime,h,1,aux2,(1 : ℝ) / k ^ (2 * n + 2) = ((1: ℝ) / k) ^ 2 • (1 / k ^ 2) ^ n,162,163
+pair_08d7b69c,amc_aime,a,0,h1,"∀ n : ℕ, (1 : ℝ) / (16 : ℕ) ^ (2 * n + 1) = (1 / 16) * (1 / 256) ^ n",164,165
+pair_08d7b69c,amc_aime,a,1,h2,"∀ n : ℕ, (1 : ℝ) / (16 : ℕ) ^ (2 * n + 2) = (1 / 256) * (1 / 256) ^ n",166,167
+pair_0e3ec0d0,olympiads,h,0,ha2,"a ^ 2 ≤ n * ∑ i : Fin n, sin (x i) ^ 2",168,169
+pair_0e3ec0d0,olympiads,h,1,hb2,"b ^ 2 ≤ n * ∑ i : Fin n, cos (x i) ^ 2",170,171
+pair_0e3ec0d0,olympiads,a,0,ha2,"a ^ 2 ≤ n * ∑ i : Fin n, sin (x i) ^ 2",172,173
+pair_0e3ec0d0,olympiads,a,1,hb2,"b ^ 2 ≤ n * ∑ i : Fin n, cos (x i) ^ 2",174,175
+pair_10a4b6cd,amc_aime,h,0,hm₁,a+b ≤ m,176,177
+pair_10a4b6cd,amc_aime,h,1,hm₂,c+d ≤ m,178,179
+pair_10a4b6cd,amc_aime,h,2,hm₃,e ≤ m,180,181
+pair_10a4b6cd,amc_aime,a,0,h1,(a + b) < 671,182,183
+pair_10a4b6cd,amc_aime,a,1,h2,(b + c) < 671,184,185
+pair_10a4b6cd,amc_aime,a,2,h3,(c + d) < 671,186,187
+pair_10a4b6cd,amc_aime,a,3,h4,(d + e) < 671,188,189
+pair_10bf58b8,olympiads,h,0,hb,b = 15,190,191
+pair_10bf58b8,olympiads,h,1,ha,a = 21,192,193
+pair_10bf58b8,olympiads,h,2,hc,c = 30,194,195
+pair_10bf58b8,olympiads,a,0,hb,b = 15,196,197
+pair_10bf58b8,olympiads,a,1,ha,a = 21,198,199
+pair_10bf58b8,olympiads,a,2,hc,c = 30,200,201
+pair_10db0ca7,cn_k12,h,0,positiveIntersection,intersectsYAxisPositively (quadraticFunction m),202,203
+pair_10db0ca7,cn_k12,h,1,yAxisIntersectionPoint,intersectsYAxisAt (quadraticFunction m) (m - 2),204,205
+pair_10db0ca7,cn_k12,a,0,h1,quadraticFunction m 0 = y,206,207
+pair_10db0ca7,cn_k12,a,1,eq2,m - 2 = y,208,209
+pair_10db0ca7,cn_k12,a,2,eq3,quadraticFunction m 0 = y,210,211
+pair_11814e28,cn_k12,h,0,h1,deriv f (π / 4) = deriv (λ x => deriv f (π / 4) * cos x + sin x) (π / 4),212,213
+pair_11814e28,cn_k12,h,1,h2,deriv (fun x ↦ a * cos x + sin x) x = -a * sin x + cos x,214,215
+pair_11814e28,cn_k12,h,2,h3,√2 * √2 = 2,216,217
+pair_11814e28,cn_k12,a,0,h1,f (π / 4) = y * cos (π / 4) + sin (π / 4),218,219
+pair_11814e28,cn_k12,a,1,eq1,deriv f (π / 4) = -y * sin (π / 4) + cos (π / 4),220,221
+pair_11814e28,cn_k12,a,2,eq2,f = fun x => y * cos x + sin x,222,223
+pair_11814e28,cn_k12,a,3,h2,cos (π / 4) = Real.sqrt 2 / 2,224,225
+pair_11814e28,cn_k12,a,4,h3,sin (π / 4) = Real.sqrt 2 / 2,226,227
+pair_11814e28,cn_k12,a,5,eq3,y = Real.sqrt 2 - 1,228,229
+pair_11b127b9,cn_k12,h,0,h1,(4 : ℝ) ^ x = (2 ^ x) ^ 2,230,231
+pair_11b127b9,cn_k12,h,1,h2,((2 : ℝ) ^ x - 1) * (2 ^ x + 2) = 0,232,233
+pair_11b127b9,cn_k12,h,2,h3,(2 : ℝ) ^ x + 2 ≠ 0,234,235
+pair_11b127b9,cn_k12,a,0,h1,(4 : ℝ) ^ x = ((2 : ℝ) ^ x) ^ 2,236,237
+pair_11b127b9,cn_k12,a,1,h2,((2 : ℝ) ^ x) ^ 2 + (2 : ℝ)^x - 2 = 0,238,239
+pair_11b127b9,cn_k12,a,2,h3,((2 : ℝ) ^ x + 2) * ((2 : ℝ) ^ x - 1) = 0,240,241
+pair_11b127b9,cn_k12,a,3,h6,(2 : ℝ) ^ x > (0 : ℝ),242,243
+pair_11b127b9,cn_k12,a,4,h7,(2 : ℝ) ^ x = 1,244,245
+pair_11b127b9,cn_k12,a,5,h8,x = 0,246,247
+pair_11b127b9,cn_k12,a,6,h9,Real.logb (2 : ℝ) ((2 : ℝ) ^ x) = x,248,249
+pair_11b127b9,cn_k12,a,7,h10,Real.logb (2 : ℝ) (1 : ℝ) = (0 : ℝ),250,251
+pair_12d75d25,number_theory,h,0,hnt,n.totient = 8,252,253
+pair_12d75d25,number_theory,h,1,hacon,a.Coprime n,254,255
+pair_12d75d25,number_theory,a,0,hnt,n.totient = 8,256,257
+pair_12d75d25,number_theory,a,1,hacon,a.Coprime n,258,259
+pair_136afae1,olympiads,h,0,eq2,(19 : ℝ) * n = (24 : ℝ) * m + (67 : ℝ) * l,260,261
+pair_136afae1,olympiads,h,1,h7,19 * n = 24 * m + 67 * l,262,263
+pair_136afae1,olympiads,h,2,h_eq,(19 : ℝ) * (n : ℝ) = (24 : ℝ) * (m : ℝ) + (67 : ℝ) * (l : ℝ),264,265
+pair_136afae1,olympiads,h,3,h20,(19 * n : ℝ) = (24 * m + 67 * l : ℝ),266,267
+pair_136afae1,olympiads,a,0,eq1,(11 * (n : ℝ) + 54 * (m : ℝ) + 97 * (l : ℝ) = 30 * (n + m + l)),268,269
+pair_136afae1,olympiads,a,1,eq2,11 * (n : ℤ) + 54 * (m : ℤ) + 97 * (l : ℤ) = 30 * (n + m + l),270,271
+pair_136afae1,olympiads,a,2,eq3,19 * (n : ℤ) = 24 * (m : ℤ) + 67 * (l : ℤ),272,273
+pair_136afae1,olympiads,a,3,eq4,19 * (n : ℕ) = 24 * (m : ℕ) + 67 * (l : ℕ),274,275
+pair_136afae1,olympiads,a,4,h4,(n + m + l) % 43 = 0,276,277
+pair_13d805d4,amc_aime,h,0,htshirt_cost',tshirt_cost = 9,278,279
+pair_13d805d4,amc_aime,h,1,hmember_cost',member_cost = 26,280,281
+pair_13d805d4,amc_aime,h,2,hnum_members,(num_members:ℚ) = 91,282,283
+pair_13d805d4,amc_aime,a,0,htshirt,tshirt_cost = 9,284,285
+pair_13d805d4,amc_aime,a,1,hmember,member_cost = 26,286,287
+pair_13d805d4,amc_aime,a,2,eq1,(num_members : ℚ) = 91,288,289
+pair_149dda45,olympiads_ref,h,0,h₁,(a ^ 2 - b * c) / (2 * a ^ 2 + b * c) = (1 - 3 * (b * c / (2 * a^2 + b * c))) / 2,290,291
+pair_149dda45,olympiads_ref,h,1,h₂,(b ^ 2 - c * a) / (2 * b ^ 2 + c * a) = (1 - 3 * (c * a / (2 * b^2 + c * a))) / 2,292,293
+pair_149dda45,olympiads_ref,h,2,h₃,(c ^ 2 - a * b) / (2 * c ^ 2 + a * b) = (1 - 3 * (a * b / (2 * c^2 + a * b))) / 2,294,295
+pair_149dda45,olympiads_ref,a,0,h1,0 < (2 * a^2 + b * c) * (2 * b^2 + c * a) * (2 * c^2 + a * b),296,297
+pair_149dda45,olympiads_ref,a,1,h2,(a^2 - b * c) / (2 * a^2 + b * c) + (b^2 - c * a) / (2 * b^2 + c * a) + (c^2 - a * b) / (2 * c^2 + a * b) ≤ 0,298,299
+pair_149dda45,olympiads_ref,a,2,h5,0 < (2 * a^2 + b * c),300,301
+pair_149dda45,olympiads_ref,a,3,h6,0 < (2 * b^2 + c * a),302,303
+pair_149dda45,olympiads_ref,a,4,h7,0 < (2 * c^2 + a * b),304,305
+pair_149dda45,olympiads_ref,a,5,h8,(a^2 - b * c) / (2 * a^2 + b * c) + (b^2 - c * a) / (2 * b^2 + c * a) + (c^2 - a * b) / (2 * c^2 + a * b) - (0 : ℝ) ≤ 0,306,307
+pair_149dda45,olympiads_ref,a,6,h9,(a^2 - b * c) / (2 * a^2 + b * c) + (b^2 - c * a) / (2 * b^2 + c * a) + (c^2 - a * b) / (2 * c^2 + a * b) - (0 : ℝ) = ( (a^2 - b * c) * (2 * b^2 + c * a) * (2 * c^2 + a * b) + (b^2 - c * a) * (2 * a^2 + b * c) * (2 * c^2 + a * b) + (c^2 - a * b) * (2 * a^2 + b * c) * (2 * b^2 + c * a) ) / ( (2 * a^2 + b * c) * (2 * b^2 + c * a) * (2 * c^2 + a * b) ),308,309
+pair_14bd707b,amc_aime,h,0,h1,28*a ≡ 8*c [MOD 71],310,311
+pair_14bd707b,amc_aime,h,1,h',(100 : ℤ)*a + 10*b + c = 81*b + 9*c + a,312,313
+pair_14bd707b,amc_aime,h,2,h'',(99 : ℤ)*a = 71*b + 8 * c,314,315
+pair_14bd707b,amc_aime,h,3,ha',a = 2,316,317
+pair_14bd707b,amc_aime,h,4,hc',c = 7,318,319
+pair_14bd707b,amc_aime,a,0,h1,28*a ≡ 8*c [MOD 71],320,321
+pair_14bd707b,amc_aime,a,1,h',(100 : ℤ)*a + 10*b + c = 81*b + 9*c + a,322,323
+pair_14bd707b,amc_aime,a,2,h'',(99 : ℤ)*a = 71*b + 8 * c,324,325
+pair_14bd707b,amc_aime,a,3,h3,(71 * (b : ℤ) + 8 * (c : ℤ)) % 71 = 8 * (c : ℤ) % 71,326,327
+pair_152731e7,olympiads,h,0,h0,z = 10 * x + 7,328,329
+pair_152731e7,olympiads,h,1,h1,7 * 10 ^ 21 + x = 7 * (10 * x + 7),330,331
+pair_152731e7,olympiads,h,2,h2,69 * x = 7 * 10 ^ 21 - 49,332,333
+pair_152731e7,olympiads,h,3,h3,x = (7 * 10 ^ 21 - 49) / 69,334,335
+pair_152731e7,olympiads,a,0,h1,z % 10 = 7,336,337
+pair_152731e7,olympiads,a,1,h2,z = 10 * (z / 10) + 7,338,339
+pair_152731e7,olympiads,a,2,h3,7 * 10 ^ 21 + z / 10 = 7 * z,340,341
+pair_152731e7,olympiads,a,3,h4,69 * (z / 10) = 7 * 10 ^ 21 - 49,342,343
+pair_152731e7,olympiads,a,4,eq1,z = 10 * (z / 10) + 7,344,345
+pair_152731e7,olympiads,a,5,h5,z / 10 = 101449275362318840579,346,347
+pair_152731e7,olympiads,a,6,h7,z = 1014492753623188405797,348,349
+pair_155c7ff8,secondary_math,h,0,h3,a^2 = (m * x + n * y) ^ 2,350,351
+pair_155c7ff8,secondary_math,h,1,h4,a^2 = m^2 * x^2 + n^2 * y^2 + 2 * m * n * x * y,352,353
+pair_155c7ff8,secondary_math,h,2,h5,b^2 = (n * x - m * y) ^ 2,354,355
+pair_155c7ff8,secondary_math,h,3,h6,b^2 = n^2 * x^2 + m^2 * y^2 - 2 * m * n * x * y,356,357
+pair_155c7ff8,secondary_math,h,4,h7,a^2 + b^2 = (m^2 + n^2) * x^2 + (m^2 + n^2) * y^2,358,359
+pair_155c7ff8,secondary_math,h,5,h8,a^2 + b^2 = x^2 + y^2,360,361
+pair_155c7ff8,secondary_math,a,0,eq1,(m * x + n * y) ^ 2 + (n * x - m * y) ^ 2 = a^2 + b^2,362,363
+pair_155c7ff8,secondary_math,a,1,eq2,(m * x + n * y) ^ 2 + (n * x - m * y) ^ 2 = (m^2 + n^2) * (x^2 + y^2),364,365
+pair_172df75c,olympiads,h,0,h1,0 < 4 * a^2 + b^2,366,367
+pair_172df75c,olympiads,h,1,h2,((2 * a + 2 * a * b - b * (b + 1)) ^ 2 + (b - 4 * a^2 + 2 * a * (b + 1)) ^ 2) - (4 * a^2 + b^2) ≥ 0,368,369
+pair_172df75c,olympiads,h,2,h3,((2 * a + 2 * a * b - b * (b + 1)) ^ 2 + (b - 4 * a^2 + 2 * a * (b + 1)) ^ 2) ≥ (4 * a^2 + b^2),370,371
+pair_172df75c,olympiads,h,3,h4,((2 * a + 2 * a * b - b * (b + 1)) ^ 2 + (b - 4 * a^2 + 2 * a * (b + 1)) ^ 2) / (4 * a^2 + b^2) ≥ 1,372,373
+pair_172df75c,olympiads,h,4,h5,((2 * a + 2 * a * b - b * (b + 1)) ^ 2 + (b - 4 * a^2 + 2 * a * (b + 1)) ^ 2) / (4 * a^2 + b^2) ≥ (4 * a^2 + b^2) / (4 * a^2 + b^2),374,375
+pair_172df75c,olympiads,h,5,h6,(4 * a^2 + b^2) / (4 * a^2 + b^2) = 1,376,377
+pair_172df75c,olympiads,a,0,h,((2*a+2*a*b-b*(b+1))^2 + (b-4*a^2+2*a*(b+1))^2) / (4*a^2+b^2) ≥ 1,378,379
+pair_172df75c,olympiads,a,1,h1,4*a^2+b^2 > 0,380,381
+pair_172df75c,olympiads,a,2,h2,(2*a+2*a*b-b*(b+1))^2 + (b-4*a^2+2*a*(b+1))^2 ≥ 4*a^2+b^2,382,383
+pair_172df75c,olympiads,a,3,h3,((2*a+2*a*b-b*(b+1))^2 + (b-4*a^2+2*a*(b+1))^2 : ℝ) / (4*a^2+b^2) ≥ 1,384,385
+pair_17b9aa80,amc_aime,h,0,hdpq,d = (3 * p + q) - (3 * p - q),386,387
+pair_17b9aa80,amc_aime,h,1,hdq,d = 2 * q,388,389
+pair_17b9aa80,amc_aime,h,2,h₄,p = 9 - 2 * q,390,391
+pair_17b9aa80,amc_aime,h,3,hq,q = 2,392,393
+pair_17b9aa80,amc_aime,h,4,hp,p = 5,394,395
+pair_17b9aa80,amc_aime,a,0,hp,p = 9 - d,396,397
+pair_17b9aa80,amc_aime,a,1,hq,q = d / 2,398,399
+pair_17b9aa80,amc_aime,a,2,hd,d = 4,400,401
+pair_17b9aa80,amc_aime,a,3,hp',p = 5,402,403
+pair_185bf34b,math_train,h,0,aux,"{x : ℕ | x ∣ 96 ∧ 12 ∣ x} = {12, 24, 48, 96}",404,405
+pair_185bf34b,math_train,h,1,h1,t * m = 8,406,407
+pair_185bf34b,math_train,h,2,h2,t ∣ 8,408,409
+pair_185bf34b,math_train,a,0,h1,"{x : ℕ | x ∣ 96 ∧ 12 ∣ x} = {12, 24, 48, 96}",410,411
+pair_185bf34b,math_train,a,1,h3,x ≤ 96,412,413
+pair_195f308a,cn_contest,h,0,h1,sqrt 28 = 2 * sqrt 7,414,415
+pair_195f308a,cn_contest,h,1,h2,sqrt 20 = 2 * sqrt 5,416,417
+pair_195f308a,cn_contest,h,2,h3,sqrt 45 = 3 * sqrt 5,418,419
+pair_195f308a,cn_contest,h,3,h4,sqrt 63 = 3 * sqrt 7,420,421
+pair_195f308a,cn_contest,a,0,h1,sqrt 28 = 2 * sqrt 7,422,423
+pair_195f308a,cn_contest,a,1,h2,sqrt 20 = 2 * sqrt 5,424,425
+pair_195f308a,cn_contest,a,2,h3,sqrt 45 = 3 * sqrt 5,426,427
+pair_195f308a,cn_contest,a,3,h4,sqrt 63 = 3 * sqrt 7,428,429
+pair_1b0aac1f,secondary_math,h,0,h,Real.cos (Real.pi * (2 / 3)) = -1 / 2,430,431
+pair_1b0aac1f,secondary_math,h,1,h1,Real.cos (Real.pi * (2 / 3)) = -1 / 2,432,433
+pair_1b0aac1f,secondary_math,h,2,h2,Real.cos (Real.pi * (2 / 3)) = - Real.cos (Real.pi / 3),434,435
+pair_1b0aac1f,secondary_math,h,3,ht1,-1 ≤ Real.cos t,436,437
+pair_1b0aac1f,secondary_math,h,4,ht2,Real.cos t ≤ 1,438,439
+pair_1b0aac1f,secondary_math,a,0,h,Real.cos (Real.arccos (-1 / 2)) = -1 / 2,440,441
+pair_1b0aac1f,secondary_math,a,1,h1,-1 ≤ Real.cos t ∧ Real.cos t ≤ 1,442,443
+pair_1c6a86e7,cn_k12,h,0,r1,z.re = a ^ 2 + a - 2,444,445
+pair_1c6a86e7,cn_k12,h,1,r2,z.im = a ^ 2 - 3 * a + 2,446,447
+pair_1c6a86e7,cn_k12,a,0,h1,z.re = a ^ 2 + a - 2,448,449
+pair_1c6a86e7,cn_k12,a,1,h2,z.im = a ^ 2 - 3 * a + 2,450,451
+pair_1c6a86e7,cn_k12,a,2,h_eq1,a ^ 2 + a - 2 = 0,452,453
+pair_1c6a86e7,cn_k12,a,3,h_eq2,(a - 1) * (a + 2) = 0,454,455
+pair_1c6a86e7,cn_k12,a,4,h_a1',a = 1,456,457
+pair_1d99af92,cn_k12,h,0,ha₀,0 ≤ √(1 - a),458,459
+pair_1d99af92,cn_k12,h,1,hx₀,|x| = x ∧ 0 ≤ x ∨ |x| = -x ∧ x < 0,460,461
+pair_1d99af92,cn_k12,h,2,ha₁,0 ≤ 1 - a,462,463
+pair_1d99af92,cn_k12,h,3,h1le1a,1 ≤ 1 - a,464,465
+pair_1d99af92,cn_k12,h,4,hxle0,x ≤ 0,466,467
+pair_1d99af92,cn_k12,h,5,h₀,x * -x + -x - x - a = 0,468,469
+pair_1d99af92,cn_k12,a,0,h2,-x ^ 2 - 2 * x - a = 0,470,471
+pair_1d99af92,cn_k12,a,1,h3,x ^ 2 + 2 * x + a = 0,472,473
+pair_1d99af92,cn_k12,a,2,h4,x < 0,474,475
+pair_1d99af92,cn_k12,a,3,h5,(x + 1) ^ 2 = 1 - a,476,477
+pair_1d99af92,cn_k12,a,4,h6,x + 1 = -Real.sqrt (1 - a),478,479
+pair_1d99af92,cn_k12,a,5,h1,x < 0,480,481
+pair_1db3cf23,math_test,h,0,hx1,x ≥ -5,482,483
+pair_1db3cf23,math_test,h,1,hx2,x ≤ 5,484,485
+pair_1db3cf23,math_test,h,2,H,IsSquare (y^2),486,487
+pair_1db3cf23,math_test,a,0,h1,"{(x, y) : ℤ × ℤ | x^2 + y^2 = 25} = {(-3, -4), (-3, 4), (-4, -3), (-4, 3), (3, -4), (3, 4), (4, -3), (4, 3), (-5, 0), (5, 0), (0, -5), (0, 5)}",488,489
+pair_1db3cf23,math_test,a,1,h_eq,x^2 + y^2 = 25,490,491
+pair_1db3cf23,math_test,a,2,h3,x ≤ 5,492,493
+pair_1db3cf23,math_test,a,3,h4,x ≥ -5,494,495
+pair_1db3cf23,math_test,a,4,h5,y ≤ 5,496,497
+pair_1db3cf23,math_test,a,5,h6,y ≥ -5,498,499
+pair_1db80b11,number_theory,h,0,hF'',"∀ n ≥ 2, F' n = F' (n - 1) + F' (n - 2)",500,501
+pair_1db80b11,number_theory,h,1,hL'',"∀ n ≥ 2, L' n = L' (n - 1) + L' (n - 2)",502,503
+pair_1db80b11,number_theory,a,0,hF'',"∀ n ≥ 2, F' n = F' (n - 1) + F' (n - 2)",504,505
+pair_1db80b11,number_theory,a,1,hL'',"∀ n ≥ 2, L' n = L' (n - 1) + L' (n - 2)",506,507
+pair_1ed8b991,amc_aime,h,0,aux,(100:ℝ)^(n:ℝ) = (10:ℝ)^((n:ℝ) * 2),508,509
+pair_1ed8b991,amc_aime,h,1,aux',a / (10:ℝ)^(2*n+1) = (a / (10:ℝ)) • (1 / (100:ℝ))^n,510,511
+pair_1ed8b991,amc_aime,h,2,aux'',b / (10:ℝ)^(2*n+2) = (b / (100:ℝ)) • (1 / (100:ℝ))^n,512,513
+pair_1ed8b991,amc_aime,h,3,h',1 + a / (10:ℝ) * (100 / 99) + (b:ℝ) / 100 * (100 / 99) = (99 + 10 * a + b) / (99:ℝ),514,515
+pair_1ed8b991,amc_aime,h,4,h'',1 + a / (10:ℝ) + (b:ℝ) / 100 = (100 + 10 * a + b) / (100:ℝ),516,517
+pair_1ed8b991,amc_aime,a,0,aux,(100:ℝ)^(n:ℝ) = (10:ℝ)^((n:ℝ) * 2),518,519
+pair_1ed8b991,amc_aime,a,1,aux',a / (10:ℝ)^(2*n+1) = (a / (10:ℝ)) • (1 / (100:ℝ))^n,520,521
+pair_1ed8b991,amc_aime,a,2,aux'',b / (10:ℝ)^(2*n+2) = (b / (100:ℝ)) • (1 / (100:ℝ))^n,522,523
+pair_1ed8b991,amc_aime,a,3,h',1 + a / (10:ℝ) * (100 / 99) + (b:ℝ) / 100 * (100 / 99) = (99 + 10 * a + b) / (99:ℝ),524,525
+pair_1ed8b991,amc_aime,a,4,h'',66 * ((99 + 10 * a + b) / (99 : ℝ)) - (66 * (1 + (a : ℝ)/10 + (b : ℝ)/100) - 0.5) = 0,526,527
+pair_1ed8b991,amc_aime,a,5,eq1,(99 + 10 * a + b : ℝ) = 174,528,529
+pair_1ed8b991,amc_aime,a,6,h3,(10 * a + b : ℝ) = 75,530,531
+pair_1ed8b991,amc_aime,a,7,h4,10 * a + b = 75,532,533
+pair_20f6251a,olympiads,h,0,eq1,deriv f t = 2 * exp t * cos t,534,535
+pair_20f6251a,olympiads,h,1,eq2,deriv g t = -2 * exp t * sin t,536,537
+pair_20f6251a,olympiads,a,0,f_eq,deriv f = fun t => 2 * exp t * cos t,538,539
+pair_20f6251a,olympiads,a,1,g_eq,deriv g = fun t => -2 * exp t * sin t,540,541
+pair_20f6251a,olympiads,a,2,h1,"∀ t, Real.sqrt ((deriv f t)^2 + (deriv g t)^2) = 2 * exp t",542,543
+pair_20f6251a,olympiads,a,3,h2,(2 * exp t * cos t)^2 + (-2 * exp t * sin t)^2 = 4 * (exp t)^2,544,545
+pair_20f6251a,olympiads,a,4,h3,Real.sqrt (4 * (exp t)^2) = 2 * exp t,546,547
+pair_20f6251a,olympiads,a,5,h4,Real.sqrt (4 * (exp t)^2) = Real.sqrt (4) * Real.sqrt ((exp t)^2),548,549
+pair_20f6251a,olympiads,a,6,h5,Real.sqrt (4 : ℝ) = 2,550,551
+pair_20f6251a,olympiads,a,7,h6,Real.sqrt ((exp t)^2) = exp t,552,553
+pair_22ff4e26,number_theory,h,0,h1,n^7-n ≡ 0 [ZMOD 2],554,555
+pair_22ff4e26,number_theory,h,1,h2,n^7-n ≡ 0 [ZMOD 3],556,557
+pair_22ff4e26,number_theory,h,2,h3,n^7-n ≡ 0 [ZMOD 7],558,559
+pair_22ff4e26,number_theory,h,3,hp,Nat.Prime p,560,561
+pair_22ff4e26,number_theory,h,4,hncp,IsCoprime n ↑p,562,563
+pair_22ff4e26,number_theory,h,5,h12,n^7-n ≡ 0 [ZMOD 2*3],564,565
+pair_22ff4e26,number_theory,a,0,h1,n^7 % 2 = n % 2,566,567
+pair_22ff4e26,number_theory,a,1,h2,n % 2 = 0 ∨ n % 2 = 1,568,569
+pair_22ff4e26,number_theory,a,2,h3,n^7 % 3 = n % 3,570,571
+pair_22ff4e26,number_theory,a,3,h4,n % 3 = 0 ∨ n % 3 = 1 ∨ n % 3 = 2,572,573
+pair_22ff4e26,number_theory,a,4,h7,n^7 % 7 = n % 7,574,575
+pair_22ff4e26,number_theory,a,5,h8,n % 7 = 0 ∨ n % 7 = 1 ∨ n % 7 = 2 ∨ n % 7 = 3 ∨ n % 7 = 4 ∨ n % 7 = 5 ∨ n % 7 = 6,576,577
+pair_249837f1,amc_aime,h,0,eq1,120 * a = 512 + 53 * b + 7 * c,578,579
+pair_249837f1,amc_aime,h,1,eq2,88 = 53 * b + 7 * c,580,581
+pair_249837f1,amc_aime,h,2,digitc,c = 5,582,583
+pair_249837f1,amc_aime,a,0,h2,a < 8,584,585
+pair_249837f1,amc_aime,a,1,h3,b < 8,586,587
+pair_249837f1,amc_aime,a,2,h4,c < 8,588,589
+pair_24b3bf51,cn_k12,h,0,mn,2 * m - 2 * n = 2 * (m - n),590,591
+pair_24b3bf51,cn_k12,h,1,foo,m + n = 2,592,593
+pair_24b3bf51,cn_k12,h,2,mnneq0,m - n ≠ 0,594,595
+pair_24b3bf51,cn_k12,a,0,eq1,m ^ 2 - 2 * m + 3 = n ^ 2 - 2 * n + 3,596,597
+pair_24b3bf51,cn_k12,a,1,eq2,m ^ 2 - 2 * m = n ^ 2 - 2 * n,598,599
+pair_24b3bf51,cn_k12,a,2,eq3,(m - n) * (m + n - 2) = 0,600,601
+pair_24b3bf51,cn_k12,a,3,eq4,m + n - 2 = 0,602,603
+pair_24b3bf51,cn_k12,a,4,eq5,m + n = 2,604,605
+pair_24b3bf51,cn_k12,a,5,eq6,f_9438 (m + n) = 3,606,607
+pair_24cf7f4e,math_train,h,0,h₁,Real.sqrt (6 + 4 * Real.sqrt 2) = 2 + Real.sqrt 2,608,609
+pair_24cf7f4e,math_train,h,1,h₂,Real.sqrt (6 - 4 * Real.sqrt 2) = 2 - Real.sqrt 2,610,611
+pair_24cf7f4e,math_train,a,0,h1,Real.sqrt (6 + 4 * Real.sqrt 2) = 2 + Real.sqrt 2,612,613
+pair_24cf7f4e,math_train,a,1,h2,(2 + Real.sqrt 2) ^ 2 = 6 + 4 * Real.sqrt 2,614,615
+pair_24cf7f4e,math_train,a,2,h3,2 + Real.sqrt 2 ≥ 0,616,617
+pair_24cf7f4e,math_train,a,3,h4,Real.sqrt (6 - 4 * Real.sqrt 2) = 2 - Real.sqrt 2,618,619
+pair_24cf7f4e,math_train,a,4,h5,(2 - Real.sqrt 2) ^ 2 = 6 - 4 * Real.sqrt 2,620,621
+pair_24cf7f4e,math_train,a,5,h6,2 - Real.sqrt 2 ≥ 0,622,623
+pair_2590c3a7,olympiads,h,0,o,a.gcd (192 - a) = a.gcd 192,624,625
+pair_2590c3a7,olympiads,h,1,d,24 ∣ a,626,627
+pair_2590c3a7,olympiads,h,2,lk,k ≤ 8,628,629
+pair_2590c3a7,olympiads,a,0,o,a.gcd (192 - a) = a.gcd 192,630,631
+pair_2590c3a7,olympiads,a,1,d,24 ∣ a,632,633
+pair_2590c3a7,olympiads,a,2,h4,k ≤ 8,634,635
+pair_26771bf6,olympiads_ref,h,0,h1,2 * v₂ * t + v₂ * t = 3 * v₂ * t,636,637
+pair_26771bf6,olympiads_ref,h,1,h2,v₂ * t = 4/3,638,639
+pair_26771bf6,olympiads_ref,a,0,h₁₁,2 * v₂ * t + v₂ * t = 4,640,641
+pair_26771bf6,olympiads_ref,a,1,h₂₂,3 * (v₂ * t) = 4,642,643
+pair_26771bf6,olympiads_ref,a,2,h₃₃,v₂ * t = 4 / 3,644,645
+pair_26771bf6,olympiads_ref,a,3,h₁₁₁,v₁ * t = 2 * (v₂ * t),646,647
+pair_2748f3f1,olympiads,h,0,h1,(a - b) ^ 2 + (d - c) ^ 2 + (b - c) ^ 2 = 0,648,649
+pair_2748f3f1,olympiads,h,1,h2,(a - b) ^ 2 = 0,650,651
+pair_2748f3f1,olympiads,h,2,h3,(d - c) ^ 2 = 0,652,653
+pair_2748f3f1,olympiads,h,3,h4,(b - c) ^ 2 = 0,654,655
+pair_2748f3f1,olympiads,h,4,h5,a - b = 0,656,657
+pair_2748f3f1,olympiads,h,5,h6,d - c = 0,658,659
+pair_2748f3f1,olympiads,h,6,h7,b - c = 0,660,661
+pair_2748f3f1,olympiads,a,0,h1,(a - b) ^ 2 + (b - c) ^ 2 + (c - d) ^ 2 = 0,662,663
+pair_2748f3f1,olympiads,a,1,h2,(a - b) ^ 2 = 0,664,665
+pair_2748f3f1,olympiads,a,2,h3,a - b = 0,666,667
+pair_2748f3f1,olympiads,a,3,h4,(b - c) ^ 2 = 0,668,669
+pair_2748f3f1,olympiads,a,4,h5,b - c = 0,670,671
+pair_2748f3f1,olympiads,a,5,h6,(c - d) ^ 2 = 0,672,673
+pair_2748f3f1,olympiads,a,6,h7,c - d = 0,674,675
+pair_28470d46,olympiads_ref,h,0,sqrt28561,Real.sqrt 28561 = 169,676,677
+pair_28470d46,olympiads_ref,h,1,sqrt230400,Real.sqrt 230400 = 480,678,679
+pair_28470d46,olympiads_ref,h,2,eq1,-13 / 96 / √((-13 / 96) ^ 2 + (13 / 40) ^ 2) - 96 / -13 = 7,680,681
+pair_28470d46,olympiads_ref,h,3,eq2,13 / 40 / √((-13 / 96) ^ 2 + (13 / 40) ^ 2) + 40 / 13 = 4,682,683
+pair_28470d46,olympiads_ref,a,0,h1,Real.sqrt ((-(13 : ℝ) / 96) ^ 2 + ((13 : ℝ) / 40) ^ 2) = 169 / 480,684,685
+pair_28470d46,olympiads_ref,a,1,h2,(-(13 : ℝ) / 96) / Real.sqrt ((-(13 : ℝ) / 96) ^ 2 + ((13 : ℝ) / 40) ^ 2) - 1 / (-(13 : ℝ) / 96) = (7 : ℝ),686,687
+pair_28470d46,olympiads_ref,a,2,h3,((13 : ℝ) / 40) / Real.sqrt ((-(13 : ℝ) / 96) ^ 2 + ((13 : ℝ) / 40) ^ 2) + 1 / ((13 : ℝ) / 40) = (4 : ℝ),688,689
+pair_28470d46,olympiads_ref,a,3,h4,(-(13 : ℝ) / 96) = x ∧ ((13 : ℝ) / 40) = y,690,691
+pair_2b09aabd,olympiads,h,0,h1,2 ^ (n + 1) = 2 * 2 ^ n,692,693
+pair_2b09aabd,olympiads,h,1,h2,2 ^ n + 2 * 2 ^ n = 3 * 2 ^ n,694,695
+pair_2b09aabd,olympiads,a,0,eq1,2^n + 2^(n + 1) = 3 * (2^n),696,697
+pair_2b09aabd,olympiads,a,1,h1,n > 0,698,699
+pair_2b09aabd,olympiads,a,2,h2,n ≥ 1,700,701
+pair_2b09aabd,olympiads,a,3,h3,3 * (2 ^ n) = 6 * (2 ^ (n - 1)),702,703
+pair_2b873165,math_test,h,0,eq1,x^2 - 7 * x - 30 = 0,704,705
+pair_2b873165,math_test,h,1,eq2,y^2 - 7 * y - 30 = 0,706,707
+pair_2b873165,math_test,h,2,h1,(x - 10) * (x + 3) = 0,708,709
+pair_2b873165,math_test,h,3,h2,(y - 10) * (y + 3) = 0,710,711
+pair_2b873165,math_test,h,4,hx_eq_10_or_neg3,x = 10 ∨ x = -3,712,713
+pair_2b873165,math_test,h,5,hy_eq_10_or_neg3,y = 10 ∨ y = -3,714,715
+pair_2b873165,math_test,a,0,h1,x^2 - 7 * x - 30 = 0,716,717
+pair_2b873165,math_test,a,1,h2,y^2 - 7 * y - 30 = 0,718,719
+pair_2b873165,math_test,a,2,h3,(x - 10) * (x + 3) = 0,720,721
+pair_2b873165,math_test,a,3,h4,(y - 10) * (y + 3) = 0,722,723
+pair_2b873165,math_test,a,4,h5,x = 10 ∨ x = -3,724,725
+pair_2b873165,math_test,a,5,h6,y = 10 ∨ y = -3,726,727
+pair_2bf91739,olympiads,h,0,h1,x^2 - y^2 - 2000 * (x - y) = 0,728,729
+pair_2bf91739,olympiads,h,1,h2,(x - y) * (x + y - 2000) = 0,730,731
+pair_2bf91739,olympiads,h,2,h3,x - y ≠ 0,732,733
+pair_2bf91739,olympiads,h,3,h4,x + y - 2000 = 0,734,735
+pair_2bf91739,olympiads,a,0,h1,x^2 - 2000 * x - (y^2 - 2000 * y) = 0,736,737
+pair_2bf91739,olympiads,a,1,h2,(x - y) * (x + y - 2000) = 0,738,739
+pair_2c4bd84d,math_test,h,0,h0,"Nat.divisors 187 = {1, 11, 17, 187}",740,741
+pair_2c4bd84d,math_test,h,1,h1,2 * x + 3 ∣ 187,742,743
+pair_2c4bd84d,math_test,h,2,h2,2 * x + 3 ≤ 187,744,745
+pair_2c4bd84d,math_test,h,3,h3,y < 37,746,747
+pair_2c4bd84d,math_test,a,0,h1,x ≤ 11,748,749
+pair_2c4bd84d,math_test,a,1,h2,10 * x * y + 14 * x + 15 * y > 166,750,751
+pair_2c4bd84d,math_test,a,2,h3,x ≥ 12,752,753
+pair_2c4bd84d,math_test,a,3,h4,y ≥ 1,754,755
+pair_32d44a7f,olympiads_ref,h,0,h1,(x - 1) ^ 2 ≥ 0,756,757
+pair_32d44a7f,olympiads_ref,h,1,h2,(y + 2) ^ 2 ≥ 0,758,759
+pair_32d44a7f,olympiads_ref,h,2,h3,(z - x) ^ 2 ≥ 0,760,761
+pair_32d44a7f,olympiads_ref,a,0,h5,(z - x) ^ 2 + (x - 1) ^ 2 + (y + 2) ^ 2 = 0,762,763
+pair_32d44a7f,olympiads_ref,a,1,hx1,z - x = 0,764,765
+pair_32d44a7f,olympiads_ref,a,2,hx2,x - 1 = 0,766,767
+pair_32d44a7f,olympiads_ref,a,3,hx3,y + 2 = 0,768,769
+pair_32d44a7f,olympiads_ref,a,4,hx4,x = 1,770,771
+pair_32d44a7f,olympiads_ref,a,5,hz1,z = 1,772,773
+pair_32d44a7f,olympiads_ref,a,6,hy1,y = -2,774,775
+pair_32d44a7f,olympiads_ref,a,7,ha,a = 4,776,777
+pair_33135e91,olympiads,h,0,h1,(x - 2 * y) ^ 2 = 0,778,779
+pair_33135e91,olympiads,h,1,h2,(y - 1) ^ 2 = 0,780,781
+pair_33135e91,olympiads,h,2,h3,x - 2 * y = 0,782,783
+pair_33135e91,olympiads,h,3,h4,y - 1 = 0,784,785
+pair_33135e91,olympiads,a,0,h1,(x - 2 * y) ^ 2 ≥ 0,786,787
+pair_33135e91,olympiads,a,1,h2,(y - 1) ^ 2 ≥ 0,788,789
+pair_33135e91,olympiads,a,2,h3,(x - 2 * y) ^ 2 = 0,790,791
+pair_33135e91,olympiads,a,3,h4,(y - 1) ^ 2 = 0,792,793
+pair_33135e91,olympiads,a,4,hy,y - 1 = 0,794,795
+pair_33135e91,olympiads,a,5,hy',y = 1,796,797
+pair_33135e91,olympiads,a,6,h5,x - 2 * y = 0,798,799
+pair_33135e91,olympiads,a,7,hx,x = 2,800,801
+pair_3395ed90,olympiads,h,0,hm_lb,0 < m,802,803
+pair_3395ed90,olympiads,h,1,hn_lb,0 < n,804,805
+pair_3395ed90,olympiads,h,2,h₁,10 * a + 2 * b + 1 ≤ 3 * a + 8 * b + 2,806,807
+pair_3395ed90,olympiads,h,3,h₂,2 * a + 7 * b + 3 ≤ 8 * a + b + 3,808,809
+pair_3395ed90,olympiads,a,0,hm_eq,(3 * a + 8 * b + 2 : ℚ) = (m : ℚ) * (10 * a + 2 * b + 1 : ℚ),810,811
+pair_3395ed90,olympiads,a,1,hn_eq,(8 * a + b + 3 : ℚ) = (n : ℚ) * (2 * a + 7 * b + 3 : ℚ),812,813
+pair_3395ed90,olympiads,a,2,h1,(3 * a + 8 * b + 2) = m * (10 * a + 2 * b + 1),814,815
+pair_3395ed90,olympiads,a,3,h2,(8 * a + b + 3) = n * (2 * a + 7 * b + 3),816,817
+pair_3395ed90,olympiads,a,4,h3,m ≤ 3,818,819
+pair_3395ed90,olympiads,a,5,h4,n ≤ 8,820,821
+pair_340b28b7,olympiads_ref,h,0,eq,5 * (b*b) + (5*a-14)*b + (5*a^2 - 7*a) = 0,822,823
+pair_340b28b7,olympiads_ref,h,1,diseq,(5 * a - 14) ^ 2 - 4 * 5 * (5 * a ^ 2 - 7 * a) = 196 - 75 * a^2,824,825
+pair_340b28b7,olympiads_ref,h,2,disnneg,0 ≤ 196 - 75 * a ^ 2,826,827
+pair_340b28b7,olympiads_ref,h,3,ale1,a ≤ 1,828,829
+pair_340b28b7,olympiads_ref,h,4,agem1,-1≤ a,830,831
+pair_340b28b7,olympiads_ref,a,0,h1,a ≤ 10,832,833
+pair_340b28b7,olympiads_ref,a,1,h2,a ≥ -10,834,835
+pair_340b28b7,olympiads_ref,a,2,h3,b ≤ 10,836,837
+pair_340b28b7,olympiads_ref,a,3,h4,b ≥ -10,838,839
+pair_359f2631,secondary_math,h,0,h1,a^2 - a * b + b^2 = 1 - 2 * (a * b),840,841
+pair_359f2631,secondary_math,h,1,h2,1 / 3 ≤ a^2 - a * b + b^2,842,843
+pair_359f2631,secondary_math,h,2,h3,a^2 - a * b + b^2 ≤ 3,844,845
+pair_359f2631,secondary_math,a,0,h1,a^2 + b^2 = 1 - a * b,846,847
+pair_359f2631,secondary_math,a,1,h2,a * b ≤ (1 / 3),848,849
+pair_359f2631,secondary_math,a,2,h3,a * b ≥ -1,850,851
+pair_35dc14d4,olympiads,h,0,h5,n < 27,852,853
+pair_35dc14d4,olympiads,h,1,h_length,(Nat.digits 3 n).length = 3,854,855
+pair_35dc14d4,olympiads,h,2,h_digits,(Nat.digits 3 n).length ≥ 4,856,857
+pair_35dc14d4,olympiads,h,3,h1,n ≥ 27,858,859
+pair_35dc14d4,olympiads,h,4,h2,Nat.log 3 n ≥ 3,860,861
+pair_35dc14d4,olympiads,h,5,h3,3 ^ 3 ≤ n,862,863
+pair_35dc14d4,olympiads,h,6,h4,(Nat.digits 3 n).length = Nat.log 3 n + 1,864,865
+pair_35dc14d4,olympiads,a,0,h6,n < 27,866,867
+pair_35dc14d4,olympiads,a,1,h7,(Nat.digits 3 n).length > 3,868,869
+pair_35dc14d4,olympiads,a,2,h8,n ≥ 27,870,871
+pair_35dc14d4,olympiads,a,3,h9,(Nat.digits 3 n).length = Nat.log 3 n + 1,872,873
+pair_35dc14d4,olympiads,a,4,h10,Nat.log 3 n ≥ 3,874,875
+pair_35dc14d4,olympiads,a,5,h11,3 ^ 3 ≤ n,876,877
+pair_37a1e423,math_test,h,0,eq1,(8 : ℝ) = 2 * 2 ^ 2,878,879
+pair_37a1e423,math_test,h,1,eq2,(50 : ℝ) = 2 * 5 ^ 2,880,881
+pair_37a1e423,math_test,h,2,eq3,(18 : ℝ) = 2 * 3 ^ 2,882,883
+pair_37a1e423,math_test,h,3,eq4,Real.sqrt 8 + Real.sqrt 50 + Real.sqrt 18 = 10 * Real.sqrt 2,884,885
+pair_37a1e423,math_test,a,0,h1,Real.sqrt 8 = 2 * Real.sqrt 2,886,887
+pair_37a1e423,math_test,a,1,h2,Real.sqrt 50 = 5 * Real.sqrt 2,888,889
+pair_37a1e423,math_test,a,2,h3,Real.sqrt 18 = 3 * Real.sqrt 2,890,891
+pair_37a1e423,math_test,a,3,h4,Real.sqrt 8 + Real.sqrt 50 + Real.sqrt 18 = 10 * Real.sqrt 2,892,893
+pair_37a1e423,math_test,a,4,h5,0 < (2 : ℝ),894,895
+pair_37a1e423,math_test,a,5,h6,Real.sqrt 2 > 0,896,897
+pair_37a1e423,math_test,a,6,h7,(10 : ℝ) > 0,898,899
+pair_37d880cd,number_theory,h,0,h1,n^2 ≡ 1 [MOD 8],900,901
+pair_37d880cd,number_theory,h,1,h2,n^2 ≡ 1 [MOD 3],902,903
+pair_37d880cd,number_theory,a,0,h2,n % 24 = 1 ∨ n % 24 = 5 ∨ n % 24 = 7 ∨ n % 24 = 11 ∨ n % 24 = 13 ∨ n % 24 = 17 ∨ n % 24 = 19 ∨ n % 24 = 23,904,905
+pair_37d880cd,number_theory,a,1,h3,n % 3 ≠ 0,906,907
+pair_37d880cd,number_theory,a,2,h4,3 ∣ n,908,909
+pair_3821ed1b,math_train,h,0,h₁,(x - 5)^2 + (y + 3)^2 = 0,910,911
+pair_3821ed1b,math_train,h,1,h₂,x = 5,912,913
+pair_3821ed1b,math_train,h,2,h₃,y = -3,914,915
+pair_3821ed1b,math_train,a,0,h1,(x - 5) ^ 2 + (y + 3) ^ 2 = 0,916,917
+pair_3821ed1b,math_train,a,1,h2,(x - 5) ^ 2 = 0,918,919
+pair_3821ed1b,math_train,a,2,h3,(y + 3) ^ 2 = 0,920,921
+pair_3821ed1b,math_train,a,3,h4,x - 5 = 0,922,923
+pair_3821ed1b,math_train,a,4,h5,y + 3 = 0,924,925
+pair_3821ed1b,math_train,a,5,hx,x = 5,926,927
+pair_3821ed1b,math_train,a,6,hy,y = -3,928,929
+pair_395840e8,aops_forum,h,0,h1,p^3 ∣ 825,930,931
+pair_395840e8,aops_forum,h,1,h2,p ≤ 825,932,933
+pair_395840e8,aops_forum,h,2,h3,p^3 ≤ 825,934,935
+pair_395840e8,aops_forum,h,3,h4,p^3 ≤ 825,936,937
+pair_395840e8,aops_forum,h,4,h6,p^3 > 825,938,939
+pair_395840e8,aops_forum,h,5,h7,p ≥ 826,940,941
+pair_395840e8,aops_forum,h,6,h8,p^3 ≥ 826^3,942,943
+pair_395840e8,aops_forum,a,0,h1,p ≤ 825,944,945
+pair_395840e8,aops_forum,a,1,h5,p^3 ≤ 825,946,947
+pair_395840e8,aops_forum,a,2,h2,p ≥ 826,948,949
+pair_395840e8,aops_forum,a,3,h3,p^3 ≥ 826^3,950,951
+pair_395840e8,aops_forum,a,4,h2',p ≥ 826,952,953
+pair_3a0c48ab,olympiads,h,0,f_mono,StrictMono f,954,955
+pair_3a0c48ab,olympiads,h,1,α_nonzero,α ≠ 0,956,957
+pair_3a0c48ab,olympiads,h,2,α_pow_6,α^6 = α * 2 - 1 + α⁻¹ * 2,958,959
+pair_3a0c48ab,olympiads,h,3,eq1,α^5 = α^3 - α + 2,960,961
+pair_3a0c48ab,olympiads,h,4,eq2,α^6 = α^4 - α^2 + 2 * α,962,963
+pair_3a0c48ab,olympiads,h,5,eq3,α^4 = α^2 - 1 + 2 * α ⁻¹,964,965
+pair_3a0c48ab,olympiads,h,6,g_mono,StrictMonoOn g (Set.Icc 1 2),966,967
+pair_3a0c48ab,olympiads,a,0,h2,α ^ 5 = α ^ 3 - α + 2,968,969
+pair_3a0c48ab,olympiads,a,1,hα1,α ≥ 1,970,971
+pair_3a0c48ab,olympiads,a,2,hα2,α < 2,972,973
+pair_3a0c48ab,olympiads,a,3,h3,3 ≤ α ^ 6,974,975
+pair_3a0c48ab,olympiads,a,4,h4,α ^ 6 < 4,976,977
+pair_3a20ed0b,number_theory,h,0,pow_2,√5 ^ 2 = 5,978,979
+pair_3a20ed0b,number_theory,h,1,pow_3,√5 ^ 3 = 5 * √5,980,981
+pair_3a20ed0b,number_theory,h,2,pow_4,√5 ^ 4 = 25,982,983
+pair_3a20ed0b,number_theory,a,0,h1,u2 n = (α ^ n - β ^ n) / √5,984,985
+pair_3a20ed0b,number_theory,a,1,h2,u2 (n + 1) = (α ^ (n + 1) - β ^ (n + 1)) / √5,986,987
+pair_3ae19d99,cn_contest,h,0,sum_eq',"∀ n : ℕ, (sum n : ℚ) = n * (n+1) * (2*n+1) / 6",988,989
+pair_3ae19d99,cn_contest,h,1,sum_eq,"∀ n : ℕ, sum n = n * (n+1) * (2*n+1) / 6",990,991
+pair_3ae19d99,cn_contest,h,2,H,a ∈ List.range' 3 21,992,993
+pair_3ae19d99,cn_contest,a,0,h1,n ≤ 23,994,995
+pair_3ae19d99,cn_contest,a,1,h2,m ≤ 70,996,997
+pair_3dcb5edd,olympiads,h,0,h1,{n : ℕ | n ∈ Finset.Icc 10 99 ∧ 5 ∣ n ∧ (Nat.digits 10 n).headI > (Nat.digits 10 n).tail.headI} = Finset.filter (fun n => 5 ∣ n ∧ (Nat.digits 10 n).headI > (Nat.digits 10 n).tail.headI) (Finset.Icc 10 99),998,999
+pair_3dcb5edd,olympiads,h,1,h2,{n : ℕ | n ∈ Finset.Icc 10 99 ∧ 5 ∣ n ∧ (Nat.digits 10 n).headI < (Nat.digits 10 n).tail.headI} = Finset.filter (fun n => 5 ∣ n ∧ (Nat.digits 10 n).headI < (Nat.digits 10 n).tail.headI) (Finset.Icc 10 99),1000,1001
+pair_3dcb5edd,olympiads,a,0,h1,{n : ℕ | n ∈ Finset.Icc 10 99 ∧ 5 ∣ n ∧ (Nat.digits 10 n).headI > (Nat.digits 10 n).tail.headI} = Finset.filter (fun n => 5 ∣ n ∧ (Nat.digits 10 n).headI > (Nat.digits 10 n).tail.headI) (Finset.Icc 10 99),1002,1003
+pair_3dcb5edd,olympiads,a,1,h2,{n : ℕ | n ∈ Finset.Icc 10 99 ∧ 5 ∣ n ∧ (Nat.digits 10 n).headI < (Nat.digits 10 n).tail.headI} = Finset.filter (fun n => 5 ∣ n ∧ (Nat.digits 10 n).headI < (Nat.digits 10 n).tail.headI) (Finset.Icc 10 99),1004,1005
+pair_3f3158ea,inequalities,h,0,h1,1 + a > 0,1006,1007
+pair_3f3158ea,inequalities,h,1,h2,1 + b > 0,1008,1009
+pair_3f3158ea,inequalities,h,2,h3,1 + c > 0,1010,1011
+pair_3f3158ea,inequalities,h,3,h,(a + b) / (1 + b) + (b + c) / (1 + c) + (c + a) / (1 + a) - 3 ≥ 0,1012,1013
+pair_3f3158ea,inequalities,h,4,h4,(a + b) / (1 + b) + (b + c) / (1 + c) + (c + a) / (1 + a) - 3 = ((a + b) * (1 + c) * (1 + a) + (b + c) * (1 + a) * (1 + b) + (c + a) * (1 + b) * (1 + c) - 3 * (1 + a) * (1 + b) * (1 + c)) / ((1 + a) * (1 + b) * (1 + c)),1014,1015
+pair_3f3158ea,inequalities,a,0,h1,0 < 1 + a,1016,1017
+pair_3f3158ea,inequalities,a,1,h2,0 < 1 + b,1018,1019
+pair_3f3158ea,inequalities,a,2,h3,0 < 1 + c,1020,1021
+pair_3f3158ea,inequalities,a,3,h4,(a + b) / (1 + b) + (b + c) / (1 + c) + (c + a) / (1 + a) - 3 ≥ 0,1022,1023
+pair_3f3158ea,inequalities,a,4,h5,(a + b) / (1 + b) + (b + c) / (1 + c) + (c + a) / (1 + a) - 3 = ( (a + b) * (1 + c) * (1 + a) + (b + c) * (1 + a) * (1 + b) + (c + a) * (1 + b) * (1 + c) - 3 * (1 + a) * (1 + b) * (1 + c) ) / ( (1 + b) * (1 + c) * (1 + a) ),1024,1025
+pair_40400f26,math_test,h,0,heq,"{x | 17 ∣ x ∧ x < 1000 ∧ (x + 1) % 8 = 0} = {119,255,391,527,663,799,935}",1026,1027
+pair_40400f26,math_test,h,1,h₄,"∃ n, x = 17 * n",1028,1029
+pair_40400f26,math_test,h,2,h₅,n % 8 = 7,1030,1031
+pair_40400f26,math_test,h,3,h₆,"∃ m, n = 8 * m + 7",1032,1033
+pair_40400f26,math_test,h,4,h₇,17 * (8 * m + 7) < 1000,1034,1035
+pair_40400f26,math_test,h,5,h₈,m ≤ 6,1036,1037
+pair_40400f26,math_test,a,0,h4,y ≥ 936,1038,1039
+pair_40400f26,math_test,a,1,h5,y % 8 = 7,1040,1041
+pair_409b71b8,cn_k12,h,0,h,(1/2) * (4*x) + (1/2) * (25/x) ≥ (4*x)^(1/2 : ℝ) * (25/x)^(1/2 : ℝ),1042,1043
+pair_409b71b8,cn_k12,h,1,h1,4 * x * (25 / x) = 10^2,1044,1045
+pair_409b71b8,cn_k12,a,0,h_eq,4 * x + 25 / x = y,1046,1047
+pair_409b71b8,cn_k12,a,1,h1,4 * x + 25 / x ≥ 20,1048,1049
+pair_409b71b8,cn_k12,a,2,h2,x > 0,1050,1051
+pair_409b71b8,cn_k12,a,3,h3,4 * x + 25 / x - 20 ≥ 0,1052,1053
+pair_409b71b8,cn_k12,a,4,h4,x > 0,1054,1055
+pair_409b71b8,cn_k12,a,5,h5,4 * x + 25 / x - 20 = (4 * x^2 + 25 - 20 * x) / x,1056,1057
+pair_409b71b8,cn_k12,a,6,h6,4 * x^2 + 25 - 20 * x ≥ 0,1058,1059
+pair_421b9bfa,math_test,h,0,aux,"∑ i in Finset.Icc (-a) a, i = 0",1060,1061
+pair_421b9bfa,math_test,h,1,aux1,"26 = ∑ i ∈ Finset.Icc (-25) 26, i",1062,1063
+pair_421b9bfa,math_test,h,2,h1,"∑ i ∈ Finset.Icc (-25) a, i ≤ ∑ i ∈ Finset.Icc (-25) b, i → a ≤ b",1064,1065
+pair_421b9bfa,math_test,a,0,h,"∑ i in Finset.Icc (-25) n, i ≥ 26",1066,1067
+pair_421b9bfa,math_test,a,1,h1,n < 26,1068,1069
+pair_421b9bfa,math_test,a,2,h3,n ≤ 25,1070,1071
+pair_421b9bfa,math_test,a,3,h4,n ≥ -25,1072,1073
+pair_421b9bfa,math_test,a,4,h5,n < -25,1074,1075
+pair_421b9bfa,math_test,a,5,h6,Finset.Icc (-25) n = ∅,1076,1077
+pair_42350979,olympiads_ref,h,0,peq,p ^ 2 + (5 / 6 - p) ^ 2 + 1 / 36 = 1 / 2,1078,1079
+pair_42350979,olympiads_ref,h,1,peq',(p - 2 / 3) * (p - 1 / 6) = 0,1080,1081
+pair_42350979,olympiads_ref,h,2,hp,p = 2 / 3 ∨ p = 1 / 6,1082,1083
+pair_42350979,olympiads_ref,h,3,aux,(p - 2 / 3) = 0 ∨ (p - 1 / 6) = 0,1084,1085
+pair_42350979,olympiads_ref,h,4,qeq,q = 2 / 3,1086,1087
+pair_42350979,olympiads_ref,a,0,h3,p * q = 1 / 9,1088,1089
+pair_42350979,olympiads_ref,a,1,hsq,(p - q) ^ 2 = 1 / 4,1090,1091
+pair_42350979,olympiads_ref,a,2,h7,(p - q) ^ 2 = (p + q) ^ 2 - 4 * (p * q),1092,1093
+pair_42350979,olympiads_ref,a,3,h8,p - q ≥ 0,1094,1095
+pair_42350979,olympiads_ref,a,4,h9,p - q = 1 / 2,1096,1097
+pair_42350979,olympiads_ref,a,5,h10,(p - q) ^ 2 = 1 / 4,1098,1099
+pair_42350979,olympiads_ref,a,6,h11,p - q ≥ 0,1100,1101
+pair_42f55e69,aops_forum,h,0,h3,(x + y) ^ 2 = 4,1102,1103
+pair_42f55e69,aops_forum,h,1,h4,x ^ 2 + y ^ 2 = 2 - 2 * z ^ 2,1104,1105
+pair_42f55e69,aops_forum,a,0,h3,y = 2 - x,1106,1107
+pair_42f55e69,aops_forum,a,1,h4,(x - 1) ^ 2 + z ^ 2 = 0,1108,1109
+pair_42f55e69,aops_forum,a,2,hx1,(x - 1) ^ 2 = 0,1110,1111
+pair_42f55e69,aops_forum,a,3,hz1,z ^ 2 = 0,1112,1113
+pair_42f55e69,aops_forum,a,4,hx,x - 1 = 0,1114,1115
+pair_42f55e69,aops_forum,a,5,hz,z = 0,1116,1117
+pair_42f55e69,aops_forum,a,6,hx2,x = 1,1118,1119
+pair_42f55e69,aops_forum,a,7,hy2,y = 1,1120,1121
+pair_45f0139d,cn_k12,h,0,h1,g (-2) = f (- 2) + 9,1122,1123
+pair_45f0139d,cn_k12,h,1,h2,f (-2) = - f 2,1124,1125
+pair_45f0139d,cn_k12,a,0,h1,g (-2) = f (-2) + 9,1126,1127
+pair_45f0139d,cn_k12,a,1,h2,f (-2) = -6,1128,1129
+pair_45f0139d,cn_k12,a,2,h3,f (-2) = - f 2,1130,1131
+pair_4625d43e,amc_aime,h,0,n_eq,n = 6,1132,1133
+pair_4625d43e,amc_aime,h,1,p_eq,p = 7,1134,1135
+pair_4625d43e,amc_aime,a,0,hp_eq,p = n + 1,1136,1137
+pair_4625d43e,amc_aime,a,1,hn_eq,n = 6,1138,1139
+pair_4625d43e,amc_aime,a,2,hp_eq2,p = 7,1140,1141
+pair_4648e6ee,aops_forum,h,0,h1,a / (2 * a + 1) + b / (3 * b + 1) + c / (6 * c + 1) ≤ 1 / 2,1142,1143
+pair_4648e6ee,aops_forum,h,1,h2,(1 : ℝ) / 2 - (a / (2 * a + 1) + b / (3 * b + 1) + c / (6 * c + 1)) ≥ 0,1144,1145
+pair_4648e6ee,aops_forum,h,2,h3,(2 * a + 1) > 0,1146,1147
+pair_4648e6ee,aops_forum,h,3,h4,(3 * b + 1) > 0,1148,1149
+pair_4648e6ee,aops_forum,h,4,h5,(6 * c + 1) > 0,1150,1151
+pair_4648e6ee,aops_forum,h,5,h,(1 : ℝ) / 2 - (a / (2 * a + 1) + b / (3 * b + 1) + c / (6 * c + 1)) = ((1 / 2) * (2 * a + 1) * (3 * b + 1) * (6 * c + 1) - a * (3 * b + 1) * (6 * c + 1) - b * (2 * a + 1) * (6 * c + 1) - c * (2 * a + 1) * (3 * b + 1)) / ((2 * a + 1) * (3 * b + 1) * (6 * c + 1)),1152,1153
+pair_4648e6ee,aops_forum,a,0,ha1,2 * a + 1 > 0,1154,1155
+pair_4648e6ee,aops_forum,a,1,hb1,3 * b + 1 > 0,1156,1157
+pair_4648e6ee,aops_forum,a,2,hc1,6 * c + 1 > 0,1158,1159
+pair_4648e6ee,aops_forum,a,3,hx4,a / (2 * a + 1) + b / (3 * b + 1) + c / (6 * c + 1) - 1 / 2 ≤ 0,1160,1161
+pair_4648e6ee,aops_forum,a,4,hx7,a / (2 * a + 1) + b / (3 * b + 1) + c / (6 * c + 1) - 1 / 2 = ( (a * (3 * b + 1) * (6 * c + 1) ) + (b * (2 * a + 1) * (6 * c + 1) ) + (c * (2 * a + 1) * (3 * b + 1) ) - (1 / 2) * (2 * a + 1) * (3 * b + 1) * (6 * c + 1) ) / ((2 * a + 1) * (3 * b + 1) * (6 * c + 1)),1162,1163
+pair_4648e6ee,aops_forum,a,5,hx8,(a * (3 * b + 1) * (6 * c + 1) + b * (2 * a + 1) * (6 * c + 1) + c * (2 * a + 1) * (3 * b + 1) - (1 / 2) * (2 * a + 1) * (3 * b + 1) * (6 * c + 1) ) / ((2 * a + 1) * (3 * b + 1) * (6 * c + 1)) ≤ 0,1164,1165
+pair_4648e6ee,aops_forum,a,6,hx9,0 < (2 * a + 1) * (3 * b + 1) * (6 * c + 1),1166,1167
+pair_4675a93e,olympiads,h,0,h1,a ≡ -b [ZMOD 10],1168,1169
+pair_4675a93e,olympiads,h,1,h2,(a + b) ≡ 0 [ZMOD 10],1170,1171
+pair_4675a93e,olympiads,h,2,h3,a ≡ -b [ZMOD 10],1172,1173
+pair_4675a93e,olympiads,h,3,h4,a^2 ≡ (-b)^2 [ZMOD 10],1174,1175
+pair_4675a93e,olympiads,h,4,h5,(-b:ℤ)^2 = b^2,1176,1177
+pair_4675a93e,olympiads,a,0,h1,a ≡ ( -b ) [ZMOD 10],1178,1179
+pair_4675a93e,olympiads,a,1,h6,(a + b) % 10 = 0,1180,1181
+pair_4675a93e,olympiads,a,2,h7,(a + b) ≡ 0 [ZMOD 10],1182,1183
+pair_4675a93e,olympiads,a,3,h2,(a ^ 2) ≡ (-b) ^ 2 [ZMOD 10],1184,1185
+pair_4675a93e,olympiads,a,4,h3,(-b : ℤ) ^ 2 = (b : ℤ) ^ 2,1186,1187
+pair_46afa51e,olympiads_ref,h,0,eq1,min (a * b) (b * c) = a * b,1188,1189
+pair_46afa51e,olympiads_ref,h,1,eq,(a - b) ^ 2 = (10 - c) ^ 2 - 4 * (25 - c * (10 - c)),1190,1191
+pair_46afa51e,olympiads_ref,h,2,ineq,0 ≤ (10 - c) ^ 2 - 4 * (25 - c * (10 - c)),1192,1193
+pair_46afa51e,olympiads_ref,h,3,c_u,c ≤ (20: ℝ) / 3,1194,1195
+pair_46afa51e,olympiads_ref,h,4,c_l,(10: ℝ) / 3 ≤ c,1196,1197
+pair_46afa51e,olympiads_ref,h,5,eq2,a * b = (c - 5) ^ 2,1198,1199
+pair_46afa51e,olympiads_ref,h,6,s_u,s ≤ (5: ℝ) / 3,1200,1201
+pair_46afa51e,olympiads_ref,h,7,s_l,(-5: ℝ) / 3 ≤ s,1202,1203
+pair_46afa51e,olympiads_ref,a,0,h_eq1,m = a * b,1204,1205
+pair_46afa51e,olympiads_ref,a,1,h3,c ≥ b,1206,1207
+pair_46afa51e,olympiads_ref,a,2,h4,b ≥ a,1208,1209
+pair_46afa51e,olympiads_ref,a,3,h9,a * b ≤ b * c,1210,1211
+pair_46afa51e,olympiads_ref,a,4,h10,a * b ≤ c * a,1212,1213
+pair_46afa51e,olympiads_ref,a,5,h_eq2,a * b ≤ 25 / 9,1214,1215
+pair_496fbd44,secondary_math,h,0,h1,x * y + y * z + z * x ≥ 4 / 3,1216,1217
+pair_496fbd44,secondary_math,h,1,h2,x + y + z ≥ 2,1218,1219
+pair_496fbd44,secondary_math,a,0,h1,x * y + y * z + z * x ≥ 4 / 3,1220,1221
+pair_496fbd44,secondary_math,a,1,h2,x + y + z ≥ 2,1222,1223
+pair_49737f41,math_test,h,0,hh1,π - A = B,1224,1225
+pair_49737f41,math_test,h,1,hh2,π - B = A,1226,1227
+pair_49737f41,math_test,h,2,hh3,B/A = (A/B)⁻¹,1228,1229
+pair_49737f41,math_test,a,0,h1,π - A = B,1230,1231
+pair_49737f41,math_test,a,1,h2,π - B = A,1232,1233
+pair_49737f41,math_test,a,2,h3,B ≠ 0,1234,1235
+pair_49737f41,math_test,a,3,h4,A ≠ 0,1236,1237
+pair_49737f41,math_test,a,4,h5,(π - A) / (π - B) = B / A,1238,1239
+pair_49737f41,math_test,a,5,h8,B / A = 23 / 7,1240,1241
+pair_49737f41,math_test,a,6,h9,A / B = 7 / 23,1242,1243
+pair_4c573162,olympiads,h,0,h1,sin (π / 3) = sqrt 3 / 2,1244,1245
+pair_4c573162,olympiads,h,1,h2,cos (π / 3) = 1 / 2,1246,1247
+pair_4c573162,olympiads,h,2,h3,sin (2 * π / 3) = sqrt 3 / 2,1248,1249
+pair_4c573162,olympiads,h,3,h4,cos (2 * π / 3) = -1 / 2,1250,1251
+pair_4c573162,olympiads,a,0,h1,f (π / 3) = sin (π / 3) / (1 + cos (π / 3)),1252,1253
+pair_4c573162,olympiads,a,1,h2,f (2 * π / 3) = sin (2 * π / 3) / (1 + cos (2 * π / 3)),1254,1255
+pair_4c573162,olympiads,a,2,h3,sin (π / 3) = Real.sqrt 3 / 2,1256,1257
+pair_4c573162,olympiads,a,3,h4,cos (π / 3) = 1 / 2,1258,1259
+pair_4c573162,olympiads,a,4,h5,sin (2 * π / 3) = Real.sqrt 3 / 2,1260,1261
+pair_4c573162,olympiads,a,5,h6,2 * π / 3 = π - (π / 3),1262,1263
+pair_4c573162,olympiads,a,6,h7,cos (2 * π / 3) = -1 / 2,1264,1265
+pair_4c573162,olympiads,a,7,h8,2 * π / 3 = π - (π / 3),1266,1267
+pair_4c5a3ecf,olympiads,h,0,h1,(a - b) ^ 2 * c + (b - c) ^ 2 * a + (c - a) ^ 2 * b = 0,1268,1269
+pair_4c5a3ecf,olympiads,h,1,h2,(a - b) ^ 2 * c = 0,1270,1271
+pair_4c5a3ecf,olympiads,h,2,hab,a = b,1272,1273
+pair_4c5a3ecf,olympiads,h,3,h3,(b - c) ^ 2 * a = 0,1274,1275
+pair_4c5a3ecf,olympiads,h,4,hbc,b = c,1276,1277
+pair_4c5a3ecf,olympiads,a,0,h1,(a - b) ^ 2 + (b - c) ^ 2 + (a - c) ^ 2 = 0,1278,1279
+pair_4c5a3ecf,olympiads,a,1,h2,(a - b) ^ 2 = 0,1280,1281
+pair_4c5a3ecf,olympiads,a,2,h3,(b - c) ^ 2 = 0,1282,1283
+pair_4c5a3ecf,olympiads,a,3,h4,a - b = 0,1284,1285
+pair_4c5a3ecf,olympiads,a,4,h5,b - c = 0,1286,1287
+pair_4c5a3ecf,olympiads,a,5,ha1,a = b,1288,1289
+pair_4c5a3ecf,olympiads,a,6,hb1,b = c,1290,1291
+pair_4d21772c,amc_aime,h,0,h,3 * y = 2 * x,1292,1293
+pair_4d21772c,amc_aime,h,1,h',x > y,1294,1295
+pair_4d21772c,amc_aime,h,2,hx,max x y = x,1296,1297
+pair_4d21772c,amc_aime,h,3,hy,min x y = y,1298,1299
+pair_4d21772c,amc_aime,a,0,h1,4 * x = 6 * y,1300,1301
+pair_4d21772c,amc_aime,a,1,h2,x > y,1302,1303
+pair_4d21772c,amc_aime,a,2,h3,max x y = x,1304,1305
+pair_4d21772c,amc_aime,a,3,h4,min x y = y,1306,1307
+pair_4d21772c,amc_aime,a,4,h5,x / y = 3 / 2,1308,1309
+pair_4d21772c,amc_aime,a,5,h6,y ≠ 0,1310,1311
+pair_4e638d06,olympiads,h,0,h1,x / (x + 2 * y + 3 * z) + y / (y + 2 * z + 3 * x) + z / (z + 2 * x + 3 * y) ≥ 1 / 2,1312,1313
+pair_4e638d06,olympiads,h,1,h2,x / (x + 2 * y + 3 * z) + y / (y + 2 * z + 3 * x) + z / (z + 2 * x + 3 * y) - 1 / 2 ≥ 0,1314,1315
+pair_4e638d06,olympiads,h,2,h3,x / (x + 2 * y + 3 * z) + y / (y + 2 * z + 3 * x) + z / (z + 2 * x + 3 * y) - 1 / 2 = (x * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y) + y * (z + 2 * x + 3 * y) * (x + 2 * y + 3 * z) + z * (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) - (1 / 2) * (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y)) / ((x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y)),1316,1317
+pair_4e638d06,olympiads,h,3,h4,(x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y) > 0,1318,1319
+pair_4e638d06,olympiads,h,4,h5,x * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y) + y * (z + 2 * x + 3 * y) * (x + 2 * y + 3 * z) + z * (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) - (1 / 2) * (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y) ≥ 0,1320,1321
+pair_4e638d06,olympiads,a,0,h1,0 < x * y * z,1322,1323
+pair_4e638d06,olympiads,a,1,h2,0 < (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y),1324,1325
+pair_4e638d06,olympiads,a,2,h3,x / (x + 2 * y + 3 * z) + y / (y + 2 * z + 3 * x) + z / (z + 2 * x + 3 * y) - 1 / 2 ≥ 0,1326,1327
+pair_4e638d06,olympiads,a,3,h4,0 < (x + 2 * y + 3 * z),1328,1329
+pair_4e638d06,olympiads,a,4,h5,0 < (y + 2 * z + 3 * x),1330,1331
+pair_4e638d06,olympiads,a,5,h6,0 < (z + 2 * x + 3 * y),1332,1333
+pair_4e638d06,olympiads,a,6,h7,0 < (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y),1334,1335
+pair_4e638d06,olympiads,a,7,h3',x / (x + 2 * y + 3 * z) + y / (y + 2 * z + 3 * x) + z / (z + 2 * x + 3 * y) - 1 / 2 = (2 * (x * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y) + y * (x + 2 * y + 3 * z) * (z + 2 * x + 3 * y) + z * (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x)) - (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y)) / (2 * (x + 2 * y + 3 * z) * (y + 2 * z + 3 * x) * (z + 2 * x + 3 * y)),1336,1337
+pair_5011e3a7,olympiads,h,0,hb,b = 136,1338,1339
+pair_5011e3a7,olympiads,h,1,ha,a = 100,1340,1341
+pair_5011e3a7,olympiads,h,2,h5,a * 136 = 13600,1342,1343
+pair_5011e3a7,olympiads,h,3,hc,c = 18,1344,1345
+pair_5011e3a7,olympiads,h,4,h6,x^2 = 100^2 + 2 * 100 * 18 + 18^2,1346,1347
+pair_5011e3a7,olympiads,h,5,h7,x ≤ 181,1348,1349
+pair_5011e3a7,olympiads,h,6,hx,x = 118,1350,1351
+pair_5011e3a7,olympiads,a,0,h5,a * 136 = 13600,1352,1353
+pair_5011e3a7,olympiads,a,1,h6,a = 100,1354,1355
+pair_5011e3a7,olympiads,a,2,h7,a = 100,1356,1357
+pair_5011e3a7,olympiads,a,3,h8,c = 0,1358,1359
+pair_5011e3a7,olympiads,a,4,h8a,a = 100,1360,1361
+pair_5011e3a7,olympiads,a,5,h8b,b = 136,1362,1363
+pair_5011e3a7,olympiads,a,6,h10,0 < c,1364,1365
+pair_50339cb5,olympiads_ref,h,0,lemma₀,x ^ 5 + y ^ 5 ≥ x * y * (x ^ 3 + y ^ 3),1366,1367
+pair_50339cb5,olympiads_ref,h,1,lemma₁,((x + y + z) / 3) ^ 3 ≤ (x ^ 3 + y ^ 3 + z ^ 3) / 3,1368,1369
+pair_50339cb5,olympiads_ref,h,2,lemma₂,(1 / 3 : ℝ) * x + (1 / 3 : ℝ) * y + (1 / 3 : ℝ) * z ≥ x ^ (1 / 3 : ℝ) * y ^ (1 / 3 : ℝ) * z ^ (1 / 3 : ℝ),1370,1371
+pair_50339cb5,olympiads_ref,a,0,lemma₀,x ^ 5 + y ^ 5 ≥ x * y * (x ^ 3 + y ^ 3),1372,1373
+pair_50339cb5,olympiads_ref,a,1,h1,1 / (a * b) + 1 / (b * c) + 1 / (c * a) = (a + b + c) / (a * b * c),1374,1375
+pair_50339cb5,olympiads_ref,a,2,h2,a * b * c = 1,1376,1377
+pair_50339cb5,olympiads_ref,a,3,h3,1 / (a ^ 3 + b ^ 3 + c ^ 3) * ((a + b + c) / (a * b * c)) = (a + b + c) / (a ^ 3 + b ^ 3 + c ^ 3),1378,1379
+pair_50339cb5,olympiads_ref,a,4,h4,a + b + c ≤ a ^ 3 + b ^ 3 + c ^ 3,1380,1381
+pair_50339cb5,olympiads_ref,a,5,h5,(a + b + c) / (a ^ 3 + b ^ 3 + c ^ 3) ≤ 1,1382,1383
+pair_50fab0e3,number_theory,h,0,two_mul_ediv_two,2 * n / 2 = n,1384,1385
+pair_50fab0e3,number_theory,h,1,h1,gcd (2*j) b ∣ gcd j b,1386,1387
+pair_50fab0e3,number_theory,h,2,h2,gcd j b ∣ gcd (2*j) b,1388,1389
+pair_50fab0e3,number_theory,h,3,h3,gcd (2*j) b = gcd j b,1390,1391
+pair_50fab0e3,number_theory,a,0,two_mul_ediv_two,2 * n / 2 = n,1392,1393
+pair_50fab0e3,number_theory,a,1,h1,gcd (2*j) b ∣ gcd j b,1394,1395
+pair_50fab0e3,number_theory,a,2,h2,gcd j b ∣ gcd (2*j) b,1396,1397
+pair_50fab0e3,number_theory,a,3,h3,gcd (2*j) b = gcd j b,1398,1399
+pair_51aa7126,olympiads_ref,h,0,hx',x = -40,1400,1401
+pair_51aa7126,olympiads_ref,h,1,hy',y = -40,1402,1403
+pair_51aa7126,olympiads_ref,h,2,hz',z = -40,1404,1405
+pair_51aa7126,olympiads_ref,a,0,hx_val,x = -40,1406,1407
+pair_51aa7126,olympiads_ref,a,1,hy_val,y = -40,1408,1409
+pair_51aa7126,olympiads_ref,a,2,hz_val,z = -40,1410,1411
+pair_51cc9b9c,olympiads,h,0,h2,(x + y + z) ^ 2 = x^2 + y^2 + z^2 + 2 * (x * y + y * z + z * x),1412,1413
+pair_51cc9b9c,olympiads,h,1,h3,x * y + y * z + z * x = 0,1414,1415
+pair_51cc9b9c,olympiads,h,2,h4,x^3 + y^3 + z^3 = (x + y + z) ^ 3 - 3 * (x + y + z) * (x * y + y * z + z * x) + 3 * (x * y * z),1416,1417
+pair_51cc9b9c,olympiads,h,3,h5,x * y * z ≥ -4 / 27,1418,1419
+pair_51cc9b9c,olympiads,a,0,h2,x * y + y * z + z * x = 0,1420,1421
+pair_51cc9b9c,olympiads,a,1,eq3,x^3 + y^3 + z^3 - 3 * (x * y * z) = (x + y + z) * ((x^2 + y^2 + z^2) - (x * y + y * z + z * x)),1422,1423
+pair_51cc9b9c,olympiads,a,2,eq4,x^3 + y^3 + z^3 = 1 + 3 * (x * y * z),1424,1425
+pair_52f9db51,math_train,h,0,h3,{(x : ℝ) | |x - 7| = |x + 1|} = {3},1426,1427
+pair_52f9db51,math_train,h,1,h₁,7 - x = |x + 1|,1428,1429
+pair_52f9db51,math_train,a,0,h1,{(x : ℝ) | |x - 7| = |x + 1|} = {3},1430,1431
+pair_52f9db51,math_train,a,1,h2,x - 7 = x + 1 ∨ x - 7 = -(x + 1),1432,1433
+pair_54aff7bc,math_test,h,0,hx1,x.1 = 1,1434,1435
+pair_54aff7bc,math_test,h,1,hx2,x.2 = 4,1436,1437
+pair_54aff7bc,math_test,a,0,ht,t = 4,1438,1439
+pair_54aff7bc,math_test,a,1,hs,s = 1,1440,1441
+pair_54b9a1f3,math_test,h,0,h₄,a * 2 = -3,1442,1443
+pair_54b9a1f3,math_test,h,1,h₅,p + q = -27 / 2,1444,1445
+pair_54b9a1f3,math_test,a,0,ha,a = -3 / 2,1446,1447
+pair_54b9a1f3,math_test,a,1,hb,b = -2,1448,1449
+pair_54b9a1f3,math_test,a,2,hp,p = 8,1450,1451
+pair_54b9a1f3,math_test,a,3,hq,q = -43 / 2,1452,1453
+pair_5688be7b,olympiads_ref,h,0,h1,P 1 = 0,1454,1455
+pair_5688be7b,olympiads_ref,h,1,h3,P 3 = 0,1456,1457
+pair_5688be7b,olympiads_ref,h,2,h5,P 5 = 0,1458,1459
+pair_5688be7b,olympiads_ref,h,3,h7,P' 7 = 0,1460,1461
+pair_5688be7b,olympiads_ref,h,4,eq,(7 - 3) * (7 - 5) * (7 - a) + (7 - 1) * (7 - 5) * (7 - a) + (7 - 1) * (7 - 3) * (7 - a) + (7 - 1) * (7 - 3) * (7 - 5) = 0,1462,1463
+pair_5688be7b,olympiads_ref,a,0,eq1,P' 7 = (7 - 3) * (7 - 5) * (7 - a) + (7 - 1) * (7 - 5) * (7 - a) + (7 - 1) * (7 - 3) * (7 - a) + (7 - 1) * (7 - 3) * (7 - 5),1464,1465
+pair_5688be7b,olympiads_ref,a,1,eq0,(7 - 3) * (7 - 5) * (7 - a) + (7 - 1) * (7 - 5) * (7 - a) + (7 - 1) * (7 - 3) * (7 - a) + (7 - 1) * (7 - 3) * (7 - 5) = 44 * (7 - a) + 48,1466,1467
+pair_5688be7b,olympiads_ref,a,2,eq2,44 * (7 - a) + 48 = 0,1468,1469
+pair_5688be7b,olympiads_ref,a,3,ha,a = 89 / 11,1470,1471
+pair_586d4c59,olympiads,h,0,hx,(x - 2) * y = (x - 2) * (x ^ 2 + 2 * x + 4) + 6,1472,1473
+pair_586d4c59,olympiads,h,1,h,(x - 2).natAbs ∈ (6).divisors,1474,1475
+pair_586d4c59,olympiads,a,0,eq,a ≤ 8,1476,1477
+pair_586d4c59,olympiads,a,1,eq1,b ≤ a ^ 2 + 2 * a + 4,1478,1479
+pair_586d4c59,olympiads,a,2,eq2,b ≥ a ^ 2 + 2 * a + 4,1480,1481
+pair_586d4c59,olympiads,a,3,eq3,b = a ^ 2 + 2 * a + 4,1482,1483
+pair_586d4c59,olympiads,a,4,h5,b ≤ 85,1484,1485
+pair_58969aa7,olympiads,h,0,h1,(people_belief : ℝ) = round ((46 / 100 : ℝ) * (1240 : ℕ)),1486,1487
+pair_58969aa7,olympiads,h,1,h2,(people_not_belief : ℝ) = round ((31 / 100 : ℝ) * (1240 : ℕ)),1488,1489
+pair_58969aa7,olympiads,h,2,h3,(people_belief : ℝ) = 570,1490,1491
+pair_58969aa7,olympiads,h,3,h4,(people_not_belief : ℝ) = 384,1492,1493
+pair_58969aa7,olympiads,h,4,h5,people_belief = 570,1494,1495
+pair_58969aa7,olympiads,h,5,h6,people_not_belief = 384,1496,1497
+pair_58969aa7,olympiads,a,0,h1,(people_belief : ℝ) = round ((46 / 100 : ℝ) * (1240 : ℝ)),1498,1499
+pair_58969aa7,olympiads,a,1,h2,(people_not_belief : ℝ) = round ((31 / 100 : ℝ) * (1240 : ℝ)),1500,1501
+pair_58969aa7,olympiads,a,2,h3,(people_belief : ℝ) = (570 : ℝ),1502,1503
+pair_58969aa7,olympiads,a,3,h4,(people_not_belief : ℝ) = (384 : ℝ),1504,1505
+pair_58969aa7,olympiads,a,4,h5,people_belief = 570,1506,1507
+pair_58969aa7,olympiads,a,5,h6,people_not_belief = 384,1508,1509
+pair_58969aa7,olympiads,a,6,h7,people_refuse = 286,1510,1511
+pair_58e22ef3,math_train,h,0,r1,y t = 14,1512,1513
+pair_58e22ef3,math_train,h,1,r2,x t = 28,1514,1515
+pair_58e22ef3,math_train,h,2,r3,k = 392,1516,1517
+pair_58e22ef3,math_train,a,0,h₀,x t₀ + y t₀ = 42,1518,1519
+pair_58e22ef3,math_train,a,1,h₁,x t₀ = 2 * y t₀,1520,1521
+pair_58e22ef3,math_train,a,2,hy₀,y t₀ = 14,1522,1523
+pair_58e22ef3,math_train,a,3,hx₀,x t₀ = 28,1524,1525
+pair_58e22ef3,math_train,a,4,hk₀,k = 392,1526,1527
+pair_58e22ef3,math_train,a,5,h₀₀,x t₀ * y t₀ = k,1528,1529
+pair_58e22ef3,math_train,a,6,ht',x t * y t = k,1530,1531
+pair_58e22ef3,math_train,a,7,hy,y t = -49,1532,1533
+pair_592b30d0,cn_k12,h,0,quadratic_factorization,x^2 - x = x*(x-1),1534,1535
+pair_592b30d0,cn_k12,h,1,h_cases,(x < 0 ∧ x-1 > 0) ∨ (x > 0 ∧ x-1 < 0),1536,1537
+pair_592b30d0,cn_k12,a,0,h1,x * (x - 1) < 0,1538,1539
+pair_592b30d0,cn_k12,a,1,h3,x * (x - 1) < 0,1540,1541
+pair_592b30d0,cn_k12,a,2,hx1,0 < x,1542,1543
+pair_592b30d0,cn_k12,a,3,hx2,x - 1 < 0,1544,1545
+pair_594faff7,math_train,h,0,h_max,3 * x + 4 * y ≤ 73,1546,1547
+pair_594faff7,math_train,h,1,h_achieved,"∃ a b : ℝ, a ^ 2 + b ^ 2 = 14 * a + 6 * b + 6 ∧ 3 * a + 4 * b = 73",1548,1549
+pair_594faff7,math_train,a,0,h1,(x - 7) ^ 2 + (y - 3) ^ 2 = 64,1550,1551
+pair_594faff7,math_train,a,1,h2,3 * x + 4 * y ≤ 73,1552,1553
+pair_5a4d9414,olympiads_ref,h,0,aux,"∀ n, n % 3 = 2 → ¬ IsSquare n",1554,1555
+pair_5a4d9414,olympiads_ref,h,1,sumdig,"(Nat.digits 10 (A 2007)).sum = ∑ i ∈ range 2008, (Nat.digits 10 ((i + 1) ^ (i + 1))).sum",1556,1557
+pair_5a4d9414,olympiads_ref,h,2,mpos,1 < 2008,1558,1559
+pair_5a4d9414,olympiads_ref,h,3,jlt,m - 1 < m,1560,1561
+pair_5a4d9414,olympiads_ref,a,0,aux,"∀ n, n % 3 = 2 → ¬ IsSquare n",1562,1563
+pair_5a4d9414,olympiads_ref,a,1,sumdig,"(Nat.digits 10 (A 2007)).sum = ∑ i ∈ range 2008, (Nat.digits 10 ((i + 1) ^ (i + 1))).sum",1564,1565
+pair_5a4d9414,olympiads_ref,a,2,mpos,1 < 2008,1566,1567
+pair_5a4d9414,olympiads_ref,a,3,jlt,m - 1 < m,1568,1569
+pair_5c0a77f0,cn_k12,h,0,r1,f 0 = 1,1570,1571
+pair_5c0a77f0,cn_k12,h,1,r3,deriv f 0 = 1,1572,1573
+pair_5c0a77f0,cn_k12,h,2,ra,a = 1,1574,1575
+pair_5c0a77f0,cn_k12,h,3,rb,b = 1,1576,1577
+pair_5c0a77f0,cn_k12,a,0,h1,deriv f 0 = 1,1578,1579
+pair_5c0a77f0,cn_k12,a,1,h2,deriv g 0 = a,1580,1581
+pair_5c0a77f0,cn_k12,a,2,h3,a = 1,1582,1583
+pair_5c0a77f0,cn_k12,a,3,h4,f 0 = 1,1584,1585
+pair_5c0a77f0,cn_k12,a,4,h5,g 0 = 1,1586,1587
+pair_5c0a77f0,cn_k12,a,5,h6,b = 1,1588,1589
+pair_5daf2594,olympiads_ref,h,0,eq_aux,v * 8 = 720,1590,1591
+pair_5daf2594,olympiads_ref,h,1,eq_aux',v = 720 / 8,1592,1593
+pair_5daf2594,olympiads_ref,a,0,h1,v - 60 ≠ 0,1594,1595
+pair_5daf2594,olympiads_ref,a,1,h2,v - 75 ≠ 0,1596,1597
+pair_5e5e1c56,amc_aime,h,0,hk3,2 ≤ k,1598,1599
+pair_5e5e1c56,amc_aime,h,1,mod_nine_eq_sum_digts_mod_nine,n % 9 = (digits 10 n).sum % 9,1600,1601
+pair_5e5e1c56,amc_aime,h,2,mem_foldr_append_iff,"d ∈ foldr List.append [] L ↔ ∃ l ∈ L, d ∈ l",1602,1603
+pair_5e5e1c56,amc_aime,h,3,hNd,digits 10 N = (List.Ico 19 93 |>.map (digits 10) |>.foldr List.append []),1604,1605
+pair_5e5e1c56,amc_aime,h,4,sum_foldr_append,(foldr List.append [] L).sum = (L.map (fun l ↦ l.sum)).sum,1606,1607
+pair_5e5e1c56,amc_aime,h,5,sum_range,(List.range n).sum = n * (n - 1) / 2,1608,1609
+pair_5e5e1c56,amc_aime,h,6,sum_Ico,(List.Ico a b).sum = (b * (b - 1)) / 2 - (a * (a - 1)) / 2,1610,1611
+pair_5e5e1c56,amc_aime,a,0,h1,k ≤ 1,1612,1613
+pair_5e5e1c56,amc_aime,a,1,h2,"∀ (k : ℕ), (3 ^ k ∣ (ofDigits 10 $ (List.Ico 19 93) |>.map (fun n ↦ digits 10 n) |>.foldr List.append [])) → k ≤ 1",1614,1615
+pair_5e5e1c56,amc_aime,a,2,h3,k ≥ 2,1616,1617
+pair_5e5e1c56,amc_aime,a,3,h4,¬ (3 ^ 2 ∣ (ofDigits 10 $ (List.Ico 19 93) |>.map (fun n ↦ digits 10 n) |>.foldr List.append [])),1618,1619
+pair_5e5e1c56,amc_aime,a,4,h5,(3 ^ 2 ∣ (3 ^ k)),1620,1621
+pair_5e5e1c56,amc_aime,a,5,h6,(3 ^ 2 ∣ (ofDigits 10 $ (List.Ico 19 93) |>.map (fun n ↦ digits 10 n) |>.foldr List.append [])),1622,1623
+pair_5ee839bd,cn_contest,h,0,h1,11 * a * b = a^2 - 60,1624,1625
+pair_5ee839bd,cn_contest,h,1,h2,b = (a^2 - 60) / (11 * a),1626,1627
+pair_5ee839bd,cn_contest,a,0,h1,a^2 - 60 = 11 * a * b,1628,1629
+pair_5ee839bd,cn_contest,a,1,h2,b = (a^2 - 60) / (11 * a),1630,1631
+pair_5ee839bd,cn_contest,a,2,hne,11 * a ≠ 0,1632,1633
+pair_5ee839bd,cn_contest,a,3,eq1,11 * a * b = a^2 - 60,1634,1635
+pair_5ee839bd,cn_contest,a,4,eq2,b = (a^2 - 60) / (11 * a),1636,1637
+pair_5eec702b,math_test,h,0,eq,(128 - 4 * p) * p = -(4 * (p - 16) ^ 2) + 1024,1638,1639
+pair_5eec702b,math_test,h,1,ge,0 ≤ (p - 16) ^ 2,1640,1641
+pair_5eec702b,math_test,a,0,h1,p ≤ (32 : ℝ),1642,1643
+pair_5eec702b,math_test,a,1,h2,(128 - 4 * p) * p ≤ (128 - 4 * (16 : ℝ)) * (16 : ℝ),1644,1645
+pair_60565fc7,number_theory,h,0,h,(f_4530 (n + 1) : ℤ) = 2 ^ (n + 1) + (-1) ^ (n + 1),1646,1647
+pair_60565fc7,number_theory,h,1,h',(f_4530 (n + 2) : ℤ) = 2 ^ (n + 2) + (-1) ^ (n + 2),1648,1649
+pair_60565fc7,number_theory,a,0,h1,(f_4530 (n + 2) : ℤ) = 2 ^ (n + 2) + (-1) ^ (n + 2),1650,1651
+pair_60565fc7,number_theory,a,1,h2,(f_4530 (n + 1) : ℤ) = 2 ^ (n + 1) + (-1) ^ (n + 1),1652,1653
+pair_60775333,amc_aime,h,0,f1_inj,Function.Injective f1,1654,1655
+pair_60775333,amc_aime,h,1,f1_image,"f1 '' {r : ℚ | 0 < r ∧ r < 1 ∧ r.num + r.den = 1000} = {(x, y) : ℤ × ℕ | 0 < x ∧ x < y ∧ x + y = 1000 ∧ Nat.Coprime (Int.natAbs x) y}",1656,1657
+pair_60775333,amc_aime,h,2,f2_inj,Function.Injective f2,1658,1659
+pair_60775333,amc_aime,h,3,f2_image,"f2 '' ↑{x ∈ Finset.Ioo 0 500 | Nat.Coprime x 1000} = {(x, y) : ℤ × ℕ | 0 < x ∧ x < y ∧ x + y = 1000 ∧ Nat.Coprime (Int.natAbs x) y}",1660,1661
+pair_60775333,amc_aime,h,4,reflect_range,{x ∈ Finset.Ioo 0 500 | Nat.Coprime x 1000}.card = {x ∈ Finset.Ioo 500 1000 | Nat.Coprime x 1000}.card,1662,1663
+pair_60775333,amc_aime,h,5,f_inj,Set.InjOn f {x ∈ Finset.Ioo 0 500 | Nat.Coprime x 1000},1664,1665
+pair_60775333,amc_aime,h,6,f_image,f '' {x ∈ Finset.Ioo 0 500 | Nat.Coprime x 1000} = {x ∈ Finset.Ioo 500 1000 | Nat.Coprime x 1000},1666,1667
+pair_60775333,amc_aime,h,7,eq,{x ∈ Finset.range 1000 | Nat.Coprime x 1000}.card = {x ∈ Finset.Ioo 0 500 | Nat.Coprime x 1000}.card * 2,1668,1669
+pair_60775333,amc_aime,a,0,f1_inj,Function.Injective f1,1670,1671
+pair_60775333,amc_aime,a,1,f1_image,"f1 '' {r : ℚ | 0 < r ∧ r < 1 ∧ r.num + r.den = 1000} = {(x, y) : ℤ × ℕ | 0 < x ∧ x < y ∧ x + y = 1000 ∧ Nat.Coprime (Int.natAbs x) y}",1672,1673
+pair_60775333,amc_aime,a,2,f2_inj,Function.Injective f2,1674,1675
+pair_60775333,amc_aime,a,3,f2_image,"f2 '' ↑{x ∈ Finset.Ioo 0 500 | Nat.Coprime x 1000} = {(x, y) : ℤ × ℕ | 0 < x ∧ x < y ∧ x + y = 1000 ∧ Nat.Coprime (Int.natAbs x) y}",1676,1677
+pair_6192e886,olympiads,h,0,lem,"∀n:ℕ, a (2*n) % 10 = 7 ∧ a (2*n+1) % 10 = 3",1678,1679
+pair_6192e886,olympiads,h,1,h1,a (2 * (n + 1)) % 10 = 7,1680,1681
+pair_6192e886,olympiads,h,2,h2,a (2*(n+1)+1) % 10 = 3,1682,1683
+pair_6192e886,olympiads,a,0,ha1,"∀ (n : ℕ), (a (2 * n)) % 10 = 7",1684,1685
+pair_6192e886,olympiads,a,1,h1,a (2 * (n + 1)) = a (2 * n + 2),1686,1687
+pair_6192e886,olympiads,a,2,eq1,a (2 * n + 2) = (a (2 * n + 1)) ^ 7,1688,1689
+pair_6192e886,olympiads,a,3,eq2,a (2 * n + 1) = (a (2 * n)) ^ 7,1690,1691
+pair_6192e886,olympiads,a,4,h2,(a (2 * n)) % 10 = 7,1692,1693
+pair_6192e886,olympiads,a,5,h3,((a (2 * n) ) ^ 7 ) ^ 7 % 10 = 7,1694,1695
+pair_6192e886,olympiads,a,6,h1000,(a 1000) % 10 = 7,1696,1697
+pair_6192e886,olympiads,a,7,h2000,(a (2 * 500)) % 10 = 7,1698,1699
+pair_61c6d911,math_train,h,0,h,"∑ i ∈ Finset.range m, (n + i) = m * n + m * (m - 1) / 2",1700,1701
+pair_61c6d911,math_train,h,1,h1,m * (m - 1) + m * 2 = m + m ^ 2,1702,1703
+pair_61c6d911,math_train,h,2,ha,28 * (28 - 1) ≤ a * (a - 1),1704,1705
+pair_61c6d911,math_train,a,0,h1,m ≥ 28,1706,1707
+pair_61c6d911,math_train,a,1,h2,"∑ i in Finset.range m, (n + i) > 400",1708,1709
+pair_61c6d911,math_train,a,2,h3,m ≥ 28,1710,1711
+pair_61c6d911,math_train,a,3,h4,"∑ i in Finset.range 28, (n + i) > 400",1712,1713
+pair_61c6d911,math_train,a,4,h5,"∑ i in Finset.range m, (n + i) ≥ ∑ i in Finset.range 28, (n + i)",1714,1715
+pair_622d6e5c,math_train,h,0,c1,10 * a n ≤ a (n + 1),1716,1717
+pair_622d6e5c,math_train,h,1,aux,a (n + 1) - 10 * a n = 1,1718,1719
+pair_622d6e5c,math_train,a,0,h1,Nat.gcd (a n) (a (n + 1)) = 1,1720,1721
+pair_622d6e5c,math_train,a,1,h2,"∀ n : ℕ, (10 ^ (n + 1) - 1) / 9 = 10 * ((10 ^ n - 1) / 9) + 1",1722,1723
+pair_622d6e5c,math_train,a,2,h2n,(10 ^ (n + 1) - 1) / 9 = 10 * ((10 ^ n - 1) / 9) + 1,1724,1725
+pair_63189cbe,olympiads,h,0,k_cases,k = 1 ∨ k = 2,1726,1727
+pair_63189cbe,olympiads,h,1,with_s,p' + q' + r' = 6 * s - (p + q + r),1728,1729
+pair_63189cbe,olympiads,h,2,cancel_s,6 * s - (p + q + r) = (p + q + r),1730,1731
+pair_63189cbe,olympiads,h,3,expand_prime,p' ^ 2 + q' ^ 2 + r' ^ 2 = 3 * 4 * s ^ 2 - 4 * s * (p + q + r) + p ^ 2 + q ^ 2 + r ^ 2,1732,1733
+pair_63189cbe,olympiads,h,4,eq_zero,3 * 4 * s ^ 2 - 4 * s * (p + q + r) = 0,1734,1735
+pair_63189cbe,olympiads,a,0,hk_eq_1,k = 1 ∨ k = 2,1736,1737
+pair_63189cbe,olympiads,a,1,eq1,p + q + r = p' + q' + r',1738,1739
+pair_63189cbe,olympiads,a,2,eq2,p ^ 2 + q ^ 2 + r ^ 2 = p' ^ 2 + q' ^ 2 + r' ^ 2,1740,1741
+pair_6369b437,math_test,h,0,h1,a = 59,1742,1743
+pair_6369b437,math_test,h,1,h2,b = 19,1744,1745
+pair_6369b437,math_test,h,2,h3,a*b = 1121,1746,1747
+pair_6369b437,math_test,h,3,h4,"Nat.digits 3 1121 = [2,1,1,2,1,1,1]",1748,1749
+pair_6369b437,math_test,a,0,ha1,a = 59,1750,1751
+pair_6369b437,math_test,a,1,hb1,b = 19,1752,1753
+pair_63bff39e,olympiads,h,0,h1,(x - 1) * (y - 1) = 1,1754,1755
+pair_63bff39e,olympiads,h,1,h2,(987654321 : ℝ) - 1 = 987654320,1756,1757
+pair_63bff39e,olympiads,h,2,hy,y = 1 + 1 / 987654320,1758,1759
+pair_63bff39e,olympiads,a,0,h1,(987654321 : ℝ) + y = (987654321 : ℝ) * y,1760,1761
+pair_63bff39e,olympiads,a,1,h2,y = (987654321 : ℝ) / (987654320 : ℝ),1762,1763
+pair_63bff39e,olympiads,a,2,h3,(987654321 : ℝ) + y = (987654321 : ℝ) * y,1764,1765
+pair_63bff39e,olympiads,a,3,h4,(987654321 - (1 : ℝ)) * y = 987654321,1766,1767
+pair_63bff39e,olympiads,a,4,hx1,(987654321 - (1 : ℝ)) ≠ 0,1768,1769
+pair_63bff39e,olympiads,a,5,h5,y = (987654321 : ℝ) / (987654321 - (1 : ℝ)),1770,1771
+pair_63bff39e,olympiads,a,6,hx2,(987654321 - (1 : ℝ)) = (987654320 : ℝ),1772,1773
+pair_665c7b43,secondary_math,h,0,h0,"∀ y≥ 1, f (y) = y^2 + 3 * y - 7",1774,1775
+pair_665c7b43,secondary_math,h,1,hy',y - 1 ≥ 0,1776,1777
+pair_665c7b43,secondary_math,h,2,ha,y=a^2 + 1,1778,1779
+pair_665c7b43,secondary_math,h,3,h1,f (-1 + x ^ 2) = (-1 + x ^ 2) ^ 2 + 3 * (-1 + x ^ 2) - 7,1780,1781
+pair_665c7b43,secondary_math,a,0,h1,x^2 ≥ 2,1782,1783
+pair_665c7b43,secondary_math,a,1,h6,(Real.sqrt (x^2 - 2))^2 = x^2 - 2,1784,1785
+pair_665c7b43,secondary_math,a,2,h7,(Real.sqrt (x^2 - 2))^4 = (x^2 - 2)^2,1786,1787
+pair_665c7b43,secondary_math,a,3,h4,(1 + (Real.sqrt (x^2 - 2))^2 ) = -1 + x^2,1788,1789
+pair_665c7b43,secondary_math,a,4,h3,f (1 + (Real.sqrt (x^2 - 2))^2 ) = - 3 + (Real.sqrt (x^2 - 2))^2 * 5 + (Real.sqrt (x^2 - 2))^4,1790,1791
+pair_665c7b43,secondary_math,a,5,h5,f (-1 + x^2 ) = - 3 + (Real.sqrt (x^2 - 2))^2 * 5 + (Real.sqrt (x^2 - 2))^4,1792,1793
+pair_66fa86a6,cn_contest,h,0,h2,Real.sqrt (3 * (a * b + b * c + c * a)) ≤ a + b + c,1794,1795
+pair_66fa86a6,cn_contest,h,1,h3,3 * (a * b + b * c + c * a) ≤ (a + b + c) ^ 2,1796,1797
+pair_66fa86a6,cn_contest,h,2,h4,Real.sqrt (3 * (a * b + b * c + c * a)) ≤ Real.sqrt ((a + b + c) ^ 2),1798,1799
+pair_66fa86a6,cn_contest,a,0,h1,0 < a * b,1800,1801
+pair_66fa86a6,cn_contest,a,1,h2,0 < b * c,1802,1803
+pair_66fa86a6,cn_contest,a,2,h3,0 < c * a,1804,1805
+pair_66fa86a6,cn_contest,a,3,h4,0 < 3 * (a * b + b * c + c * a),1806,1807
+pair_66fa86a6,cn_contest,a,4,h5,0 < Real.sqrt (3 * (a * b + b * c + c * a)),1808,1809
+pair_66fa86a6,cn_contest,a,5,h6,(Real.sqrt (3 * (a * b + b * c + c * a)))^2 = 3 * (a * b + b * c + c * a),1810,1811
+pair_677749e1,math_train,h,0,h1,"{x : ℝ | |x - 7| - 3 = -2} = {6, 8}",1812,1813
+pair_677749e1,math_train,h,1,h2,|x - 7| = 1,1814,1815
+pair_677749e1,math_train,a,0,h1,"{x : ℝ | |x - 7| - 3 = -2} = {6, 8}",1816,1817
+pair_677749e1,math_train,a,1,h2,|x - 7| = 1,1818,1819
+pair_68279f62,math_train,h,0,ha2,a = b - d,1820,1821
+pair_68279f62,math_train,h,1,hc2,c = b + d,1822,1823
+pair_68279f62,math_train,h,2,h4,(b - d) * b * (b + d) = 64,1824,1825
+pair_68279f62,math_train,a,0,h2',a = b - d,1826,1827
+pair_68279f62,math_train,a,1,h3',c = b + d,1828,1829
+pair_68ecc999,olympiads_ref,h,0,ld,d = 0,1830,1831
+pair_68ecc999,olympiads_ref,h,1,ha,a = 0 ∨ a = 2,1832,1833
+pair_68ecc999,olympiads_ref,h,2,v,9 * b = 16 * e,1834,1835
+pair_68ecc999,olympiads_ref,h,3,u,16 ∣ 9 * b,1836,1837
+pair_68ecc999,olympiads_ref,h,4,ob,b = 0,1838,1839
+pair_68ecc999,olympiads_ref,h,5,ok,0 ≤ k,1840,1841
+pair_68ecc999,olympiads_ref,h,6,k1,k ≠ 0,1842,1843
+pair_68ecc999,olympiads_ref,a,0,h3',n < 153,1844,1845
+pair_68ecc999,olympiads_ref,a,1,h4,100 * a + 10 * b + c < 153,1846,1847
+pair_68ecc999,olympiads_ref,a,2,ha0',a ≤ 9,1848,1849
+pair_68ecc999,olympiads_ref,a,3,hb0',b ≤ 9,1850,1851
+pair_68ecc999,olympiads_ref,a,4,hc0',c ≤ 9,1852,1853
+pair_68ecc999,olympiads_ref,a,5,ha0_pos,0 ≤ a,1854,1855
+pair_68ecc999,olympiads_ref,a,6,hb0_pos,0 ≤ b,1856,1857
+pair_68ecc999,olympiads_ref,a,7,hc0_pos,0 ≤ c,1858,1859
+pair_68f8a65f,math_train,h,0,h1,a = 24,1860,1861
+pair_68f8a65f,math_train,h,1,h2,b = 7,1862,1863
+pair_68f8a65f,math_train,h,2,h3,c = 2,1864,1865
+pair_68f8a65f,math_train,h,3,h4,a * b / c = 4 * (1 + 4 * (1 + 4 * 1)),1866,1867
+pair_68f8a65f,math_train,h,4,h5,"Nat.ofDigits 4 [0,1,1,1] = 4 * (1 + 4 * (1 + 4 * 1))",1868,1869
+pair_68f8a65f,math_train,a,0,ha2,a = 24,1870,1871
+pair_68f8a65f,math_train,a,1,hb2,b = 7,1872,1873
+pair_68f8a65f,math_train,a,2,hc2,c = 2,1874,1875
+pair_690944da,math_test,h,0,mid1,(6 - x) / x = 6 / x - 1,1876,1877
+pair_690944da,math_test,h,1,mid2,(6 - y) / y = 6 / y - 1,1878,1879
+pair_690944da,math_test,h,2,mid3,(6 - z) / z = 6 / z - 1,1880,1881
+pair_690944da,math_test,a,0,h2,x + y = 6 - z,1882,1883
+pair_690944da,math_test,a,1,h3,y + z = 6 - x,1884,1885
+pair_690944da,math_test,a,2,h4,x + z = 6 - y,1886,1887
+pair_690944da,math_test,a,3,h5,(x + y) / z = (6 / z) - 1,1888,1889
+pair_690944da,math_test,a,4,h6,(y + z) / x = (6 / x) - 1,1890,1891
+pair_690944da,math_test,a,5,h7,(x + z) / y = (6 / y) - 1,1892,1893
+pair_6a6d5739,cn_contest,h,0,h1,1 - a > 0,1894,1895
+pair_6a6d5739,cn_contest,h,1,h2,1 - b > 0,1896,1897
+pair_6a6d5739,cn_contest,h,2,h3,1 - c > 0,1898,1899
+pair_6a6d5739,cn_contest,h,3,h4,3 - (a + b + c) > 0,1900,1901
+pair_6a6d5739,cn_contest,h,4,h5,a / (1 - a) + b / (1 - b) + c / (1 - c) - 3 * (a + b + c) / (3 - (a + b + c)) ≥ 0,1902,1903
+pair_6a6d5739,cn_contest,a,0,h1,0 < 1 - a,1904,1905
+pair_6a6d5739,cn_contest,a,1,h2,0 < 1 - b,1906,1907
+pair_6a6d5739,cn_contest,a,2,h3,0 < 1 - c,1908,1909
+pair_6a6d5739,cn_contest,a,3,h4,0 < 3 - (a + b + c),1910,1911
+pair_6a6d5739,cn_contest,a,4,h5,a / (1 - a) + b / (1 - b) + c / (1 - c) - 3 * (a + b + c) / (3 - (a + b + c)) ≥ 0,1912,1913
+pair_6a6d5739,cn_contest,a,5,h6,0 < (1 - a) * (1 - b) * (1 - c) * (3 - (a + b + c)),1914,1915
+pair_6a6d5739,cn_contest,a,6,h7,a / (1 - a) + b / (1 - b) + c / (1 - c) - 3 * (a + b + c) / (3 - (a + b + c)) = (a * (1 - b) * (1 - c) * (3 - (a + b + c)) + b * (1 - a) * (1 - c) * (3 - (a + b + c)) + c * (1 - a) * (1 - b) * (3 - (a + b + c)) - 3 * (a + b + c) * (1 - a) * (1 - b) * (1 - c)) / ((1 - a) * (1 - b) * (1 - c) * (3 - (a + b + c))),1916,1917
+pair_6a7e9054,cn_contest,h,0,eq1,a * 1 ^ 2 + b * 1 + c = 11,1918,1919
+pair_6a7e9054,cn_contest,h,1,eq2,a * 2 ^ 2 + b * 2 + c = 13,1920,1921
+pair_6a7e9054,cn_contest,h,2,eq3,a * 3 ^ 2 + b * 3 + c = 17,1922,1923
+pair_6a7e9054,cn_contest,h,3,eq4,a * 4 ^ 2 + b * 4 + c = 23,1924,1925
+pair_6a7e9054,cn_contest,a,0,eq1,a * 1 ^ 2 + b * 1 + c = 11,1926,1927
+pair_6a7e9054,cn_contest,a,1,eq2,a * 2 ^ 2 + b * 2 + c = 13,1928,1929
+pair_6a7e9054,cn_contest,a,2,eq3,a * 3 ^ 2 + b * 3 + c = 17,1930,1931
+pair_6a7e9054,cn_contest,a,3,eq4,F 4 = a * 4 ^ 2 + b * 4 + c,1932,1933
+pair_6a7e9054,cn_contest,a,4,ha1,a = 1,1934,1935
+pair_6a7e9054,cn_contest,a,5,hb,b = -1,1936,1937
+pair_6a7e9054,cn_contest,a,6,hc,c = 11,1938,1939
+pair_6af41891,olympiads,h,0,h1,(1 + b) ≠ 0,1940,1941
+pair_6af41891,olympiads,h,1,h2,(1 + a) ≠ 0,1942,1943
+pair_6af41891,olympiads,h,2,h3,a^2 + b^2 = 1 + a * b,1944,1945
+pair_6af41891,olympiads,h,3,h4,a^2 - a * b + b^2 = 1,1946,1947
+pair_6af41891,olympiads,h,4,h5,a^3 + b^3 = (a + b) * (a^2 - a * b + b^2),1948,1949
+pair_6af41891,olympiads,a,0,h1,a * (1 + a) + b * (1 + b) = (1 + a) * (1 + b),1950,1951
+pair_6af41891,olympiads,a,1,denom_ne_zero,(1 + b) ≠ 0,1952,1953
+pair_6af41891,olympiads,a,2,denom2_ne_zero,(1 + a) ≠ 0,1954,1955
+pair_6af41891,olympiads,a,3,h2,a^2 - a * b + b^2 = 1,1956,1957
+pair_6af41891,olympiads,a,4,h3,a^3 + b^3 = (a + b) * (a^2 - a * b + b^2),1958,1959
+pair_6bd2438d,olympiads,h,0,h1,(p + q + r) = 6 ∨ (p + q + r) = 7,1960,1961
+pair_6bd2438d,olympiads,h,1,h2,(p + q + r) ^ 2 - 13 * (p + q + r) + 42 = 0,1962,1963
+pair_6bd2438d,olympiads,h,2,h3,(p + q + r - 6) * (p + q + r - 7) = 0,1964,1965
+pair_6bd2438d,olympiads,a,0,h1,q = p * (4 - p),1966,1967
+pair_6bd2438d,olympiads,a,1,h2,r = q * (4 - q),1968,1969
+pair_6bd2438d,olympiads,a,2,h3,p = r * (4 - r),1970,1971
+pair_6bd2438d,olympiads,a,3,h4,(p + q + r - 6) * (p + q + r - 7) = 0,1972,1973
+pair_6e6563f4,olympiads,h,0,aux,2 * (a * b + 1) ≥ (1 + a) * (1 + b),1974,1975
+pair_6e6563f4,olympiads,h,1,gen,"2^(n-1) * ((∏ i, a i) + 1) ≥ ∏ i, (a i + 1)",1976,1977
+pair_6e6563f4,olympiads,a,0,ha0,1 < a 0,1978,1979
+pair_6e6563f4,olympiads,a,1,ha1,1 < a 1,1980,1981
+pair_6e6563f4,olympiads,a,2,ha2,1 < a 2,1982,1983
+pair_6e6563f4,olympiads,a,3,ha3,1 < a 3,1984,1985
+pair_6e6563f4,olympiads,a,4,h1,0 < a 0 - 1,1986,1987
+pair_6e6563f4,olympiads,a,5,h2,0 < a 1 - 1,1988,1989
+pair_6e6563f4,olympiads,a,6,h3,0 < a 2 - 1,1990,1991
+pair_6e6563f4,olympiads,a,7,h4,0 < a 3 - 1,1992,1993
+pair_6e9e1ef1,secondary_math,h,0,h4,0 < (z + x) * (x + y) * (y + z),1994,1995
+pair_6e9e1ef1,secondary_math,h,1,h,(y ^ 2 - x ^ 2) / (z + x) + (z ^ 2 - y ^ 2) / (x + y) + (x ^ 2 - z ^ 2) / (y + z) = (1 / 2) * ((x^2 - y^2) ^ 2 + (y^2 - z^2) ^ 2 + (z^2 - x^2) ^ 2) / ((z + x) * (x + y) * (y + z)),1996,1997
+pair_6e9e1ef1,secondary_math,h,2,h1,(z + x) ≠ 0,1998,1999
+pair_6e9e1ef1,secondary_math,h,3,h2,(x + y) ≠ 0,2000,2001
+pair_6e9e1ef1,secondary_math,h,4,h3,(y + z) ≠ 0,2002,2003
+pair_6e9e1ef1,secondary_math,a,0,h1,0 < z + x,2004,2005
+pair_6e9e1ef1,secondary_math,a,1,h2,0 < x + y,2006,2007
+pair_6e9e1ef1,secondary_math,a,2,h3,0 < y + z,2008,2009
+pair_6e9e1ef1,secondary_math,a,3,h4,0 < (z + x) * (x + y) * (y + z),2010,2011
+pair_6e9e1ef1,secondary_math,a,4,h5,(y ^ 2 - x ^ 2) / (z + x) + (z ^ 2 - y ^ 2) / (x + y) + (x ^ 2 - z ^ 2) / (y + z) ≥ 0,2012,2013
+pair_6e9e1ef1,secondary_math,a,5,pos1,0 < (z + x) * (x + y) * (y + z),2014,2015
+pair_6e9e1ef1,secondary_math,a,6,h6,(y ^ 2 - x ^ 2) / (z + x) + (z ^ 2 - y ^ 2) / (x + y) + (x ^ 2 - z ^ 2) / (y + z) = ( (y ^ 2 - x ^ 2) * (x + y) * (y + z) + (z ^ 2 - y ^ 2) * (z + x) * (y + z) + (x ^ 2 - z ^ 2) * (z + x) * (x + y) ) / ((z + x) * (x + y) * (y + z)),2016,2017
+pair_72782f96,olympiads_ref,h,0,aux_ineq,2 * x * y - (x + y) ≥ 0,2018,2019
+pair_72782f96,olympiads_ref,h,1,equiv_ineq,((2 * a * b - (a + b)) * (a * b - 1)) / (2 * a * b) + ((2 * b * c - (b + c)) * (b * c - 1)) / (2 * b * c) + ((2 * c * a - (c + a)) * (c * a - 1)) / (2 * c * a) ≥ 0,2020,2021
+pair_72782f96,olympiads_ref,a,0,h1,0 < a,2022,2023
+pair_72782f96,olympiads_ref,a,1,h2,0 < b,2024,2025
+pair_72782f96,olympiads_ref,a,2,h3,0 < c,2026,2027
+pair_72782f96,olympiads_ref,a,3,h4,a * b * c > 0,2028,2029
+pair_72782f96,olympiads_ref,a,4,h5,(1 + a * b * c) * (1 / a + 1 / b + 1 / c) - (3 + a + b + c) ≥ 0,2030,2031
+pair_72782f96,olympiads_ref,a,5,h6,(1 + a * b * c) * (1 / a + 1 / b + 1 / c) - (3 + a + b + c) = ( (1 + a * b * c) * (b * c + a * c + a * b) - (3 + a + b + c) * (a * b * c) ) / (a * b * c),2032,2033
+pair_7403e3c1,cn_k12,h,0,ht,t ≤ 1,2034,2035
+pair_7403e3c1,cn_k12,h,1,hf',Antitone (fun (t : ℝ) => -t ^ 3 - 2 * t),2036,2037
+pair_7403e3c1,cn_k12,a,0,h1,"∀ x, f x = - (Real.sin x) ^ 3 - 2 * Real.sin x",2038,2039
+pair_7403e3c1,cn_k12,a,1,hsin,Real.sin (Real.pi / 2) = 1,2040,2041
+pair_7403e3c1,cn_k12,a,2,h2,- (Real.sin x) ^ 3 - 2 * Real.sin x ≥ -3,2042,2043
+pair_74d1dc10,math_train,h,0,hb,n < 50,2044,2045
+pair_74d1dc10,math_train,h,1,h3,n ≡ 40 * n [MOD 13],2046,2047
+pair_74d1dc10,math_train,h,2,h,n ≡ 8 [MOD 13],2048,2049
+pair_74d1dc10,math_train,a,0,h1,k ≥ 941,2050,2051
+pair_74d1dc10,math_train,a,1,h2,k < 1000,2052,2053
+pair_7a0b5cdc,cn_contest,h,0,h4,a = -1 / 15,2054,2055
+pair_7a0b5cdc,cn_contest,h,1,h5,b = 16 / 15,2056,2057
+pair_7a0b5cdc,cn_contest,h,2,h6,c = -13 / 5,2058,2059
+pair_7a0b5cdc,cn_contest,a,0,eq1,a * 13 ^ 2 + b * 13 + c = 0,2060,2061
+pair_7a0b5cdc,cn_contest,a,1,eq2,a * 3 ^ 2 + b * 3 + c = 0,2062,2063
+pair_7a0b5cdc,cn_contest,a,2,eq3,a * 10 ^ 2 + b * 10 + c = 1.4,2064,2065
+pair_7a0b5cdc,cn_contest,a,3,ha',a = -1 / 15,2066,2067
+pair_7a0b5cdc,cn_contest,a,4,hb,b = 16 / 15,2068,2069
+pair_7a0b5cdc,cn_contest,a,5,hc,c = -13 / 5,2070,2071
+pair_7b0b98d6,cn_k12,h,0,x_neq_zero,x ≠ 0,2072,2073
+pair_7b0b98d6,cn_k12,h,1,zero,(x ^ 2 + y ^ 2) * (x ^ 2 - y ^ 2 + 1) = 0,2074,2075
+pair_7b0b98d6,cn_k12,a,0,h1,x^4 = 3 - x^2,2076,2077
+pair_7b0b98d6,cn_k12,a,1,h2,y^4 = 3 + y^2,2078,2079
+pair_7b0b98d6,cn_k12,a,2,h3,(x^2 + y^2) * (x^2 - y^2 + 1) = 0,2080,2081
+pair_7b0b98d6,cn_k12,a,3,h41,x^2 = 0,2082,2083
+pair_7b0b98d6,cn_k12,a,4,h42,y^2 = 0,2084,2085
+pair_7b0b98d6,cn_k12,a,5,h6,x^2 = y^2 - 1,2086,2087
+pair_7b0b98d6,cn_k12,a,6,h7,y^2 - x^2 = 1,2088,2089
+pair_7d3c827c,cn_k12,h,0,formula,a*x^2 + b*x + c = 0 ↔ x = (-b + √(b^2 - 4*a*c)) / (2*a) ∨ x = (-b - √(b^2 - 4*a*c)) / (2*a),2090,2091
+pair_7d3c827c,cn_k12,h,1,h,a*x^2 + b*x + c = 0 ↔ (x + b/(2*a))^2 = (b^2 - 4*a*c)/((2*a)^2),2092,2093
+pair_7d3c827c,cn_k12,h,2,h3,2 * x ^ 2 + -5 * x + 2 = 2 * x ^ 2 - 5 * x + 2,2094,2095
+pair_7d3c827c,cn_k12,a,0,h1,2 * x^2 - 5 * x + 2 = 0,2096,2097
+pair_7d3c827c,cn_k12,a,1,h2,(x - 2) * (2 * x - 1) = 0,2098,2099
+pair_7ebb150b,olympiads_ref,h,0,h1,(a + b) * (b + c) * (c + a) > 0,2100,2101
+pair_7ebb150b,olympiads_ref,h,1,h2,a ^ 2 * (b - c) ^ 2 + b ^ 2 * (c - a) ^ 2 + c ^ 2 * (a - b) ^ 2 ≥ 0,2102,2103
+pair_7ebb150b,olympiads_ref,h,2,h3,(a ^ 2 - b ^ 2) ^ 2 + (b ^ 2 - c ^ 2) ^ 2 + (c ^ 2 - a ^ 2) ^ 2 ≥ 0,2104,2105
+pair_7ebb150b,olympiads_ref,h,3,h4,a * b * (a - b) ^ 2 + b * c * (b - c) ^ 2 + c * a * (c - a) ^ 2 ≥ 0,2106,2107
+pair_7ebb150b,olympiads_ref,a,0,h1,0 < b + c,2108,2109
+pair_7ebb150b,olympiads_ref,a,1,h2,0 < c + a,2110,2111
+pair_7ebb150b,olympiads_ref,a,2,h3,0 < a + b,2112,2113
+pair_7ebb150b,olympiads_ref,a,3,h4,2 * a ^ 2 / (b + c) + 2 * b ^ 2 / (c + a) + 2 * c ^ 2 / (a + b) - (a + b + c) ≥ 0,2114,2115
+pair_7ebb150b,olympiads_ref,a,4,pos1,(b + c) * (c + a) * (a + b) > 0,2116,2117
+pair_7ebb150b,olympiads_ref,a,5,h5,(2 * a ^ 2 / (b + c) + 2 * b ^ 2 / (c + a) + 2 * c ^ 2 / (a + b) - (a + b + c)) = ( (2 * a ^ 2 * (c + a) * (a + b) + 2 * b ^ 2 * (b + c) * (a + b) + 2 * c ^ 2 * (b + c) * (c + a) - (a + b + c) * (b + c) * (c + a) * (a + b) ) / ( (b + c) * (c + a) * (a + b) ) ),2118,2119
+pair_7ef3ed9d,olympiads,h,0,h1,(x / 2) * (18 / x + 1) = 9 + x / 2,2120,2121
+pair_7ef3ed9d,olympiads,h,1,h2,(2 * x - 3) ^ 2 = 4 * x ^ 2 - 12 * x + 9,2122,2123
+pair_7ef3ed9d,olympiads,h,2,h3,4 * x ^ 2 - 25 / 2 * x = 0,2124,2125
+pair_7ef3ed9d,olympiads,h,3,h4,x * (8 * x - 25) = 0,2126,2127
+pair_7ef3ed9d,olympiads,h,4,hx2,x = 25 / 8,2128,2129
+pair_7ef3ed9d,olympiads,a,0,eq1,(2 * x - 3) ^ 2 = 9 + x / 2,2130,2131
+pair_7ef3ed9d,olympiads,a,1,h1,(x / 2) * (18 / x + 1) = 9 + x / 2,2132,2133
+pair_7ef3ed9d,olympiads,a,2,h2,(2 * x - 3) ^ 2 = 4 * x ^ 2 - 12 * x + 9,2134,2135
+pair_7ef3ed9d,olympiads,a,3,h3,4 * x ^ 2 - 12 * x = x / 2,2136,2137
+pair_7ef3ed9d,olympiads,a,4,h4,8 * x ^ 2 - 25 * x = 0,2138,2139
+pair_7ef3ed9d,olympiads,a,5,h5,x * (8 * x - 25) = 0,2140,2141
+pair_7ef3ed9d,olympiads,a,6,hx2,x = 25 / 8,2142,2143
+pair_7f6de6ca,number_theory,h,0,hanpos,0 < a^n,2144,2145
+pair_7f6de6ca,number_theory,h,1,hbnpos,0 < b^n,2146,2147
+pair_7f6de6ca,number_theory,a,0,h2,a ^ n ∣ b ^ n,2148,2149
+pair_7f6de6ca,number_theory,a,1,h3,a ∣ b,2150,2151
+pair_7fda4fb2,olympiads,h,0,sin_arccos,sin (arccos x) = √(1 - x ^ 2),2152,2153
+pair_7fda4fb2,olympiads,h,1,cos_arcsin,cos (arcsin x) = √(1 - x ^ 2),2154,2155
+pair_7fda4fb2,olympiads,a,0,h1,cos (arcsin x) = Real.sqrt (1 - x ^ 2),2156,2157
+pair_7fda4fb2,olympiads,a,1,h2,sin (arccos x) = Real.sqrt (1 - x ^ 2),2158,2159
+pair_7fda4fb2,olympiads,a,2,h3,arcsin (Real.sqrt (1 - x ^ 2)) + arccos (Real.sqrt (1 - x ^ 2)) = π / 2,2160,2161
+pair_7fda4fb2,olympiads,a,3,h4,arcsin (Real.sqrt (1 - x ^ 2)) + arccos (Real.sqrt (1 - x ^ 2)) = π / 2,2162,2163
+pair_8016ed30,olympiads,h,0,h₄,1000 * m ≤ m ^ 2 * m,2164,2165
+pair_8016ed30,olympiads,h,1,h₅,m ^ 2 * m < 1000 * (m + 1),2166,2167
+pair_8016ed30,olympiads,a,0,h1,m ^ 3 = n,2168,2169
+pair_8016ed30,olympiads,a,1,h2,n = m ^ 3,2170,2171
+pair_8016ed30,olympiads,a,2,h3,m ^ 3 = n,2172,2173
+pair_8016ed30,olympiads,a,3,h4,m ≤ 100,2174,2175
+pair_8016ed30,olympiads,a,4,h5,m ^ 3 ≥ 1000 * m + 1000,2176,2177
+pair_8016ed30,olympiads,a,5,h6,m ^ 3 / 1000 = m,2178,2179
+pair_8016ed30,olympiads,a,6,h7,m ^ 3 ≥ 1000 * m,2180,2181
+pair_8016ed30,olympiads,a,7,h7',m ^ 3 < 1000 * (m + 1),2182,2183
+pair_80fe2f92,olympiads,h,0,h₁,(a * c + b * d)^2 ≤ (a^2 + b^2) * (c^2 + d^2),2184,2185
+pair_80fe2f92,olympiads,h,1,h1,(a^2 + b^2) * (c^2 + d^2) - (a * c + b * d)^2 = (a * d - b * c)^2,2186,2187
+pair_80fe2f92,olympiads,h,2,h2,(a * d - b * c)^2 ≥ 0,2188,2189
+pair_80fe2f92,olympiads,h,3,h₂,a^2 + b^2 = 11 / 6,2190,2191
+pair_80fe2f92,olympiads,h,4,h₃,(a * c + b * d)^2 = (2 * x + y)^2,2192,2193
+pair_80fe2f92,olympiads,h,5,h₄,c^2 + d^2 = 3 * x ^2 + 2 * y^2,2194,2195
+pair_80fe2f92,olympiads,h,6,h₅,(2 * x + y) ^ 2 ≤ 11 / 6 * 6,2196,2197
+pair_80fe2f92,olympiads,a,0,h1,(2 * x + y) ^ 2 ≤ 11,2198,2199
+pair_80fe2f92,olympiads,a,1,h2,2 * x + y ≤ Real.sqrt 11,2200,2201
+pair_80fe2f92,olympiads,a,2,h3,(2 * x + y) ^ 2 ≤ 11,2202,2203
+pair_80fe2f92,olympiads,a,3,h4,(2 * x + y) ≤ Real.sqrt 11,2204,2205
+pair_820bfdd6,cn_contest,h,0,ht1,t1 = 4 / 20,2206,2207
+pair_820bfdd6,cn_contest,h,1,ht3,t3 = 8 / 12,2208,2209
+pair_820bfdd6,cn_contest,a,0,ht1,t1 = 0.2,2210,2211
+pair_820bfdd6,cn_contest,a,1,ht2,t2 = (1 / 3 : ℝ),2212,2213
+pair_820bfdd6,cn_contest,a,2,ht3,t3 = (2 / 3 : ℝ),2214,2215
+pair_820bfdd6,cn_contest,a,3,h8,d1 + d2 = (12 : ℝ),2216,2217
+pair_820bfdd6,cn_contest,a,4,h9,t1 + t2 + t3 = (6 / 5 : ℝ),2218,2219
+pair_8239358d,olympiads,h,0,h0,0 ≤ (x + y)^4 - 8 * x * y * (x^2 + y^2),2220,2221
+pair_8239358d,olympiads,h,1,h1,8 * x * y * (x^2 + y^2) ≤ (x + y)^4,2222,2223
+pair_8239358d,olympiads,h,2,h2,0 ≤ (x + y)^2 - 4 * x * y,2224,2225
+pair_8239358d,olympiads,h,3,h3,4 * x * y ≤ (x + y)^2,2226,2227
+pair_8239358d,olympiads,h,4,h4,4 * x * y * (8 * x * y * (x^2 + y^2)) ≤ (x + y)^2 * (x + y)^4,2228,2229
+pair_8239358d,olympiads,h,5,h5,x^2 * y^2 * (x^2 + y^2) ≤ 2,2230,2231
+pair_8239358d,olympiads,a,0,h1,y = 2 - x,2232,2233
+pair_8239358d,olympiads,a,1,h2,x * y ≤ 1,2234,2235
+pair_83baa99c,olympiads,h,0,h2,(3 * x^4 + 24 * x^2 + 2013) % 25 = 0,2236,2237
+pair_83baa99c,olympiads,h,1,h3,(3 * x^4 + 24 * x^2 + 2013) % 25 ≠ 0,2238,2239
+pair_83baa99c,olympiads,h,2,h4,x % 25 = 0 ∨ x % 25 = 1 ∨ x % 25 = 2 ∨ x % 25 = 3 ∨ x % 25 = 4 ∨ x % 25 = 5 ∨ x % 25 = 6 ∨ x % 25 = 7 ∨ x % 25 = 8 ∨ x % 25 = 9 ∨ x % 25 = 10 ∨ x % 25 = 11 ∨ x % 25 = 12 ∨ x % 25 = 13 ∨ x % 25 = 14 ∨ x % 25 = 15 ∨ x % 25 = 16 ∨ x % 25 = 17 ∨ x % 25 = 18 ∨ x % 25 = 19 ∨ x % 25 = 20 ∨ x % 25 = 21 ∨ x % 25 = 22 ∨ x % 25 = 23 ∨ x % 25 = 24,2240,2241
+pair_83baa99c,olympiads,a,0,eq1,3 * x^4 + 24 * x^2 + 2013 = 25 * y^2,2242,2243
+pair_83baa99c,olympiads,a,1,eq2,(3 * x^4 + 24 * x^2 + 2013) % 25 = 0,2244,2245
+pair_83baa99c,olympiads,a,2,h1,x % 25 = 0 ∨ x % 25 = 1 ∨ x % 25 = 2 ∨ x % 25 = 3 ∨ x % 25 = 4 ∨ x % 25 = 5 ∨ x % 25 = 6 ∨ x % 25 = 7 ∨ x % 25 = 8 ∨ x % 25 = 9 ∨ x % 25 = 10 ∨ x % 25 = 11 ∨ x % 25 = 12 ∨ x % 25 = 13 ∨ x % 25 = 14 ∨ x % 25 = 15 ∨ x % 25 = 16 ∨ x % 25 = 17 ∨ x % 25 = 18 ∨ x % 25 = 19 ∨ x % 25 = 20 ∨ x % 25 = 21 ∨ x % 25 = 22 ∨ x % 25 = 23 ∨ x % 25 = 24,2246,2247
+pair_84aa00eb,amc_aime,h,0,s1,brenda_alone = ((1 : ℚ) / 9) * bricks,2248,2249
+pair_84aa00eb,amc_aime,h,1,s2,brandon_alone = ((1 : ℚ) / 10) * bricks,2250,2251
+pair_84aa00eb,amc_aime,h,2,s3,bricks = 5 * (((1 : ℚ) / 9) * bricks + ((1 : ℚ) / 10) * bricks - 10),2252,2253
+pair_84aa00eb,amc_aime,a,0,eq1,brenda_alone = bricks / 9,2254,2255
+pair_84aa00eb,amc_aime,a,1,eq2,brandon_alone = bricks / 10,2256,2257
+pair_856882cd,math_test,h,0,h1,√(60*x) * √(12*x) * √(63*x) = √((60*x)*(12*x)*(63*x)),2258,2259
+pair_856882cd,math_test,h,1,hh1,√((60*x)*(12*x)*(63*x)) = √((60*x)*(12*x)) * √(63*x),2260,2261
+pair_856882cd,math_test,h,2,hh2,√((60*x)*(12*x)) = √(60*x) * √(12*x),2262,2263
+pair_856882cd,math_test,h,3,h2,(60*x)*(12*x)*(63*x) = (60*12*63) * x^2 * x,2264,2265
+pair_856882cd,math_test,h,4,h3,(60*12*63) * x^2 * x = (36*x)^2 * (35*x),2266,2267
+pair_856882cd,math_test,a,0,h1,Real.sqrt (60 * x) * Real.sqrt (12 * x) * Real.sqrt (63 * x) = Real.sqrt ((60 * x) * (12 * x) * (63 * x)),2268,2269
+pair_856882cd,math_test,a,1,h2,(60 * x) * (12 * x) * (63 * x) = (36 * x) ^ 2 * (35 * x),2270,2271
+pair_856882cd,math_test,a,2,h3,Real.sqrt ((36 * x) ^ 2 * (35 * x)) = (36 * x) * Real.sqrt (35 * x),2272,2273
+pair_856882cd,math_test,a,3,hx2,Real.sqrt ((36 * x) ^ 2 * (35 * x)) = Real.sqrt ((36 * x) ^ 2) * Real.sqrt (35 * x),2274,2275
+pair_856882cd,math_test,a,4,hx3,Real.sqrt ((36 * x) ^ 2) = (36 * x),2276,2277
+pair_89c9c092,amc_aime,h,0,hab,0≤ a*b,2278,2279
+pair_89c9c092,amc_aime,h,1,h1,a ^ 2 + 2 * a * b + b ^ 2 - a * b * 4= (a - b) ^ 2,2280,2281
+pair_89c9c092,amc_aime,a,0,h1,(a + b) ^ 2 / 4 ≥ a * b,2282,2283
+pair_89c9c092,amc_aime,a,1,h2,( (a + b) / 2 ) ^ 2 ≥ a * b,2284,2285
+pair_89c9c092,amc_aime,a,2,h3,( (a + b) / 2 ) ≥ 0,2286,2287
+pair_89c9c092,amc_aime,a,3,h4,sqrt (( (a + b) / 2 ) ^ 2) ≥ sqrt (a * b),2288,2289
+pair_89c9c092,amc_aime,a,4,h5,sqrt ( ( (a + b ) / 2 ) ^ 2 ) = ( (a + b ) / 2 ),2290,2291
+pair_89c9c092,amc_aime,a,5,h6,( (a + b ) / 2 ) ≥ sqrt (a * b ),2292,2293
+pair_89f14cf3,math_test,h,0,h,a * 125 + b * 25 + c * 5 + d = 4 * Real.log 4 - 6 * Real.log 3 + 4 * Real.log 2,2294,2295
+pair_89f14cf3,math_test,h,1,h1,Real.log (4 / 3) = Real.log 4 - Real.log 3,2296,2297
+pair_89f14cf3,math_test,h,2,h2,2 * Real.log 2 = Real.log 4,2298,2299
+pair_89f14cf3,math_test,a,0,eq1,a + b + c + d = 0,2300,2301
+pair_89f14cf3,math_test,a,1,eq2,a * (2:ℝ) ^ 3 + b * (2:ℝ) ^ 2 + c * (2:ℝ) + d = Real.log 2,2302,2303
+pair_89f14cf3,math_test,a,2,eq3,a * (3:ℝ) ^ 3 + b * (3:ℝ) ^ 2 + c * (3:ℝ) + d = Real.log 3,2304,2305
+pair_89f14cf3,math_test,a,3,eq4,a * (4:ℝ) ^ 3 + b * (4:ℝ) ^ 2 + c * (4:ℝ) + d = Real.log 4,2306,2307
+pair_89f14cf3,math_test,a,4,eq5,P 5 = a * (5:ℝ) ^ 3 + b * (5:ℝ) ^ 2 + c * (5:ℝ) + d,2308,2309
+pair_89f14cf3,math_test,a,5,h1,Real.log 4 = 2 * Real.log 2,2310,2311
+pair_89f14cf3,math_test,a,6,h21,a * (5:ℝ) ^ 3 + b * (5:ℝ) ^ 2 + c * (5:ℝ) + d = 6 * Real.log (4 / 3),2312,2313
+pair_89f14cf3,math_test,a,7,h12,Real.log (4 / 3) = Real.log 4 - Real.log 3,2314,2315
+pair_8d2bcfbf,aops_forum,h,0,pab,0 < a*b,2316,2317
+pair_8d2bcfbf,aops_forum,h,1,pabc,0 < a*b*c,2318,2319
+pair_8d2bcfbf,aops_forum,a,0,h1,0 < a * b * c,2320,2321
+pair_8d2bcfbf,aops_forum,a,1,h2,√(a * b * c) ≥ 0,2322,2323
+pair_8d2bcfbf,aops_forum,a,2,h3,(√(a * b * c)) ^ 2 = a * b * c,2324,2325
+pair_8d2bcfbf,aops_forum,a,3,h4,a + b + c + 2 * a * b * c - (a * b + b * c + c * a) > 0,2326,2327
+pair_8f6e0946,math_train,h,0,h₀,l * w + w * h + l * h = 852,2328,2329
+pair_8f6e0946,math_train,h,1,h₁,l + w + h = 52,2330,2331
+pair_8f6e0946,math_train,a,0,h1,l * w + w * h + l * h = 852,2332,2333
+pair_8f6e0946,math_train,a,1,h2,l + w + h = 52,2334,2335
+pair_8f6e0946,math_train,a,2,eq1,(l + 1) * (w + 1) * (h + 1) = l * w * h + (l * w + w * h + l * h) + (l + w + h) + 1,2336,2337
+pair_90ba49de,olympiads,h,0,h2,(a + b) * (c + d) = 68,2338,2339
+pair_90ba49de,olympiads,h,1,h3,(a + b) * 4 = 68,2340,2341
+pair_90ba49de,olympiads,h,2,h4,a + b = 17,2342,2343
+pair_90ba49de,olympiads,a,0,h2,a * c + a * d + b * c + d * b = (a + b) * (c + d),2344,2345
+pair_90ba49de,olympiads,a,1,h4,a + b = 17,2346,2347
+pair_9104a005,cn_k12,h,0,formula,a*x^2 + b*x + c = 0 ↔ x = (-b + √(b^2 - 4*a*c)) / (2*a) ∨ x = (-b - √(b^2 - 4*a*c)) / (2*a),2348,2349
+pair_9104a005,cn_k12,h,1,h,a*x^2 + b*x + c = 0 ↔ (x + b/(2*a))^2 = (b^2 - 4*a*c)/((2*a)^2),2350,2351
+pair_9104a005,cn_k12,h,2,h0,√56 = 2 * √14,2352,2353
+pair_9104a005,cn_k12,h,3,h1,(4 + √56) / 4 = (2 + √14) / 2,2354,2355
+pair_9104a005,cn_k12,h,4,h2,(4 - √56) / 4 = (2 - √14) / 2,2356,2357
+pair_9104a005,cn_k12,a,0,h1,2 * x ^ 2 - 4 * x - 5 = 0,2358,2359
+pair_9104a005,cn_k12,a,1,h2,(x - (2 + Real.sqrt 14) / 2) * (x - (2 - Real.sqrt 14) / 2) = 0,2360,2361
+pair_91985085,olympiads_ref,h,0,h1,n ∣ (n^2 + n),2362,2363
+pair_91985085,olympiads_ref,h,1,h2,n ∣ 2,2364,2365
+pair_91985085,olympiads_ref,h,2,h3,n ≤ 2,2366,2367
+pair_91985085,olympiads_ref,a,0,h1,n ∣ (n^2 + n + 2),2368,2369
+pair_91985085,olympiads_ref,a,1,h4,n ∣ (n * (n + 1)),2370,2371
+pair_91985085,olympiads_ref,a,2,h5,n ∣ (n ^ 2 + n + 2 - (n * (n + 1))),2372,2373
+pair_91985085,olympiads_ref,a,3,h6,(n ^ 2 + n + 2 - (n * (n + 1))) = 2,2374,2375
+pair_91985085,olympiads_ref,a,4,h2,n ∣ 2,2376,2377
+pair_91985085,olympiads_ref,a,5,h7,n ≤ 2,2378,2379
+pair_93909f26,math_test,h,0,neq2,n = 3,2380,2381
+pair_93909f26,math_test,h,1,xyne,x - y ≠ 0,2382,2383
+pair_93909f26,math_test,h,2,yzne,y - z ≠ 0,2384,2385
+pair_93909f26,math_test,h,3,zxne,z - x ≠ 0,2386,2387
+pair_93909f26,math_test,a,0,h4,((y - x) ^ 2 / ((y - z) * (z - x)) + (z - y) ^ 2 / ((z - x) * (x - y)) + (x - z) ^ 2 / ((x - y) * (y - z)) ) = 3,2388,2389
+pair_93909f26,math_test,a,1,h5,x - y ≠ 0,2390,2391
+pair_93909f26,math_test,a,2,h6,y - z ≠ 0,2392,2393
+pair_93909f26,math_test,a,3,h7,z - x ≠ 0,2394,2395
+pair_93909f26,math_test,a,4,ht',t = ((y - x) ^ 2 / ((y - z) * (z - x)) + (z - y) ^ 2 / ((z - x) * (x - y)) + (x - z) ^ 2 / ((x - y) * (y - z)) ),2396,2397
+pair_9492d22f,amc_aime,h,0,H1,6 + 12 + 24 + 48 + 96 = (186 : ℝ),2398,2399
+pair_9492d22f,amc_aime,h,1,Hfactor,(186 : ℝ) = 31*6,2400,2401
+pair_9492d22f,amc_aime,h,2,H2,48 - 31 = (17 : ℝ),2402,2403
+pair_9492d22f,amc_aime,h,3,H3,96 - 31 = (65 : ℝ),2404,2405
+pair_9492d22f,amc_aime,a,0,eq1,x2 = x1 + 6,2406,2407
+pair_9492d22f,amc_aime,a,1,eq2,x3 = x2 + 12,2408,2409
+pair_9492d22f,amc_aime,a,2,eq3,x4 = x3 + 24,2410,2411
+pair_9492d22f,amc_aime,a,3,eq4,x5 = x4 + 48,2412,2413
+pair_9492d22f,amc_aime,a,4,hx1,x1 = -25,2414,2415
+pair_9492d22f,amc_aime,a,5,hx4,x4 = 17,2416,2417
+pair_9492d22f,amc_aime,a,6,hx5,x5 = 65,2418,2419
+pair_993b7ef0,olympiads,h,0,hab',a - b ≠ 0,2420,2421
+pair_993b7ef0,olympiads,h,1,_1,b = sqrt b * sqrt b,2422,2423
+pair_993b7ef0,olympiads,h,2,_2,sqrt 245 = sqrt 35 * sqrt 7,2424,2425
+pair_993b7ef0,olympiads,a,0,h1,a * b - b ^ 2 = b * (a - b),2426,2427
+pair_993b7ef0,olympiads,a,1,h2,a ^ 2 - a * b = a * (a - b),2428,2429
+pair_993b7ef0,olympiads,a,2,h3,a - b ≠ 0,2430,2431
+pair_993b7ef0,olympiads,a,3,h4,(2 * (a ^ 2 - a * b) / (35 * b)) * (10 * a / (7 * (a * b - b ^ 2))) = (2 * a / (7 * b)) ^ 2,2432,2433
+pair_993b7ef0,olympiads,a,4,h5,a - b ≠ 0,2434,2435
+pair_993b7ef0,olympiads,a,5,h7,sqrt ((2 * a / (7 * b)) ^ 2) = (2 * a / (7 * b)),2436,2437
+pair_993b7ef0,olympiads,a,6,ha7,(2 * a / (7 * b)) > 0,2438,2439
+pair_994a5f19,olympiads_ref,h,0,neq,v_peo' ≠ 0,2440,2441
+pair_994a5f19,olympiads_ref,h,1,eq_aux,(500 * (2 * v_peo') + 2000) / (4 * (2 * v_peo')) = 125 + 250 / v_peo',2442,2443
+pair_994a5f19,olympiads_ref,h,2,ineq_aux,250 / v_peo' ≤ 50,2444,2445
+pair_994a5f19,olympiads_ref,a,0,h1,(1000 * v_peo' + 2000) / (8 * v_peo') ≤ 175,2446,2447
+pair_994a5f19,olympiads_ref,a,1,eq1,5 * (( (100 : ℝ) / 2 ) / (2 : ℝ)) + 5 * (( (100 : ℝ) / 2 ) / v_peo') = (1000 * v_peo' + 2000) / (8 * v_peo'),2448,2449
+pair_994a5f19,olympiads_ref,a,2,h2,(1000 * v_peo' + 2000) ≤ 175 * (8 * v_peo'),2450,2451
+pair_994a5f19,olympiads_ref,a,3,h3,(1000 * v_peo' + 2000) / (8 * v_peo') ≤ 175,2452,2453
+pair_994a5f19,olympiads_ref,a,4,h4,(8 * v_peo') > 0,2454,2455
+pair_994a5f19,olympiads_ref,a,5,h5,(1000 * v_peo' + 2000) ≤ 175 * (8 * v_peo'),2456,2457
+pair_997d6d90,olympiads,h,0,o,k = 0,2458,2459
+pair_997d6d90,olympiads,h,1,s,(a - b) + (b - c) + (c - d) + (d - e) + (e - a) = 0,2460,2461
+pair_997d6d90,olympiads,a,0,h11,(a - b) = (b - c) ∨ (a - b) = - (b - c),2462,2463
+pair_997d6d90,olympiads,a,1,h12,(b - c) = (c - d) ∨ (b - c) = - (c - d),2464,2465
+pair_997d6d90,olympiads,a,2,h13,(c - d) = (d - e) ∨ (c - d) = - (d - e),2466,2467
+pair_997d6d90,olympiads,a,3,h14,(d - e) = (e - a) ∨ (d - e) = - (e - a),2468,2469
+pair_99b89cb7,olympiads,h,0,eq3,"∫ z in (0)..2, (4 + z) = 10",2470,2471
+pair_99b89cb7,olympiads,h,1,eq2,"∫ y in (x^2)..1, 10 = 10 * (1 - x^2)",2472,2473
+pair_99b89cb7,olympiads,a,0,eq3,"∫ z in (0)..2, (4 + z) = 10",2474,2475
+pair_99b89cb7,olympiads,a,1,eq2,"∀ x : ℝ, ∫ y in (x^2)..1, ∫ z in (0)..2, (4 + z) = 10 * (1 - x^2)",2476,2477
+pair_99b95cc2,olympiads_ref,h,0,dis_eq,"∀ (n : ℤ), ∀ (d : ℤ), sq_dis k n (n + d) = sq_dis k 0 d",2478,2479
+pair_99b95cc2,olympiads_ref,h,1,k_sq,k ^ 2 = (945) / (16 : ℝ),2480,2481
+pair_99b95cc2,olympiads_ref,a,0,eq1,16 + 16 * k ^ 2 = 961,2482,2483
+pair_99b95cc2,olympiads_ref,a,1,eq2,k ^ 2 = (945 / 16 : ℝ),2484,2485
+pair_9faef40c,olympiads,h,0,h1,x ^ 2 + 1 / x ^ 2 = 0,2486,2487
+pair_9faef40c,olympiads,h,1,h2,x ^ 2 ≥ 0,2488,2489
+pair_9faef40c,olympiads,h,2,h3,1 / x ^ 2 > 0,2490,2491
+pair_9faef40c,olympiads,h,3,h4,x ^ 2 + 1 / x ^ 2 > 0,2492,2493
+pair_9faef40c,olympiads,a,0,h1,x * (1 / x) = 1,2494,2495
+pair_9faef40c,olympiads,a,1,h2,x^2 + 1 / x^2 = 0,2496,2497
+pair_9faef40c,olympiads,a,2,eq1,x^2 + 1 / x^2 = (x + 1 / x)^2 - 2 * (x * (1 / x)),2498,2499
+pair_9faef40c,olympiads,a,3,h2sq,(Real.sqrt 2)^2 = 2,2500,2501
+pair_9faef40c,olympiads,a,4,h3,x^2 + 1 / x^2 > 0,2502,2503
+pair_9faef40c,olympiads,a,5,h4,x^2 > 0,2504,2505
+pair_9faef40c,olympiads,a,6,h5,1 / x^2 > 0,2506,2507
+pair_a0cf4dfe,amc_aime,h,0,ha₇',a 7 = 32,2508,2509
+pair_a0cf4dfe,amc_aime,h,1,h₁,2 ^ 27 ≤ 2 ^ a 7,2510,2511
+pair_a0cf4dfe,amc_aime,h,2,h₂,a 7 * 2 ^ 27 = 2 ^ (a 7 - 27 + 27),2512,2513
+pair_a0cf4dfe,amc_aime,h,3,hb5,5 ≤ b,2514,2515
+pair_a0cf4dfe,amc_aime,h,4,hb_aux,2 ^ b < 2 ^ (2 ^ b - 27),2516,2517
+pair_a0cf4dfe,amc_aime,a,0,h7,a 7 = a 0 + d * 7,2518,2519
+pair_a0cf4dfe,amc_aime,a,1,ha2_eq,a 2 = a 0 + d * 2,2520,2521
+pair_a0cf4dfe,amc_aime,a,2,h3,a 0 + d * 2 < 12,2522,2523
+pair_a0cf4dfe,amc_aime,a,3,h4,a 0 < 12,2524,2525
+pair_a0cf4dfe,amc_aime,a,4,h5,d < 6,2526,2527
+pair_a0e4b1be,math_test,h,0,hc,√(40 * 9) = √40 * √9,2528,2529
+pair_a0e4b1be,math_test,h,1,sqrt9_eq_3,√9 = 3,2530,2531
+pair_a0e4b1be,math_test,h,2,sqrt49_eq_7,√49 = 7,2532,2533
+pair_a0e4b1be,math_test,h,3,hc2,√(4 * 10) = √4 * √10,2534,2535
+pair_a0e4b1be,math_test,h,4,sqrt4_eq_2,√4 = 2,2536,2537
+pair_a0e4b1be,math_test,a,0,h1,Real.sqrt (40 * 9) = Real.sqrt 360,2538,2539
+pair_a0e4b1be,math_test,a,1,h2,Real.sqrt 360 = 6 * Real.sqrt 10,2540,2541
+pair_a0e4b1be,math_test,a,2,h3,Real.sqrt 49 = 7,2542,2543
+pair_a1be69b6,olympiads,h,0,h1,f x + 3 ≥ f (x + 1) + 2,2544,2545
+pair_a1be69b6,olympiads,h,1,h2,f x + 4 ≤ f (x + 1) + 3,2546,2547
+pair_a1be69b6,olympiads,h,2,h_eq,f (x + 1) = f x + 1,2548,2549
+pair_a1be69b6,olympiads,h,3,h,f n = n + 1,2550,2551
+pair_a1be69b6,olympiads,a,0,h1,f x + 3 ≥ f (x + 1) + 2,2552,2553
+pair_a1be69b6,olympiads,a,1,h2,f x + 4 ≤ f (x + 1) + 3,2554,2555
+pair_a1be69b6,olympiads,a,2,h3,f (x + 1) = f x + 1,2556,2557
+pair_a1be69b6,olympiads,a,3,h8,f (x + 1) ≤ f x + 1,2558,2559
+pair_a1be69b6,olympiads,a,4,h9,f (x + 1) ≥ f x + 1,2560,2561
+pair_a1be69b6,olympiads,a,5,h4,"∀ (n : ℕ), f (1 + (↑n : ℝ)) = 2 + (↑n : ℝ)",2562,2563
+pair_a1be69b6,olympiads,a,6,eq1,f (1 + ((↑(n + 1) : ℝ)) ) = f ( (1 + (↑n : ℝ)) + 1 ),2564,2565
+pair_a1be69b6,olympiads,a,7,eq2,f ( (1 + (↑n : ℝ)) + 1 ) = f (1 + (↑n : ℝ)) + 1,2566,2567
+pair_a243cec8,olympiads_ref,h,0,h1,"{x : ℤ | x ∈ Finset.Icc 1 2004 ∧ ∃ m n : ℤ, m > 0 ∧ n > 0 ∧ ((↑x : ℝ) = (m * n + 1) / (m + n))} = Set.Icc 1 2004",2568,2569
+pair_a243cec8,olympiads_ref,h,1,h3,x ^ 2 ≥ 1,2570,2571
+pair_a243cec8,olympiads_ref,a,0,h1,"{x : ℤ | x ∈ Finset.Icc 1 2004 ∧ ∃ m n : ℤ, m > 0 ∧ n > 0 ∧ ((↑x : ℝ) = (m * n + 1) / (m + n))} = Set.Icc (1 : ℤ) 2004",2572,2573
+pair_a243cec8,olympiads_ref,a,1,h3_eq,(↑x : ℝ) = ( ( (x + 1 : ℝ) ) * ( (x ^ 2 + x - 1 : ℝ) ) + 1 ) / ( (x + 1 : ℝ) + (x ^ 2 + x - 1 : ℝ) ),2574,2575
+pair_a243cec8,olympiads_ref,a,2,eq1,( (x + 1 : ℝ) ) * ( (x ^ 2 + x - 1 : ℝ) ) + 1 = (x : ℝ) * ( (x + 1 : ℝ) + (x ^ 2 + x - 1 : ℝ) ),2576,2577
+pair_a243cec8,olympiads_ref,a,3,h4,( (x + 1 : ℝ) + (x ^ 2 + x - 1 : ℝ) ) ≠ 0,2578,2579
+pair_a243cec8,olympiads_ref,a,4,h5,(x : ℝ) ≥ (1 : ℝ),2580,2581
+pair_a3b6f8e9,aops_forum,h,0,hb2,0 < b^2,2582,2583
+pair_a3b6f8e9,aops_forum,h,1,ha2,0 < a^2,2584,2585
+pair_a3b6f8e9,aops_forum,h,2,h1,b < a,2586,2587
+pair_a3b6f8e9,aops_forum,h,3,h2,a < 1,2588,2589
+pair_a3b6f8e9,aops_forum,h,4,h3,a^2 + b^2 < 1,2590,2591
+pair_a3b6f8e9,aops_forum,a,0,h1,b < a,2592,2593
+pair_a3b6f8e9,aops_forum,a,1,h2,a < 1,2594,2595
+pair_a3b6f8e9,aops_forum,a,2,h3,a^2 + b^2 < 1,2596,2597
+pair_a4ad52ae,cn_k12,h,0,h',"∀ x, -1 * x * x + 6 * x - 6 + m ≠ 0",2598,2599
+pair_a4ad52ae,cn_k12,h,1,hrange,Set.range (fun x ↦ -1 * x * x + 6 * x - 6 + m) = {y | y ≤ m + 3},2600,2601
+pair_a4ad52ae,cn_k12,h,2,hm,0 ≤ m + 3,2602,2603
+pair_a4ad52ae,cn_k12,a,0,hne,"∃ x, 2 * x ^ 2 + 4 * x + m = 3 * x ^ 2 - 2 * x + 6",2604,2605
+pair_a4ad52ae,cn_k12,a,1,h1,3 + m ≥ 0,2606,2607
+pair_a663aca4,math_train,h,0,sqrt108,√108 = 6 * √3,2608,2609
+pair_a663aca4,math_train,h,1,_2sqrt12,2 * √12 = 4 * √3,2610,2611
+pair_a663aca4,math_train,h,2,_2sqrt27,2 * √27 = 6 * √3,2612,2613
+pair_a663aca4,math_train,a,0,h1,Real.sqrt 108 = 6 * Real.sqrt 3,2614,2615
+pair_a663aca4,math_train,a,1,h2,Real.sqrt 12 = 2 * Real.sqrt 3,2616,2617
+pair_a663aca4,math_train,a,2,h3,Real.sqrt 27 = 3 * Real.sqrt 3,2618,2619
+pair_a663aca4,math_train,a,3,h4,Real.sqrt 3 > 0,2620,2621
+pair_a9100fa4,amc_aime,h,0,hk,k ∣ 2009,2622,2623
+pair_a9100fa4,amc_aime,h,1,hak,2009 = a * k^2,2624,2625
+pair_a9100fa4,amc_aime,h,2,h41k,¬ 41 ∣ k,2626,2627
+pair_a9100fa4,amc_aime,a,0,h3,a * k ^ 2 = 2009,2628,2629
+pair_a9100fa4,amc_aime,a,1,h5,k ≤ 44,2630,2631
+pair_a9100fa4,amc_aime,a,2,h6',k ^ 2 ≥ 2025,2632,2633
+pair_a9100fa4,amc_aime,a,3,h7,a * k ^ 2 = 2009,2634,2635
+pair_abe2c6a9,olympiads,h,0,hx,x = (6 * z * 4 - y) / 4,2636,2637
+pair_abe2c6a9,olympiads,h,1,hy,y = (z * 40 - z * 6) * (4 / 19),2638,2639
+pair_abe2c6a9,olympiads,h,2,hx1,x = (6 * z * 4 - (z * 40 - z * 6) * (4 / 19)) / 4,2640,2641
+pair_abe2c6a9,olympiads,h,3,hu1,u = (92 + z * (376 / 19)) * (1 / 90),2642,2643
+pair_abe2c6a9,olympiads,h,4,hu2,u = (-92 + z * (488 / 19)) * (1 / 108),2644,2645
+pair_abe2c6a9,olympiads,h,5,hrz,46 / 45 + 23 / 27 = z * (122 / 513) - z * (188 / 855),2646,2647
+pair_abe2c6a9,olympiads,h,6,hrz',z = 209 / 2,2648,2649
+pair_abe2c6a9,olympiads,a,0,eq1,x = 440,2650,2651
+pair_abe2c6a9,olympiads,a,1,eq2,y = 748,2652,2653
+pair_abe2c6a9,olympiads,a,2,eq3,z = 209 / 2,2654,2655
+pair_abe2c6a9,olympiads,a,3,eq4,u = 24,2656,2657
+pair_acaa8786,aops_forum,h,0,h1,a - b ≠ 0,2658,2659
+pair_acaa8786,aops_forum,h,1,h2,a - c ≠ 0,2660,2661
+pair_acaa8786,aops_forum,h,2,h3,b - c ≠ 0,2662,2663
+pair_acaa8786,aops_forum,h,3,h4,b - a ≠ 0,2664,2665
+pair_acaa8786,aops_forum,h,4,h5,c - a ≠ 0,2666,2667
+pair_acaa8786,aops_forum,h,5,h6,c - b ≠ 0,2668,2669
+pair_acaa8786,aops_forum,h,6,eq,a ^ 3 / ((a - b) * (a - c)) + b ^ 3 / ((b - c) * (b - a)) + c ^ 3 / ((c - a) * (c - b)) = a + b + c,2670,2671
+pair_acaa8786,aops_forum,a,0,h1,a ^ 3 / ((a - b) * (a - c)) + b ^ 3 / ((b - c) * (b - a)) + c ^ 3 / ((c - a) * (c - b)) = a + b + c,2672,2673
+pair_acaa8786,aops_forum,a,1,h2,a - b ≠ 0,2674,2675
+pair_acaa8786,aops_forum,a,2,h3,a - c ≠ 0,2676,2677
+pair_acaa8786,aops_forum,a,3,h4,b - c ≠ 0,2678,2679
+pair_acaa8786,aops_forum,a,4,h5,b - a ≠ 0,2680,2681
+pair_acaa8786,aops_forum,a,5,h6,c - a ≠ 0,2682,2683
+pair_acaa8786,aops_forum,a,6,h7,c - b ≠ 0,2684,2685
+pair_ade31444,math_train,h,0,ane0,a ≠ 0,2686,2687
+pair_ade31444,math_train,h,1,h1,a ^ 2 + 1 / a ^ 2 = 14,2688,2689
+pair_ade31444,math_train,a,0,ha1,a ≠ 0,2690,2691
+pair_ade31444,math_train,a,1,h1,a + 1 / a = 4,2692,2693
+pair_ade31444,math_train,a,2,h2,a ^ 2 + 1 / a ^ 2 = 14,2694,2695
+pair_ade31444,math_train,a,3,h3,a ^ 2 + 1 / a ^ 2 = (a + 1 / a) ^ 2 - 2,2696,2697
+pair_ade31444,math_train,a,4,h4,a ^ 4 + 1 / a ^ 4 = 194,2698,2699
+pair_ade31444,math_train,a,5,h5,a ^ 4 + 1 / a ^ 4 = (a ^ 2 + 1 / a ^ 2) ^ 2 - 2,2700,2701
+pair_af58b0a0,cn_k12,h,0,hx1,x ^ 2 + x > 0,2702,2703
+pair_af58b0a0,cn_k12,h,1,hy1,y ^ 2 + y > 0,2704,2705
+pair_af58b0a0,cn_k12,a,0,h1,0 < x,2706,2707
+pair_af58b0a0,cn_k12,a,1,h2,0 < y,2708,2709
+pair_af58b0a0,cn_k12,a,2,h3,x < y,2710,2711
+pair_af58b0a0,cn_k12,a,3,h4,x ^ 2 + x < y ^ 2 + y,2712,2713
+pair_af58b0a0,cn_k12,a,4,h5,x ^ 2 + x > 0,2714,2715
+pair_af58b0a0,cn_k12,a,5,h6,y ^ 2 + y > 0,2716,2717
+pair_af58b0a0,cn_k12,a,6,h7,logb 2 (x ^ 2 + x) < logb 2 (y ^ 2 + y),2718,2719
+pair_b1e067c3,olympiads,h,0,h,0 < y ^ 2 * x ^ 2,2720,2721
+pair_b1e067c3,olympiads,h,1,h6,x ^ 6 ≤ y ^ 6,2722,2723
+pair_b1e067c3,olympiads,a,0,h1,x ^ 6 / y ^ 2 + y ^ 6 / x ^ 2 - (x ^ 4 + y ^ 4) ≥ 0,2724,2725
+pair_b1e067c3,olympiads,a,1,h2,x ^ 2 * y ^ 2 > 0,2726,2727
+pair_b1e067c3,olympiads,a,2,h3,x ^ 6 / y ^ 2 + y ^ 6 / x ^ 2 - (x ^ 4 + y ^ 4) = (x ^ 8 + y ^ 8 - (x ^ 6 * y ^ 2 + x ^ 2 * y ^ 6)) / (x ^ 2 * y ^ 2),2728,2729
+pair_b21f3236,olympiads,h,0,denom1,n + 1 - (n + 2) / (n + 3) = ((n + 1) * (n + 3) - (n + 2)) / (n + 3),2730,2731
+pair_b21f3236,olympiads,h,1,denom2,(n + 1) * (n + 3) - (n + 2) = n ^ 2 + 3 * n + 1,2732,2733
+pair_b21f3236,olympiads,h,2,denom_simp,n + 1 - (n + 2) / (n + 3) = (n ^ 2 + 3 * n + 1) / (n + 3),2734,2735
+pair_b21f3236,olympiads,h,3,expr1,n / (n + 1 - (n + 2) / (n + 3)) = n / ((n ^ 2 + 3 * n + 1) / (n + 3)),2736,2737
+pair_b21f3236,olympiads,h,4,expr2,n / (n + 1 - (n + 2) / (n + 3)) = n * (n + 3) / (n ^ 2 + 3 * n + 1),2738,2739
+pair_b21f3236,olympiads,h,5,num_simp,n * (n + 3) = n ^ 2 + 3 * n,2740,2741
+pair_b21f3236,olympiads,h,6,simplified,n / (n + 1 - (n + 2) / (n + 3)) = (n ^ 2 + 3 * n) / (n ^ 2 + 3 * n + 1),2742,2743
+pair_b21f3236,olympiads,a,0,h1,n + 3 ≠ 0,2744,2745
+pair_b21f3236,olympiads,a,1,eq1,n / (n + 1 - (n + 2) / (n + 3)) = (n ^ 2 + 3 * n) / (n ^ 2 + 3 * n + 1),2746,2747
+pair_b21f3236,olympiads,a,2,eq2,n + 1 - (n + 2) / (n + 3) = (n ^ 2 + 3 * n + 1) / (n + 3),2748,2749
+pair_b2bf4978,inequalities,h,0,h₁,2000 ≤ r,2750,2751
+pair_b2bf4978,inequalities,h,1,h₂,r ≤ 2004,2752,2753
+pair_b2bf4978,inequalities,a,0,hr',400 * 10000 + n = r ^ 2,2754,2755
+pair_b2bf4978,inequalities,a,1,h1,r ≤ 2002,2756,2757
+pair_b2bf4978,inequalities,a,2,h2,r ≥ 2001,2758,2759
+pair_b40cb2db,math_test,h,0,ha',a = -1/4,2760,2761
+pair_b40cb2db,math_test,h,1,hb',b = 3/2,2762,2763
+pair_b40cb2db,math_test,h,2,hm,6 * a + b = 0,2764,2765
+pair_b40cb2db,math_test,a,0,ha',a = -1/4,2766,2767
+pair_b40cb2db,math_test,a,1,hb',b = 3/2,2768,2769
+pair_b430eda9,olympiads,h,0,aux1,"∑ i ∈ Finset.range 100, (2 : ℕ) ^ (99 + i) = 2 ^ 99 * (2 ^ 100 - 1)",2770,2771
+pair_b430eda9,olympiads,h,1,aux1',"∑ i ∈ Finset.range 100, (2 : ℝ) ^ (99 + i) = 2 ^ 99 * (2 ^ 100 - 1)",2772,2773
+pair_b430eda9,olympiads,h,2,aux2,"∑ i ∈ Finset.range (2 ^ 100 - 1), ((i : ℝ) + 1) = 2 ^ 99 * (2 ^ 100 - 1)",2774,2775
+pair_b430eda9,olympiads,h,3,aux,"∑ i ∈ Finset.range n, ((i : ℝ) + 1) = (n + 1) * n / 2",2776,2777
+pair_b430eda9,olympiads,h,4,insert_aux,range (k + 1) = insert k (range k),2778,2779
+pair_b430eda9,olympiads,a,0,h1,"∑ i in range 100, (2 : ℝ) ^ (99 + i : ℕ) = (2 ^ 99 * (2 ^ 100 - 1) : ℝ)",2780,2781
+pair_b430eda9,olympiads,a,1,h2,"∑ i in range ((2 ^ 100 - 1 : ℕ)), ((i : ℝ) + 1) = ((2 ^ 100 - 1 : ℝ) * (2 ^ 100 : ℝ) / 2 : ℝ)",2782,2783
+pair_b430eda9,olympiads,a,2,h3,"∀ n : ℕ, ∑ i in range n, ((i : ℝ) + 1) = ((n : ℝ) * ((n : ℝ) + 1) / 2 : ℝ)",2784,2785
+pair_b4fb9d1e,math_train,h,0,h1,f 2 = 2 * 2 + 5,2786,2787
+pair_b4fb9d1e,math_train,h,1,h2,g 2 = Real.sqrt (f 2) - 2,2788,2789
+pair_b4fb9d1e,math_train,h,2,h3,h 2 = f (g 2),2790,2791
+pair_b4fb9d1e,math_train,h,3,h4,Real.sqrt (2 * 2 + 5) = 3,2792,2793
+pair_b4fb9d1e,math_train,a,0,f2,f 2 = 9,2794,2795
+pair_b4fb9d1e,math_train,a,1,g2,g 2 = Real.sqrt 9 - 2,2796,2797
+pair_b4fb9d1e,math_train,a,2,sqrt9,Real.sqrt 9 = 3,2798,2799
+pair_b4fb9d1e,math_train,a,3,g2',g 2 = 1,2800,2801
+pair_b4fb9d1e,math_train,a,4,f1,f 1 = 7,2802,2803
+pair_b5dab1a1,amc_aime,h,0,sum_fifth_graders,Finset.univ.sum (fun i : Fin 33 => (fifth_graders i : ℝ)) = 33 * 11,2804,2805
+pair_b5dab1a1,amc_aime,h,1,sum_parents,Finset.univ.sum (fun i : Fin 55 => (parents i : ℝ)) = 55 * 33,2806,2807
+pair_b5dab1a1,amc_aime,a,0,h2,Finset.univ.sum (fun i : Fin 33 => (fifth_graders i : ℝ)) = (33 : ℝ) * 11,2808,2809
+pair_b5dab1a1,amc_aime,a,1,h3,Finset.univ.sum (fun i : Fin 55 => (parents i : ℝ)) = (55 : ℝ) * 33,2810,2811
+pair_b74058ae,aops_forum,h,0,h1,m % 9 = 0 ∨ m % 9 = 1 ∨ m % 9 = 2 ∨ m % 9 = 3 ∨ m % 9 = 4 ∨ m % 9 = 5 ∨ m % 9 = 6 ∨ m % 9 = 7 ∨ m % 9 = 8,2812,2813
+pair_b74058ae,aops_forum,h,1,h2,n % 9 = 0 ∨ n % 9 = 1 ∨ n % 9 = 2 ∨ n % 9 = 3 ∨ n % 9 = 4 ∨ n % 9 = 5 ∨ n % 9 = 6 ∨ n % 9 = 7 ∨ n % 9 = 8,2814,2815
+pair_b74058ae,aops_forum,a,0,h1,m % 9 = 0 ∨ m % 9 = 1 ∨ m % 9 = 2 ∨ m % 9 = 3 ∨ m % 9 = 4 ∨ m % 9 = 5 ∨ m % 9 = 6 ∨ m % 9 = 7 ∨ m % 9 = 8,2816,2817
+pair_b74058ae,aops_forum,a,1,h2,n % 9 = 0 ∨ n % 9 = 1 ∨ n % 9 = 2 ∨ n % 9 = 3 ∨ n % 9 = 4 ∨ n % 9 = 5 ∨ n % 9 = 6 ∨ n % 9 = 7 ∨ n % 9 = 8,2818,2819
+pair_b74058ae,aops_forum,a,2,h3,(m^2 + m * n + n^2) % 9 = 0,2820,2821
+pair_b8542067,cn_contest,h,0,h1,(3 * sqrt 3 - 1) ^ 2 = 28 - 6 * sqrt 3,2822,2823
+pair_b8542067,cn_contest,h,1,h2,0 ≤ 3 * sqrt 3 - 1,2824,2825
+pair_b8542067,cn_contest,h,2,h3,sqrt 3 ≥ 1,2826,2827
+pair_b8542067,cn_contest,h,3,h4,1 < sqrt 3,2828,2829
+pair_b8542067,cn_contest,a,0,h1,(3 * sqrt 3 - 1) ^ 2 = 28 - 6 * sqrt 3,2830,2831
+pair_b8542067,cn_contest,a,1,h2,0 ≤ 3 * sqrt 3 - 1,2832,2833
+pair_b8542067,cn_contest,a,2,h3,sqrt 3 ≥ 1,2834,2835
+pair_b8542067,cn_contest,a,3,h4,sqrt 3 ≥ sqrt 1,2836,2837
+pair_b8542067,cn_contest,a,4,h5,sqrt 1 = 1,2838,2839
+pair_bc9a98ea,olympiads,h,0,p7,Nat.Prime 7,2840,2841
+pair_bc9a98ea,olympiads,h,1,h₁,7 ∣ n^3,2842,2843
+pair_bc9a98ea,olympiads,h,2,h₂,7 ∣ 3^n * n^3,2844,2845
+pair_bc9a98ea,olympiads,h,3,hn_pow,(n:ZMod 7)^(7-1) = 1,2846,2847
+pair_bc9a98ea,olympiads,a,0,p7,Nat.Prime 7,2848,2849
+pair_bc9a98ea,olympiads,a,1,h₁,7 ∣ n^3,2850,2851
+pair_bc9a98ea,olympiads,a,2,h₂,7 ∣ 3^n * n^3,2852,2853
+pair_bc9a98ea,olympiads,a,3,hn_pow,(n:ZMod 7)^(7-1) = 1,2854,2855
+pair_bcf406a7,olympiads_ref,h,0,five_pow_co_2013,Nat.Coprime 2013 (5 ^ n),2856,2857
+pair_bcf406a7,olympiads_ref,h,1,b_co_2013,Nat.Coprime 2013 b,2858,2859
+pair_bcf406a7,olympiads_ref,h,2,hn',2 ≤ x + n * 2013,2860,2861
+pair_bcf406a7,olympiads_ref,h,3,hapos,0 < a,2862,2863
+pair_bcf406a7,olympiads_ref,h,4,lem_1,1 ≤ 5 ^ n * (a0 + 1),2864,2865
+pair_bcf406a7,olympiads_ref,h,5,h1,5 ^ 54 ≡ b [MOD 2013],2866,2867
+pair_bcf406a7,olympiads_ref,a,0,eq1,(1534 * 5 ^ (n + 1) - 1 : ℕ) = 5 * ((1534 * 5 ^ n - 1 : ℕ) ) + 4,2868,2869
+pair_bcf406a7,olympiads_ref,a,1,h1,(1534 * 5 ^ (n + 1) : ℕ) = 5 * (1534 * 5 ^ n),2870,2871
+pair_bcf406a7,olympiads_ref,a,2,h2,(1534 * 5 ^ n : ℕ) ≥ 1,2872,2873
+pair_bcf406a7,olympiads_ref,a,3,h4,5 ^ n ≥ 1,2874,2875
+pair_bcf406a7,olympiads_ref,a,4,eq2,(1534 * 5 ^ (n + 1) - 1 : ℕ) = 5 * (1534 * 5 ^ n) - 1,2876,2877
+pair_bcf406a7,olympiads_ref,a,5,eq3,5 * ((1534 * 5 ^ n - 1 : ℕ) ) + 4 = 5 * (1534 * 5 ^ n) - 1,2878,2879
+pair_bcf406a7,olympiads_ref,a,6,h20,(1534 * 5 ^ n : ℕ) ≥ 1,2880,2881
+pair_bdf62298,olympiads,h,0,h1,a / (1 + b) + b / (1 + a) = 1,2882,2883
+pair_bdf62298,olympiads,h,1,pos1,0 < 1 + a,2884,2885
+pair_bdf62298,olympiads,h,2,pos2,0 < 1 + b,2886,2887
+pair_bdf62298,olympiads,a,0,h1,0 < (1 + a) * (1 + b),2888,2889
+pair_bdf62298,olympiads,a,1,h2,a * (1 + a) + b * (1 + b) = (1 + b) * (1 + a),2890,2891
+pair_bdf62298,olympiads,a,2,denom_pos1,1 + b > 0,2892,2893
+pair_bdf62298,olympiads,a,3,denom_pos2,1 + a > 0,2894,2895
+pair_bdf62298,olympiads,a,4,h3,a^2 + b^2 = 1 + a * b,2896,2897
+pair_bdf62298,olympiads,a,5,h4,a^3 + b^3 = (a + b) * (a^2 + b^2 - a * b),2898,2899
+pair_bea018ad,olympiads,h,0,h1,{n : ℕ | n ∈ Finset.Icc 1 1000000 ∧ Even n ∧ Odd (Nat.digits 10 n).sum} = Finset.filter (fun n => Even n ∧ Odd (Nat.digits 10 n).sum) (Finset.Icc 1 1000000),2900,2901
+pair_bea018ad,olympiads,h,1,h2,{n : ℕ | n ∈ Finset.Icc 1 1000000 ∧ Odd n ∧ Even (Nat.digits 10 n).sum} = Finset.filter (fun n => Odd n ∧ Even (Nat.digits 10 n).sum) (Finset.Icc 1 1000000),2902,2903
+pair_bea018ad,olympiads,a,0,h1,{n : ℕ | n ∈ Finset.Icc 1 1000000 ∧ Even n ∧ Odd (Nat.digits 10 n).sum} = Finset.filter (fun n => Even n ∧ Odd (Nat.digits 10 n).sum) (Finset.Icc 1 1000000),2904,2905
+pair_bea018ad,olympiads,a,1,h2,{n : ℕ | n ∈ Finset.Icc 1 1000000 ∧ Odd n ∧ Even (Nat.digits 10 n).sum} = Finset.filter (fun n => Odd n ∧ Even (Nat.digits 10 n).sum) (Finset.Icc 1 1000000),2906,2907
+pair_c0472e13,olympiads,h,0,h1,a / b + b / c + c / a - 3 ≥ 0,2908,2909
+pair_c0472e13,olympiads,h,1,h2,a / b + b / c + c / a - 3 = (a^2 * c + b^2 * a + c^2 * b - 3 * a * b * c) / (a * b * c),2910,2911
+pair_c0472e13,olympiads,h,2,h3,a * b * c > 0,2912,2913
+pair_c0472e13,olympiads,h,3,h4,a^2 * c + b^2 * a + c^2 * b - 3 * a * b * c ≥ 0,2914,2915
+pair_c0472e13,olympiads,h,4,h5,(a^2 * c + b^2 * a + c^2 * b - 3 * a * b * c) / (a * b * c) ≥ 0,2916,2917
+pair_c0472e13,olympiads,a,0,h1,0 < a * b * c,2918,2919
+pair_c0472e13,olympiads,a,1,h2,a / b + b / c + c / a - 3 ≥ 0,2920,2921
+pair_c0472e13,olympiads,a,2,h3,a / b + b / c + c / a - 3 = ( (a ^ 2 * c + b ^ 2 * a + b * c ^ 2 ) - 3 * a * b * c ) / (a * b * c ),2922,2923
+pair_c0472e13,olympiads,a,3,h4,(a ^ 2 * c + b ^ 2 * a + b * c ^ 2 ) ≥ 3 * a * b * c,2924,2925
+pair_c0472e13,olympiads,a,4,h5,( (a ^ 2 * c + b ^ 2 * a + b * c ^ 2 ) - 3 * a * b * c ) ≥ 0,2926,2927
+pair_c0472e13,olympiads,a,5,h6,( (a ^ 2 * c + b ^ 2 * a + b * c ^ 2 ) - 3 * a * b * c ) / (a * b * c ) ≥ 0,2928,2929
+pair_c09884b9,olympiads,h,0,h4,(1 + a + b) * (1 + b + c) * (1 + c + a) > 0,2930,2931
+pair_c09884b9,olympiads,h,1,h5,(1 / (1 + a + b) + 1 / (1 + b + c) + 1 / (1 + c + a)) * ((1 + a + b) * (1 + b + c) * (1 + c + a)) = (1 + b + c) * (1 + c + a) + (1 + c + a) * (1 + a + b) + (1 + a + b) * (1 + b + c),2932,2933
+pair_c09884b9,olympiads,a,0,h4,0 < 1 + a + b,2934,2935
+pair_c09884b9,olympiads,a,1,h5,0 < 1 + b + c,2936,2937
+pair_c09884b9,olympiads,a,2,h6,0 < 1 + c + a,2938,2939
+pair_c09884b9,olympiads,a,3,h7,0 < (1 + a + b) * (1 + b + c) * (1 + c + a),2940,2941
+pair_c09884b9,olympiads,a,4,h8,1 / (1 + a + b) + 1 / (1 + b + c) + 1 / (1 + c + a) - 1 ≤ 0,2942,2943
+pair_c09884b9,olympiads,a,5,h9,(1 / (1 + a + b) + 1 / (1 + b + c) + 1 / (1 + c + a) - 1) = ( (1 + b + c) * (1 + c + a) + (1 + a + b) * (1 + c + a) + (1 + a + b) * (1 + b + c) - (1 + a + b) * (1 + b + c) * (1 + c + a) ) / ( (1 + a + b) * (1 + b + c) * (1 + c + a) ),2944,2945
+pair_c0d0a7f8,secondary_math,h,0,h,"∀ i : ℕ, √(1 + 1 / (i + 1) ^ 2 + 1 / (i + 2) ^ 2 : ℝ) = 1 + 1 / ((i + 1) * (i + 2))",2946,2947
+pair_c0d0a7f8,secondary_math,h,1,h1,(1 : ℝ) + 1 / (i + 1) ^ 2 + 1 / (i + 2) ^ 2 = (1 + 1 / ((i + 1) * (i + 2))) ^ 2,2948,2949
+pair_c0d0a7f8,secondary_math,a,0,h1,"∀ i : ℕ, sqrt (1 + 1 / (i + 1)^2 + 1 / (i + 2)^2 : ℝ) = 1 + 1 / ((i + 1 : ℝ) * (i + 2))",2950,2951
+pair_c0d0a7f8,secondary_math,a,1,h2,(1 + 1 / (i + 1)^2 + 1 / (i + 2)^2 : ℝ) = (1 + 1 / ((i + 1) * (i + 2)) : ℝ) ^ 2,2952,2953
+pair_c0d0a7f8,secondary_math,a,2,h3,"∑ i in Finset.range 1999, sqrt (1 + 1 / (i + 1)^2 + 1 / (i + 2)^2) = ∑ i in Finset.range 1999, (1 + 1 / ((i + 1 : ℝ) * (i + 2)) )",2954,2955
+pair_c0d0a7f8,secondary_math,a,3,h4,"∑ i in Finset.range 1999, (1 + 1 / ((i + 1 : ℝ) * (i + 2)) ) = 1999 + (1999 / 2000 : ℝ)",2956,2957
+pair_c0d0a7f8,secondary_math,a,4,h5,"∀ (n : ℕ), ∑ i in Finset.range n, (1 + 1 / ((i + 1 : ℝ) * (i + 2)) ) = (↑n : ℝ) + (1 - 1 / (↑n + (1 : ℝ)))",2958,2959
+pair_c18406c6,olympiads,h,0,h1,n ≥ 244,2960,2961
+pair_c18406c6,olympiads,h,1,h2,n ≤ 249,2962,2963
+pair_c18406c6,olympiads,a,0,h4,k > 54,2964,2965
+pair_c18406c6,olympiads,a,1,h5,k < 55,2966,2967
+pair_c1bb04bb,math_test,h,0,h1,-11 * 9 ≡ 1 [ZMOD 100],2968,2969
+pair_c1bb04bb,math_test,h,1,h2,89*9 ≡ 1 [ZMOD 100],2970,2971
+pair_c1bb04bb,math_test,h,2,h3,x*9 ≡ 89*9 [ZMOD 100],2972,2973
+pair_c1bb04bb,math_test,h,3,h4,100 ∣ 9*(x-89),2974,2975
+pair_c1bb04bb,math_test,h,4,h5,100 ∣ x-89,2976,2977
+pair_c1bb04bb,math_test,a,0,h1,x * 9 % 100 = 1,2978,2979
+pair_c1bb04bb,math_test,a,1,h2,x % 100 = 89,2980,2981
+pair_c27754c1,amc_aime,h,0,eqw,Complex.exp (Complex.I * (Real.pi / 6)) = (√3 + Complex.I) / 2,2982,2983
+pair_c27754c1,amc_aime,h,1,eqz,Complex.exp (Complex.I * (2 * Real.pi / 3)) = (-1 + Complex.I * √3) / 2,2984,2985
+pair_c27754c1,amc_aime,h,2,eqi,Complex.exp (Complex.I * (Real.pi / 2)) = Complex.I,2986,2987
+pair_c27754c1,amc_aime,h,3,hprop,r ∈ Set.Ioc 0 100 ↔ t ∈ Finset.Ico 1 26,2988,2989
+pair_c27754c1,amc_aime,h,4,f_inj,Function.Injective f,2990,2991
+pair_c27754c1,amc_aime,h,5,f_image,"f '' ↑(Finset.sigma (Finset.Ioc 0 100) (fun s => { t ∈ Finset.Ico 1 26 | t ≡ s [ZMOD 3] })) = { (r, s) : ℤ × ℤ | r ∈ Set.Ioc 0 100 ∧ s ∈ Set.Ioc 0 100 ∧ ∃ k : ℤ, 3 + r = 4 * (s + 3 * k) }",2992,2993
+pair_c27754c1,amc_aime,h,6,h_1_mod_3,{ s ∈ Finset.Ioc 0 100 | s ≡ 1 [ZMOD 3] }.card = 34,2994,2995
+pair_c27754c1,amc_aime,h,7,h_not_1_mod_3,{ s ∈ Finset.Ioc 0 100 | ¬(s ≡ 1 [ZMOD 3]) }.card = 66,2996,2997
+pair_c27754c1,amc_aime,a,0,eqw,Complex.exp (Complex.I * (Real.pi / 6)) = (√3 + Complex.I) / 2,2998,2999
+pair_c27754c1,amc_aime,a,1,eqz,Complex.exp (Complex.I * (2 * Real.pi / 3)) = (-1 + Complex.I * √3) / 2,3000,3001
+pair_c27754c1,amc_aime,a,2,eqi,Complex.exp (Complex.I * (Real.pi / 2)) = Complex.I,3002,3003
+pair_c27754c1,amc_aime,a,3,hprop,r ∈ Set.Ioc 0 100 ↔ t ∈ Finset.Ico 1 26,3004,3005
+pair_c27754c1,amc_aime,a,4,f_inj,Function.Injective f,3006,3007
+pair_c27754c1,amc_aime,a,5,f_image,"f '' ↑(Finset.sigma (Finset.Ioc 0 100) (fun s => { t ∈ Finset.Ico 1 26 | t ≡ s [ZMOD 3] })) = { (r, s) : ℤ × ℤ | r ∈ Set.Ioc 0 100 ∧ s ∈ Set.Ioc 0 100 ∧ ∃ k : ℤ, 3 + r = 4 * (s + 3 * k) }",3008,3009
+pair_c27754c1,amc_aime,a,6,h_1_mod_3,{ s ∈ Finset.Ioc 0 100 | s ≡ 1 [ZMOD 3] }.card = 34,3010,3011
+pair_c27754c1,amc_aime,a,7,h_not_1_mod_3,{ s ∈ Finset.Ioc 0 100 | ¬(s ≡ 1 [ZMOD 3]) }.card = 66,3012,3013
+pair_c3d7ea8c,secondary_math,h,0,h3,z^2 = (6 - y) * y - 9,3014,3015
+pair_c3d7ea8c,secondary_math,h,1,h4,(y - 3) ^ 2 + z^2 = 0,3016,3017
+pair_c3d7ea8c,secondary_math,h,2,hy,(y - 3) ^ 2 = 0,3018,3019
+pair_c3d7ea8c,secondary_math,h,3,y_eq,y = 3,3020,3021
+pair_c3d7ea8c,secondary_math,h,4,x_eq,x = 3,3022,3023
+pair_c3d7ea8c,secondary_math,a,0,h3,(y - 3) ^ 2 + z ^ 2 = 0,3024,3025
+pair_c3d7ea8c,secondary_math,a,1,hy,(y - 3) ^ 2 = 0,3026,3027
+pair_c3d7ea8c,secondary_math,a,2,hz,z ^ 2 = 0,3028,3029
+pair_c3d7ea8c,secondary_math,a,3,hy2,y = 3,3030,3031
+pair_c3d7ea8c,secondary_math,a,4,hx,x = 3,3032,3033
+pair_c5ea827c,olympiads,h,0,h₂',7 * (x + y) = 16 + 3 * (x * y),3034,3035
+pair_c5ea827c,olympiads,h,1,h₃',16 * (x + y) = 42 + 7 * (x * y),3036,3037
+pair_c5ea827c,olympiads,h,2,h_mul,x * y = 2 * (x + y) - 10,3038,3039
+pair_c5ea827c,olympiads,h,3,h_add,x + y = -14,3040,3041
+pair_c5ea827c,olympiads,h,4,h₄',42 * (x + y) = a * x ^ 5 + b * y ^ 5 + 16 * (x * y),3042,3043
+pair_c5ea827c,olympiads,a,0,h₅,a * x^3 + b * y^3 = (x + y) * (a * x^2 + b * y^2) - (x * y) * (a * x + b * y),3044,3045
+pair_c5ea827c,olympiads,a,1,h₆,a * x^4 + b * y^4 = (x + y) * (a * x^3 + b * y^3) - (x * y) * (a * x^2 + b * y^2),3046,3047
+pair_c5ea827c,olympiads,a,2,eq3,7 * (x + y) - 3 * (x * y) = 16,3048,3049
+pair_c5ea827c,olympiads,a,3,eq4,16 * (x + y) - 7 * (x * y) = 42,3050,3051
+pair_c5ea827c,olympiads,a,4,h5,x + y = -14,3052,3053
+pair_c5ea827c,olympiads,a,5,h6,x * y = -38,3054,3055
+pair_c5ea827c,olympiads,a,6,h₇,a * x^5 + b * y^5 = (x + y) * (a * x^4 + b * y^4) - (x * y) * (a * x^3 + b * y^3),3056,3057
+pair_c6689f42,cn_k12,h,0,fcont,Continuous f,3058,3059
+pair_c6689f42,cn_k12,h,1,h3,Icc (0 : ℝ) 3 = Icc 0 1 ∪ Icc 1 3,3060,3061
+pair_c6689f42,cn_k12,a,0,h0,0 ≤ x,3062,3063
+pair_c6689f42,cn_k12,a,1,h1,x ≤ 3,3064,3065
+pair_c6bd3484,cn_contest,h,0,hx,x = 7,3066,3067
+pair_c6bd3484,cn_contest,h,1,hy,y = -3,3068,3069
+pair_c6bd3484,cn_contest,a,0,h1,(x - 7) ^ 2 + (y + 3) ^ 2 = 0,3070,3071
+pair_c6bd3484,cn_contest,a,1,h2,(x - 7) ^ 2 = 0,3072,3073
+pair_c6bd3484,cn_contest,a,2,h3,(y + 3) ^ 2 = 0,3074,3075
+pair_c6bd3484,cn_contest,a,3,h4,x - 7 = 0,3076,3077
+pair_c6bd3484,cn_contest,a,4,h5,y + 3 = 0,3078,3079
+pair_c6bd3484,cn_contest,a,5,hx,x = 7,3080,3081
+pair_c6bd3484,cn_contest,a,6,hy,y = -3,3082,3083
+pair_c84a0169,olympiads,h,0,exp,128 = 9 * 13 + 11,3084,3085
+pair_c84a0169,olympiads,h,1,f1,8 ∈ A,3086,3087
+pair_c84a0169,olympiads,h,2,f2,32 ∈ A,3088,3089
+pair_c84a0169,olympiads,h,3,f3,128 ∈ A,3090,3091
+pair_c84a0169,olympiads,a,0,h1,8 ∈ A,3092,3093
+pair_c84a0169,olympiads,a,1,h2,32 ∈ A,3094,3095
+pair_c84a0169,olympiads,a,2,h3,128 ∈ A,3096,3097
+pair_c84a0169,olympiads,a,3,h5,13 ∈ A,3098,3099
+pair_c84a0169,olympiads,a,4,h6,9 * 13 + 11 ∈ A,3100,3101
+pair_c87c42da,aops_forum,h,0,h_pos1,2 * a + b > 0,3102,3103
+pair_c87c42da,aops_forum,h,1,h_pos2,2 * b + c > 0,3104,3105
+pair_c87c42da,aops_forum,h,2,h_pos3,2 * c + a > 0,3106,3107
+pair_c87c42da,aops_forum,h,3,h,a / (2 * a + b) + b / (2 * b + c) + c / (2 * c + a) ≤ 1,3108,3109
+pair_c87c42da,aops_forum,h,4,h1,a / (2 * a + b) + b / (2 * b + c) + c / (2 * c + a) - 1 ≤ 0,3110,3111
+pair_c87c42da,aops_forum,h,5,h2,a / (2 * a + b) + b / (2 * b + c) + c / (2 * c + a) - 1 = (a * (2 * b + c) * (2 * c + a) + b * (2 * c + a) * (2 * a + b) + c * (2 * a + b) * (2 * b + c) - (2 * a + b) * (2 * b + c) * (2 * c + a)) / ((2 * a + b) * (2 * b + c) * (2 * c + a)),3112,3113
+pair_c87c42da,aops_forum,h,6,h3,(2 * a + b) * (2 * b + c) * (2 * c + a) > 0,3114,3115
+pair_c87c42da,aops_forum,a,0,h1,0 < (2 * a + b) * (2 * b + c) * (2 * c + a),3116,3117
+pair_c87c42da,aops_forum,a,1,h2,a / (2 * a + b) + b / (2 * b + c) + c / (2 * c + a) - 1 ≤ 0,3118,3119
+pair_c87c42da,aops_forum,a,2,pos1,0 < (2 * a + b) * (2 * b + c) * (2 * c + a),3120,3121
+pair_c87c42da,aops_forum,a,3,h3,a / (2 * a + b) + b / (2 * b + c) + c / (2 * c + a) - 1 = (a * (2 * b + c) * (2 * c + a) + b * (2 * a + b) * (2 * c + a) + c * (2 * a + b) * (2 * b + c) - (2 * a + b) * (2 * b + c) * (2 * c + a)) / ((2 * a + b) * (2 * b + c) * (2 * c + a)),3122,3123
+pair_ca2874ed,cn_k12,h,0,sqrt_12_eq_sqrt_4_mul_sqrt_3,√12 = √4 * √3,3124,3125
+pair_ca2874ed,cn_k12,h,1,sqrt_4_eq_2,√4 = 2,3126,3127
+pair_ca2874ed,cn_k12,a,0,h1,Real.sqrt (4 + (8 : ℝ)) = 2 * Real.sqrt 3,3128,3129
+pair_ca2874ed,cn_k12,a,1,h2,(2 * Real.sqrt 3 / (4 - (8 : ℝ)) ) = - (Real.sqrt 3 / 2 ),3130,3131
+pair_cb4bfe65,math_train,h,0,eq₁,x * y + 1 = y,3132,3133
+pair_cb4bfe65,math_train,h,1,eq₂,y * z + 1 = z,3134,3135
+pair_cb4bfe65,math_train,a,0,eq1,x * y = y - 1,3136,3137
+pair_cb4bfe65,math_train,a,1,eq2,y * z = z - 1,3138,3139
+pair_cc62a034,olympiads_ref,h,0,sin_pos,sin x > 0,3140,3141
+pair_cc62a034,olympiads_ref,h,1,cos_pos,cos x > 0,3142,3143
+pair_cc62a034,olympiads_ref,h,2,h1,cos x * sin x ≤ 1 / 2,3144,3145
+pair_cc62a034,olympiads_ref,h,3,h2,cos x ^ 4 + sin x ^ 4 ≥ 1 / 2,3146,3147
+pair_cc62a034,olympiads_ref,a,0,h1,sin x > 0,3148,3149
+pair_cc62a034,olympiads_ref,a,1,h2,cos x > 0,3150,3151
+pair_cc62a034,olympiads_ref,a,2,h3,cot x = cos x / sin x,3152,3153
+pair_cc62a034,olympiads_ref,a,3,h4,tan x = sin x / cos x,3154,3155
+pair_cc62a034,olympiads_ref,a,4,hx3,sin x > 0,3156,3157
+pair_cc62a034,olympiads_ref,a,5,hx4,cos x > 0,3158,3159
+pair_cc62a034,olympiads_ref,a,6,h5,(cos x) ^ 2 * (cos x / sin x) + (sin x) ^ 2 * (sin x / cos x) - 1 ≥ 0,3160,3161
+pair_cc62a034,olympiads_ref,a,7,h6,(cos x) ^ 2 * (cos x / sin x) + (sin x) ^ 2 * (sin x / cos x) - 1 = ( (cos x) ^ 4 + (sin x) ^ 4 - (sin x) * (cos x) ) / ( (sin x) * (cos x) ),3162,3163
+pair_cc96d025,olympiads,h,0,ha',a ≤ 1,3164,3165
+pair_cc96d025,olympiads,h,1,hb',b ≤ 1,3166,3167
+pair_cc96d025,olympiads,a,0,h1,a < 1,3168,3169
+pair_cc96d025,olympiads,a,1,h2,b < 1,3170,3171
+pair_ce09405f,math_test,h,0,h1,(x - 2)^2 / 3 + (y + 1)^2 / 2 = (2*x^2 - 8*x + 3*y^2 + 6*y + 5 + 6) / 6,3172,3173
+pair_ce09405f,math_test,h,1,h2,0 ≤ (y + 1) ^ 2 / 2,3174,3175
+pair_ce09405f,math_test,h,2,h3,(x - 2) ^ 2 ≤ 3,3176,3177
+pair_ce09405f,math_test,a,0,h1,2 * (x - 2) ^ 2 + 3 * (y + 1) ^ 2 = 6,3178,3179
+pair_ce09405f,math_test,a,1,h2,(x - 2) ^ 2 ≤ 3,3180,3181
+pair_ce09405f,math_test,a,2,h6,x - 2 ≤ Real.sqrt 3,3182,3183
+pair_ceff9d94,amc_aime,h,0,a_eq,a = 1/2,3184,3185
+pair_ceff9d94,amc_aime,h,1,b_eq,b = 7/4,3186,3187
+pair_ceff9d94,amc_aime,a,0,ha2,a = 1/2,3188,3189
+pair_ceff9d94,amc_aime,a,1,hb2,b = 7/4,3190,3191
+pair_d43fae54,olympiads,h,0,h1,x^2 = 64,3192,3193
+pair_d43fae54,olympiads,h,1,h2,x = 8,3194,3195
+pair_d43fae54,olympiads,a,0,h1,5 * x ^ 2 = 320,3196,3197
+pair_d43fae54,olympiads,a,1,h2,x ^ 2 = 64,3198,3199
+pair_d43fae54,olympiads,a,2,h3,x = 8,3200,3201
+pair_d71a4f84,math_train,h,0,h1,x ^ 3 * (5 * x - 8) = 0,3202,3203
+pair_d71a4f84,math_train,h,1,h4,x = 0,3204,3205
+pair_d71a4f84,math_train,a,0,h1,(5 * x) ^ 4 = (10 * x) ^ 3,3206,3207
+pair_d71a4f84,math_train,a,1,h2,(5 * x) ^ 4 = 625 * x ^ 4,3208,3209
+pair_d71a4f84,math_train,a,2,h3,(10 * x) ^ 3 = 1000 * x ^ 3,3210,3211
+pair_d71a4f84,math_train,a,3,h4,625 * x ^ 4 - 1000 * x ^ 3 = 0,3212,3213
+pair_d71a4f84,math_train,a,4,h5,x ^ 3 * (625 * x - 1000) = 0,3214,3215
+pair_d71a4f84,math_train,a,5,h8,x = 0,3216,3217
+pair_d71a4f84,math_train,a,6,hx2,x = 1000 / 625,3218,3219
+pair_d71a4f84,math_train,a,7,hx3,x = 8 / 5,3220,3221
+pair_d770fbd5,cn_contest,h,0,h1,x - 3 > 0,3222,3223
+pair_d770fbd5,cn_contest,h,1,h2,sqrt x > 0,3224,3225
+pair_d770fbd5,cn_contest,h,2,h3,sqrt x ^ 2 = x,3226,3227
+pair_d770fbd5,cn_contest,h,3,h4,sqrt x + 6 / (x - 3) - 4 = (sqrt x - 3) ^ 2 * (sqrt x + 2) / (x - 3),3228,3229
+pair_d770fbd5,cn_contest,h,4,h5,(sqrt x - 3) ^ 2 * (sqrt x + 2) / (x - 3) ≥ 0,3230,3231
+pair_d770fbd5,cn_contest,a,0,h1,sqrt x > 0,3232,3233
+pair_d770fbd5,cn_contest,a,1,h2,x - 3 > 0,3234,3235
+pair_d770fbd5,cn_contest,a,2,h3,sqrt x ^ 2 = x,3236,3237
+pair_d770fbd5,cn_contest,a,3,h4,sqrt x + 6 / (x - 3) - 4 ≥ 0,3238,3239
+pair_d770fbd5,cn_contest,a,4,h5,x - 3 > 0,3240,3241
+pair_d770fbd5,cn_contest,a,5,h6,sqrt x + 6 / (x - 3) - 4 = (sqrt x * (x - 3) + 6 - 4 * (x - 3)) / (x - 3),3242,3243
+pair_d809415a,olympiads_ref,h,0,hu,u ∈ Set.Ico 0 2,3244,3245
+pair_d809415a,olympiads_ref,h,1,hv,v ∈ Set.Ico 0 3,3246,3247
+pair_d809415a,olympiads_ref,h,2,hz',z = 6 + u + v,3248,3249
+pair_d809415a,olympiads_ref,h,3,h1,(6 - u - v) * (6 + u + v) ≤ 36,3250,3251
+pair_d809415a,olympiads_ref,h,4,h2,(u * v - 2 * u - v) * (6 + u + v) ≤ 0,3252,3253
+pair_d809415a,olympiads_ref,h,5,h3,u * (v - 2) ≤ v,3254,3255
+pair_d809415a,olympiads_ref,a,0,h4,x * y * z ≤ 36,3256,3257
+pair_d809415a,olympiads_ref,a,1,h5,Real.sqrt (x * y * z) ≤ Real.sqrt (36 : ℝ),3258,3259
+pair_d809415a,olympiads_ref,a,2,h6,Real.sqrt (36 : ℝ) = 6,3260,3261
+pair_d84ba343,olympiads,h,0,h1,(N * x + N) / N = x + 1,3262,3263
+pair_d84ba343,olympiads,h,1,h2,(N * x + N) / N - N = x + 1 - N,3264,3265
+pair_d84ba343,olympiads,a,0,eq1,(N * x + N) / N = x + 1,3266,3267
+pair_d84ba343,olympiads,a,1,h1,N ≠ 0,3268,3269
+pair_d84ba343,olympiads,a,2,eq2,(N * x + N) / N - N = x + 1 - N,3270,3271
+pair_dd910f6b,aops_forum,h,0,h1,a % 11 = 0 ∨ a % 11 = 1 ∨ a % 11 = 2 ∨ a % 11 = 3 ∨ a % 11 = 4 ∨ a % 11 = 5 ∨ a % 11 = 6 ∨ a % 11 = 7 ∨ a % 11 = 8 ∨ a % 11 = 9 ∨ a % 11 = 10,3272,3273
+pair_dd910f6b,aops_forum,h,1,h2,b % 11 = 0 ∨ b % 11 = 1 ∨ b % 11 = 2 ∨ b % 11 = 3 ∨ b % 11 = 4 ∨ b % 11 = 5 ∨ b % 11 = 6 ∨ b % 11 = 7 ∨ b % 11 = 8 ∨ b % 11 = 9 ∨ b % 11 = 10,3274,3275
+pair_dd910f6b,aops_forum,a,0,h1,a % 11 = 0 ∨ a % 11 = 1 ∨ a % 11 = 2 ∨ a % 11 = 3 ∨ a % 11 = 4 ∨ a % 11 = 5 ∨ a % 11 = 6 ∨ a % 11 = 7 ∨ a % 11 = 8 ∨ a % 11 = 9 ∨ a % 11 = 10,3276,3277
+pair_dd910f6b,aops_forum,a,1,h2,b % 11 = 0 ∨ b % 11 = 1 ∨ b % 11 = 2 ∨ b % 11 = 3 ∨ b % 11 = 4 ∨ b % 11 = 5 ∨ b % 11 = 6 ∨ b % 11 = 7 ∨ b % 11 = 8 ∨ b % 11 = 9 ∨ b % 11 = 10,3278,3279
+pair_dd910f6b,aops_forum,a,2,h3,(a ^ 2 + b ^ 2 + 9 * a * b) % 11 = 0,3280,3281
+pair_dd910f6b,aops_forum,a,3,h4,(a ^ 2 - b ^ 2) % 11 = 0,3282,3283
+pair_ddc40137,math_test,h,0,h1,(1*b+3)*(1*b+5) = b^2+8*b+15,3284,3285
+pair_ddc40137,math_test,h,1,h2,(1*b+3) * (1*b+5) = (2*b^2+4*b+3) ↔ b^2-4*b-12=0,3286,3287
+pair_ddc40137,math_test,h,2,h3,b^2-4*b-12 = (b-6)*(b+2),3288,3289
+pair_ddc40137,math_test,a,0,eq1,(1 * b + 3) * (1 * b + 5) = b^2 + 8 * b + 15,3290,3291
+pair_ddc40137,math_test,a,1,h1,b ^ 2 - 4 * b - 12 = 0,3292,3293
+pair_ddc40137,math_test,a,2,h2,(b - 6) * (b + 2) = 0,3294,3295
+pair_ddc40137,math_test,a,3,hb1,b = -2,3296,3297
+pair_de450765,math_train,h,0,h1,0 < x ^ 2 + y ^ 2,3298,3299
+pair_de450765,math_train,h,1,h2,0 < x * y,3300,3301
+pair_de450765,math_train,a,0,h1,x * y / (x ^ 2 + y ^ 2) ≥ 6 / 13,3302,3303
+pair_de450765,math_train,a,1,h2,x ^ 2 + y ^ 2 > 0,3304,3305
+pair_de450765,math_train,a,2,h3,x * y ≥ (6 / 13) * (x ^ 2 + y ^ 2),3306,3307
+pair_de450765,math_train,a,3,h4,x * y / (x ^ 2 + y ^ 2) ≥ (6 / 13),3308,3309
+pair_de450765,math_train,a,4,h5,x^2 + y^2 > 0,3310,3311
+pair_de5f4228,olympiads,h,0,h2,(x : ℝ) = 150,3312,3313
+pair_de5f4228,olympiads,h,1,h1',(x : ℝ) = 150,3314,3315
+pair_de5f4228,olympiads,h,2,h3,x = 150,3316,3317
+pair_de5f4228,olympiads,a,0,eq1,(x : ℝ) ≠ 0,3318,3319
+pair_de5f4228,olympiads,a,1,eq2,(x : ℝ) = 150,3320,3321
+pair_de5f4228,olympiads,a,2,h2,(x : ℝ) = 150,3322,3323
+pair_de5f4228,olympiads,a,3,eq3,x = 150,3324,3325
+pair_df433d2d,amc_aime,h,0,ha₃,a ≤ 45,3326,3327
+pair_df433d2d,amc_aime,h,1,ha₄,37 < a,3328,3329
+pair_df433d2d,amc_aime,h,2,ha₅,a ∣ 1998,3330,3331
+pair_df433d2d,amc_aime,a,0,h1,d < 17,3332,3333
+pair_df433d2d,amc_aime,a,1,h2,a ≤ 44,3334,3335
+pair_e0ba091c,math_train,h,0,hx1,l * w * 1 = l * w * (1.25 * (1 - x)),3336,3337
+pair_e0ba091c,math_train,h,1,hx,(l * w)⁻¹ * (l * w * 1) =(l * w)⁻¹ * l * w * (1.25 * (1 - x)),3338,3339
+pair_e0ba091c,math_train,h,2,eq1,1 - x = 0.8,3340,3341
+pair_e0ba091c,math_train,a,0,h_eq,l * w = (l * 1.25) * (w * (1 - x)),3342,3343
+pair_e0ba091c,math_train,a,1,hw',(w) ≠ 0,3344,3345
+pair_e0ba091c,math_train,a,2,hl',(l) ≠ 0,3346,3347
+pair_e0ba091c,math_train,a,3,h2,1 = 1.25 * (1 - x),3348,3349
+pair_e4726314,math_test,h,0,h1,-4 = 4 * cos π,3350,3351
+pair_e4726314,math_test,h,1,h2,0 = 4 * sin π,3352,3353
+pair_e4726314,math_test,a,0,h1,cos π = -1,3354,3355
+pair_e4726314,math_test,a,1,h2,sin π = 0,3356,3357
+pair_e72fc59f,math_test,h,0,d1000,"Nat.divisors 1000 = {1,2,4,5,8,10,20,25,40,50,100,125,200,250,500,1000}",3358,3359
+pair_e72fc59f,math_test,h,1,xd1000,x ∣ 1000,3360,3361
+pair_e72fc59f,math_test,h,2,xind,x ∈ Nat.divisors 1000,3362,3363
+pair_e72fc59f,math_test,a,0,h1,x ∣ 1000,3364,3365
+pair_e72fc59f,math_test,a,1,h2,y ∣ 1000,3366,3367
+pair_e72fc59f,math_test,a,2,h3,x ≤ 1000,3368,3369
+pair_e72fc59f,math_test,a,3,h4,y ≤ 1000,3370,3371
+pair_e8464b73,math_train,h,0,h1,(2 : ℝ) ^ (-3 / 2 : ℝ) = (2 ^ (-3 / 4 : ℝ)) ^ 2,3372,3373
+pair_e8464b73,math_train,h,1,h2,(2 : ℝ) ^ (1 / 4 : ℝ) = (2 ^ (-3 / 4 : ℝ)) * 2,3374,3375
+pair_e8464b73,math_train,a,0,h1,(2 : ℝ) ^ (-3 / 2 : ℝ) = (2 ^ (-3 / 4 : ℝ)) ^ 2,3376,3377
+pair_e8464b73,math_train,a,1,h2,(2 : ℝ) ^ (1 / 4 : ℝ) = (2 ^ (-3 / 4 : ℝ)) * 2,3378,3379
+pair_e8464b73,math_train,a,2,hcos,cos θ = 3 / 4,3380,3381
+pair_e8464b73,math_train,a,3,h4,(2 : ℝ) ^ cos θ = (2 : ℝ) ^ (3 / 4 : ℝ),3382,3383
+pair_e8464b73,math_train,a,4,h5,cos θ = (3 / 4 : ℝ),3384,3385
+pair_e8464b73,math_train,a,5,hcos2,cos (2 * θ) = 2 * cos θ ^ 2 - 1,3386,3387
+pair_e9e6e2e1,aops_forum,h,0,h₁,4 * a ^ 2 + 4 * a = b ^ 2 + b,3388,3389
+pair_e9e6e2e1,aops_forum,h,1,h₂,2 * a + 1 ≤ b,3390,3391
+pair_e9e6e2e1,aops_forum,h,2,h₃,b ≤ 2 * a + 1,3392,3393
+pair_e9e6e2e1,aops_forum,h,3,h₄,b = 2 * a + 1,3394,3395
+pair_e9e6e2e1,aops_forum,a,0,h1,4 * f a = 4 * (a ^ 2 + a),3396,3397
+pair_e9e6e2e1,aops_forum,a,1,h2,f b = b ^ 2 + b,3398,3399
+pair_e9e6e2e1,aops_forum,a,2,h3,(2 * a + 1 : ℤ) ^ 2 = (b : ℤ) ^ 2 + (b : ℤ) + 1,3400,3401
+pair_e9e6e2e1,aops_forum,a,3,h4,(b : ℤ) < (2 * a + 1 : ℤ),3402,3403
+pair_e9e6e2e1,aops_forum,a,4,h5,(2 * a + 1 : ℤ) < (b + 1 : ℤ),3404,3405
+pair_ebe211fd,math_test,h,0,xne,x ≠ 0,3406,3407
+pair_ebe211fd,math_test,h,1,xdvd,x ∣ 3 * x ^ 3 + a2 * x ^ 2 + a1 * x,3408,3409
+pair_ebe211fd,math_test,h,2,xle,x ≤ 6,3410,3411
+pair_ebe211fd,math_test,h,3,xge,-6 ≤ x,3412,3413
+pair_ebe211fd,math_test,h,4,negxdvd,-x ∣ 6,3414,3415
+pair_ebe211fd,math_test,a,0,h1,x ∣ 6,3416,3417
+pair_ebe211fd,math_test,a,1,h2,x ≤ 6,3418,3419
+pair_ebe211fd,math_test,a,2,h3,x ≥ -6,3420,3421
+pair_ebe211fd,math_test,a,3,h4,(-x) ∣ 6,3422,3423
+pair_ebe211fd,math_test,a,4,h5,-x ≤ 6,3424,3425
+pair_ebfa8074,olympiads,h,0,h2,(total_students : ℝ) ≠ 0,3426,3427
+pair_ebfa8074,olympiads,h,1,ht,(total_students : ℝ) = 25,3428,3429
+pair_ebfa8074,olympiads,a,0,h2,(total_students : ℝ) ≠ 0,3430,3431
+pair_ebfa8074,olympiads,a,1,eq1,(total_students : ℝ) = 25,3432,3433
+pair_ebfa8074,olympiads,a,2,h3,total_students = 25,3434,3435
+pair_ed2314b2,secondary_math,h,0,h2,a + 1 ≠ 0,3436,3437
+pair_ed2314b2,secondary_math,h,1,h3,b + 3 ≠ 0,3438,3439
+pair_ed2314b2,secondary_math,h,2,h4,c + 5 ≠ 0,3440,3441
+pair_ed2314b2,secondary_math,a,0,h2,a + 1 ≠ 0,3442,3443
+pair_ed2314b2,secondary_math,a,1,h3,b + 3 ≠ 0,3444,3445
+pair_ed2314b2,secondary_math,a,2,h4,c + 5 ≠ 0,3446,3447
+pair_ed2314b2,secondary_math,a,3,eq1,(b + 3) * (c + 5) + (a + 1) * (c + 5) + (a + 1) * (b + 3) = 0,3448,3449
+pair_ed2314b2,secondary_math,a,4,h5,(a + 1) + (b + 3) + (c + 5) = 10,3450,3451
+pair_ed2314b2,secondary_math,a,5,h6,(a + 1) * (b + 3) + (a + 1) * (c + 5) + (b + 3) * (c + 5) = 0,3452,3453
+pair_ed6427c7,aops_forum,h,0,ha',0 < a ^ 3 + 3 * b,3454,3455
+pair_ed6427c7,aops_forum,h,1,hb',0 < b ^ 3 + 3 * a,3456,3457
+pair_ed6427c7,aops_forum,a,0,h1,0 < a ^ 3 + 3 * b,3458,3459
+pair_ed6427c7,aops_forum,a,1,h2,0 < b ^ 3 + 3 * a,3460,3461
+pair_ed6427c7,aops_forum,a,2,h_ineq,1 / (a ^ 3 + 3 * b) + 1 / (b ^ 3 + 3 * a) - 1 / 2 = (2 * (b ^ 3 + 3 * a) + 2 * (a ^ 3 + 3 * b) - (a ^ 3 + 3 * b) * (b ^ 3 + 3 * a)) / (2 * (a ^ 3 + 3 * b) * (b ^ 3 + 3 * a)),3462,3463
+pair_edfc7430,inequalities,h,0,h1,x * (1 - y^2) * (1 - z^2) + y * (1 - z^2) * (1 - x^2) + z * (1 - x^2) * (1 - y^2) = 4 * (x * y * z),3464,3465
+pair_edfc7430,inequalities,h,1,h2,x * y * z ≥ 3 * Real.sqrt 3,3466,3467
+pair_edfc7430,inequalities,h,2,h3,(x * y * z) ^ 2 ≥ 27,3468,3469
+pair_edfc7430,inequalities,h,3,h4,(3 * Real.sqrt 3) ^ 2 = 27,3470,3471
+pair_edfc7430,inequalities,a,0,h2,0 < x * y * z,3472,3473
+pair_edfc7430,inequalities,a,1,h1,x * y * z ≥ 3 * Real.sqrt 3,3474,3475
+pair_f0724d01,olympiads,h,0,aux,x / (2*y + z^2) ≤ 2/9 * x^2 + 1/9 * x,3476,3477
+pair_f0724d01,olympiads,h,1,h₁,a / (2 * b + c ^ 2) + b / (2 * c + a ^ 2) + c / (2 * a + b ^ 2) ≤ 2/9 * (a^2 + b^2 + c^2) + 1/9 * (a + b + c),3478,3479
+pair_f0724d01,olympiads,h,2,h₂,a + b + c ≤ a^2 + b^2 + c^2,3480,3481
+pair_f0724d01,olympiads,a,0,aux,x / (2*y + z^2) ≤ 2/9 * x^2 + 1/9 * x,3482,3483
+pair_f0724d01,olympiads,a,1,h₁,a / (2 * b + c ^ 2) + b / (2 * c + a ^ 2) + c / (2 * a + b ^ 2) ≤ 2/9 * (a^2 + b^2 + c^2) + 1/9 * (a + b + c),3484,3485
+pair_f0724d01,olympiads,a,2,h₂,a + b + c ≤ a^2 + b^2 + c^2,3486,3487
+pair_f09d84fe,olympiads,h,0,h1,0 < a * b * c,3488,3489
+pair_f09d84fe,olympiads,h,1,h2,a^3 * b^3 * c^3 > 0,3490,3491
+pair_f09d84fe,olympiads,h,2,h3,(a^8 + b^8 + c^8) / (a^3 * b^3 * c^3) = (a^8 + b^8 + c^8) * (1 / (a^3 * b^3 * c^3)),3492,3493
+pair_f09d84fe,olympiads,h,3,h4,(1 / a + 1 / b + 1 / c) ≤ (a^8 + b^8 + c^8) * (1 / (a^3 * b^3 * c^3)),3494,3495
+pair_f09d84fe,olympiads,h,4,h5,(a^8 + b^8 + c^8) * (1 / (a^3 * b^3 * c^3)) - (1 / a + 1 / b + 1 / c) ≥ 0,3496,3497
+pair_f09d84fe,olympiads,h,5,h6,a^8 + b^8 + c^8 - (a^2 * b^3 * c^3 + a^3 * b^2 * c^3 + a^3 * b^3 * c^2) ≥ 0,3498,3499
+pair_f09d84fe,olympiads,h,6,h7,(a^8 + b^8 + c^8) * (1 / (a^3 * b^3 * c^3)) - (1 / a + 1 / b + 1 / c) = (a^8 + b^8 + c^8 - (a^2 * b^3 * c^3 + a^3 * b^2 * c^3 + a^3 * b^3 * c^2)) / (a^3 * b^3 * c^3),3500,3501
+pair_f09d84fe,olympiads,h,7,h8,a^3 * b^3 * c^3 > 0,3502,3503
+pair_f09d84fe,olympiads,a,0,pos1,0 < a * b * c,3504,3505
+pair_f09d84fe,olympiads,a,1,h1,1 / a + 1 / b + 1 / c - (a^8 + b^8 + c^8) / (a^3 * b^3 * c^3) ≤ 0,3506,3507
+pair_f09d84fe,olympiads,a,2,h2,(1 / a + 1 / b + 1 / c) - (a^8 + b^8 + c^8) / (a^3 * b^3 * c^3) = (( (b * c + a * c + a * b ) * a^2 * b^2 * c^2 ) - ( a^8 + b^8 + c^8 )) / (a^3 * b^3 * c^3),3508,3509
+pair_f0cb5297,olympiads,h,0,hx,x ≤ 6,3510,3511
+pair_f0cb5297,olympiads,h,1,hy,y ≤ 6,3512,3513
+pair_f0cb5297,olympiads,a,0,h1,y > x,3514,3515
+pair_f0cb5297,olympiads,a,1,h2,y ≤ x,3516,3517
+pair_f0cb5297,olympiads,a,2,h3,y ^ 2 ≤ x ^ 2,3518,3519
+pair_f0cb5297,olympiads,a,3,h4,y ≤ 7,3520,3521
+pair_f0cb5297,olympiads,a,4,h5,x ≤ 7,3522,3523
+pair_f39a4f3d,olympiads,h,0,h1,a^6 - a^5 + a^4 + a^2 - a + 1 = ((a - 1/2)^2 + 3 / 4) * (a^4 + 1),3524,3525
+pair_f39a4f3d,olympiads,h,1,h2,((a - 1/2)^2 + 3 / 4) > 0,3526,3527
+pair_f39a4f3d,olympiads,h,2,h3_0,a^4 + 1 = (a^2)^2 + 1,3528,3529
+pair_f39a4f3d,olympiads,h,3,h3,(a^4 + 1) > 0,3530,3531
+pair_f39a4f3d,olympiads,h,4,h4,((a - 1/2)^2 + 3 / 4) * (a^4 + 1) > 0,3532,3533
+pair_f39a4f3d,olympiads,a,0,h1,a^4 + 1 > 0,3534,3535
+pair_f39a4f3d,olympiads,a,1,h2,a^2 - a + 1 > 0,3536,3537
+pair_f39a4f3d,olympiads,a,2,h3,a^6 - a^5 + a^4 + a^2 - a + 1 = (a^4 + 1) * (a^2 - a + 1),3538,3539
+pair_f3bf23d2,math_train,h,0,t1,2 * x + 2 ≠ 0,3540,3541
+pair_f3bf23d2,math_train,h,1,t2,7 * x + 3 ≠ 0,3542,3543
+pair_f3bf23d2,math_train,a,0,h1,"s = {0, 3}",3544,3545
+pair_f3bf23d2,math_train,a,1,h2,x ≠ -1,3546,3547
+pair_f3bf23d2,math_train,a,2,h3,x ≠ -3 / 7,3548,3549
+pair_f3bf23d2,math_train,a,3,h4,(x + 2) / (2 * x + 2) = (4 * x + 3) / (7 * x + 3),3550,3551
+pair_f3bf23d2,math_train,a,4,h5,(x + 2) * (7 * x + 3) = (4 * x + 3) * (2 * x + 2),3552,3553
+pair_f3bf23d2,math_train,a,5,hx1,(2 * x + 2) ≠ 0,3554,3555
+pair_f3bf23d2,math_train,a,6,hx2,(7 * x + 3) ≠ 0,3556,3557
+pair_f3bf23d2,math_train,a,7,h6,x * (x - 3) = 0,3558,3559
+pair_f5d4e5bf,cn_k12,h,0,ge,2 * ((u - 1/2)^2 + 3/4) ≥ 0,3560,3561
+pair_f5d4e5bf,cn_k12,h,1,nlt,¬ 2 * ((u - 1/2)^2 + 3/4) < 0,3562,3563
+pair_f5d4e5bf,cn_k12,a,0,hfx,f (x - 2) = (x - 2) ^ 2 + (x - 2),3564,3565
+pair_f5d4e5bf,cn_k12,a,1,hfx2,f x = x ^ 2 + x,3566,3567
+pair_f61e24aa,math_train,h,0,h0,(x + 1/x)^3 = x^3 + 1 / x^3 + 3*(x+1/x)*(x*x⁻¹),3568,3569
+pair_f61e24aa,math_train,h,1,h,t ^ 2 + 4 * t + 13 > 0,3570,3571
+pair_f61e24aa,math_train,a,0,h1,x^3 + 1 / x^3 = (x + 1 / x) ^ 3 - 3 * (x + 1 / x),3572,3573
+pair_f61e24aa,math_train,a,1,h2,(x + 1 / x) ^ 3 - 3 * (x + 1 / x) - 52 = 0,3574,3575
+pair_f61e24aa,math_train,a,2,h3,(x + 1 / x - 4) * ((x + 1 / x) ^ 2 + 4 * (x + 1 / x) + 13) = 0,3576,3577
+pair_f61e24aa,math_train,a,3,h6,(x + 1 / x) ^ 2 + 4 * (x + 1 / x) + 13 = 0,3578,3579
+pair_f61e24aa,math_train,a,4,h7,(x + 1 / x) ^ 2 + 4 * (x + 1 / x) + 13 > 0,3580,3581
+pair_f6743d4f,amc_aime,h,0,hx,x = -Real.sqrt 3,3582,3583
+pair_f6743d4f,amc_aime,h,1,h3,(√3 * 2)^2=12,3584,3585
+pair_f6743d4f,amc_aime,a,0,h1,x^2 + 2 * x * Real.sqrt 3 + 3 = (x + Real.sqrt 3) ^2,3586,3587
+pair_f6743d4f,amc_aime,a,1,h2,(x + Real.sqrt 3) ^2 = 0,3588,3589
+pair_f6743d4f,amc_aime,a,2,h3,x + Real.sqrt 3 = 0,3590,3591
+pair_f6743d4f,amc_aime,a,3,h4,x = -Real.sqrt 3,3592,3593
+pair_f6743d4f,amc_aime,a,4,h5,Irrational x,3594,3595
+pair_f6743d4f,amc_aime,a,5,h6,Irrational (-Real.sqrt 3),3596,3597
+pair_f6743d4f,amc_aime,a,6,h7,Irrational (Real.sqrt 3),3598,3599
+pair_f6743d4f,amc_aime,a,7,h8,Irrational (-Real.sqrt 3),3600,3601
+pair_f7c29af4,amc_aime,h,0,hNpm,3194 + m = 222*(a+b+c),3602,3603
+pair_f7c29af4,amc_aime,h,1,hmlt,m < 1000,3604,3605
+pair_f7c29af4,amc_aime,h,2,hmmod,"∃ k : ℕ, m = 222*k+136",3606,3607
+pair_f7c29af4,amc_aime,h,3,hm,m = 358,3608,3609
+pair_f7c29af4,amc_aime,h,4,ha3,(a = 3),3610,3611
+pair_f7c29af4,amc_aime,h,5,hb5,(b = 5),3612,3613
+pair_f7c29af4,amc_aime,a,0,h1,a ≤ 9,3614,3615
+pair_f7c29af4,amc_aime,a,1,h2,b ≤ 9,3616,3617
+pair_f7c29af4,amc_aime,a,2,h3,c ≤ 9,3618,3619
+pair_f7ccc7ae,olympiads_ref,h,0,h1,0.01 * (5 : ℝ) ^ n ≤ 2.99 * 2 ^ n,3620,3621
+pair_f7ccc7ae,olympiads_ref,h,1,g1,(2 : ℝ) ^ n > 0,3622,3623
+pair_f7ccc7ae,olympiads_ref,h,2,h2,(5 : ℝ) ^ n + 2 ^ n > 0,3624,3625
+pair_f7ccc7ae,olympiads_ref,a,0,h,((5 : ℝ) ^ (n + 1) + 2 ^ (n + 1)) / (5 ^ n + 2 ^ n) > 4.99,3626,3627
+pair_f7ccc7ae,olympiads_ref,a,1,h2,n < 7,3628,3629
+pair_f8e24a30,math_train,h,0,H1,"d ∣ 2 * 3 * 4 * 5 * 6 ∧ d ∣ 1 * 3 * 4 * 5 * 6 ∧ d ∣ 1 * 2 * 4 * 5 * 6 ∧ d ∣ 1 * 2 * 3 * 5 * 6 ∧ d ∣ 1 * 2 * 3 * 4 * 6 ∧ d ∣ 1 * 2 * 3 * 4 * 5 ↔ ∀ a ∈ ({ 2 * 3 * 4 * 5 * 6, 1 * 3 * 4 * 5 * 6, 1 * 2 * 4 * 5 * 6, 1 * 2 * 3 * 5 * 6, 1 * 2 * 3 * 4 * 6, 1 * 2 * 3 * 4 * 5 } : Multiset ℕ), d ∣ a",3630,3631
+pair_f8e24a30,math_train,h,1,H2,"(∀ a ∈ ({ 2 * 3 * 4 * 5 * 6, 1 * 3 * 4 * 5 * 6, 1 * 2 * 4 * 5 * 6, 1 * 2 * 3 * 5 * 6, 1 * 2 * 3 * 4 * 6, 1 * 2 * 3 * 4 * 5 } : Multiset ℕ), d ∣ a) ↔ d ∣ ({ 2 * 3 * 4 * 5 * 6, 1 * 3 * 4 * 5 * 6, 1 * 2 * 4 * 5 * 6, 1 * 2 * 3 * 5 * 6, 1 * 2 * 3 * 4 * 6, 1 * 2 * 3 * 4 * 5 } : Multiset ℕ).gcd",3632,3633
+pair_f8e24a30,math_train,h,2,H3,gcd 720 (gcd 360 (gcd 240 (gcd 180 (gcd 144 120)))) = 12,3634,3635
+pair_f8e24a30,math_train,h,3,hc,c ≥ 1,3636,3637
+pair_f8e24a30,math_train,a,0,h7,d ∣ 12,3638,3639
+pair_f8e24a30,math_train,a,1,h8,d ≤ 12,3640,3641
+pair_f919f46c,math_test,h,0,fin,f (6 * x) ∈ Set.Icc (-11) 3,3642,3643
+pair_f919f46c,math_test,h,1,ysubin,y - 1 ∈ Set.Icc (-11) 3,3644,3645
+pair_f919f46c,math_test,a,0,h1,f (6 * x) ∈ Set.range f,3646,3647
+pair_f919f46c,math_test,a,1,h4,y - 1 ∈ Set.range f,3648,3649
+pair_f919f46c,math_test,a,2,h5,(6 * (z / 6) ) = (z : ℝ),3650,3651
+pair_f97ece2d,cn_k12,h,0,nx,-x > 0,3652,3653
+pair_f97ece2d,cn_k12,h,1,ny,-y > 0,3654,3655
+pair_f97ece2d,cn_k12,h,2,xy,-y > -x,3656,3657
+pair_f97ece2d,cn_k12,a,0,hx,f x = f (-x),3658,3659
+pair_f97ece2d,cn_k12,a,1,hy,f y = f (-y),3660,3661
+pair_f97ece2d,cn_k12,a,2,h1,-x > 0,3662,3663
+pair_f97ece2d,cn_k12,a,3,h2,-y > 0,3664,3665
+pair_f97ece2d,cn_k12,a,4,h3,-y > -x,3666,3667
+pair_f97ece2d,cn_k12,a,5,h4,f (-y) < f (-x),3668,3669
+pair_f97ece2d,cn_k12,a,6,h6,f (-y) < f (-x),3670,3671
+pair_fa6b0ceb,olympiads,h,0,ha,a = 12.8,3672,3673
+pair_fa6b0ceb,olympiads,h,1,hb,b = 19.2,3674,3675
+pair_fa6b0ceb,olympiads,h,2,hc,c = 25.6,3676,3677
+pair_fa6b0ceb,olympiads,h,3,hd,d = 32,3678,3679
+pair_fa6b0ceb,olympiads,a,0,eq1,3 * a = 2 * b,3680,3681
+pair_fa6b0ceb,olympiads,a,1,eq2,4 * b = 3 * c,3682,3683
+pair_fa6b0ceb,olympiads,a,2,eq3,5 * c = 4 * d,3684,3685
+pair_fa6b0ceb,olympiads,a,3,h4,a = 12.8,3686,3687
+pair_fa6b0ceb,olympiads,a,4,h5,b = 19.2,3688,3689
+pair_fa6b0ceb,olympiads,a,5,h6,c = 25.6,3690,3691
+pair_fa6b0ceb,olympiads,a,6,h7,d = 32,3692,3693
+pair_faafdcfc,math_test,h,0,y_inv_low,1 / y ≤ 1 / 2,3694,3695
+pair_faafdcfc,math_test,h,1,y_inv_up,1 / 4 ≤ 1 / y,3696,3697
+pair_faafdcfc,math_test,h,2,k_low,-5 / 2 ≤ k,3698,3699
+pair_faafdcfc,math_test,h,3,k_up,k ≤ -3 / 4,3700,3701
+pair_faafdcfc,math_test,h,4,k_ne_1,k - 1 ≠ 0,3702,3703
+pair_faafdcfc,math_test,h,5,hy,y ≠ 0,3704,3705
+pair_faafdcfc,math_test,a,0,h1,x - y < 0,3706,3707
+pair_faafdcfc,math_test,a,1,h2,(x + y) / (x - y) ≤ 3 / 7,3708,3709
+pair_faeeadb5,inequalities,h,0,h1,x ^ 3 / ((1 + y) * (1 + z)) + y ^ 3 / ((1 + z) * (1 + x)) + z ^ 3 / ((1 + x) * (1 + y)) ≥ 3 / 4,3710,3711
+pair_faeeadb5,inequalities,h,1,h2,x + y + z ≥ 3,3712,3713
+pair_faeeadb5,inequalities,h,2,h3,x * y + y * z + z * x ≥ 3,3714,3715
+pair_faeeadb5,inequalities,h,3,h4,x ^ 3 / ((1 + y) * (1 + z)) + y ^ 3 / ((1 + z) * (1 + x)) + z ^ 3 / ((1 + x) * (1 + y)) ≥ 3 / 4,3716,3717
+pair_faeeadb5,inequalities,h,4,h5,x ^ 3 / ((1 + y) * (1 + z)) + y ^ 3 / ((1 + z) * (1 + x)) + z ^ 3 / ((1 + x) * (1 + y)) - 3 / 4 ≥ 0,3718,3719
+pair_faeeadb5,inequalities,h,5,h6,(1 + x) * (1 + y) * (1 + z) > 0,3720,3721
+pair_faeeadb5,inequalities,h,6,h7,x ^ 3 / ((1 + y) * (1 + z)) + y ^ 3 / ((1 + z) * (1 + x)) + z ^ 3 / ((1 + x) * (1 + y)) - 3 / 4 = (4 * (x ^ 3 * (1 + x) + y ^ 3 * (1 + y) + z ^ 3 * (1 + z)) - 3 * (1 + x) * (1 + y) * (1 + z)) / (4 * ((1 + x) * (1 + y) * (1 + z))),3722,3723
+pair_faeeadb5,inequalities,h,7,h8,4 * (x ^ 3 * (1 + x) + y ^ 3 * (1 + y) + z ^ 3 * (1 + z)) - 3 * (1 + x) * (1 + y) * (1 + z) ≥ 0,3724,3725
+pair_faeeadb5,inequalities,a,0,h1,0 < (1 + y) * (1 + z) * (1 + x),3726,3727
+pair_faeeadb5,inequalities,a,1,h2,x ^ 3 / ((1 + y) * (1 + z)) + y ^ 3 / ((1 + z) * (1 + x)) + z ^ 3 / ((1 + x) * (1 + y)) - 3 / 4 ≥ 0,3728,3729
+pair_faeeadb5,inequalities,a,2,h3,0 < (1 + y) * (1 + z) * (1 + x),3730,3731
+pair_faeeadb5,inequalities,a,3,h4,x ^ 3 / ((1 + y) * (1 + z)) + y ^ 3 / ((1 + z) * (1 + x)) + z ^ 3 / ((1 + x) * (1 + y)) - 3 / 4 = (x ^ 3 * (1 + x) + y ^ 3 * (1 + y) + z ^ 3 * (1 + z) - 3 / 4 * ((1 + y) * (1 + z) * (1 + x))) / ((1 + y) * (1 + z) * (1 + x)),3732,3733
+pair_ff074495,secondary_math,h,0,h1,abs (Real.cos t) ≤ 1,3734,3735
+pair_ff074495,secondary_math,h,1,h2,abs (Real.sin t) ≤ 1,3736,3737
+pair_ff074495,secondary_math,h,2,h3,(s + 5 - 3 * abs (Real.cos t)) ^ 2 + (s - 2 * abs (Real.sin t)) ^ 2 ≥ 2,3738,3739
+pair_ff074495,secondary_math,a,0,h3,(s + 5 - 3*abs (Real.cos t))^2 + (s - 2*abs (Real.sin t))^2 ≥ 2,3740,3741
+pair_ff074495,secondary_math,a,1,h1,abs (Real.cos t) ≤ 1,3742,3743
+pair_ff074495,secondary_math,a,2,h2,abs (Real.sin t) ≤ 1,3744,3745
+pair_ff074495,secondary_math,a,3,h4,(s + 5 - 3*abs (Real.cos t))^2 + (s - 2*abs (Real.sin t))^2 ≥ 2,3746,3747

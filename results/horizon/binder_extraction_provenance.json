@@ -1,0 +1,82 @@
+{
+  "corpus": "census/paired_numina_exact",
+  "lean_version": "Lean (version 4.15.0, x86_64-unknown-linux-gnu, commit 11651562caae, Release)",
+  "mathlib_commit": "9837ca9d65d9de6fad1ef4381750ca688774e608",
+  "template_sha256": "7cb5f46f287ea1d8672937d16d8333195300450013f14009fcb53655911ccd9f",
+  "extractor_sha256": "65e99ec1c0c242cb80b367e6209421127c65bccfde746f42bc218a14658899ca",
+  "shard_count": 3,
+  "tasks": 7260,
+  "pairs": 3630,
+  "status_counts": {
+    "ok": 7260
+  },
+  "status_by_side": {
+    "h": {
+      "ok": 3630
+    },
+    "a": {
+      "ok": 3630
+    }
+  },
+  "target_manifest": "census/paired_numina_exact/targets.csv",
+  "target_manifest_sha256": "0b100fd10dc53a5449d34165a84bb7181ac6fd414037c4b116e6b5ccd193adef",
+  "corpus_source_files": 7260,
+  "corpus_source_tree_sha256": "0ecec04a6832f4fb946e98f24ea1e6801a19feab2f5248587a5f740543455f98",
+  "components": [
+    {
+      "file": "results/horizon/binder_extraction_mathlib415memo_full_shard0.json",
+      "sha256": "425eb3f6cc963cab2624b630fd98659f2ba1413660d74a33f7d67586425d9405",
+      "tasks": 2420,
+      "shard_index": 0,
+      "runs": [
+        {
+          "jobs": 8,
+          "timeout_seconds": 300,
+          "max_rec_depth": 100000,
+          "resume": false,
+          "retry_failed": false,
+          "reused_tasks": 0,
+          "executed_tasks": 2420
+        }
+      ],
+      "resume_origin": null
+    },
+    {
+      "file": "results/horizon/binder_extraction_mathlib415memo_full_shard1.json",
+      "sha256": "28e68d020a85d082a6a10209d5aa6cfbbaa73cdb0ce6af23ea0f3e8951ecce0f",
+      "tasks": 2420,
+      "shard_index": 1,
+      "runs": [
+        {
+          "jobs": 8,
+          "timeout_seconds": 300,
+          "max_rec_depth": 100000,
+          "resume": false,
+          "retry_failed": false,
+          "reused_tasks": 0,
+          "executed_tasks": 2420
+        }
+      ],
+      "resume_origin": null
+    },
+    {
+      "file": "results/horizon/binder_extraction_mathlib415memo_full_shard2.json",
+      "sha256": "8133cfd171f7688a9823448d2345cf721f3d1ebeefc99dc894845cbe687769ed",
+      "tasks": 2420,
+      "shard_index": 2,
+      "runs": [
+        {
+          "jobs": 8,
+          "timeout_seconds": 300,
+          "max_rec_depth": 100000,
+          "resume": false,
+          "retry_failed": false,
+          "reused_tasks": 0,
+          "executed_tasks": 2420
+        }
+      ],
+      "resume_origin": null
+    }
+  ],
+  "output_sha256": "9b6ff86ab5ec8f1ad6d48873107744ce3214d1755e25f3ba6b7ab5d90d85628b"
+}

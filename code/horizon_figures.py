@@ -86,41 +86,57 @@ def claim_functions() -> None:
         1 - source["claim_rates"]["human"]["placeholder_name_share"]["estimate"],
         1 - source["claim_rates"]["ai"]["placeholder_name_share"]["estimate"],
     ]
-    long_horizon = [
-        source["claim_rates"]["human"]["long_horizon_share"]["estimate"],
-        source["claim_rates"]["ai"]["long_horizon_share"]["estimate"],
+    adopted = [
+        1 - source["claim_rates"]["human"]["zero_uptake_share"]["estimate"],
+        1 - source["claim_rates"]["ai"]["zero_uptake_share"]["estimate"],
     ]
     descriptive_intervals = [
         [1 - source["claim_rates"][side]["placeholder_name_share"]["source_cluster_ci"][1],
          1 - source["claim_rates"][side]["placeholder_name_share"]["source_cluster_ci"][0]]
         for side in ("human", "ai")
     ]
-    horizon_intervals = [
-        source["claim_rates"][side]["long_horizon_share"]["source_cluster_ci"]
+    adopted_intervals = [
+        [1 - source["claim_rates"][side]["zero_uptake_share"]["source_cluster_ci"][1],
+         1 - source["claim_rates"][side]["zero_uptake_share"]["source_cluster_ci"][0]]
         for side in ("human", "ai")
     ]
-    x = np.arange(2)
+    generalized = [
+        source["claim_rates"]["human"]["generalized_claim_share"]["estimate"],
+        source["claim_rates"]["ai"]["generalized_claim_share"]["estimate"],
+    ]
+    generalized_intervals = [
+        source["claim_rates"][side]["generalized_claim_share"]["source_cluster_ci"]
+        for side in ("human", "ai")
+    ]
+    human_values = [descriptive[0], adopted[0], generalized[0]]
+    ai_values = [descriptive[1], adopted[1], generalized[1]]
+    human_intervals = [descriptive_intervals[0], adopted_intervals[0], generalized_intervals[0]]
+    ai_intervals = [descriptive_intervals[1], adopted_intervals[1], generalized_intervals[1]]
+    x = np.arange(3)
     width = 0.34
     axes[3].bar(
-        x - width / 2, [descriptive[0], long_horizon[0]], width,
+        x - width / 2, human_values, width,
         color=HUMAN, label="Human", capsize=2.5,
         yerr=np.asarray([
-            [descriptive[0] - descriptive_intervals[0][0], long_horizon[0] - horizon_intervals[0][0]],
-            [descriptive_intervals[0][1] - descriptive[0], horizon_intervals[0][1] - long_horizon[0]],
+            [value - interval[0] for value, interval in zip(human_values, human_intervals)],
+            [interval[1] - value for value, interval in zip(human_values, human_intervals)],
         ]),
     )
     axes[3].bar(
-        x + width / 2, [descriptive[1], long_horizon[1]], width,
+        x + width / 2, ai_values, width,
         color=AI, label="AI", capsize=2.5,
         yerr=np.asarray([
-            [descriptive[1] - descriptive_intervals[1][0], long_horizon[1] - horizon_intervals[1][0]],
-            [descriptive_intervals[1][1] - descriptive[1], horizon_intervals[1][1] - long_horizon[1]],
+            [value - interval[0] for value, interval in zip(ai_values, ai_intervals)],
+            [interval[1] - value for value, interval in zip(ai_values, ai_intervals)],
         ]),
     )
-    axes[3].set_xticks(x, ["outside placeholder\nlist", "crosses a later\nclaim boundary"])
-    axes[3].set_ylim(0, 0.62)
+    axes[3].set_xticks(
+        x,
+        ["outside\nplaceholder list", "explicitly\nadopted", "states a\nlocal family"],
+    )
+    axes[3].set_ylim(0, 0.90)
     axes[3].set_ylabel("share of named claims")
-    axes[3].set_title("D  Addressable future", loc="left", fontweight="bold")
+    axes[3].set_title("D  Interface investment", loc="left", fontweight="bold")
     axes[3].legend(frameon=False, fontsize=8, loc="upper right")
 
     for ax in axes:
@@ -137,14 +153,14 @@ def source_consistency() -> None:
     names = frame.source.str.replace("_", " ")
     use_delta = frame.ai_explicit_uses_per_claim - frame.human_explicit_uses_per_claim
     zero_delta = frame.ai_zero_uptake_share - frame.human_zero_uptake_share
-    horizon_delta = frame.ai_long_horizon_share - frame.human_long_horizon_share
+    family_delta = frame.ai_generalized_claim_share - frame.human_generalized_claim_share
 
     fig, axes = plt.subplots(1, 3, figsize=(9.6, 4.2), sharey=True)
     y = np.arange(len(frame))
     for ax, values, title in zip(
         axes,
-        (use_delta, zero_delta, horizon_delta),
-        ("explicit uses / claim", "zero-uptake share", "long-horizon share"),
+        (use_delta, zero_delta, family_delta),
+        ("explicit uses / claim", "zero-uptake share", "local-family share"),
     ):
         ax.axvline(0, color="#333333", lw=0.8)
         ax.scatter(values, y, c=np.where(values < 0, HUMAN, AI), s=30, zorder=3)

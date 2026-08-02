@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import re
+import signal
 import subprocess
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
@@ -36,15 +37,31 @@ def _run_one(task: tuple[str, str, str, str, str, str]) -> dict[str, Any]:
         + f'\nset_option maxRecDepth {_run_one.max_rec_depth} in\n'
         + f'#eval Horizon.writeBinderStats `{target} "{output_path}"\n'
     )
+    proc = subprocess.Popen(
+        [str(Path(_run_one.lake_path)), "env", "lean", str(work)],
+        cwd=_run_one.mathlib_path,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        start_new_session=True,
+    )
     try:
-        proc = subprocess.run(
-            [str(Path(_run_one.lake_path)), "env", "lean", str(work)],
-            cwd=_run_one.mathlib_path,
-            text=True,
-            capture_output=True,
-            timeout=_run_one.timeout,
-        )
+        stdout, stderr = proc.communicate(timeout=_run_one.timeout)
     except subprocess.TimeoutExpired as exc:
+        # `lake env lean` is a wrapper process. Killing only the wrapper leaves
+        # the expensive Lean child orphaned, so terminate its process group.
+        try:
+            os.killpg(proc.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            proc.communicate(timeout=5)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(proc.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            proc.communicate()
         return {
             "side": side, "pair": pair, "status": "timeout",
             "timeout_seconds": _run_one.timeout,
@@ -53,7 +70,7 @@ def _run_one(task: tuple[str, str, str, str, str, str]) -> dict[str, Any]:
     if proc.returncode != 0 or not Path(output_path).exists():
         return {
             "side": side, "pair": pair, "status": "failed", "returncode": proc.returncode,
-            "error": (proc.stdout + "\n" + proc.stderr)[-4000:],
+            "error": (stdout + "\n" + stderr)[-4000:],
         }
     payload = json.loads(Path(output_path).read_text())
     return {"side": side, "pair": pair, "status": "ok", **payload}
@@ -98,9 +115,22 @@ def main() -> None:
         help="Lean extractor template (relative to root by default)",
     )
     parser.add_argument("--resume", action="store_true", help="reuse existing valid raw JSON")
+    parser.add_argument(
+        "--retry-failed", action="store_true",
+        help="with --resume, rerun prior failed tasks instead of treating them as terminal",
+    )
+    parser.add_argument(
+        "--resume-origin-extraction", type=Path,
+        help=(
+            "optional immutable baseline extraction whose successful raw outputs seed --resume; "
+            "its hash and sibling provenance hash are recorded"
+        ),
+    )
     args = parser.parse_args()
 
     root = args.root.resolve()
+    if args.resume_origin_extraction and not args.resume:
+        raise ValueError("--resume-origin-extraction requires --resume")
     mathlib = args.mathlib_dir if args.mathlib_dir.is_absolute() else root / args.mathlib_dir
     mathlib = mathlib.resolve()
     corpus = (args.corpus_dir or (root / "census" / "paired_numina")).resolve()
@@ -169,6 +199,8 @@ def main() -> None:
         side, pair, _source, _work, output, _target = task
         previous = previous_by_key.get(f"{pair}:{side}")
         reusable = previous and previous.get("status") in {"failed", "no_declaration"}
+        if previous and previous.get("status") == "failed" and args.retry_failed:
+            reusable = False
         if reusable and previous.get("status") == "failed":
             error = str(previous.get("error", ""))
             if "declaration" in error and "not found" in error:
@@ -203,6 +235,32 @@ def main() -> None:
         "shard_index": args.shard_index,
         "shard_count": args.shard_count,
     }
+    if args.resume_origin_extraction:
+        origin = (
+            args.resume_origin_extraction
+            if args.resume_origin_extraction.is_absolute()
+            else root / args.resume_origin_extraction
+        ).resolve()
+        if not origin.exists():
+            raise FileNotFoundError(origin)
+        origin_provenance = origin.with_name(
+            origin.stem.replace(
+                "binder_extraction", "binder_extraction_provenance"
+            ) + origin.suffix
+        )
+        static_provenance["resume_origin"] = {
+            "extraction": str(origin.relative_to(root) if origin.is_relative_to(root) else origin),
+            "extraction_sha256": hashlib.sha256(origin.read_bytes()).hexdigest(),
+            "provenance": (
+                str(origin_provenance.relative_to(root))
+                if origin_provenance.exists() and origin_provenance.is_relative_to(root)
+                else str(origin_provenance)
+            ),
+            "provenance_sha256": (
+                hashlib.sha256(origin_provenance.read_bytes()).hexdigest()
+                if origin_provenance.exists() else None
+            ),
+        }
     runs: list[dict[str, Any]] = []
     if provenance_path.exists():
         previous_provenance = json.loads(provenance_path.read_text())
@@ -222,6 +280,7 @@ def main() -> None:
         "timeout_seconds": args.timeout,
         "max_rec_depth": args.max_rec_depth,
         "resume": bool(args.resume),
+        "retry_failed": bool(args.retry_failed),
         "reused_tasks": len(results),
         "executed_tasks": len(pending),
     })

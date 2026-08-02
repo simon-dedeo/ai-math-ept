@@ -1,0 +1,251 @@
+/-
+Memoized semantic extraction for Lean versions in which source `have` syntax
+is represented as `letFun v (fun h => body)`.
+
+The ordinary extractor deliberately traverses the expression as a tree.  A
+shared tactic term can therefore take exponential time even though Lean stores
+it as a compact DAG.  This dynamic program summarizes each structurally equal
+`Expr` once.  Its free-de-Bruijn occurrence map makes the cached summary valid
+under any surrounding scope: entering an ordinary binder drops index zero and
+shifts every remaining index, while entering a decoded `have` additionally
+records the dropped count as that binder's use count.
+-/
+namespace Horizon
+open Lean
+
+structure BinderUse where
+  kind       : String
+  name       : String
+  uses       : Nat
+  typeNodes  : Nat
+  valueNodes : Nat
+  bodyNodes  : Nat
+  deriving Inhabited
+
+structure Summary where
+  nodes   : Nat
+  freeCounts : Std.HashMap Nat Nat
+  binders : Array BinderUse
+  deriving Inhabited
+
+def namedLetFun? : Expr → Option (Name × Expr × Expr × Expr)
+  | .app (.app (.app (.app (.const fn _) t) _) v) (.lam n _ b _) =>
+      if fn == ``letFun then some (n, t, v, b) else none
+  | _ => none
+
+def addCounts (left right : Std.HashMap Nat Nat) : Std.HashMap Nat Nat :=
+  right.fold (fun out key value =>
+    out.insert key ((out[key]?).getD 0 + value)) left
+
+def shiftOutermost (counts : Std.HashMap Nat Nat) : Std.HashMap Nat Nat :=
+  counts.fold (fun out key value =>
+    if key == 0 then out
+    else out.insert (key - 1) ((out[key - 1]?).getD 0 + value)) {}
+
+def append3 (a b c : Array BinderUse) : Array BinderUse :=
+  (a ++ b) ++ c
+
+def mkSummary (nodes : Nat) (freeCounts : Std.HashMap Nat Nat)
+    (binders : Array BinderUse) : Summary :=
+  ⟨nodes, freeCounts, binders⟩
+
+inductive SummaryWork where
+  | visit (expr : Expr)
+  | finishApp (expr : Expr)
+  | finishOrdBinder (expr : Expr)
+  | finishHave (expr : Expr) (name : Name)
+  | finishLet (expr : Expr) (name : Name)
+  | finishUnary (expr : Expr)
+  deriving Inhabited
+
+/-- Stack-safe semantic summary.  `Expr` hashing ignores binder names, so only
+binder-free summaries enter the cache; otherwise alpha-equivalent subterms
+could transplant the wrong source name. -/
+def summarizeIterative (root : Expr) : Summary := Id.run do
+  let mut cache : Std.HashMap Expr Summary := {}
+  let mut work : Array SummaryWork := #[.visit root]
+  let mut summaries : Array Summary := #[]
+  while !work.isEmpty do
+    let event := work.back!
+    work := work.pop
+    match event with
+    | .visit expr =>
+        if let some cached := cache[expr]? then
+          summaries := summaries.push cached
+        else
+          match expr with
+          | .bvar i =>
+              let counts : Std.HashMap Nat Nat := {}
+              let result := mkSummary 1 (counts.insert i 1) #[]
+              cache := cache.insert expr result
+              summaries := summaries.push result
+          | .app f a =>
+              match namedLetFun? expr with
+              | some (n, t, v, b) =>
+                  work := work.push (.finishHave expr n)
+                  work := work.push (.visit b)
+                  work := work.push (.visit v)
+                  work := work.push (.visit t)
+              | none =>
+                  work := work.push (.finishApp expr)
+                  work := work.push (.visit a)
+                  work := work.push (.visit f)
+          | .lam _ t b _ | .forallE _ t b _ =>
+              work := work.push (.finishOrdBinder expr)
+              work := work.push (.visit b)
+              work := work.push (.visit t)
+          | .letE n t v b _ =>
+              work := work.push (.finishLet expr n)
+              work := work.push (.visit b)
+              work := work.push (.visit v)
+              work := work.push (.visit t)
+          | .mdata _ b | .proj _ _ b =>
+              work := work.push (.finishUnary expr)
+              work := work.push (.visit b)
+          | _ =>
+              let result := mkSummary 1 {} #[]
+              cache := cache.insert expr result
+              summaries := summaries.push result
+    | .finishApp expr =>
+        let argSummary := summaries.back!
+        summaries := summaries.pop
+        let fnSummary := summaries.back!
+        summaries := summaries.pop
+        let result := mkSummary (1 + fnSummary.nodes + argSummary.nodes)
+          (addCounts fnSummary.freeCounts argSummary.freeCounts)
+          (fnSummary.binders ++ argSummary.binders)
+        if result.binders.isEmpty then cache := cache.insert expr result
+        summaries := summaries.push result
+    | .finishOrdBinder expr =>
+        let bodySummary := summaries.back!
+        summaries := summaries.pop
+        let typeSummary := summaries.back!
+        summaries := summaries.pop
+        let result := mkSummary (1 + typeSummary.nodes + bodySummary.nodes)
+          (addCounts typeSummary.freeCounts (shiftOutermost bodySummary.freeCounts))
+          (typeSummary.binders ++ bodySummary.binders)
+        if result.binders.isEmpty then cache := cache.insert expr result
+        summaries := summaries.push result
+    | .finishHave _ name =>
+        let bodySummary := summaries.back!
+        summaries := summaries.pop
+        let valueSummary := summaries.back!
+        summaries := summaries.pop
+        let typeSummary := summaries.back!
+        summaries := summaries.pop
+        let binder : BinderUse := {
+          kind := "have_fun", name := name.toString,
+          uses := (bodySummary.freeCounts[0]?).getD 0,
+          typeNodes := typeSummary.nodes, valueNodes := valueSummary.nodes,
+          bodyNodes := bodySummary.nodes }
+        let result := mkSummary
+          (1 + typeSummary.nodes + valueSummary.nodes + bodySummary.nodes)
+          (addCounts (addCounts typeSummary.freeCounts valueSummary.freeCounts)
+            (shiftOutermost bodySummary.freeCounts))
+          (#[binder] ++ append3 typeSummary.binders valueSummary.binders bodySummary.binders)
+        summaries := summaries.push result
+    | .finishLet _ name =>
+        let bodySummary := summaries.back!
+        summaries := summaries.pop
+        let valueSummary := summaries.back!
+        summaries := summaries.pop
+        let typeSummary := summaries.back!
+        summaries := summaries.pop
+        let binder : BinderUse := {
+          kind := "let", name := name.toString,
+          uses := (bodySummary.freeCounts[0]?).getD 0,
+          typeNodes := typeSummary.nodes, valueNodes := valueSummary.nodes,
+          bodyNodes := bodySummary.nodes }
+        let result := mkSummary
+          (1 + typeSummary.nodes + valueSummary.nodes + bodySummary.nodes)
+          (addCounts (addCounts typeSummary.freeCounts valueSummary.freeCounts)
+            (shiftOutermost bodySummary.freeCounts))
+          (#[binder] ++ append3 typeSummary.binders valueSummary.binders bodySummary.binders)
+        summaries := summaries.push result
+    | .finishUnary expr =>
+        let child := summaries.back!
+        summaries := summaries.pop
+        let result := mkSummary (1 + child.nodes) child.freeCounts child.binders
+        if result.binders.isEmpty then cache := cache.insert expr result
+        summaries := summaries.push result
+  return summaries.back!
+
+inductive RawWork where
+  | visit (expr : Expr)
+  | finish (expr : Expr) (arity : Nat)
+  deriving Inhabited
+
+/-- Tree-occurrence size by a stack-safe DAG dynamic program.  A cached child
+size is added once per incoming occurrence, preserving tree accounting without
+re-traversing the child's stored expression. -/
+def rawNodesMemoIterative (root : Expr) : Nat := Id.run do
+  let mut cache : Std.HashMap Expr Nat := {}
+  let mut work : Array RawWork := #[.visit root]
+  let mut sizes : Array Nat := #[]
+  while !work.isEmpty do
+    let event := work.back!
+    work := work.pop
+    match event with
+    | .visit expr =>
+        if let some cached := cache[expr]? then
+          sizes := sizes.push cached
+        else
+          match expr with
+          | .app f a =>
+              work := work.push (.finish expr 2)
+              work := work.push (.visit a)
+              work := work.push (.visit f)
+          | .lam _ t b _ | .forallE _ t b _ =>
+              work := work.push (.finish expr 2)
+              work := work.push (.visit b)
+              work := work.push (.visit t)
+          | .letE _ t v b _ =>
+              work := work.push (.finish expr 3)
+              work := work.push (.visit b)
+              work := work.push (.visit v)
+              work := work.push (.visit t)
+          | .mdata _ b | .proj _ _ b =>
+              work := work.push (.finish expr 1)
+              work := work.push (.visit b)
+          | _ =>
+              cache := cache.insert expr 1
+              sizes := sizes.push 1
+    | .finish expr arity =>
+        let mut total := 1
+        for _ in [0:arity] do
+          total := total + sizes.back!
+          sizes := sizes.pop
+        cache := cache.insert expr total
+        sizes := sizes.push total
+  return sizes.back!
+
+def jsonQuote (s : String) : String :=
+  "\"" ++ ((s.replace "\\" "\\\\").replace "\"" "\\\"") ++ "\""
+
+def binderJson (b : BinderUse) : String :=
+  "{\"kind\":" ++ jsonQuote b.kind ++
+  ",\"name\":" ++ jsonQuote b.name ++
+  ",\"uses\":" ++ toString b.uses ++
+  ",\"type_nodes\":" ++ toString b.typeNodes ++
+  ",\"value_nodes\":" ++ toString b.valueNodes ++
+  ",\"body_nodes\":" ++ toString b.bodyNodes ++ "}"
+
+def writeBinderStats (root : Name) (path : String) : CoreM Unit := do
+  let env ← getEnv
+  let some info := env.find? root
+    | throwError "declaration {root} not found"
+  let value := match info with
+    | .defnInfo val => val.value
+    | .thmInfo val => val.value
+    | .opaqueInfo val => val.value
+    | _ => info.type
+  let rootNodeCount := rawNodesMemoIterative value
+  let binders := (summarizeIterative value).binders
+  let payload :=
+    "{\"name\":" ++ jsonQuote root.toString ++
+    ",\"root_nodes\":" ++ toString rootNodeCount ++
+    ",\"n_lets\":" ++ toString binders.size ++
+    ",\"lets\":[" ++ String.intercalate "," (binders.map binderJson).toList ++ "]}"
+  IO.FS.writeFile path payload
+
+end Horizon

@@ -11,9 +11,13 @@ paper audit below.
 | claim | script | output |
 |---|---|---|
 | 3,630 exact-statement pairs after auditing 3,635 validation-flag candidates; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz`, `target_pair_exclusions.csv` |
-| claim density, explicit uptake, visible reach, naming, and matched tactic strata | same | `results/horizon/claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
-| depth-aware use of elaborated local binders in 298 complete pairs | `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz` |
+| claim density, uptake, opportunity-normalized reach, naming, and matched tactic strata | same | `results/horizon/claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
+| within-proof association of family syntax with adoption and repeated use in both tracks, including nearest-position matching | same | `results/horizon/source_summary.json` → `within_proof_feature_associations`, `position_matched_family_associations` |
+| depth-aware use of elaborated local binders in all 3,630 pairs (7,260 successful tasks), including exact expanded-tree extremes | `code/ExtractBinderUseMemoLegacy.lean.tmpl`, `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz`, `binder_root_tree_extremes.csv` |
+| exact equivalence of the stack-safe memoized extractor to the legacy traversal on a stratified 430-task audit and every 7,186 legacy-success task | `code/binder_memo_audit.py` | `results/horizon/binder_memo_equivalence.json`, `binder_memo_full_equivalence.json` |
+| consolidation--composition split: large interface/generality/term-dependency differences but control-dependent source duration and near-equal retained-binder multi-use | `code/paired_horizon.py`, `code/analyze_binder_use.py` | `results/horizon/source_summary.json`, `binder_summary.json` |
 | model-relative information pulse at claim boundaries | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_sensitivity.csv`, `surprisal_provenance.json` |
+| null chance-normalized name-to-type retrieval assay | `code/name_type_retrieval.py`, `llama-embedding` | `results/horizon/name_retrieval_mean/`, `name_retrieval_last_summary.json` |
 | scope-correct term-DAG construction and 298-pair audit | `code/ExtractNetwork.lean`, `code/ExtractCore.lean.tmpl`, `code/extract_corpus.py`, `code/paired_term_structure.py` | `code/test_scoped_bvars.py`, `results/horizon/scoped_term_structure/` |
 
 The source inclusion audit compares the final structured declaration signatures emitted by the
@@ -28,10 +32,13 @@ occurs more than once in its proof; all uptake and reach directions strengthen. 
 proof-value overlap audit finds 181 token-identical values, 180 of which also have identical source
 bodies. Excluding all 230 pairs with proof-value token similarity at least .90 leaves 3,400 pairs
 and preserves every headline direction.
+The `length_matched_sensitivity` audit separately retains 834 pairs whose proof bodies differ by at
+most 10% in whitespace-token count; uptake, zero-use, and visible-reach directions all persist with
+source-cluster intervals excluding zero.
 
 The primary limitations are observational provenance, lexical recognition of
-named `have` rather than every possible source construct, current-Mathlib
-compilation attrition in the term sample, and possible training overlap or style
+named `have` rather than every possible source construct, elaborator-version dependence
+of term representation, and possible training overlap or style
 affinity in the Goedel-Prover surprisal assay. The paper treats the last as
 exploratory and does not infer human cognitive surprisal from it.
 `code/test_horizon_report.py` checks the paper's headline values against the
@@ -114,8 +121,45 @@ A reviewer should check these were actually corrected in the report, not just no
 | "expanded-graph out-degree evidence is representation-robust" | normalized root proofs retain similar exponents but usually cannot distinguish power law from exponential | appendix A.2: strong tail evidence restricted to the expanded-network scale |
 | "human or AI provenance has a directional effect on the fixed-10 out-degree exponent" | the tiny paired difference reverses from -0.009 in `term0` to +0.025 after proof-value normalization | appendix A.2 and Table 3: no representation-robust authorship effect |
 | unexpanded term-DAG reuse is a semantic reuse measure | raw de Bruijn indices from unrelated binder scopes were interned together, creating false shared variable nodes | the extractor now assigns scope-specific identities; current paper uses depth-aware binder occurrence and withdraws old semantic readings of `term0` topology |
+| "binder-bearing `have` is a fourteenfold human advantage in abstraction" | Lean can state the same local family with an explicit `forall`; the binder-only statistic violates the paper's own invariance principle | the primary family classifier unions the equivalent spellings; the gap remains 5.60% vs 1.91% (about 2.9-fold), with 320 human-only vs 108 AI-only same-theorem pairs |
+| "Lean 4.15 erases source `have` boundaries" | the first extractor looked only for `letE`, while Lean 4.15 encodes `have` as `letFun` applied to a named lambda | a semantic decoder recovers both the production `letFun` and current nondependent-`letE` encodings; a real-theorem two-version regression pins the shift |
+| generalized claims cause the human-side surprisal pulse | the pooled generalized-claim contrast is selected by document; within documents containing both claim kinds it is not detectable (content pulse: human p=.62, AI p=.10) | the paper keeps boundary surprisal exploratory and logically separate from the family classifier |
+| crossing one later claim boundary directly measures a claim's temporal lifetime | the number of available boundaries is endogenous: AI scripts introduce many more claims, and conditional crossing is 75.1% human versus 75.2% AI | reach is decomposed into adoption and duration; adoption is robust, while conditional-duration differences disappear or reverse in matched controls |
+| human names are demonstrably better semantic retrieval keys | longer and more diverse names do not by themselves establish semantic fit; a 230-pair within-proof Goedel embedding assay is null after chance and claim-count normalization | naming remains a conservative generic-form/interface-investment proxy, not evidence of semantic quality |
 
 ## 4. Where I think this is weakest — please attack these first
+
+For the current horizon paper, the serious attack points are:
+
+1. **Provenance is not a randomized constructor effect.** Pairing fixes the target statement, not
+   the annotation workflow, training exposure, search budget, or objective. “Human” and “AI” mean
+   dataset artifact fields. The horizon account makes a causal prediction but the horizon-swap
+   experiment has not yet been run.
+2. **Source use is lexical and local.** The parser recognizes named `have`, stops at same-name
+   redeclaration, and counts exact later name tokens. It misses anonymous claims and implicit tactic
+   use, and Lean scoping is richer than the stopping rule. The production-term audit is the main
+   check against treating lexical non-use as semantic non-use.
+3. **A callable family is still a syntactic classifier.** Binder and leading-`forall` spellings are
+   quotient together and executable regressions pin their equivalence, but other encodings exist;
+   the metric does not judge whether a claim chose the mathematically best generality.
+4. **Term occurrence belongs to a named elaborator snapshot.** The same source `have` changes core
+   node kind across Lean versions, and zeta reduction can change size exponentially. The decoder and
+   cross-version sensitivity prevent a node-kind artifact; they do not create an intrinsic proof
+   topology. The production snapshot now covers all 7,260 tasks; the 298-pair current-version sample
+   remains a sensitivity check, not the basis of the headline term result.
+5. **The information pulse is model-relative.** Goedel-Prover may share training data or style with
+   the prover track; its overall NLL strongly favors AI documents, and the held-out bigram
+   content-only result is marginal. No claim about human surprise or creativity should survive
+   without a reader experiment.
+6. **The long horizon is currently inferred from local interfaces.** This corpus ends at the target
+   declaration. Names, families, and reach are predictions about downstream value, not observed
+   cross-theorem maintenance or comprehension. A longitudinal library benchmark is the decisive
+   test.
+7. **There are only 12 coarse source clusters.** Cluster resampling tests robustness to source
+   composition, not a population-sampling model. Claims are pooled within clusters and should not be
+   read as independent observations.
+
+The following points primarily concern the retained historical network report:
 
 1. **`code/census.py`'s premise heuristic is a regex.** "Premise-like" = a token
    that is dotted or capitalised and not a Lean keyword. Three headline results
@@ -162,8 +206,13 @@ For the current paper, from this checkout with the local ignored data caches:
 ```bash
 PY=.venv/bin/python
 $PY code/paired_horizon.py
-$PY code/extract_binder_use.py --pairs results/paired_term_structure/term0.csv --jobs 8
+$PY code/extract_binder_use.py --jobs 8 --timeout 300 \
+  --template code/ExtractBinderUseMemoLegacy.lean.tmpl
 $PY code/analyze_binder_use.py
+$PY code/binder_memo_audit.py compare \
+  --baseline results/horizon/binder_extraction_mathlib415legacy_audit.json \
+  --candidate results/horizon/binder_extraction_mathlib415memo_audit.json \
+  --output results/horizon/binder_memo_equivalence.json
 $PY code/horizon_figures.py
 $PY code/test_horizon_report.py
 
@@ -177,6 +226,11 @@ for w in 4 8 16 32; do
 done
 $PY code/collect_surprisal_sensitivity.py
 ```
+
+The 430-task equivalence audit is fully versioned, including both extractor outputs.  The
+7,186-task extension uses the ignored full legacy shards; its hashes and zero-mismatch result are
+versioned in `binder_memo_full_equivalence.json`, while the complete memoized production output is
+`binder_extraction.json`.
 
 The model URL, hash, inference version, prompt mode, and hardware are in
 `results/horizon/surprisal_provenance.json`. The raw 9.1 MB token table is

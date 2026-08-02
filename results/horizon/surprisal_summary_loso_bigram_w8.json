@@ -1,9 +1,9 @@
 {
-  "model": "leave-one-source-out interpolated token bigram",
+  "model": "leave-one-source-out character bigram",
   "window_tokens": 8,
   "documents": 624,
   "pairs": 312,
-  "claims": 3300,
+  "claims": 3315,
   "paired": {
     "mean_nll": {
       "n_pairs": 312,
@@ -22,46 +22,46 @@
       "wilcoxon_p": 1.036874972590912e-29
     },
     "mean_boundary_delta_nll": {
-      "n_pairs": 174,
-      "human_median": -0.012558517695503498,
-      "ai_median": -0.11057056482538336,
-      "median_paired_difference": -0.13238238499333826,
-      "probability_ai_greater": 0.40804597701149425,
-      "wilcoxon_p": 0.01024281699949841
+      "n_pairs": 177,
+      "human_median": -0.02010758745096967,
+      "ai_median": -0.12162798007239681,
+      "median_paired_difference": -0.1355437413157771,
+      "probability_ai_greater": 0.4067796610169492,
+      "wilcoxon_p": 0.008871556858164388
     },
     "mean_boundary_excess_nll": {
-      "n_pairs": 174,
-      "human_median": -0.07628993596932428,
-      "ai_median": -0.1097067698849877,
-      "median_paired_difference": -0.17543707594894953,
-      "probability_ai_greater": 0.41379310344827586,
-      "wilcoxon_p": 0.020610024880255956
+      "n_pairs": 177,
+      "human_median": -0.07782068345541934,
+      "ai_median": -0.11148623239004211,
+      "median_paired_difference": -0.2045767917154696,
+      "probability_ai_greater": 0.4124293785310734,
+      "wilcoxon_p": 0.017259959624160114
     },
     "mean_content_boundary_delta_nll": {
-      "n_pairs": 174,
-      "human_median": 0.05714563272710205,
-      "ai_median": -0.09503448881783963,
-      "median_paired_difference": -0.053968636781782875,
-      "probability_ai_greater": 0.46551724137931033,
-      "wilcoxon_p": 0.038023047729030056
+      "n_pairs": 177,
+      "human_median": 0.053093213626233045,
+      "ai_median": -0.10304352119865252,
+      "median_paired_difference": -0.039925622918580664,
+      "probability_ai_greater": 0.4745762711864407,
+      "wilcoxon_p": 0.026619065395988097
     },
     "mean_content_boundary_excess_nll": {
-      "n_pairs": 174,
-      "human_median": 0.07718501539814265,
-      "ai_median": -0.08683964882942222,
-      "median_paired_difference": -0.043287015435557144,
-      "probability_ai_greater": 0.47701149425287354,
-      "wilcoxon_p": 0.07004534072864359
+      "n_pairs": 177,
+      "human_median": 0.043766024109470336,
+      "ai_median": -0.09029210227334664,
+      "median_paired_difference": -0.05124066527697212,
+      "probability_ai_greater": 0.4689265536723164,
+      "wilcoxon_p": 0.05077400210156414
     }
   },
   "claim_level": {
     "human": {
-      "claims": 1142,
-      "median_boundary_delta_nll": 0.026546594792775435,
-      "median_boundary_excess_nll": -0.0022156747439473004,
-      "median_definition_name_nll": 2.7074505447045802,
-      "median_reference_name_nll": 2.788852811964432,
-      "median_name_reuse_relief_nll": -0.021271889033164904
+      "claims": 1157,
+      "median_boundary_delta_nll": 0.01780832551575795,
+      "median_boundary_excess_nll": -0.016383496622783066,
+      "median_definition_name_nll": 2.7019866934795544,
+      "median_reference_name_nll": 2.8082459205905357,
+      "median_name_reuse_relief_nll": -0.03644410017827737
     },
     "ai": {
       "claims": 2158,
@@ -72,5 +72,65 @@
       "median_name_reuse_relief_nll": -0.030541103106903722
     }
   },
-  "caveat": "Exploratory model-relative information, not human cognitive surprisal; the model excludes all documents in each held-out coarse source group, but is a low-capacity lexical sensitivity rather than a semantic model."
+  "claim_level_by_generality": {
+    "human_instance": {
+      "claims": 1113,
+      "median_boundary_excess_nll": -0.013585058052017863,
+      "median_content_boundary_excess_nll": 0.07126003507014037,
+      "mean_boundary_excess_nll": 0.0987869279339278,
+      "mean_content_boundary_excess_nll": 0.1400988630327881
+    },
+    "human_generalized": {
+      "claims": 44,
+      "median_boundary_excess_nll": -0.17854688588684492,
+      "median_content_boundary_excess_nll": 0.11130116996282349,
+      "mean_boundary_excess_nll": 0.0953728899713579,
+      "mean_content_boundary_excess_nll": 0.5648002776485693
+    },
+    "ai_instance": {
+      "claims": 2123,
+      "median_boundary_excess_nll": -0.0787525101755501,
+      "median_content_boundary_excess_nll": -0.06879549494630127,
+      "mean_boundary_excess_nll": -0.14452640017233365,
+      "mean_content_boundary_excess_nll": -0.05234592393523116
+    },
+    "ai_generalized": {
+      "claims": 35,
+      "median_boundary_excess_nll": -0.08797406586792983,
+      "median_content_boundary_excess_nll": -0.02827655567026309,
+      "mean_boundary_excess_nll": -0.3917801375394384,
+      "mean_content_boundary_excess_nll": -0.3927946375126661
+    }
+  },
+  "within_document_generality": {
+    "human": {
+      "boundary_excess_nll": {
+        "documents": 23,
+        "mean_generalized_minus_instance": 0.043483031285238886,
+        "median_generalized_minus_instance": 0.1082381574044029,
+        "wilcoxon_p": 0.8462316989898682
+      },
+      "content_boundary_excess_nll": {
+        "documents": 23,
+        "mean_generalized_minus_instance": 0.37838064381110337,
+        "median_generalized_minus_instance": 0.12652903904871377,
+        "wilcoxon_p": 0.22261524200439453
+      }
+    },
+    "ai": {
+      "boundary_excess_nll": {
+        "documents": 22,
+        "mean_generalized_minus_instance": -0.3831579408599735,
+        "median_generalized_minus_instance": 0.03090538624449575,
+        "wilcoxon_p": 0.8485937118530273
+      },
+      "content_boundary_excess_nll": {
+        "documents": 22,
+        "mean_generalized_minus_instance": -0.2611547682417644,
+        "median_generalized_minus_instance": 0.031900600226909916,
+        "wilcoxon_p": 0.9746217727661133
+      }
+    }
+  },
+  "caveat": "Exploratory model-relative information, not human cognitive surprisal; training-set overlap and theorem-prover style affinity are not excluded."
 }

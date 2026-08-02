@@ -31,6 +31,12 @@ def main() -> None:
     loso_provenance = json.loads(
         (ROOT / "results/horizon/surprisal_loso_bigram_provenance.json").read_text()
     )
+    name_mean = json.loads(
+        (ROOT / "results/horizon/name_retrieval_mean/summary.json").read_text()
+    )
+    name_last = json.loads(
+        (ROOT / "results/horizon/name_retrieval_last_summary.json").read_text()
+    )
     term = json.loads((ROOT / "results/horizon/scoped_term_structure/term0.json").read_text())
     tex = (ROOT / "report/horizon/main.tex").read_text()
     pdf = ROOT / "output/pdf/proofs_for_now_and_proofs_for_later.pdf"
@@ -47,19 +53,113 @@ def main() -> None:
     assert source["pretarget_declaration_audit"]["ai_only"] == 11
     assert source["pretarget_declaration_audit"]["ai_only_artifacts_referencing_helper"] == 7
     assert source["pretarget_declaration_audit"]["ai_only_helper_names"] == ["lemma_1", "lemma_2"]
-    close(source["claim_rates"]["human"]["explicit_uses_per_claim"]["estimate"], 1.4190)
-    close(source["claim_rates"]["ai"]["explicit_uses_per_claim"]["estimate"], 0.8646)
-    close(source["claim_rates"]["human"]["zero_uptake_share"]["estimate"], 0.2289)
-    close(source["claim_rates"]["ai"]["zero_uptake_share"]["estimate"], 0.3638)
-    close(source["claim_rates"]["human"]["multi_uptake_share"]["estimate"], 0.2570)
-    close(source["claim_rates"]["ai"]["multi_uptake_share"]["estimate"], 0.1199)
+    close(source["claim_rates"]["human"]["explicit_uses_per_claim"]["estimate"], 1.4423)
+    close(source["claim_rates"]["ai"]["explicit_uses_per_claim"]["estimate"], 0.8678)
+    close(source["claim_rates"]["human"]["zero_uptake_share"]["estimate"], 0.2219)
+    close(source["claim_rates"]["ai"]["zero_uptake_share"]["estimate"], 0.3632)
+    close(source["claim_rates"]["human"]["multi_uptake_share"]["estimate"], 0.2650)
+    close(source["claim_rates"]["ai"]["multi_uptake_share"]["estimate"], 0.1207)
+    parametric = source["parametric_claim_difference"]
+    close(parametric["human"], 0.02890)
+    close(parametric["ai"], 0.00206)
+    assert parametric["source_cluster_ci"][1] < 0
+    parametric_profiles = source["parametric_claim_profiles"]
+    assert parametric_profiles["human"]["claims"] == 431
+    assert parametric_profiles["ai"]["claims"] == 53
+    close(parametric_profiles["human"]["multi_uptake_share"], 0.5336)
+    close(parametric_profiles["ai"]["multi_uptake_share"], 0.5660)
+    assert source["parametric_proof_pair_audit"] == {
+        "human_any": 247,
+        "ai_any": 29,
+        "both": 27,
+        "human_only": 220,
+        "ai_only": 2,
+        "neither": 3381,
+    }
+    generalized = source["generalized_claim_difference"]
+    close(generalized["human"], 0.05600)
+    close(generalized["ai"], 0.01909)
+    assert generalized["source_cluster_ci"][1] < 0
+    assert source["generalized_proof_pair_audit"] == {
+        "human_any": 491,
+        "ai_any": 279,
+        "both": 171,
+        "human_only": 320,
+        "ai_only": 108,
+        "neither": 3031,
+    }
+    family_function = source["within_proof_feature_associations"]["generalized_claim"]
+    assert family_function["human"]["eligible_proofs"] == 401
+    assert family_function["ai"]["eligible_proofs"] == 271
+    assert family_function["human"]["adopted"]["source_cluster_ci"][0] > 0
+    assert family_function["ai"]["multi_uptake"]["source_cluster_ci"][0] > 0
+    paired_family = family_function["paired_both_tracks"]
+    assert paired_family["eligible_pairs"] == 129
+    assert paired_family["multi_uptake"]["source_cluster_ci"][0] > 0
+    position_family = source["position_matched_family_associations"]["caliper_0_25"]
+    assert position_family["human"]["eligible_proofs"] == 269
+    assert position_family["ai"]["eligible_proofs"] == 226
+    for side in ("human", "ai"):
+        assert position_family[side]["adopted"]["source_cluster_ci"][0] > 0
+        assert position_family[side]["multi_uptake"]["source_cluster_ci"][0] > 0
+    no_native_decide = source["automation_exclusion_sensitivity"]["native_decide"]
+    assert no_native_decide["pairs"] == 3214
+    close(no_native_decide["generalized_claim_share"]["human"], 0.05353)
+    close(no_native_decide["generalized_claim_share"]["ai"], 0.01919)
+    assert no_native_decide["generalized_claim_share"]["source_cluster_ci"][1] < 0
+    coordinates = source["interface_coordinate_correlations"]
+    assert coordinates["pairs_with_claims_on_both_sides"] == 1885
+    close(coordinates["spearman"]["explicit_uses"]["long_reach"], 0.3230, 0.002)
     count_matched = source["claim_count_sensitivity"]["exact_equal_positive"]
-    assert count_matched["pairs"] == 211
+    assert count_matched["pairs"] == 210
     assert count_matched["explicit_uses_per_claim"]["source_cluster_ci"][1] < 0
     assert count_matched["zero_uptake_share"]["source_cluster_ci"][0] > 0
+    assert count_matched["generalized_claim_share"]["source_cluster_ci"][1] < 0
+    length_matched = source["length_matched_sensitivity"]["within_ten_percent"]
+    assert length_matched["pairs"] == 834
+    assert length_matched["explicit_uses_per_claim"]["source_cluster_ci"][1] < 0
+    assert length_matched["zero_uptake_share"]["source_cluster_ci"][0] > 0
+    assert length_matched["long_horizon_share"]["source_cluster_ci"][1] < 0
+    assert length_matched["generalized_claim_share"]["source_cluster_ci"][1] < 0
+    reach = source["uptake_reach_decomposition"]
+    close(reach["adoption_probability"]["human"], 0.7773)
+    close(reach["adoption_probability"]["ai"], 0.6368)
+    close(reach["explicit_use_count_given_adoption"]["human"], 1.8556)
+    close(reach["explicit_use_count_given_adoption"]["ai"], 1.3627)
+    assert reach["explicit_use_count_given_adoption"]["source_cluster_ci"][1] < 0
+    close(reach["last_use_token_distance_given_adoption"]["human"], 56.7969)
+    close(reach["last_use_token_distance_given_adoption"]["ai"], 43.0957)
+    assert reach["last_use_token_distance_given_adoption"]["source_cluster_ci"][1] < 0
+    crossing = reach["crosses_any_later_boundary_given_adoption_and_opportunity"]
+    close(crossing["human"], 0.7512)
+    close(crossing["ai"], 0.7520)
+    assert crossing["source_cluster_ci"][0] < 0 < crossing["source_cluster_ci"][1]
+    normalized_reach = reach["fraction_available_boundaries_crossed_given_adoption"]
+    close(normalized_reach["human"], 0.4914)
+    close(normalized_reach["ai"], 0.4543)
+    assert normalized_reach["source_cluster_ci"][1] < 0
+    reach_controls = source["uptake_reach_matched_controls"]
+    equal_claims = reach_controls["exact_equal_positive_claim_count"]
+    assert equal_claims["pairs"] == 210
+    equal_profile = equal_claims["profile"]
+    assert equal_profile["adoption_probability"]["source_cluster_ci"][1] < 0
+    assert equal_profile["fraction_available_boundaries_crossed_given_adoption"][
+        "source_cluster_ci"
+    ][0] > 0
+    matched_length = reach_controls["within_ten_percent_length"]
+    assert matched_length["pairs"] == 834
+    matched_profile = matched_length["profile"]
+    assert matched_profile["adoption_probability"]["source_cluster_ci"][1] < 0
+    for metric in (
+        "last_use_token_distance_given_adoption",
+        "crosses_any_later_boundary_given_adoption_and_opportunity",
+        "fraction_available_boundaries_crossed_given_adoption",
+    ):
+        lo, hi = matched_profile[metric]["source_cluster_ci"]
+        assert lo < 0 < hi
     unique_names = source["nonredeclared_name_sensitivity"]
-    assert unique_names["explicit_uses_per_claim"]["human_claims"] == 9584
-    assert unique_names["explicit_uses_per_claim"]["ai_claims"] == 15102
+    assert unique_names["explicit_uses_per_claim"]["human_claims"] == 9985
+    assert unique_names["explicit_uses_per_claim"]["ai_claims"] == 15149
     assert unique_names["explicit_uses_per_claim"]["source_cluster_ci"][1] < 0
     assert unique_names["zero_uptake_share"]["source_cluster_ci"][0] > 0
     assert unique_names["long_horizon_share"]["source_cluster_ci"][1] < 0
@@ -71,24 +171,49 @@ def main() -> None:
     assert rendering_matches["pairs"] == 181
     assert rendering_matches["source_body_also_identical"] == 180
 
-    assert binder["pairs_with_both_sides"] == 298
-    close(binder["claim_rates_complete_pairs"]["human"]["zero_term_use"]["estimate"], 0.1400)
-    close(binder["claim_rates_complete_pairs"]["ai"]["zero_term_use"]["estimate"], 0.2335)
-    close(binder["claim_rates_complete_pairs"]["human"]["multi_term_use"]["estimate"], 0.3505)
-    close(binder["claim_rates_complete_pairs"]["ai"]["multi_term_use"]["estimate"], 0.3586)
+    assert binder["tasks"] == 7260 and binder["pairs_with_both_sides"] == 3630
+    assert binder["task_status"] == {"ok": 7260}
+    assert binder["source_claim_retention_complete_pairs"]["human"]["denominator"] == 14911
+    close(binder["claim_rates_complete_pairs"]["human"]["zero_term_use"]["estimate"], 0.0971)
+    close(binder["claim_rates_complete_pairs"]["ai"]["zero_term_use"]["estimate"], 0.2170)
+    close(binder["claim_rates_complete_pairs"]["human"]["one_term_use"]["estimate"], 0.5816)
+    close(binder["claim_rates_complete_pairs"]["ai"]["one_term_use"]["estimate"], 0.4420)
+    close(binder["claim_rates_complete_pairs"]["human"]["multi_term_use"]["estimate"], 0.3213)
+    close(binder["claim_rates_complete_pairs"]["ai"]["multi_term_use"]["estimate"], 0.3411)
     zero_delta = binder["claim_rate_differences_complete_pairs"]["zero_term_use"]
     multi_delta = binder["claim_rate_differences_complete_pairs"]["multi_term_use"]
+    polarized_delta = binder["claim_rate_differences_complete_pairs"]["polarized_term_use"]
     assert zero_delta["source_cluster_ci"][0] > 0
     assert multi_delta["source_cluster_ci"][0] < 0 < multi_delta["source_cluster_ci"][1]
+    assert polarized_delta["source_cluster_ci"][0] > 0
+    tree = binder["root_tree_representation"]
+    assert tree["human"]["max_decimal_digits"] == 11
+    assert tree["ai"]["max_decimal_digits"] == 535
+    assert tree["ai"]["tasks_at_least_100_digits"] == 3
 
-    assert surprise["paired"]["mean_boundary_excess_nll"]["n_pairs"] == 174
-    close(surprise["paired"]["mean_boundary_excess_nll"]["human_median"], 0.3445)
-    close(surprise["paired"]["mean_boundary_excess_nll"]["ai_median"], 0.0241)
+    assert surprise["paired"]["mean_boundary_excess_nll"]["n_pairs"] == 177
+    close(surprise["paired"]["mean_boundary_excess_nll"]["human_median"], 0.3571)
+    close(surprise["paired"]["mean_boundary_excess_nll"]["ai_median"], 0.0278)
+    within_generality = surprise["within_document_generality"]
+    assert within_generality["human"]["content_boundary_excess_nll"]["documents"] == 23
+    assert within_generality["ai"]["content_boundary_excess_nll"]["documents"] == 22
+    assert within_generality["human"]["content_boundary_excess_nll"]["wilcoxon_p"] > 0.05
+    assert within_generality["ai"]["content_boundary_excess_nll"]["wilcoxon_p"] > 0.05
     assert loso_provenance["documents"] == 624
     assert loso_provenance["documents_labeled_unknown_source"] == 2
     assert len(loso_provenance["token_offsets_sha256"]) == 64
     assert loso["paired"]["mean_boundary_excess_nll"]["wilcoxon_p"] < 0.05
     assert loso["paired"]["mean_content_boundary_excess_nll"]["wilcoxon_p"] > 0.05
+
+    assert name_mean["pairs"] == 230 and name_last["pairs"] == 230
+    for summary in (name_mean, name_last):
+        lo, hi = summary["metrics"]["retrieval_percentile"]["source_cluster_ci"]
+        assert lo < 0 < hi
+        lo, hi = summary["metrics"]["top1_excess_chance"]["source_cluster_ci"]
+        assert lo < 0 < hi
+    equal_names = name_mean["equal_claim_count_sensitivity"]["top1"]
+    assert equal_names["pairs"] == 57
+    assert abs(equal_names["ai_minus_human"]) < 0.003
 
     assert term["n_pairs"] == 298
     lo, hi = term["metrics"]["alpha_x10"]["cluster_ci"]
@@ -103,7 +228,7 @@ def main() -> None:
     assert "References" not in page_text(pdf, 10)
     assert "References" in page_text(pdf, 11)
     assert "Reproducibility and robustness" in page_text(pdf, 13)
-    print({"source_pairs": 3630, "term_pairs": 298, "abstract_words": len(words),
+    print({"source_pairs": 3630, "term_pairs": 3630, "abstract_words": len(words),
            "main_text_pages": 10})
 
 

@@ -1,0 +1,48 @@
+{
+  "seed": 20260802,
+  "selection": "union of first 50 lexicographic complete pairs, 50 largest-root complete pairs, and 10 seeded random complete pairs per source group",
+  "pairs_represented": 215,
+  "tasks": 430,
+  "source_groups": 12,
+  "candidate_ok": 430,
+  "raw_exact_record_matches": 427,
+  "raw_mismatches": [
+    {
+      "pair": "pair_0ae64546",
+      "side": "h",
+      "differing_fields": [
+        "lets"
+      ]
+    },
+    {
+      "pair": "pair_273bbcc3",
+      "side": "h",
+      "differing_fields": [
+        "lets"
+      ]
+    },
+    {
+      "pair": "pair_29c03238",
+      "side": "h",
+      "differing_fields": [
+        "lets"
+      ]
+    }
+  ],
+  "canonicalization": "replace only the work-tag component of Lean-generated hygienic binder names",
+  "canonical_exact_record_matches": 430,
+  "canonical_mismatches": [],
+  "max_baseline_root_nodes": 97350243,
+  "median_baseline_root_nodes": 612521.5,
+  "manifest": "results/horizon/binder_memo_audit_pairs.csv",
+  "manifest_sha256": "63c3d83c60c01c2f46e5332b68f244345d7b1164bc64ce6c86ab6f6177b9dffd",
+  "candidate": "results/horizon/binder_extraction_mathlib415memo_audit.json",
+  "candidate_sha256": "92718a9cf8cbe7bff4655a9204156efef22782beb71e5bc2420d83bef1a3732e",
+  "candidate_provenance_sha256": "7ababa3e3b336526accf14eb0560e7e85c5b814a47371d4bced69200dbeed7b6",
+  "baseline_components": [
+    {
+      "file": "results/horizon/binder_extraction_mathlib415legacy_audit.json",
+      "sha256": "e50f85b5fe2bfe1e746a244793648092fec5019af625ce4bcf171538bfae15b1"
+    }
+  ]
+}

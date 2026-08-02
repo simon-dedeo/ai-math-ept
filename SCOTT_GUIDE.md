@@ -2,25 +2,30 @@
 
 This repository extends the research program of Scott Viteri and Simon DeDeo,
 [*Epistemic phase transitions in mathematical proofs*](https://doi.org/10.1016/j.cognition.2022.105120),
-from classical Coq proofs to contemporary human and machine Lean proofs. The main
-new thesis is **epistemic decoupling**: human and machine proofs of the same theorem
-can support nearly identical theorem-level confidence while organizing the proof's
-interior very differently.
+from classical Coq proofs to contemporary human- and AI-provenance Lean artifacts. The
+main thesis is now the **amortization horizon**: proof construction differs according
+to which future consumer an abstraction is expected to serve. A second, methodological
+claim is the **consumer-invariance principle**: a graph statistic can describe a
+consumer's function only if it survives transformations that preserve that consumer's
+response. The older epistemic-decoupling analysis is retained as background, not as
+the central result.
 
 ## The shortest route through the project
 
-1. Read the standalone paper,
-   [*Epistemic Decoupling in Human and Machine Proofs*](output/pdf/epistemic_decoupling_human_ai_proofs.pdf).
-2. Inspect the paper's [LaTeX source](report/standalone/main.tex) and its
-   machine-readable [claim audit](results/paper_claim_audit.json).
-3. For the same-theorem results, compare the
-   [source-level summary](results/final_synthesis/paired_source_summary.json),
-   [elaborated-term summary](results/final_synthesis/paired_term_summary.json), and
-   [belief-model sensitivity run](results/final_synthesis/paired_belief_term0_r32.json).
-4. For the historical bridge, inspect the
+1. Read [*Proofs for Now and Proofs for Later*](output/pdf/proofs_for_now_and_proofs_for_later.pdf).
+2. Inspect its [LaTeX source](report/horizon/main.tex), the
+   [3,630-pair source summary](results/horizon/source_summary.json), and the
+   [semantic binder summary](results/horizon/binder_summary.json).
+3. For the representation checks, see `code/test_binder_toolchain_shift.py`,
+   `code/test_certificate_representation.py`, and
+   [the cross-toolchain summary](results/horizon/binder_toolchain_summary.json).
+4. For the model-relative information assay, inspect
+   [the eight-token summary](results/horizon/surprisal_summary_w8.json) and
+   [leave-one-source-out control](results/horizon/surprisal_summary_loso_bigram_w8.json).
+5. For the historical bridge, inspect the
    [fixed-tail Coq--Lean summary](results/coq_lean_confirmation_xmin10/summary.json)
    and [method note](results/coq_lean_confirmation_xmin10/README.md).
-5. [`REVIEW.md`](REVIEW.md) is the longer claim-to-script-to-output map, including
+6. [`REVIEW.md`](REVIEW.md) is the longer claim-to-script-to-output map, including
    negative results and withdrawn claims.
 
 ## Direct connection to `ManipulateProofTrees`
@@ -104,19 +109,47 @@ Relevant files:
 
 ## The new same-theorem comparison
 
-The strongest new design holds the theorem fixed and compares a validated human
-proof with a validated machine proof.
+The strongest new design holds the exact Lean statement fixed in 3,630 validated
+pairs. AI claims are more numerous but receive fewer explicit references, more often
+have zero visible uptake, and draw from a much
+smaller effective name vocabulary. After collapsing equivalent binder and
+explicit-`forall` syntax, local families occur in 5.60% of human claims and 1.91%
+of AI claims; same-theorem presence is human-only in 320 pairs and AI-only in 108.
+Within proofs containing both family and instance claims, family claims are more likely to be
+adopted and multiply referenced in both tracks. The association survives one-to-one matching to
+nearby instance claims within the same proof, ruling out the basic explanation that families merely
+occur earlier. The family statistic therefore marks a functional interface form, while its
+provenance gap lies in selection frequency.
 
-- Across 2,583 source-level pairs, proof length is similar, while machine proofs use
-  fewer distinct library results and more local `have` steps.
-- For 312 clean pairs successfully elaborated into both human and machine proof-term
-  DAGs, the machine proofs have larger interiors and greater duplication, but the
-  Viteri--DeDeo belief dynamics assign nearly the same theorem confidence.
-- This separation between interior organization and theorem-level confidence is the
-  empirical basis of **epistemic decoupling**.
+The temporal result has been opportunity-normalized. Conditional on adoption and on a later claim
+being available, both tracks cross at least one boundary about 75% of the time; the raw boundary
+count is inflated by the AI track's denser decomposition. Pooled human claims have longer token
+exposure and cross a larger fraction of available later boundaries, but these conditional-duration
+effects do not survive length or equal-claim-count controls. The stable difference is the extensive
+margin—whether an abstraction is taken up—not its lifetime once adopted.
 
-The paper treats this as a structural result about the present proof corpora, not as
-a universal cognitive difference between humans and AI systems.
+Elaboration narrows the conclusion. Production Lean 4.15 and current Lean encode
+the same source `have` with different core node kinds, so the analysis decodes the
+semantic construct before aligning it. Across all 7,260 production tasks, AI boundaries
+are more often absent from the final term (21.7% versus 9.7%) or multiply represented;
+human boundaries more often map one-to-one (58.2% versus 44.2%). Yet aggregate multi-use
+is nearly equal (32.1% versus 34.1%). A stack-safe dynamic program agrees exactly with the
+legacy traversal on every one of its 7,186 successful tasks and recovers its 74 timeouts. A typed
+zeta-reduction regression also changes a 99-node shared term into a 65,533-node tree
+without changing its type. The result is about visible interface allocation under
+different workflows, not a universal biological difference or a representation-free
+authorship signature.
+
+The sharpest individual example asks for one late value of a simple recurrence. The human script
+proves a reusable closed form by induction; the AI script invokes `norm_num [f]`. Their fully expanded
+term-tree counts are 278,395 and a 535-digit number, respectively, although Lean shares the AI term
+and does not materialize that tree. This is the formula-versus-circuit distinction inside a real
+paired proof: it exposes an invariant-versus-unfolding choice without equating tree size with effort.
+
+Across source adoption, family construction, and elaborated binder use, the common pattern is a
+**consolidation–composition split**: the large differences concern which intermediate results are
+stabilized as visible interfaces, while source duration and kernel compositional use converge or
+reverse. This localizes the current divergence to consolidation policy rather than deductive power.
 
 ## Re-running the public checks
 
@@ -145,5 +178,5 @@ original Coq inputs can be recovered independently by cloning
    for Triangle Inequality?
 
 The cutoff and edge-orientation questions themselves are now resolved by archived
-code. These residual details do not alter the fixed-tail human--AI comparisons or
-the epistemic-decoupling result.
+code. These residual details concern the historical network reconstruction, not the
+current amortization-horizon analysis.

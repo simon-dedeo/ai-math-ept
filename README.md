@@ -20,7 +20,7 @@ documents the exact connection to
 and links the recovered provenance of the original power-law convention.
 
 **Reviewing this work?** [`REVIEW.md`](REVIEW.md) maps every claim in the report to the script and
-output file that produced it, lists the seven claims withdrawn during the work and why, and names
+output file that produced it, lists the claims withdrawn during the work and why, and names
 the places the work is weakest. [`results/DATA_INVENTORY.md`](results/DATA_INVENTORY.md) enumerates
 the bulk reproducibility data. These data are excluded from Git, but Simon retains complete local
 and private cluster mirrors; the versioned derived evidence is sufficient for the public audits.
@@ -31,16 +31,43 @@ A formal proof has at least three products: a certificate for the kernel,
 working memory for the current episode, and an interface for later proofs and
 readers. In **3,630 validated human/AI pairs of the identical Lean statement**,
 the AI track creates more named local claims, but those claims receive fewer
-explicit references, remain visibly live for less of the proof, use much more
-generic names, and more often become unused binders in the final elaborated term. The
-kernel-level result is equally important: among claims that survive,
-multi-use binders occur at essentially the same rate. The divergence is
+explicit references, are less often adopted at all, use much more
+generic names, and less often state a callable family. The family comparison collapses
+equivalent binder and explicit-`forall` spellings: rates are 5.60% versus 1.91%, and within
+identical-theorem pairs family claims occur only on the human side 320 times versus only on the AI
+side 108 times. Within proofs containing both family and instance claims, family claims are
+substantially more likely to be adopted and multiply referenced in both tracks. This persists after
+matching each family to a nearby instance claim within the same proof, so it is not merely an
+earlier-position advantage. The gap is therefore in how often that interface form is selected, not
+whether AI can use it. In the complete
+production-term census, AI source boundaries more often disappear (21.7% versus 9.7%) or are
+duplicated, while human boundaries more often map one-to-one (58.2% versus 44.2%). Aggregate
+multi-use remains nearly equal (32.1% versus 34.1%). The divergence is
 therefore not “humans reuse, machines do not.” It lies in whether source
-structure is transient search state or an addressable interface. We call its
+structure is transient search state or an addressable interface. This is the
+**consolidation–composition split**: large differences in whether abstractions become explicit
+interfaces, but weak or reversed differences in source duration and kernel composition. We call its
 governing variable the **amortization horizon**: how far into future reasoning a
 constructor expects an abstraction to repay its cost. The hypothesis predicts
 that AI given refactoring and downstream-library objectives can cross the
-observed divide.
+observed divide. A rate–distortion formulation makes the cognitive claim precise: an interface
+compresses a proof episode against the future work or loss of correspondence experienced by a
+particular consumer. A second principle constrains the measurement itself: a functional proof statistic
+must be invariant under transformations that preserve its stated consumer's response. Lean's
+version-dependent `have` encoding and an exponential zeta-reduction example show why raw proof
+graphs fail that test for kernel-level meaning. In one recurrence theorem, a human proof replaces
+unfolding with a reusable closed form; the AI's one-line `norm_num` proof denotes a shared term whose
+fully expanded tree count has 535 digits. This is a representation fact, not a cognitive score, but
+it makes the difference between naming an invariant and delegating the present computation concrete.
+
+One measurement correction is especially important. Conditional on adoption and on a later claim
+boundary being available, human and AI claims are equally likely to cross at least one such
+boundary (75.1% versus 75.2%); AI scripts simply create more boundaries. Pooled human claims remain
+referenced across more source tokens (56.8 versus 43.1) and a larger fraction of available
+boundaries (49.1% versus 45.4%), but those duration effects disappear under length matching, and
+normalized duration slightly reverses under equal claim counts. “Horizon” is therefore decomposed
+into adoption and duration: the robust difference is selection for uptake, not an AI inability to
+carry an adopted claim forward.
 
 ## Layout
 
@@ -58,10 +85,14 @@ observed divide.
 
 | file | what it does |
 |---|---|
-| `paired_horizon.py` | 3,630-pair exact-statement audit and source analysis: local-claim density, uptake, visible reach, naming, and tactic-stratum sensitivity |
-| `ExtractBinderUseIterative.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | stack-safe one-pass elaborated-binder use, source-to-term alignment, and source/term transition analysis; the recursive linear and quadratic templates are retained as references |
+| `paired_horizon.py` | 3,630-pair exact-statement audit and source analysis: local-claim density, uptake, visible reach, naming, generalized-family syntax, and automation sensitivities |
+| `ExtractBinderUseMemoLegacy.lean.tmpl`, `ExtractBinderUseLegacy.lean.tmpl`, `ExtractBinderUseLinear.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | semantic decoding of production Lean 4.15 `letFun` and current Lean `letE` encodings, stack-safe memoized binder use, source-to-term alignment, and source/term transitions |
+| `binder_memo_audit.py` | equivalence audit of the memoized production traversal against the legacy recursive traversal, including the largest legacy-success terms and every source group |
+| `results/horizon/binder_root_tree_extremes.csv` | ranked, exact arbitrary-precision tree-occurrence counts; these diagnose representation expansion and are not treated as intrinsic proof sizes |
+| `compare_binder_toolchains.py`, `test_binder_toolchain_shift.py`, `test_legacy_binder.py`, `test_certificate_representation.py` | cross-version retention audit and regressions for nested scope, equivalent family spellings, and exponential representation shifts |
 | `test_binder_linear.py` | exact regression of both one-pass traversals against the reference under nested scope, plus a 12,000-deep stack-safety test |
 | `prepare_surprisal.py`, `token_surprisal.cpp`, `ngram_surprisal.py`, `analyze_surprisal.py` | Goedel-Prover and leave-one-source-out token information at claim boundaries |
+| `name_type_retrieval.py` | paired within-proof name-to-type retrieval assay; its chance-normalized null prevents semantic over-reading of name diversity |
 | `horizon_figures.py` | figures for the current paper |
 | `ExtractNetwork.lean` | Lean 4 metaprogram: proof term → dependency DAG (`term0` scope-aware root term, `term` level-expanded, `decl` declaration-level). The Lean analogue of the 2022 CoqAST/ManipulateProofTrees pipeline. |
 | `extract_corpus.py` | batch-elaborates a corpus of standalone `.lean` proofs (handles syntax drift, namespaces, per-corpus toolchains) |

@@ -1,229 +1,545 @@
 {
   "seed": 20260802,
   "bootstraps": 10000,
-  "tasks": 624,
+  "extraction_file": "results/horizon/binder_extraction.json",
+  "tasks": 7260,
   "task_status": {
-    "ok": 604,
-    "failed": 20
+    "ok": 7260
   },
-  "pairs_with_both_sides": 298,
+  "pairs_with_both_sides": 3630,
   "source_groups_with_both_sides": 12,
-  "claims_matched": 3215,
-  "claims_unambiguous": 2068,
-  "source_claims_in_successful_tasks": 3227,
+  "claims_matched": 40509,
+  "claims_unambiguous": 24535,
+  "root_tree_representation": {
+    "measure": "fully expanded syntax-tree occurrence count computed by DAG recurrence; not a representation-invariant certificate size",
+    "human": {
+      "max_decimal_digits": 11,
+      "max_tree_nodes": "14985364382",
+      "max_pair": "pair_2347fae1",
+      "tasks_at_least_20_digits": 0,
+      "tasks_at_least_100_digits": 0
+    },
+    "ai": {
+      "max_decimal_digits": 535,
+      "max_tree_nodes": "5676003555089905556280555734000052756441775310261145379777099103225281373710551758675210963851830654142792623514928914797394460386923642110801983108106160975771256396841078154357493436136418587430812737385861372324322030512205125029484028729254993594729847281387930485679009539026935314284352341446050435844743771060303867310591113724689708714803383487985872206319232013713909206765790926099719508287920528894460437815198607774207972127278321384143035971447591543419496467295039762287299682582527982860957091205056894497841377812904091",
+      "max_pair": "pair_eadcfa44",
+      "tasks_at_least_20_digits": 4,
+      "tasks_at_least_100_digits": 3
+    }
+  },
+  "aligned_binder_kinds": {
+    "human": {
+      "have_fun": 14832
+    },
+    "ai": {
+      "have_fun": 25677
+    }
+  },
+  "source_claims_in_successful_tasks": 40626,
   "matching_method": "exact-name longest common subsequence in pre-order term traversal",
   "source_sample_comparison": {
     "full_corpus": {
-      "pairs": 3635,
+      "pairs": 3630,
       "source_groups": 12,
       "human": {
-        "claims_per_100_tokens": 1.9665304440215923,
-        "explicit_uses_per_claim": 1.4197060424605334,
-        "zero_uptake_share": 0.2277490473598258,
-        "placeholder_name_share": 0.5872346216657593
+        "claims_per_100_tokens": 2.010294823467236,
+        "explicit_uses_per_claim": 1.4420226678291195,
+        "zero_uptake_share": 0.22191670578767353,
+        "placeholder_name_share": 0.5841325196163906
       },
       "ai": {
-        "claims_per_100_tokens": 3.169293038982193,
-        "explicit_uses_per_claim": 0.8643460654907916,
-        "zero_uptake_share": 0.36385936222403925,
-        "placeholder_name_share": 0.8888369738737686
+        "claims_per_100_tokens": 3.175938207839621,
+        "explicit_uses_per_claim": 0.8677814505152635,
+        "zero_uptake_share": 0.36321213299630567,
+        "placeholder_name_share": 0.8879642232160218
       }
     },
-    "preselected_312": {
-      "pairs": 312,
+    "materialized_3630": {
+      "pairs": 3630,
       "source_groups": 12,
       "human": {
-        "claims_per_100_tokens": 1.9609526589625152,
-        "explicit_uses_per_claim": 1.3485113835376532,
-        "zero_uptake_share": 0.22854640980735552,
-        "placeholder_name_share": 0.6295971978984238
+        "claims_per_100_tokens": 2.010294823467236,
+        "explicit_uses_per_claim": 1.4420226678291195,
+        "zero_uptake_share": 0.22191670578767353,
+        "placeholder_name_share": 0.5841325196163906
       },
       "ai": {
-        "claims_per_100_tokens": 3.2516650091914534,
-        "explicit_uses_per_claim": 0.8419833178869324,
-        "zero_uptake_share": 0.3568118628359592,
-        "placeholder_name_share": 0.8827618164967562
+        "claims_per_100_tokens": 3.175938207839621,
+        "explicit_uses_per_claim": 0.8677814505152635,
+        "zero_uptake_share": 0.36321213299630567,
+        "placeholder_name_share": 0.8879642232160218
       }
     },
-    "complete_298": {
-      "pairs": 298,
+    "complete_3630": {
+      "pairs": 3630,
       "source_groups": 12,
       "human": {
-        "claims_per_100_tokens": 2.026990210145849,
-        "explicit_uses_per_claim": 1.3440860215053763,
-        "zero_uptake_share": 0.23297491039426524,
-        "placeholder_name_share": 0.6379928315412187
+        "claims_per_100_tokens": 2.010294823467236,
+        "explicit_uses_per_claim": 1.4420226678291195,
+        "zero_uptake_share": 0.22191670578767353,
+        "placeholder_name_share": 0.5841325196163906
       },
       "ai": {
-        "claims_per_100_tokens": 3.2761210726499823,
-        "explicit_uses_per_claim": 0.8473170731707317,
-        "zero_uptake_share": 0.3521951219512195,
-        "placeholder_name_share": 0.8824390243902439
+        "claims_per_100_tokens": 3.175938207839621,
+        "explicit_uses_per_claim": 0.8677814505152635,
+        "zero_uptake_share": 0.36321213299630567,
+        "placeholder_name_share": 0.8879642232160218
       }
     }
   },
   "paired": {
-    "matched": {
-      "n_pairs": 298,
-      "human_median": 2.0,
+    "root_node_digits": {
+      "n_pairs": 3630,
+      "human_median": 6.0,
+      "ai_median": 6.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.27327823691460057,
+      "wilcoxon_p": 2.3241179548430132e-23
+    },
+    "term_lets": {
+      "n_pairs": 3630,
+      "human_median": 3.0,
       "ai_median": 4.0,
-      "median_paired_difference": 2.0,
-      "probability_ai_greater": 0.5805369127516778,
-      "wilcoxon_p": 3.1350270861628264e-14
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.4666666666666667,
+      "wilcoxon_p": 1.57028506922968e-31
+    },
+    "matched": {
+      "n_pairs": 3630,
+      "human_median": 1.0,
+      "ai_median": 4.0,
+      "median_paired_difference": 1.0,
+      "probability_ai_greater": 0.521763085399449,
+      "wilcoxon_p": 9.286392568676156e-116
     },
     "match_share": {
-      "n_pairs": 298,
+      "n_pairs": 3630,
       "human_median": 1.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.016778523489932886,
-      "wilcoxon_p": 0.044009956390248774
-    },
-    "term_uses": {
-      "n_pairs": 298,
-      "human_median": 2.0,
-      "ai_median": 5.0,
-      "median_paired_difference": 1.5,
-      "probability_ai_greater": 0.5838926174496645,
-      "wilcoxon_p": 1.1131571547715754e-14
+      "probability_ai_greater": 0.010192837465564738,
+      "wilcoxon_p": 0.0031352669841811123
     },
     "zero_term_use": {
-      "n_pairs": 298,
+      "n_pairs": 3630,
       "human_median": 0.0,
       "ai_median": 0.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.412751677852349,
-      "wilcoxon_p": 1.089554893538209e-11
+      "probability_ai_greater": 0.38209366391184574,
+      "wilcoxon_p": 1.4796933854287992e-149
     },
     "multi_term_use": {
-      "n_pairs": 298,
+      "n_pairs": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.3859060402684564,
-      "wilcoxon_p": 1.7366294520162195e-10
+      "probability_ai_greater": 0.3768595041322314,
+      "wilcoxon_p": 8.62334026753493e-95
+    }
+  },
+  "source_claim_retention_complete_pairs": {
+    "human": {
+      "numerator": 14832,
+      "denominator": 14911,
+      "estimate": 0.9947018979277044,
+      "source_cluster_ci": [
+        0.9931003312693724,
+        0.9970124349918678
+      ]
     },
-    "reuse_excess": {
-      "n_pairs": 298,
-      "human_median": 0.0,
-      "ai_median": 1.0,
-      "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4261744966442953,
-      "wilcoxon_p": 9.164520018476727e-12
+    "ai": {
+      "numerator": 25677,
+      "denominator": 25715,
+      "estimate": 0.9985222632704647,
+      "source_cluster_ci": [
+        0.9969349363166858,
+        0.9994604600348664
+      ]
+    },
+    "ai_minus_human": {
+      "human": 0.9947018979277044,
+      "ai": 0.9985222632704647,
+      "ai_minus_human": 0.0038203653427603124,
+      "source_cluster_ci": [
+        7.725758181914844e-05,
+        0.006255512858677294
+      ]
     }
   },
   "claim_rates_complete_pairs": {
     "human": {
       "term_uses": {
-        "numerator": 9708,
-        "denominator": 1107,
-        "estimate": 8.769647696476964,
+        "numerator": 100945,
+        "denominator": 14832,
+        "estimate": 6.8058926645091695,
         "source_cluster_ci": [
-          2.2249641238670694,
-          13.184251444332947
+          4.029866938105819,
+          11.794004317777025
         ]
       },
       "zero_term_use": {
-        "numerator": 155,
-        "denominator": 1107,
-        "estimate": 0.14001806684733514,
+        "numerator": 1440,
+        "denominator": 14832,
+        "estimate": 0.0970873786407767,
         "source_cluster_ci": [
-          0.0921565665541141,
-          0.16967917123037604
+          0.05909666562714238,
+          0.12188042352887865
         ]
       },
       "one_term_use": {
-        "numerator": 564,
-        "denominator": 1107,
-        "estimate": 0.5094850948509485,
+        "numerator": 8626,
+        "denominator": 14832,
+        "estimate": 0.5815803667745415,
         "source_cluster_ci": [
-          0.4510442490594316,
-          0.5814548390206284
+          0.5422729881780934,
+          0.64699258390774
         ]
       },
       "multi_term_use": {
-        "numerator": 388,
-        "denominator": 1107,
-        "estimate": 0.35049683830171635,
+        "numerator": 4766,
+        "denominator": 14832,
+        "estimate": 0.3213322545846818,
         "source_cluster_ci": [
-          0.3040925794215268,
-          0.39650912213935935
+          0.28849110733796623,
+          0.34835431401538813
+        ]
+      },
+      "polarized_term_use": {
+        "numerator": 6206,
+        "denominator": 14832,
+        "estimate": 0.41841963322545844,
+        "source_cluster_ci": [
+          0.35395663684827616,
+          0.4578739330617119
         ]
       },
       "reuse_excess": {
-        "numerator": 8756,
-        "denominator": 1107,
-        "estimate": 7.9096657633243,
+        "numerator": 87553,
+        "denominator": 14832,
+        "estimate": 5.902980043149946,
         "source_cluster_ci": [
-          1.3304828122273764,
-          12.18916784737238
+          3.1106947501665316,
+          11.151347563773264
         ]
       }
     },
     "ai": {
       "term_uses": {
-        "numerator": 10996,
-        "denominator": 2047,
-        "estimate": 5.371763556424035,
+        "numerator": 382092,
+        "denominator": 25677,
+        "estimate": 14.880710363360206,
         "source_cluster_ci": [
-          2.9855093217220654,
-          7.711849183192879
+          9.773734985411387,
+          22.491673714181232
         ]
       },
       "zero_term_use": {
-        "numerator": 478,
-        "denominator": 2047,
-        "estimate": 0.2335124572545188,
+        "numerator": 5571,
+        "denominator": 25677,
+        "estimate": 0.2169645986680687,
         "source_cluster_ci": [
-          0.19581166757890897,
-          0.2557028124424716
+          0.20488140133571525,
+          0.23200703683401677
         ]
       },
       "one_term_use": {
-        "numerator": 835,
-        "denominator": 2047,
-        "estimate": 0.407914020517831,
+        "numerator": 11348,
+        "denominator": 25677,
+        "estimate": 0.44195194142617905,
         "source_cluster_ci": [
-          0.3796756164567833,
-          0.4281616073904832
+          0.41975822516600486,
+          0.45745691555126666
         ]
       },
       "multi_term_use": {
-        "numerator": 734,
-        "denominator": 2047,
-        "estimate": 0.3585735222276502,
+        "numerator": 8758,
+        "denominator": 25677,
+        "estimate": 0.34108345990575223,
         "source_cluster_ci": [
-          0.32570896953424916,
-          0.41374213238509944
+          0.3211771374697801,
+          0.36471994371771743
+        ]
+      },
+      "polarized_term_use": {
+        "numerator": 14329,
+        "denominator": 25677,
+        "estimate": 0.5580480585738209,
+        "source_cluster_ci": [
+          0.5428445306333535,
+          0.5804447100320155
         ]
       },
       "reuse_excess": {
-        "numerator": 9427,
-        "denominator": 2047,
-        "estimate": 4.605276013678554,
+        "numerator": 361986,
+        "denominator": 25677,
+        "estimate": 14.097674962028274,
         "source_cluster_ci": [
-          2.280896861110957,
-          6.84363397066707
+          8.889630470705804,
+          21.905244432412566
         ]
       }
     }
   },
+  "matched_claim_profiles_by_generality": {
+    "human_instance": {
+      "claims": 14014,
+      "zero_term_use_share": 0.10211217354074496,
+      "one_term_use_share": 0.5852005137719424,
+      "multi_term_use_share": 0.3126873126873127,
+      "mean_term_uses": 6.477379763094048
+    },
+    "human_generalized": {
+      "claims": 818,
+      "zero_term_use_share": 0.011002444987775062,
+      "one_term_use_share": 0.519559902200489,
+      "multi_term_use_share": 0.46943765281173594,
+      "mean_term_uses": 12.43398533007335
+    },
+    "ai_instance": {
+      "claims": 25186,
+      "zero_term_use_share": 0.22040022234574763,
+      "one_term_use_share": 0.4379417136504407,
+      "multi_term_use_share": 0.34165806400381166,
+      "mean_term_uses": 15.056737870245374
+    },
+    "ai_generalized": {
+      "claims": 491,
+      "zero_term_use_share": 0.04073319755600815,
+      "one_term_use_share": 0.6476578411405295,
+      "multi_term_use_share": 0.31160896130346233,
+      "mean_term_uses": 5.85132382892057
+    }
+  },
+  "claim_rate_differences_complete_pairs": {
+    "zero_term_use": {
+      "estimate_ai_minus_human": 0.119877220027292,
+      "source_cluster_ci": [
+        0.09528928462599014,
+        0.1600859800028535
+      ]
+    },
+    "one_term_use": {
+      "estimate_ai_minus_human": -0.13962842534836245,
+      "source_cluster_ci": [
+        -0.2060321694619515,
+        -0.09788299088051042
+      ]
+    },
+    "multi_term_use": {
+      "estimate_ai_minus_human": 0.019751205321070442,
+      "source_cluster_ci": [
+        -0.0004878643558065162,
+        0.04891580114523283
+      ]
+    },
+    "polarized_term_use": {
+      "estimate_ai_minus_human": 0.13962842534836245,
+      "source_cluster_ci": [
+        0.09854735273657313,
+        0.20601968137928167
+      ]
+    }
+  },
+  "source_to_term_use_transitions": {
+    "zero": {
+      "zero": {
+        "human": {
+          "numerator": 917,
+          "denominator": 3289,
+          "estimate": 0.27880814837336576
+        },
+        "ai": {
+          "numerator": 3975,
+          "denominator": 9317,
+          "estimate": 0.4266394762262531
+        },
+        "ai_minus_human": {
+          "estimate": 0.14783132785288733,
+          "source_cluster_ci": [
+            0.11742336213833408,
+            0.21547561664979625
+          ]
+        }
+      },
+      "one": {
+        "human": {
+          "numerator": 1314,
+          "denominator": 3289,
+          "estimate": 0.3995135299483126
+        },
+        "ai": {
+          "numerator": 2587,
+          "denominator": 9317,
+          "estimate": 0.2776644842760545
+        },
+        "ai_minus_human": {
+          "estimate": -0.12184904567225807,
+          "source_cluster_ci": [
+            -0.21234678117093925,
+            -0.07683492253441151
+          ]
+        }
+      },
+      "multi": {
+        "human": {
+          "numerator": 1058,
+          "denominator": 3289,
+          "estimate": 0.32167832167832167
+        },
+        "ai": {
+          "numerator": 2755,
+          "denominator": 9317,
+          "estimate": 0.2956960394976924
+        },
+        "ai_minus_human": {
+          "estimate": -0.025982282180629257,
+          "source_cluster_ci": [
+            -0.06582261999047674,
+            0.01504745190015152
+          ]
+        }
+      }
+    },
+    "one": {
+      "zero": {
+        "human": {
+          "numerator": 429,
+          "denominator": 7607,
+          "estimate": 0.056395425266202184
+        },
+        "ai": {
+          "numerator": 1298,
+          "denominator": 13257,
+          "estimate": 0.09791053782907143
+        },
+        "ai_minus_human": {
+          "estimate": 0.041515112562869244,
+          "source_cluster_ci": [
+            0.015502669081551793,
+            0.07860528222840155
+          ]
+        }
+      },
+      "one": {
+        "human": {
+          "numerator": 5610,
+          "denominator": 7607,
+          "estimate": 0.7374786380964901
+        },
+        "ai": {
+          "numerator": 7831,
+          "denominator": 13257,
+          "estimate": 0.590706796409444
+        },
+        "ai_minus_human": {
+          "estimate": -0.14677184168704605,
+          "source_cluster_ci": [
+            -0.22704345551544095,
+            -0.08964247905983712
+          ]
+        }
+      },
+      "multi": {
+        "human": {
+          "numerator": 1568,
+          "denominator": 7607,
+          "estimate": 0.20612593663730774
+        },
+        "ai": {
+          "numerator": 4128,
+          "denominator": 13257,
+          "estimate": 0.3113826657614845
+        },
+        "ai_minus_human": {
+          "estimate": 0.10525672912417675,
+          "source_cluster_ci": [
+            0.07240477675394258,
+            0.15336664842153355
+          ]
+        }
+      }
+    },
+    "multi": {
+      "zero": {
+        "human": {
+          "numerator": 94,
+          "denominator": 3936,
+          "estimate": 0.023882113821138213
+        },
+        "ai": {
+          "numerator": 298,
+          "denominator": 3103,
+          "estimate": 0.09603609410248147
+        },
+        "ai_minus_human": {
+          "estimate": 0.07215398028134326,
+          "source_cluster_ci": [
+            0.05296815845838127,
+            0.08806229534073771
+          ]
+        }
+      },
+      "one": {
+        "human": {
+          "numerator": 1702,
+          "denominator": 3936,
+          "estimate": 0.4324186991869919
+        },
+        "ai": {
+          "numerator": 930,
+          "denominator": 3103,
+          "estimate": 0.2997099581050596
+        },
+        "ai_minus_human": {
+          "estimate": -0.13270874108193226,
+          "source_cluster_ci": [
+            -0.17251716380520393,
+            -0.0915107793274694
+          ]
+        }
+      },
+      "multi": {
+        "human": {
+          "numerator": 2140,
+          "denominator": 3936,
+          "estimate": 0.5436991869918699
+        },
+        "ai": {
+          "numerator": 1875,
+          "denominator": 3103,
+          "estimate": 0.6042539477924589
+        },
+        "ai_minus_human": {
+          "estimate": 0.06055476080058897,
+          "source_cluster_ci": [
+            0.027860648452945662,
+            0.09330677281352129
+          ]
+        }
+      }
+    }
+  },
+  "tactic_matched_polarization": {
+    "strata": 12,
+    "ai_higher": 12,
+    "file": "results/horizon/binder_tactic_matched_strata.csv"
+  },
   "unambiguous_claim_sensitivity": {
     "human": {
-      "claims": 753,
-      "zero_term_use_share": 0.13811420982735723,
-      "one_term_use_share": 0.46215139442231074,
-      "multi_term_use_share": 0.399734395750332,
+      "claims": 9477,
+      "zero_term_use_share": 0.09486124300939115,
+      "one_term_use_share": 0.5457423235201013,
+      "multi_term_use_share": 0.35939643347050754,
       "median_term_uses": 1.0,
-      "mean_term_uses": 8.840637450199203
+      "mean_term_uses": 8.80721747388414
     },
     "ai": {
-      "claims": 1258,
-      "zero_term_use_share": 0.23767885532591415,
-      "one_term_use_share": 0.3934817170111288,
-      "multi_term_use_share": 0.3688394276629571,
+      "claims": 15058,
+      "zero_term_use_share": 0.21662903440031878,
+      "one_term_use_share": 0.4055651480940364,
+      "multi_term_use_share": 0.37780581750564485,
       "median_term_uses": 1.0,
-      "mean_term_uses": 3.773449920508744
+      "mean_term_uses": 21.38039580289547
     }
   },
   "by_source_file": "results/horizon/binder_by_source.csv"

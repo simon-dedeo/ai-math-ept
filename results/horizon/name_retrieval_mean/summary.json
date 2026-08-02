@@ -1,0 +1,73 @@
+{
+  "model_relative_warning": "Goedel-Prover is a causal proof model, not a contrastively trained semantic encoder",
+  "pairs": 230,
+  "claims": 1874,
+  "embedding_provenance": {
+    "pooling": "mean",
+    "prompt": "Lean mathematical concept: <naturalized name or exact explicit type>",
+    "prompt_file_sha256": "e6972d6a1189e354c2fd19f97aef44aa4ceae7c37d2f7574319e43f1dac9f603",
+    "manifest_sha256": "da9e2721d56e492c59d41b36cb59bac70ac735f5879b8a96be4adcafa5b08d8c",
+    "embedding_output_sha256": "e7f61776d18f5f4960803b52a6a126e4f76856794e2783d3029da815ec0474a5",
+    "model": {
+      "base_model": "Goedel-LM/Goedel-Prover-V2-8B",
+      "quantization": "Q4_K_M",
+      "gguf_source": "https://huggingface.co/mradermacher/Goedel-Prover-V2-8B-GGUF",
+      "gguf_filename": "Goedel-Prover-V2-8B.Q4_K_M.gguf",
+      "gguf_sha256": "919203ed088d6260fbbe124688ca04cb3e213cf63a9ed35346c69e4bec914c02",
+      "llama_cpp_version": "9982 (99f3dc3), Clang 22.1.8, Darwin arm64",
+      "hardware": "Apple M5 Max, 18 logical CPUs, 128 GiB unified memory"
+    }
+  },
+  "metrics": {
+    "retrieval_percentile": {
+      "human": 0.5277380952380952,
+      "ai": 0.5181780538302277,
+      "ai_minus_human": -0.009560041407867495,
+      "paired_wilcoxon_p": 0.054580743347339596,
+      "source_cluster_ci": [
+        -0.02268255026949073,
+        0.008366049475638456
+      ]
+    },
+    "top1": {
+      "human": 0.36925465838509314,
+      "ai": 0.3009316770186336,
+      "ai_minus_human": -0.06832298136645963,
+      "paired_wilcoxon_p": 1.7909328422235962e-06,
+      "source_cluster_ci": [
+        -0.08749292901006905,
+        -0.042405890240711674
+      ]
+    },
+    "top1_excess_chance": {
+      "human": 0.05703933747412008,
+      "ai": 0.037525879917184264,
+      "ai_minus_human": -0.019513457556935815,
+      "paired_wilcoxon_p": 0.058167749118054356,
+      "source_cluster_ci": [
+        -0.04646107993152256,
+        0.016331778474101485
+      ]
+    }
+  },
+  "equal_claim_count_sensitivity": {
+    "retrieval_percentile": {
+      "pairs": 57,
+      "human": 0.5406432748538013,
+      "ai": 0.5359649122807018,
+      "ai_minus_human": -0.004678362573099416
+    },
+    "top1": {
+      "pairs": 57,
+      "human": 0.4091269841269842,
+      "ai": 0.4066624895572264,
+      "ai_minus_human": -0.002464494569757728
+    },
+    "top1_excess_chance": {
+      "pairs": 57,
+      "human": 0.0804093567251462,
+      "ai": 0.07660818713450293,
+      "ai_minus_human": -0.0038011695906432744
+    }
+  }
+}

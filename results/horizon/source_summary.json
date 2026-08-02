@@ -62,120 +62,180 @@
       "human_median": 1.0,
       "ai_median": 4.0,
       "median_paired_difference": 1.0,
-      "probability_ai_greater": 0.525068870523416,
+      "probability_ai_greater": 0.5209366391184573,
       "cluster_ci": [
         0.0,
         1.0
       ],
-      "wilcoxon_p": 1.7524604023998312e-121
+      "wilcoxon_p": 1.5234345261856858e-114
     },
     "explicit_uses": {
       "n": 3630,
       "human_median": 1.0,
       "ai_median": 2.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.42451790633608816,
+      "probability_ai_greater": 0.41763085399449035,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 1.3048977460478611e-14
+      "wilcoxon_p": 2.9988523962362897e-10
     },
     "zero_uptake_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.41487603305785126,
+      "probability_ai_greater": 0.41542699724517906,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 1.032552873072259e-143
+      "wilcoxon_p": 1.4052099787263547e-144
     },
     "one_uptake_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 2.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4658402203856749,
+      "probability_ai_greater": 0.4628099173553719,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 7.389529046468751e-88
+      "wilcoxon_p": 5.7138639210011944e-83
     },
     "multi_uptake_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 0.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.20110192837465565,
+      "probability_ai_greater": 0.19641873278236915,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 5.685807709515386e-05
+      "wilcoxon_p": 2.4187973441261565e-08
     },
     "reuse_excess": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 0.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.1928374655647383,
+      "probability_ai_greater": 0.18898071625344354,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 5.057648432834567e-21
+      "wilcoxon_p": 1.765520322206999e-26
     },
     "long_horizon_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.39641873278236917,
+      "probability_ai_greater": 0.39146005509641874,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 1.898170859847702e-56
+      "wilcoxon_p": 2.0841000751726876e-49
     },
     "total_claim_span": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4143250688705234,
+      "probability_ai_greater": 0.41074380165289254,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 1.5340882515859111e-62
+      "wilcoxon_p": 2.37582261887527e-55
     },
     "max_claim_span": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 1.0,
       "median_paired_difference": 0.0,
-      "probability_ai_greater": 0.4046831955922865,
+      "probability_ai_greater": 0.4002754820936639,
       "cluster_ci": [
         0.0,
         0.0
       ],
-      "wilcoxon_p": 8.542745328522945e-67
+      "wilcoxon_p": 3.350047488078029e-59
+    },
+    "total_last_use_delay_tokens": {
+      "n": 3630,
+      "human_median": 16.0,
+      "ai_median": 39.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.4570247933884298,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 7.470535845623731e-20
     },
     "placeholder_haves": {
       "n": 3630,
       "human_median": 0.0,
       "ai_median": 3.0,
       "median_paired_difference": 1.0,
-      "probability_ai_greater": 0.5710743801652892,
+      "probability_ai_greater": 0.5694214876033058,
       "cluster_ci": [
         1.0,
         2.0
       ],
-      "wilcoxon_p": 5.272781523008877e-215
+      "wilcoxon_p": 5.264298621844597e-211
+    },
+    "parametric_haves": {
+      "n": 3630,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.0005509641873278236,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 7.463601629127766e-40
+    },
+    "universal_haves": {
+      "n": 3630,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.048484848484848485,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 0.5449142474160334
+    },
+    "generalized_haves": {
+      "n": 3630,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.04159779614325069,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 9.942765444006581e-17
+    },
+    "total_binder_groups": {
+      "n": 3630,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.0008264462809917355,
+      "cluster_ci": [
+        0.0,
+        0.0
+      ],
+      "wilcoxon_p": 1.4258224978165798e-37
     },
     "tactic_events": {
       "n": 3630,
@@ -217,135 +277,1061 @@
   "claim_rates": {
     "human": {
       "explicit_uses_per_claim": {
-        "numerator": 20597,
-        "denominator": 14515,
-        "estimate": 1.419014812263176,
+        "numerator": 21502,
+        "denominator": 14911,
+        "estimate": 1.4420226678291195,
         "source_cluster_ci": [
-          1.3195597205508034,
-          1.5593016886883277
+          1.3392370454785436,
+          1.5879152458522965
         ]
       },
       "zero_uptake_share": {
-        "numerator": 3322,
-        "denominator": 14515,
-        "estimate": 0.22886668963141577,
+        "numerator": 3309,
+        "denominator": 14911,
+        "estimate": 0.22191670578767353,
         "source_cluster_ci": [
-          0.16657559816326817,
-          0.26739581767388754
+          0.15943679052961648,
+          0.26076253930929
         ]
       },
       "one_uptake_share": {
-        "numerator": 7462,
-        "denominator": 14515,
-        "estimate": 0.5140888735790562,
+        "numerator": 7650,
+        "denominator": 14911,
+        "estimate": 0.5130440614311582,
         "source_cluster_ci": [
-          0.4847757276567444,
-          0.5660405431781208
+          0.4840134819578701,
+          0.5645239528935309
         ]
       },
       "multi_uptake_share": {
-        "numerator": 3731,
-        "denominator": 14515,
-        "estimate": 0.2570444367895281,
+        "numerator": 3952,
+        "denominator": 14911,
+        "estimate": 0.26503923278116825,
         "source_cluster_ci": [
-          0.22947014483559816,
-          0.29846108726974807
+          0.23552380217682783,
+          0.3078796147306494
         ]
       },
       "long_horizon_share": {
-        "numerator": 6896,
-        "denominator": 14515,
-        "estimate": 0.4750947295900792,
+        "numerator": 7224,
+        "denominator": 14911,
+        "estimate": 0.48447454899067804,
         "source_cluster_ci": [
-          0.4599910335868413,
-          0.5022715198359561
+          0.46887422900775266,
+          0.5120904184372469
         ]
       },
       "placeholder_name_share": {
-        "numerator": 8547,
-        "denominator": 14515,
-        "estimate": 0.5888391319324836,
+        "numerator": 8710,
+        "denominator": 14911,
+        "estimate": 0.5841325196163906,
         "source_cluster_ci": [
-          0.5150322738005346,
-          0.6454570073346881
+          0.5071716027905618,
+          0.6436217646093524
+        ]
+      },
+      "parametric_claim_share": {
+        "numerator": 431,
+        "denominator": 14911,
+        "estimate": 0.02890483535644826,
+        "source_cluster_ci": [
+          0.019901093914718088,
+          0.044149050905953384
+        ]
+      },
+      "universal_claim_share": {
+        "numerator": 411,
+        "denominator": 14911,
+        "estimate": 0.02756354369257595,
+        "source_cluster_ci": [
+          0.020370932072812157,
+          0.03514491720171127
+        ]
+      },
+      "generalized_claim_share": {
+        "numerator": 835,
+        "denominator": 14911,
+        "estimate": 0.0559989269666689,
+        "source_cluster_ci": [
+          0.043430151293004864,
+          0.07382273502680398
+        ]
+      },
+      "binder_groups_per_claim": {
+        "numerator": 781,
+        "denominator": 14911,
+        "estimate": 0.052377439474213666,
+        "source_cluster_ci": [
+          0.03672716726387817,
+          0.07964392951031862
         ]
       }
     },
     "ai": {
       "explicit_uses_per_claim": {
-        "numerator": 22187,
-        "denominator": 25662,
-        "estimate": 0.864585768841088,
+        "numerator": 22315,
+        "denominator": 25715,
+        "estimate": 0.8677814505152635,
         "source_cluster_ci": [
-          0.8330720197900612,
-          0.8829356070054342
+          0.8354826896774222,
+          0.8890776453807211
         ]
       },
       "zero_uptake_share": {
-        "numerator": 9335,
-        "denominator": 25662,
-        "estimate": 0.3637674382355233,
+        "numerator": 9340,
+        "denominator": 25715,
+        "estimate": 0.36321213299630567,
         "source_cluster_ci": [
-          0.3303181425082953,
-          0.3872803628276397
+          0.32949073330398515,
+          0.386359035356728
         ]
       },
       "one_uptake_share": {
-        "numerator": 13251,
-        "denominator": 25662,
-        "estimate": 0.516366612111293,
+        "numerator": 13270,
+        "denominator": 25715,
+        "estimate": 0.5160412210771923,
         "source_cluster_ci": [
-          0.49369858313383785,
-          0.548804628601932
+          0.4936553237845377,
+          0.5488617741553403
         ]
       },
       "multi_uptake_share": {
-        "numerator": 3076,
-        "denominator": 25662,
-        "estimate": 0.1198659496531837,
+        "numerator": 3105,
+        "denominator": 25715,
+        "estimate": 0.12074664592650204,
         "source_cluster_ci": [
-          0.11029562533166477,
-          0.12427987564704202
+          0.11112784001400315,
+          0.12512587902871866
         ]
       },
       "long_horizon_share": {
-        "numerator": 10694,
-        "denominator": 25662,
-        "estimate": 0.4167251188527784,
+        "numerator": 10737,
+        "denominator": 25715,
+        "estimate": 0.4175384017110636,
         "source_cluster_ci": [
-          0.3997936926175347,
-          0.43899945100098164
+          0.39991240358318675,
+          0.44077129775306056
         ]
       },
       "placeholder_name_share": {
-        "numerator": 22811,
-        "denominator": 25662,
-        "estimate": 0.8889018782635804,
+        "numerator": 22834,
+        "denominator": 25715,
+        "estimate": 0.8879642232160218,
         "source_cluster_ci": [
-          0.8788337518265523,
-          0.8995102652088751
+          0.8781370956596128,
+          0.8983511242079577
+        ]
+      },
+      "parametric_claim_share": {
+        "numerator": 53,
+        "denominator": 25715,
+        "estimate": 0.002061053859615011,
+        "source_cluster_ci": [
+          0.0013431634576916338,
+          0.003160409410386961
+        ]
+      },
+      "universal_claim_share": {
+        "numerator": 439,
+        "denominator": 25715,
+        "estimate": 0.017071748006999805,
+        "source_cluster_ci": [
+          0.011416731068069457,
+          0.020694661632599184
+        ]
+      },
+      "generalized_claim_share": {
+        "numerator": 491,
+        "denominator": 25715,
+        "estimate": 0.019093914057942835,
+        "source_cluster_ci": [
+          0.013447934476359783,
+          0.022480000460488724
+        ]
+      },
+      "binder_groups_per_claim": {
+        "numerator": 84,
+        "denominator": 25715,
+        "estimate": 0.003266575928446432,
+        "source_cluster_ci": [
+          0.0021390343069085014,
+          0.0044153076990494575
         ]
       }
     }
   },
   "name_lexicon": {
     "human": {
-      "tokens": 14515,
-      "types": 3522,
-      "shannon_entropy_bits": 8.492969962869095,
-      "effective_vocabulary": 360.2788029455592,
-      "mean_name_length": 3.254219772648984,
-      "share_length_at_least_4": 0.23279366172924562,
-      "share_with_underscore": 0.13124354116431278
+      "tokens": 14911,
+      "types": 3715,
+      "shannon_entropy_bits": 8.579459148693214,
+      "effective_vocabulary": 382.53797127470165,
+      "mean_name_length": 3.3518208034337067,
+      "share_length_at_least_4": 0.24156662866340287,
+      "share_with_underscore": 0.13607403929984574
     },
     "ai": {
-      "tokens": 25662,
-      "types": 1685,
-      "shannon_entropy_bits": 6.26821602894401,
-      "effective_vocabulary": 77.07633293354873,
-      "mean_name_length": 2.626412594497701,
-      "share_length_at_least_4": 0.09360143402696594,
-      "share_with_underscore": 0.034681630426311276
+      "tokens": 25715,
+      "types": 1710,
+      "shannon_entropy_bits": 6.279082497878564,
+      "effective_vocabulary": 77.65906852081653,
+      "mean_name_length": 2.6342601594400157,
+      "share_length_at_least_4": 0.09449737507291464,
+      "share_with_underscore": 0.035193466848143104
+    }
+  },
+  "parametric_claim_profiles": {
+    "human": {
+      "claims": 431,
+      "source_groups": 12,
+      "mean_binder_groups": 1.8120649651972158,
+      "explicit_uses_per_claim": 2.2250580046403714,
+      "zero_uptake_share": 0.016241299303944315,
+      "multi_uptake_share": 0.5336426914153132,
+      "long_horizon_share": 0.7146171693735499,
+      "placeholder_name_share": 0.37819025522041766,
+      "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
+    },
+    "ai": {
+      "claims": 53,
+      "source_groups": 9,
+      "mean_binder_groups": 1.5849056603773586,
+      "explicit_uses_per_claim": 2.490566037735849,
+      "zero_uptake_share": 0.07547169811320754,
+      "multi_uptake_share": 0.5660377358490566,
+      "long_horizon_share": 0.7924528301886793,
+      "placeholder_name_share": 0.4339622641509434,
+      "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
+    }
+  },
+  "generalized_claim_profiles": {
+    "human": {
+      "claims": 835,
+      "source_groups": 12,
+      "mean_binder_groups": 0.9353293413173652,
+      "explicit_uses_per_claim": 2.4419161676646706,
+      "zero_uptake_share": 0.03832335329341317,
+      "multi_uptake_share": 0.5365269461077844,
+      "long_horizon_share": 0.7197604790419162,
+      "placeholder_name_share": 0.4287425149700599,
+      "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
+    },
+    "ai": {
+      "claims": 491,
+      "source_groups": 11,
+      "mean_binder_groups": 0.1710794297352342,
+      "explicit_uses_per_claim": 1.7494908350305498,
+      "zero_uptake_share": 0.0814663951120163,
+      "multi_uptake_share": 0.4480651731160896,
+      "long_horizon_share": 0.7718940936863544,
+      "placeholder_name_share": 0.8329938900203666,
+      "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem"
+    }
+  },
+  "within_proof_feature_associations": {
+    "estimand": "mean flagged-minus-unflagged claim fate within proofs containing both; descriptive association, not a causal feature effect",
+    "parametric_claim": {
+      "human": {
+        "eligible_proofs": 192,
+        "source_groups": 12,
+        "adopted": {
+          "flagged_minus_unflagged": 0.11670341955498205,
+          "source_cluster_ci": [
+            0.07407349594184924,
+            0.15336654663767413
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": 0.17441873365548302,
+          "source_cluster_ci": [
+            0.07575039568419166,
+            0.240117376178949
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": 0.32085109165072395,
+          "source_cluster_ci": [
+            0.22926589627208263,
+            0.4039429848009701
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": 0.459361053868177,
+          "source_cluster_ci": [
+            0.09544404599664764,
+            0.684438452143399
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 28,
+        "source_groups": 9,
+        "adopted": {
+          "flagged_minus_unflagged": 0.2232722329413506,
+          "source_cluster_ci": [
+            0.07246726312902782,
+            0.39022380514705873
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": 0.25478213983728687,
+          "source_cluster_ci": [
+            0.14726710851276906,
+            0.4464521248582077
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": 0.31177347337536404,
+          "source_cluster_ci": [
+            0.11467784571579219,
+            0.4901356086294164
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": 0.7830665443139182,
+          "source_cluster_ci": [
+            0.40935288340925613,
+            1.1597239195997988
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 21,
+        "source_groups": 8,
+        "estimand": "AI minus human within-proof feature association",
+        "adopted": {
+          "ai_minus_human": 0.08353628630939555,
+          "source_cluster_ci": [
+            -0.0012452865761689372,
+            0.14577768251908604
+          ]
+        },
+        "multi_uptake": {
+          "ai_minus_human": 0.1162726372600322,
+          "source_cluster_ci": [
+            -0.02363158570051951,
+            0.3706999804195182
+          ]
+        },
+        "long_horizon": {
+          "ai_minus_human": 0.05157934113816466,
+          "source_cluster_ci": [
+            -0.041666666666666685,
+            0.11163888504119594
+          ]
+        },
+        "explicit_uses": {
+          "ai_minus_human": 0.5941531655397202,
+          "source_cluster_ci": [
+            0.23288702870382685,
+            1.1133626568148625
+          ]
+        }
+      }
+    },
+    "universal_claim": {
+      "human": {
+        "eligible_proofs": 227,
+        "source_groups": 11,
+        "adopted": {
+          "flagged_minus_unflagged": 0.09071689225423775,
+          "source_cluster_ci": [
+            0.019668998573207225,
+            0.14629887421797133
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": 0.2557551028025176,
+          "source_cluster_ci": [
+            0.228477505534385,
+            0.30227582927334334
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": 0.31605466952582295,
+          "source_cluster_ci": [
+            0.1975835323565516,
+            0.38970490853360934
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": 0.9787356536292371,
+          "source_cluster_ci": [
+            0.5019588707686841,
+            1.326022818111785
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 247,
+        "source_groups": 11,
+        "adopted": {
+          "flagged_minus_unflagged": 0.17787583599445744,
+          "source_cluster_ci": [
+            0.1421701543043207,
+            0.23359505515689097
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": 0.3304941922114398,
+          "source_cluster_ci": [
+            0.2892219895572157,
+            0.4068232963016308
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": 0.39881070204404684,
+          "source_cluster_ci": [
+            0.35392071541155046,
+            0.45974133217218577
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": 0.8076422841216254,
+          "source_cluster_ci": [
+            0.653788824374674,
+            1.1415245657310333
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 89,
+        "source_groups": 11,
+        "estimand": "AI minus human within-proof feature association",
+        "adopted": {
+          "ai_minus_human": -0.004519304117593968,
+          "source_cluster_ci": [
+            -0.08467508518978947,
+            0.151389636312588
+          ]
+        },
+        "multi_uptake": {
+          "ai_minus_human": 0.09745182319209651,
+          "source_cluster_ci": [
+            0.02521452145043423,
+            0.16893402051865553
+          ]
+        },
+        "long_horizon": {
+          "ai_minus_human": 0.09159410146264867,
+          "source_cluster_ci": [
+            -0.03195584158576068,
+            0.3727016978853532
+          ]
+        },
+        "explicit_uses": {
+          "ai_minus_human": -0.2719779062286671,
+          "source_cluster_ci": [
+            -0.4926875410276859,
+            0.2619067532337787
+          ]
+        }
+      }
+    },
+    "generalized_claim": {
+      "human": {
+        "eligible_proofs": 401,
+        "source_groups": 12,
+        "adopted": {
+          "flagged_minus_unflagged": 0.1024084923495615,
+          "source_cluster_ci": [
+            0.04941619217743664,
+            0.1438547910472247
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": 0.2183036087504051,
+          "source_cluster_ci": [
+            0.17139932182372278,
+            0.24513347865784688
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": 0.327095015279217,
+          "source_cluster_ci": [
+            0.2503845752765716,
+            0.37252088545871753
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": 0.7524218579529379,
+          "source_cluster_ci": [
+            0.33611599674186565,
+            1.0208669476239738
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 271,
+        "source_groups": 11,
+        "adopted": {
+          "flagged_minus_unflagged": 0.1844827287116394,
+          "source_cluster_ci": [
+            0.1518989790009768,
+            0.23551143559593116
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": 0.3261938299895696,
+          "source_cluster_ci": [
+            0.28145479337125545,
+            0.4056943444825146
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": 0.3908574823311778,
+          "source_cluster_ci": [
+            0.343910655272744,
+            0.446122758679976
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": 0.808857032356165,
+          "source_cluster_ci": [
+            0.6491397923096957,
+            1.1384235619715821
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 129,
+        "source_groups": 11,
+        "estimand": "AI minus human within-proof feature association",
+        "adopted": {
+          "ai_minus_human": 0.03686172629090454,
+          "source_cluster_ci": [
+            -0.010597057352520336,
+            0.12475530691017969
+          ]
+        },
+        "multi_uptake": {
+          "ai_minus_human": 0.109153146551567,
+          "source_cluster_ci": [
+            0.07156043640748692,
+            0.1813692373000852
+          ]
+        },
+        "long_horizon": {
+          "ai_minus_human": 0.03607151113330375,
+          "source_cluster_ci": [
+            -0.04378183868100961,
+            0.20795798005005742
+          ]
+        },
+        "explicit_uses": {
+          "ai_minus_human": 0.05441024560297623,
+          "source_cluster_ci": [
+            -0.20123869128699146,
+            0.5676425261943382
+          ]
+        }
+      }
+    },
+    "outside_placeholder": {
+      "human": {
+        "eligible_proofs": 787,
+        "source_groups": 12,
+        "adopted": {
+          "flagged_minus_unflagged": 0.004049690457249521,
+          "source_cluster_ci": [
+            -0.02612689799664387,
+            0.028840345216381603
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": -0.06269966843667572,
+          "source_cluster_ci": [
+            -0.12128434454133992,
+            -0.021113303457678503
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": -0.02449808719745956,
+          "source_cluster_ci": [
+            -0.06140068234644417,
+            0.0336991505951118
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": -0.40707498997211533,
+          "source_cluster_ci": [
+            -0.6371178333141075,
+            -0.24115050655966896
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 743,
+        "source_groups": 12,
+        "adopted": {
+          "flagged_minus_unflagged": 0.02575983253430469,
+          "source_cluster_ci": [
+            -0.0003661114890845555,
+            0.06819548956081634
+          ]
+        },
+        "multi_uptake": {
+          "flagged_minus_unflagged": -0.012986068960305259,
+          "source_cluster_ci": [
+            -0.030091585119157403,
+            0.01261705753577984
+          ]
+        },
+        "long_horizon": {
+          "flagged_minus_unflagged": -0.02548747321561646,
+          "source_cluster_ci": [
+            -0.06309808453080999,
+            0.01273919312150254
+          ]
+        },
+        "explicit_uses": {
+          "flagged_minus_unflagged": -0.07720177604063734,
+          "source_cluster_ci": [
+            -0.1242700587253191,
+            0.005270152137040806
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 303,
+        "source_groups": 12,
+        "estimand": "AI minus human within-proof feature association",
+        "adopted": {
+          "ai_minus_human": 0.0026203570496787488,
+          "source_cluster_ci": [
+            -0.04403524580655536,
+            0.05343630299723288
+          ]
+        },
+        "multi_uptake": {
+          "ai_minus_human": 0.008845460498876993,
+          "source_cluster_ci": [
+            -0.04465367181108955,
+            0.08114679503392026
+          ]
+        },
+        "long_horizon": {
+          "ai_minus_human": -0.014541924137603808,
+          "source_cluster_ci": [
+            -0.08901796860549516,
+            0.050169771539139936
+          ]
+        },
+        "explicit_uses": {
+          "ai_minus_human": 0.25605328608701144,
+          "source_cluster_ci": [
+            0.10973568873383949,
+            0.4650785924015593
+          ]
+        }
+      }
+    }
+  },
+  "position_matched_family_associations": {
+    "feature": "generalized_claim",
+    "estimand": "mean family-minus-instance fate after minimum-cost one-to-one matching on normalized claim position, averaged over eligible proofs",
+    "all_matches": {
+      "human": {
+        "eligible_proofs": 401,
+        "matched_claim_pairs": 637,
+        "mean_abs_relative_position_gap": 0.2864192625691176,
+        "adopted": {
+          "family_minus_instance": 0.09156275976724855,
+          "source_cluster_ci": [
+            0.05605630847434729,
+            0.12443040941477508
+          ]
+        },
+        "multi_uptake": {
+          "family_minus_instance": 0.1798836242726517,
+          "source_cluster_ci": [
+            0.11222345582356077,
+            0.21965315974874797
+          ]
+        },
+        "explicit_uses": {
+          "family_minus_instance": 0.5982068637928987,
+          "source_cluster_ci": [
+            0.025140275718633892,
+            0.9351275625814423
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 271,
+        "matched_claim_pairs": 478,
+        "mean_abs_relative_position_gap": 0.18577934541885766,
+        "adopted": {
+          "family_minus_instance": 0.1442904266705005,
+          "source_cluster_ci": [
+            0.08810540701274154,
+            0.19933469934149284
+          ]
+        },
+        "multi_uptake": {
+          "family_minus_instance": 0.2860010223478859,
+          "source_cluster_ci": [
+            0.24130676167683351,
+            0.38338856182474734
+          ]
+        },
+        "explicit_uses": {
+          "family_minus_instance": 0.6855449593456974,
+          "source_cluster_ci": [
+            0.48409332293523477,
+            1.078958703590487
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 129,
+        "estimand": "AI minus human position-matched family association",
+        "adopted": {
+          "ai_minus_human": 0.0015713614550823846,
+          "source_cluster_ci": [
+            -0.05628629609233057,
+            0.03134183133175068
+          ]
+        },
+        "multi_uptake": {
+          "ai_minus_human": 0.12062820900030202,
+          "source_cluster_ci": [
+            0.06183879492600423,
+            0.17406875419917398
+          ]
+        },
+        "explicit_uses": {
+          "ai_minus_human": -0.028539548306990216,
+          "source_cluster_ci": [
+            -0.22577724792568546,
+            0.3569322363144678
+          ]
+        }
+      }
+    },
+    "caliper_0_25": {
+      "human": {
+        "eligible_proofs": 269,
+        "matched_claim_pairs": 433,
+        "mean_abs_relative_position_gap": 0.14016124807887584,
+        "adopted": {
+          "family_minus_instance": 0.10192069392812886,
+          "source_cluster_ci": [
+            0.07173614512210348,
+            0.1574124396135265
+          ]
+        },
+        "multi_uptake": {
+          "family_minus_instance": 0.21171003717472117,
+          "source_cluster_ci": [
+            0.14788210847916253,
+            0.2659522809123649
+          ]
+        },
+        "explicit_uses": {
+          "family_minus_instance": 0.5514781377234909,
+          "source_cluster_ci": [
+            0.040446499433106596,
+            0.8539365849062496
+          ]
+        }
+      },
+      "ai": {
+        "eligible_proofs": 226,
+        "matched_claim_pairs": 409,
+        "mean_abs_relative_position_gap": 0.1033482320531339,
+        "adopted": {
+          "family_minus_instance": 0.1584559246063671,
+          "source_cluster_ci": [
+            0.09364852475761481,
+            0.21393432884412264
+          ]
+        },
+        "multi_uptake": {
+          "family_minus_instance": 0.309762287859633,
+          "source_cluster_ci": [
+            0.247910970608339,
+            0.42089140526661095
+          ]
+        },
+        "explicit_uses": {
+          "family_minus_instance": 0.7903363598053863,
+          "source_cluster_ci": [
+            0.5575383692817902,
+            1.2564958112874778
+          ]
+        }
+      },
+      "paired_both_tracks": {
+        "eligible_pairs": 86,
+        "estimand": "AI minus human position-matched family association",
+        "adopted": {
+          "ai_minus_human": -0.038243733011174876,
+          "source_cluster_ci": [
+            -0.09722222222222221,
+            0.01870748299319728
+          ]
+        },
+        "multi_uptake": {
+          "ai_minus_human": 0.13210510419812746,
+          "source_cluster_ci": [
+            -0.029715254552211072,
+            0.21655565146300762
+          ]
+        },
+        "explicit_uses": {
+          "ai_minus_human": -0.04920467129769451,
+          "source_cluster_ci": [
+            -0.4525688627370367,
+            0.23452806122448974
+          ]
+        }
+      }
+    }
+  },
+  "interface_coordinate_correlations": {
+    "pairs_with_claims_on_both_sides": 1883,
+    "coordinate": "human minus AI; outside-placeholder is sign-corrected",
+    "spearman": {
+      "explicit_uses": {
+        "explicit_uses": 1.0,
+        "long_reach": 0.32252930599295265,
+        "generalized": 0.1904259311261673,
+        "outside_placeholder": 0.1056834257676873
+      },
+      "long_reach": {
+        "explicit_uses": 0.32252930599295265,
+        "long_reach": 1.0,
+        "generalized": 0.11915781065754413,
+        "outside_placeholder": 0.06634977389887546
+      },
+      "generalized": {
+        "explicit_uses": 0.1904259311261673,
+        "long_reach": 0.11915781065754413,
+        "generalized": 1.0,
+        "outside_placeholder": 0.13145143934528694
+      },
+      "outside_placeholder": {
+        "explicit_uses": 0.1056834257676873,
+        "long_reach": 0.06634977389887546,
+        "generalized": 0.13145143934528694,
+        "outside_placeholder": 1.0
+      }
+    }
+  },
+  "uptake_reach_decomposition": {
+    "interpretation": "adoption is the extensive margin; remaining measures condition on explicit uptake and distinguish token distance from claim-boundary opportunity",
+    "adoption_probability": {
+      "human": 0.7780832942123265,
+      "ai": 0.6367878670036944,
+      "ai_minus_human": -0.14129542720863209,
+      "source_cluster_ci": [
+        -0.17946123265861905,
+        -0.11981281435621684
+      ],
+      "human_claims": 14911,
+      "ai_claims": 25715
+    },
+    "last_use_token_distance_all_claims": {
+      "human": 44.173563141305074,
+      "ai": 27.442815477347853,
+      "ai_minus_human": -16.73074766395722,
+      "source_cluster_ci": [
+        -22.79135453377934,
+        -13.130877047381366
+      ],
+      "human_claims": 14911,
+      "ai_claims": 25715
+    },
+    "explicit_use_count_given_adoption": {
+      "human": 1.8533011549732805,
+      "ai": 1.3627480916030534,
+      "ai_minus_human": -0.4905530633702271,
+      "source_cluster_ci": [
+        -0.6276138255907178,
+        -0.3895280591794412
+      ],
+      "human_claims": 11602,
+      "ai_claims": 16375
+    },
+    "last_use_token_distance_given_adoption": {
+      "human": 56.77228064126874,
+      "ai": 43.09569465648855,
+      "ai_minus_human": -13.676585984780196,
+      "source_cluster_ci": [
+        -20.77222625878205,
+        -9.556223504978728
+      ],
+      "human_claims": 11602,
+      "ai_claims": 16375
+    },
+    "crosses_any_later_boundary_given_adoption_and_opportunity": {
+      "human": 0.7510917030567685,
+      "ai": 0.7519960778820564,
+      "ai_minus_human": 0.0009043748252878236,
+      "source_cluster_ci": [
+        -0.012826019967072467,
+        0.010779150810239104
+      ],
+      "human_claims": 9618,
+      "ai_claims": 14278
+    },
+    "fraction_available_boundaries_crossed_given_adoption": {
+      "human": 0.49118811931498446,
+      "ai": 0.4543345623162755,
+      "ai_minus_human": -0.03685355699870896,
+      "source_cluster_ci": [
+        -0.05727569976691619,
+        -0.02525619301786006
+      ],
+      "human_claims": 9618,
+      "ai_claims": 14278
+    }
+  },
+  "uptake_reach_matched_controls": {
+    "exact_equal_positive_claim_count": {
+      "pairs": 210,
+      "profile": {
+        "interpretation": "adoption is the extensive margin; remaining measures condition on explicit uptake and distinguish token distance from claim-boundary opportunity",
+        "adoption_probability": {
+          "human": 0.7822506861848124,
+          "ai": 0.7026532479414456,
+          "ai_minus_human": -0.07959743824336685,
+          "source_cluster_ci": [
+            -0.10699016102804346,
+            -0.04855463269543744
+          ],
+          "human_claims": 1093,
+          "ai_claims": 1093
+        },
+        "last_use_token_distance_all_claims": {
+          "human": 47.270814272644095,
+          "ai": 39.72552607502287,
+          "ai_minus_human": -7.545288197621225,
+          "source_cluster_ci": [
+            -12.925306246676982,
+            -3.8655769823436805
+          ],
+          "human_claims": 1093,
+          "ai_claims": 1093
+        },
+        "explicit_use_count_given_adoption": {
+          "human": 1.7777777777777777,
+          "ai": 1.5729166666666667,
+          "ai_minus_human": -0.20486111111111094,
+          "source_cluster_ci": [
+            -0.38138802533801547,
+            -0.08984640252762947
+          ],
+          "human_claims": 855,
+          "ai_claims": 768
+        },
+        "last_use_token_distance_given_adoption": {
+          "human": 60.42923976608187,
+          "ai": 56.536458333333336,
+          "ai_minus_human": -3.892781432748535,
+          "source_cluster_ci": [
+            -8.130868600917617,
+            -1.4266133885545358
+          ],
+          "human_claims": 855,
+          "ai_claims": 768
+        },
+        "crosses_any_later_boundary_given_adoption_and_opportunity": {
+          "human": 0.7503692762186115,
+          "ai": 0.7837837837837838,
+          "ai_minus_human": 0.03341450756517228,
+          "source_cluster_ci": [
+            0.01871524649039705,
+            0.062444871968747935
+          ],
+          "human_claims": 677,
+          "ai_claims": 592
+        },
+        "fraction_available_boundaries_crossed_given_adoption": {
+          "human": 0.5108491303096735,
+          "ai": 0.5361667382093572,
+          "ai_minus_human": 0.025317607899683736,
+          "source_cluster_ci": [
+            0.007668472259010376,
+            0.05920809012504476
+          ],
+          "human_claims": 677,
+          "ai_claims": 592
+        }
+      }
+    },
+    "within_ten_percent_length": {
+      "pairs": 834,
+      "profile": {
+        "interpretation": "adoption is the extensive margin; remaining measures condition on explicit uptake and distinguish token distance from claim-boundary opportunity",
+        "adoption_probability": {
+          "human": 0.7526460211681694,
+          "ai": 0.6660341555977229,
+          "ai_minus_human": -0.08661186557044642,
+          "source_cluster_ci": [
+            -0.11196509383780344,
+            -0.07034162347218625
+          ],
+          "human_claims": 2551,
+          "ai_claims": 3162
+        },
+        "last_use_token_distance_all_claims": {
+          "human": 42.907095256762055,
+          "ai": 35.63345983554712,
+          "ai_minus_human": -7.273635421214934,
+          "source_cluster_ci": [
+            -17.108880593229475,
+            -2.8716886436472473
+          ],
+          "human_claims": 2551,
+          "ai_claims": 3162
+        },
+        "explicit_use_count_given_adoption": {
+          "human": 1.790625,
+          "ai": 1.5944919278252612,
+          "ai_minus_human": -0.19613307217473874,
+          "source_cluster_ci": [
+            -0.5285220590041256,
+            -0.06371099256615194
+          ],
+          "human_claims": 1920,
+          "ai_claims": 2106
+        },
+        "last_use_token_distance_given_adoption": {
+          "human": 57.00833333333333,
+          "ai": 53.50094966761633,
+          "ai_minus_human": -3.5073836657170006,
+          "source_cluster_ci": [
+            -15.253628792043889,
+            2.026458034651491
+          ],
+          "human_claims": 1920,
+          "ai_claims": 2106
+        },
+        "crosses_any_later_boundary_given_adoption_and_opportunity": {
+          "human": 0.7564487102579485,
+          "ai": 0.7504105090311987,
+          "ai_minus_human": -0.006038201226749806,
+          "source_cluster_ci": [
+            -0.03461061518845037,
+            0.015848488958352492
+          ],
+          "human_claims": 1667,
+          "ai_claims": 1827
+        },
+        "fraction_available_boundaries_crossed_given_adoption": {
+          "human": 0.46364929726337245,
+          "ai": 0.46187390665044803,
+          "ai_minus_human": -0.0017753906129244212,
+          "source_cluster_ci": [
+            -0.06118411962105229,
+            0.022852899878546745
+          ],
+          "human_claims": 1667,
+          "ai_claims": 1827
+        }
+      }
     }
   },
   "pretarget_declaration_audit": {
@@ -367,99 +1353,323 @@
   },
   "claim_count_sensitivity": {
     "exact_equal_positive": {
-      "pairs": 211,
+      "pairs": 210,
       "source_groups": 11,
       "explicit_uses_per_claim": {
-        "human": 1.3576923076923078,
-        "ai": 1.0778846153846153,
-        "ai_minus_human": -0.2798076923076924,
+        "human": 1.3906678865507778,
+        "ai": 1.1052150045745655,
+        "ai_minus_human": -0.2854528819762123,
         "source_cluster_ci": [
-          -0.4456554478784704,
-          -0.1770375810720014
+          -0.42786390736534713,
+          -0.18192463527531313
         ],
-        "paired_wilcoxon_p": 2.2451836929096128e-07
+        "paired_wilcoxon_p": 2.744901669818526e-07
       },
       "zero_uptake_share": {
-        "human": 0.22403846153846155,
-        "ai": 0.2951923076923077,
-        "ai_minus_human": 0.07115384615384615,
+        "human": 0.21774931381518756,
+        "ai": 0.29734675205855443,
+        "ai_minus_human": 0.07959743824336687,
         "source_cluster_ci": [
-          0.04675684965137975,
-          0.09375
+          0.05010379391637804,
+          0.10729315314946945
         ],
-        "paired_wilcoxon_p": 0.002435187704839777
+        "paired_wilcoxon_p": 0.001078756760653642
+      },
+      "generalized_claim_share": {
+        "human": 0.04483074107959744,
+        "ai": 0.024702653247941447,
+        "ai_minus_human": -0.020128087831655993,
+        "source_cluster_ci": [
+          -0.04039171027243136,
+          -0.00542181588139785
+        ],
+        "paired_wilcoxon_p": 0.0016824792123615367
       }
     },
     "within_one_positive": {
-      "pairs": 424,
+      "pairs": 426,
       "source_groups": 11,
       "explicit_uses_per_claim": {
-        "human": 1.3824489795918367,
-        "ai": 1.012072434607646,
-        "ai_minus_human": -0.3703765449841907,
+        "human": 1.397609561752988,
+        "ai": 1.0342789598108748,
+        "ai_minus_human": -0.3633306019421132,
         "source_cluster_ci": [
-          -0.5692914426334058,
-          -0.2584842211003499
+          -0.5427956157885506,
+          -0.25433405954715826
         ],
-        "paired_wilcoxon_p": 4.531672434839785e-14
+        "paired_wilcoxon_p": 3.696825233875056e-15
       },
       "zero_uptake_share": {
-        "human": 0.24571428571428572,
-        "ai": 0.3291750503018109,
-        "ai_minus_human": 0.08346076458752516,
+        "human": 0.24023904382470118,
+        "ai": 0.32308904649330183,
+        "ai_minus_human": 0.08285000266860065,
         "source_cluster_ci": [
-          0.04360786661174386,
-          0.15916907042843556
+          0.047796247656394265,
+          0.15132203916825696
         ],
-        "paired_wilcoxon_p": 2.613897104094858e-06
+        "paired_wilcoxon_p": 1.1663317470785894e-06
+      },
+      "generalized_claim_share": {
+        "human": 0.04541832669322709,
+        "ai": 0.02206461780929866,
+        "ai_minus_human": -0.023353708883928428,
+        "source_cluster_ci": [
+          -0.04097094295002022,
+          -0.013332815852641101
+        ],
+        "paired_wilcoxon_p": 0.00013871738647272254
+      }
+    }
+  },
+  "length_matched_sensitivity": {
+    "within_ten_percent": {
+      "pairs": 834,
+      "source_groups": 12,
+      "explicit_uses_per_claim": {
+        "human": 1.3477067816542532,
+        "ai": 1.0619860847564833,
+        "ai_minus_human": -0.2857206968977699,
+        "source_cluster_ci": [
+          -0.5182757902451841,
+          -0.18311801481635354
+        ],
+        "paired_wilcoxon_p": 4.224595655196697e-10
+      },
+      "zero_uptake_share": {
+        "human": 0.24735397883183066,
+        "ai": 0.33396584440227706,
+        "ai_minus_human": 0.0866118655704464,
+        "source_cluster_ci": [
+          0.07016751305164307,
+          0.11145268687065568
+        ],
+        "paired_wilcoxon_p": 3.5704919046434576e-08
+      },
+      "long_horizon_share": {
+        "human": 0.4943159545276362,
+        "ai": 0.4335863377609108,
+        "ai_minus_human": -0.06072961676672539,
+        "source_cluster_ci": [
+          -0.0915952693068229,
+          -0.04015854368134636
+        ],
+        "paired_wilcoxon_p": 0.03516009434189365
+      },
+      "generalized_claim_share": {
+        "human": 0.033320266562132494,
+        "ai": 0.02024035420619861,
+        "ai_minus_human": -0.013079912355933886,
+        "source_cluster_ci": [
+          -0.034765026418080054,
+          -0.0038341329821150426
+        ],
+        "paired_wilcoxon_p": 0.00010709075337085662
+      }
+    },
+    "within_twenty_tokens": {
+      "pairs": 1162,
+      "source_groups": 12,
+      "explicit_uses_per_claim": {
+        "human": 1.318230277185501,
+        "ai": 1.0661057692307692,
+        "ai_minus_human": -0.25212450795473185,
+        "source_cluster_ci": [
+          -0.4958593830944352,
+          -0.10625524609502536
+        ],
+        "paired_wilcoxon_p": 7.845149965511113e-09
+      },
+      "zero_uptake_share": {
+        "human": 0.24360341151385928,
+        "ai": 0.3217147435897436,
+        "ai_minus_human": 0.07811133207588433,
+        "source_cluster_ci": [
+          0.0506940231390046,
+          0.11912424384493903
+        ],
+        "paired_wilcoxon_p": 1.6411632285662666e-08
+      },
+      "long_horizon_share": {
+        "human": 0.4605543710021322,
+        "ai": 0.40224358974358976,
+        "ai_minus_human": -0.05831078125854244,
+        "source_cluster_ci": [
+          -0.0978856961576156,
+          -0.030836298523028483
+        ],
+        "paired_wilcoxon_p": 0.16703480863888232
+      },
+      "generalized_claim_share": {
+        "human": 0.03731343283582089,
+        "ai": 0.020833333333333332,
+        "ai_minus_human": -0.01648009950248756,
+        "source_cluster_ci": [
+          -0.03592389151163179,
+          -0.0038742654941014954
+        ],
+        "paired_wilcoxon_p": 0.0016323447571188771
       }
     }
   },
   "nonredeclared_name_sensitivity": {
     "rule": "retain only claim names occurring exactly once in that proof",
     "explicit_uses_per_claim": {
-      "human": 1.5148163606010017,
-      "ai": 0.9147794994040525,
-      "ai_minus_human": -0.6000368611969492,
+      "human": 1.544116174261392,
+      "ai": 0.9197306752920985,
+      "ai_minus_human": -0.6243854989692935,
       "source_cluster_ci": [
-        -0.7094553599274738,
-        -0.5148005673396282
+        -0.7357548954441866,
+        -0.5340397539094629
       ],
-      "human_claims": 9584,
-      "ai_claims": 15102
+      "human_claims": 9985,
+      "ai_claims": 15149
     },
     "zero_uptake_share": {
-      "human": 0.19887312186978298,
-      "ai": 0.33293603496225666,
-      "ai_minus_human": 0.13406291309247367,
+      "human": 0.19038557836755132,
+      "ai": 0.3321011287873787,
+      "ai_minus_human": 0.14171555041982736,
       "source_cluster_ci": [
-        0.11758768344188272,
-        0.15841247688149596
+        0.12493869723509622,
+        0.16554883445463345
       ],
-      "human_claims": 9584,
-      "ai_claims": 15102
+      "human_claims": 9985,
+      "ai_claims": 15149
     },
     "multi_uptake_share": {
-      "human": 0.2832846410684474,
-      "ai": 0.1347503641901735,
-      "ai_minus_human": -0.14853427687827392,
+      "human": 0.29364046069103655,
+      "ai": 0.1359825731071358,
+      "ai_minus_human": -0.15765788758390076,
       "source_cluster_ci": [
-        -0.1851825575235313,
-        -0.1213085343783648
+        -0.1968271111420823,
+        -0.12872647973965146
       ],
-      "human_claims": 9584,
-      "ai_claims": 15102
+      "human_claims": 9985,
+      "ai_claims": 15149
     },
     "long_horizon_share": {
-      "human": 0.5135642737896494,
-      "ai": 0.4587471858032049,
-      "ai_minus_human": -0.054817087986444524,
+      "human": 0.5253880821231848,
+      "ai": 0.45996435408277775,
+      "ai_minus_human": -0.06542372804040703,
       "source_cluster_ci": [
-        -0.07496588632990916,
-        -0.035927442145702204
+        -0.08388970700917069,
+        -0.05078574800451122
       ],
-      "human_claims": 9584,
-      "ai_claims": 15102
+      "human_claims": 9985,
+      "ai_claims": 15149
+    }
+  },
+  "parametric_claim_difference": {
+    "human": 0.02890483535644826,
+    "ai": 0.002061053859615011,
+    "ai_minus_human": -0.02684378149683325,
+    "source_cluster_ci": [
+      -0.04129706413092712,
+      -0.01856113661632873
+    ],
+    "paired_wilcoxon_p": 2.330699567125503e-34
+  },
+  "universal_claim_difference": {
+    "human": 0.02756354369257595,
+    "ai": 0.017071748006999805,
+    "ai_minus_human": -0.010491795685576146,
+    "source_cluster_ci": [
+      -0.019472516877357682,
+      -0.005131341071081868
+    ],
+    "paired_wilcoxon_p": 7.679420178693136e-08
+  },
+  "generalized_claim_difference": {
+    "human": 0.0559989269666689,
+    "ai": 0.019093914057942835,
+    "ai_minus_human": -0.03690501290872607,
+    "source_cluster_ci": [
+      -0.05570927895471118,
+      -0.025144867003806082
+    ],
+    "paired_wilcoxon_p": 5.709426635782645e-43
+  },
+  "binder_groups_per_claim_difference": {
+    "human": 0.052377439474213666,
+    "ai": 0.003266575928446432,
+    "ai_minus_human": -0.049110863545767235,
+    "source_cluster_ci": [
+      -0.07482897295650558,
+      -0.033884888652863515
+    ],
+    "paired_wilcoxon_p": 2.2959792033272604e-34
+  },
+  "parametric_proof_pair_audit": {
+    "human_any": 247,
+    "ai_any": 29,
+    "both": 27,
+    "human_only": 220,
+    "ai_only": 2,
+    "neither": 3381
+  },
+  "generalized_proof_pair_audit": {
+    "human_any": 491,
+    "ai_any": 279,
+    "both": 171,
+    "human_only": 320,
+    "ai_only": 108,
+    "neither": 3031
+  },
+  "automation_exclusion_sensitivity": {
+    "native_decide": {
+      "rule": "exclude pairs where either target proof contains native_decide",
+      "pairs": 3214,
+      "generalized_claim_share": {
+        "human": 0.05352906287069988,
+        "ai": 0.01919038010130544,
+        "ai_minus_human": -0.034338682769394446,
+        "source_cluster_ci": [
+          -0.05110130504423261,
+          -0.024366654044098022
+        ],
+        "paired_wilcoxon_p": 3.186999176283771e-38
+      }
+    },
+    "decide": {
+      "rule": "exclude pairs where either target proof contains decide",
+      "pairs": 3449,
+      "generalized_claim_share": {
+        "human": 0.054048280281991025,
+        "ai": 0.019167778721339318,
+        "ai_minus_human": -0.03488050156065171,
+        "source_cluster_ci": [
+          -0.05075731858675766,
+          -0.02474782118738721
+        ],
+        "paired_wilcoxon_p": 1.8000000721713807e-40
+      }
+    },
+    "norm_num": {
+      "rule": "exclude pairs where either target proof contains norm_num",
+      "pairs": 1239,
+      "generalized_claim_share": {
+        "human": 0.050200803212851405,
+        "ai": 0.014922978177150192,
+        "ai_minus_human": -0.03527782503570121,
+        "source_cluster_ci": [
+          -0.061156610495174964,
+          -0.021030028129441013
+        ],
+        "paired_wilcoxon_p": 1.5002702239101888e-09
+      }
+    },
+    "aesop": {
+      "rule": "exclude pairs where either target proof contains aesop",
+      "pairs": 3586,
+      "generalized_claim_share": {
+        "human": 0.05571827532184456,
+        "ai": 0.019176248228067412,
+        "ai_minus_human": -0.03654202709377715,
+        "source_cluster_ci": [
+          -0.05660376992453141,
+          -0.024534598655010596
+        ],
+        "paired_wilcoxon_p": 9.957334446136439e-42
+      }
     }
   },
   "target_value_overlap_audit": {
@@ -470,54 +1680,54 @@
     "sensitivity_excluding_similarity_at_least_0_9": {
       "pairs": 3400,
       "explicit_uses_per_claim": {
-        "human": 1.4212367894887175,
-        "ai": 0.8549842936100839,
-        "ai_minus_human": -0.5662524958786336,
+        "human": 1.4425602891097367,
+        "ai": 0.8566154579016315,
+        "ai_minus_human": -0.5859448312081051,
         "source_cluster_ci": [
-          -0.6974859378196657,
-          -0.48237072865958375
+          -0.7166521495649044,
+          -0.49772330606152215
         ],
-        "paired_wilcoxon_p": 4.485197115567471e-111
+        "paired_wilcoxon_p": 1.2426920317733627e-118
       },
       "zero_uptake_share": {
-        "human": 0.22936303913167666,
-        "ai": 0.3667740268002704,
-        "ai_minus_human": 0.13741098766859372,
+        "human": 0.22232260754743208,
+        "ai": 0.36636100194513915,
+        "ai_minus_human": 0.14403839439770708,
         "source_cluster_ci": [
-          0.11613447094583544,
-          0.1761121136594259
+          0.12256526855033598,
+          0.18236552143961884
         ],
-        "paired_wilcoxon_p": 6.855279597307769e-65
+        "paired_wilcoxon_p": 8.86468286451023e-72
       },
       "multi_uptake_share": {
-        "human": 0.2562839188803199,
-        "ai": 0.11682373056582766,
-        "ai_minus_human": -0.13946018831449225,
+        "human": 0.2641601223156578,
+        "ai": 0.11742288912706919,
+        "ai_minus_human": -0.14673723318858858,
         "source_cluster_ci": [
-          -0.18123868578741656,
-          -0.11374831514286778
+          -0.18935680619434983,
+          -0.11963287294664021
         ],
-        "paired_wilcoxon_p": 2.6073389845765214e-85
+        "paired_wilcoxon_p": 8.776245540355547e-93
       },
       "long_horizon_share": {
-        "human": 0.4735789774350186,
-        "ai": 0.41476798282237864,
-        "ai_minus_human": -0.058810994612639944,
+        "human": 0.48300785322121065,
+        "ai": 0.41538644754078835,
+        "ai_minus_human": -0.0676214056804223,
         "source_cluster_ci": [
-          -0.08617808047626076,
-          -0.03815897541503221
+          -0.09366772444322623,
+          -0.051554260838227055
         ],
-        "paired_wilcoxon_p": 0.3535373167626318
+        "paired_wilcoxon_p": 0.6618980829060578
       },
       "placeholder_name_share": {
-        "human": 0.589974293059126,
-        "ai": 0.8954630402799316,
-        "ai_minus_human": 0.30548874722080566,
+        "human": 0.5852387240252971,
+        "ai": 0.894724306299869,
+        "ai_minus_human": 0.3094855822745719,
         "source_cluster_ci": [
-          0.2503503408539794,
-          0.37988730825737504
+          0.25364635181661266,
+          0.38600546995222257
         ],
-        "paired_wilcoxon_p": 1.5665424168400545e-129
+        "paired_wilcoxon_p": 2.341198530763868e-136
       }
     }
   },

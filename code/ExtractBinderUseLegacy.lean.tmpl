@@ -1,0 +1,160 @@
+/-
+Stack-safe extraction for Lean versions in which source `have` syntax is
+encoded as `letFun v (fun h => body)` rather than as a nondependent `letE`.
+
+Lean's `Expr.letFun?` documents that representation.  We traverse its semantic
+type, value, and body as one virtual binder and retain ordinary
+`letE`s as well.  Raw expression size is counted separately so decoding does
+not silently change the reported tree size.
+-/
+namespace Horizon
+open Lean
+
+structure BinderUse where
+  kind       : String
+  name       : String
+  uses       : Nat
+  typeNodes  : Nat
+  valueNodes : Nat
+  bodyNodes  : Nat
+  deriving Inhabited
+
+inductive Work where
+  | visit (expr : Expr) (scope : List (Option Nat))
+  | finish (arity : Nat)
+  | finishBinder (id : Nat)
+  deriving Inhabited
+
+/-- Constant-time match for the named-lambda case of Lean's documented
+`letFun v (fun (n : t) => b)` encoding.  Calling `Expr.letFun?` at every
+application repeatedly scans long application spines on large tactic terms. -/
+def namedLetFun? : Expr → Option (Name × Expr × Expr × Expr)
+  | .app (.app (.app (.app (.const fn _) t) _) v) (.lam n _ b _) =>
+      if fn == ``letFun then some (n, t, v, b) else none
+  | _ => none
+
+def countRawNodesIterative (root : Expr) : Nat := Id.run do
+  let mut work : Array Expr := #[root]
+  let mut rawNodeTotal := 0
+  while !work.isEmpty do
+    let expr := work.back!
+    work := work.pop
+    rawNodeTotal := rawNodeTotal + 1
+    match expr with
+    | .app f a =>
+        work := work.push f
+        work := work.push a
+    | .lam _ t b _ | .forallE _ t b _ =>
+        work := work.push t
+        work := work.push b
+    | .letE _ t v b _ =>
+        work := work.push t
+        work := work.push v
+        work := work.push b
+    | .mdata _ b | .proj _ _ b =>
+        work := work.push b
+    | _ => pure ()
+  return rawNodeTotal
+
+def collectBindersIterative (root : Expr) : Array BinderUse := Id.run do
+  let mut binders : Array BinderUse := Array.empty
+  let mut counts : Array Nat := Array.empty
+  let mut work : Array Work := #[.visit root List.nil]
+  let mut sizes : Array Nat := Array.empty
+  while !work.isEmpty do
+    let event := work.back!
+    work := work.pop
+    match event with
+    | .visit expr scope =>
+        match expr with
+        | .bvar i =>
+            match scope.get? i with
+            | some (some id) => counts := counts.set! id (counts[id]! + 1)
+            | _ => pure ()
+            sizes := sizes.push 1
+        | .app f a =>
+            match namedLetFun? expr with
+            | some (n, t, v, b) =>
+                let id := binders.size
+                let placeholder : BinderUse := {
+                  kind := "have_fun", name := n.toString, uses := 0,
+                  typeNodes := 0, valueNodes := 0, bodyNodes := 0 }
+                binders := binders.push placeholder
+                counts := counts.push 0
+                work := work.push (.finishBinder id)
+                work := work.push (.visit b (some id :: scope))
+                work := work.push (.visit v scope)
+                work := work.push (.visit t scope)
+            | none =>
+                work := work.push (.finish 2)
+                work := work.push (.visit a scope)
+                work := work.push (.visit f scope)
+        | .lam _ t b _ | .forallE _ t b _ =>
+            work := work.push (.finish 2)
+            work := work.push (.visit b (none :: scope))
+            work := work.push (.visit t scope)
+        | .letE n t v b _ =>
+            let id := binders.size
+            let placeholder : BinderUse := {
+              kind := "let", name := n.toString, uses := 0,
+              typeNodes := 0, valueNodes := 0, bodyNodes := 0 }
+            binders := binders.push placeholder
+            counts := counts.push 0
+            work := work.push (.finishBinder id)
+            work := work.push (.visit b (some id :: scope))
+            work := work.push (.visit v scope)
+            work := work.push (.visit t scope)
+        | .mdata _ b | .proj _ _ b =>
+            work := work.push (.finish 1)
+            work := work.push (.visit b scope)
+        | _ => sizes := sizes.push 1
+    | .finish arity =>
+        let mut total := 1
+        for _ in [0:arity] do
+          total := total + sizes.back!
+          sizes := sizes.pop
+        sizes := sizes.push total
+    | .finishBinder id =>
+        let bodyNodes := sizes.back!
+        sizes := sizes.pop
+        let valueNodes := sizes.back!
+        sizes := sizes.pop
+        let typeNodes := sizes.back!
+        sizes := sizes.pop
+        let binder : BinderUse := {
+          kind := binders[id]!.kind, name := binders[id]!.name, uses := counts[id]!,
+          typeNodes, valueNodes, bodyNodes }
+        binders := binders.set! id binder
+        sizes := sizes.push (1 + typeNodes + valueNodes + bodyNodes)
+  return binders
+
+def jsonQuote (s : String) : String :=
+  "\"" ++ ((s.replace "\\" "\\\\").replace "\"" "\\\"") ++ "\""
+
+def binderJson (b : BinderUse) : String :=
+  "{\"kind\":" ++ jsonQuote b.kind ++
+  ",\"name\":" ++ jsonQuote b.name ++
+  ",\"uses\":" ++ toString b.uses ++
+  ",\"type_nodes\":" ++ toString b.typeNodes ++
+  ",\"value_nodes\":" ++ toString b.valueNodes ++
+  ",\"body_nodes\":" ++ toString b.bodyNodes ++ "}"
+
+def writeBinderStats (root : Name) (path : String) : CoreM Unit := do
+  let env ← getEnv
+  let some info := env.find? root
+    | throwError "declaration {root} not found"
+  let value := match info with
+    | .defnInfo val => val.value
+    | .thmInfo val => val.value
+    | .opaqueInfo val => val.value
+    | _ => info.type
+  let rootNodes := countRawNodesIterative value
+  let binders := collectBindersIterative value
+  let payload :=
+    "{\"name\":" ++ jsonQuote root.toString ++
+    ",\"root_nodes\":" ++ toString rootNodes ++
+    ",\"n_lets\":" ++ toString binders.size ++
+    ",\"lets\":[" ++ String.intercalate "," (binders.map binderJson).toList ++ "]}"
+  IO.FS.writeFile path payload
+
+end Horizon

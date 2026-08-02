@@ -1,0 +1,547 @@
+{
+  "seed": 20260802,
+  "bootstraps": 10000,
+  "extraction_file": "results/horizon/binder_extraction_mathlib433_sample.json",
+  "tasks": 624,
+  "task_status": {
+    "ok": 604,
+    "failed": 20
+  },
+  "pairs_with_both_sides": 298,
+  "source_groups_with_both_sides": 12,
+  "claims_matched": 3229,
+  "claims_unambiguous": 2081,
+  "root_tree_representation": {
+    "measure": "fully expanded syntax-tree occurrence count computed by DAG recurrence; not a representation-invariant certificate size",
+    "human": {
+      "max_decimal_digits": 8,
+      "max_tree_nodes": "10451381.0",
+      "max_pair": "pair_57c4dba0",
+      "tasks_at_least_20_digits": 0,
+      "tasks_at_least_100_digits": 0
+    },
+    "ai": {
+      "max_decimal_digits": 8,
+      "max_tree_nodes": "10673686.0",
+      "max_pair": "pair_271fa579",
+      "tasks_at_least_20_digits": 0,
+      "tasks_at_least_100_digits": 0
+    }
+  },
+  "aligned_binder_kinds": {
+    "human": {
+      "let": 1133
+    },
+    "ai": {
+      "let": 2096
+    }
+  },
+  "source_claims_in_successful_tasks": 3236,
+  "matching_method": "exact-name longest common subsequence in pre-order term traversal",
+  "source_sample_comparison": {
+    "full_corpus": {
+      "pairs": 3630,
+      "source_groups": 12,
+      "human": {
+        "claims_per_100_tokens": 2.010294823467236,
+        "explicit_uses_per_claim": 1.4420226678291195,
+        "zero_uptake_share": 0.22191670578767353,
+        "placeholder_name_share": 0.5841325196163906
+      },
+      "ai": {
+        "claims_per_100_tokens": 3.175938207839621,
+        "explicit_uses_per_claim": 0.8677814505152635,
+        "zero_uptake_share": 0.36321213299630567,
+        "placeholder_name_share": 0.8879642232160218
+      }
+    },
+    "materialized_312": {
+      "pairs": 312,
+      "source_groups": 12,
+      "human": {
+        "claims_per_100_tokens": 1.9781238731390696,
+        "explicit_uses_per_claim": 1.3793402777777777,
+        "zero_uptake_share": 0.2230902777777778,
+        "placeholder_name_share": 0.6302083333333334
+      },
+      "ai": {
+        "claims_per_100_tokens": 3.2516650091914534,
+        "explicit_uses_per_claim": 0.8419833178869324,
+        "zero_uptake_share": 0.3568118628359592,
+        "placeholder_name_share": 0.8827618164967562
+      }
+    },
+    "complete_298": {
+      "pairs": 298,
+      "source_groups": 12,
+      "human": {
+        "claims_per_100_tokens": 2.03788800697459,
+        "explicit_uses_per_claim": 1.3707664884135473,
+        "zero_uptake_share": 0.2281639928698752,
+        "placeholder_name_share": 0.6381461675579323
+      },
+      "ai": {
+        "claims_per_100_tokens": 3.2761210726499823,
+        "explicit_uses_per_claim": 0.8473170731707317,
+        "zero_uptake_share": 0.3521951219512195,
+        "placeholder_name_share": 0.8824390243902439
+      }
+    }
+  },
+  "paired": {
+    "root_node_digits": {
+      "n_pairs": 298,
+      "human_median": 6.0,
+      "ai_median": 6.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.2550335570469799,
+      "wilcoxon_p": 0.023411003498393996
+    },
+    "term_lets": {
+      "n_pairs": 298,
+      "human_median": 3.0,
+      "ai_median": 4.5,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.4865771812080537,
+      "wilcoxon_p": 2.236735732582756e-05
+    },
+    "matched": {
+      "n_pairs": 298,
+      "human_median": 2.0,
+      "ai_median": 4.0,
+      "median_paired_difference": 1.5,
+      "probability_ai_greater": 0.5805369127516778,
+      "wilcoxon_p": 5.088141566607665e-14
+    },
+    "match_share": {
+      "n_pairs": 298,
+      "human_median": 1.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.006711409395973154,
+      "wilcoxon_p": 0.28504940740261275
+    },
+    "zero_term_use": {
+      "n_pairs": 298,
+      "human_median": 0.0,
+      "ai_median": 0.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.412751677852349,
+      "wilcoxon_p": 1.089554893538209e-11
+    },
+    "multi_term_use": {
+      "n_pairs": 298,
+      "human_median": 0.0,
+      "ai_median": 1.0,
+      "median_paired_difference": 0.0,
+      "probability_ai_greater": 0.3859060402684564,
+      "wilcoxon_p": 3.78944724297373e-10
+    }
+  },
+  "source_claim_retention_complete_pairs": {
+    "human": {
+      "numerator": 1118,
+      "denominator": 1122,
+      "estimate": 0.9964349376114082,
+      "source_cluster_ci": [
+        0.9905660377358491,
+        1.0
+      ]
+    },
+    "ai": {
+      "numerator": 2047,
+      "denominator": 2050,
+      "estimate": 0.9985365853658537,
+      "source_cluster_ci": [
+        0.9945652173913043,
+        1.0
+      ]
+    },
+    "ai_minus_human": {
+      "human": 0.9964349376114082,
+      "ai": 0.9985365853658537,
+      "ai_minus_human": 0.002101647754445435,
+      "source_cluster_ci": [
+        -0.0013192829837073068,
+        0.005084082961886166
+      ]
+    }
+  },
+  "claim_rates_complete_pairs": {
+    "human": {
+      "term_uses": {
+        "numerator": 9729,
+        "denominator": 1118,
+        "estimate": 8.702146690518784,
+        "source_cluster_ci": [
+          2.2217042293366025,
+          13.055525918458931
+        ]
+      },
+      "zero_term_use": {
+        "numerator": 155,
+        "denominator": 1118,
+        "estimate": 0.13864042933810375,
+        "source_cluster_ci": [
+          0.09127954996712581,
+          0.16833929554210236
+        ]
+      },
+      "one_term_use": {
+        "numerator": 568,
+        "denominator": 1118,
+        "estimate": 0.5080500894454383,
+        "source_cluster_ci": [
+          0.4508406865678788,
+          0.5768681720914517
+        ]
+      },
+      "multi_term_use": {
+        "numerator": 395,
+        "denominator": 1118,
+        "estimate": 0.35330948121645794,
+        "source_cluster_ci": [
+          0.31023541700144625,
+          0.3970144044059525
+        ]
+      },
+      "polarized_term_use": {
+        "numerator": 550,
+        "denominator": 1118,
+        "estimate": 0.4919499105545617,
+        "source_cluster_ci": [
+          0.42163886286058494,
+          0.550214685983095
+        ]
+      },
+      "reuse_excess": {
+        "numerator": 8766,
+        "denominator": 1118,
+        "estimate": 7.840787119856888,
+        "source_cluster_ci": [
+          1.2977515498595067,
+          12.033530706453996
+        ]
+      }
+    },
+    "ai": {
+      "term_uses": {
+        "numerator": 10996,
+        "denominator": 2047,
+        "estimate": 5.371763556424035,
+        "source_cluster_ci": [
+          3.0267226319533966,
+          7.630341064518278
+        ]
+      },
+      "zero_term_use": {
+        "numerator": 478,
+        "denominator": 2047,
+        "estimate": 0.2335124572545188,
+        "source_cluster_ci": [
+          0.19602243419407278,
+          0.2557056460814962
+        ]
+      },
+      "one_term_use": {
+        "numerator": 835,
+        "denominator": 2047,
+        "estimate": 0.407914020517831,
+        "source_cluster_ci": [
+          0.3788719029567374,
+          0.42857142857142855
+        ]
+      },
+      "multi_term_use": {
+        "numerator": 734,
+        "denominator": 2047,
+        "estimate": 0.3585735222276502,
+        "source_cluster_ci": [
+          0.32592797647315247,
+          0.4109947643979058
+        ]
+      },
+      "polarized_term_use": {
+        "numerator": 1212,
+        "denominator": 2047,
+        "estimate": 0.592085979482169,
+        "source_cluster_ci": [
+          0.5710715139411837,
+          0.6220661840404792
+        ]
+      },
+      "reuse_excess": {
+        "numerator": 9427,
+        "denominator": 2047,
+        "estimate": 4.605276013678554,
+        "source_cluster_ci": [
+          2.218048805391056,
+          6.8969260106557275
+        ]
+      }
+    }
+  },
+  "matched_claim_profiles_by_generality": {
+    "human_instance": {
+      "claims": 1082,
+      "zero_term_use_share": 0.1414048059149723,
+      "one_term_use_share": 0.5101663585951941,
+      "multi_term_use_share": 0.34842883548983367,
+      "mean_term_uses": 8.931608133086876
+    },
+    "human_generalized": {
+      "claims": 36,
+      "zero_term_use_share": 0.05555555555555555,
+      "one_term_use_share": 0.4444444444444444,
+      "multi_term_use_share": 0.5,
+      "mean_term_uses": 1.8055555555555556
+    },
+    "ai_instance": {
+      "claims": 2017,
+      "zero_term_use_share": 0.23698562221120476,
+      "one_term_use_share": 0.4045612295488349,
+      "multi_term_use_share": 0.35845314823996033,
+      "mean_term_uses": 5.425880019831433
+    },
+    "ai_generalized": {
+      "claims": 30,
+      "zero_term_use_share": 0.0,
+      "one_term_use_share": 0.6333333333333333,
+      "multi_term_use_share": 0.36666666666666664,
+      "mean_term_uses": 1.7333333333333334
+    }
+  },
+  "claim_rate_differences_complete_pairs": {
+    "zero_term_use": {
+      "estimate_ai_minus_human": 0.09487202791641505,
+      "source_cluster_ci": [
+        0.04280717080578387,
+        0.14815184113810712
+      ]
+    },
+    "one_term_use": {
+      "estimate_ai_minus_human": -0.10013606892760729,
+      "source_cluster_ci": [
+        -0.16711799296579471,
+        -0.050008908229903594
+      ]
+    },
+    "multi_term_use": {
+      "estimate_ai_minus_human": 0.005264041011192266,
+      "source_cluster_ci": [
+        -0.020414349463074247,
+        0.05502549676776739
+      ]
+    },
+    "polarized_term_use": {
+      "estimate_ai_minus_human": 0.10013606892760729,
+      "source_cluster_ci": [
+        0.05137088504020968,
+        0.16727803818020537
+      ]
+    }
+  },
+  "source_to_term_use_transitions": {
+    "zero": {
+      "zero": {
+        "human": {
+          "numerator": 98,
+          "denominator": 256,
+          "estimate": 0.3828125
+        },
+        "ai": {
+          "numerator": 327,
+          "denominator": 721,
+          "estimate": 0.4535367545076283
+        },
+        "ai_minus_human": {
+          "estimate": 0.07072425450762831,
+          "source_cluster_ci": [
+            -0.012516308155488499,
+            0.16129807170746116
+          ]
+        }
+      },
+      "one": {
+        "human": {
+          "numerator": 88,
+          "denominator": 256,
+          "estimate": 0.34375
+        },
+        "ai": {
+          "numerator": 185,
+          "denominator": 721,
+          "estimate": 0.2565880721220527
+        },
+        "ai_minus_human": {
+          "estimate": -0.0871619278779473,
+          "source_cluster_ci": [
+            -0.1480899292824799,
+            -0.005179096420587836
+          ]
+        }
+      },
+      "multi": {
+        "human": {
+          "numerator": 70,
+          "denominator": 256,
+          "estimate": 0.2734375
+        },
+        "ai": {
+          "numerator": 209,
+          "denominator": 721,
+          "estimate": 0.289875173370319
+        },
+        "ai_minus_human": {
+          "estimate": 0.016437673370318984,
+          "source_cluster_ci": [
+            -0.05373779657175409,
+            0.05636314730500169
+          ]
+        }
+      }
+    },
+    "one": {
+      "zero": {
+        "human": {
+          "numerator": 44,
+          "denominator": 587,
+          "estimate": 0.07495741056218058
+        },
+        "ai": {
+          "numerator": 127,
+          "denominator": 1065,
+          "estimate": 0.11924882629107982
+        },
+        "ai_minus_human": {
+          "estimate": 0.04429141572889923,
+          "source_cluster_ci": [
+            0.019575429325576384,
+            0.08442943129094813
+          ]
+        }
+      },
+      "one": {
+        "human": {
+          "numerator": 371,
+          "denominator": 587,
+          "estimate": 0.6320272572402045
+        },
+        "ai": {
+          "numerator": 577,
+          "denominator": 1065,
+          "estimate": 0.5417840375586854
+        },
+        "ai_minus_human": {
+          "estimate": -0.09024321968151905,
+          "source_cluster_ci": [
+            -0.21088574775554536,
+            -0.016388894392032904
+          ]
+        }
+      },
+      "multi": {
+        "human": {
+          "numerator": 172,
+          "denominator": 587,
+          "estimate": 0.293015332197615
+        },
+        "ai": {
+          "numerator": 361,
+          "denominator": 1065,
+          "estimate": 0.3389671361502347
+        },
+        "ai_minus_human": {
+          "estimate": 0.04595180395261972,
+          "source_cluster_ci": [
+            -0.02166971453442302,
+            0.14323197066777585
+          ]
+        }
+      }
+    },
+    "multi": {
+      "zero": {
+        "human": {
+          "numerator": 13,
+          "denominator": 275,
+          "estimate": 0.04727272727272727
+        },
+        "ai": {
+          "numerator": 24,
+          "denominator": 261,
+          "estimate": 0.09195402298850575
+        },
+        "ai_minus_human": {
+          "estimate": 0.044681295715778474,
+          "source_cluster_ci": [
+            0.016523528581292284,
+            0.0699231117141565
+          ]
+        }
+      },
+      "one": {
+        "human": {
+          "numerator": 109,
+          "denominator": 275,
+          "estimate": 0.39636363636363636
+        },
+        "ai": {
+          "numerator": 73,
+          "denominator": 261,
+          "estimate": 0.2796934865900383
+        },
+        "ai_minus_human": {
+          "estimate": -0.11667014977359808,
+          "source_cluster_ci": [
+            -0.1838820016873605,
+            -0.05686072453680818
+          ]
+        }
+      },
+      "multi": {
+        "human": {
+          "numerator": 153,
+          "denominator": 275,
+          "estimate": 0.5563636363636364
+        },
+        "ai": {
+          "numerator": 164,
+          "denominator": 261,
+          "estimate": 0.6283524904214559
+        },
+        "ai_minus_human": {
+          "estimate": 0.07198885405781952,
+          "source_cluster_ci": [
+            0.015389995094364364,
+            0.14668347420733388
+          ]
+        }
+      }
+    }
+  },
+  "tactic_matched_polarization": {
+    "strata": 12,
+    "ai_higher": 10,
+    "file": "results/horizon/binder_tactic_matched_strata_mathlib433_sample.csv"
+  },
+  "unambiguous_claim_sensitivity": {
+    "human": {
+      "claims": 764,
+      "zero_term_use_share": 0.13612565445026178,
+      "one_term_use_share": 0.4607329842931937,
+      "multi_term_use_share": 0.4031413612565445,
+      "median_term_uses": 1.0,
+      "mean_term_uses": 8.74083769633508
+    },
+    "ai": {
+      "claims": 1258,
+      "zero_term_use_share": 0.23767885532591415,
+      "one_term_use_share": 0.3934817170111288,
+      "multi_term_use_share": 0.3688394276629571,
+      "median_term_uses": 1.0,
+      "mean_term_uses": 3.773449920508744
+    }
+  },
+  "by_source_file": "results/horizon/binder_by_source_mathlib433_sample.csv"
+}

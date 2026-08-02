@@ -29,15 +29,15 @@ from typing import Any, Iterable
 
 import numpy as np
 import pandas as pd
-from scipy import stats
+from scipy import optimize, stats
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from census import proof_bodies, strip_noncode  # noqa: E402
 
 
 LEAN_IDENT = r"(?:«[^»\n]+»|[^\W\d][\w']*|_[\w']+)"
-HAVE = re.compile(rf"\bhave\s+({LEAN_IDENT})\s*(?::|:=)", re.UNICODE)
-ANON_HAVE = re.compile(r"\bhave\s*(?=:)")
+HAVE_START = re.compile(rf"\bhave\s+({LEAN_IDENT})(?=\s|:|:=)", re.UNICODE)
+ANON_HAVE = re.compile(r"\bhave(?:\s+_)?\s*(?=:)")
 TOKEN = re.compile(LEAN_IDENT, re.UNICODE)
 TACTIC_HEAD = re.compile(r"(?:[·.\-+]\s*)?([A-Za-z_][A-Za-z0-9_?']*)")
 PLACEHOLDER_NAME = re.compile(
@@ -142,6 +142,65 @@ def serialized_target_value(value: Any) -> str | None:
     return " ".join(strip_noncode(str(proof_value["pp"])).split())
 
 
+def named_have_declarations(body: str) -> list[dict[str, Any]]:
+    """Locate named ``have`` headers, including binder-bearing local lemmas.
+
+    The former regular expression required ``:`` or ``:=`` immediately after
+    the name and therefore omitted declarations such as ``have f (x : α) :``.
+    Here a small balanced-delimiter scan finds the first top-level type/value
+    separator and records how many explicit binder groups precede it.
+    """
+    openings = {"(": ")", "[": "]", "{": "}"}
+    declarations: list[dict[str, Any]] = []
+    for match in HAVE_START.finditer(body):
+        # A lone underscore is Lean's inaccessible placeholder, not a name a
+        # later source token can retrieve.  Treat `have _ : ...` with the
+        # anonymous-have census rather than manufacturing lexical references
+        # from unrelated wildcard underscores.
+        if match.group(1) == "_":
+            continue
+        stack: list[str] = []
+        binder_groups = 0
+        top_level_header: list[str] = []
+        position = match.end()
+        end: int | None = None
+        while position < len(body):
+            char = body[position]
+            if char in openings:
+                if not stack:
+                    binder_groups += 1
+                stack.append(openings[char])
+            elif stack and char == stack[-1]:
+                stack.pop()
+            elif not stack and body.startswith(":=", position):
+                end = position + 2
+                break
+            elif not stack and char == ":":
+                end = position + 1
+                break
+            elif not stack and char == ";":
+                break
+            elif not stack:
+                top_level_header.append(char)
+            position += 1
+        if end is not None:
+            # Lean also permits unbracketed binders, as in `have h x := ...`.
+            binder_groups += len(TOKEN.findall("".join(top_level_header)))
+            universal_type = bool(
+                re.match(r"\s*\(*\s*(?:∀|forall\b)", body[end:])
+            )
+            declarations.append({
+                "name": match.group(1),
+                "start": match.start(),
+                "end": end,
+                "name_start": match.start(1),
+                "name_end": match.end(1),
+                "binder_groups": binder_groups,
+                "universal_type": universal_type,
+            })
+    return declarations
+
+
 def named_have_claims(source: str) -> list[dict[str, Any]]:
     """Extract named haves and count later explicit uptake.
 
@@ -151,43 +210,61 @@ def named_have_claims(source: str) -> list[dict[str, Any]]:
     ``redeclared_name`` is retained for sensitivity audits.
     """
     body = proof_body(source)
-    matches = list(HAVE.finditer(body))
+    matches = named_have_declarations(body)
     next_same: dict[int, int] = {}
     next_by_name: dict[str, int] = {}
     for i in range(len(matches) - 1, -1, -1):
-        name = matches[i].group(1)
+        name = matches[i]["name"]
         next_same[i] = next_by_name.get(name, len(body))
-        next_by_name[name] = matches[i].start()
+        next_by_name[name] = matches[i]["start"]
 
     claims: list[dict[str, Any]] = []
-    counts = Counter(match.group(1) for match in matches)
+    counts = Counter(match["name"] for match in matches)
     for i, match in enumerate(matches):
-        name = match.group(1)
+        name = match["name"]
         token_matches = [
-            token for token in TOKEN.finditer(body, match.end(), next_same[i])
+            token for token in TOKEN.finditer(body, match["end"], next_same[i])
             if token.group(0) == name
         ]
         use_positions = [token.start() for token in token_matches]
         first_delay = (
-            len(TOKEN.findall(body[match.end() : use_positions[0]]))
+            len(TOKEN.findall(body[match["end"] : use_positions[0]]))
             if use_positions else None
         )
         last_delay = (
-            len(TOKEN.findall(body[match.end() : use_positions[-1]]))
+            len(TOKEN.findall(body[match["end"] : use_positions[-1]]))
             if use_positions else None
         )
         claim_span = (
-            sum(match.start() < later.start() < use_positions[-1] for later in matches)
+            sum(
+                match["start"] < later["start"] < use_positions[-1]
+                for later in matches
+            )
             if use_positions else None
+        )
+        later_claims_available = sum(
+            match["start"] < later["start"] < next_same[i]
+            for later in matches
         )
         claims.append(
             {
                 "claim_index": i,
                 "name": name,
+                "binder_groups": int(match["binder_groups"]),
+                "parametric_claim": bool(match["binder_groups"]),
+                "universal_claim": bool(match["universal_type"]),
+                "generalized_claim": bool(
+                    match["binder_groups"] or match["universal_type"]
+                ),
                 "explicit_uses": len(use_positions),
                 "first_use_delay_tokens": first_delay,
                 "last_use_delay_tokens": last_delay,
                 "intervening_claims_to_last_use": claim_span,
+                "later_claims_available": later_claims_available,
+                "fraction_available_claims_to_last_use": (
+                    claim_span / later_claims_available
+                    if use_positions and later_claims_available else None
+                ),
                 "redeclared_name": counts[name] > 1,
                 "placeholder_name": bool(
                     PLACEHOLDER_NAME.fullmatch(unicodedata.normalize("NFKC", name))
@@ -244,6 +321,10 @@ def side_metrics(source: str, tactics: Any) -> tuple[dict[str, Any], list[dict[s
         claim["intervening_claims_to_last_use"]
         for claim in claims if claim["intervening_claims_to_last_use"] is not None
     ], dtype=int)
+    last_delays = np.asarray([
+        claim["last_use_delay_tokens"]
+        for claim in claims if claim["last_use_delay_tokens"] is not None
+    ], dtype=int)
     metrics: dict[str, Any] = {
         "tokens": len(re.findall(r"\S+", body)),
         "chars": len(body),
@@ -257,9 +338,18 @@ def side_metrics(source: str, tactics: Any) -> tuple[dict[str, Any], list[dict[s
         "long_horizon_haves": int((spans > 0).sum()) if len(spans) else 0,
         "total_claim_span": int(spans.sum()) if len(spans) else 0,
         "max_claim_span": int(spans.max()) if len(spans) else 0,
+        "total_last_use_delay_tokens": int(last_delays.sum()) if len(last_delays) else 0,
         "placeholder_haves": sum(claim["placeholder_name"] for claim in claims),
         "redeclared_haves": sum(claim["redeclared_name"] for claim in claims),
+        "parametric_haves": sum(claim["parametric_claim"] for claim in claims),
+        "universal_haves": sum(claim["universal_claim"] for claim in claims),
+        "generalized_haves": sum(claim["generalized_claim"] for claim in claims),
+        "total_binder_groups": sum(claim["binder_groups"] for claim in claims),
     }
+    for tactic in ("native_decide", "decide", "norm_num", "aesop"):
+        metrics[f"source_tactic_{tactic}"] = int(bool(
+            re.search(rf"(?<![\w'.]){re.escape(tactic)}(?![\w'.])", body)
+        ))
     metrics.update(tactic_annotation_metrics(tactics))
     return metrics, claims
 
@@ -399,6 +489,38 @@ def claim_count_sensitivity(
             "zero_uptake_share": claim_rate_difference(
                 subset, "zero_uptake_haves", n_boot, rng
             ),
+            "generalized_claim_share": claim_rate_difference(
+                subset, "generalized_haves", n_boot, rng
+            ),
+        }
+        for label, subset in subsets.items()
+    }
+
+
+def length_matched_sensitivity(
+    frame: pd.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    token_min = frame[["h_tokens", "a_tokens"]].min(axis=1).clip(lower=1)
+    token_max = frame[["h_tokens", "a_tokens"]].max(axis=1)
+    subsets = {
+        "within_ten_percent": frame[token_max.div(token_min).le(1.10)],
+        "within_twenty_tokens": frame[frame.a_tokens.sub(frame.h_tokens).abs().le(20)],
+    }
+    return {
+        label: {
+            "pairs": int(len(subset)),
+            "source_groups": int(subset.source.nunique()),
+            **{
+                metric: claim_rate_difference(subset, numerator, n_boot, rng)
+                for metric, numerator in (
+                    ("explicit_uses_per_claim", "explicit_uses"),
+                    ("zero_uptake_share", "zero_uptake_haves"),
+                    ("long_horizon_share", "long_horizon_haves"),
+                    ("generalized_claim_share", "generalized_haves"),
+                )
+            },
         }
         for label, subset in subsets.items()
     }
@@ -462,6 +584,84 @@ def nonredeclared_name_sensitivity(
     return output
 
 
+def uptake_reach_decomposition(
+    claims: pd.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    """Separate whether a claim is adopted from how long an adopted claim lives.
+
+    A later-claim count is partly endogenous to decomposition density.  We
+    therefore report both token distance and the fraction of available later
+    claim boundaries crossed, as well as the coarse probability of crossing
+    any boundary among claims that were used and actually had one available.
+    Every interval resamples source groups, preserving the corpus-level unit
+    used by the primary claim-rate analysis.
+    """
+    work = claims.copy()
+    work["adopted"] = work.explicit_uses.gt(0).astype(float)
+    work["last_delay_or_zero"] = work.last_use_delay_tokens.fillna(0).astype(float)
+    work["crossed_boundary"] = work.intervening_claims_to_last_use.fillna(0).gt(0).astype(float)
+    work["eligible_crossing"] = (
+        work.explicit_uses.gt(0) & work.later_claims_available.gt(0)
+    )
+
+    specifications = {
+        "adoption_probability": (work.index == work.index, "adopted"),
+        "last_use_token_distance_all_claims": (work.index == work.index, "last_delay_or_zero"),
+        "explicit_use_count_given_adoption": (work.adopted.eq(1), "explicit_uses"),
+        "last_use_token_distance_given_adoption": (work.adopted.eq(1), "last_use_delay_tokens"),
+        "crosses_any_later_boundary_given_adoption_and_opportunity": (
+            work.eligible_crossing, "crossed_boundary"
+        ),
+        "fraction_available_boundaries_crossed_given_adoption": (
+            work.fraction_available_claims_to_last_use.notna(),
+            "fraction_available_claims_to_last_use",
+        ),
+    }
+    sources = sorted(work.source.unique())
+    output: dict[str, Any] = {
+        "interpretation": (
+            "adoption is the extensive margin; remaining measures condition on explicit uptake "
+            "and distinguish token distance from claim-boundary opportunity"
+        )
+    }
+    for label, (mask, value_column) in specifications.items():
+        selected = work.loc[mask, ["source", "side", value_column]].copy()
+        grouped = (
+            selected.groupby(["source", "side"])[value_column]
+            .agg(["sum", "size"])
+            .reindex(pd.MultiIndex.from_product([sources, ["h", "a"]]), fill_value=0)
+        )
+        values = np.asarray([
+            [
+                grouped.loc[(source, "h"), "sum"],
+                grouped.loc[(source, "h"), "size"],
+                grouped.loc[(source, "a"), "sum"],
+                grouped.loc[(source, "a"), "size"],
+            ]
+            for source in sources
+        ], dtype=float)
+        total = values.sum(axis=0)
+        human = float(total[0] / max(total[1], 1))
+        ai = float(total[2] / max(total[3], 1))
+        draws = rng.integers(0, len(values), size=(n_boot, len(values)))
+        sampled = values[draws].sum(axis=1)
+        differences = (
+            sampled[:, 2] / np.maximum(sampled[:, 3], 1)
+            - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+        )
+        output[label] = {
+            "human": human,
+            "ai": ai,
+            "ai_minus_human": ai - human,
+            "source_cluster_ci": _ci(differences),
+            "human_claims": int(total[1]),
+            "ai_claims": int(total[3]),
+        }
+    return output
+
+
 def name_lexicon(frame: pd.DataFrame, side: str) -> dict[str, Any]:
     """Descriptive diversity of source-level claim names.
 
@@ -482,6 +682,309 @@ def name_lexicon(frame: pd.DataFrame, side: str) -> dict[str, Any]:
         "mean_name_length": float(np.mean([len(x) for x in names])) if names else 0.0,
         "share_length_at_least_4": float(np.mean([len(x) >= 4 for x in names])) if names else 0.0,
         "share_with_underscore": float(np.mean(["_" in x for x in names])) if names else 0.0,
+    }
+
+
+def flagged_claim_profile(
+    frame: pd.DataFrame, side: str, flag: str
+) -> dict[str, Any]:
+    """Describe the fate of claims selected by a source-level flag.
+
+    These are pooled conditional descriptors, not causal or paired estimates:
+    the human and AI tracks usually introduce them in different theorems.
+    """
+    selected = frame[frame.side.eq(side) & frame[flag].astype(bool)].copy()
+    if selected.empty:
+        return {"claims": 0}
+    uses = selected.explicit_uses.astype(float)
+    long_reach = selected.intervening_claims_to_last_use.fillna(0).gt(0)
+    return {
+        "claims": int(len(selected)),
+        "source_groups": int(selected.source.nunique()),
+        "mean_binder_groups": float(selected.binder_groups.mean()),
+        "explicit_uses_per_claim": float(uses.mean()),
+        "zero_uptake_share": float(uses.eq(0).mean()),
+        "multi_uptake_share": float(uses.gt(1).mean()),
+        "long_horizon_share": float(long_reach.mean()),
+        "placeholder_name_share": float(selected.placeholder_name.mean()),
+        "scope_note": "pooled conditional descriptor; tracks need not contain selected claims in the same theorem",
+    }
+
+
+def within_proof_feature_associations(
+    frame: pd.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    """Ask whether proposed interface features have a local functional correlate.
+
+    For each proof that contains both flagged and unflagged claims, compute the
+    difference in mean fate between those two sets.  This holds the theorem,
+    proof, and provenance track fixed.  The result is descriptive rather than
+    causal: constructors can choose a general statement precisely when they
+    expect to use it.  Source-cluster resampling preserves the primary
+    uncertainty convention used elsewhere in the report.
+    """
+    work = frame.copy()
+    work["adopted"] = work.explicit_uses.gt(0).astype(float)
+    work["multi_uptake"] = work.explicit_uses.gt(1).astype(float)
+    work["long_horizon"] = (
+        work.intervening_claims_to_last_use.fillna(0).gt(0).astype(float)
+    )
+    work["outside_placeholder"] = (~work.placeholder_name.astype(bool))
+    for feature in ("parametric_claim", "universal_claim", "generalized_claim"):
+        if feature not in work:
+            work[feature] = False
+    outcomes = (
+        "adopted", "multi_uptake", "long_horizon", "explicit_uses"
+    )
+    output: dict[str, Any] = {
+        "estimand": (
+            "mean flagged-minus-unflagged claim fate within proofs containing both; "
+            "descriptive association, not a causal feature effect"
+        )
+    }
+    sources = sorted(work.source.unique())
+    for feature in (
+        "parametric_claim", "universal_claim", "generalized_claim",
+        "outside_placeholder",
+    ):
+        output[feature] = {}
+        contrasts_by_side: dict[str, pd.DataFrame] = {}
+        for side, label in (("h", "human"), ("a", "ai")):
+            selected = work[work.side.eq(side)]
+            rows: list[dict[str, Any]] = []
+            for (pair, source), group in selected.groupby(["pair", "source"]):
+                flag = group[feature].astype(bool)
+                if not flag.any() or flag.all():
+                    continue
+                row: dict[str, Any] = {"pair": pair, "source": source}
+                for outcome in outcomes:
+                    row[outcome] = float(
+                        group.loc[flag, outcome].mean()
+                        - group.loc[~flag, outcome].mean()
+                    )
+                rows.append(row)
+            contrasts = pd.DataFrame(rows, columns=["pair", "source", *outcomes])
+            contrasts_by_side[side] = contrasts
+            side_output: dict[str, Any] = {
+                "eligible_proofs": int(len(contrasts)),
+                "source_groups": int(contrasts.source.nunique()) if len(contrasts) else 0,
+            }
+            for outcome in outcomes:
+                if contrasts.empty:
+                    side_output[outcome] = {
+                        "flagged_minus_unflagged": None,
+                        "source_cluster_ci": [None, None],
+                    }
+                    continue
+                grouped = (
+                    contrasts.groupby("source")[outcome].agg(["sum", "size"])
+                    .reindex(sources, fill_value=0)
+                )
+                values = grouped.to_numpy(float)
+                draws = rng.integers(0, len(values), size=(n_boot, len(values)))
+                sampled = values[draws].sum(axis=1)
+                estimates = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+                side_output[outcome] = {
+                    "flagged_minus_unflagged": float(contrasts[outcome].mean()),
+                    "source_cluster_ci": _ci(estimates),
+                }
+            output[feature][label] = side_output
+        paired = contrasts_by_side["h"].merge(
+            contrasts_by_side["a"], on=["pair", "source"],
+            suffixes=("_human", "_ai"),
+        )
+        paired_output: dict[str, Any] = {
+            "eligible_pairs": int(len(paired)),
+            "source_groups": int(paired.source.nunique()) if len(paired) else 0,
+            "estimand": "AI minus human within-proof feature association",
+        }
+        for outcome in outcomes:
+            differences = paired[f"{outcome}_ai"] - paired[f"{outcome}_human"]
+            if paired.empty:
+                paired_output[outcome] = {
+                    "ai_minus_human": None,
+                    "source_cluster_ci": [None, None],
+                }
+                continue
+            grouped = (
+                pd.DataFrame({"source": paired.source, "difference": differences})
+                .groupby("source").difference.agg(["sum", "size"])
+                .reindex(sources, fill_value=0)
+            )
+            values = grouped.to_numpy(float)
+            draws = rng.integers(0, len(values), size=(n_boot, len(values)))
+            sampled = values[draws].sum(axis=1)
+            estimates = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+            paired_output[outcome] = {
+                "ai_minus_human": float(differences.mean()),
+                "source_cluster_ci": _ci(estimates),
+            }
+        output[feature]["paired_both_tracks"] = paired_output
+    return output
+
+
+def position_matched_family_associations(
+    frame: pd.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    """Match family and instance claims by relative position within each proof.
+
+    Earlier claims mechanically have more opportunities for a later lexical
+    reference.  Minimum-cost one-to-one matching on normalized claim index asks
+    whether the family association survives that basic exposure control.  We
+    report both the full optimal match and a conservative quarter-proof caliper.
+    Proofs, rather than individual matches, remain the units of the estimand.
+    """
+    work = frame.copy()
+    work["adopted"] = work.explicit_uses.gt(0).astype(float)
+    work["multi_uptake"] = work.explicit_uses.gt(1).astype(float)
+    outcomes = ("adopted", "multi_uptake", "explicit_uses")
+    sources = sorted(work.source.unique())
+    result: dict[str, Any] = {
+        "feature": "generalized_claim",
+        "estimand": (
+            "mean family-minus-instance fate after minimum-cost one-to-one matching "
+            "on normalized claim position, averaged over eligible proofs"
+        ),
+    }
+
+    for label, caliper in (("all_matches", None), ("caliper_0_25", 0.25)):
+        result[label] = {}
+        side_rows: dict[str, pd.DataFrame] = {}
+        for side, side_label in (("h", "human"), ("a", "ai")):
+            rows: list[dict[str, Any]] = []
+            for (pair, source), group in work[work.side.eq(side)].groupby(
+                ["pair", "source"]
+            ):
+                family = group[group.generalized_claim.astype(bool)].copy()
+                instance = group[~group.generalized_claim.astype(bool)].copy()
+                if family.empty or instance.empty:
+                    continue
+                scale = max(float(group.claim_index.max()), 1.0)
+                family_pos = family.claim_index.to_numpy(float) / scale
+                instance_pos = instance.claim_index.to_numpy(float) / scale
+                cost = np.abs(family_pos[:, None] - instance_pos[None, :])
+                family_i, instance_i = optimize.linear_sum_assignment(cost)
+                gaps = cost[family_i, instance_i]
+                keep = np.ones(len(gaps), dtype=bool)
+                if caliper is not None:
+                    keep = gaps <= caliper
+                if not keep.any():
+                    continue
+                family_i, instance_i, gaps = (
+                    family_i[keep], instance_i[keep], gaps[keep]
+                )
+                row: dict[str, Any] = {
+                    "pair": pair,
+                    "source": source,
+                    "matches": int(len(gaps)),
+                    "mean_abs_relative_position_gap": float(gaps.mean()),
+                }
+                for outcome in outcomes:
+                    row[outcome] = float(
+                        family.iloc[family_i][outcome].to_numpy(float).mean()
+                        - instance.iloc[instance_i][outcome].to_numpy(float).mean()
+                    )
+                rows.append(row)
+            contrasts = pd.DataFrame(
+                rows,
+                columns=[
+                    "pair", "source", "matches", "mean_abs_relative_position_gap",
+                    *outcomes,
+                ],
+            )
+            side_rows[side] = contrasts
+            side_summary: dict[str, Any] = {
+                "eligible_proofs": int(len(contrasts)),
+                "matched_claim_pairs": int(contrasts.matches.sum()) if len(contrasts) else 0,
+                "mean_abs_relative_position_gap": (
+                    float(contrasts.mean_abs_relative_position_gap.mean())
+                    if len(contrasts) else None
+                ),
+            }
+            for outcome in outcomes:
+                if contrasts.empty:
+                    side_summary[outcome] = {
+                        "family_minus_instance": None,
+                        "source_cluster_ci": [None, None],
+                    }
+                    continue
+                grouped = (
+                    contrasts.groupby("source")[outcome].agg(["sum", "size"])
+                    .reindex(sources, fill_value=0)
+                )
+                values = grouped.to_numpy(float)
+                draws = rng.integers(0, len(values), size=(n_boot, len(values)))
+                sampled = values[draws].sum(axis=1)
+                estimates = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+                side_summary[outcome] = {
+                    "family_minus_instance": float(contrasts[outcome].mean()),
+                    "source_cluster_ci": _ci(estimates),
+                }
+            result[label][side_label] = side_summary
+
+        paired = side_rows["h"].merge(
+            side_rows["a"], on=["pair", "source"], suffixes=("_human", "_ai")
+        )
+        paired_summary: dict[str, Any] = {
+            "eligible_pairs": int(len(paired)),
+            "estimand": "AI minus human position-matched family association",
+        }
+        for outcome in outcomes:
+            differences = paired[f"{outcome}_ai"] - paired[f"{outcome}_human"]
+            if paired.empty:
+                paired_summary[outcome] = {
+                    "ai_minus_human": None,
+                    "source_cluster_ci": [None, None],
+                }
+                continue
+            grouped = (
+                pd.DataFrame({"source": paired.source, "difference": differences})
+                .groupby("source").difference.agg(["sum", "size"])
+                .reindex(sources, fill_value=0)
+            )
+            values = grouped.to_numpy(float)
+            draws = rng.integers(0, len(values), size=(n_boot, len(values)))
+            sampled = values[draws].sum(axis=1)
+            estimates = sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+            paired_summary[outcome] = {
+                "ai_minus_human": float(differences.mean()),
+                "source_cluster_ci": _ci(estimates),
+            }
+        result[label]["paired_both_tracks"] = paired_summary
+    return result
+
+
+def interface_coordinate_correlations(frame: pd.DataFrame) -> dict[str, Any]:
+    """Proof-level co-movement of distinct human-minus-AI interface proxies."""
+    selected = frame[
+        frame.h_named_haves.gt(0) & frame.a_named_haves.gt(0)
+    ].copy()
+    coordinates: dict[str, pd.Series] = {}
+    for label, numerator in (
+        ("explicit_uses", "explicit_uses"),
+        ("long_reach", "long_horizon_haves"),
+        ("generalized", "generalized_haves"),
+        ("outside_placeholder", "placeholder_haves"),
+    ):
+        human = selected[f"h_{numerator}"] / selected.h_named_haves
+        ai = selected[f"a_{numerator}"] / selected.a_named_haves
+        coordinates[label] = (
+            (1 - human) - (1 - ai)
+            if label == "outside_placeholder" else human - ai
+        )
+    values = pd.DataFrame(coordinates)
+    correlation = values.corr(method="spearman")
+    return {
+        "pairs_with_claims_on_both_sides": int(len(selected)),
+        "coordinate": "human minus AI; outside-placeholder is sign-corrected",
+        "spearman": {
+            row: {column: float(correlation.loc[row, column]) for column in correlation}
+            for row in correlation
+        },
     }
 
 
@@ -618,11 +1121,21 @@ def main() -> None:
         "tokens", "named_haves", "explicit_uses", "zero_uptake_haves",
         "one_uptake_haves", "multi_uptake_haves", "reuse_excess",
         "long_horizon_haves", "total_claim_span", "max_claim_span",
-        "placeholder_haves", "tactic_events", "tactic_types", "used_constants",
+        "total_last_use_delay_tokens",
+        "placeholder_haves", "parametric_haves", "universal_haves",
+        "generalized_haves", "total_binder_groups",
+        "tactic_events", "tactic_types", "used_constants",
     ]
     ai_only_helpers = proofs[
         proofs.a_pretarget_declarations.gt(0) & proofs.h_pretarget_declarations.eq(0)
     ]
+    equal_positive_claim_count = (
+        proofs.h_named_haves.eq(proofs.a_named_haves) & proofs.h_named_haves.gt(0)
+    )
+    token_ratio = proofs[["h_tokens", "a_tokens"]].max(axis=1).div(
+        proofs[["h_tokens", "a_tokens"]].min(axis=1).clip(lower=1)
+    )
+    length_within_ten_percent = token_ratio.le(1.10)
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -655,6 +1168,44 @@ def main() -> None:
             "human": name_lexicon(claims, "h"),
             "ai": name_lexicon(claims, "a"),
         },
+        "parametric_claim_profiles": {
+            "human": flagged_claim_profile(claims, "h", "parametric_claim"),
+            "ai": flagged_claim_profile(claims, "a", "parametric_claim"),
+        },
+        "generalized_claim_profiles": {
+            "human": flagged_claim_profile(claims, "h", "generalized_claim"),
+            "ai": flagged_claim_profile(claims, "a", "generalized_claim"),
+        },
+        "within_proof_feature_associations": within_proof_feature_associations(
+            claims, args.boot, rng
+        ),
+        "position_matched_family_associations": position_matched_family_associations(
+            claims, args.boot, rng
+        ),
+        "interface_coordinate_correlations": interface_coordinate_correlations(proofs),
+        "uptake_reach_decomposition": uptake_reach_decomposition(
+            claims, args.boot, rng
+        ),
+        "uptake_reach_matched_controls": {
+            "exact_equal_positive_claim_count": {
+                "pairs": int(equal_positive_claim_count.sum()),
+                "profile": uptake_reach_decomposition(
+                    claims[claims.pair.isin(proofs.loc[
+                        equal_positive_claim_count, "pair"
+                    ])],
+                    args.boot, rng,
+                ),
+            },
+            "within_ten_percent_length": {
+                "pairs": int(length_within_ten_percent.sum()),
+                "profile": uptake_reach_decomposition(
+                    claims[claims.pair.isin(proofs.loc[
+                        length_within_ten_percent, "pair"
+                    ])],
+                    args.boot, rng,
+                ),
+            },
+        },
         "pretarget_declaration_audit": {
             "human_artifacts_with_helpers": int(proofs.h_pretarget_declarations.gt(0).sum()),
             "ai_artifacts_with_helpers": int(proofs.a_pretarget_declarations.gt(0).sum()),
@@ -684,10 +1235,58 @@ def main() -> None:
         "claim_count_sensitivity": claim_count_sensitivity(
             proofs, args.boot, rng
         ),
+        "length_matched_sensitivity": length_matched_sensitivity(
+            proofs, args.boot, rng
+        ),
         "nonredeclared_name_sensitivity": nonredeclared_name_sensitivity(
             claims, args.boot, rng
         ),
+        "parametric_claim_difference": claim_rate_difference(
+            proofs, "parametric_haves", args.boot, rng
+        ),
+        "universal_claim_difference": claim_rate_difference(
+            proofs, "universal_haves", args.boot, rng
+        ),
+        "generalized_claim_difference": claim_rate_difference(
+            proofs, "generalized_haves", args.boot, rng
+        ),
+        "binder_groups_per_claim_difference": claim_rate_difference(
+            proofs, "total_binder_groups", args.boot, rng
+        ),
     }
+    human_parametric = proofs.h_parametric_haves.gt(0)
+    ai_parametric = proofs.a_parametric_haves.gt(0)
+    summary["parametric_proof_pair_audit"] = {
+        "human_any": int(human_parametric.sum()),
+        "ai_any": int(ai_parametric.sum()),
+        "both": int((human_parametric & ai_parametric).sum()),
+        "human_only": int((human_parametric & ~ai_parametric).sum()),
+        "ai_only": int((ai_parametric & ~human_parametric).sum()),
+        "neither": int((~human_parametric & ~ai_parametric).sum()),
+    }
+    human_generalized = proofs.h_generalized_haves.gt(0)
+    ai_generalized = proofs.a_generalized_haves.gt(0)
+    summary["generalized_proof_pair_audit"] = {
+        "human_any": int(human_generalized.sum()),
+        "ai_any": int(ai_generalized.sum()),
+        "both": int((human_generalized & ai_generalized).sum()),
+        "human_only": int((human_generalized & ~ai_generalized).sum()),
+        "ai_only": int((ai_generalized & ~human_generalized).sum()),
+        "neither": int((~human_generalized & ~ai_generalized).sum()),
+    }
+    summary["automation_exclusion_sensitivity"] = {}
+    for tactic in ("native_decide", "decide", "norm_num", "aesop"):
+        subset = proofs[
+            proofs[f"h_source_tactic_{tactic}"].eq(0)
+            & proofs[f"a_source_tactic_{tactic}"].eq(0)
+        ]
+        summary["automation_exclusion_sensitivity"][tactic] = {
+            "rule": f"exclude pairs where either target proof contains {tactic}",
+            "pairs": int(len(subset)),
+            "generalized_claim_share": claim_rate_difference(
+                subset, "generalized_haves", args.boot, rng
+            ),
+        }
     for side, label in (("h", "human"), ("a", "ai")):
         summary["claim_rates"][label] = {
             "explicit_uses_per_claim": claim_rate(
@@ -702,6 +1301,14 @@ def main() -> None:
                 proofs, side, "long_horizon_haves", args.boot, rng),
             "placeholder_name_share": claim_rate(
                 proofs, side, "placeholder_haves", args.boot, rng),
+            "parametric_claim_share": claim_rate(
+                proofs, side, "parametric_haves", args.boot, rng),
+            "universal_claim_share": claim_rate(
+                proofs, side, "universal_haves", args.boot, rng),
+            "generalized_claim_share": claim_rate(
+                proofs, side, "generalized_haves", args.boot, rng),
+            "binder_groups_per_claim": claim_rate(
+                proofs, side, "total_binder_groups", args.boot, rng),
         }
 
     low_overlap = proofs[proofs.target_value_token_similarity.lt(0.9)]
@@ -746,6 +1353,13 @@ def main() -> None:
                 np.median(group[f"a_{metric}"] - group[f"h_{metric}"])
             )
         for side, label in (("h", "human"), ("a", "ai")):
+            source_claims = claims[
+                claims.source.eq(source) & claims.side.eq(side)
+            ]
+            adopted_claims = source_claims[source_claims.explicit_uses.gt(0)]
+            normalized_claims = adopted_claims[
+                adopted_claims.fraction_available_claims_to_last_use.notna()
+            ]
             row[f"{label}_explicit_uses_per_claim"] = float(
                 group[f"{side}_explicit_uses"].sum()
                 / max(group[f"{side}_named_haves"].sum(), 1)
@@ -756,6 +1370,23 @@ def main() -> None:
             )
             row[f"{label}_long_horizon_share"] = float(
                 group[f"{side}_long_horizon_haves"].sum()
+                / max(group[f"{side}_named_haves"].sum(), 1)
+            )
+            row[f"{label}_adoption_probability"] = float(
+                source_claims.explicit_uses.gt(0).mean()
+            )
+            row[f"{label}_last_use_token_distance_given_adoption"] = float(
+                adopted_claims.last_use_delay_tokens.mean()
+            )
+            row[f"{label}_fraction_available_boundaries_crossed_given_adoption"] = float(
+                normalized_claims.fraction_available_claims_to_last_use.mean()
+            )
+            row[f"{label}_parametric_claim_share"] = float(
+                group[f"{side}_parametric_haves"].sum()
+                / max(group[f"{side}_named_haves"].sum(), 1)
+            )
+            row[f"{label}_generalized_claim_share"] = float(
+                group[f"{side}_generalized_haves"].sum()
                 / max(group[f"{side}_named_haves"].sum(), 1)
             )
         by_source.append(row)

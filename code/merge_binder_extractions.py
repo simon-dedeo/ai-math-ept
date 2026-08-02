@@ -57,6 +57,7 @@ def main() -> None:
             "tasks": len(payload),
             "shard_index": shard_index,
             "runs": provenance.get("runs", []),
+            "resume_origin": provenance.get("resume_origin"),
         })
 
     assert shared is not None
