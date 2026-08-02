@@ -4,17 +4,21 @@ corpora/
 projects/
 census/
 mathlib4/
+mathlib4_v415/
 venv/
 .venv/
 .venv-surprise/
 # Full raw copy of the ORCHARD staging directory; compact provenance bundles
 # and Slurm logs are versioned under results/ instead.
 results/orchard_snapshot/
-results/horizon/binder_raw/
+results/horizon/binder_raw*/
+results/horizon/binder_extraction*.partial.json
+results/horizon/binder_extraction*shard*.json
 results/horizon/scoped_human/
 results/horizon/scoped_ai/
 results/horizon/scoped_pilot/
 results/horizon/token_surprisal.tsv
+results/horizon/token_surprisal_loso_bigram.tsv
 original_data/
 *.olean
 *.vo

@@ -1,5 +1,11 @@
 """Focused parser tests for paired_horizon.py."""
-from paired_horizon import named_have_claims, proof_body, side_metrics
+from paired_horizon import (
+    named_have_claims,
+    proof_body,
+    serialized_target_signature,
+    serialized_target_value,
+    side_metrics,
+)
 from analyze_binder_use import lcs_matches
 
 
@@ -77,6 +83,33 @@ def test_lcs_skips_generated_binders_and_preserves_order() -> None:
     assert lcs_matches(source, term) == [(0, 1), (1, 3), (2, 5), (3, 6)]
 
 
+def test_serialized_signature_ignores_comments_but_not_statement_changes() -> None:
+    human = [{
+        "kind": "theorem", "full_name": "demo",
+        "signature": {"pp": "(n : ℕ) -- source note\n : n = n"},
+    }]
+    same = [{
+        "kind": "theorem", "full_name": "demo",
+        "signature": {"pp": "(n : ℕ) : n = n"},
+    }]
+    changed = [{
+        "kind": "theorem", "full_name": "demo",
+        "signature": {"pp": "(n : ℕ) : n + 0 = n"},
+    }]
+    assert serialized_target_signature(human) == serialized_target_signature(same)
+    assert serialized_target_signature(human) != serialized_target_signature(changed)
+    assert serialized_target_signature([]) is None
+
+
+def test_serialized_value_is_proof_only_and_comment_normalized() -> None:
+    declaration = [{
+        "signature": {"pp": ": True"},
+        "value": {"pp": ":= by\n  -- note\n  trivial"},
+    }]
+    assert serialized_target_value(declaration) == ":= by trivial"
+    assert serialized_target_value([]) is None
+
+
 if __name__ == "__main__":
     test_comments_and_strings_do_not_count()
     test_only_final_target_declaration_is_analyzed()
@@ -85,4 +118,6 @@ if __name__ == "__main__":
     test_anonymous_have_is_separate()
     test_unicode_identifier_is_counted()
     test_lcs_skips_generated_binders_and_preserves_order()
+    test_serialized_signature_ignores_comments_but_not_statement_changes()
+    test_serialized_value_is_proof_only_and_comment_normalized()
     print("paired_horizon parser tests passed")

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import glob
+import hashlib
 import json
 import math
 import os
@@ -22,6 +23,7 @@ import re
 import sys
 import unicodedata
 from collections import Counter, defaultdict
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -43,6 +45,28 @@ PLACEHOLDER_NAME = re.compile(
 )
 
 
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def huggingface_revisions(root: Path) -> list[str]:
+    metadata = (
+        root / "census" / "numinamath-proof-artifacts" / ".cache"
+        / "huggingface" / "download"
+    ).glob("**/*.metadata")
+    revisions = {
+        lines[0]
+        for path in metadata
+        for lines in [path.read_text().splitlines()]
+        if lines
+    }
+    return sorted(revisions)
+
+
 def proof_body(source: str) -> str:
     """Return the final theorem body's comment/string-free source.
 
@@ -53,6 +77,69 @@ def proof_body(source: str) -> str:
     clean = strip_noncode(source if isinstance(source, str) else "")
     bodies = list(proof_bodies(clean, strip=False))
     return bodies[-1][2] if bodies else clean
+
+
+def pretarget_audit(source: str) -> dict[str, Any]:
+    """Describe declarations supplied before the final target theorem.
+
+    These declarations are tempting evidence of persistent interface building,
+    but many Numina artifacts copy the same problem scaffolding into both the
+    human and prover tracks.  Retaining a normalized signature lets the paired
+    analysis distinguish shared input from side-specific helper invention.
+    """
+    declarations = list(proof_bodies(source if isinstance(source, str) else ""))
+    helpers = declarations[:-1]
+    target = declarations[-1][2] if declarations else ""
+    names = [name for name, _kind, _body in helpers]
+    used = [
+        name for name in names
+        if re.search(rf"(?<![\w'.]){re.escape(name)}(?![\w'.])", target)
+    ]
+    signature = [
+        (name, kind, " ".join(body.split()))
+        for name, kind, body in helpers
+    ]
+    return {
+        "count": len(helpers),
+        "used_count": len(used),
+        "names": names,
+        "signature": signature,
+    }
+
+
+def serialized_target_signature(value: Any) -> tuple[str, str, str] | None:
+    """Normalize the final declaration recorded by the dataset's elaborator.
+
+    The structured declaration record avoids guessing where a term-style Lean
+    proof begins. Comments are removed because they can occur inside the
+    pretty-printed signature without changing the proposition.
+    """
+    if not isinstance(value, (list, np.ndarray)) or len(value) == 0:
+        return None
+    declaration = value[-1]
+    if not isinstance(declaration, dict):
+        return None
+    signature = declaration.get("signature", {})
+    if not isinstance(signature, dict):
+        return None
+    return (
+        str(declaration.get("kind", "")),
+        str(declaration.get("full_name", "")),
+        " ".join(strip_noncode(str(signature.get("pp", ""))).split()),
+    )
+
+
+def serialized_target_value(value: Any) -> str | None:
+    """Return the dataset elaborator's final proof value, without comments."""
+    if not isinstance(value, (list, np.ndarray)) or len(value) == 0:
+        return None
+    declaration = value[-1]
+    if not isinstance(declaration, dict):
+        return None
+    proof_value = declaration.get("value", {})
+    if not isinstance(proof_value, dict) or "pp" not in proof_value:
+        return None
+    return " ".join(strip_noncode(str(proof_value["pp"])).split())
 
 
 def named_have_claims(source: str) -> list[dict[str, Any]]:
@@ -253,6 +340,128 @@ def claim_rate(
     }
 
 
+def claim_rate_difference(
+    frame: pd.DataFrame,
+    numerator: str,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    columns = [
+        f"h_{numerator}", "h_named_haves",
+        f"a_{numerator}", "a_named_haves",
+    ]
+    grouped = frame.groupby("source")[columns].sum().to_numpy(float)
+    draws = rng.integers(0, len(grouped), size=(n_boot, len(grouped)))
+    sampled = grouped[draws].sum(axis=1)
+    differences = (
+        sampled[:, 2] / np.maximum(sampled[:, 3], 1)
+        - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+    )
+    h_rate = float(frame[columns[0]].sum() / max(frame[columns[1]].sum(), 1))
+    a_rate = float(frame[columns[2]].sum() / max(frame[columns[3]].sum(), 1))
+    positive = frame[frame[columns[1]].gt(0) & frame[columns[3]].gt(0)]
+    h_per_proof = positive[columns[0]] / positive[columns[1]]
+    a_per_proof = positive[columns[2]] / positive[columns[3]]
+    try:
+        pvalue = float(stats.wilcoxon(h_per_proof, a_per_proof).pvalue)
+    except ValueError:
+        pvalue = 1.0
+    return {
+        "human": h_rate,
+        "ai": a_rate,
+        "ai_minus_human": a_rate - h_rate,
+        "source_cluster_ci": _ci(differences),
+        "paired_wilcoxon_p": pvalue,
+    }
+
+
+def claim_count_sensitivity(
+    frame: pd.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    positive = frame[frame.h_named_haves.gt(0) & frame.a_named_haves.gt(0)]
+    subsets = {
+        "exact_equal_positive": positive[
+            positive.h_named_haves.eq(positive.a_named_haves)
+        ],
+        "within_one_positive": positive[
+            positive.h_named_haves.sub(positive.a_named_haves).abs().le(1)
+        ],
+    }
+    return {
+        label: {
+            "pairs": int(len(subset)),
+            "source_groups": int(subset.source.nunique()),
+            "explicit_uses_per_claim": claim_rate_difference(
+                subset, "explicit_uses", n_boot, rng
+            ),
+            "zero_uptake_share": claim_rate_difference(
+                subset, "zero_uptake_haves", n_boot, rng
+            ),
+        }
+        for label, subset in subsets.items()
+    }
+
+
+def nonredeclared_name_sensitivity(
+    claims: pd.DataFrame,
+    n_boot: int,
+    rng: np.random.Generator,
+) -> dict[str, Any]:
+    """Recompute claim rates where a name occurs only once in its proof.
+
+    This removes every claim for which the conservative lexical stopping rule
+    could truncate a later reference at a same-name declaration.
+    """
+    subset = claims[~claims.redeclared_name.astype(bool)].copy()
+    subset["zero_uptake"] = subset.explicit_uses.eq(0).astype(int)
+    subset["multi_uptake"] = subset.explicit_uses.gt(1).astype(int)
+    subset["long_horizon"] = subset.intervening_claims_to_last_use.fillna(0).gt(0).astype(int)
+    sources = sorted(claims.source.unique())
+    output: dict[str, Any] = {
+        "rule": "retain only claim names occurring exactly once in that proof",
+    }
+    for label, numerator in (
+        ("explicit_uses_per_claim", "explicit_uses"),
+        ("zero_uptake_share", "zero_uptake"),
+        ("multi_uptake_share", "multi_uptake"),
+        ("long_horizon_share", "long_horizon"),
+    ):
+        grouped = (
+            subset.groupby(["source", "side"])[numerator]
+            .agg(["sum", "size"])
+            .reindex(pd.MultiIndex.from_product([sources, ["h", "a"]]), fill_value=0)
+        )
+        values = np.asarray([
+            [
+                grouped.loc[(source, "h"), "sum"],
+                grouped.loc[(source, "h"), "size"],
+                grouped.loc[(source, "a"), "sum"],
+                grouped.loc[(source, "a"), "size"],
+            ]
+            for source in sources
+        ], dtype=float)
+        total = values.sum(axis=0)
+        human = float(total[0] / max(total[1], 1))
+        ai = float(total[2] / max(total[3], 1))
+        draws = rng.integers(0, len(values), size=(n_boot, len(values)))
+        sampled = values[draws].sum(axis=1)
+        differences = (
+            sampled[:, 2] / np.maximum(sampled[:, 3], 1)
+            - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+        )
+        output[label] = {
+            "human": human,
+            "ai": ai,
+            "ai_minus_human": ai - human,
+            "source_cluster_ci": _ci(differences),
+            "human_claims": int(total[1]),
+            "ai_claims": int(total[3]),
+        }
+    return output
+
+
 def name_lexicon(frame: pd.DataFrame, side: str) -> dict[str, Any]:
     """Descriptive diversity of source-level claim names.
 
@@ -288,19 +497,43 @@ def load_pairs(root: Path) -> pd.DataFrame:
         "human_proof_available", "prover_proof_available",
         "human_ground_truth_type", "human_sorries", "prover_sorries",
         "human_all_tactics", "prover_all_tactics",
+        "human_declarations", "prover_declarations",
     ]
     frame = pd.concat(
         [pd.read_parquet(path, columns=columns) for path in paths],
         ignore_index=True,
     )
-    frame = frame[
+    candidates = frame[
         frame.human_proof_available
         & frame.prover_proof_available
         & frame.human_validation_status.eq("valid")
         & frame.prover_validation_status.eq("valid")
         & frame.human_ground_truth_type.eq("complete")
     ].drop_duplicates("uuid")
-    return frame.reset_index(drop=True)
+    human_header = candidates.human_declarations.map(serialized_target_signature)
+    prover_header = candidates.prover_declarations.map(serialized_target_signature)
+    missing = human_header.isna() | prover_header.isna()
+    mismatch = ~missing & human_header.ne(prover_header)
+    exclusions: list[dict[str, Any]] = []
+    for index in candidates.index[missing | mismatch]:
+        record = candidates.loc[index]
+        exclusions.append({
+            "pair": "pair_" + str(record.uuid)[:8],
+            "uuid": str(record.uuid),
+            "source": str(record.source),
+            "reason": "missing_target_declaration" if missing.loc[index] else "mismatched_target_header",
+            "human_signature": repr(human_header.loc[index]),
+            "prover_signature": repr(prover_header.loc[index]),
+        })
+    frame = candidates[~missing & ~mismatch].reset_index(drop=True)
+    frame.attrs["target_pair_audit"] = {
+        "flag_valid_candidates": int(len(candidates)),
+        "missing_target_declaration": int(missing.sum()),
+        "mismatched_target_header": int(mismatch.sum()),
+        "exact_statement_pairs": int(len(frame)),
+    }
+    frame.attrs["target_pair_exclusions"] = exclusions
+    return frame
 
 
 def main() -> None:
@@ -314,14 +547,47 @@ def main() -> None:
     outdir = root / "results" / "horizon"
     outdir.mkdir(parents=True, exist_ok=True)
     raw = load_pairs(root)
+    target_pair_audit = raw.attrs["target_pair_audit"]
+    target_pair_exclusions = raw.attrs["target_pair_exclusions"]
 
     proof_rows: list[dict[str, Any]] = []
     claim_rows: list[dict[str, Any]] = []
     for record in raw.itertuples(index=False):
+        human_value = serialized_target_value(record.human_declarations)
+        ai_value = serialized_target_value(record.prover_declarations)
+        human_body_tokens = (
+            human_value.split() if human_value is not None
+            else proof_body(record.human_formal_proof).split()
+        )
+        ai_body_tokens = (
+            ai_value.split() if ai_value is not None
+            else proof_body(record.prover_formal_proof).split()
+        )
+        human_source_tokens = proof_body(record.human_formal_proof).split()
+        ai_source_tokens = proof_body(record.prover_formal_proof).split()
+        helper_audits = {
+            "h": pretarget_audit(record.human_formal_proof),
+            "a": pretarget_audit(record.prover_formal_proof),
+        }
         row: dict[str, Any] = {
             "pair": "pair_" + str(record.uuid)[:8],
             "uuid": record.uuid,
             "source": str(record.source),
+            "h_pretarget_declarations": helper_audits["h"]["count"],
+            "a_pretarget_declarations": helper_audits["a"]["count"],
+            "h_used_pretarget_declarations": helper_audits["h"]["used_count"],
+            "a_used_pretarget_declarations": helper_audits["a"]["used_count"],
+            "h_pretarget_names": "|".join(helper_audits["h"]["names"]),
+            "a_pretarget_names": "|".join(helper_audits["a"]["names"]),
+            "identical_pretarget_scaffolding": bool(
+                helper_audits["h"]["count"]
+                and helper_audits["h"]["signature"] == helper_audits["a"]["signature"]
+            ),
+            "identical_target_value": human_body_tokens == ai_body_tokens,
+            "identical_source_body": human_source_tokens == ai_source_tokens,
+            "target_value_token_similarity": SequenceMatcher(
+                None, human_body_tokens, ai_body_tokens, autojunk=False
+            ).ratio(),
         }
         for side, source, tactics in (
             ("h", record.human_formal_proof, record.human_all_tactics),
@@ -343,6 +609,9 @@ def main() -> None:
     gzip = {"method": "gzip", "mtime": 0}
     proofs.to_csv(outdir / "source_pairs.csv.gz", index=False, compression=gzip)
     claims.to_csv(outdir / "claims.csv.gz", index=False, compression=gzip)
+    pd.DataFrame(target_pair_exclusions).to_csv(
+        outdir / "target_pair_exclusions.csv", index=False
+    )
 
     rng = np.random.default_rng(args.seed)
     metrics = [
@@ -351,13 +620,33 @@ def main() -> None:
         "long_horizon_haves", "total_claim_span", "max_claim_span",
         "placeholder_haves", "tactic_events", "tactic_types", "used_constants",
     ]
+    ai_only_helpers = proofs[
+        proofs.a_pretarget_declarations.gt(0) & proofs.h_pretarget_declarations.eq(0)
+    ]
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
         "inclusion_rule": (
             "both proofs available; both validation statuses valid; human ground truth complete; "
+            "both artifacts contain the same normalized final declaration header; "
             "no outcome-dependent premise filter"
         ),
+        "target_pair_audit": target_pair_audit,
+        "target_pair_exclusions_file": "results/horizon/target_pair_exclusions.csv",
+        "dataset_provenance": {
+            "source": "https://huggingface.co/datasets/AI-MO/NuminaMath-LEAN",
+            "huggingface_revision": huggingface_revisions(root),
+            "files": [
+                {
+                    "path": str(path.relative_to(root)),
+                    "bytes": path.stat().st_size,
+                    "sha256": file_sha256(path),
+                }
+                for path in sorted(
+                    (root / "census" / "numinamath-proof-artifacts" / "data" / "lite" / "shards").glob("*.parquet")
+                )
+            ],
+        },
         "pairs": len(proofs),
         "source_groups": int(proofs.source.nunique()),
         "paired": {metric: paired_metric(proofs, metric, args.boot, rng) for metric in metrics},
@@ -366,6 +655,38 @@ def main() -> None:
             "human": name_lexicon(claims, "h"),
             "ai": name_lexicon(claims, "a"),
         },
+        "pretarget_declaration_audit": {
+            "human_artifacts_with_helpers": int(proofs.h_pretarget_declarations.gt(0).sum()),
+            "ai_artifacts_with_helpers": int(proofs.a_pretarget_declarations.gt(0).sum()),
+            "both_tracks_with_helpers": int(
+                (proofs.h_pretarget_declarations.gt(0) & proofs.a_pretarget_declarations.gt(0)).sum()
+            ),
+            "identical_shared_scaffolding": int(proofs.identical_pretarget_scaffolding.sum()),
+            "human_only": int(
+                (proofs.h_pretarget_declarations.gt(0) & proofs.a_pretarget_declarations.eq(0)).sum()
+            ),
+            "ai_only": int(
+                (proofs.a_pretarget_declarations.gt(0) & proofs.h_pretarget_declarations.eq(0)).sum()
+            ),
+            "ai_only_artifacts_referencing_helper": int(
+                ai_only_helpers.a_used_pretarget_declarations.gt(0).sum()
+            ),
+            "ai_only_helper_names": sorted({
+                name
+                for names in ai_only_helpers.a_pretarget_names
+                for name in str(names).split("|") if name
+            }),
+            "human_helper_declarations": int(proofs.h_pretarget_declarations.sum()),
+            "ai_helper_declarations": int(proofs.a_pretarget_declarations.sum()),
+            "human_helpers_referenced_by_target": int(proofs.h_used_pretarget_declarations.sum()),
+            "ai_helpers_referenced_by_target": int(proofs.a_used_pretarget_declarations.sum()),
+        },
+        "claim_count_sensitivity": claim_count_sensitivity(
+            proofs, args.boot, rng
+        ),
+        "nonredeclared_name_sensitivity": nonredeclared_name_sensitivity(
+            claims, args.boot, rng
+        ),
     }
     for side, label in (("h", "human"), ("a", "ai")):
         summary["claim_rates"][label] = {
@@ -382,6 +703,40 @@ def main() -> None:
             "placeholder_name_share": claim_rate(
                 proofs, side, "placeholder_haves", args.boot, rng),
         }
+
+    low_overlap = proofs[proofs.target_value_token_similarity.lt(0.9)]
+    summary["target_value_overlap_audit"] = {
+        "similarity": "SequenceMatcher ratio over comment/string-stripped structured proof-value whitespace tokens",
+        "identical_pairs": int(proofs.identical_target_value.sum()),
+        "similarity_at_least_0_9": int(proofs.target_value_token_similarity.ge(0.9).sum()),
+        "median_similarity": float(proofs.target_value_token_similarity.median()),
+        "sensitivity_excluding_similarity_at_least_0_9": {
+            "pairs": int(len(low_overlap)),
+            **{
+                metric: claim_rate_difference(low_overlap, numerator, args.boot, rng)
+                for metric, numerator in (
+                    ("explicit_uses_per_claim", "explicit_uses"),
+                    ("zero_uptake_share", "zero_uptake_haves"),
+                    ("multi_uptake_share", "multi_uptake_haves"),
+                    ("long_horizon_share", "long_horizon_haves"),
+                    ("placeholder_name_share", "placeholder_haves"),
+                )
+            },
+        },
+    }
+
+    value_matched = proofs[proofs.identical_target_value]
+    value_matched_source_different = value_matched[~value_matched.identical_source_body]
+    summary["certificate_rendering_match_audit"] = {
+        "criterion": "token-identical comment-stripped structured target proof-value rendering",
+        "pairs": int(len(value_matched)),
+        "source_body_also_identical": int(value_matched.identical_source_body.sum()),
+        "source_body_different": int(len(value_matched_source_different)),
+        "different_source_named_haves": {
+            "human": int(value_matched_source_different.h_named_haves.sum()),
+            "ai": int(value_matched_source_different.a_named_haves.sum()),
+        },
+    }
 
     by_source: list[dict[str, Any]] = []
     for source, group in proofs.groupby("source"):

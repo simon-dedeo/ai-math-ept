@@ -1,0 +1,123 @@
+/-
+Stack-safe, one-pass, de-Bruijn-aware extraction of local-binder use.
+
+`visit` events carry the active de Bruijn scope. `finish` events combine
+already-computed child sizes, and `finishLet` additionally records the three
+component subtree sizes. Allocating a let ID when its visit event is popped
+preserves the preorder binder order used by the recursive reference extractor.
+-/
+namespace Horizon
+open Lean
+
+structure BinderUse where
+  kind       : String
+  name       : String
+  uses       : Nat
+  typeNodes  : Nat
+  valueNodes : Nat
+  bodyNodes  : Nat
+  deriving Inhabited
+
+inductive Work where
+  | visit (expr : Expr) (scope : List (Option Nat))
+  | finish (arity : Nat)
+  | finishLet (id : Nat)
+  deriving Inhabited
+
+def collectLetsIterative (root : Expr) : Nat × Array BinderUse := Id.run do
+  let mut binders : Array BinderUse := Array.empty
+  let mut counts : Array Nat := Array.empty
+  let mut work : Array Work := #[.visit root List.nil]
+  let mut sizes : Array Nat := Array.empty
+  while !work.isEmpty do
+    let event := work.back!
+    work := work.pop
+    match event with
+    | .visit expr scope =>
+        match expr with
+        | .bvar i =>
+            match scope.get? i with
+            | some (some id) =>
+                counts := counts.set! id (counts[id]! + 1)
+            | _ => pure ()
+            sizes := sizes.push 1
+        | .app f a =>
+            work := work.push (.finish 2)
+            work := work.push (.visit a scope)
+            work := work.push (.visit f scope)
+        | .lam _ t b _ =>
+            work := work.push (.finish 2)
+            work := work.push (.visit b (none :: scope))
+            work := work.push (.visit t scope)
+        | .forallE _ t b _ =>
+            work := work.push (.finish 2)
+            work := work.push (.visit b (none :: scope))
+            work := work.push (.visit t scope)
+        | .letE n t v b _ =>
+            let id := binders.size
+            let placeholder : BinderUse := {
+              kind := "let", name := n.toString, uses := 0,
+              typeNodes := 0, valueNodes := 0, bodyNodes := 0 }
+            binders := binders.push placeholder
+            counts := counts.push 0
+            work := work.push (.finishLet id)
+            work := work.push (.visit b (some id :: scope))
+            work := work.push (.visit v scope)
+            work := work.push (.visit t scope)
+        | .mdata _ b =>
+            work := work.push (.finish 1)
+            work := work.push (.visit b scope)
+        | .proj _ _ b =>
+            work := work.push (.finish 1)
+            work := work.push (.visit b scope)
+        | _ =>
+            sizes := sizes.push 1
+    | .finish arity =>
+        let mut total := 1
+        for _ in [0:arity] do
+          total := total + sizes.back!
+          sizes := sizes.pop
+        sizes := sizes.push total
+    | .finishLet id =>
+        let bodyNodes := sizes.back!
+        sizes := sizes.pop
+        let valueNodes := sizes.back!
+        sizes := sizes.pop
+        let typeNodes := sizes.back!
+        sizes := sizes.pop
+        let binder : BinderUse := {
+          kind := "let", name := binders[id]!.name, uses := counts[id]!,
+          typeNodes, valueNodes, bodyNodes }
+        binders := binders.set! id binder
+        sizes := sizes.push (1 + typeNodes + valueNodes + bodyNodes)
+  return (sizes.back!, binders)
+
+def jsonQuote (s : String) : String :=
+  "\"" ++ ((s.replace "\\" "\\\\").replace "\"" "\\\"") ++ "\""
+
+def binderJson (b : BinderUse) : String :=
+  "{\"kind\":" ++ jsonQuote b.kind ++
+  ",\"name\":" ++ jsonQuote b.name ++
+  ",\"uses\":" ++ toString b.uses ++
+  ",\"type_nodes\":" ++ toString b.typeNodes ++
+  ",\"value_nodes\":" ++ toString b.valueNodes ++
+  ",\"body_nodes\":" ++ toString b.bodyNodes ++ "}"
+
+def writeBinderStats (root : Name) (path : String) : CoreM Unit := do
+  let env ← getEnv
+  let some info := env.find? root
+    | throwError "declaration {root} not found"
+  let value := match info with
+    | .defnInfo val => val.value
+    | .thmInfo val => val.value
+    | .opaqueInfo val => val.value
+    | _ => info.type
+  let (rootNodes, lets) := collectLetsIterative value
+  let payload :=
+    "{\"name\":" ++ jsonQuote root.toString ++
+    ",\"root_nodes\":" ++ toString rootNodes ++
+    ",\"n_lets\":" ++ toString lets.size ++
+    ",\"lets\":[" ++ String.intercalate "," (lets.map binderJson).toList ++ "]}"
+  IO.FS.writeFile path payload
+
+end Horizon

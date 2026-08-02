@@ -41,8 +41,8 @@
 A checked proof establishes that a proposition follows, but not what future it was built to serve.
 We propose the \emph{amortization horizon}: the range over which a
 constructor expects an abstraction to repay its cost. A proof consequently has three separable
-products---a kernel certificate, working memory, and an interface for later proofs and readers. We
-test this distinction in 3,635 pairs of validated Lean proofs of identical
+products---a kernel certificate, external working memory, and an interface for later proofs and readers. We
+test this distinction in 3,630 pairs of validated Lean proofs of identical
 statements. AI-provenance scripts create more named local claims, but each claim receives fewer
 explicit downstream references, crosses fewer later claim boundaries, and is far more often
 generically named. A scope-correct analysis of elaborated terms confirms more dead AI binders, yet
@@ -84,7 +84,7 @@ boundaries, generality, and stable dependencies become investments.  Their up-fr
 recovered across later steps, theorems, versions, and readers.
 
 This account makes four contributions.  First, it separates three products of formal construction:
-certificate, episode structure, and interface.  Second, it tests their separation in 3,635 exact-
+certificate, episode structure, and interface.  Second, it tests their separation in 3,630 exact-
 statement human--AI pairs, with a scope-aware kernel-term validation on 298 pairs.  Third, it offers
 an exploratory information-theoretic test inspired by work on how speakers regulate surprise in
 conversation \citep{bergey2024}.  Finally, it proposes a sequence-level object, amortized proof
@@ -119,6 +119,11 @@ It is a retrieval scheme: it partitions a derivation into units that can be reco
 without reconstructing their interiors.  DeDeo and Duede call attention to the associated
 correspondence problem: a formal derivation can exist while failing to track the proof idea that is
 supposed to justify its relevance \citep{dedeo2026correspondence}.
+The interface can also certify something about its constructor: explanatory choices provide
+evidence of understanding that bare correctness does not.  Cheap generation can sever this
+costly-signal function even while improving verification \citep{wojtowicz2025}.  For this
+meta-consumer, construction cost is not mere overhead but part of the evidence; automation may
+preserve the visible artifact while changing what its production warrants.
 
 These consumers define different notions of reuse.  A proof-term binder used twice is a sharing
 node in a directed acyclic graph.  A source claim referenced after several later claims is working
@@ -127,17 +132,30 @@ is a universal measure of modularity.  In particular, raw occurrence counts can 
 expansion for conceptual importance, while a theorem that is used only once may still identify the
 right explanatory cut.
 
-For an abstraction $z$, a minimal decision model is
+Elaboration can be viewed as a channel from visible episode structure to the certificate.  A source
+boundary can be dependency-deleted (zero term occurrences), transmitted as one compositional hand-off, or
+amplified by tactic expansion (multiple occurrences).  Deletion and amplification are not defects,
+but both move the certificate away from one-to-one transmission.  We call their combined mass
+\emph{certificate polarization}; it measures alignment between episode structure and certificate,
+not mathematical quality by itself.
+
+For an abstraction $z$ and consumer $c$, a minimal decision model is
 \begin{equation}
- V_\gamma(z)=\sum_{u\in U(z)}\gamma^{d(z,u)}s(u)-c_{\rm make}(z)-c_{\rm interface}(z),
+ V_{\gamma,c}(z)=\sum_{u\in U_c(z)}\gamma^{d(z,u)}s_c(u)
+ -c_{\rm make}(z)-c_{{\rm interface},c}(z),
  \label{eq:value}
 \end{equation}
-where $U(z)$ is the set of anticipated uses, $s(u)$ is work saved at use $u$, and $d$ is distance in
+where $U_c(z)$ is the set of anticipated uses, $s_c(u)$ is work saved at use $u$, and $d$ is distance in
 steps, theorems, time, or agents.  The discount $\gamma$ summarizes the construction horizon.
 Interface work includes choosing a statement at the right generality, selecting a memorable name,
 documenting it, controlling imports, and maintaining it across versions.  These costs can dominate
 when the only scored outcome is today's compilation.  A short-horizon system may therefore be
 globally wasteful while locally optimal.
+
+The consumer index matters as much as the discount.  The same lemma can have positive value for a
+retrieval-equipped prover and negative value for a reader who cannot recognize or trust it.  There
+is consequently no consumer-free scalar called ``lemma quality.''  Horizon specifies when value
+must be recovered; audience specifies whose future work counts.
 
 The principle yields discriminating predictions.  Holding the theorem fixed, a shorter horizon
 should produce more local claims that are unused or single-use, less semantic investment in names,
@@ -154,12 +172,19 @@ lu2026leanrefactor,lyu2026rtl2lean}.
 
 We use the local NuminaMath-LEAN proof-artifact shards \citep{numinamathlean}.  A record is retained when human and prover
 proofs are both available and marked valid, the human ground-truth annotation is complete, and the
-UUID is unique.  This gives 3,635 pairs from 12 coarse source groups.  Each pair has the same formal
-statement; the proof bodies differ.  We analyze only the final target declaration because 158
-human artifacts contain helper declarations before it.  Pooling those helpers would give one side
-an accidental miniature library.
+UUID is unique.  We then require both serialized artifacts to contain the same normalized final
+declaration signature.  This audit removes one nominally valid prover artifact with no target and
+four mismatches: one wrong theorem join, one helper-only output, and two altered propositions.  The
+result is 3,630 exact-statement pairs from 12 coarse source groups.  We analyze only the final target
+declaration.  In 158 pairs, both tracks contain identical pre-target declarations after whitespace
+and comment normalization; 11 additional AI artifacts introduce helpers named only
+\code{lemma\_1} or \code{lemma\_2}, seven of which the target cites.  Pooling these
+declarations would therefore mix shared problem scaffolding and side-specific output with the
+target-proof comparison, not reveal a human-only miniature library.
 
-``Human'' denotes the dataset's ground-truth proof provenance and ``AI'' its prover proof.  It does
+The dataset card defines its formal ground truth as a proof written by a human annotator and its
+prover field as a model proof produced during reinforcement-learning training \citep{numinamathlean}.
+``Human'' and ``AI'' below denote those artifact fields.  This does
 not mean unaided human cognition versus an isolated model.  Selection, shared libraries, model
 training data, and annotation workflows remain possible causes.  Pairing removes theorem identity,
 not those process differences.  Our estimand is consequently descriptive: how these two artifact
@@ -175,7 +200,9 @@ source groups.  Pairwise proof metrics use Wilcoxon signed-rank tests; the effec
 consistency, and sensitivity checks matter more than the very small $p$-values.
 
 Lexical reference is not semantic use.  To validate it we elaborate a preselected 312-pair sample
-against current Lean/Mathlib and inspect each \code{letE} in the final theorem's proof term.  A
+against current Lean/Mathlib 4.33.0-rc1 and inspect each \code{letE} in the final theorem's proof term.
+The dataset was originally checked against Mathlib 4.15.0, so compilation failure under the later
+snapshot measures version attrition rather than invalidity at production time.  A
 de-Bruijn-aware traversal counts occurrences of a binder while increasing depth under nested
 binders; source claims are aligned to term binders by exact-name longest common subsequence in
 preorder.  Of 624 tasks, 604 compile; 298 pairs have both sides.  The alignment recovers 3,215 of
@@ -193,7 +220,7 @@ understanding.
 
 \subsection{Local claims have different fates}
 
-The paired proofs are not radically different in raw size: median final-body length is 126
+The paired proofs are not radically different in raw size: median final-body length is 125
 whitespace tokens for the human track and 145 for AI, with a median within-pair increase of five
 tokens (source-cluster interval 2--15).  They decompose that work differently.  The median number
 of named claims is one versus four; pooled density is 1.97 human and 3.17 AI claims per 100 source
@@ -201,28 +228,33 @@ tokens.
 
 The important contrast is what happens after introduction (\cref{fig:functions}).  Human claims
 receive 1.42 explicit references on average (source-cluster interval 1.32--1.56), compared with
-0.86 for AI (0.83--0.88).  Of human claims, 22.8\% have zero visible uptake and 25.8\% have multiple
+0.86 for AI (0.83--0.88).  Of human claims, 22.9\% have zero visible uptake and 25.7\% have multiple
 references.  For AI the corresponding values are 36.4\% and 12.0\%.  All 12 source groups show
 lower references per AI claim and higher zero-uptake share.  Human claims also more often remain
-live across a later claim boundary: 47.6\% versus 41.7\%, in the human direction for 11 of 12
+live across a later claim boundary: 47.5\% versus 41.7\%, in the human direction for 11 of 12
 groups.  The result is not simply that AI proofs are longer; it concerns the conditional fate of an
 introduced abstraction.
+Nor is it arithmetic from emitting more claims.  In 211 pairs with the same positive claim count,
+explicit uses per claim remain 1.36 versus 1.08 (AI-minus-human source-cluster interval
+$-0.446$ to $-0.177$), and zero uptake remains 22.4\% versus 29.5\% ($0.047$ to $0.094$).
+Nor does repeated generic naming create the result: among names declared only once per proof,
+uses are 1.51 versus 0.91, zero uptake 19.9\% versus 33.3\%, and long reach 51.4\% versus 45.9\%.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/claim_functions.pdf}
-  \caption{Three consumers of local claims. Source results use all 3,635 theorem pairs; term results
-  use the 298 pairs that compiled on both sides. Error bars are 95\% source-cluster intervals.
-  ``Descriptive'' means a name outside the conservative placeholder list; ``long reach'' means the
+  \caption{Three consumers of local claims. Source results use all 3,630 theorem pairs; term results
+  use the 298 pairs that compiled on both sides. Error bars in panels B--D are 95\% source-cluster intervals.
+  ``Outside placeholder'' means a name outside the conservative generic-form list; ``long reach'' means the
   last explicit reference crosses at least one later claim boundary.}
   \label{fig:functions}
 \end{figure}
 
-Names show an even larger difference.  Placeholder forms account for 58.7\% of human claims and
-88.9\% of AI claims.  The pooled human name distribution has 3,598 types, Shannon entropy 8.52 bits,
-and effective vocabulary 367; the AI distribution has 1,686 types, 6.27 bits, and effective
+Names show an even larger difference.  Placeholder forms account for 58.9\% of human claims and
+88.9\% of AI claims.  The pooled human name distribution has 3,522 types, Shannon entropy 8.49 bits,
+and effective vocabulary 360; the AI distribution has 1,685 types, 6.27 bits, and effective
 vocabulary 77 despite containing 75\% more name tokens.  Length is a crude but convergent check:
-23.4\% of human names and 9.4\% of AI names have at least four characters.  This is consistent with
+23.3\% of human names and 9.4\% of AI names have at least four characters.  This is consistent with
 interface investment, but it is not by itself proof of semantic quality.  A short conventional name
 may be excellent, and a long name may be decorative.
 
@@ -294,37 +326,29 @@ Thus it is a local pulse, not sustained global difficulty.
   \label{fig:surprise}
 \end{figure}
 
-The model assigns the AI documents much lower NLL overall (median 0.73 versus 1.15 nats/token), a
-warning that it is closer to AI proof style or data.  We therefore do not infer that humans are
-``more creative.''  The narrower observation is temporal: relative to controls within the same
-document, the human boundary marks a brief predictive discontinuity.  Together with descriptive
-names and longer visible span, this suggests that some human claims package a change in explanatory
-state.  A direct reader study and models screened for contamination are needed before calling the
-pulse cognitive.
+The model assigns AI documents much lower NLL overall (median 0.73 versus 1.15), a warning about
+style affinity or data overlap.  A leave-one-source-out token bigram preserves the raw boundary
+direction ($p=.021$), but its content-only contrast is merely directional ($p=.070$).  We infer
+neither creativity nor cognitive surprise.  At most, human boundaries mark a brief predictive
+discontinuity whose semantic interpretation remains model-dependent.
 
 \section{From provenance to objective}
 
 The horizon principle would be weak if it merely renamed the observed label.  Its main content is
-that the difference should move when the objective moves.  Four recent lines of work support this
-prediction.  REFACTOR learns to extract theorems from completed Metamath proofs; its 16 new lemmas
-are used hundreds of times on average after refactoring and improve downstream proving
-\citep{zhou2024}.  Proof-Refactor begins from the diagnosis that a compile-first objective produces
-proofs deficient in readability, modularity, maintenance, and reuse, then explicitly separates
-fragment extraction, helper design, proof, and repair \citep{fu2026refactor}.  Lean Refactor treats
-length, checking cost, and version robustness as distinct objectives rather than equating quality
-with compression \citep{lu2026leanrefactor}.  Rtl2lean asks a generator to build a four-layer theorem
-library and reports that 287 of 358 foundational lemmas are available for automatic reuse
-\citep{lyu2026rtl2lean}.
+that the difference should move when the objective moves.  Several recent lines of work support this
+prediction.  REFACTOR extracts heavily reused theorems from completed Metamath proofs
+\citep{zhou2024}.  Proof-Refactor and Lean Refactor explicitly optimize modularity, maintenance,
+checking cost, or version robustness after compilation \citep{fu2026refactor,lu2026leanrefactor}.
+CircuitProver provides a closer intervention: accumulating verified lemmas and strategies across
+related Lean tasks reduces both proof length and checking time in ablation \citep{yang2026circuit}.
+Rtl2lean likewise asks a generator to build a layered reusable library \citep{lyu2026rtl2lean}.
 
-Lemma invention itself is not new.  Mining unnamed HOL Light inferences showed that useful
-intermediate statements, combined with relevance filtering, can strengthen later proving even when
-millions of candidates exist \citep{kaliszyk2014}.  LEGO-Prover grows a verified skill library
-during theorem proving \citep{wang2023lego}; DreamProver alternates a wake phase that proposes
-lemmas with a sleep phase that abstracts and consolidates them \citep{zhang2026dream}.  These systems
-make the retrieval cost visible: persistent memory is useful only if a later agent can select from
-it.  Our contribution is not the observation that lemmas can be learned, but a common account of
-why compile-first artifacts, refactored proofs, human-readable boundaries, and growing libraries
-differ---and an evaluation target that charges construction against future savings.
+The ingredients have precedents: mined HOL Light inferences, LEGO-Prover, and DreamProver all turn
+intermediate results into later proving capacity \citep{kaliszyk2014,wang2023lego,zhang2026dream}.
+They also expose the retrieval constraint: persistent memory helps only if a later agent can select
+it; LeanSearch v2 reports a large gain from global premise retrieval \citep{gao2026leansearch}.
+Our contribution is a common account of compile-first artifacts, refactored proofs, readable
+boundaries, and growing libraries, plus an objective that charges construction against future savings.
 
 These systems do not prove that their artifacts match mature human libraries, and their metrics are
 not directly comparable with ours.  They establish the more fundamental point: machines can be
@@ -335,9 +359,9 @@ reward and (ii) downstream cost, maintenance, and human-retrieval reward.  Measu
 claim reach, API survival, later citation, repair cost, and reader comprehension.  If the horizons
 do not separate, our account fails.
 
-The distinction also clarifies DeDeo's discussion of ``alien lemmas.''  Complexity theory implies
-that many truths have no short proof in a fixed system, while mathematical practice seems to select
-truths with good reasons \citep{dedeo2024hard}.  An AI may discover a lemma that dramatically
+The distinction also clarifies DeDeo's discussion of ``alien lemmas.''  His argument draws on
+proof-complexity and average-case results to contrast hard-to-prove truths with a mathematical
+practice that seems to select truths with good reasons \citep{dedeo2024hard}.  An AI may discover a lemma that dramatically
 compresses later certificates yet remains unrecognizable to human mathematical ontology.  Such a
 lemma has high machine amortized value and low human interface value.  It is neither simply good nor
 bad.  It exposes two horizons with different consumers.  The correspondence problem then becomes an
@@ -401,17 +425,19 @@ formal context, but in deciding what part of a successful episode should become 
 \section{Library-amortized proof complexity}
 
 Ordinary proof complexity asks for the size of a certificate for one formula in a fixed proof
-system.  This leaves library construction outside the objective.  Let
-$\Phi=(\varphi_1,\ldots,\varphi_T)$ be a stream of targets.  For a checked auxiliary library $L$ and
-proofs $P_t$ that may use it, define
+system \citep{cook1979,krajicek1995}.  This leaves library construction outside the objective.  Let
+$\Phi=(\varphi_1,\ldots,\varphi_T)$ be a stream of targets.  Let $L$ be an ordered, acyclic sequence
+of auxiliary declarations: each signature and body must check in the base environment plus earlier
+members of $L$, and $|L|$ charges both.  If $P_t$ checks $\varphi_t$ in that extended environment and
+$|P_t\mid L|$ is its residual certificate size, define
 \begin{equation}
  \LAPC_\lambda(\Phi)=
  \min_{L,P_1,\ldots,P_T}
  \left[\lambda |L|+\sum_{t=1}^T |P_t\mid L|\right],
  \label{eq:apc}
 \end{equation}
-subject to every declaration in $L$ and every $P_t$ checking in the base environment, with
-$\lambda\geq 1$.  The factor $\lambda$ prices the design and maintenance of shared structure.  A richer version can price names,
+with $\lambda\geq 1$.  Thus neither a circular declaration nor an unpriced advice oracle is allowed.
+The factor $\lambda$ prices the design and maintenance of shared structure.  A richer version can price names,
 dependency fragility, retrieval, and human validation separately.  An online version charges when
 each declaration is introduced and compares cumulative cost with the best hindsight library.
 
@@ -425,6 +451,11 @@ is the compression attributable to shared mathematical infrastructure at the cho
 price.  At $\lambda=1$ the objective is a restricted two-part description length: library plus
 residual certificates.  It is not Kolmogorov complexity; the language is fixed to checked Lean
 artifacts and retrieval cost can be charged explicitly.
+
+The break-even law is immediate but useful.  Ignoring interactions, a declaration of charged size
+$b$ that saves $s$ symbols in each of $k$ residual proofs pays exactly when $ks>\lambda b$; with
+temporal discounting, $ks$ becomes $\sum_i\gamma^{d_i}s_i$.  The amortization horizon is therefore
+not a metaphor but the point at which checked shared structure beats repeated local construction.
 
 Equation \eqref{eq:apc} changes what counts as an optimal proof.  A declaration that lengthens the
 first episode may lower total cost if it compresses later proofs.  A generic helper that is short
@@ -465,22 +496,18 @@ lexical parser recognizes named \code{have}, not every \code{let}, \code{suffice
 or tactic-generated subgoal.  Third, compilation leaves 298 complete pairs in the term sample;
 although their source patterns resemble the full corpus, toolchain attrition can select on style.
 Fourth, binder occurrence is syntactic and can be amplified massively by automation.  Fifth, the
-surprisal model is a quantized theorem prover run without a chat template and may have seen related
-text.  Its boundary effect is exploratory.  Sixth, meaningful names and long spans are only proxies
+main surprisal model may have seen related text, while a source-held-out bigram weakens the
+content-only contrast.  The boundary effect is exploratory.  Sixth, meaningful names and long spans are only proxies
 for explanatory value.  Interactive links from written proof steps to Lean state have improved
 comprehension in a small reader study, but our boundary measures still require a direct experiment
 \citep{kambhamettu2026}.
 
-The representation audit imposes a further correction.  The earlier extractor interned raw
-\code{Expr.bvar 0} nodes globally, merging variables belonging to unrelated binders.  This can
-create false reuse paths in an unexpanded term DAG.  The extractor now instantiates loose indices
-with scope-specific free-variable identities, and a regression test constructs two lambdas and
-requires two distinct variable nodes.  Declaration graphs are unaffected, but earlier semantic
-interpretations of root-term topology are withdrawn.  A scope-correct rerun on 298 clean pairs does
-not recover a robust authorship tail effect: at fixed $x_{\min}=10$, the median paired exponent
-difference is $-0.002$ (source-cluster interval $-0.016$ to $0.013$), and the median maximum-
-outdegree difference is zero ($-3$ to $0$).  The binder-use results reported here use a separate
-depth-aware traversal and do not inherit the original flaw.
+The representation audit adds one correction.  An earlier root-term extractor globally interned
+raw de Bruijn indices from unrelated scopes, creating false reuse paths.  Scope-specific identities
+remove the error, and a corrected 298-pair rerun finds no robust authorship effect in either the
+fixed-$10$ reuse-tail exponent ($-0.002$, source-cluster interval $-0.016$ to $0.013$) or maximum
+outdegree (median difference zero, $-3$ to $0$).  The binder-use traversal here is independently
+scope-aware; details and regression construction appear in the appendix.
 
 Three observations would falsify or sharply narrow the horizon account.  The claim fails if an
 objective-matched human--AI experiment retains the same difference; if downstream reward does not
@@ -507,35 +534,26 @@ value for another.  A correspondence layer succeeds when it raises human value w
 machine savings.
 
 The third is a longitudinal library experiment.  Allow an agent to choose which intermediate facts
-to export before seeing future targets, then measure cumulative cost and survival over theorem
-orderings and Lean versions.  Compare its online choices with a hindsight refactoring of the whole
-stream.  This directly estimates library regret and separates genuine anticipation from post hoc
-compression.  It also makes failure scientifically useful.  A system that proves every target but
-accumulates high regret has mastered deduction without mastering the allocation of mathematical
-memory.
+to export before seeing future targets; measure cumulative cost and survival across orderings and
+Lean versions; and compare online choices with a hindsight refactoring.  A system that proves every
+target but accumulates high regret has mastered deduction without allocating durable mathematical memory.
 
-Together these experiments move the field from artifact classification to causal cognitive
-science.  They ask not whether one population's code looks more elegant, but which incentives
-produce representations that remain valuable when context, consumer, or time changes.  The unit of
-analysis is no longer a proof in isolation.  It is the transformation of successful reasoning into
-shared capacity.
+These experiments replace artifact classification with a causal question: which incentives transform
+successful reasoning into capacity that survives a change of context, consumer, or time?
 
 \section{Conclusion: a proof is a wager on its next use}
 
 A checked certificate has no intrinsic audience beyond the kernel.  Proof construction becomes
 mathematical practice when it anticipates another consumer: a later step, a future theorem, a
 maintainer, a reader, or another agent.  Human- and AI-provenance Lean proofs of the same statement
-currently diverge most clearly at this point.  One track more often packages facts as named,
-longer-lived hand-offs; the other more often records disposable local state.  After elaboration,
-both can exhibit extensive sharing.  The difference is not deductive validity and need not be a
-fixed property of the constructor.  It is the future for which the proof was optimized.
+currently diverge most clearly here: one track more often packages named, longer-lived hand-offs;
+the other records more disposable local state.  After elaboration both can exhibit extensive
+sharing.  The difference is not validity or biological kind, but the future for which construction
+was optimized.
 
-This view turns proof quality from a static aesthetic judgment into an amortization question.  Who
-will use this boundary, over what distance, and what work will it save?  It also identifies a blind
-spot in current evaluation: a sequence of isolated successes can grow indefinitely without becoming
-a library.  The next generation of AI-for-mathematics benchmarks should therefore measure not only
-whether a system can prove today's theorem, but whether today's proof changes the cost and
-intelligibility of tomorrow's.
+Proof quality is therefore an amortization question: who will use this boundary, over what distance,
+and what work will it save?  A sequence of isolated successes can grow without becoming a library.
+Evaluation should ask whether proving today changes tomorrow's cost and intelligibility.
 
 \clearpage
 \bibliographystyle{plainnat}
@@ -547,8 +565,8 @@ intelligibility of tomorrow's.
 
 All reported paired source results are produced by \code{code/paired\_horizon.py}; scope-aware term
 use by \code{code/extract\_binder\_use.py} and \code{code/analyze\_binder\_use.py}; and surprisal by
-\code{code/prepare\_surprisal.py}, \code{code/token\_surprisal.cpp}, and
-\code{code/analyze\_surprisal.py}.  Machine-readable summaries live in \code{results/horizon/}.
+\code{code/prepare\_surprisal.py}, \code{code/token\_surprisal.cpp},
+\code{code/ngram\_surprisal.py}, and \code{code/analyze\_surprisal.py}.  Machine-readable summaries live in \code{results/horizon/}.
 Seeds and inclusion rules are serialized with the estimates.
 
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
@@ -556,13 +574,22 @@ Every source group has lower explicit uses per AI claim and higher AI zero-uptak
 lower AI long-reach share.  The term alignment's unique-name subset contains 753 human and 1,258 AI
 claims; zero-use shares are 13.8\% and 23.8\%, respectively.  The surprisal boundary contrast is
 present for four- and eight-token windows, marginal at 16, and absent at 32.  Excluding the keyword
-and claim name preserves the four- and eight-token effects.
+and claim name preserves the four- and eight-token effects.  In the leave-one-source-out bigram,
+which excludes every document in the held-out proof's coarse source group from training, the raw
+eight-token difference remains ($p=.021$) but content-only evidence weakens ($p=.070$).
 
 The preselected 312-pair term sample closely preserves the source contrasts.  Human/AI claim
 densities are 1.96/3.25 per 100 tokens in the sample versus 1.97/3.17 in the full corpus; explicit
 uses per claim are 1.35/0.84 versus 1.42/0.86; and zero-uptake shares are 22.9\%/35.7\% versus
 22.8\%/36.4\%.  All 12 source groups remain represented.  Compilation attrition reduces this to 298
 complete binder-use pairs but changes the profile little.
+
+Paired does not mean independent: 181 structured proof values are token-identical and 230 have
+whitespace-token similarity at least .90 after comments and strings are removed.  These pairs
+attenuate rather than create the result.  Of the 181 exact value matches, 180 also have identical
+source bodies, so they are duplicate mass rather than a source/certificate natural experiment.
+Excluding all 230 leaves 3,400 pairs; explicit uses per
+claim are 1.42/0.85, zero-uptake shares 22.9\%/36.7\%, and placeholder shares 59.0\%/89.5\%.
 
 The source direction also survives a coarse automation sensitivity.  For each of \code{linarith},
 \code{nlinarith}, \code{norm\_num}, \code{omega}, \code{ring}, and \code{simp}, we separately retain

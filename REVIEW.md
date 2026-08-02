@@ -10,11 +10,24 @@ paper audit below.
 
 | claim | script | output |
 |---|---|---|
-| 3,635 valid same-statement pairs; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz` |
+| 3,630 exact-statement pairs after auditing 3,635 validation-flag candidates; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz`, `target_pair_exclusions.csv` |
 | claim density, explicit uptake, visible reach, naming, and matched tactic strata | same | `results/horizon/claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
 | depth-aware use of elaborated local binders in 298 complete pairs | `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz` |
 | model-relative information pulse at claim boundaries | `code/prepare_surprisal.py`, `code/token_surprisal.cpp`, `code/analyze_surprisal.py`, `code/collect_surprisal_sensitivity.py` | `results/horizon/surprisal_summary_w8.json`, `surprisal_sensitivity.csv`, `surprisal_provenance.json` |
 | scope-correct term-DAG construction and 298-pair audit | `code/ExtractNetwork.lean`, `code/ExtractCore.lean.tmpl`, `code/extract_corpus.py`, `code/paired_term_structure.py` | `code/test_scoped_bvars.py`, `results/horizon/scoped_term_structure/` |
+
+The source inclusion audit compares the final structured declaration signatures emitted by the
+dataset elaborator, after removing comments and normalizing whitespace. It excludes one prover
+artifact with no declaration and four mismatches (a wrong theorem join, a helper-only output, and
+two changed propositions). The counts are serialized under `target_pair_audit` in
+`source_summary.json`; `code/test_horizon_report.py` makes them a regression condition.
+
+Two source-level failure modes are audited separately. Because the parser stops an explicit-use
+window at a same-name redeclaration, `nonredeclared_name_sensitivity` removes every claim whose name
+occurs more than once in its proof; all uptake and reach directions strengthen. The structured
+proof-value overlap audit finds 181 token-identical values, 180 of which also have identical source
+bodies. Excluding all 230 pairs with proof-value token similarity at least .90 leaves 3,400 pairs
+and preserves every headline direction.
 
 The primary limitations are observational provenance, lexical recognition of
 named `have` rather than every possible source construct, current-Mathlib

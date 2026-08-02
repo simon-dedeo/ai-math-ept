@@ -1,0 +1,101 @@
+/-
+One-pass, de-Bruijn-aware extraction of local-binder use.
+
+The scope stack contains one entry for every enclosing binder.  `some id`
+marks a let binder whose occurrence count we retain; `none` marks a lambda or
+forall binder that shifts de Bruijn indices without being a source `have`.
+This computes the same tree-occurrence statistics as ExtractBinderUse.lean.tmpl
+without rescanning every let body once per binder.
+-/
+namespace Horizon
+open Lean
+
+structure BinderUse where
+  kind       : String
+  name       : String
+  uses       : Nat
+  typeNodes  : Nat
+  valueNodes : Nat
+  bodyNodes  : Nat
+
+structure CollectState where
+  binders : Array BinderUse := #[]
+  counts  : Array Nat := #[]
+
+partial def visit (e : Expr) (scope : List (Option Nat)) : StateM CollectState Nat := do
+  match e with
+  | .bvar i =>
+      match scope[i]? with
+      | some (some id) =>
+          let st ← get
+          set { st with counts := st.counts.set! id (st.counts[id]! + 1) }
+      | _ => pure ()
+      return 1
+  | .app f a =>
+      let fNodes ← visit f scope
+      let aNodes ← visit a scope
+      return 1 + fNodes + aNodes
+  | .lam _ t b _ =>
+      let tNodes ← visit t scope
+      let bNodes ← visit b (none :: scope)
+      return 1 + tNodes + bNodes
+  | .forallE _ t b _ =>
+      let tNodes ← visit t scope
+      let bNodes ← visit b (none :: scope)
+      return 1 + tNodes + bNodes
+  | .letE n t v b _ =>
+      let st ← get
+      let id := st.binders.size
+      let placeholder : BinderUse := {
+        kind := "let", name := n.toString, uses := 0,
+        typeNodes := 0, valueNodes := 0, bodyNodes := 0 }
+      set { st with binders := st.binders.push placeholder, counts := st.counts.push 0 }
+      let typeNodes ← visit t scope
+      let valueNodes ← visit v scope
+      let bodyNodes ← visit b (some id :: scope)
+      let st ← get
+      let binder : BinderUse := {
+        kind := "let", name := n.toString, uses := st.counts[id]!,
+        typeNodes, valueNodes, bodyNodes }
+      set { st with binders := st.binders.set! id binder }
+      return 1 + typeNodes + valueNodes + bodyNodes
+  | .mdata _ b =>
+      return 1 + (← visit b scope)
+  | .proj _ _ b =>
+      return 1 + (← visit b scope)
+  | _ => return 1
+
+def collectLetsLinear (e : Expr) : Nat × Array BinderUse := Id.run do
+  let initial : CollectState := { binders := Array.empty, counts := Array.empty }
+  let (rootNodes, state) := (visit e List.nil).run initial
+  return (rootNodes, state.binders)
+
+def jsonQuote (s : String) : String :=
+  "\"" ++ ((s.replace "\\" "\\\\").replace "\"" "\\\"") ++ "\""
+
+def binderJson (b : BinderUse) : String :=
+  "{\"kind\":" ++ jsonQuote b.kind ++
+  ",\"name\":" ++ jsonQuote b.name ++
+  ",\"uses\":" ++ toString b.uses ++
+  ",\"type_nodes\":" ++ toString b.typeNodes ++
+  ",\"value_nodes\":" ++ toString b.valueNodes ++
+  ",\"body_nodes\":" ++ toString b.bodyNodes ++ "}"
+
+def writeBinderStats (root : Name) (path : String) : CoreM Unit := do
+  let env ← getEnv
+  let some info := env.find? root
+    | throwError "declaration {root} not found"
+  let value := match info with
+    | .defnInfo val => val.value
+    | .thmInfo val => val.value
+    | .opaqueInfo val => val.value
+    | _ => info.type
+  let (rootNodes, lets) := collectLetsLinear value
+  let payload :=
+    "{\"name\":" ++ jsonQuote root.toString ++
+    ",\"root_nodes\":" ++ toString rootNodes ++
+    ",\"n_lets\":" ++ toString lets.size ++
+    ",\"lets\":[" ++ String.intercalate "," (lets.map binderJson).toList ++ "]}"
+  IO.FS.writeFile path payload
+
+end Horizon

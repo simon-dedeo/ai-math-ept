@@ -1,0 +1,28 @@
+{
+  "model": "leave-one-source-out interpolated token bigram",
+  "training_exclusion": "all documents in the held-out document's coarse source group",
+  "token_offsets_from": "results/horizon/token_surprisal.tsv",
+  "token_offsets_sha256": "ee53f6394aa84b9f36d1e8c02290a38f36283876982b475de8f950ec53991eae",
+  "document_bytes_sha256": "8501a859b5ac52ce31e151fd416ff55003b896dc57e8c28edf4af1cdef244318",
+  "source_pairs_sha256": "f9047e9154b286f9d2a8d91662c4a36dddfac5051fb1620814554da343bf039b",
+  "alpha_bigram_backoff": 10.0,
+  "beta_unigram_smoothing": 0.1,
+  "documents": 624,
+  "documents_by_source": {
+    "amc_aime": 64,
+    "aops_forum": 34,
+    "cn_contest": 24,
+    "cn_k12": 58,
+    "inequalities": 10,
+    "math_test": 76,
+    "math_train": 88,
+    "number_theory": 26,
+    "olympiads": 170,
+    "olympiads_ref": 54,
+    "secondary_math": 18,
+    "unknown": 2
+  },
+  "documents_labeled_unknown_source": 2,
+  "tokens": 240079,
+  "vocabulary": 1500
+}

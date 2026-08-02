@@ -29,7 +29,7 @@ and private cluster mirrors; the versioned derived evidence is sufficient for th
 
 A formal proof has at least three products: a certificate for the kernel,
 working memory for the current episode, and an interface for later proofs and
-readers. In **3,635 validated human/AI pairs of the identical Lean statement**,
+readers. In **3,630 validated human/AI pairs of the identical Lean statement**,
 the AI track creates more named local claims, but those claims receive fewer
 explicit references, remain visibly live for less of the proof, use much more
 generic names, and more often become unused binders in the final elaborated term. The
@@ -58,9 +58,10 @@ observed divide.
 
 | file | what it does |
 |---|---|
-| `paired_horizon.py` | 3,635-pair source analysis: local-claim density, uptake, visible reach, naming, and tactic-stratum sensitivity |
-| `ExtractBinderUse.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | depth-aware elaborated-binder use and source-to-term alignment |
-| `prepare_surprisal.py`, `token_surprisal.cpp`, `analyze_surprisal.py` | Goedel-Prover token information and claim-boundary timing assay |
+| `paired_horizon.py` | 3,630-pair exact-statement audit and source analysis: local-claim density, uptake, visible reach, naming, and tactic-stratum sensitivity |
+| `ExtractBinderUseIterative.lean.tmpl`, `extract_binder_use.py`, `analyze_binder_use.py` | stack-safe one-pass elaborated-binder use, source-to-term alignment, and source/term transition analysis; the recursive linear and quadratic templates are retained as references |
+| `test_binder_linear.py` | exact regression of both one-pass traversals against the reference under nested scope, plus a 12,000-deep stack-safety test |
+| `prepare_surprisal.py`, `token_surprisal.cpp`, `ngram_surprisal.py`, `analyze_surprisal.py` | Goedel-Prover and leave-one-source-out token information at claim boundaries |
 | `horizon_figures.py` | figures for the current paper |
 | `ExtractNetwork.lean` | Lean 4 metaprogram: proof term → dependency DAG (`term0` scope-aware root term, `term` level-expanded, `decl` declaration-level). The Lean analogue of the 2022 CoqAST/ManipulateProofTrees pipeline. |
 | `extract_corpus.py` | batch-elaborates a corpus of standalone `.lean` proofs (handles syntax drift, namespaces, per-corpus toolchains) |

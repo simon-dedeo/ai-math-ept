@@ -45,30 +45,40 @@ def claim_functions() -> None:
 
     fates = ["zero_uptake_share", "one_uptake_share", "multi_uptake_share"]
     fate_labels = ["zero", "one", "multiple"]
-    bottoms = np.zeros(2)
-    fate_colors = ["#d9dce1", "#8cb6cf", "#255f85"]
-    for metric, label, color in zip(fates, fate_labels, fate_colors):
-        values = np.asarray([
-            source["claim_rates"]["human"][metric]["estimate"],
-            source["claim_rates"]["ai"][metric]["estimate"],
+    x = np.arange(3)
+    for offset, side, label, color in (
+        (-0.11, "human", "Human", HUMAN), (0.11, "ai", "AI", AI)
+    ):
+        values = [source["claim_rates"][side][metric]["estimate"] for metric in fates]
+        intervals = [source["claim_rates"][side][metric]["source_cluster_ci"] for metric in fates]
+        errors = np.asarray([
+            [value - interval[0] for value, interval in zip(values, intervals)],
+            [interval[1] - value for value, interval in zip(values, intervals)],
         ])
-        axes[1].bar(labels, values, bottom=bottoms, label=label, color=color, width=0.62)
-        bottoms += values
-    axes[1].set_ylim(0, 1)
+        axes[1].errorbar(
+            x + offset, values, yerr=errors, fmt="o", color=color, capsize=2.5,
+            lw=1.2, ms=5, label=label,
+        )
+    axes[1].set_xticks(x, fate_labels)
+    axes[1].set_ylim(0, .62)
     axes[1].set_ylabel("share of named claims")
     axes[1].set_title("B  Explicit uptake", loc="left", fontweight="bold")
-    axes[1].legend(frameon=False, fontsize=8, loc="lower center")
+    axes[1].legend(frameon=False, fontsize=8, loc="upper right")
 
     fates_term = ["zero_term_use", "one_term_use", "multi_term_use"]
-    bottoms = np.zeros(2)
-    for metric, label, color in zip(fates_term, fate_labels, fate_colors):
-        values = np.asarray([
-            binder["claim_rates_complete_pairs"]["human"][metric]["estimate"],
-            binder["claim_rates_complete_pairs"]["ai"][metric]["estimate"],
+    for offset, side, color in ((-0.11, "human", HUMAN), (0.11, "ai", AI)):
+        values = [binder["claim_rates_complete_pairs"][side][metric]["estimate"] for metric in fates_term]
+        intervals = [binder["claim_rates_complete_pairs"][side][metric]["source_cluster_ci"] for metric in fates_term]
+        errors = np.asarray([
+            [value - interval[0] for value, interval in zip(values, intervals)],
+            [interval[1] - value for value, interval in zip(values, intervals)],
         ])
-        axes[2].bar(labels, values, bottom=bottoms, label=label, color=color, width=0.62)
-        bottoms += values
-    axes[2].set_ylim(0, 1)
+        axes[2].errorbar(
+            x + offset, values, yerr=errors, fmt="o", color=color, capsize=2.5,
+            lw=1.2, ms=5,
+        )
+    axes[2].set_xticks(x, fate_labels)
+    axes[2].set_ylim(0, .62)
     axes[2].set_ylabel("share of matched binders")
     axes[2].set_title("C  Elaborated-term use", loc="left", fontweight="bold")
 
@@ -80,17 +90,34 @@ def claim_functions() -> None:
         source["claim_rates"]["human"]["long_horizon_share"]["estimate"],
         source["claim_rates"]["ai"]["long_horizon_share"]["estimate"],
     ]
+    descriptive_intervals = [
+        [1 - source["claim_rates"][side]["placeholder_name_share"]["source_cluster_ci"][1],
+         1 - source["claim_rates"][side]["placeholder_name_share"]["source_cluster_ci"][0]]
+        for side in ("human", "ai")
+    ]
+    horizon_intervals = [
+        source["claim_rates"][side]["long_horizon_share"]["source_cluster_ci"]
+        for side in ("human", "ai")
+    ]
     x = np.arange(2)
     width = 0.34
     axes[3].bar(
         x - width / 2, [descriptive[0], long_horizon[0]], width,
-        color=HUMAN, label="Human",
+        color=HUMAN, label="Human", capsize=2.5,
+        yerr=np.asarray([
+            [descriptive[0] - descriptive_intervals[0][0], long_horizon[0] - horizon_intervals[0][0]],
+            [descriptive_intervals[0][1] - descriptive[0], horizon_intervals[0][1] - long_horizon[0]],
+        ]),
     )
     axes[3].bar(
         x + width / 2, [descriptive[1], long_horizon[1]], width,
-        color=AI, label="AI",
+        color=AI, label="AI", capsize=2.5,
+        yerr=np.asarray([
+            [descriptive[1] - descriptive_intervals[1][0], long_horizon[1] - horizon_intervals[1][0]],
+            [descriptive_intervals[1][1] - descriptive[1], horizon_intervals[1][1] - long_horizon[1]],
+        ]),
     )
-    axes[3].set_xticks(x, ["descriptive\nname", "crosses a later\nclaim boundary"])
+    axes[3].set_xticks(x, ["outside placeholder\nlist", "crosses a later\nclaim boundary"])
     axes[3].set_ylim(0, 0.62)
     axes[3].set_ylabel("share of named claims")
     axes[3].set_title("D  Addressable future", loc="left", fontweight="bold")

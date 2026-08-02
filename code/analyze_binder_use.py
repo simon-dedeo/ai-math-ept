@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -58,6 +59,130 @@ def cluster_ratio_ci(
     return [float(x) for x in np.percentile(ratios, [2.5, 97.5])]
 
 
+def cluster_ratio_difference(
+    frame: pd.DataFrame,
+    metric: str,
+    rng: np.random.Generator,
+    boot: int,
+) -> dict[str, Any]:
+    """AI-minus-human pooled claim-rate difference, resampling sources jointly."""
+    columns = [f"h_{metric}", "h_matched", f"a_{metric}", "a_matched"]
+    grouped = frame.groupby("source")[columns].sum().to_numpy(float)
+    draws = rng.integers(0, len(grouped), size=(boot, len(grouped)))
+    sample = grouped[draws].sum(axis=1)
+    differences = (
+        sample[:, 2] / np.maximum(sample[:, 3], 1)
+        - sample[:, 0] / np.maximum(sample[:, 1], 1)
+    )
+    estimate = (
+        frame[f"a_{metric}"].sum() / max(frame.a_matched.sum(), 1)
+        - frame[f"h_{metric}"].sum() / max(frame.h_matched.sum(), 1)
+    )
+    return {
+        "estimate_ai_minus_human": float(estimate),
+        "source_cluster_ci": [float(x) for x in np.percentile(differences, [2.5, 97.5])],
+    }
+
+
+def transition_summary(
+    claims: pd.DataFrame,
+    rng: np.random.Generator,
+    boot: int,
+) -> dict[str, Any]:
+    """Source-uptake to term-use transition rates and paired source CIs."""
+    frame = claims.copy()
+    frame["source_use_class"] = np.select(
+        [frame.explicit_uses.eq(0), frame.explicit_uses.eq(1)],
+        ["zero", "one"],
+        default="multi",
+    )
+    frame["term_use_class"] = np.select(
+        [frame.term_uses.eq(0), frame.term_uses.eq(1)],
+        ["zero", "one"],
+        default="multi",
+    )
+    output: dict[str, Any] = {}
+    for source_class in ("zero", "one", "multi"):
+        stratum = frame[frame.source_use_class.eq(source_class)]
+        output[source_class] = {}
+        for term_class in ("zero", "one", "multi"):
+            cells = (
+                stratum.assign(hit=stratum.term_use_class.eq(term_class).astype(int))
+                .groupby(["source", "side"])
+                .agg(hits=("hit", "sum"), claims=("hit", "size"))
+                .reset_index()
+            )
+            side_summary: dict[str, Any] = {}
+            for side, label in (("h", "human"), ("a", "ai")):
+                selected = cells[cells.side.eq(side)]
+                hits, denominator = int(selected.hits.sum()), int(selected.claims.sum())
+                side_summary[label] = {
+                    "numerator": hits,
+                    "denominator": denominator,
+                    "estimate": float(hits / max(denominator, 1)),
+                }
+
+            wide = cells.pivot(index="source", columns="side", values=["hits", "claims"]).fillna(0)
+            for metric, side in (("hits", "h"), ("claims", "h"), ("hits", "a"), ("claims", "a")):
+                if (metric, side) not in wide.columns:
+                    wide[(metric, side)] = 0
+            values = wide[[
+                ("hits", "h"), ("claims", "h"), ("hits", "a"), ("claims", "a")
+            ]].to_numpy(float)
+            draws = rng.integers(0, len(values), size=(boot, len(values)))
+            sampled = values[draws].sum(axis=1)
+            differences = (
+                sampled[:, 2] / np.maximum(sampled[:, 3], 1)
+                - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
+            )
+            side_summary["ai_minus_human"] = {
+                "estimate": (
+                    side_summary["ai"]["estimate"] - side_summary["human"]["estimate"]
+                ),
+                "source_cluster_ci": [
+                    float(x) for x in np.percentile(differences, [2.5, 97.5])
+                ],
+            }
+            output[source_class][term_class] = side_summary
+    return output
+
+
+def tactic_matched_strata(
+    claims: pd.DataFrame,
+    source_proofs: pd.DataFrame,
+    complete_pairs: set[str],
+) -> pd.DataFrame:
+    """Term-use rates where both proofs use, or both omit, a tactic family."""
+    rows: list[dict[str, Any]] = []
+    for tactic in ("linarith", "nlinarith", "norm_num", "omega", "ring", "simp"):
+        h_col, a_col = f"h_event_{tactic}", f"a_event_{tactic}"
+        for condition, mask in (
+            ("both", source_proofs[h_col].gt(0) & source_proofs[a_col].gt(0)),
+            ("neither", source_proofs[h_col].eq(0) & source_proofs[a_col].eq(0)),
+        ):
+            eligible = set(source_proofs.loc[mask, "pair"])
+            paired_ids = eligible & complete_pairs
+            subset = claims[claims.pair.isin(paired_ids)]
+            row: dict[str, Any] = {
+                "tactic": tactic,
+                "condition": condition,
+                "pairs": len(paired_ids),
+            }
+            for side, label in (("h", "human"), ("a", "ai")):
+                side_claims = subset[subset.side.eq(side)]
+                denominator = max(len(side_claims), 1)
+                row[f"{label}_claims"] = len(side_claims)
+                row[f"{label}_zero_share"] = float(side_claims.term_uses.eq(0).sum() / denominator)
+                row[f"{label}_one_share"] = float(side_claims.term_uses.eq(1).sum() / denominator)
+                row[f"{label}_multi_share"] = float(side_claims.term_uses.gt(1).sum() / denominator)
+                row[f"{label}_polarized_share"] = float(side_claims.term_uses.ne(1).sum() / denominator)
+            row["polarized_ai_minus_human"] = (
+                row["ai_polarized_share"] - row["human_polarized_share"]
+            )
+            rows.append(row)
+    return pd.DataFrame(rows)
+
+
 def rate_summary(
     proof_frame: pd.DataFrame,
     side: str,
@@ -95,13 +220,28 @@ def paired_summary(proofs: pd.DataFrame, metric: str) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument(
+        "--extraction-file", type=Path,
+        default=Path("results/horizon/binder_extraction.json"),
+    )
     parser.add_argument("--boot", type=int, default=10_000)
     parser.add_argument("--seed", type=int, default=20260802)
+    parser.add_argument(
+        "--output-tag", default="",
+        help="suffix analysis outputs so toolchain sensitivities can coexist",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     outdir = root / "results" / "horizon"
+    if args.output_tag and not re.fullmatch(r"[A-Za-z0-9_-]+", args.output_tag):
+        raise ValueError("--output-tag may contain only letters, digits, underscore, and hyphen")
+    suffix = f"_{args.output_tag}" if args.output_tag else ""
 
-    extraction = json.loads((outdir / "binder_extraction.json").read_text())
+    extraction_path = (
+        args.extraction_file if args.extraction_file.is_absolute()
+        else root / args.extraction_file
+    )
+    extraction = json.loads(extraction_path.read_text())
     claims = pd.read_csv(outdir / "claims.csv.gz").sort_values(
         ["pair", "side", "claim_index"]
     )
@@ -148,6 +288,7 @@ def main() -> None:
                 "zero_term_use": int(uses == 0),
                 "one_term_use": int(uses == 1),
                 "multi_term_use": int(uses > 1),
+                "polarized_term_use": int(uses != 1),
                 "reuse_excess": max(uses - 1, 0),
                 "value_nodes": int(binder["value_nodes"]),
                 "potential_inlining_nodes": max(uses - 1, 0) * int(binder["value_nodes"]),
@@ -173,6 +314,7 @@ def main() -> None:
                 "zero_term_use": sum(row["zero_term_use"] for row in matched_records),
                 "one_term_use": sum(row["one_term_use"] for row in matched_records),
                 "multi_term_use": sum(row["multi_term_use"] for row in matched_records),
+                "polarized_term_use": sum(row["polarized_term_use"] for row in matched_records),
                 "reuse_excess": sum(row["reuse_excess"] for row in matched_records),
                 "potential_inlining_nodes": sum(row["potential_inlining_nodes"] for row in matched_records),
             }
@@ -182,10 +324,10 @@ def main() -> None:
     binder_claims = pd.DataFrame(rows)
     task_proofs = pd.DataFrame(proof_rows)
     binder_claims.to_csv(
-        outdir / "binder_claims.csv.gz", index=False,
+        outdir / f"binder_claims{suffix}.csv.gz", index=False,
         compression={"method": "gzip", "mtime": 0},
     )
-    task_proofs.to_csv(outdir / "binder_tasks.csv", index=False)
+    task_proofs.to_csv(outdir / f"binder_tasks{suffix}.csv", index=False)
 
     wide = task_proofs[task_proofs.status.eq("ok")].pivot(index=["pair", "source"], columns="side")
     wide.columns = [f"{side}_{metric}" for metric, side in wide.columns]
@@ -203,18 +345,27 @@ def main() -> None:
         )
         .reset_index()
     )
-    by_source_term.to_csv(outdir / "binder_by_source.csv", index=False)
+    by_source_term.to_csv(outdir / f"binder_by_source{suffix}.csv", index=False)
+    tactic_strata = tactic_matched_strata(complete_claims, source_all, complete_pairs)
+    tactic_strata.to_csv(outdir / f"binder_tactic_matched_strata{suffix}.csv", index=False)
     rng = np.random.default_rng(args.seed)
     rates: dict[str, Any] = {}
     for side, label in (("h", "human"), ("a", "ai")):
         rates[label] = {
             metric: rate_summary(complete, side, metric, rng, args.boot)
-            for metric in ("term_uses", "zero_term_use", "one_term_use", "multi_term_use", "reuse_excess")
+            for metric in (
+                "term_uses", "zero_term_use", "one_term_use", "multi_term_use",
+                "polarized_term_use", "reuse_excess",
+            )
         }
 
     paired = {
         metric: paired_summary(complete, metric)
         for metric in ("matched", "match_share", "term_uses", "zero_term_use", "multi_term_use", "reuse_excess")
+    }
+    rate_differences = {
+        metric: cluster_ratio_difference(complete, metric, rng, args.boot)
+        for metric in ("zero_term_use", "one_term_use", "multi_term_use", "polarized_term_use")
     }
 
     def source_profile(frame: pd.DataFrame) -> dict[str, Any]:
@@ -239,9 +390,15 @@ def main() -> None:
         return profile
 
     selected_pairs = set(task_proofs.pair)
+    selected_label = f"materialized_{len(selected_pairs)}"
+    complete_label = f"complete_{len(complete)}"
     summary = {
         "seed": args.seed,
         "bootstraps": args.boot,
+        "extraction_file": str(
+            extraction_path.relative_to(root) if extraction_path.is_relative_to(root)
+            else extraction_path
+        ),
         "tasks": len(task_proofs),
         "task_status": task_proofs.status.value_counts().to_dict(),
         "pairs_with_both_sides": len(complete),
@@ -254,11 +411,20 @@ def main() -> None:
         "matching_method": "exact-name longest common subsequence in pre-order term traversal",
         "source_sample_comparison": {
             "full_corpus": source_profile(source_all),
-            "preselected_312": source_profile(source_all[source_all.pair.isin(selected_pairs)]),
-            "complete_298": source_profile(source_all[source_all.pair.isin(complete_pairs)]),
+            selected_label: source_profile(source_all[source_all.pair.isin(selected_pairs)]),
+            complete_label: source_profile(source_all[source_all.pair.isin(complete_pairs)]),
         },
         "paired": paired,
         "claim_rates_complete_pairs": rates,
+        "claim_rate_differences_complete_pairs": rate_differences,
+        "source_to_term_use_transitions": transition_summary(
+            complete_claims, rng, args.boot
+        ),
+        "tactic_matched_polarization": {
+            "strata": int(len(tactic_strata)),
+            "ai_higher": int(tactic_strata.polarized_ai_minus_human.gt(0).sum()),
+            "file": f"results/horizon/binder_tactic_matched_strata{suffix}.csv",
+        },
         "unambiguous_claim_sensitivity": {
             label: {
                 "claims": int(len(group)),
@@ -273,9 +439,9 @@ def main() -> None:
                 complete_claims.side.eq(side) & complete_claims.unambiguous_name
             ]]
         },
-        "by_source_file": "results/horizon/binder_by_source.csv",
+        "by_source_file": f"results/horizon/binder_by_source{suffix}.csv",
     }
-    (outdir / "binder_summary.json").write_text(json.dumps(summary, indent=2))
+    (outdir / f"binder_summary{suffix}.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))
 
 

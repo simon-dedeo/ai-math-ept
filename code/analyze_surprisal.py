@@ -41,12 +41,22 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--window", type=int, default=8)
     parser.add_argument("--tag", default="")
+    parser.add_argument("--token-file", type=Path, default=Path("results/horizon/token_surprisal.tsv"))
+    parser.add_argument("--model-label", default="Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization")
+    parser.add_argument(
+        "--caveat",
+        default=(
+            "Exploratory model-relative information, not human cognitive surprisal; "
+            "training-set overlap and theorem-prover style affinity are not excluded."
+        ),
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     outdir = root / "results" / "horizon"
     docs_dir = root / "tmp" / "horizon" / "surprisal_docs"
 
-    token_data = pd.read_csv(outdir / "token_surprisal.tsv", sep="\t")
+    token_path = args.token_file if args.token_file.is_absolute() else root / args.token_file
+    token_data = pd.read_csv(token_path, sep="\t")
     sources = pd.read_csv(outdir / "source_pairs.csv.gz")[["pair", "source"]]
     source_map = sources.set_index("pair").source.to_dict()
     source_claims = pd.read_csv(outdir / "claims.csv.gz")
@@ -187,7 +197,7 @@ def main() -> None:
         compression={"method": "gzip", "mtime": 0},
     )
     summary = {
-        "model": "Goedel-LM/Goedel-Prover-V2-8B, Q4_K_M quantization",
+        "model": args.model_label,
         "window_tokens": args.window,
         "documents": len(proofs),
         "pairs": int(proofs.groupby("pair").side.nunique().eq(2).sum()),
@@ -212,10 +222,7 @@ def main() -> None:
             for side, label in (("h", "human"), ("a", "ai"))
             for group in [claims[claims.side.eq(side)]]
         },
-        "caveat": (
-            "Exploratory model-relative information, not human cognitive surprisal; "
-            "training-set overlap and theorem-prover style affinity are not excluded."
-        ),
+        "caveat": args.caveat,
     }
     (outdir / f"surprisal_summary{suffix}.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))

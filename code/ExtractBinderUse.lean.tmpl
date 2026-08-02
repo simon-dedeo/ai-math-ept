@@ -83,7 +83,13 @@ def writeBinderStats (root : Name) (path : String) : CoreM Unit := do
   let env <- getEnv
   let some info := env.find? root
     | throwError "declaration {root} not found"
-  let value := (info.value? (allowOpaque := true)).getD info.type
+  /- Match explicitly for compatibility across Lean 4.15--4.33.  The
+     `ConstantInfo.value?` API changed its treatment of opaque declarations. -/
+  let value := match info with
+    | .defnInfo val => val.value
+    | .thmInfo val => val.value
+    | .opaqueInfo val => val.value
+    | _ => info.type
   let lets := collectLets value
   let payload :=
     "{\"name\":" ++ jsonQuote root.toString ++

@@ -1,0 +1,76 @@
+{
+  "model": "leave-one-source-out interpolated token bigram",
+  "window_tokens": 8,
+  "documents": 624,
+  "pairs": 312,
+  "claims": 3300,
+  "paired": {
+    "mean_nll": {
+      "n_pairs": 312,
+      "human_median": 3.25212992691337,
+      "ai_median": 2.673971894993074,
+      "median_paired_difference": -0.39753168607007305,
+      "probability_ai_greater": 0.11538461538461539,
+      "wilcoxon_p": 2.174108744810427e-38
+    },
+    "p95_nll": {
+      "n_pairs": 312,
+      "human_median": 8.290236754187019,
+      "ai_median": 6.159282903454097,
+      "median_paired_difference": -1.0620177484430826,
+      "probability_ai_greater": 0.1858974358974359,
+      "wilcoxon_p": 1.036874972590912e-29
+    },
+    "mean_boundary_delta_nll": {
+      "n_pairs": 174,
+      "human_median": -0.012558517695503498,
+      "ai_median": -0.11057056482538336,
+      "median_paired_difference": -0.13238238499333826,
+      "probability_ai_greater": 0.40804597701149425,
+      "wilcoxon_p": 0.01024281699949841
+    },
+    "mean_boundary_excess_nll": {
+      "n_pairs": 174,
+      "human_median": -0.07628993596932428,
+      "ai_median": -0.1097067698849877,
+      "median_paired_difference": -0.17543707594894953,
+      "probability_ai_greater": 0.41379310344827586,
+      "wilcoxon_p": 0.020610024880255956
+    },
+    "mean_content_boundary_delta_nll": {
+      "n_pairs": 174,
+      "human_median": 0.05714563272710205,
+      "ai_median": -0.09503448881783963,
+      "median_paired_difference": -0.053968636781782875,
+      "probability_ai_greater": 0.46551724137931033,
+      "wilcoxon_p": 0.038023047729030056
+    },
+    "mean_content_boundary_excess_nll": {
+      "n_pairs": 174,
+      "human_median": 0.07718501539814265,
+      "ai_median": -0.08683964882942222,
+      "median_paired_difference": -0.043287015435557144,
+      "probability_ai_greater": 0.47701149425287354,
+      "wilcoxon_p": 0.07004534072864359
+    }
+  },
+  "claim_level": {
+    "human": {
+      "claims": 1142,
+      "median_boundary_delta_nll": 0.026546594792775435,
+      "median_boundary_excess_nll": -0.0022156747439473004,
+      "median_definition_name_nll": 2.7074505447045802,
+      "median_reference_name_nll": 2.788852811964432,
+      "median_name_reuse_relief_nll": -0.021271889033164904
+    },
+    "ai": {
+      "claims": 2158,
+      "median_boundary_delta_nll": -0.08448407769773614,
+      "median_boundary_excess_nll": -0.07892813329954866,
+      "median_definition_name_nll": 2.2280174540470004,
+      "median_reference_name_nll": 2.281418253185447,
+      "median_name_reuse_relief_nll": -0.030541103106903722
+    }
+  },
+  "caveat": "Exploratory model-relative information, not human cognitive surprisal; the model excludes all documents in each held-out coarse source group, but is a low-capacity lexical sensitivity rather than a semantic model."
+}
