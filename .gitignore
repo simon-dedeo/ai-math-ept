@@ -25,14 +25,12 @@ original_data/
 # source PDFs (copyright) stay out of the repo
 *.pdf
 !report/figures/*.pdf
-# Generated figures and final paper deliverables are part of the repository.
-!report/final/figures/*.pdf
-!report/standalone/figures/*.pdf
-!report/horizon/figures/*.pdf
-!output/
-!output/pdf/
-!output/pdf/*.pdf
-output/rendered_horizon/
+# Generated figures, results, and final paper deliverables are rebuilt locally.
+output/
+report/**/figures/
+results/**
+!results/**/
+!results/**/*.md
 
 # Rebuildable LaTeX and visual-QA products.
 report/**/main.aux

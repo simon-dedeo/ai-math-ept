@@ -1,5 +1,8 @@
 # Overnight run status — updated 2026-07-31 15:37:20
 
+Historical status snapshot. The output paths below were programmatically generated and were removed
+from the compact checkout after validation.
+
 | stage | state | output |
 |---|---|---|
 | study2 comparison (AI vs human proofs) | pending | results/study2_main/ |

@@ -1,8 +1,9 @@
 # Reviewer's guide
 
 This document exists so a reviewer can check the work rather than take it on trust.
-The current paper is [`report/horizon/main.tex`](report/horizon/main.tex), rendered
-as [`output/pdf/proofs_for_now_and_proofs_for_later.pdf`](output/pdf/proofs_for_now_and_proofs_for_later.pdf).
+The current paper is [`report/horizon/main.tex`](report/horizon/main.tex). Its rendered PDF,
+figures, tables, and serialized analyses are reproducible outputs and are intentionally omitted to
+save space. Output paths below specify the regeneration contract rather than versioned files.
 The older claim map for [`report/REPORT.md`](report/REPORT.md) follows the current
 paper audit below.
 

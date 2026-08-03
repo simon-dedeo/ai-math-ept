@@ -4,9 +4,11 @@ Research on the construction horizon of human- and AI-provenance Lean proofs,
 building on Viteri & DeDeo, *Epistemic phase transitions in mathematical
 proofs* (Cognition 225:105120, 2022).
 
-**Start here:** [*Proofs for Now and Proofs for Later: The Amortization Horizon
-of Human and Artificial Reasoning in Lean*](output/pdf/proofs_for_now_and_proofs_for_later.pdf),
-with LaTeX source and figures in [`report/horizon/`](report/horizon/).
+**Start here:** *Proofs for Now and Proofs for Later: The Amortization Horizon
+of Human and Artificial Reasoning in Lean*, with LaTeX source in
+[`report/horizon/main.tex`](report/horizon/main.tex). Generated PDFs, figures, result tables,
+downloaded corpora, model weights, and toolchain checkouts are intentionally omitted to keep this
+repository small; rebuild them from `code/` and the pinned downloader below.
 
 The earlier network replication and synthesis remain in
 [`report/REPORT.md`](report/REPORT.md), and the preceding standalone paper remains
@@ -22,8 +24,8 @@ and links the recovered provenance of the original power-law convention.
 **Reviewing this work?** [`REVIEW.md`](REVIEW.md) maps every claim in the report to the script and
 output file that produced it, lists the claims withdrawn during the work and why, and names
 the places the work is weakest. [`results/DATA_INVENTORY.md`](results/DATA_INVENTORY.md) enumerates
-the bulk reproducibility data. These data are excluded from Git, but Simon retains complete local
-and private cluster mirrors; the versioned derived evidence is sufficient for the public audits.
+the reproducibility data. Generated evidence is not versioned; the guides retain its schema and
+provenance, and the scripts regenerate it from pinned or public inputs.
 
 ## What was found, in one paragraph
 
@@ -96,12 +98,15 @@ carry an adopted claim forward.
 | path | contents |
 |---|---|
 | `code/` | analysis toolkit (below) |
-| `results/` | derived results: CSVs, JSONs, per-study outputs, logs |
-| `report/` | working report + figures |
-| `output/pdf/` | versioned final paper PDFs |
-| `networks/`, `original_data/`, `corpora/`, `census/`, `projects/`, `mathlib4/` | local, Git-ignored reproducibility cache mirrored from Akdeniz |
+| `results/` | compact provenance and method notes; generated tables are ignored |
+| `report/` | manuscript sources; generated figures and PDFs are ignored |
+| `networks/`, `original_data/`, `corpora/`, `census/`, `projects/`, `mathlib4/` | disposable, Git-ignored reproducibility caches |
 | `REVIEW.md` | reviewer's guide: claim → script → output, withdrawn claims, weak points |
 | `sync.sh` | pull code + results from akdeniz, commit, push |
+
+The current paper's five pinned input shards can be restored with
+`python code/fetch_horizon_data.py`. Historical census acquisition recipes are retained under
+`code/census_acquisition/`.
 
 ## Toolkit
 

@@ -1,6 +1,8 @@
 # Data inventory — akdeniz.lan.cmu.edu:~/ai_math_ept/
 
-Generated 2026-07-31 23:13. Bulk data is not in git; this is the manifest.
+Generated 2026-07-31 23:13. This is a historical pre-cleanup manifest: the listed bulk directories
+and derived files are intentionally absent from this compact checkout and must be regenerated or
+restored from their public/cluster sources.
 
 ## Totals
 

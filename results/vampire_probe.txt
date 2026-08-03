@@ -1,2 +1,0 @@
-<class 'dict'> 22028942
-key: 1_3 -> {'value': 0, 'time': 0.005, 'method_id': 'vmi500'}

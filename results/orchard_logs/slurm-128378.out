@@ -1,9 +1,0 @@
-{
-  "bootstraps": 10000,
-  "permutations": 10000,
-  "paired_source_n": 2321,
-  "paired_source_clusters": 12,
-  "paired_term_clean_n": 312,
-  "paired_term_clusters": 12,
-  "paired_term_exclusion": "both graphs required; excludes either graph containing sorry/SyntheticOpaque"
-}

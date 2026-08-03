@@ -12,10 +12,11 @@ the central result.
 
 ## The shortest route through the project
 
-1. Read [*Proofs for Now and Proofs for Later*](output/pdf/proofs_for_now_and_proofs_for_later.pdf).
-2. Inspect its [LaTeX source](report/horizon/main.tex), the
-   [3,630-pair source summary](results/horizon/source_summary.json), and the
-   [semantic binder summary](results/horizon/binder_summary.json).
+1. Read the [LaTeX source of *Proofs for Now and Proofs for Later*](report/horizon/main.tex).
+   The rendered PDF is generated and intentionally not stored.
+2. Fetch the pinned five-shard input with `python code/fetch_horizon_data.py`; then regenerate the
+   3,630-pair source summary with `code/paired_horizon.py`. [`REVIEW.md`](REVIEW.md) maps the result
+   schemas and claims.
 3. For the representation checks, see `code/test_binder_toolchain_shift.py`,
    `code/test_certificate_representation.py`, and
    [the cross-toolchain summary](results/horizon/binder_toolchain_summary.json).
@@ -179,10 +180,9 @@ python3.12 -m venv .venv
 .venv/bin/python code/test_toolkit.py
 ```
 
-These commands check the versioned evidence, manuscript macros, archive hashes, and
-network-model sanity cases. The full extracted Lean networks and downloaded corpora
-are too large for ordinary Git. Their derived tables and ORCHARD provenance bundles
-are versioned here; Simon also retains private local and cluster mirrors. The
+These commands check manuscript logic and network-model sanity cases after the requisite generated
+inputs are restored. Extracted Lean networks, downloaded corpora, derived tables, rendered papers,
+and ORCHARD bundles are intentionally omitted from Git; scripts and compact provenance notes remain. The
 original Coq inputs can be recovered independently by cloning
 `scottviteri/ManipulateProofTrees` at commit `7aeaf156`.
 

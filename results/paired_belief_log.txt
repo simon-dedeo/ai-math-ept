@@ -1,6 +1,0 @@
-matched proof-term pairs available: 157
-  25/157
-  50/157
-  75/157
-  100/157
-  125/157

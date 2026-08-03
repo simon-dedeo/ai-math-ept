@@ -1,5 +1,0 @@
-corpus,n_files,n_decls,n_proofs,n_citation_edges,frac_never_cited,mean_reuse,alpha_x5,alpha_x10,alpha_x20,median_n_lines,median_n_tactics,median_n_have,median_n_distinct_premises,median_vocab_ratio,median_automation_share,median_dup_line_share,median_depth_indent
-harmonic-aristotle-imo2025,18,123,174,369,0.21138211382113822,3.0,1.953,2.566,,34.5,27.0,6.0,25.0,0.4688,0.2439,0.0253,10.0
-mathinc-strongpnt,8,1110,886,2007,0.18468468468468469,1.808108108108108,1.971,2.116,2.626,10.0,3.0,1.0,5.0,0.5341,0.0447,0.0,4.0
-seed-prover,754,5656,9885,14394,0.3755304101838755,2.544908062234795,1.938,2.004,2.112,7.0,2.0,0.0,4.0,0.6,0.2,0.0,4.0
-human-compfiles,667,3630,5408,20626,0.28264462809917357,5.682093663911846,1.964,1.892,1.728,10.0,4.0,1.0,7.0,0.75,0.1111,0.0,4.0
