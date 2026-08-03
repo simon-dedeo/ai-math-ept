@@ -41,6 +41,8 @@ The absolute lexical-reference curve therefore crosses between one and two later
 human advantage at two or more holds in all 12 source groups and survives the 834-pair length match.
 But after mentions within one downstream construction are collapsed, absolute multi-consumer-site
 supply is unresolved; the crossover is textual addressability, not a count of cognitive retrieval episodes.
+The resulting local-claim construction DAG is nevertheless denser and more branching for humans
+in 206 exact-equal-node pairs, while maximum chain length is unresolved rather than more serial for AI.
 The family comparison collapses
 equivalent binder and explicit-`forall` spellings: rates are 5.24% versus 1.68%, and within
 identical-theorem pairs family claims occur only on the human side 310 times versus only on the AI

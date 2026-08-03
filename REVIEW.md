@@ -13,6 +13,7 @@ paper audit below.
 | 3,630 exact-statement pairs after auditing 3,635 validation-flag candidates; final target body only | `code/paired_horizon.py` | `results/horizon/source_summary.json`, `source_pairs.csv.gz`, `target_pair_exclusions.csv` |
 | exact construction-bounded claim density, uptake, opportunity-normalized reach, naming, and matched tactic strata (39,646/40,626 candidate claims) | `code/paired_horizon.py`, `code/ExtractHaveRanges.lean` | `results/horizon/source_summary.json` → `have_scope_parser_audit`, `claims.csv.gz`, `by_source.csv`, `tactic_matched_strata.csv` |
 | lexical consolidation crossover: AI has more once-referenced claims per token, humans more claims with two or more exact-name references (all 12 source groups; persists at matched length); the stricter absolute multi-consumer-site contrast is unresolved | `code/paired_horizon.py` | `results/horizon/source_summary.json` → `claim_supply_per_100_tokens`, `claim_supply_length_matched`, `multi_consumer_site_claim_share` |
+| source construction DAG: human claim graphs have more edges per node and more branchpoints, including at exactly equal positive node count; equal-node maximum chain length is unresolved | `code/paired_horizon.py` | `results/horizon/source_summary.json` → `construction_graph_audit`, `claims.csv.gz` → `named_consumer_indices` |
 | within-proof association of family syntax with adoption and repeated use in both tracks, including nearest-position matching | same | `results/horizon/source_summary.json` → `within_proof_feature_associations`, `position_matched_family_associations` |
 | depth-aware use of elaborated local binders in all 3,630 pairs (7,260 successful tasks), including exact expanded-tree extremes | `code/ExtractBinderUseMemoLegacy.lean.tmpl`, `code/extract_binder_use.py`, `code/analyze_binder_use.py` | `results/horizon/binder_summary.json`, `binder_claims.csv.gz`, `binder_root_tree_extremes.csv` |
 | within-proof family syntax predicts term retention in both tracks after nearby-position matching; family-specific multi-use estimates diverge but the direct interaction is unresolved | `code/analyze_binder_use.py` | `results/horizon/binder_summary.json` → `within_proof_generality_term_association`, `position_matched_generality_term_association` |
@@ -27,6 +28,9 @@ dataset elaborator, after removing comments and normalizing whitespace. It exclu
 artifact with no declaration and four mismatches (a wrong theorem join, a helper-only output, and
 two changed propositions). The counts are serialized under `target_pair_audit` in
 `source_summary.json`; `code/test_horizon_report.py` makes them a regression condition.
+The complete source analysis was rerun twice after the final graph audit with byte-identical JSON
+and deterministic-gzip outputs; their SHA-256 values are pinned in
+`results/horizon/source_output_hashes.sha256` and verified by the same report regression.
 
 Three source-level failure modes are audited separately. Lean's parser supplies both the end of the
 complete `have` construction and the nearest enclosing tactic-sequence tail, preventing

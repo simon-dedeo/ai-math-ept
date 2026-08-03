@@ -1,6 +1,7 @@
 """Consistency checks for numerical and layout claims in the horizon paper."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -22,6 +23,10 @@ def page_text(pdf: Path, page: int) -> str:
 
 
 def main() -> None:
+    for line in (ROOT / "results/horizon/source_output_hashes.sha256").read_text().splitlines():
+        expected, relative = line.split(maxsplit=1)
+        actual = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+        assert actual == expected, (relative, actual, expected)
     source = json.loads((ROOT / "results/horizon/source_summary.json").read_text())
     binder = json.loads((ROOT / "results/horizon/binder_summary.json").read_text())
     surprise = json.loads((ROOT / "results/horizon/surprisal_summary_w8.json").read_text())
@@ -39,9 +44,23 @@ def main() -> None:
     )
     term = json.loads((ROOT / "results/horizon/scoped_term_structure/term0.json").read_text())
     tex = (ROOT / "report/horizon/main.tex").read_text()
+    guide = (ROOT / "SCOTT_GUIDE.md").read_text()
+    readme = (ROOT / "README.md").read_text()
     pdf = ROOT / "output/pdf/proofs_for_now_and_proofs_for_later.pdf"
 
     assert source["pairs"] == 3630 and source["source_groups"] == 12
+    for fragment in (
+        "5.24% of human claims and 1.68%", "human-only in 310 pairs",
+        "83.6% and 85.0%", "21.8% versus 9.8%", "17.7 points",
+    ):
+        assert fragment in guide
+    for stale in ("5.60%", "1.91%", "human-only in 320 pairs", "about 75%"):
+        assert stale not in guide
+    for fragment in (
+        "rates are 5.24% versus 1.68%", "human side 310 times",
+        "scoped uses are 1.35 human versus 0.82 AI",
+    ):
+        assert fragment in readme
     assert source["target_pair_audit"] == {
         "flag_valid_candidates": 3635,
         "missing_target_declaration": 1,
@@ -108,6 +127,19 @@ def main() -> None:
     assert absolute_multi_site["source_cluster_ci"][0] < 0 < absolute_multi_site[
         "source_cluster_ci"
     ][1]
+    construction = source["construction_graph_audit"]
+    for metric in (
+        "edges_per_claim", "named_branchpoint_share", "longest_chain_per_claim",
+    ):
+        assert construction[metric]["source_cluster_ci"][1] < 0
+    equal_construction = construction["equal_positive_claim_count"]
+    assert equal_construction["pairs"] == 206
+    assert equal_construction["source_groups"] == 11
+    assert equal_construction["pairs_with_complete_two_sided_parser_alignment"] == 206
+    assert equal_construction["edges_per_claim"]["source_cluster_ci"][1] < 0
+    assert equal_construction["named_branchpoint_share"]["source_cluster_ci"][1] < 0
+    equal_chain = equal_construction["longest_chain_per_claim"]["source_cluster_ci"]
+    assert equal_chain[0] < 0 < equal_chain[1]
     parametric = source["parametric_claim_difference"]
     close(parametric["human"], 0.02762)
     close(parametric["ai"], 0.00207)
@@ -223,6 +255,9 @@ def main() -> None:
     assert unique_names["explicit_uses_per_claim"]["source_cluster_ci"][1] < 0
     assert unique_names["zero_uptake_share"]["source_cluster_ci"][0] > 0
     assert unique_names["long_horizon_share"]["source_cluster_ci"][1] < 0
+    assert unique_names["multi_consumer_site_share"]["source_cluster_ci"][1] < 0
+    assert unique_names["named_edges_per_claim"]["source_cluster_ci"][1] < 0
+    assert unique_names["named_branchpoint_share"]["source_cluster_ci"][1] < 0
     overlap = source["target_value_overlap_audit"]
     assert overlap["identical_pairs"] == 181
     assert overlap["similarity_at_least_0_9"] == 230

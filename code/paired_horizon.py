@@ -362,6 +362,9 @@ def named_have_claims(
             consumer_sites.add(
                 max(containing_claims) if containing_claims else "residual"
             )
+        named_consumer_indices = sorted(
+            int(site) for site in consumer_sites if isinstance(site, int)
+        )
         first_delay = (
             len(TOKEN.findall(body[construction_end : use_positions[0]]))
             if use_positions else None
@@ -398,6 +401,9 @@ def named_have_claims(
                 "distinct_consumer_sites": len(consumer_sites),
                 "named_claim_consumer_sites": sum(
                     isinstance(site, int) for site in consumer_sites
+                ),
+                "named_consumer_indices": "|".join(
+                    str(index) for index in named_consumer_indices
                 ),
                 "has_residual_consumer_site": "residual" in consumer_sites,
                 "unscoped_explicit_uses": len(unscoped_token_matches),
@@ -480,6 +486,17 @@ def side_metrics(
         claim["last_use_delay_tokens"]
         for claim in claims if claim["last_use_delay_tokens"] is not None
     ], dtype=int)
+    chain_depth: dict[int, int] = {}
+    for claim in claims:
+        claim_index = int(claim["claim_index"])
+        chain_depth.setdefault(claim_index, 1)
+        for consumer_index in (
+            int(value) for value in claim["named_consumer_indices"].split("|")
+            if value
+        ):
+            chain_depth[consumer_index] = max(
+                chain_depth.get(consumer_index, 1), chain_depth[claim_index] + 1
+            )
     metrics: dict[str, Any] = {
         "tokens": len(re.findall(r"\S+", body)),
         "chars": len(body),
@@ -506,6 +523,15 @@ def side_metrics(
         ),
         "total_consumer_sites": sum(
             claim["distinct_consumer_sites"] for claim in claims
+        ),
+        "named_claim_dependency_edges": sum(
+            claim["named_claim_consumer_sites"] for claim in claims
+        ),
+        "named_claim_branchpoints": sum(
+            claim["named_claim_consumer_sites"] > 1 for claim in claims
+        ),
+        "longest_named_claim_chain": (
+            max(chain_depth.values(), default=1) - 1 if claims else 0
         ),
         "reuse_excess": int(np.maximum(uses - 1, 0).sum()) if len(uses) else 0,
         "long_horizon_haves": int((spans > 0).sum()) if len(spans) else 0,
@@ -762,6 +788,8 @@ def nonredeclared_name_sensitivity(
     subset["zero_uptake"] = subset.explicit_uses.eq(0).astype(int)
     subset["multi_uptake"] = subset.explicit_uses.gt(1).astype(int)
     subset["long_horizon"] = subset.intervening_claims_to_last_use.fillna(0).gt(0).astype(int)
+    subset["multi_consumer_site"] = subset.distinct_consumer_sites.gt(1).astype(int)
+    subset["named_branchpoint"] = subset.named_claim_consumer_sites.gt(1).astype(int)
     sources = sorted(claims.source.unique())
     output: dict[str, Any] = {
         "rule": "retain only claim names occurring exactly once in that proof",
@@ -771,6 +799,10 @@ def nonredeclared_name_sensitivity(
         ("zero_uptake_share", "zero_uptake"),
         ("multi_uptake_share", "multi_uptake"),
         ("long_horizon_share", "long_horizon"),
+        ("consumer_sites_per_claim", "distinct_consumer_sites"),
+        ("multi_consumer_site_share", "multi_consumer_site"),
+        ("named_edges_per_claim", "named_claim_consumer_sites"),
+        ("named_branchpoint_share", "named_branchpoint"),
     ):
         grouped = (
             subset.groupby(["source", "side"])[numerator]
@@ -1390,6 +1422,7 @@ def main() -> None:
     supply_rng = np.random.default_rng(args.seed + 991)
     length_supply_rng = np.random.default_rng(args.seed + 992)
     consumer_rng = np.random.default_rng(args.seed + 993)
+    construction_rng = np.random.default_rng(args.seed + 994)
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -1500,6 +1533,54 @@ def main() -> None:
         "multi_consumer_site_claim_share": claim_rate_difference(
             proofs, "multi_consumer_haves", args.boot, consumer_rng
         ),
+        "construction_graph_audit": {
+            "nodes": "parser-matched named local claims",
+            "edge": (
+                "earlier claim name referenced inside the complete construction "
+                "of a later parser-matched named claim; repeated tokens collapse"
+            ),
+            "edges_per_claim": claim_rate_difference(
+                proofs, "named_claim_dependency_edges", args.boot,
+                construction_rng,
+            ),
+            "named_branchpoint_share": claim_rate_difference(
+                proofs, "named_claim_branchpoints", args.boot,
+                construction_rng,
+            ),
+            "longest_chain_per_claim": claim_rate_difference(
+                proofs, "longest_named_claim_chain", args.boot,
+                construction_rng,
+            ),
+            "longest_chain_per_proof": paired_metric(
+                proofs, "longest_named_claim_chain", args.boot,
+                construction_rng,
+            ),
+            "equal_positive_claim_count": {
+                "pairs": int(equal_positive_claim_count.sum()),
+                "source_groups": int(
+                    proofs.loc[equal_positive_claim_count, "source"].nunique()
+                ),
+                "pairs_with_complete_two_sided_parser_alignment": int((
+                    equal_positive_claim_count
+                    & proofs.pair.isin(fully_parsed_pairs.pair)
+                ).sum()),
+                "opportunity_control": (
+                    "equal node count within each pair gives both sides the same "
+                    "multiset of possible later-node counts by claim index"
+                ),
+                **{
+                    metric: claim_rate_difference(
+                        proofs[equal_positive_claim_count], numerator,
+                        args.boot, construction_rng,
+                    )
+                    for metric, numerator in (
+                        ("edges_per_claim", "named_claim_dependency_edges"),
+                        ("named_branchpoint_share", "named_claim_branchpoints"),
+                        ("longest_chain_per_claim", "longest_named_claim_chain"),
+                    )
+                },
+            },
+        },
         "name_lexicon": {
             "human": name_lexicon(claims, "h"),
             "ai": name_lexicon(claims, "a"),

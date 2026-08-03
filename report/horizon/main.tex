@@ -47,7 +47,7 @@ between one and two later references; they are also almost threefold less likely
 family and more generically named. Elaboration then
 inverts the reuse story: AI boundaries more often vanish, but surviving AI binders more
 often fan out to multiple term occurrences. This consolidation--composition split distinguishes
-deliberate source retrieval from compiler fan-out. Certificate topology also fails consumer-invariance: Lean versions encode the same
+deliberate source reference from compiler fan-out. Certificate topology also fails consumer-invariance: Lean versions encode the same
 source claim differently, while extensionally equivalent representatives can differ exponentially
 in tree size. An exploratory model finds an information pulse at human claim boundaries,
 attenuated at AI boundaries. The divergence lies not in deductive power or biological kind, but in
@@ -292,8 +292,9 @@ versus .348), or generalized (.103 versus .052); every difference has a source-c
 excluding zero.  The absolute advantage reverses between the first and second exact-name reference,
 and every source group favors humans at two or more.  This \emph{lexical consolidation crossover}
 shows that decomposition---making a boundary---is not consolidation---making it addressable.
-A conservative distinct-consumer-site audit finds no absolute per-token difference (appendix), so
-the crossover identifies repeated textual addressability, not distinct acts of use by a reader.
+A conservative site/DAG audit finds no absolute multi-site supply difference, but at equal node count
+human graphs are denser and more branching; maximum chain length is unresolved (appendix).  Thus the
+crossover identifies repeated textual addressability, not distinct acts of use by a reader.
 
 The important contrast is what happens after introduction (\cref{fig:functions}).  Human claims
 receive 1.35 explicit references on average (source-cluster interval 1.26--1.49), compared with
@@ -380,7 +381,7 @@ cognitive reuse measures.
 
 The inversion holds claim by claim.  Among source-single-use claims, 20.4\% human versus 31.1\% AI
 become multi-occurrence binders; among source-multiple claims, 58.4\% versus 67.0\%.  AI
-disappearance is also higher in both strata.  Retrieval and term fan-out are distinct channels.
+disappearance is also higher in both strata.  Source reference and term fan-out are distinct channels.
 
 Family syntax nevertheless predicts compiled function.  Repeating the one-to-one position match on
 aligned binders (quarter-proof caliper; 245 human and 199 AI proofs), family-minus-instance
@@ -393,9 +394,9 @@ validates the classifier functionally without making occurrence count a general 
 measure.
 
 The three resolutions reveal a \emph{consolidation--composition split}.  The human track more often
-turns intermediate state into a visibly adopted, repeatedly invoked, named, and general interface;
+turns intermediate state into a visibly adopted, repeatedly referenced, named, and general interface;
 the AI track more often leaves its bound fact absent from or amplified within the returned certificate.
-This is a surface--certificate inversion: explicit retrieval is a construction decision, whereas
+This is a surface--certificate inversion: explicit source reference is a construction decision, whereas
 term fan-out is partly an effect of tactics and elaboration.  Aggregate term multi-use does not
 favor humans, and AI families are at least as long-reaching in the pooled source comparison.  The
 present divergence is therefore better localized to consolidation policy---where reusable
@@ -541,7 +542,7 @@ multiply represented.  Kernel sharing and communicative abstraction differ.  Aut
 into many term occurrences without ever identifying a concept for a reader.  Conversely, a
 well-chosen explanatory lemma can deserve a name even when invoked once in the current theorem,
 because its intended reuse lies in another proof or another mind.  Any cognitive account based
-only on the certificate DAG will confuse these cases.  Source names expose deliberate retrieval;
+only on the certificate DAG will confuse these cases.  Source references expose deliberate addressability;
 the term records compiled dependencies.  Human--AI divergence can reverse between these planes.
 
 The local surprisal pulse offers a tentative temporal signature of this selection.  A useful
@@ -667,7 +668,7 @@ intervals for the between-track differences exclude zero.
 
 The supply/selectivity decomposition uses proof-body tokens as a second denominator.  AI-minus-human
 source-cluster intervals, in claims per 100 tokens, are $.304$--$.605$ for adoption at least once,
-$-.179$--$-.132$ for multiple retrieval, $-.514$--$-.368$ for non-placeholder naming, and
+$-.179$--$-.132$ for two-or-more references, $-.514$--$-.368$ for non-placeholder naming, and
 $-.073$--$-.036$ for generalized claims.  The elementary boundary-padding construction explains
 why raw count cannot identify clarity: before any term $p:P$, insert distinct unused declarations
 \code{have junk\_i : True := by trivial}.  This produces $P$ for every finite number of insertions
@@ -684,6 +685,18 @@ $-.049$--$-.018$), but greater AI boundary supply cancels the absolute contrast:
 per 100 tokens (AI-minus-human $-.004$--$.030$), also unresolved in the length match.  This site
 metric undercounts separate unnamed tactic episodes, but prevents two mentions inside one
 construction from masquerading as two consumers.
+
+Those sites also define a source construction DAG: nodes are parser-matched named claims, and an
+edge connects an earlier claim to a later claim whose complete construction references it.  Pooled
+edges per node are .325 human and .296 AI, named-claim branchpoint shares .052/.042, and longest-chain
+length per node .115/.102; all difference intervals narrowly exclude zero.  More decisively, in the
+206 equal-positive-node pairs, edge rates remain .380/.339 ($-.092$--$-.010$) and branchpoint shares
+.088/.075 ($-.030$--$-.003$), while maximum chain length is unresolved.  AI proofs contain more
+nodes and, in absolute terms, more edges per proof, but the node-normalized graph is sparser and does not show
+greater seriality at equal node count.  Restricting to names declared once per proof strengthens the
+edge (.386/.350) and branchpoint (.067/.055) directions; both intervals exclude zero.  Equal node
+count also makes the multiset of later-node opportunities identical within each pair, so the matched
+branching contrast is not an earlier-position advantage.
 
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
 Every source group has lower explicit uses per AI claim, higher AI zero-uptake, and lower AI
@@ -854,28 +867,17 @@ and distant transfer nearly irrelevant.  A different consumer changes $D_c$: an 
 have low distortion for a prover with effective retrieval and high distortion for a reader who
 cannot connect it to the proof idea.
 
-This formulation clarifies three claims.  First, consumer-invariance is the zero-distortion case:
-artifacts in the same response class must be indistinguishable to a statistic that purports to
-measure their function for that consumer.  Second, generality increases the support of uses over
-which a code can pay, while naming can lower retrieval loss without shortening the certificate.
-Third, \cref{eq:apc} is a checked, finite-stream code-length analogue of the same trade-off: library
-size is rate, and residual proofs are downstream distortion measured in certificate cost.  The
-human--AI question is consequently not who compresses, but which future-use distribution and which
-distortion function govern the compression.
+Three claims follow.  Consumer-invariance is the zero-distortion case: a functional statistic must
+identify artifacts in the same response class.  Generality enlarges the support over which a code
+can pay, while naming can lower retrieval loss.  And \cref{eq:apc} is a checked finite-stream
+analogue: library size is rate, residual certificate cost is downstream distortion.  The human--AI
+question is not who compresses, but which future-use distribution and distortion govern it.
 
-\section{A proposed causal benchmark}
-
-A strong test would sample theorem sequences, not independent goals.  Randomize capable agents to a
-compile-first condition or a library condition.  Both receive the same base library, target order,
-Lean version, and inference budget.  The library condition is charged for current proof cost but
-rewarded for reductions in later search, version repair, and blinded reader retrieval.  Public
-declarations must be generated before future targets are revealed to prevent hindsight leakage.
-
-Primary outcomes should include cumulative checked-token or search cost, online regret against a
-hindsight refactoring, survival of generated APIs under version changes, cross-target citations,
-dead local binders, and delayed human comprehension.  A swap condition---humans under disposable
-single-goal incentives and AI under persistent-library incentives---would separate constructor from
-horizon.  The strongest result for the present theory would be a crossover interaction rather than
-a persistent main effect of provenance.
+\paragraph{A proposed causal benchmark.}
+A causal test samples theorem sequences, randomizing agents between compile-first and persistent-library
+objectives with fixed library, target order, Lean version, and budget.  Charge current cost,
+reward later savings, repair, and blinded retrieval, and freeze declarations before future targets.
+Measure cumulative cost, hindsight regret, API survival, citations, dead binders, and delayed
+comprehension.  A human/AI $\times$ objective crossover separates horizon from provenance.
 
 \end{document}

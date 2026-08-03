@@ -112,9 +112,16 @@ Relevant files:
 The strongest new design holds the exact Lean statement fixed in 3,630 validated
 pairs. AI claims are more numerous but receive fewer explicit references, more often
 have zero visible uptake, and draw from a much
-smaller effective name vocabulary. After collapsing equivalent binder and
-explicit-`forall` syntax, local families occur in 5.60% of human claims and 1.91%
-of AI claims; same-theorem presence is human-only in 320 pairs and AI-only in 108.
+smaller effective name vocabulary. Per 100 proof-body tokens, AI supplies more claims referenced
+at least once (1.96 versus 1.52), but humans supply more with two or more exact-name references
+(.470 versus .318); this lexical ordering flips between one and two references and the two-plus
+direction holds in all 12 source groups. It is not a count of reader episodes: after mentions
+inside one downstream construction are collapsed, absolute multi-consumer-site supply is unresolved.
+At exactly equal positive claim count, however, the human source construction DAG has more edges
+per node (.380 versus .339) and more branchpoints (.088 versus .075), while maximum chain length
+is unresolved. After collapsing equivalent binder and
+explicit-`forall` syntax, local families occur in 5.24% of human claims and 1.68%
+of AI claims; same-theorem presence is human-only in 310 pairs and AI-only in 102.
 Within proofs containing both family and instance claims, family claims are more likely to be
 adopted and multiply referenced in both tracks. The association survives one-to-one matching to
 nearby instance claims within the same proof, ruling out the basic explanation that families merely
@@ -122,21 +129,22 @@ occur earlier. The family statistic therefore marks a functional interface form,
 provenance gap lies in selection frequency.
 
 The temporal result has been opportunity-normalized. Conditional on adoption and on a later claim
-being available, both tracks cross at least one boundary about 75% of the time; the raw boundary
+being available, the tracks cross at least one boundary 83.6% and 85.0% of the time; the raw boundary
 count is inflated by the AI track's denser decomposition. Pooled human claims have longer token
-exposure and cross a larger fraction of available later boundaries, but these conditional-duration
-effects do not survive length or equal-claim-count controls. The stable difference is the extensive
-margin—whether an abstraction is taken up—not its lifetime once adopted.
+reach, but the opportunity-normalized fraction crossed is 63.7% versus 62.0%, with a source-cluster
+interval crossing zero. Conditional-duration effects also fail the length and equal-claim-count
+controls. The stable difference is the extensive margin—whether an abstraction is taken up—not its
+lifetime once adopted.
 
 Elaboration narrows the conclusion. Production Lean 4.15 and current Lean encode
 the same source `have` with different core node kinds, so the analysis decodes the
 semantic construct before aligning it. Across all 7,260 production tasks, AI boundaries
-are more often absent from the final term (21.7% versus 9.7%) or multiply represented;
-human boundaries more often map one-to-one (58.2% versus 44.2%). Yet aggregate multi-use
-is nearly equal (32.1% versus 34.1%); conditional on retention, AI multi-use is higher (43.6%
-versus 35.6% human). Within proof sides containing both aligned forms, family
+are more often absent from the final term (21.8% versus 9.8%) or multiply represented;
+human boundaries more often map one-to-one (58.0% versus 44.0%). Yet aggregate multi-use
+is nearly equal (32.2% versus 34.2%); conditional on retention, AI multi-use is higher (43.7%
+versus 35.7% human). Within proof sides containing both aligned forms, family
 binders are less likely than instance binders to disappear in both tracks. Their multi-use uplift
-remains robust for humans (17.8 points) but unresolved for AI (-2.6 points) after matching nearby
+remains robust for humans (17.7 points) but unresolved for AI (-0.3 points) after matching nearby
 binders one-to-one within the same proof. The direct between-track interaction is itself unresolved,
 so this does not establish a provenance difference in family-specific term composition. It does
 show that the family classifier

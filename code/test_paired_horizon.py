@@ -340,17 +340,21 @@ theorem demo : True := by
         body.index("\n  have use2"),
         body.index("\n  exact use1"),
     ]
+    ranges = [
+        (declaration["start"], end, len(body))
+        for declaration, end in zip(declarations, ends)
+    ]
     claims = named_have_claims(
-        source,
-        [
-            (declaration["start"], end, len(body))
-            for declaration, end in zip(declarations, ends)
-        ],
+        source, ranges,
         require_parser_match=True,
     )
     assert claims[0]["explicit_uses"] == 2
     assert claims[0]["distinct_consumer_sites"] == 2
     assert claims[0]["named_claim_consumer_sites"] == 2
+    metrics, _ = side_metrics(source, [], ranges)
+    assert metrics["named_claim_dependency_edges"] == 2
+    assert metrics["named_claim_branchpoints"] == 1
+    assert metrics["longest_named_claim_chain"] == 1
 
     one_consumer = '''
 theorem demo : True := by
@@ -372,6 +376,31 @@ theorem demo : True := by
     assert claims[0]["distinct_consumer_sites"] == 1
 
 
+def test_named_claim_construction_graph_chain_depth() -> None:
+    source = '''
+theorem demo : True := by
+  have c1 : True := by trivial
+  have c2 : True := by exact c1
+  have c3 : True := by exact c2
+  exact c3
+'''
+    body = proof_body(source)
+    declarations = named_have_declarations(body)
+    ends = [
+        body.index("\n  have c2"),
+        body.index("\n  have c3"),
+        body.index("\n  exact c3"),
+    ]
+    ranges = [
+        (declaration["start"], end, len(body))
+        for declaration, end in zip(declarations, ends)
+    ]
+    metrics, _ = side_metrics(source, [], ranges)
+    assert metrics["named_claim_dependency_edges"] == 2
+    assert metrics["named_claim_branchpoints"] == 0
+    assert metrics["longest_named_claim_chain"] == 2
+
+
 if __name__ == "__main__":
     test_comments_and_strings_do_not_count()
     test_constructor_side_shadowed_name_is_not_downstream_use()
@@ -391,4 +420,5 @@ if __name__ == "__main__":
     test_token_supply_is_not_claim_selectivity()
     test_boundary_count_can_be_padded_without_uptake()
     test_distinct_consumer_sites_collapse_tokens_within_one_construction()
+    test_named_claim_construction_graph_chain_depth()
     print("paired_horizon parser tests passed")
