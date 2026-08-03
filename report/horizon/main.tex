@@ -43,7 +43,7 @@ We propose the \emph{amortization horizon}: the range over which a
 constructor expects an abstraction to repay its cost. A proof produces a certificate,
 working memory, and an interface for users. In 3,630 pairs of Lean proofs of
 identical statements, AI scripts create more claims, but their absolute supply advantage reverses
-between one and two later references; they are also almost threefold less likely to state a callable
+between one and two later references; they are also about one-third as likely to state a callable
 family and more generically named. Elaboration then
 inverts the reuse story: AI boundaries more often vanish, but surviving AI binders more
 often fan out to multiple term occurrences. This consolidation--composition split distinguishes
@@ -364,7 +364,7 @@ no robust human advantage after chance and claim-count normalization (appendix),
 semantic naming claim.
 Nor do the proxies collapse into one style score.  Across the 1,816 pairs with claims on both sides,
 Spearman correlations among proof-level human advantages in uptake, reach, family construction, and
-naming range only from .07 to .32.  We therefore keep the coordinates separate.
+naming range only from .04 to .34.  We therefore keep the coordinates separate.
 
 The elaborated term analysis both confirms and corrects the source story.  All 7,260 production-
 snapshot tasks compile; exact-name alignment retains 14,469 of 14,519 human and 25,090 of 25,127 AI
@@ -398,7 +398,7 @@ turns intermediate state into a visibly adopted, repeatedly referenced, named, a
 the AI track more often leaves its bound fact absent from or amplified within the returned certificate.
 This is a surface--certificate inversion: explicit source reference is a construction decision, whereas
 term fan-out is partly an effect of tactics and elaboration.  Aggregate term multi-use does not
-favor humans, and AI families are at least as long-reaching in the pooled source comparison.  The
+favor humans, and AI families are not detectably shorter-reaching in the pooled source comparison.  The
 present divergence is therefore better localized to consolidation policy---where reusable
 compositional structure is made explicit---than to deductive capacity.
 
@@ -570,12 +570,13 @@ Ordinary proof complexity asks for the size of a certificate for one formula in 
 system \citep{cook1979,krajicek1995}.  This leaves library construction outside the objective.  Let
 $\Phi=(\varphi_1,\ldots,\varphi_T)$ be a stream of targets.  Let $L$ be an ordered, acyclic sequence
 of auxiliary declarations: each signature and body must check in the base environment plus earlier
-members of $L$, and $|L|$ charges both.  If $P_t$ checks $\varphi_t$ in that extended environment and
-$|P_t\mid L|$ is its residual certificate size, define
+members of $L$, and $|L|$ charges both.  If $P_t$ checks $\varphi_t$ in that environment plus earlier
+checked target declarations and
+$|P_t\mid L,P_{<t}|$ is its residual certificate size, define
 \begin{equation}
  \LAPC_\lambda(\Phi)=
  \min_{L,P_1,\ldots,P_T}
- \left[\lambda |L|+\sum_{t=1}^T |P_t\mid L|\right],
+ \left[\lambda |L|+\sum_{t=1}^T |P_t\mid L,P_{<t}|\right],
  \label{eq:apc}
 \end{equation}
 with $\lambda\geq 1$.  Thus neither a circular declaration nor an unpriced advice oracle is allowed.
@@ -757,8 +758,8 @@ complete binder-use pairs but changes the profile little.
 
 Paired does not mean independent: 181 structured proof values are token-identical (180 also have
 identical source bodies), and 230 have whitespace-token similarity at least .90 after comments and
-strings are removed.  Excluding all 230 leaves 3,400 pairs and preserves the source results, including
-the lexical supply crossover.  Among the 172 retained equal-node pairs, human edge and branchpoint
+strings are removed.  Excluding all 230 leaves 3,400 pairs and preserves the per-claim uptake
+directions and lexical supply crossover.  Among the 172 retained equal-node pairs, human edge and branchpoint
 advantages survive; chain depth remains unresolved.
 
 The source direction also survives a coarse automation sensitivity.  For each of \code{linarith},

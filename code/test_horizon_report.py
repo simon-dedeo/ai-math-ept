@@ -48,6 +48,9 @@ def main() -> None:
     readme = (ROOT / "README.md").read_text()
     pdf = ROOT / "output/pdf/proofs_for_now_and_proofs_for_later.pdf"
 
+    assert "naming range only from .04 to .34" in tex
+    assert "naming range only from .07 to .32" not in tex
+
     assert source["pairs"] == 3630 and source["source_groups"] == 12
     for fragment in (
         "5.24% of human claims and 1.68%", "human-only in 310 pairs",
