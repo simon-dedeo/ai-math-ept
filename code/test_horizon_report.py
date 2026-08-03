@@ -101,11 +101,14 @@ def main() -> None:
         assert supply[metric]["source_cluster_ci"][1] < 0
     assert supply["all_named"]["source_groups_ai_higher"] == 12
     assert supply["adopted_at_least_once"]["source_groups_ai_higher"] == 11
+    assert supply["all_named"]["leave_one_source_out_range"][0] > 0
+    assert supply["adopted_at_least_once"]["leave_one_source_out_range"][0] > 0
     for metric in (
         "multiply_retrieved", "referenced_at_least_3_times",
         "referenced_at_least_4_times",
     ):
         assert supply[metric]["source_groups_ai_higher"] == 0
+        assert supply[metric]["leave_one_source_out_range"][1] < 0
     matched_supply = source["claim_supply_length_matched"]
     assert matched_supply["pairs"] == 834
     assert matched_supply["reference_survival"]["zero_or_more"][
@@ -127,6 +130,15 @@ def main() -> None:
     assert absolute_multi_site["source_cluster_ci"][0] < 0 < absolute_multi_site[
         "source_cluster_ci"
     ][1]
+    character_supply = source["claim_supply_per_1000_characters"]
+    assert character_supply["all_named"]["source_cluster_ci"][0] > 0
+    assert character_supply["adopted_at_least_once"]["source_cluster_ci"][0] > 0
+    for metric in (
+        "multiply_referenced", "referenced_at_least_3_times",
+        "referenced_at_least_4_times",
+    ):
+        assert character_supply[metric]["source_cluster_ci"][1] < 0
+    assert character_supply["multiple_consumer_sites"]["source_cluster_ci"][0] > 0
     construction = source["construction_graph_audit"]
     for metric in (
         "edges_per_claim", "named_branchpoint_share", "longest_chain_per_claim",
@@ -138,6 +150,10 @@ def main() -> None:
     assert equal_construction["pairs_with_complete_two_sided_parser_alignment"] == 206
     assert equal_construction["edges_per_claim"]["source_cluster_ci"][1] < 0
     assert equal_construction["named_branchpoint_share"]["source_cluster_ci"][1] < 0
+    assert equal_construction["edges_per_claim"]["leave_one_source_out_range"][1] < 0
+    assert equal_construction["named_branchpoint_share"][
+        "leave_one_source_out_range"
+    ][1] < 0
     equal_chain = equal_construction["longest_chain_per_claim"]["source_cluster_ci"]
     assert equal_chain[0] < 0 < equal_chain[1]
     parametric = source["parametric_claim_difference"]
@@ -261,7 +277,22 @@ def main() -> None:
     overlap = source["target_value_overlap_audit"]
     assert overlap["identical_pairs"] == 181
     assert overlap["similarity_at_least_0_9"] == 230
-    assert overlap["sensitivity_excluding_similarity_at_least_0_9"]["pairs"] == 3400
+    overlap_sensitivity = overlap["sensitivity_excluding_similarity_at_least_0_9"]
+    assert overlap_sensitivity["pairs"] == 3400
+    overlap_supply = overlap_sensitivity["claim_supply_per_100_tokens"]
+    assert overlap_supply["all_named"]["source_cluster_ci"][0] > 0
+    assert overlap_supply["adopted_at_least_once"]["source_cluster_ci"][0] > 0
+    assert overlap_supply["multiply_retrieved"]["source_cluster_ci"][1] < 0
+    overlap_sites = overlap_supply["multiple_consumer_sites"]["source_cluster_ci"]
+    assert overlap_sites[0] < 0 < overlap_sites[1]
+    overlap_graph = overlap_sensitivity[
+        "equal_positive_claim_count_construction_graph"
+    ]
+    assert overlap_graph["pairs"] == 172
+    assert overlap_graph["edges_per_claim"]["source_cluster_ci"][1] < 0
+    assert overlap_graph["named_branchpoint_share"]["source_cluster_ci"][1] < 0
+    overlap_chain = overlap_graph["longest_chain_per_claim"]["source_cluster_ci"]
+    assert overlap_chain[0] < 0 < overlap_chain[1]
     rendering_matches = source["certificate_rendering_match_audit"]
     assert rendering_matches["pairs"] == 181
     assert rendering_matches["source_body_also_identical"] == 180

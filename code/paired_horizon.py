@@ -651,6 +651,13 @@ def claim_rate_difference(
     )
     h_rate = float(frame[columns[0]].sum() / max(frame[columns[1]].sum(), 1))
     a_rate = float(frame[columns[2]].sum() / max(frame[columns[3]].sum(), 1))
+    leave_one_out = []
+    for source in frame.source.unique():
+        retained = frame[frame.source.ne(source)]
+        leave_one_out.append(float(
+            retained[columns[2]].sum() / max(retained[columns[3]].sum(), 1)
+            - retained[columns[0]].sum() / max(retained[columns[1]].sum(), 1)
+        ))
     positive = frame[frame[columns[1]].gt(0) & frame[columns[3]].gt(0)]
     h_per_proof = positive[columns[0]] / positive[columns[1]]
     a_per_proof = positive[columns[2]] / positive[columns[3]]
@@ -663,6 +670,7 @@ def claim_rate_difference(
         "ai": a_rate,
         "ai_minus_human": a_rate - h_rate,
         "source_cluster_ci": _ci(differences),
+        "leave_one_source_out_range": [min(leave_one_out), max(leave_one_out)],
         "paired_wilcoxon_p": pvalue,
     }
 
@@ -672,31 +680,45 @@ def token_supply_difference(
     numerator: str,
     n_boot: int,
     rng: np.random.Generator,
+    denominator: str = "tokens",
+    multiplier: float = 100.0,
+    unit: str = "claims per 100 proof-body whitespace tokens",
 ) -> dict[str, Any]:
-    """Compare pooled claim supply per 100 proof-body tokens.
+    """Compare pooled claim supply under a proof-size denominator.
 
     Source-cluster resampling preserves the paired corpus while keeping the
     denominator distinct from the per-claim selectivity estimands above.
     """
     columns = [
-        f"h_{numerator}", "h_tokens",
-        f"a_{numerator}", "a_tokens",
+        f"h_{numerator}", f"h_{denominator}",
+        f"a_{numerator}", f"a_{denominator}",
     ]
     grouped = frame.groupby("source")[columns].sum().to_numpy(float)
-    source_differences = 100 * (
+    source_differences = multiplier * (
         grouped[:, 2] / np.maximum(grouped[:, 3], 1)
         - grouped[:, 0] / np.maximum(grouped[:, 1], 1)
     )
     draws = rng.integers(0, len(grouped), size=(n_boot, len(grouped)))
     sampled = grouped[draws].sum(axis=1)
-    differences = 100 * (
+    differences = multiplier * (
         sampled[:, 2] / np.maximum(sampled[:, 3], 1)
         - sampled[:, 0] / np.maximum(sampled[:, 1], 1)
     )
-    human = float(100 * frame[columns[0]].sum() / max(frame[columns[1]].sum(), 1))
-    ai = float(100 * frame[columns[2]].sum() / max(frame[columns[3]].sum(), 1))
+    human = float(
+        multiplier * frame[columns[0]].sum() / max(frame[columns[1]].sum(), 1)
+    )
+    ai = float(
+        multiplier * frame[columns[2]].sum() / max(frame[columns[3]].sum(), 1)
+    )
+    leave_one_out = []
+    for source in frame.source.unique():
+        retained = frame[frame.source.ne(source)]
+        leave_one_out.append(float(multiplier * (
+            retained[columns[2]].sum() / max(retained[columns[3]].sum(), 1)
+            - retained[columns[0]].sum() / max(retained[columns[1]].sum(), 1)
+        )))
     return {
-        "unit": "claims per 100 proof-body whitespace tokens",
+        "unit": unit,
         "human_numerator": int(frame[columns[0]].sum()),
         "human_denominator": int(frame[columns[1]].sum()),
         "ai_numerator": int(frame[columns[2]].sum()),
@@ -705,6 +727,7 @@ def token_supply_difference(
         "ai": ai,
         "ai_minus_human": ai - human,
         "source_cluster_ci": _ci(differences),
+        "leave_one_source_out_range": [min(leave_one_out), max(leave_one_out)],
         "source_groups_ai_higher": int((source_differences > 0).sum()),
         "source_groups_total": int(len(source_differences)),
         "source_group_difference_range": [
@@ -1423,6 +1446,8 @@ def main() -> None:
     length_supply_rng = np.random.default_rng(args.seed + 992)
     consumer_rng = np.random.default_rng(args.seed + 993)
     construction_rng = np.random.default_rng(args.seed + 994)
+    character_supply_rng = np.random.default_rng(args.seed + 996)
+    overlap_extension_rng = np.random.default_rng(args.seed + 997)
     summary: dict[str, Any] = {
         "seed": args.seed,
         "bootstraps": args.boot,
@@ -1496,6 +1521,21 @@ def main() -> None:
                 ("multiply_retrieved", "multi_uptake_haves"),
                 ("descriptively_named", "descriptively_named_haves"),
                 ("generalized", "generalized_haves"),
+                ("referenced_at_least_3_times", "use_ge_3_haves"),
+                ("referenced_at_least_4_times", "use_ge_4_haves"),
+                ("multiple_consumer_sites", "multi_consumer_haves"),
+            )
+        },
+        "claim_supply_per_1000_characters": {
+            metric: token_supply_difference(
+                proofs, numerator, args.boot, character_supply_rng,
+                denominator="chars", multiplier=1000.0,
+                unit="claims per 1,000 proof-body characters",
+            )
+            for metric, numerator in (
+                ("all_named", "named_haves"),
+                ("adopted_at_least_once", "adopted_haves"),
+                ("multiply_referenced", "multi_uptake_haves"),
                 ("referenced_at_least_3_times", "use_ge_3_haves"),
                 ("referenced_at_least_4_times", "use_ge_4_haves"),
                 ("multiple_consumer_sites", "multi_consumer_haves"),
@@ -1747,6 +1787,10 @@ def main() -> None:
         }
 
     low_overlap = proofs[proofs.target_value_token_similarity.lt(0.9)]
+    low_overlap_equal_claim_count = low_overlap[
+        low_overlap.h_named_haves.eq(low_overlap.a_named_haves)
+        & low_overlap.h_named_haves.gt(0)
+    ]
     summary["target_value_overlap_audit"] = {
         "similarity": "SequenceMatcher ratio over comment/string-stripped structured proof-value whitespace tokens",
         "identical_pairs": int(proofs.identical_target_value.sum()),
@@ -1763,6 +1807,31 @@ def main() -> None:
                     ("long_horizon_share", "long_horizon_haves"),
                     ("placeholder_name_share", "placeholder_haves"),
                 )
+            },
+            "claim_supply_per_100_tokens": {
+                metric: token_supply_difference(
+                    low_overlap, numerator, args.boot, overlap_extension_rng
+                )
+                for metric, numerator in (
+                    ("all_named", "named_haves"),
+                    ("adopted_at_least_once", "adopted_haves"),
+                    ("multiply_retrieved", "multi_uptake_haves"),
+                    ("multiple_consumer_sites", "multi_consumer_haves"),
+                )
+            },
+            "equal_positive_claim_count_construction_graph": {
+                "pairs": int(len(low_overlap_equal_claim_count)),
+                **{
+                    metric: claim_rate_difference(
+                        low_overlap_equal_claim_count, numerator,
+                        args.boot, overlap_extension_rng,
+                    )
+                    for metric, numerator in (
+                        ("edges_per_claim", "named_claim_dependency_edges"),
+                        ("named_branchpoint_share", "named_claim_branchpoints"),
+                        ("longest_chain_per_claim", "longest_named_claim_chain"),
+                    )
+                },
             },
         },
     }

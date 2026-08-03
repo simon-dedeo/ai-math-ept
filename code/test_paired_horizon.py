@@ -298,10 +298,12 @@ def test_token_supply_is_not_claim_selectivity() -> None:
         {
             "source": "s1", "h_adopted_haves": 1, "h_tokens": 100,
             "a_adopted_haves": 3, "a_tokens": 200,
+            "h_chars": 1000, "a_chars": 1500,
         },
         {
             "source": "s2", "h_adopted_haves": 1, "h_tokens": 100,
             "a_adopted_haves": 3, "a_tokens": 200,
+            "h_chars": 1000, "a_chars": 1500,
         },
     ])
     result = token_supply_difference(
@@ -312,6 +314,13 @@ def test_token_supply_is_not_claim_selectivity() -> None:
     assert result["ai_minus_human"] == 0.5
     assert result["source_groups_ai_higher"] == 2
     assert result["source_groups_total"] == 2
+    character_result = token_supply_difference(
+        frame, "adopted_haves", 100, np.random.default_rng(4),
+        denominator="chars", multiplier=1000,
+        unit="claims per 1,000 characters",
+    )
+    assert character_result["human"] == 1.0
+    assert character_result["ai"] == 2.0
 
 
 def test_boundary_count_can_be_padded_without_uptake() -> None:

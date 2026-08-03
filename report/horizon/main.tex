@@ -292,7 +292,7 @@ versus .348), or generalized (.103 versus .052); every difference has a source-c
 excluding zero.  The absolute advantage reverses between the first and second exact-name reference,
 and every source group favors humans at two or more.  This \emph{lexical consolidation crossover}
 shows that decomposition---making a boundary---is not consolidation---making it addressable.
-A conservative site/DAG audit finds no absolute multi-site supply difference, but at equal node count
+A conservative site/DAG audit makes absolute multi-site supply denominator-dependent, but at equal node count
 human graphs are denser and more branching; maximum chain length is unresolved (appendix).  Thus the
 crossover identifies repeated textual addressability, not distinct acts of use by a reader.
 
@@ -676,15 +676,16 @@ while raising source boundary count arbitrarily; fate and construction cost, unl
 the padding.  At minimum reference counts three and four, human/AI supply is .221/.109 and
 .124/.052; all 12 source groups favor humans at thresholds two through four.  Among the 834
 length-matched pairs, the AI advantage remains at zero references (interval $.372$--$.694$), is
-unresolved at one ($-.004$--$.311$), and reverses at two ($-.151$--$-.004$), three, and four.
+unresolved at one ($-.004$--$.311$), and reverses at two ($-.151$--$-.004$) through four.
+Character normalization preserves every reference-count direction.
 
 For a stricter episode proxy, each name token is assigned to the innermost later named-claim
 construction containing it; all remaining in-scope tokens form one conservative residual site.
-Human claims reach multiple such sites more often (9.13\%/6.26\%; difference interval
-$-.049$--$-.018$), but greater AI boundary supply cancels the absolute contrast: .179/.194 claims
-per 100 tokens (AI-minus-human $-.004$--$.030$), also unresolved in the length match.  This site
-metric undercounts separate unnamed tactic episodes, but prevents two mentions inside one
-construction from masquerading as two consumers.
+Human claims reach multiple such sites more often (9.13\%/6.26\%; interval $-.049$--$-.018$).
+Absolute supply is .179/.194 per 100 whitespace tokens ($-.004$--$.030$), also unresolved in the
+length match, but .375/.440 per 1,000 characters favors AI ($.023$--$.093$).  We therefore make no
+absolute multi-site provenance claim.  The site metric undercounts unnamed tactic episodes, but
+prevents two mentions inside one construction from masquerading as two consumers.
 
 Those sites also define a source construction DAG: nodes are parser-matched named claims, and an
 edge connects an earlier claim to a later claim whose complete construction references it.  Pooled
@@ -695,8 +696,8 @@ length per node .115/.102; all difference intervals narrowly exclude zero.  More
 nodes and, in absolute terms, more edges per proof, but the node-normalized graph is sparser and does not show
 greater seriality at equal node count.  Restricting to names declared once per proof strengthens the
 edge (.386/.350) and branchpoint (.067/.055) directions; both intervals exclude zero.  Equal node
-count also makes the multiset of later-node opportunities identical within each pair, so the matched
-branching contrast is not an earlier-position advantage.
+count makes later-node opportunities identical within each pair, and both matched directions survive
+every leave-one-source deletion; the branching contrast is not an earlier-position or one-source effect.
 
 Source intervals resample 12 source groups with replacement and recompute pooled claim ratios.
 Every source group has lower explicit uses per AI claim, higher AI zero-uptake, and lower AI
@@ -754,12 +755,11 @@ uses per claim are 1.33/0.80 versus 1.35/0.82; and zero-uptake shares are 20.8\%
 22.2\%/36.9\%.  All 12 source groups remain represented.  Current-version attrition reduces this to 298
 complete binder-use pairs but changes the profile little.
 
-Paired does not mean independent: 181 structured proof values are token-identical and 230 have
-whitespace-token similarity at least .90 after comments and strings are removed.  These pairs
-attenuate rather than create the result.  Of the 181 exact value matches, 180 also have identical
-source bodies, so they are duplicate mass rather than a source/certificate natural experiment.
-Excluding all 230 leaves 3,400 pairs; explicit uses per
-claim are 1.35/0.81, zero-uptake shares 22.2\%/37.3\%, and placeholder shares 59.0\%/89.5\%.
+Paired does not mean independent: 181 structured proof values are token-identical (180 also have
+identical source bodies), and 230 have whitespace-token similarity at least .90 after comments and
+strings are removed.  Excluding all 230 leaves 3,400 pairs and preserves the source results, including
+the lexical supply crossover.  Among the 172 retained equal-node pairs, human edge and branchpoint
+advantages survive; chain depth remains unresolved.
 
 The source direction also survives a coarse automation sensitivity.  For each of \code{linarith},
 \code{nlinarith}, \code{norm\_num}, \code{omega}, \code{ring}, and \code{simp}, we separately retain

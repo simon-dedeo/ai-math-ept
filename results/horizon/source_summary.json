@@ -514,6 +514,10 @@
         0.9857013515884131,
         1.342430324480458
       ],
+      "leave_one_source_out_range": [
+        1.0872653188106003,
+        1.2082643550639895
+      ],
       "source_groups_ai_higher": 12,
       "source_groups_total": 12,
       "source_group_difference_range": [
@@ -533,6 +537,10 @@
       "source_cluster_ci": [
         0.3044256254126838,
         0.6049688550493182
+      ],
+      "leave_one_source_out_range": [
+        0.3800535108205173,
+        0.4954277145769971
       ],
       "source_groups_ai_higher": 11,
       "source_groups_total": 12,
@@ -554,6 +562,10 @@
         -0.17915511464648598,
         -0.13190374891566486
       ],
+      "leave_one_source_out_range": [
+        -0.16263755743025649,
+        -0.1458351205817029
+      ],
       "source_groups_ai_higher": 0,
       "source_groups_total": 12,
       "source_group_difference_range": [
@@ -573,6 +585,10 @@
       "source_cluster_ci": [
         -0.5144919079299208,
         -0.3675643335946503
+      ],
+      "leave_one_source_out_range": [
+        -0.4740734125819544,
+        -0.4372263495241479
       ],
       "source_groups_ai_higher": 1,
       "source_groups_total": 12,
@@ -594,6 +610,10 @@
         -0.07340446610966468,
         -0.03557263504328042
       ],
+      "leave_one_source_out_range": [
+        -0.059461964602588686,
+        -0.04386734093457578
+      ],
       "source_groups_ai_higher": 1,
       "source_groups_total": 12,
       "source_group_difference_range": [
@@ -613,6 +633,10 @@
       "source_cluster_ci": [
         -0.13181834769726944,
         -0.09483136204532368
+      ],
+      "leave_one_source_out_range": [
+        -0.11985743637605265,
+        -0.10753381620042814
       ],
       "source_groups_ai_higher": 0,
       "source_groups_total": 12,
@@ -634,6 +658,10 @@
         -0.09120029067939721,
         -0.05847921687747824
       ],
+      "leave_one_source_out_range": [
+        -0.08020791828352504,
+        -0.06632021162016756
+      ],
       "source_groups_ai_higher": 0,
       "source_groups_total": 12,
       "source_group_difference_range": [
@@ -654,11 +682,161 @@
         -0.004328104001464084,
         0.029641576307467093
       ],
+      "leave_one_source_out_range": [
+        0.009977598187142257,
+        0.020131596397468164
+      ],
       "source_groups_ai_higher": 8,
       "source_groups_total": 12,
       "source_group_difference_range": [
         -0.04170062727563357,
         0.07398797123934668
+      ]
+    }
+  },
+  "claim_supply_per_1000_characters": {
+    "all_named": {
+      "unit": "claims per 1,000 proof-body characters",
+      "human_numerator": 14519,
+      "human_denominator": 3531682,
+      "ai_numerator": 25127,
+      "ai_denominator": 3570275,
+      "human": 4.111072287935324,
+      "ai": 7.037833220130102,
+      "ai_minus_human": 2.926760932194778,
+      "source_cluster_ci": [
+        2.5786198202374364,
+        3.3038778783621803
+      ],
+      "leave_one_source_out_range": [
+        2.786232457575329,
+        3.026852424388543
+      ],
+      "source_groups_ai_higher": 12,
+      "source_groups_total": 12,
+      "source_group_difference_range": [
+        0.6309880500882554,
+        4.16239383412227
+      ]
+    },
+    "adopted_at_least_once": {
+      "unit": "claims per 1,000 proof-body characters",
+      "human_numerator": 11301,
+      "human_denominator": 3531682,
+      "ai_numerator": 15845,
+      "ai_denominator": 3570275,
+      "human": 3.1998917229807216,
+      "ai": 4.438033484815596,
+      "ai_minus_human": 1.238141761834874,
+      "source_cluster_ci": [
+        0.9422691370375016,
+        1.613314597610813
+      ],
+      "leave_one_source_out_range": [
+        1.1086259070852436,
+        1.3584192491633384
+      ],
+      "source_groups_ai_higher": 11,
+      "source_groups_total": 12,
+      "source_group_difference_range": [
+        -0.6701659801276699,
+        2.458487875683114
+      ]
+    },
+    "multiply_referenced": {
+      "unit": "claims per 1,000 proof-body characters",
+      "human_numerator": 3486,
+      "human_denominator": 3531682,
+      "ai_numerator": 2576,
+      "ai_denominator": 3570275,
+      "human": 0.9870650868339789,
+      "ai": 0.7215130487147349,
+      "ai_minus_human": -0.265552038119244,
+      "source_cluster_ci": [
+        -0.31951169326412193,
+        -0.22935238606356875
+      ],
+      "leave_one_source_out_range": [
+        -0.29211316094867074,
+        -0.2560451234379903
+      ],
+      "source_groups_ai_higher": 0,
+      "source_groups_total": 12,
+      "source_group_difference_range": [
+        -0.6613339851919686,
+        -0.05728683642784271
+      ]
+    },
+    "referenced_at_least_3_times": {
+      "unit": "claims per 1,000 proof-body characters",
+      "human_numerator": 1638,
+      "human_denominator": 3531682,
+      "ai_numerator": 884,
+      "ai_denominator": 3570275,
+      "human": 0.4638016673075322,
+      "ai": 0.24759997479185777,
+      "ai_minus_human": -0.21620169251567442,
+      "source_cluster_ci": [
+        -0.25803181475439196,
+        -0.18290294082245723
+      ],
+      "leave_one_source_out_range": [
+        -0.2358791605367483,
+        -0.20807967649852177
+      ],
+      "source_groups_ai_higher": 0,
+      "source_groups_total": 12,
+      "source_group_difference_range": [
+        -0.4375888852423148,
+        -0.03233226309046227
+      ]
+    },
+    "referenced_at_least_4_times": {
+      "unit": "claims per 1,000 proof-body characters",
+      "human_numerator": 916,
+      "human_denominator": 3531682,
+      "ai_numerator": 417,
+      "ai_denominator": 3570275,
+      "human": 0.2593665001548837,
+      "ai": 0.11679772566538991,
+      "ai_minus_human": -0.1425687744894938,
+      "source_cluster_ci": [
+        -0.18464158342556658,
+        -0.11398979079058055
+      ],
+      "leave_one_source_out_range": [
+        -0.16196136920801774,
+        -0.13114831283699452
+      ],
+      "source_groups_ai_higher": 0,
+      "source_groups_total": 12,
+      "source_group_difference_range": [
+        -0.24233556324304148,
+        -0.012037225502371136
+      ]
+    },
+    "multiple_consumer_sites": {
+      "unit": "claims per 1,000 proof-body characters",
+      "human_numerator": 1326,
+      "human_denominator": 3531682,
+      "ai_numerator": 1572,
+      "ai_denominator": 3570275,
+      "human": 0.375458492582288,
+      "ai": 0.44030221761629007,
+      "ai_minus_human": 0.0648437250340021,
+      "source_cluster_ci": [
+        0.023180886567413694,
+        0.09336481659396827
+      ],
+      "leave_one_source_out_range": [
+        0.05354730145389216,
+        0.07256778636706283
+      ],
+      "source_groups_ai_higher": 9,
+      "source_groups_total": 12,
+      "source_group_difference_range": [
+        -0.07783861057465355,
+        0.18635740513284638
       ]
     }
   },
@@ -678,6 +856,10 @@
         "source_cluster_ci": [
           0.3719864022178814,
           0.693937774407385
+        ],
+        "leave_one_source_out_range": [
+          0.48513275808168693,
+          0.561567611843591
         ],
         "source_groups_ai_higher": 11,
         "source_groups_total": 12,
@@ -699,6 +881,10 @@
           -0.0039914004866973656,
           0.31045107963246893
         ],
+        "leave_one_source_out_range": [
+          0.09481083408926332,
+          0.19311726803359405
+        ],
         "source_groups_ai_higher": 8,
         "source_groups_total": 12,
         "source_group_difference_range": [
@@ -718,6 +904,10 @@
         "source_cluster_ci": [
           -0.15102142150571943,
           -0.0035049839891604334
+        ],
+        "leave_one_source_out_range": [
+          -0.0961154695487664,
+          -0.03379092697521138
         ],
         "source_groups_ai_higher": 4,
         "source_groups_total": 12,
@@ -739,6 +929,10 @@
           -0.14371965005560586,
           -0.029214086017448175
         ],
+        "leave_one_source_out_range": [
+          -0.09154819599576673,
+          -0.04501794586883848
+        ],
         "source_groups_ai_higher": 1,
         "source_groups_total": 12,
         "source_group_difference_range": [
@@ -759,6 +953,10 @@
           -0.10412675487996942,
           -0.011175731463918218
         ],
+        "leave_one_source_out_range": [
+          -0.06316598661430382,
+          -0.023896351777006775
+        ],
         "source_groups_ai_higher": 2,
         "source_groups_total": 12,
         "source_group_difference_range": [
@@ -778,6 +976,10 @@
         "source_cluster_ci": [
           -0.03630033576506462,
           0.038256022670788106
+        ],
+        "leave_one_source_out_range": [
+          -0.011253029868558148,
+          0.016753611012706743
         ],
         "source_groups_ai_higher": 3,
         "source_groups_total": 12,
@@ -801,6 +1003,10 @@
       -0.04930626914599006,
       -0.018499567800453847
     ],
+    "leave_one_source_out_range": [
+      -0.035011385329019845,
+      -0.023112309728491952
+    ],
     "paired_wilcoxon_p": 0.00044680043064290937
   },
   "construction_graph_audit": {
@@ -814,6 +1020,10 @@
         -0.05518346016555457,
         -0.00012231082539656881
       ],
+      "leave_one_source_out_range": [
+        -0.036926427323550615,
+        -0.022012947911819625
+      ],
       "paired_wilcoxon_p": 3.756283737183639e-06
     },
     "named_branchpoint_share": {
@@ -824,6 +1034,10 @@
         -0.02087513632529686,
         -0.003379482430511914
       ],
+      "leave_one_source_out_range": [
+        -0.011955068710730175,
+        -0.006557618102691835
+      ],
       "paired_wilcoxon_p": 0.20979165517958465
     },
     "longest_chain_per_claim": {
@@ -833,6 +1047,10 @@
       "source_cluster_ci": [
         -0.022620697042336883,
         -0.0024842864534195454
+      ],
+      "leave_one_source_out_range": [
+        -0.015330152631231914,
+        -0.010057841046457155
       ],
       "paired_wilcoxon_p": 0.2323836588737379
     },
@@ -861,6 +1079,10 @@
           -0.09185595482802365,
           -0.009791622400517118
         ],
+        "leave_one_source_out_range": [
+          -0.05943536404160471,
+          -0.03112449799196787
+        ],
         "paired_wilcoxon_p": 0.05144033047328615
       },
       "named_branchpoint_share": {
@@ -871,6 +1093,10 @@
           -0.030211687858968824,
           -0.0032024979983987165
         ],
+        "leave_one_source_out_range": [
+          -0.020802377414561674,
+          -0.010040160642570281
+        ],
         "paired_wilcoxon_p": 0.03245949893954472
       },
       "longest_chain_per_claim": {
@@ -880,6 +1106,10 @@
         "source_cluster_ci": [
           -0.04460614946471938,
           0.008748958587813748
+        ],
+        "leave_one_source_out_range": [
+          -0.0237741456166419,
+          0.0
         ],
         "paired_wilcoxon_p": 0.32019435672715924
       }
@@ -1788,6 +2018,10 @@
           -0.4107197971781306,
           -0.15680027803521768
         ],
+        "leave_one_source_out_range": [
+          -0.3150074294205052,
+          -0.22107438016528924
+        ],
         "paired_wilcoxon_p": 1.5157478488640218e-07
       },
       "zero_uptake_share": {
@@ -1798,6 +2032,10 @@
           0.05293186019610598,
           0.10892166823743142
         ],
+        "leave_one_source_out_range": [
+          0.07334710743801653,
+          0.0856299212598425
+        ],
         "paired_wilcoxon_p": 0.001044132784370881
       },
       "generalized_claim_share": {
@@ -1807,6 +2045,10 @@
         "source_cluster_ci": [
           -0.039999999999999994,
           -0.002285087822209316
+        ],
+        "leave_one_source_out_range": [
+          -0.031203566121842496,
+          -0.01224944320712695
         ],
         "paired_wilcoxon_p": 0.003407062645562238
       }
@@ -1822,6 +2064,10 @@
           -0.5119421389166513,
           -0.2524717372163264
         ],
+        "leave_one_source_out_range": [
+          -0.43580537070390424,
+          -0.3097551625518391
+        ],
         "paired_wilcoxon_p": 9.520850221067425e-15
       },
       "zero_uptake_share": {
@@ -1832,6 +2078,10 @@
           0.058694229717742505,
           0.1557003261396927
         ],
+        "leave_one_source_out_range": [
+          0.0826518816858395,
+          0.1266952043931116
+        ],
         "paired_wilcoxon_p": 1.0719739954698814e-06
       },
       "generalized_claim_share": {
@@ -1841,6 +2091,10 @@
         "source_cluster_ci": [
           -0.04043631113109284,
           -0.010901939323490118
+        ],
+        "leave_one_source_out_range": [
+          -0.030472151017812754,
+          -0.016601854531119405
         ],
         "paired_wilcoxon_p": 0.0003289569398881786
       }
@@ -1858,6 +2112,10 @@
           -0.5050989705708138,
           -0.17323804517594854
         ],
+        "leave_one_source_out_range": [
+          -0.37147883570518836,
+          -0.23143862448140773
+        ],
         "paired_wilcoxon_p": 1.0836900462747568e-10
       },
       "zero_uptake_share": {
@@ -1867,6 +2125,10 @@
         "source_cluster_ci": [
           0.07899335775934277,
           0.12187999481778222
+        ],
+        "leave_one_source_out_range": [
+          0.09137190995555666,
+          0.10296703617753264
         ],
         "paired_wilcoxon_p": 4.468343699819743e-09
       },
@@ -1878,6 +2140,10 @@
           -0.09831377008048814,
           -0.030373265918785457
         ],
+        "leave_one_source_out_range": [
+          -0.0688689398467684,
+          -0.050140256027243424
+        ],
         "paired_wilcoxon_p": 0.008079359558925457
       },
       "generalized_claim_share": {
@@ -1887,6 +2153,10 @@
         "source_cluster_ci": [
           -0.03532742341207955,
           -0.00466141523569556
+        ],
+        "leave_one_source_out_range": [
+          -0.020909645789131657,
+          -0.01021605225797165
         ],
         "paired_wilcoxon_p": 9.585821074310251e-05
       }
@@ -1902,6 +2172,10 @@
           -0.4828214709434207,
           -0.10650862492224451
         ],
+        "leave_one_source_out_range": [
+          -0.38974382226252546,
+          -0.20779010633379558
+        ],
         "paired_wilcoxon_p": 4.4229963129203846e-10
       },
       "zero_uptake_share": {
@@ -1911,6 +2185,10 @@
         "source_cluster_ci": [
           0.06306240818271437,
           0.1221993151566955
+        ],
+        "leave_one_source_out_range": [
+          0.08257493901284346,
+          0.09798004987531175
         ],
         "paired_wilcoxon_p": 4.355116763598122e-09
       },
@@ -1922,6 +2200,10 @@
           -0.10506521419196786,
           -0.025359708522831446
         ],
+        "leave_one_source_out_range": [
+          -0.07593742915438673,
+          -0.04857967158436122
+        ],
         "paired_wilcoxon_p": 0.027838330703973437
       },
       "generalized_claim_share": {
@@ -1931,6 +2213,10 @@
         "source_cluster_ci": [
           -0.036884482865948406,
           -0.005439638650818041
+        ],
+        "leave_one_source_out_range": [
+          -0.029245069145318523,
+          -0.013757108879345399
         ],
         "paired_wilcoxon_p": 0.0019289041891802593
       }
@@ -2038,6 +2324,10 @@
         -0.6474653318173308,
         -0.45093275485669776
       ],
+      "leave_one_source_out_range": [
+        -0.5804428392921843,
+        -0.5042414180789195
+      ],
       "paired_wilcoxon_p": 3.3703248302175394e-111
     },
     "zero_uptake_share": {
@@ -2047,6 +2337,10 @@
       "source_cluster_ci": [
         0.12520692783048976,
         0.18289880262117655
+      ],
+      "leave_one_source_out_range": [
+        0.13837585941488134,
+        0.15672906278291862
       ],
       "paired_wilcoxon_p": 1.1937709275141112e-69
     },
@@ -2058,6 +2352,10 @@
         -0.18221755856278496,
         -0.10923766279049571
       ],
+      "leave_one_source_out_range": [
+        -0.15524815207499854,
+        -0.12677193077222548
+      ],
       "paired_wilcoxon_p": 3.558200904193505e-90
     },
     "long_horizon_share": {
@@ -2067,6 +2365,10 @@
       "source_cluster_ci": [
         -0.09474472838230685,
         -0.05062594760914913
+      ],
+      "leave_one_source_out_range": [
+        -0.07315366151966102,
+        -0.06008282509893337
       ],
       "paired_wilcoxon_p": 0.13495600000248814
     }
@@ -2079,6 +2381,10 @@
       -0.04020485058638358,
       -0.017699244130836657
     ],
+    "leave_one_source_out_range": [
+      -0.029258571341683408,
+      -0.02132970181329668
+    ],
     "paired_wilcoxon_p": 2.092955682994382e-31
   },
   "universal_claim_difference": {
@@ -2088,6 +2394,10 @@
     "source_cluster_ci": [
       -0.018196072177199762,
       -0.005830620139845734
+    ],
+    "leave_one_source_out_range": [
+      -0.013459299461738308,
+      -0.008641257102401594
     ],
     "paired_wilcoxon_p": 1.1065217574493113e-06
   },
@@ -2099,6 +2409,10 @@
       -0.05489203311175619,
       -0.024332021809446866
     ],
+    "leave_one_source_out_range": [
+      -0.04244827494728039,
+      -0.030992583098422566
+    ],
     "paired_wilcoxon_p": 2.5098091645784095e-38
   },
   "binder_groups_per_claim_difference": {
@@ -2108,6 +2422,10 @@
     "source_cluster_ci": [
       -0.07361806248833823,
       -0.03260055047924582
+    ],
+    "leave_one_source_out_range": [
+      -0.054527359946571353,
+      -0.040018706994543976
     ],
     "paired_wilcoxon_p": 2.022993076418434e-31
   },
@@ -2139,6 +2457,10 @@
           -0.05112129522616511,
           -0.024111485129646167
         ],
+        "leave_one_source_out_range": [
+          -0.03991702916434099,
+          -0.03035503907389839
+        ],
         "paired_wilcoxon_p": 1.695881937775246e-34
       }
     },
@@ -2152,6 +2474,10 @@
         "source_cluster_ci": [
           -0.051359583921625,
           -0.02393961299905946
+        ],
+        "leave_one_source_out_range": [
+          -0.039570608643875,
+          -0.03012895907131286
         ],
         "paired_wilcoxon_p": 2.7141630436421224e-36
       }
@@ -2167,6 +2493,10 @@
           -0.054890114849304374,
           -0.020565376113280825
         ],
+        "leave_one_source_out_range": [
+          -0.04110793439585613,
+          -0.02855454396334343
+        ],
         "paired_wilcoxon_p": 9.973986643246555e-09
       }
     },
@@ -2180,6 +2510,10 @@
         "source_cluster_ci": [
           -0.05468705847012842,
           -0.02377244194797705
+        ],
+        "leave_one_source_out_range": [
+          -0.04254397267489042,
+          -0.030512119558707442
         ],
         "paired_wilcoxon_p": 3.57091518671968e-37
       }
@@ -2200,6 +2534,10 @@
           -0.6585683490955201,
           -0.4673072233199265
         ],
+        "leave_one_source_out_range": [
+          -0.5939602507085422,
+          -0.5176787199316544
+        ],
         "paired_wilcoxon_p": 1.799616863338401e-111
       },
       "zero_uptake_share": {
@@ -2209,6 +2547,10 @@
         "source_cluster_ci": [
           0.12991465243112463,
           0.18704543575930518
+        ],
+        "leave_one_source_out_range": [
+          0.14244410892220283,
+          0.1612409120239416
         ],
         "paired_wilcoxon_p": 6.297844091986466e-70
       },
@@ -2220,6 +2562,10 @@
           -0.18558514293926884,
           -0.11236598150212172
         ],
+        "leave_one_source_out_range": [
+          -0.1584276028325003,
+          -0.1300977181837004
+        ],
         "paired_wilcoxon_p": 4.811870064688303e-91
       },
       "long_horizon_share": {
@@ -2229,6 +2575,10 @@
         "source_cluster_ci": [
           -0.09564494526373031,
           -0.05198631762509308
+        ],
+        "leave_one_source_out_range": [
+          -0.07443370505728136,
+          -0.06160484941702776
         ],
         "paired_wilcoxon_p": 0.12337997116796465
       },
@@ -2240,7 +2590,154 @@
           0.24913409902601846,
           0.38128124868013563
         ],
+        "leave_one_source_out_range": [
+          0.28362042192897374,
+          0.3220310757326703
+        ],
         "paired_wilcoxon_p": 2.195202320401693e-129
+      },
+      "claim_supply_per_100_tokens": {
+        "all_named": {
+          "unit": "claims per 100 proof-body whitespace tokens",
+          "human_numerator": 14005,
+          "human_denominator": 718019,
+          "ai_numerator": 24611,
+          "ai_denominator": 785937,
+          "human": 1.9505054880163337,
+          "ai": 3.131421475258195,
+          "ai_minus_human": 1.1809159872418613,
+          "source_cluster_ci": [
+            1.0113146769877024,
+            1.3993295228496623
+          ],
+          "leave_one_source_out_range": [
+            1.1155589696413484,
+            1.2472270623667858
+          ],
+          "source_groups_ai_higher": 12,
+          "source_groups_total": 12,
+          "source_group_difference_range": [
+            0.25870792359039796,
+            1.8294646906428562
+          ]
+        },
+        "adopted_at_least_once": {
+          "unit": "claims per 100 proof-body whitespace tokens",
+          "human_numerator": 10897,
+          "human_denominator": 718019,
+          "ai_numerator": 15439,
+          "ai_denominator": 785937,
+          "human": 1.5176478616861113,
+          "ai": 1.964406816322428,
+          "ai_minus_human": 0.44675895463631665,
+          "source_cluster_ci": [
+            0.31350552057450926,
+            0.6347122715164427
+          ],
+          "leave_one_source_out_range": [
+            0.3902221770983854,
+            0.5112021780949563
+          ],
+          "source_groups_ai_higher": 11,
+          "source_groups_total": 12,
+          "source_group_difference_range": [
+            -0.3036983962646206,
+            1.032700552766638
+          ]
+        },
+        "multiply_retrieved": {
+          "unit": "claims per 100 proof-body whitespace tokens",
+          "human_numerator": 3348,
+          "human_denominator": 718019,
+          "ai_numerator": 2439,
+          "ai_denominator": 785937,
+          "human": 0.4662829256607416,
+          "ai": 0.3103302173074941,
+          "ai_minus_human": -0.15595270835324748,
+          "source_cluster_ci": [
+            -0.18600404152561467,
+            -0.13537102693746283
+          ],
+          "leave_one_source_out_range": [
+            -0.1677469311231744,
+            -0.14951670285174717
+          ],
+          "source_groups_ai_higher": 0,
+          "source_groups_total": 12,
+          "source_group_difference_range": [
+            -0.30950751069573357,
+            -0.07138160000579488
+          ]
+        },
+        "multiple_consumer_sites": {
+          "unit": "claims per 100 proof-body whitespace tokens",
+          "human_numerator": 1240,
+          "human_denominator": 718019,
+          "ai_numerator": 1488,
+          "ai_denominator": 785937,
+          "human": 0.17269737987434872,
+          "ai": 0.18932815225647856,
+          "ai_minus_human": 0.016630772382129844,
+          "source_cluster_ci": [
+            -0.0030396436555009828,
+            0.030632924955533027
+          ],
+          "leave_one_source_out_range": [
+            0.011471703301302469,
+            0.021025373403079306
+          ],
+          "source_groups_ai_higher": 8,
+          "source_groups_total": 12,
+          "source_group_difference_range": [
+            -0.04255389722633584,
+            0.07662399788607914
+          ]
+        }
+      },
+      "equal_positive_claim_count_construction_graph": {
+        "pairs": 172,
+        "edges_per_claim": {
+          "human": 0.2691751085383502,
+          "ai": 0.21128798842257598,
+          "ai_minus_human": -0.05788712011577421,
+          "source_cluster_ci": [
+            -0.13433080499143626,
+            -0.008264273258018049
+          ],
+          "leave_one_source_out_range": [
+            -0.0838574423480084,
+            -0.040584415584415584
+          ],
+          "paired_wilcoxon_p": 0.06826306038796162
+        },
+        "named_branchpoint_share": {
+          "human": 0.04486251808972504,
+          "ai": 0.024602026049204053,
+          "ai_minus_human": -0.020260492040520984,
+          "source_cluster_ci": [
+            -0.04106776180698152,
+            -0.005037466931635512
+          ],
+          "leave_one_source_out_range": [
+            -0.029350104821802933,
+            -0.015772870662460567
+          ],
+          "paired_wilcoxon_p": 0.03245949893954472
+        },
+        "longest_chain_per_claim": {
+          "human": 0.12156295224312591,
+          "ai": 0.10564399421128799,
+          "ai_minus_human": -0.015918958031837918,
+          "source_cluster_ci": [
+            -0.06896551724137931,
+            0.014823442301374093
+          ],
+          "leave_one_source_out_range": [
+            -0.03354297693920334,
+            0.001623376623376624
+          ],
+          "paired_wilcoxon_p": 0.37384964929109155
+        }
       }
     }
   },

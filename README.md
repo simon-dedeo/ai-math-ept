@@ -40,7 +40,8 @@ non-placeholder names (0.805 versus 0.348), or stating a family (0.103 versus 0.
 The absolute lexical-reference curve therefore crosses between one and two later mentions; the
 human advantage at two or more holds in all 12 source groups and survives the 834-pair length match.
 But after mentions within one downstream construction are collapsed, absolute multi-consumer-site
-supply is unresolved; the crossover is textual addressability, not a count of cognitive retrieval episodes.
+supply is denominator-dependent (null per whitespace token, AI-higher per character); the crossover
+is textual addressability, not a count of cognitive retrieval episodes.
 The resulting local-claim construction DAG is nevertheless denser and more branching for humans
 in 206 exact-equal-node pairs, while maximum chain length is unresolved rather than more serial for AI.
 The family comparison collapses

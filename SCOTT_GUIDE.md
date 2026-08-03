@@ -116,7 +116,8 @@ smaller effective name vocabulary. Per 100 proof-body tokens, AI supplies more c
 at least once (1.96 versus 1.52), but humans supply more with two or more exact-name references
 (.470 versus .318); this lexical ordering flips between one and two references and the two-plus
 direction holds in all 12 source groups. It is not a count of reader episodes: after mentions
-inside one downstream construction are collapsed, absolute multi-consumer-site supply is unresolved.
+inside one downstream construction are collapsed, absolute multi-consumer-site supply is unresolved
+per whitespace token but AI-higher per character, so its direction is denominator-dependent.
 At exactly equal positive claim count, however, the human source construction DAG has more edges
 per node (.380 versus .339) and more branchpoints (.088 versus .075), while maximum chain length
 is unresolved. After collapsing equivalent binder and
